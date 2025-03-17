@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://hugp881sope0"]
+
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="1_ipo15"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hukrr"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxyk6"]
+size = Vector2(14.5, 14.5)
+
+[node name="Enemy3" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hukrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.191667, 0.5, 0, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_ipo15")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dxyk6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

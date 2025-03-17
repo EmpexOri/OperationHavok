@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=17 format=3 uid="uid://kmijtn114svf"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
+[ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/BarTemp.png" id="2_ydcph"]
+[ext_resource type="Texture2D" uid="uid://dydgl2851ea6v" path="res://Assets/Art/grid.jpg" id="3_kfju6"]
+[ext_resource type="Script" uid="uid://cvs7x0y7n8u5s" path="res://Assets/Scripts/Universal Scripts/background.gd" id="4_aly1e"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="4_qruto"]
+[ext_resource type="PackedScene" uid="uid://ccv3fxn55gofe" path="res://Scenes/enemy.tscn" id="5_aly1e"]
+[ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
+[ext_resource type="PackedScene" uid="uid://btmobglafrxdx" path="res://Scenes/enemy_2.tscn" id="6_w5l6p"]
+[ext_resource type="PackedScene" uid="uid://hugp881sope0" path="res://Scenes/enemy_3.tscn" id="7_wlc0k"]
+[ext_resource type="PackedScene" uid="uid://djdmgiabwutdt" path="res://Scenes/enemy_4.tscn" id="8_1cxn6"]
+[ext_resource type="Script" uid="uid://bcgibjer11dey" path="res://Assets/Scripts/Universal Scripts/enemy.gd" id="8_d0q0w"]
+[ext_resource type="Script" uid="uid://j2brxgn7po3j" path="res://Assets/Scripts/Universal Scripts/enemy2.gd" id="10_3kogm"]
+[ext_resource type="Script" uid="uid://7gv0u7m0fnce" path="res://Assets/Scripts/Universal Scripts/enemy3.gd" id="12_twjg6"]
+[ext_resource type="Script" uid="uid://b7d7d020brysy" path="res://Assets/Scripts/Universal Scripts/enemy4.gd" id="14_keglp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0q0w"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kogm"]
+size = Vector2(17.5, 17.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,6 +44,7 @@ texture_progress = ExtResource("2_ydcph")
 tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 
 [node name="FocusBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 70.0
 offset_right = 215.0
@@ -34,3 +53,46 @@ value = 100.0
 texture_under = ExtResource("2_ydcph")
 texture_progress = ExtResource("2_ydcph")
 tint_progress = Color(0.159324, 0.341244, 0.710893, 1)
+
+[node name="BackGround" type="Sprite2D" parent="."]
+modulate = Color(0.32, 0.32, 0.32, 1)
+position = Vector2(581, 367)
+texture = ExtResource("3_kfju6")
+script = ExtResource("4_aly1e")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(578, 277)
+script = ExtResource("5_w5l6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_d0q0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(0.79, 1, 0.958, 1)
+texture = ExtResource("4_qruto")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("RectangleShape2D_3kogm")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("5_aly1e")]
+position = Vector2(97, 80)
+script = ExtResource("8_d0q0w")
+
+[node name="Enemy2" parent="." instance=ExtResource("6_w5l6p")]
+position = Vector2(1077, 85)
+script = ExtResource("10_3kogm")
+
+[node name="Enemy3" parent="." instance=ExtResource("7_wlc0k")]
+position = Vector2(565, 619)
+script = ExtResource("12_twjg6")
+
+[node name="Enemy4" parent="." instance=ExtResource("8_1cxn6")]
+position = Vector2(577, -26)
+script = ExtResource("14_keglp")
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
