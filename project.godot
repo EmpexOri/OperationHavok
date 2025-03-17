@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Fools Act"
-run/main_scene="res://Scenes/PlaygroundScene.tscn"
+run/main_scene="uid://kjmdqey636rw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
