@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://hugp881sope0"]
+[gd_scene load_steps=5 format=3 uid="uid://hugp881sope0"]
 
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="1_ipo15"]
+[ext_resource type="Script" uid="uid://7gv0u7m0fnce" path="res://Assets/Scripts/Enemy/enemy3.gd" id="1_mex1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hukrr"]
 size = Vector2(13, 13)
@@ -9,6 +10,7 @@ size = Vector2(13, 13)
 size = Vector2(14.5, 14.5)
 
 [node name="Enemy3" type="CharacterBody2D"]
+script = ExtResource("1_mex1v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hukrr")

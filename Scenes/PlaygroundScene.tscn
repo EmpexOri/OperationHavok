@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=17 format=3 uid="uid://kmijtn114svf"]
 
 [ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://btmobglafrxdx" path="res://Scenes/Misc/enemy_2.tscn" id="6_w5l6p"]
 [ext_resource type="PackedScene" uid="uid://hugp881sope0" path="res://Scenes/Misc/enemy_3.tscn" id="7_wlc0k"]
 [ext_resource type="PackedScene" uid="uid://djdmgiabwutdt" path="res://Scenes/Misc/enemy_4.tscn" id="8_1cxn6"]
-[ext_resource type="Script" uid="uid://bcgibjer11dey" path="res://Assets/Scripts/Enemy/enemy.gd" id="8_d0q0w"]
 [ext_resource type="Script" uid="uid://j2brxgn7po3j" path="res://Assets/Scripts/Enemy/enemy2.gd" id="10_3kogm"]
 [ext_resource type="Script" uid="uid://7gv0u7m0fnce" path="res://Assets/Scripts/Enemy/enemy3.gd" id="12_twjg6"]
 [ext_resource type="Script" uid="uid://b7d7d020brysy" path="res://Assets/Scripts/Enemy/enemy4.gd" id="14_keglp"]
@@ -83,7 +82,6 @@ position_smoothing_enabled = true
 
 [node name="Enemy" parent="." instance=ExtResource("5_aly1e")]
 position = Vector2(97, 80)
-script = ExtResource("8_d0q0w")
 
 [node name="Enemy2" parent="." instance=ExtResource("6_w5l6p")]
 position = Vector2(1077, 85)
