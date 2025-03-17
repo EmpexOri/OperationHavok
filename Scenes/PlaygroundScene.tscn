@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=3 format=3 uid="uid://kmijtn114svf"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
+[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/BarTemp.png" id="2_ydcph"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_gnsay")
+
+[node name="UIContainer" type="Control" parent="PlayerUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+layout_mode = 1
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 215.0
+offset_bottom = 60.0
+value = 100.0
+texture_under = ExtResource("2_ydcph")
+texture_progress = ExtResource("2_ydcph")
+tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
+
+[node name="FocusBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+offset_left = 15.0
+offset_top = 70.0
+offset_right = 215.0
+offset_bottom = 120.0
+value = 100.0
+texture_under = ExtResource("2_ydcph")
+texture_progress = ExtResource("2_ydcph")
+tint_progress = Color(0.159324, 0.341244, 0.710893, 1)
