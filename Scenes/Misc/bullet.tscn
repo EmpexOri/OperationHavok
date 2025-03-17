@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_4psrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7oki"]
-size = Vector2(9.6, 3.8)
+size = Vector2(6.42, 2.55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4vbm"]
-size = Vector2(9.9, 4.1)
+size = Vector2(6.75, 2.9)
 
 [node name="Bullet" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -18,7 +18,7 @@ shape = SubResource("RectangleShape2D_v7oki")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0.7, 1, 1)
-scale = Vector2(0.6, 0.24)
+scale = Vector2(0.4, 0.16)
 texture = ExtResource("2_4psrt")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bcgibjer11dey" path="res://Assets/Scripts/Enemy/enemy.gd" id="1_mvqga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2kcc"]
-size = Vector2(13, 13)
+size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_058mb"]
-size = Vector2(14.5, 14.5)
+size = Vector2(9, 9)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_mvqga")
@@ -17,7 +17,7 @@ shape = SubResource("RectangleShape2D_n2kcc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.67, 0, 0.0111665, 1)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_hghv2")
 
 [node name="Area2D" type="Area2D" parent="."]

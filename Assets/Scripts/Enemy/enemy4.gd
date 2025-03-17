@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var Speed = 250
+var Speed = 120
 var Enemy = preload("res://Assets/Scripts/Enemy/enemy4.gd")
 var BulletSpeed = 800
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
@@ -13,7 +13,7 @@ func _physics_process(_delta):
 	
 	var Direction = (Player.position - position).normalized()
 	
-	if position.distance_to(Player.position) >= 250:
+	if position.distance_to(Player.position) >= 100:
 		velocity = Vector2(0, 0)
 	else:
 		velocity = Direction * Speed

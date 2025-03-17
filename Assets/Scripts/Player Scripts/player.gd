@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var MoveSpeed = 500
-var BulletSpeed = 2000
+var MoveSpeed = 250
+var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 
 func _ready():

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var Speed = 200
+var Speed = 130
 var Enemy = preload("res://Assets/Scripts/Enemy/enemy2.gd")
 var OrbitSpeed = 50
 var OrbitDirection
@@ -27,7 +27,7 @@ func _physics_process(_delta):
 	
 	var Direction = (Player.position - position).normalized()
 	
-	if position.distance_to(Player.position) >= 300:
+	if position.distance_to(Player.position) >= 150:
 		velocity = Direction * Speed
 	else:
 		var Angle = (position - Player.position).angle() + OrbitSpeed * OrbitDirection * _delta

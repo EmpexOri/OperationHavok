@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var Speed = 350
+var Speed = 180
 var Enemy = preload("res://Assets/Scripts/Enemy/enemy.gd")
 
 func _ready():
