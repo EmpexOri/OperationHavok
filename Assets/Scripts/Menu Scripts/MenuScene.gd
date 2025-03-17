@@ -5,7 +5,7 @@ func OnPlayButtonPressed() -> void:
 
 
 func OnOptionsButtonPressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res:///Scenes/OptionsScene.tscn")
 
 
 func OnQuitButtonPressed() -> void:

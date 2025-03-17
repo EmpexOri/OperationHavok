@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bli4fnfa7mnar"]
+
+[ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
+
+[node name="OptionsScene" type="Node2D"]
+script = ExtResource("1_ax0sw")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 641.0
+offset_bottom = 62.0
+theme_type_variation = &"HeaderLarge"
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="Title"]
+offset_left = 241.0
+offset_top = 236.0
+offset_right = 403.0
+offset_bottom = 267.0
+text = "Back"
+
+[connection signal="pressed" from="Title/BackButton" to="." method="OnBackButtonPressed"]
