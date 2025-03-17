@@ -1,9 +1,9 @@
 extends Node2D
 
-var Enemy = preload("res://enemy.tscn")
-var Enemy2 = preload("res://enemy_2.tscn")
-var Enemy3 = preload("res://enemy_3.tscn")
-var Enemy4 = preload("res://enemy_4.tscn")
+var Enemy = preload("res://Scenes/Misc/enemy.tscn")
+var Enemy2 = preload("res://Scenes/Misc/enemy_2.tscn")
+var Enemy3 = preload("res://Scenes/Misc/enemy_3.tscn")
+var Enemy4 = preload("res://Scenes/Misc/enemy_4.tscn")
 
 func _ready():
 	start_spawn_timer1()

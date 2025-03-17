@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=18 format=3 uid="uid://kmijtn114svf"]
 
+[ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/BarTemp.png" id="2_ydcph"]
 [ext_resource type="Texture2D" uid="uid://dydgl2851ea6v" path="res://Assets/Art/grid.jpg" id="3_kfju6"]
@@ -21,7 +22,8 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kogm"]
 size = Vector2(17.5, 17.5)
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
+script = ExtResource("1_3kogm")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_gnsay")
