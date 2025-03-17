@@ -12,7 +12,7 @@ func _ready():
 	FocusBar.max_value = GlobalControls.PlayerFPMax
 	FocusBar.value = GlobalControls.PlayerFP
 
-func _process(delta):
+func _process(_delta):
 	UpdateHealthBar()
 	UpdateFocusBar()
 
