@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 var Speed = 200
-var Enemy = preload("res://Scenes/enemy_2.tscn")
+var Enemy = preload("res://Assets/Scripts/Enemy/enemy2.gd")
 var OrbitSpeed = 50
 var OrbitDirection
 var BulletSpeed = 800
-var Bullet = preload("res://Scenes/bullet.tscn")
+var Bullet = preload("res://Assets/Scripts/Player Scripts/bullet.gd")
 
 func _ready():
 	OrbitDirection = [-1, 1].pick_random()

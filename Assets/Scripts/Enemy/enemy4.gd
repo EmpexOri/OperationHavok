@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var Speed = 250
-var Enemy = preload("res://Scenes/enemy_4.tscn")
+var Enemy = preload("res://Assets/Scripts/Enemy/enemy4.gd")
 var BulletSpeed = 800
-var Bullet = preload("res://Scenes/bullet.tscn")
+var Bullet = preload("res://Assets/Scripts/Player Scripts/bullet.gd")
 
 func _ready():
 	start_firing_timer()
