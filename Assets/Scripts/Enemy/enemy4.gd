@@ -56,8 +56,6 @@ func drop_xp() -> void:
 	get_parent().add_child(xp)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Collided with: ", body.name)
 	if body.is_in_group("Bullet"): # Fixed
-		print("Bullet hit!")
 		drop_xp()
 		queue_free()
