@@ -41,7 +41,6 @@ func _physics_process(_delta):
 func fire():
 	var BulletInstance = Bullet.instantiate()
 	BulletInstance.name = "Bullet_" + str(randi())  # Assigns a unique named
-	print(BulletInstance.name)
 	BulletInstance.add_to_group("Bullet")
 	var Direction = (get_global_mouse_position() - global_position).normalized()
 	var OffsetDistance = 30
@@ -55,5 +54,5 @@ func kill():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if "Enemy" in body.name or "Laser" in body.name:
+	if "Enemy" in body.name or body.is_in_group("Laser"):
 		kill()

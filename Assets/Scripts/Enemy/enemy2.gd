@@ -58,7 +58,6 @@ func fire():
 	var BulletInstance = Bullet.instantiate()
 	BulletInstance.name = "Laser_" + str(randi())  # Assigns a unique named
 	BulletInstance.get_node("Sprite2D").modulate = Color(1, 0, 0)  # Red color
-	print(BulletInstance.name)
 	BulletInstance.add_to_group("Laser")
 	var Direction = (Player.position - position).normalized()
 	var OffsetDistance = 30
@@ -76,7 +75,7 @@ func drop_xp() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Collided with: ", body.name)
-	if "Bullet" in body.name: # Fixed
+	if body.is_in_group("Bullet"): # Fixed
 		print("Bullet hit!")
 		drop_xp()
 		queue_free()
