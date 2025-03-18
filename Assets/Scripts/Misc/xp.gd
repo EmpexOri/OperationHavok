@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 
 var speed = 300.0
-var separation_distance = 35.0
-var separation_force = 3
+var separation_distance = 10.0
+var separation_force = 1
 var cohesion_distance = 50.0
-var cohesion_force = 3
+var cohesion_force = 1
 var smoothing = 0.1
 var target_velocity = Vector2.ZERO
 
-var pickup_range = 300
+var pickup_range = 150
 var player_in_range = false
 
 func _ready() -> void:
