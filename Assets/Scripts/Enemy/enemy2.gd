@@ -4,7 +4,7 @@ var Speed = 130
 #var Enemy = preload("res://Scenes/Misc/enemy_2.tscn")
 var OrbitSpeed = 50
 var OrbitDirection
-var BulletSpeed = 800
+var BulletSpeed = 600
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
@@ -70,10 +70,11 @@ func fire():
 
 func drop_xp():
 	var xp = xp_scene.instantiate()
-	xp.global_position = global_position 
+	xp.global_position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
 	get_parent().add_child(xp)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("Bullet"): # Fixed
-		drop_xp()
+		for i in range(3):
+			drop_xp()
 		queue_free()

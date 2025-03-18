@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var Speed = 120
 #var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
-var BulletSpeed = 800
+var BulletSpeed = 680
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
@@ -50,12 +50,13 @@ func fire():
 	
 	start_firing_timer()
 
-func drop_xp() -> void:
+func drop_xp():
 	var xp = xp_scene.instantiate()
-	xp.global_position = global_position 
+	xp.global_position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
 	get_parent().add_child(xp)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("Bullet"): # Fixed
-		drop_xp()
+		for i in range(3):
+			drop_xp()
 		queue_free()

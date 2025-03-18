@@ -41,10 +41,11 @@ func spawn():
 
 func drop_xp():
 	var xp = xp_scene.instantiate()
-	xp.global_position = global_position 
+	xp.global_position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
 	get_parent().add_child(xp)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("Bullet"): # Fixed
-		drop_xp()
+		for i in range(1):
+			drop_xp()
 		queue_free()
