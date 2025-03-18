@@ -16,12 +16,14 @@ func _ready() -> void:
 	add_to_group("xp")
 
 func _physics_process(delta: float) -> void:
-	var player_position = get_parent().get_node("Player").global_position
+	var player = get_tree().get_nodes_in_group("player")
+	var player_position = Vector2.ZERO
 	var separation_vector = Vector2.ZERO
 	var cohesion_vector = Vector2.ZERO
 	var nearby_xp = 0
 	
-	if player_position:
+	if player:
+		player_position = player[0].global_position
 		var distance_to_player = global_position.distance_to(player_position)
 		if distance_to_player < pickup_range:
 			player_in_range = true

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var Speed = 180
 var Enemy = preload("res://Assets/Scripts/Enemy/enemy.gd")
+var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
 func _ready():
 	pass
@@ -24,4 +25,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Collided with: ", body.name)
 	if "Bullet" in body.name: # Fixed
 		print("Bullet hit!")
+		var xp = xp_scene.instantiate()
+		xp.global_position = global_position 
+		get_parent().add_child(xp)
 		queue_free()
