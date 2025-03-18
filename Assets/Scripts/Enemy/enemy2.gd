@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var Speed = 130
-var Enemy = preload("res://Assets/Scripts/Enemy/enemy2.gd")
+var Enemy = preload("res://Scenes/Misc/enemy_2.tscn")
 var OrbitSpeed = 50
 var OrbitDirection
 var BulletSpeed = 800
