@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var Speed = 180
-var Enemy = preload("res://Scenes/Misc/enemy.tscn")
+#var Enemy = preload("res://Scenes/Misc/enemy.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
 func _ready():

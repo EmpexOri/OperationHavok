@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var Speed = 120
-var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
+#var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
 var BulletSpeed = 800
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
