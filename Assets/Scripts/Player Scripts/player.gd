@@ -5,6 +5,7 @@ var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 
 func _ready():
+	add_to_group("player")
 	var timer = Timer.new()
 	timer.wait_time = 0.25
 	timer.one_shot = false  # Timer only goes once
