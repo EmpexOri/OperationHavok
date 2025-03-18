@@ -4,6 +4,7 @@ var Speed = 120
 var Enemy = preload("res://Assets/Scripts/Enemy/enemy4.gd")
 var BulletSpeed = 800
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
+var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
 func _ready():
 	start_firing_timer()
@@ -49,9 +50,14 @@ func fire():
 	
 	start_firing_timer()
 
+func drop_xp() -> void:
+	var xp = xp_scene.instantiate()
+	xp.global_position = global_position 
+	get_parent().add_child(xp)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Collided with: ", body.name)
 	if "Bullet" in body.name: # Fixed
 		print("Bullet hit!")
+		drop_xp()
 		queue_free()

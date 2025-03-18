@@ -19,13 +19,15 @@ func _physics_process(_delta):
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-
+	
+func drop_xp() -> void:
+	var xp = xp_scene.instantiate()
+	xp.global_position = global_position 
+	get_parent().add_child(xp)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Collided with: ", body.name)
 	if "Bullet" in body.name: # Fixed
 		print("Bullet hit!")
-		var xp = xp_scene.instantiate()
-		xp.global_position = global_position 
-		get_parent().add_child(xp)
+		drop_xp()
 		queue_free()
