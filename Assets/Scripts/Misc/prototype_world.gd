@@ -14,7 +14,6 @@ func _ready():
 func _process(delta):
 	# Check if the user has pressed escape, if so, open the in game options
 	if Input.is_action_just_pressed("InGameOptions"):
-		print("InGameOptions Pressed")
 		get_tree().change_scene_to_file("res://Scenes/InGameOptionsScene.tscn")
 
 func start_spawn_timer1():
