@@ -5,7 +5,12 @@ var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 
 func _ready():
-	pass
+	var timer = Timer.new()
+	timer.wait_time = 0.25
+	timer.one_shot = false  # Timer only goes once
+	timer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
+	add_child(timer)
+	timer.start()
 	
 func _physics_process(_delta):
 	var Motion = Vector2()
@@ -29,8 +34,8 @@ func _physics_process(_delta):
 	
 	look_at(get_global_mouse_position())
 	
-	if Input.is_action_just_pressed("LMB"):
-		fire()
+	#if Input.is_action_just_pressed("LMB"):
+		#fire()
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()
