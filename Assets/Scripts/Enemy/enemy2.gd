@@ -75,7 +75,7 @@ func drop_xp():
 	get_parent().add_child(xp)
 
 func _on_area_2d_body_entered(body: Node2D):
-	if body.is_in_group("Bullet"): # Fixed
+	if body.is_in_group("Bullet") or body.is_in_group("Minion"): # Fixed
 		for i in range(3):
 			drop_xp()
 		queue_free()

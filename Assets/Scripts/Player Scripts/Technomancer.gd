@@ -4,7 +4,7 @@ var MoveSpeed = 250
 var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 
-func brainwash(Player: Node2D):
+func ability(Player: Node2D):
 	var BulletInstance = Bullet.instantiate()
 	BulletInstance.name = "Spell_" + str(randi())  # Assigns a unique name
 	BulletInstance.get_node("Sprite2D").modulate = Color(0, 0, 0)  # Black color

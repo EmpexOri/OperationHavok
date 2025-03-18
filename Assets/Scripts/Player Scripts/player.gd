@@ -43,7 +43,7 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("LMB"):
 		if Mode == "fire":
-			Class.brainwash(self)
+			Class.ability(self)
 			Mode = "ability"
 		elif Mode == "ability":
 			fire()
@@ -53,7 +53,7 @@ func _physics_process(_delta):
 		trigger()
 		
 func ability():
-	Class.brainwash(self)
+	Class.ability(self)
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()
