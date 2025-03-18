@@ -1,15 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cboluu8voep66"]
 
+[ext_resource type="Script" uid="uid://xm4hcbeeytbx" path="res://Assets/Scripts/Misc/xp.gd" id="1_3n01l"]
 [ext_resource type="Texture2D" uid="uid://cuvh51tfqwtja" path="res://Assets/Art/xp.png" id="1_7ghe4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n01l"]
-size = Vector2(8, 8)
-
 [node name="Xp" type="CharacterBody2D"]
+script = ExtResource("1_3n01l")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7ghe4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3n01l")
