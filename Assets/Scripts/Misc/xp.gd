@@ -6,7 +6,7 @@ var separation_distance = 10.0
 var separation_force = 1
 var cohesion_distance = 50.0
 var cohesion_force = 1
-var smoothing = 0.1
+var smoothing = 10
 var target_velocity = Vector2.ZERO
 
 var pickup_range = 150
@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		var distance_to_player = global_position.distance_to(player_position)
 		if distance_to_player < pickup_range:
 			player_in_range = true
-		if distance_to_player < 5:
+		if distance_to_player < 10:
 			queue_free()
 	
 	if player_in_range:
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		if player_position:
 			var direction_to_player = (player_position - global_position).normalized()
 			var final_direction = direction_to_player + separation_vector + cohesion_vector
-			target_velocity = target_velocity.lerp(final_direction * speed, smoothing)
+			target_velocity = target_velocity.lerp(final_direction * speed, smoothing * delta)
 		else:
 			target_velocity = Vector2.ZERO
 		
