@@ -41,6 +41,7 @@ func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")): # Fixed
 		for i in range(2):
 			drop_xp()
+		body.queue_free()
 		queue_free()
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
@@ -51,4 +52,6 @@ func _on_area_2d_body_entered(body: Node2D):
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			print(Target)
 	elif is_in_group("Minion") and body.is_in_group("Enemy"):
-		call_deferred("queue_free")
+		await get_tree().process_frame
+		if not is_instance_valid(body) or not body.get_parent():
+			call_deferred("queue_free")

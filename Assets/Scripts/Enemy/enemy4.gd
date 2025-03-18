@@ -60,4 +60,5 @@ func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("Bullet") or body.is_in_group("Minion"): # Fixed
 		for i in range(3):
 			drop_xp()
+		body.queue_free()
 		queue_free()
