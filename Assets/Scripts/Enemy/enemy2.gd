@@ -9,6 +9,7 @@ var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
 func _ready():
+	add_to_group("Enemy")
 	OrbitDirection = [-1, 1].pick_random()
 	start_firing_timer()
 	

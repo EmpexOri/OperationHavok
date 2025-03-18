@@ -5,6 +5,7 @@ var Enemy = preload("res://Scenes/Misc/enemy_3.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
 func _ready():
+	add_to_group("Enemy")
 	start_timer()
 	
 func _physics_process(_delta):

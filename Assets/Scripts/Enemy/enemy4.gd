@@ -7,6 +7,7 @@ var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 
 func _ready():
+	add_to_group("Enemy")
 	start_firing_timer()
 	
 func _physics_process(_delta):

@@ -3,13 +3,15 @@ extends CharacterBody2D
 var MoveSpeed = 250
 var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
+var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
+var Mode = "ability"
 
 func _ready():
 	add_to_group("player")
 	var timer = Timer.new()
 	timer.wait_time = 0.25
 	timer.one_shot = false  # Timer only goes once
-	timer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
+	timer.connect("timeout", Callable(self, Mode)) # Executes the spawn function once timer has ended
 	add_child(timer)
 	timer.start()
 	
@@ -35,8 +37,12 @@ func _physics_process(_delta):
 	
 	look_at(get_global_mouse_position())
 	
-	#if Input.is_action_just_pressed("LMB"):
-		#fire()
+	if Input.is_action_just_pressed("LMB"):
+		Class.brainwash(self)
+		Mode = "ability"
+		
+func ability():
+	Class.brainwash(self)
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()
@@ -54,5 +60,5 @@ func kill():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if "Enemy" in body.name or body.is_in_group("Laser"):
+	if body.is_in_group("Enemy") or body.is_in_group("Laser"):
 		kill()
