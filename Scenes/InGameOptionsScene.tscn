@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://der2d7wn1kf7o"]
+
+[ext_resource type="Script" uid="uid://b8ht6a7sdetp1" path="res://Assets/Scripts/Menu Scripts/InGameOptionsScene.gd" id="1_cvj5n"]
+
+[node name="InGameOptionsScene" type="Node2D"]
+script = ExtResource("1_cvj5n")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 641.0
+offset_bottom = 62.0
+theme_type_variation = &"HeaderLarge"
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 241.0
+offset_top = 193.0
+offset_right = 403.0
+offset_bottom = 224.0
+text = "Quit"
+
+[connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]

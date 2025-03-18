@@ -11,6 +11,12 @@ func _ready():
 	start_spawn_timer3()
 	start_spawn_timer4()
 
+func _process(delta):
+	# Check if the user has pressed escape, if so, open the in game options
+	if Input.is_action_just_pressed("InGameOptions"):
+		print("InGameOptions Pressed")
+		get_tree().change_scene_to_file("res://Scenes/InGameOptionsScene.tscn")
+
 func start_spawn_timer1():
 	var timer = Timer.new()
 	timer.wait_time = randf_range(1, 4)
