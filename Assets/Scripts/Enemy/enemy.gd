@@ -51,4 +51,4 @@ func _on_area_2d_body_entered(body: Node2D):
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			print(Target)
 	elif is_in_group("Minion") and body.is_in_group("Enemy"):
-		queue_free()
+		call_deferred("queue_free")
