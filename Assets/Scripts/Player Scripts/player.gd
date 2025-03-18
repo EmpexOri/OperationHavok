@@ -42,6 +42,7 @@ func fire():
 	var BulletInstance = Bullet.instantiate()
 	BulletInstance.name = "Bullet_" + str(randi())  # Assigns a unique named
 	print(BulletInstance.name)
+	BulletInstance.add_to_group("Bullet")
 	var Direction = (get_global_mouse_position() - global_position).normalized()
 	var OffsetDistance = 30
 	BulletInstance.position = global_position + (Direction * OffsetDistance)

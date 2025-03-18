@@ -41,6 +41,7 @@ func fire():
 	BulletInstance.name = "Laser_" + str(randi())  # Assigns a unique named
 	BulletInstance.get_node("Sprite2D").modulate = Color(1, 0.5, 0.1)  # Orange color
 	print(BulletInstance.name)
+	BulletInstance.add_to_group("Laser")
 	var Direction = (Player.position - position).normalized()
 	var OffsetDistance = 30
 	BulletInstance.position = position + (Direction * OffsetDistance)
