@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://kmijtn114svf"]
+
+[ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
+[ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
+[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/BarTemp.png" id="2_ydcph"]
+[ext_resource type="Texture2D" uid="uid://dydgl2851ea6v" path="res://Assets/Art/grid.jpg" id="3_kfju6"]
+[ext_resource type="Script" uid="uid://cvs7x0y7n8u5s" path="res://Assets/Scripts/Universal Scripts/background.gd" id="4_aly1e"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="4_qruto"]
+[ext_resource type="PackedScene" uid="uid://ccv3fxn55gofe" path="res://Scenes/Misc/enemy.tscn" id="5_aly1e"]
+[ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
+[ext_resource type="PackedScene" uid="uid://btmobglafrxdx" path="res://Scenes/Misc/enemy_2.tscn" id="6_w5l6p"]
+[ext_resource type="PackedScene" uid="uid://hugp881sope0" path="res://Scenes/Misc/enemy_3.tscn" id="7_wlc0k"]
+[ext_resource type="PackedScene" uid="uid://djdmgiabwutdt" path="res://Scenes/Misc/enemy_4.tscn" id="8_1cxn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0q0w"]
+size = Vector2(8.7, 8.7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kogm"]
+size = Vector2(10, 10)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_3kogm")
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_gnsay")
+
+[node name="UIContainer" type="Control" parent="PlayerUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+visible = false
+layout_mode = 1
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 215.0
+offset_bottom = 60.0
+value = 100.0
+texture_under = ExtResource("2_ydcph")
+texture_progress = ExtResource("2_ydcph")
+tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="FocusBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 70.0
+offset_right = 215.0
+offset_bottom = 120.0
+value = 100.0
+texture_under = ExtResource("2_ydcph")
+texture_progress = ExtResource("2_ydcph")
+tint_progress = Color(0.159324, 0.341244, 0.710893, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BackGround" type="Sprite2D" parent="."]
+modulate = Color(0.32, 0.32, 0.32, 1)
+position = Vector2(581, 367)
+texture = ExtResource("3_kfju6")
+script = ExtResource("4_aly1e")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(328, 182)
+script = ExtResource("5_w5l6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_d0q0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(0.79, 1, 0.958, 1)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_qruto")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("RectangleShape2D_3kogm")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("5_aly1e")]
+position = Vector2(49, 51)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_w5l6p")]
+position = Vector2(599, 52)
+
+[node name="Enemy3" parent="." instance=ExtResource("7_wlc0k")]
+position = Vector2(324, 349)
+
+[node name="Enemy4" parent="." instance=ExtResource("8_1cxn6")]
+position = Vector2(326, 14)
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]

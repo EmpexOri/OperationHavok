@@ -20,7 +20,7 @@ func _physics_process(_delta):
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			Player = get_parent().get_node(Target)
 	else:
-		Player = "Player"
+		Player = get_parent().get_node("Player")
 	
 	var Direction = (Player.position - position).normalized()
 	velocity = Direction * Speed

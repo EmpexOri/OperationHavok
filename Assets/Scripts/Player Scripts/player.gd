@@ -4,16 +4,20 @@ var MoveSpeed = 250
 var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
-var Mode = "ability"
+var Mode = "fire"
+var Trigger_Timer = Timer.new()
 
 func _ready():
 	add_to_group("player")
-	var timer = Timer.new()
-	timer.wait_time = 0.25
-	timer.one_shot = false  # Timer only goes once
-	timer.connect("timeout", Callable(self, Mode)) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
+	trigger()
+	
+func trigger():
+	Trigger_Timer = Timer.new()
+	Trigger_Timer.wait_time = 0.25
+	Trigger_Timer.one_shot = false  # Timer only goes once
+	Trigger_Timer.connect("timeout", Callable(self, Mode)) # Executes the spawn function once timer has ended
+	add_child(Trigger_Timer)
+	Trigger_Timer.start()
 	
 func _physics_process(_delta):
 	var Motion = Vector2()
@@ -38,8 +42,15 @@ func _physics_process(_delta):
 	look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("LMB"):
-		Class.brainwash(self)
-		Mode = "ability"
+		if Mode == "fire":
+			Class.brainwash(self)
+			Mode = "ability"
+		elif Mode == "ability":
+			fire()
+			Mode = "fire"
+			
+		Trigger_Timer.stop()
+		trigger()
 		
 func ability():
 	Class.brainwash(self)
