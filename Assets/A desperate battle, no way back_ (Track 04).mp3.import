@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c0vahobgr2g8"
+path="res://.godot/imported/A desperate battle, no way back_ (Track 04).mp3-1262a80cf971890e62773357c0e704a2.mp3str"
+
+[deps]
+
+source_file="res://Assets/A desperate battle, no way back_ (Track 04).mp3"
+dest_files=["res://.godot/imported/A desperate battle, no way back_ (Track 04).mp3-1262a80cf971890e62773357c0e704a2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
