@@ -116,5 +116,3 @@ func _on_area_2d_body_entered(body: Node2D):
 		await get_tree().process_frame
 		if not is_instance_valid(body) or not body.get_parent():
 			call_deferred("queue_free")
-
-# 0.8, 0.9, 1
