@@ -11,7 +11,7 @@ var MoveSpeed = 0
 var BulletSpeed = 0
 
 func _ready():
-	add_to_group("player")
+	add_to_group("Player")
 	trigger()
 	damage_timer()
 	

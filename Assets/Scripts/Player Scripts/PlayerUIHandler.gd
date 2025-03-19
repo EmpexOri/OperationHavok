@@ -18,7 +18,7 @@ func _process(_delta):
 
 func UpdateHealthBar():
 	if HealthBar:
-		print("HP:", Global.PlayerHP, " / ", Global.PlayerHPMax)
+		#print("HP:", Global.PlayerHP, " / ", Global.PlayerHPMax)
 		HealthBar.max_value = Global.PlayerHPMax
 		HealthBar.value = Global.PlayerHP
 
@@ -29,7 +29,7 @@ func UpdateXPBar():
 		var XP = Global.ClassData[CurrentClass]["XP"]
 		var XPNeeded = Global.XPRequiredForLevel(Level)
 
-		print("XP:", XP, " / ", XPNeeded)
+		#print("XP:", XP, " / ", XPNeeded)
 		XPBar.max_value = XPNeeded
 		XPBar.value = XP
 
