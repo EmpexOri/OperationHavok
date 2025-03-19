@@ -5,16 +5,47 @@ var Enemy2 = preload("res://Scenes/Misc/enemy_2.tscn")
 var Enemy3 = preload("res://Scenes/Misc/enemy_3.tscn")
 var Enemy4 = preload("res://Scenes/Misc/enemy_4.tscn")
 
+# Pause screen assets
+var PausedLabel
+var ResumeButton
+var ControlsButton
+var QuitButton
+
 func _ready():
 	start_spawn_timer1()
 	start_spawn_timer2()
 	start_spawn_timer3()
 	start_spawn_timer4()
+	
+	# Pause screen assets
+	PausedLabel = $PausedLayer/Title
+	ResumeButton = $PausedLayer/ResumeButton
+	ControlsButton = $PausedLayer/ControlsButton
+	QuitButton = $PausedLayer/QuitButton
+	PausedLabel.visible = false
+	ResumeButton.visible = false
+	ControlsButton.visible = false
+	QuitButton.visible = false
 
 func _process(_delta):
-	# Check if the user has pressed escape, if so, open the in game options
+	# Make sure that the pause menu isn't being displayed when not paused
+	if PausedLabel.visible:
+		PausedLabel.visible = false
+		ResumeButton.visible = false
+		ControlsButton.visible = false
+		QuitButton.visible = false
+		
+func _input(event):
 	if Input.is_action_just_pressed("InGameOptions"):
-		get_tree().change_scene_to_file("res://Scenes/InGameOptionsScene.tscn")
+		pause_game()
+
+# Function to display the pause menu when game is paused
+func pause_game():
+	PausedLabel.visible = true
+	ResumeButton.visible = true
+	ControlsButton.visible = true
+	QuitButton.visible = true
+	get_tree().paused = true
 
 func start_spawn_timer1():
 	var timer = Timer.new()
