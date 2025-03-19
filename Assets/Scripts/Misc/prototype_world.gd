@@ -5,11 +5,10 @@ var Enemy2 = preload("res://Scenes/Misc/enemy_2.tscn")
 var Enemy3 = preload("res://Scenes/Misc/enemy_3.tscn")
 var Enemy4 = preload("res://Scenes/Misc/enemy_4.tscn")
 
-# Pause screen assets
-var PausedLabel
-var ResumeButton
-var ControlsButton
-var QuitButton
+@onready var PausedLabel: Label = $PausedLayer/Title
+@onready var ResumeButton: Button = $PausedLayer/ResumeButton
+@onready var ControlsButton: Button = $PausedLayer/ControlsButton
+@onready var QuitButton: Button = $PausedLayer/QuitButton
 
 func _ready():
 	start_spawn_timer1()
@@ -18,10 +17,6 @@ func _ready():
 	start_spawn_timer4()
 	
 	# Pause screen assets
-	PausedLabel = $PausedLayer/Title
-	ResumeButton = $PausedLayer/ResumeButton
-	ControlsButton = $PausedLayer/ControlsButton
-	QuitButton = $PausedLayer/QuitButton
 	PausedLabel.visible = false
 	ResumeButton.visible = false
 	ControlsButton.visible = false
