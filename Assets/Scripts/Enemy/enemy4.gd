@@ -58,6 +58,7 @@ func fire():
 			Player = get_parent().get_node(Target)
 	else:
 		Player = get_parent().get_node(self.get_path())
+		return
 	
 	var BulletInstance = Bullet.instantiate()
 	BulletInstance.name = "Laser_" + str(randi())  # Assigns a unique named

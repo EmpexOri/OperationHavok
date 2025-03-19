@@ -36,7 +36,8 @@ func _physics_process(_delta):
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			Player = get_parent().get_node(Target)
 	else:
-		Player = get_parent().get_node(self.get_path())
+		#Player = get_parent().get_node(self.get_path())
+		Player = get_parent().get_node("Player")
 	
 	var Direction = (Player.position - position).normalized()
 	
@@ -76,6 +77,7 @@ func fire():
 			Player = get_parent().get_node(Target)
 	else:
 		Player = get_parent().get_node(self.get_path())
+		return
 	
 	var BulletInstance = Bullet.instantiate()
 	BulletInstance.name = "Laser_" + str(randi())  # Assigns a unique named
