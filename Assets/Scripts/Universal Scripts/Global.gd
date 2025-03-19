@@ -11,9 +11,9 @@ var ClassData = {
 }
 
 # Perk Lists for each class, just place holders for now :D
-var PerkListTechnomancer = ["SummonersCard", "SpeedBoost", "Roll", "DamageUp"]
-var PerkListGunslinger = ["QuickReload", "CriticalShot", "SteadyAim", "DamageBoost"]
-var PerkListFleshthing = ["Regeneration", "HeavyHit", "ArmorBoost", "LifeLeech"]
+var PerkListTechnomancer = ["TheEmperor", "TheLovers", "Judgement", "Strength"]
+var PerkListGunslinger = ["WheelOfFortune", "Death", "Temperance", "TheHeirophant"]
+var PerkListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 # XP scaling formula
 func XPRequiredForLevel(level: int) -> int:
