@@ -18,7 +18,7 @@ func _ready() -> void:
 	add_to_group("xp")
 
 func _physics_process(delta: float) -> void:
-	var player = get_tree().get_nodes_in_group("player")
+	var player = get_tree().get_nodes_in_group("Player")
 	var player_position = Vector2.ZERO
 	var separation_vector = Vector2.ZERO
 	var cohesion_vector = Vector2.ZERO
