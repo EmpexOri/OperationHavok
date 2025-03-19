@@ -47,7 +47,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		remove_from_group("Enemy")
 		add_to_group("Minion")
 		var sprite = get_node("Sprite2D")
-		sprite.modulate = Color(0.5, 0, 0.5)
+		sprite.modulate = Color(1, 0.7, 0.7)
 		if get_tree().get_nodes_in_group("Enemy").size() > 0:
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			print(Target)

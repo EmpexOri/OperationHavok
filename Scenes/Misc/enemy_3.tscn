@@ -17,6 +17,7 @@ shape = SubResource("RectangleShape2D_hukrr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0.5, 0, 1)
+self_modulate = Color(0.92224, 1, 0.91857, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ipo15")
 
