@@ -10,7 +10,7 @@ func _ready():
 	print(Target)
 	
 func _physics_process(_delta):
-	var Player = Target
+	var Player = get_parent().get_node(Target)
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
 	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
@@ -47,7 +47,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		remove_from_group("Enemy")
 		add_to_group("Minion")
 		var sprite = get_node("Sprite2D")
-		sprite.modulate = Color(0, 0, 0)
+		sprite.modulate = Color(0.5, 0, 0.5)
 		if get_tree().get_nodes_in_group("Enemy").size() > 0:
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			print(Target)
