@@ -1,7 +1,7 @@
 extends Node2D
 
-var MoveSpeed = 250
-var BulletSpeed = 1500
+#var MoveSpeed = 250
+#var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 
 func ability(Player: Node2D):
@@ -13,5 +13,5 @@ func ability(Player: Node2D):
 	var OffsetDistance = 30
 	BulletInstance.position = Player.global_position + (Direction * OffsetDistance)
 	BulletInstance.rotation = Direction.angle()
-	BulletInstance.linear_velocity = Direction * BulletSpeed
+	#BulletInstance.linear_velocity = Direction * BulletSpeed
 	Player.get_tree().get_root().call_deferred("add_child", BulletInstance)
