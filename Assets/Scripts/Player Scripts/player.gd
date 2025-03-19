@@ -72,4 +72,7 @@ func kill():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") or body.is_in_group("Laser"):
+		Global.PlayerHP -= 10
+	if Global.PlayerHP <= 0:
+		Global.PlayerHP = Global.PlayerHPMax
 		kill()
