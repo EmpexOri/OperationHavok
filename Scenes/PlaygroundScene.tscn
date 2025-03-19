@@ -59,6 +59,21 @@ texture_progress = ExtResource("2_ydcph")
 tint_progress = Color(0.159324, 0.341244, 0.710893, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 45.0
+offset_right = 73.0
+offset_bottom = 68.0
+text = "Level: 1"
+
+[node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
+offset_left = 15.0
+offset_top = 65.0
+offset_right = 179.0
+offset_bottom = 88.0
+text = "Class: Technomancer"
+
 [node name="BackGround" type="Sprite2D" parent="."]
 modulate = Color(0.32, 0.32, 0.32, 1)
 position = Vector2(581, 367)
