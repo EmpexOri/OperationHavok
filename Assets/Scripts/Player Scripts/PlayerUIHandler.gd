@@ -1,9 +1,9 @@
 extends Node
 
 @onready var HealthBar: TextureProgressBar = $UIContainer/HealthBar
-@onready var XPBar: TextureProgressBar = $UIContainer/XPBar
 @onready var LevelLabel: Label = $UIContainer/LevelLabel
 @onready var ClassLabel: Label = $UIContainer/ClassLabel
+@onready var XPCircle: TextureProgressBar = $UIContainer/TextureProgressBar
 
 func _ready():
 	await get_tree().process_frame  # Ensures UI elements are ready before updating
@@ -23,15 +23,15 @@ func UpdateHealthBar():
 		HealthBar.value = Global.PlayerHP
 
 func UpdateXPBar():
-	if XPBar:
+	if XPCircle:
 		var CurrentClass = Global.CurrentClass
 		var Level = Global.ClassData[CurrentClass]["Level"]
 		var XP = Global.ClassData[CurrentClass]["XP"]
 		var XPNeeded = Global.XPRequiredForLevel(Level)
 
 		print("XP:", XP, " / ", XPNeeded)
-		XPBar.max_value = XPNeeded
-		XPBar.value = XP
+		XPCircle.max_value = XPNeeded
+		XPCircle.value = XP
 
 func UpdateClassInfo():
 	if LevelLabel and ClassLabel:
