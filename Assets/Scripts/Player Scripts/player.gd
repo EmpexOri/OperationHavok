@@ -75,7 +75,7 @@ func fire():
 	BulletInstance.name = "Bullet_" + str(randi())  # Assigns a unique name
 	BulletInstance.add_to_group("Bullet")
 	var Direction = (get_global_mouse_position() - global_position).normalized()
-	var OffsetDistance = 30
+	var OffsetDistance = 10 # How far away the bullet spawns from the player
 	BulletInstance.position = global_position + (Direction * OffsetDistance)
 	BulletInstance.rotation = Direction.angle()
 	BulletInstance.linear_velocity = Direction * BulletSpeed
