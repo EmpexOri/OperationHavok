@@ -2,16 +2,16 @@ extends Node
 
 var PlayerHP: int = 100
 var PlayerHPMax: int = 100
-var CurrentClass: String = "Technomancer" # <Our default class for now
+var CurrentClass: String = "Fleshthing" # Default class for now
 
 var ClassData = {
-	"Technomancer": {"Level": 1, "XP": 0},
-	"Gunslinger": {"Level": 1, "XP": 0},
-	"Fleshthing": {"Level": 1, "XP": 0}
+	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1500},
+	"Gunslinger": {"Level": 1, "XP": 0, "MoveSpeed": 300, "BulletSpeed": 2000},
+	"Fleshthing": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 500}
 }
 
 func XPRequiredForLevel(level: int) -> int:
-	return 100 * pow(1.2, level - 1)  # Exponential XP scaling sorta
+	return 100 * pow(1.2, level - 1)
 
 func AddXP(amount: int):
 	var level = ClassData[CurrentClass]["Level"]
@@ -34,13 +34,13 @@ func LevelUp():
 func UpdateHP():
 	var level = ClassData[CurrentClass]["Level"]
 	if CurrentClass == "Technomancer":
-		PlayerHPMax = 100 + min(level, 10) * 25 + max(level - 10, 0) * 10 #Technomancers gain 25 hp per level until; level 11 when it drops to 10
+		PlayerHPMax = 100 + min(level, 10) * 25 + max(level - 10, 0) * 10
 	elif CurrentClass == "Gunslinger":
-		PlayerHPMax = 100 + min(level, 10) * 50 + max(level - 10, 0) * 25 #Gunslinger gain 50 hp per level until; level 11 when it drops to 25
+		PlayerHPMax = 100 + min(level, 10) * 50 + max(level - 10, 0) * 25
 	elif CurrentClass == "Fleshthing":
-		PlayerHPMax = 100 + min(level, 10) * 100 + max(level - 10, 0) * 50 #Fleshthing gain 100 hp per level until; level 11 when it drops to 50
+		PlayerHPMax = 100 + min(level, 10) * 100 + max(level - 10, 0) * 50
 	
-	PlayerHP = PlayerHPMax  # Restore HP on level up
+	PlayerHP = PlayerHPMax
 	UpdateHealthBar()
 
 func UpdateXPBar():

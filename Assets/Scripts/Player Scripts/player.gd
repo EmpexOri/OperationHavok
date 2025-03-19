@@ -1,17 +1,23 @@
 extends CharacterBody2D
 
-var MoveSpeed = 250
-var BulletSpeed = 1500
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
 var Mode = "fire"
 var Trigger_Timer = Timer.new()
 var Damage_Timer = Timer.new()
 
+# Remove MoveSpeed and BulletSpeed as hardcoded variables
+var MoveSpeed = 0
+var BulletSpeed = 0
+
 func _ready():
 	add_to_group("player")
 	trigger()
 	damage_timer()
+	
+	# Retrieve the class-specific MoveSpeed and BulletSpeed from Global
+	MoveSpeed = Global.ClassData[Global.CurrentClass]["MoveSpeed"]
+	BulletSpeed = Global.ClassData[Global.CurrentClass]["BulletSpeed"]
 	
 func trigger():
 	Trigger_Timer = Timer.new()
@@ -66,7 +72,7 @@ func ability():
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()
-	BulletInstance.name = "Bullet_" + str(randi())  # Assigns a unique named
+	BulletInstance.name = "Bullet_" + str(randi())  # Assigns a unique name
 	BulletInstance.add_to_group("Bullet")
 	var Direction = (get_global_mouse_position() - global_position).normalized()
 	var OffsetDistance = 30
@@ -83,7 +89,6 @@ func deal_damage():
 
 func kill():
 	get_tree().reload_current_scene()
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") or body.is_in_group("Laser"):
