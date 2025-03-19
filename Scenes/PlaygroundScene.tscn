@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c0vahobgr2g8" path="res://Assets/A desperate battle, no way back_ (Track 04).mp3" id="12_wlc0k"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="13_1cxn6"]
 [ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/SuspiciousStew.png" id="15_3kogm"]
-[ext_resource type="Texture2D" uid="uid://1y8utuqr1acm" path="res://Assets/Art/ControlsBg.png" id="15_twjg6"]
+[ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/ControlsBg.png" id="15_twjg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0q0w"]
 size = Vector2(8.7, 8.7)
@@ -23,7 +23,7 @@ size = Vector2(8.7, 8.7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kogm"]
 size = Vector2(10, 10)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keglp"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayg5y"]
 
@@ -32,7 +32,7 @@ size = Vector2(10, 10)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2c132"]
 
 [sub_resource type="Theme" id="Theme_dthbc"]
-VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_keglp")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_twjg6")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ayg5y")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ffkdq")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
@@ -179,6 +179,7 @@ offset_bottom = 270.0
 text = "Quit"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PausedLayer"]
+process_mode = 2
 visible = false
 offset_left = 182.0
 offset_top = 82.0
@@ -196,30 +197,159 @@ layout_mode = 2
 texture = ExtResource("15_twjg6")
 expand_mode = 5
 
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move up"
+
+[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot1"]
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "W"
+horizontal_alignment = 1
+
 [node name="Slot2" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("15_twjg6")
 expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot2"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move down"
+
+[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot2"]
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "S"
+horizontal_alignment = 1
 
 [node name="Slot3" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("15_twjg6")
 expand_mode = 5
 
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot3"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move left       "
+
+[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot3"]
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A"
+horizontal_alignment = 1
+
 [node name="Slot4" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("15_twjg6")
 expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot4"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move right"
+
+[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot4"]
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "D"
+horizontal_alignment = 1
 
 [node name="Slot5" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("15_twjg6")
 expand_mode = 5
 
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot5"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ability 1"
+
+[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot5"]
+offset_left = 215.0
+offset_top = 6.0
+offset_right = 275.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "LMB"
+horizontal_alignment = 1
+
 [node name="Slot6" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("15_twjg6")
 expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot6"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ability 2"
+
+[node name="Slot7" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot7"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Pause"
+
+[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot7"]
+offset_left = 225.0
+offset_top = 6.0
+offset_right = 274.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ESC"
+horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="PausedLayer"]
 process_mode = 2
