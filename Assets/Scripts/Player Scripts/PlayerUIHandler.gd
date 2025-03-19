@@ -5,19 +5,19 @@ extends Node
 
 func _ready():
 	# Initialize the health bar based on Global HP values
-	HealthBar.max_value = GlobalControls.PlayerHPMax
-	HealthBar.value = GlobalControls.PlayerHP
+	HealthBar.max_value = Global.PlayerHPMax
+	HealthBar.value = Global.PlayerHP
 	
 	# Initialize the FP bar based on Global FP values
-	FocusBar.max_value = GlobalControls.PlayerFPMax
-	FocusBar.value = GlobalControls.PlayerFP
+	FocusBar.max_value = Global.PlayerFPMax
+	FocusBar.value = Global.PlayerFP
 
 func _process(_delta):
 	UpdateHealthBar()
 	UpdateFocusBar()
 
 func UpdateHealthBar():
-	HealthBar.value = GlobalControls.PlayerHP
+	HealthBar.value = Global.PlayerHP
 
 func UpdateFocusBar():
-	FocusBar.value = GlobalControls.PlayerFP
+	FocusBar.value = Global.PlayerFP
