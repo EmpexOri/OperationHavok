@@ -5,6 +5,7 @@ extends CharacterBody2D
 var pickup_range
 var pickup_type
 var pickup_value
+var sprite_path
 
 var player_in_range = false
 
@@ -21,6 +22,12 @@ var target_velocity = Vector2.ZERO
 func _ready() -> void:
 	add_to_group("Pickups")
 	add_to_group(pickup_type)
+	
+	var texture = load(sprite_path)
+	if texture:
+		$Sprite2D.texture = texture
+	else:
+		print("Failed to load texture for: " + pickup_type)
 
 func _physics_process(delta: float) -> void:
 	var player = get_tree().get_nodes_in_group("Player")

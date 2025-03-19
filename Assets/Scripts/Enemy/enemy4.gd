@@ -4,7 +4,6 @@ var Speed = 120
 #var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
 var BulletSpeed = 680
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
-var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 var Target = "Player"
 
 func _ready():
@@ -77,9 +76,9 @@ func fire():
 	start_firing_timer()
 
 func drop_xp():
-	var xp = xp_scene.instantiate()
-	xp.global_position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	get_parent().add_child(xp)
+	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
+	var pickup = PickupFactory.build_pickup("Xp", position)
+	get_parent().add_child(pickup)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):

@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 var Speed = 100
 var Enemy = preload("res://Scenes/Misc/enemy_3.tscn")
-var xp_scene = preload("res://Scenes/Misc/xp.tscn")
 var Group = "Enemy"
 var Colour = Color(0, 0.5, 0)
 var Target = "Player"
@@ -58,9 +57,9 @@ func spawn():
 	start_timer()
 
 func drop_xp():
-	var xp = xp_scene.instantiate()
-	xp.global_position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	get_parent().add_child(xp)
+	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
+	var pickup = PickupFactory.build_pickup("Xp", position)
+	get_parent().add_child(pickup)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):

@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Assets/Scripts/Universal Scripts/Global.gd"
+PickupFactory="*res://Assets/Scripts/Pickups/pickup_factory.gd"
 
 [display]
 
