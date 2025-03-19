@@ -6,6 +6,7 @@ extends Node
 @onready var ClassLabel: Label = $UIContainer/ClassLabel
 
 func _ready():
+	await get_tree().process_frame  # Ensures UI elements are ready before updating
 	UpdateHealthBar()
 	UpdateXPBar()
 	UpdateClassInfo()
@@ -16,23 +17,26 @@ func _process(_delta):
 	UpdateClassInfo()
 
 func UpdateHealthBar():
-	print("HP:", Global.PlayerHP, " / ", Global.PlayerHPMax)
-	HealthBar.max_value = Global.PlayerHPMax
-	HealthBar.value = Global.PlayerHP
+	if HealthBar:
+		print("HP:", Global.PlayerHP, " / ", Global.PlayerHPMax)
+		HealthBar.max_value = Global.PlayerHPMax
+		HealthBar.value = Global.PlayerHP
 
 func UpdateXPBar():
-	var CurrentClass = Global.CurrentClass
-	var Level = Global.ClassData[CurrentClass]["Level"]
-	var XP = Global.ClassData[CurrentClass]["XP"]
-	var XPNeeded = Global.XPRequiredForLevel(Level)
+	if XPBar:
+		var CurrentClass = Global.CurrentClass
+		var Level = Global.ClassData[CurrentClass]["Level"]
+		var XP = Global.ClassData[CurrentClass]["XP"]
+		var XPNeeded = Global.XPRequiredForLevel(Level)
 
-	print("XP:", XP, " / ", XPNeeded)
-	XPBar.max_value = XPNeeded
-	XPBar.value = XP
+		print("XP:", XP, " / ", XPNeeded)
+		XPBar.max_value = XPNeeded
+		XPBar.value = XP
 
 func UpdateClassInfo():
-	var CurrentClass = Global.CurrentClass
-	var Level = Global.ClassData[CurrentClass]["Level"]
+	if LevelLabel and ClassLabel:
+		var CurrentClass = Global.CurrentClass
+		var Level = Global.ClassData[CurrentClass]["Level"]
 
-	LevelLabel.text = "Level: " + str(Level)
-	ClassLabel.text = "Class: " + CurrentClass
+		LevelLabel.text = "Level: " + str(Level)
+		ClassLabel.text = "Class: " + CurrentClass

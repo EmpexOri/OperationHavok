@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var speed = 300.0
 var separation_distance = 10.0
 var separation_force = 1
@@ -11,6 +10,7 @@ var target_velocity = Vector2.ZERO
 
 var pickup_range = 150
 var player_in_range = false
+var xp_value: int = 10  # Default XP value, can be set per enemy drop, so whatever you prefer <3 ~Ollie
 
 func _ready() -> void:
 	add_to_group("xp")
@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		if distance_to_player < pickup_range:
 			player_in_range = true
 		if distance_to_player < 10:
+			AddXPToCurrentClass(xp_value)
 			queue_free()
 	
 	if player_in_range:
@@ -54,3 +55,6 @@ func _physics_process(delta: float) -> void:
 		
 		velocity = target_velocity
 		move_and_slide()
+
+func AddXPToCurrentClass(amount: int):
+	Global.AddXP(amount)

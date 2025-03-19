@@ -1,52 +1,60 @@
 extends Node
 
-# Class-based XP and Level Tracking
+var PlayerHP: int = 100
+var PlayerHPMax: int = 100
+var CurrentClass: String = "Technomancer" # <Our default class for now
+
 var ClassData = {
 	"Technomancer": {"Level": 1, "XP": 0},
 	"Gunslinger": {"Level": 1, "XP": 0},
 	"Fleshthing": {"Level": 1, "XP": 0}
 }
 
-# Active Class
-var CurrentClass: String = "Technomancer" # Default class for now, we can sleect later
+func XPRequiredForLevel(level: int) -> int:
+	return 100 * pow(1.2, level - 1)  # Exponential XP scaling sorta
 
-# Player HP (scales with level)
-var PlayerHP: int = 100
-var PlayerHPMax: int = 100
+func AddXP(amount: int):
+	var level = ClassData[CurrentClass]["Level"]
+	var current_xp = ClassData[CurrentClass]["XP"]
+	var xp_needed = XPRequiredForLevel(level)
 
-# XP Formula - Exponential Growth
-func XPRequiredForLevel(Level: int) -> int:
-	return int(100 * pow(1.2, Level - 1))  # Semi-Exponential XP requirement
+	current_xp += amount
+	while current_xp >= xp_needed:
+		current_xp -= xp_needed
+		LevelUp()
+		xp_needed = XPRequiredForLevel(ClassData[CurrentClass]["Level"])
 
-# HP Scaling Function
-func CalculateMaxHP(Level: int, ClassName: String) -> int:
-	match ClassName:
-		"Technomancer":
-			return 100 + (min(Level, 10) * 25) + (max(Level - 10, 0) * 10)
-		"Gunslinger":
-			return 100 + (min(Level, 10) * 50) + (max(Level - 10, 0) * 25)
-		"Fleshthing":
-			return 100 + (min(Level, 10) * 100) + (max(Level - 10, 0) * 50)
-	return 100  # Default fallback
+	ClassData[CurrentClass]["XP"] = current_xp
+	UpdateXPBar()
 
-# Add XP and handle Level-Up
-func AddXP(Amount: int):
-	var ClassInfo = ClassData[CurrentClass]
-	ClassInfo["XP"] += Amount
+func LevelUp():
+	ClassData[CurrentClass]["Level"] += 1
+	UpdateHP()
+
+func UpdateHP():
+	var level = ClassData[CurrentClass]["Level"]
+	if CurrentClass == "Technomancer":
+		PlayerHPMax = 100 + min(level, 10) * 25 + max(level - 10, 0) * 10 #Technomancers gain 25 hp per level until; level 11 when it drops to 10
+	elif CurrentClass == "Gunslinger":
+		PlayerHPMax = 100 + min(level, 10) * 50 + max(level - 10, 0) * 25 #Gunslinger gain 50 hp per level until; level 11 when it drops to 25
+	elif CurrentClass == "Fleshthing":
+		PlayerHPMax = 100 + min(level, 10) * 100 + max(level - 10, 0) * 50 #Fleshthing gain 100 hp per level until; level 11 when it drops to 50
 	
-	while ClassInfo["XP"] >= XPRequiredForLevel(ClassInfo["Level"]):  
-		ClassInfo["XP"] -= XPRequiredForLevel(ClassInfo["Level"])
-		ClassInfo["Level"] += 1
-		PlayerHPMax = CalculateMaxHP(ClassInfo["Level"], CurrentClass)
-		PlayerHP = PlayerHPMax  # Heal fully on level-up
-		print(CurrentClass, " leveled up to Level ", ClassInfo["Level"], "! New Max HP: ", PlayerHPMax)
+	PlayerHP = PlayerHPMax  # Restore HP on level up
+	UpdateHealthBar()
 
-# Change the player's current class
-func ChangeClass(NewClass: String):
-	if NewClass in ClassData:
-		CurrentClass = NewClass
-		var ClassInfo = ClassData[NewClass]
-		PlayerHPMax = CalculateMaxHP(ClassInfo["Level"], NewClass)
-		PlayerHP = PlayerHPMax  # Heal when swapping class
-	else:
-		print("Invalid class: ", NewClass)
+func UpdateXPBar():
+	var level = ClassData[CurrentClass]["Level"]
+	var xp_needed = XPRequiredForLevel(level)
+	var xp = ClassData[CurrentClass]["XP"]
+
+	var ui_handler = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if ui_handler:
+		ui_handler.XPBar.max_value = xp_needed
+		ui_handler.XPBar.value = xp
+
+func UpdateHealthBar():
+	var ui_handler = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if ui_handler:
+		ui_handler.HealthBar.max_value = PlayerHPMax
+		ui_handler.HealthBar.value = PlayerHP
