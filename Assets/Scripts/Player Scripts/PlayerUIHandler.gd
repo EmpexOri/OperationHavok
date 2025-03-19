@@ -1,23 +1,25 @@
 extends Node
 
 @onready var HealthBar: TextureProgressBar = $UIContainer/HealthBar
-@onready var FocusBar: TextureProgressBar = $UIContainer/FocusBar
+@onready var XPBar: TextureProgressBar = $UIContainer/XPBar
 
 func _ready():
-	# Initialize the health bar based on Global HP values
-	HealthBar.max_value = Global.PlayerHPMax
-	HealthBar.value = Global.PlayerHP
-	
-	# Initialize the FP bar based on Global FP values
-	FocusBar.max_value = Global.PlayerFPMax
-	FocusBar.value = Global.PlayerFP
+	UpdateHealthBar()
+	UpdateXPBar()
 
 func _process(_delta):
 	UpdateHealthBar()
-	UpdateFocusBar()
+	UpdateXPBar()
 
 func UpdateHealthBar():
+	HealthBar.max_value = Global.PlayerHPMax
 	HealthBar.value = Global.PlayerHP
 
-func UpdateFocusBar():
-	FocusBar.value = Global.PlayerFP
+func UpdateXPBar():
+	var CurrentClass = Global.CurrentClass
+	var Level = Global.ClassData[CurrentClass]["Level"]
+	var XP = Global.ClassData[CurrentClass]["XP"]
+	var XPNeeded = Global.XPRequiredForLevel(Level)
+
+	XPBar.max_value = XPNeeded
+	XPBar.value = XP

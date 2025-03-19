@@ -45,7 +45,7 @@ texture_progress = ExtResource("2_ydcph")
 tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="FocusBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+[node name="XPBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 visible = false
 layout_mode = 0
 offset_left = 15.0
