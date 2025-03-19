@@ -208,6 +208,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = " Move up"
 
 [node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot1"]
+layout_mode = 0
 offset_left = 239.0
 offset_top = 6.0
 offset_right = 272.0
@@ -223,6 +224,7 @@ texture = ExtResource("15_twjg6")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot2"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 125.0
@@ -232,6 +234,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = " Move down"
 
 [node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot2"]
+layout_mode = 0
 offset_left = 239.0
 offset_top = 6.0
 offset_right = 272.0
@@ -247,6 +250,7 @@ texture = ExtResource("15_twjg6")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot3"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 125.0
@@ -256,6 +260,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = " Move left       "
 
 [node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot3"]
+layout_mode = 0
 offset_left = 239.0
 offset_top = 6.0
 offset_right = 272.0
@@ -271,6 +276,7 @@ texture = ExtResource("15_twjg6")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot4"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 125.0
@@ -280,6 +286,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = " Move right"
 
 [node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot4"]
+layout_mode = 0
 offset_left = 239.0
 offset_top = 6.0
 offset_right = 272.0
@@ -295,6 +302,7 @@ texture = ExtResource("15_twjg6")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot5"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 125.0
@@ -304,6 +312,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Ability 1"
 
 [node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot5"]
+layout_mode = 0
 offset_left = 215.0
 offset_top = 6.0
 offset_right = 275.0
@@ -319,6 +328,7 @@ texture = ExtResource("15_twjg6")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot6"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 125.0
@@ -333,6 +343,7 @@ texture = ExtResource("15_twjg6")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot7"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 125.0
@@ -342,6 +353,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Pause"
 
 [node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot7"]
+layout_mode = 0
 offset_left = 225.0
 offset_top = 6.0
 offset_right = 274.0
