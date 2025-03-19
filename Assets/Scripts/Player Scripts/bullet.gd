@@ -9,5 +9,5 @@ func _ready():
 	LifeTimer.start()
 
 func _on_area_2d_body_entered(body: Node2D):
-	if body != self and (body.is_in_group("Player") or body.is_in_group("Enemy") or body.is_in_group("Bullet") or body.is_in_group("Laser")): # Fixed
+	if body != self and (body.is_in_group("Player") or body.is_in_group("Enemy") or body.is_in_group("Bullet") or body.is_in_group("Laser") or body.is_in_group("Minion")): # Fixed
 		queue_free()

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
-var Mode = "fire"
+#var Mode = "fire"
 var Trigger_Timer = Timer.new()
 var Damage_Timer = Timer.new()
 
@@ -23,7 +23,7 @@ func trigger():
 	Trigger_Timer = Timer.new()
 	Trigger_Timer.wait_time = 0.25
 	Trigger_Timer.one_shot = false
-	Trigger_Timer.connect("timeout", Callable(self, Mode)) # Executes the spawn function once timer has ended
+	Trigger_Timer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
 	add_child(Trigger_Timer)
 	Trigger_Timer.start()
 	
@@ -33,6 +33,12 @@ func damage_timer():
 	Damage_Timer.one_shot = false
 	Damage_Timer.connect("timeout", Callable(self, "deal_damage"))
 	add_child(Damage_Timer)
+	
+func _process(delta):
+	if Global.PlayerHP <= 0:
+		print("DEAD")
+		Global.PlayerHP = Global.PlayerHPMax
+		kill()
 	
 func _physics_process(_delta):
 	var Motion = Vector2()
@@ -55,20 +61,17 @@ func _physics_process(_delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	look_at(get_global_mouse_position())
-	
+
+func _input(event):
 	if Input.is_action_just_pressed("LMB"):
-		if Mode == "fire":
-			Class.ability(self)
-			Mode = "ability"
-		elif Mode == "ability":
-			fire()
-			Mode = "fire"
-			
 		Trigger_Timer.stop()
-		trigger()
+		Class.ability(self)
+		await get_tree().create_timer(3).timeout
+		#Mode = "ability"
+		Trigger_Timer.start()
 		
-func ability():
-	Class.ability(self)
+#func ability():
+	#Class.ability(self)
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()
@@ -83,10 +86,7 @@ func fire():
 	
 func deal_damage():
 	Global.PlayerHP -= 10
-	if Global.PlayerHP <= 0:
-		Global.PlayerHP = Global.PlayerHPMax
-		kill()
-
+	
 func kill():
 	get_tree().reload_current_scene()
 
