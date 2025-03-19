@@ -12,6 +12,8 @@ var pickup_range = 150
 var player_in_range = false
 var xp_value: int = 10  # Default XP value, can be set per enemy drop, so whatever you prefer <3 ~Ollie
 
+var TotalXP = 0
+
 func _ready() -> void:
 	add_to_group("xp")
 
@@ -40,6 +42,12 @@ func _physics_process(delta: float) -> void:
 				elif distance_to_element < cohesion_distance:
 					cohesion_vector += element.global_position - global_position
 					nearby_xp += 1
+					
+					# Increase xp value when xp collected
+					TotalXP += xp_value
+					
+					print("Total XP: ", TotalXP)
+					
 					
 		separation_vector = separation_vector.normalized() * separation_force
 		
