@@ -63,6 +63,9 @@ func _physics_process(_delta):
 	look_at(get_global_mouse_position())
 
 func _input(event):
+	if not Class.Enabled:
+		return
+		
 	if Input.is_action_just_pressed("LMB"):
 		Trigger_Timer.stop()
 		Class.ability(self)

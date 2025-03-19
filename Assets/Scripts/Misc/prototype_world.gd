@@ -44,7 +44,7 @@ func pause_game():
 
 func start_spawn_timer1():
 	var timer = Timer.new()
-	timer.wait_time = randf_range(1, 4)
+	timer.wait_time = randf_range(0, 2)
 	timer.one_shot = true  # Timer only goes once
 	timer.connect("timeout", Callable(self, "spawn_enemy1")) # Executes the spawn function once timer has ended
 	add_child(timer)
@@ -65,7 +65,7 @@ func spawn_enemy1():
 	
 func start_spawn_timer2():
 	var timer = Timer.new()
-	timer.wait_time = randf_range(5, 7)
+	timer.wait_time = randf_range(3, 4)
 	timer.one_shot = true  # Timer only goes once
 	timer.connect("timeout", Callable(self, "spawn_enemy2")) # Executes the spawn function once timer has ended
 	add_child(timer)
@@ -87,7 +87,7 @@ func spawn_enemy2():
 	
 func start_spawn_timer3():
 	var timer = Timer.new()
-	timer.wait_time = randf_range(8, 13)
+	timer.wait_time = randf_range(6, 9) # nice
 	timer.one_shot = true  # Timer only goes once
 	timer.connect("timeout", Callable(self, "spawn_enemy3")) # Executes the spawn function once timer has ended
 	add_child(timer)
@@ -108,7 +108,7 @@ func spawn_enemy3():
 	
 func start_spawn_timer4():
 	var timer = Timer.new()
-	timer.wait_time = randf_range(10, 15)
+	timer.wait_time = randf_range(5, 7)
 	timer.one_shot = true  # Timer only goes once
 	timer.connect("timeout", Callable(self, "spawn_enemy4")) # Executes the spawn function once timer has ended
 	add_child(timer)
