@@ -8,6 +8,7 @@ var Target = "Player"
 
 func _ready():
 	add_to_group(Group)
+	add_to_group("Summon")
 	var sprite = get_node("Sprite2D")
 	sprite.modulate = Colour
 	start_timer()
@@ -44,15 +45,16 @@ func start_timer():
 	timer.start()
 	
 func spawn():
-	var EnemyInstance = Enemy.instantiate()
-	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
-	EnemyInstance.Colour = Colour
-	EnemyInstance.Group = Group
-	var viewport = get_viewport_rect().size
-	var random_x = randf_range(0, viewport.x)  # Random X position
-	var random_y = randf_range(0, viewport.y)  # Random Y position
-	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
-	get_parent().add_child(EnemyInstance)
+	if get_tree().get_nodes_in_group("Summon").size() < 10: # Can only use it's ability if there is less than the specified amount
+		var EnemyInstance = Enemy.instantiate()
+		EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
+		EnemyInstance.Colour = Colour
+		EnemyInstance.Group = Group
+		var viewport = get_viewport_rect().size
+		var random_x = randf_range(0, viewport.x)  # Random X position
+		var random_y = randf_range(0, viewport.y)  # Random Y position
+		EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
+		get_parent().add_child(EnemyInstance)
 	
 	start_timer()
 
