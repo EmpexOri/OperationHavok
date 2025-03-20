@@ -1,9 +1,9 @@
 extends Node
 
 # Scripts for each pickup type
-var xp_script = preload("res://Assets/Scripts/Pickups/xp.gd")
-var health_script = preload("res://Assets/Scripts/Pickups/health.gd")
-var magnet_script = preload("res://Assets/Scripts/Pickups/magnet.gd")
+var xp_script = preload("res://Assets/Scripts/Pickups/xp_pickup.gd")
+var health_script = preload("res://Assets/Scripts/Pickups/health_pickup.gd")
+var magnet_script = preload("res://Assets/Scripts/Pickups/magnet_pickup.gd")
 
 # The base pickup scene
 var pickup_scene = preload("res://Scenes/Pickups/pickup.tscn")
