@@ -2,7 +2,7 @@ extends Node
 
 var PlayerHP: int = 100
 var PlayerHPMax: int = 100
-var CurrentClass: String = "Technomancer" # Default class for now
+var CurrentClass: String = "Fleshthing" # Default class for now
 
 var ClassData = {
 	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1500, "Perks": []},
@@ -58,7 +58,7 @@ func UpdateHP():
 	elif CurrentClass == "Fleshthing":
 		PlayerHPMax = 100 + min(level, 10) * 100 + max(level - 10, 0) * 50
 	
-	PlayerHP = PlayerHPMax
+	PlayerHP += 100
 	UpdateHealthBar()
 
 # Unlock perks when a player levels up
