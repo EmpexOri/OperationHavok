@@ -51,6 +51,7 @@ func spawn():
 		EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
 		EnemyInstance.Colour = Colour
 		EnemyInstance.Group = Group
+		EnemyInstance.SummonGroup = SummonGroup
 		var viewport = get_viewport_rect().size
 		var random_x = randf_range(0, viewport.x)  # Random X position
 		var random_y = randf_range(0, viewport.y)  # Random Y position
