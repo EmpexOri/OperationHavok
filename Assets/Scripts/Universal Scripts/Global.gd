@@ -46,7 +46,8 @@ func AddHp(amount: int):
 	var hp_gain_multiplier = 1 + ((level) * 1.5)  
 	var adjusted_amount = int(amount * hp_gain_multiplier) 
 	PlayerHP = min(PlayerHP + adjusted_amount, PlayerHPMax)
-	print(adjusted_amount)
+	#print(adjusted_amount)
+	#print(PlayerHP)
 	UpdateHealthBar()
 
 # Update the player's HP based on the class and level
@@ -62,7 +63,7 @@ func UpdateHP():
 	PlayerHP += 100
 	UpdateHealthBar()
 
-# Unlock perks when a player levels up
+# Unlock perks when a player levels up, expand on function later
 func UnlockPerk():
 	var level = ClassData[CurrentClass]["Level"]
 	var perks_unlocked = []
@@ -75,7 +76,7 @@ func UnlockPerk():
 	elif CurrentClass == "Fleshthing":
 		perks_unlocked = PerkListFleshthing.slice(0, level)
 
-	# Add the unlocked perks to the class
+	# Add the unlocked perks to the class, can do in future
 	ClassData[CurrentClass]["Perks"] = perks_unlocked
 	UpdatePerkList()
 
@@ -83,7 +84,7 @@ func UnlockPerk():
 func UpdatePerkList():
 	var ui_handler = get_node_or_null("/root/MainScene/PlayerUIHandler")
 	if ui_handler:
-		# Assuming there's a way to display perks, you could update the Perk UI here
+		# One day there's a way to display perks, you could update the Perk UI here
 		ui_handler.update_perk_list(ClassData[CurrentClass]["Perks"])
 
 # Update XP bar
