@@ -22,6 +22,6 @@ func build_pickup(type: String, position: Vector2) -> Node:
 func try_chance_pickup(position: Vector2):
 	var types = ["Health"]
 	var roll = randf()
-	if roll >= 0.90:
+	if roll >= 0.95:
 		var type = types[randi() % types.size()]
 		return build_pickup(type, position)
