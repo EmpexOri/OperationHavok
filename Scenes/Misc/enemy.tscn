@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccv3fxn55gofe"]
+[gd_scene load_steps=6 format=3 uid="uid://ccv3fxn55gofe"]
 
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://bcgibjer11dey" path="res://Assets/Scripts/Enemy/enemy.gd" id="1_mvqga"]
+[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/BarTemp.png" id="2_4cnjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2kcc"]
 size = Vector2(8, 8)
@@ -11,6 +12,26 @@ size = Vector2(10, 10)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_mvqga")
+
+[node name="EnemyUI" type="CanvasLayer" parent="."]
+
+[node name="UIContainer" type="Control" parent="EnemyUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="EnemyUI/UIContainer"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 92.0
+offset_bottom = 33.0
+scale = Vector2(0.15, 0.15)
+value = 100.0
+texture_under = ExtResource("2_4cnjl")
+texture_progress = ExtResource("2_4cnjl")
+tint_progress = Color(0.687524, 0.0301934, 0.0167878, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_n2kcc")
