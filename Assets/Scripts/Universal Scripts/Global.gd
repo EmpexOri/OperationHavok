@@ -43,9 +43,10 @@ func LevelUp():
 # Add hp, used by health pickups, currently scales here
 func AddHp(amount: int):
 	var level = ClassData[CurrentClass]["Level"]
-	var hp_gain_multiplier = 1 + (level * 0.1)  
+	var hp_gain_multiplier = 1 + ((level) * 1.5)  
 	var adjusted_amount = int(amount * hp_gain_multiplier) 
 	PlayerHP = min(PlayerHP + adjusted_amount, PlayerHPMax)
+	print(adjusted_amount)
 	UpdateHealthBar()
 
 # Update the player's HP based on the class and level
