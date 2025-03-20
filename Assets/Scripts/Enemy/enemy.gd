@@ -32,9 +32,16 @@ func _physics_process(_delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 func drop_xp():
+	# Create XP pickup
 	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
 	var pickup = PickupFactory.build_pickup("Xp", position)
 	get_parent().add_child(pickup)
+	pickup = null
+	
+	# Chance for other pickups
+	pickup = PickupFactory.try_chance_pickup(position)
+	if pickup:
+		get_parent().add_child(pickup)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")): # Fixed
