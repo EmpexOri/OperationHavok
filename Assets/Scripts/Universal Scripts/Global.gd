@@ -40,6 +40,14 @@ func LevelUp():
 	UnlockPerk()  # Unlock a perk when leveling up
 	UpdateHP()
 
+# Add hp, used by health pickups, currently scales here
+func AddHp(amount: int):
+	var level = ClassData[CurrentClass]["Level"]
+	var hp_gain_multiplier = 1 + (level * 0.1)  
+	var adjusted_amount = int(amount * hp_gain_multiplier) 
+	PlayerHP = min(PlayerHP + adjusted_amount, PlayerHPMax)
+	UpdateHealthBar()
+
 # Update the player's HP based on the class and level
 func UpdateHP():
 	var level = ClassData[CurrentClass]["Level"]
