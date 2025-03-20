@@ -6,6 +6,8 @@ var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
 var Trigger_Timer = Timer.new()
 var Damage_Timer = Timer.new()
 
+var IsFiring = false
+
 # Remove MoveSpeed and BulletSpeed as hardcoded variables
 var MoveSpeed = 0
 var BulletSpeed = 0
@@ -25,7 +27,6 @@ func trigger():
 	Trigger_Timer.one_shot = false
 	Trigger_Timer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
 	add_child(Trigger_Timer)
-	Trigger_Timer.start()
 	
 func damage_timer():
 	Damage_Timer = Timer.new()
@@ -66,12 +67,20 @@ func _input(event):
 	if not Class.Enabled:
 		return
 		
-	if Input.is_action_just_pressed("LMB"):
+	if Input.is_action_just_pressed("ability_1"):
 		Trigger_Timer.stop()
 		Class.ability(self)
 		await get_tree().create_timer(3).timeout
 		#Mode = "ability"
 		Trigger_Timer.start()
+	
+	if Input.is_action_just_pressed("LMB") and not IsFiring:
+		IsFiring = true
+		Trigger_Timer.start()
+
+	if Input.is_action_just_released("LMB"):
+		IsFiring = false
+		Trigger_Timer.stop()
 		
 #func ability():
 	#Class.ability(self)
