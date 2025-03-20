@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var Speed = 120
+var Health = 40
 #var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
 var BulletSpeed = 680
 var Bullet = preload("res://Scenes/Misc/bullet.tscn")
@@ -10,6 +11,12 @@ func _ready():
 	add_to_group("Enemy")
 	start_firing_timer()
 	
+func _process(delta):
+	if Health <= 0:
+		for i in range(3):
+			drop_xp()
+		queue_free()	
+
 func _physics_process(_delta):
 	var Player = get_parent().get_node(Target)
 	if is_in_group("Enemy"):
@@ -87,12 +94,13 @@ func drop_xp():
 	if pickup:
 		get_parent().add_child(pickup)
 
+func deal_damage():
+	Health -= 20
+
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
-		for i in range(1):
-			drop_xp()
 		body.queue_free()
-		queue_free()
+		deal_damage()
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
 		add_to_group("Minion")

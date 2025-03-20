@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var Speed = 100
+var Health = 20
 var Enemy = preload("res://Scenes/Misc/enemy_3.tscn")
 var Group = "Enemy"
 var SummonGroup = "EnemySummon"
@@ -13,6 +14,12 @@ func _ready():
 	var sprite = get_node("Sprite2D")
 	sprite.modulate = Colour
 	start_timer()
+	
+func _process(delta):
+	if Health <= 0:
+		for i in range(1):
+			drop_xp()
+		queue_free()
 	
 func _physics_process(_delta):
 	var Player = get_parent().get_node(Target)
@@ -72,12 +79,13 @@ func drop_xp():
 	if pickup:
 		get_parent().add_child(pickup)
 
+func deal_damage():
+	Health -= 20
+
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
-		for i in range(1):
-			drop_xp()
 		body.queue_free()
-		queue_free()
+		deal_damage()
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
 		add_to_group("Minion")
