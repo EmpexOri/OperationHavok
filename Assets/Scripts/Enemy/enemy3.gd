@@ -3,12 +3,13 @@ extends CharacterBody2D
 var Speed = 100
 var Enemy = preload("res://Scenes/Misc/enemy_3.tscn")
 var Group = "Enemy"
+var SummonGroup = "EnemySummon"
 var Colour = Color(0, 0.5, 0)
 var Target = "Player"
 
 func _ready():
 	add_to_group(Group)
-	add_to_group("Summon")
+	add_to_group(SummonGroup)
 	var sprite = get_node("Sprite2D")
 	sprite.modulate = Colour
 	start_timer()
@@ -45,7 +46,7 @@ func start_timer():
 	timer.start()
 	
 func spawn():
-	if get_tree().get_nodes_in_group("Summon").size() < 10: # Can only use it's ability if there is less than the specified amount
+	if get_tree().get_nodes_in_group(SummonGroup).size() < 10: # Can only use it's ability if there is less than the specified amount
 		var EnemyInstance = Enemy.instantiate()
 		EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
 		EnemyInstance.Colour = Colour
@@ -80,6 +81,8 @@ func _on_area_2d_body_entered(body: Node2D):
 		remove_from_group("Enemy")
 		add_to_group("Minion")
 		Group = "Minion"
+		add_to_group("PlayerSummon")
+		SummonGroup = "PlayerSummon"
 		var sprite = get_node("Sprite2D")
 		Colour = Color(0.9, 1, 0.9)
 		sprite.modulate = Colour
