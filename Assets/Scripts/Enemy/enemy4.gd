@@ -99,6 +99,7 @@ func deal_damage():
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
+		body.deal_damage()
 		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
 		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly

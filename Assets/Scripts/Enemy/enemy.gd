@@ -55,13 +55,17 @@ func deal_damage():
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
+		body.deal_damage()
 		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
-		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly
+		var Bounce_Target = global_position + (Direction * Speed * 0.3)  # Move back slightly
+		var Screen_Size = get_viewport_rect().size
+		Bounce_Target.x = clamp(Bounce_Target.x, 0, Screen_Size.x)
+		Bounce_Target.y = clamp(Bounce_Target.y, 0, Screen_Size.y)
 		
 		# Use Tween for smooth movement
 		var Inbe_tween = get_tree().create_tween()
-		Inbe_tween.tween_property(self, "global_position", bounce_target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		Inbe_tween.tween_property(self, "global_position", Bounce_Target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 		await Inbe_tween.finished  # Wait for the tween to finish
 		return

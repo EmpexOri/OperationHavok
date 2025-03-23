@@ -151,7 +151,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 		
 	if body.is_in_group("Enemy") or body.is_in_group("Laser"):
-		Global.PlayerHP -= 10
 		Damage_Timer.start()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
