@@ -127,9 +127,9 @@ func _input(event):
 		Trigger_Timer.stop()
 		IsUsingAbility = true
 		Class.ability(self)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2).timeout
 		IsUsingAbility = false
-		Trigger_Timer.start()
+		#Trigger_Timer.start()
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()
