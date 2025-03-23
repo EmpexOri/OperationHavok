@@ -9,6 +9,7 @@ var Damage_Timer = Timer.new()
 var IsFiring = false
 var CanDodge = true
 var IsDodging = false
+var IsUsingAbility = false
 
 var Invincible = false
 
@@ -108,26 +109,27 @@ func dodge(Direction: Vector2):
 	Invincible = false
 
 func _input(event):
+	if IsUsingAbility:
+		return
+		
+	if Input.is_action_just_pressed("LMB") and not IsFiring:
+		IsFiring = true
+		Trigger_Timer.start()
+		
+	if Input.is_action_just_released("LMB"):
+		IsFiring = false
+		Trigger_Timer.stop()
+		
 	if not Class.Enabled:
 		return
 		
 	if Input.is_action_just_pressed("ability_1"):
 		Trigger_Timer.stop()
+		IsUsingAbility = true
 		Class.ability(self)
 		await get_tree().create_timer(3).timeout
-		#Mode = "ability"
+		IsUsingAbility = false
 		Trigger_Timer.start()
-	
-	if Input.is_action_just_pressed("LMB") and not IsFiring:
-		IsFiring = true
-		Trigger_Timer.start()
-
-	if Input.is_action_just_released("LMB"):
-		IsFiring = false
-		Trigger_Timer.stop()
-		
-#func ability():
-	#Class.ability(self)
 	
 func fire():
 	var BulletInstance = Bullet.instantiate()

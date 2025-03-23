@@ -53,7 +53,7 @@ func start_timer():
 	timer.start()
 	
 func spawn():
-	if get_tree().get_nodes_in_group(SummonGroup).size() < 10: # Can only use it's ability if there is less than the specified amount
+	if get_tree().get_nodes_in_group(SummonGroup).size() < 20: # Can only use it's ability if there is less than the specified amount
 		var EnemyInstance = Enemy.instantiate()
 		EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
 		EnemyInstance.Colour = Colour
