@@ -70,7 +70,7 @@ func spawn():
 func drop_xp():
 	# Create XP pickup
 	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	var pickup = PickupFactory.build_pickup("Xp", position)
+	var pickup = PickupFactory.build_pickup("Xp", global_position)
 	get_parent().add_child(pickup)
 	pickup = null
 	
