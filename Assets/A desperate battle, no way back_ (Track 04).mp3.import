@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/A desperate battle, no way back_ (Track 04).m
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
-beat_count=0
+loop_offset=30.75
+bpm=120.0
+beat_count=197
 bar_beats=4
