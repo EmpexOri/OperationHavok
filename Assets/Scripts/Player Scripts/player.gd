@@ -74,9 +74,9 @@ func _physics_process(_delta):
 	
 	look_at(get_global_mouse_position())
 	
-func dodge(direction: Vector2):
+func dodge(Direction: Vector2):
 	var Collision = get_node("CollisionShape2D")
-	if direction == Vector2.ZERO:
+	if Direction == Vector2.ZERO:
 		return
 
 	IsDodging = true
@@ -85,11 +85,20 @@ func dodge(direction: Vector2):
 
 	set_collision_layer_value(1, false)
 	Collision.disabled = true
-	velocity = direction * (MoveSpeed * 3)
-	for i in range(3):
-		move_and_slide()
+	
+	# Calculate dodge destination
+	var Dodge_Distance = MoveSpeed * 0.9
+	var Dodge_Target = global_position + (Direction * Dodge_Distance)
+	# Clamp it
+	var Screen_Size = get_viewport_rect().size
+	Dodge_Target.x = clamp(Dodge_Target.x, 0, Screen_Size.x)
+	Dodge_Target.y = clamp(Dodge_Target.y, 0, Screen_Size.y)
 
-	await get_tree().create_timer(0.3).timeout
+	# Use Tween for smooth movement
+	var Inbe_tween = get_tree().create_tween()
+	Inbe_tween.tween_property(self, "global_position", Dodge_Target, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	await Inbe_tween.finished  # Wait for the tween to finish
 	IsDodging = false
 	set_collision_layer_value(1, true)
 	Collision.disabled = false
