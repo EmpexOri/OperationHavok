@@ -54,6 +54,18 @@ func deal_damage():
 	Health -= 20
 
 func _on_area_2d_body_entered(body: Node2D):
+	if is_in_group("Enemy") and body.is_in_group("Player"):
+		# Calculate bounce direction (opposite of movement)
+		var Direction = (position - body.position).normalized()
+		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly
+		
+		# Use Tween for smooth movement
+		var Inbe_tween = get_tree().create_tween()
+		Inbe_tween.tween_property(self, "global_position", bounce_target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+		await Inbe_tween.finished  # Wait for the tween to finish
+		return
+		
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")): # Fixed
 		body.queue_free()
 		deal_damage()
