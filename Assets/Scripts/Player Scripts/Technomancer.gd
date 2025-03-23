@@ -8,6 +8,9 @@ var CooldownTimer: float = 3
 var Enabled = true
 
 func ability(Player: Node2D):
+	if not Player:
+		return
+		
 	if not Enabled:
 		return
 	else:
@@ -40,7 +43,13 @@ func ability(Player: Node2D):
 	#Player.get_tree().get_root().call_deferred("add_child", BulletInstance)
 	
 func burst_fire(Player: Node2D):
+	if not Player:
+		return
+		
 	for i in range(20):
+		if not Player:
+			return
+			
 		var angle = (i / float(20)) * TAU  # TAU = "2 * PI" (aka a full circle)
 		var Direction = Vector2(cos(angle), sin(angle))  # Convert angle to direction vector
 		
