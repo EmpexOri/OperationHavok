@@ -7,6 +7,10 @@ var Trigger_Timer = Timer.new()
 var Damage_Timer = Timer.new()
 
 var IsFiring = false
+var CanDodge = true
+var IsDodging = false
+
+var Invincible = false
 
 # Remove MoveSpeed and BulletSpeed as hardcoded variables
 var MoveSpeed = 0
@@ -44,16 +48,23 @@ func _process(delta):
 func _physics_process(_delta):
 	var Motion = Vector2()
 	
-	if Input.is_action_pressed("up"):
-		Motion.y -= 1
-	if Input.is_action_pressed("down"):
-		Motion.y += 1
-	if Input.is_action_pressed("left"):
-		Motion.x -= 1
-	if Input.is_action_pressed("right"):
-		Motion.x += 1
-	
-	Motion = Motion.normalized() * MoveSpeed
+	if not IsDodging:  # Normal movement
+		if Input.is_action_pressed("up"):
+			Motion.y -= 1
+		if Input.is_action_pressed("down"):
+			Motion.y += 1
+		if Input.is_action_pressed("left"):
+			Motion.x -= 1
+		if Input.is_action_pressed("right"):
+			Motion.x += 1
+
+		if Input.is_action_just_pressed("space") and CanDodge:
+			dodge(Motion.normalized())
+
+		Motion = Motion.normalized() * MoveSpeed
+	else:
+		Motion = velocity
+		
 	velocity = Motion
 	move_and_slide()
 	
@@ -62,6 +73,30 @@ func _physics_process(_delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	look_at(get_global_mouse_position())
+	
+func dodge(direction: Vector2):
+	var Collision = get_node("CollisionShape2D")
+	if direction == Vector2.ZERO:
+		return
+
+	IsDodging = true
+	CanDodge = false
+	Invincible = true
+
+	set_collision_layer_value(1, false)
+	Collision.disabled = true
+	velocity = direction * (MoveSpeed * 3)
+	for i in range(3):
+		move_and_slide()
+
+	await get_tree().create_timer(0.3).timeout
+	IsDodging = false
+	set_collision_layer_value(1, true)
+	Collision.disabled = false
+
+	await get_tree().create_timer(0.35).timeout
+	CanDodge = true
+	Invincible = false
 
 func _input(event):
 	if not Class.Enabled:
@@ -103,6 +138,9 @@ func kill():
 	get_tree().reload_current_scene()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if Invincible == true:
+		return
+		
 	if body.is_in_group("Enemy") or body.is_in_group("Laser"):
 		Global.PlayerHP -= 10
 		Damage_Timer.start()
