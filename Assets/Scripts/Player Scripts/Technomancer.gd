@@ -17,6 +17,8 @@ func ability(Player: Node2D):
 		Player.set_physics_process(false)  # Temporarily disable movement
 		
 		for i in range(BurstAmount):
+			if not Player:
+				return
 			burst_fire(Player)
 			await Player.get_tree().create_timer(1).timeout  # Wait between shots
 
