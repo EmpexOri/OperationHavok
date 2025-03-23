@@ -24,6 +24,9 @@ func ability(Player: Node2D):
 				return
 			burst_fire(Player)
 			await Player.get_tree().create_timer(1).timeout  # Wait between shots
+		
+		if not Player:
+			return
 
 		Player.set_physics_process(true)  # Re-enable movement
 		

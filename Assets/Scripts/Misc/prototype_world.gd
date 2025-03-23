@@ -44,7 +44,7 @@ func pause_game():
 
 func start_spawn_timer1():
 	var timer = Timer.new()
-	timer.wait_time = randf_range(0, 2)
+	timer.wait_time = randf_range(1, 2)
 	timer.one_shot = true  # Timer only goes once
 	timer.connect("timeout", Callable(self, "spawn_enemy1")) # Executes the spawn function once timer has ended
 	add_child(timer)
