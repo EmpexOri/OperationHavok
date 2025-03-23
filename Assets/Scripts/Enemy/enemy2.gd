@@ -104,7 +104,10 @@ func fire():
 func drop_xp():
 	# Create XP pickup
 	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	var pickup = PickupFactory.build_pickup("Xp", global_position)
+	var Screen_Size = get_viewport_rect().size
+	position.x = clamp(position.x, 0, Screen_Size.x)
+	position.y = clamp(position.y, 0, Screen_Size.y)
+	var pickup = PickupFactory.build_pickup("Xp", position)
 	get_parent().add_child(pickup)
 	pickup = null
 	
