@@ -32,7 +32,7 @@ func orbit_direction_change():
 	print("ORBIT DIRECTION CHANGE")
 	
 func _physics_process(_delta):
-	var Player = get_parent().get_node(Target)
+	var Player
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
 	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
