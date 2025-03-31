@@ -2,17 +2,17 @@ extends Node
 
 var PlayerHP: int = 100
 var PlayerHPMax: int = 100
-var CurrentClass: String = "Fleshthing" # Default class for now
+var CurrentClass: String = "Commando" # Default class for now
 
 var ClassData = {
-	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1500, "Perks": []},
-	"Gunslinger": {"Level": 1, "XP": 0, "MoveSpeed": 300, "BulletSpeed": 2000, "Perks": []},
+	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1000, "Perks": []},
+	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 250, "BulletSpeed": 1500, "Perks": []},
 	"Fleshthing": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 500, "Perks": []}
 }
 
 # Perk Lists for each class, just place holders for now :D
 var PerkListTechnomancer = ["TheEmperor", "TheLovers", "Judgement", "Strength"]
-var PerkListGunslinger = ["WheelOfFortune", "Death", "Temperance", "TheHeirophant"]
+var PerkListCommando = ["WheelOfFortune", "Death", "Temperance", "TheHeirophant"]
 var PerkListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 # XP scaling formula
@@ -55,7 +55,7 @@ func UpdateHP():
 	var level = ClassData[CurrentClass]["Level"]
 	if CurrentClass == "Technomancer":
 		PlayerHPMax = 100 + min(level, 10) * 25 + max(level - 10, 0) * 10
-	elif CurrentClass == "Gunslinger":
+	elif CurrentClass == "Commando":
 		PlayerHPMax = 100 + min(level, 10) * 50 + max(level - 10, 0) * 25
 	elif CurrentClass == "Fleshthing":
 		PlayerHPMax = 100 + min(level, 10) * 100 + max(level - 10, 0) * 50
@@ -71,8 +71,8 @@ func UnlockPerk():
 	# Unlock perks based on the level
 	if CurrentClass == "Technomancer":
 		perks_unlocked = PerkListTechnomancer.slice(0, level)  # Unlock perks up to current level
-	elif CurrentClass == "Gunslinger":
-		perks_unlocked = PerkListGunslinger.slice(0, level)
+	elif CurrentClass == "Commando":
+		perks_unlocked = PerkListCommando.slice(0, level)
 	elif CurrentClass == "Fleshthing":
 		perks_unlocked = PerkListFleshthing.slice(0, level)
 
