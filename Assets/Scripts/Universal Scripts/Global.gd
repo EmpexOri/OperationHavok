@@ -11,8 +11,8 @@ var ClassData = {
 }
 
 # Perk Lists for each class, just place holders for now :D
-var PerkListTechnomancer = ["TheEmperor", "TheLovers", "Judgement", "Strength"]
-var PerkListCommando = ["WheelOfFortune", "Death", "Temperance", "TheHeirophant"]
+var PerkListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"]
+var PerkListCommando = ["ScatterGun", "Death-Nade", "Dragon-Nade", "Overcharged"]
 var PerkListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 # XP scaling formula
