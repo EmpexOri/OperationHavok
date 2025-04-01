@@ -1,4 +1,5 @@
 extends Node
+class_name Weapon
 
 # The base weapon script for the weapon super class, this should not be instantiated
 

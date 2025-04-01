@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
 #var Mode = "fire"
-var Trigger_Timer = Timer.new()
 var Damage_Timer = Timer.new()
+
+var StartingWeapon = preload("res://Scenes/Weapons/Smg.tscn") # Starting weapon
+var CurrentWeapon: Weapon = null # Currently equipped weapon
 
 var IsFiring = false
 var CanDodge = true
@@ -19,19 +20,13 @@ var BulletSpeed = 0
 
 func _ready():
 	add_to_group("Player")
-	trigger()
 	damage_timer()
 	
 	# Retrieve the class-specific MoveSpeed and BulletSpeed from Global
 	MoveSpeed = Global.ClassData[Global.CurrentClass]["MoveSpeed"]
 	BulletSpeed = Global.ClassData[Global.CurrentClass]["BulletSpeed"]
 	
-func trigger():
-	Trigger_Timer = Timer.new()
-	Trigger_Timer.wait_time = 0.25
-	Trigger_Timer.one_shot = false
-	Trigger_Timer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
-	add_child(Trigger_Timer)
+	equip_weapon(StartingWeapon) # Equip our starting weapon
 	
 func damage_timer():
 	Damage_Timer = Timer.new()
@@ -113,34 +108,33 @@ func _input(event):
 		return
 		
 	if Input.is_action_just_pressed("LMB") and not IsFiring:
-		IsFiring = true
-		Trigger_Timer.start()
+		attempt_to_fire()
 		
 	if Input.is_action_just_released("LMB"):
 		IsFiring = false
-		Trigger_Timer.stop()
 		
 	if not Class.Enabled:
 		return
 		
 	if Input.is_action_just_pressed("ability_1"):
-		Trigger_Timer.stop()
 		IsUsingAbility = true
 		Class.ability(self)
 		await get_tree().create_timer(2).timeout
 		IsUsingAbility = false
 		#Trigger_Timer.start()
+		
+func equip_weapon(WeaponScene: PackedScene):
+	if CurrentWeapon:
+		CurrentWeapon.queue_free() # Free our current weapon
 	
-func fire():
-	var BulletInstance = Bullet.instantiate()
-	BulletInstance.name = "Bullet_" + str(randi())  # Assigns a unique name
-	BulletInstance.add_to_group("Bullet")
-	var Direction = (get_global_mouse_position() - global_position).normalized()
-	var OffsetDistance = 12 # How far away the bullet spawns from the player
-	BulletInstance.position = global_position + (Direction * OffsetDistance)
-	BulletInstance.rotation = Direction.angle()
-	BulletInstance.linear_velocity = Direction * BulletSpeed
-	get_tree().get_root().call_deferred("add_child", BulletInstance)
+	if WeaponScene:
+		CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
+		add_child(CurrentWeapon) # Add our new weapon as a child
+		
+func attempt_to_fire():
+	if CurrentWeapon:
+		var direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
+		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
 func deal_damage():
 	Global.PlayerHP -= 10

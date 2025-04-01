@@ -1,4 +1,5 @@
 extends Area2D
+class_name Projectile
 
 # The base projectile script for the projectile super class, projectile should not be instantiated
 
