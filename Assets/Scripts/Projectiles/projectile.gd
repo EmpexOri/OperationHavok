@@ -1,7 +1,7 @@
 extends Area2D
 class_name Projectile
 
-# The base projectile script for the projectile super class, projectile should not be instantiated
+# The base projectile script, to be extended, but also works for a typical balistic projectile
 
 # Parameters - Override in derived class
 @export var speed: float = 100
