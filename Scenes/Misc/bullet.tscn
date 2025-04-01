@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bc0u7bujjocvt"]
 
-[ext_resource type="Script" uid="uid://cl72iqi2igesm" path="res://Assets/Scripts/Player Scripts/Weapons.gd" id="1_xjght"]
+[ext_resource type="Script" uid="uid://cl72iqi2igesm" path="res://Assets/Scripts/Player Scripts/bullet.gd" id="1_xjght"]
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_4psrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7oki"]
