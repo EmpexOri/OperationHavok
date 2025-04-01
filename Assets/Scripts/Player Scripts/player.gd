@@ -36,6 +36,8 @@ func damage_timer():
 	add_child(Damage_Timer)
 	
 func _process(delta):
+	if IsFiring:
+		attempt_to_fire()
 	if Global.PlayerHP <= 0:
 		print("DEAD")
 		Global.PlayerHP = Global.PlayerHPMax
@@ -107,16 +109,17 @@ func _input(event):
 	if IsUsingAbility:
 		return
 		
-	if Input.is_action_just_pressed("LMB") and not IsFiring:
-		attempt_to_fire()
+	if event.is_action_pressed("LMB"):
+		IsFiring = true
 		
-	if Input.is_action_just_released("LMB"):
+	if event.is_action_released("LMB"):
 		IsFiring = false
 		
 	if not Class.Enabled:
 		return
 		
 	if Input.is_action_just_pressed("ability_1"):
+		IsFiring = false
 		IsUsingAbility = true
 		Class.ability(self)
 		await get_tree().create_timer(2).timeout
