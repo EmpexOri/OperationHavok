@@ -4,7 +4,7 @@ var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
 #var Mode = "fire"
 var Damage_Timer = Timer.new()
 
-var StartingWeapon = preload("res://Scenes/Weapons/Smg.tscn") # Starting weapon
+var StartingWeapon = preload("res://Scenes/Weapons/smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 
 var IsFiring = false
@@ -132,6 +132,7 @@ func equip_weapon(WeaponScene: PackedScene):
 	
 	if WeaponScene:
 		CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
+		CurrentWeapon.owning_entity = "Player"
 		add_child(CurrentWeapon) # Add our new weapon as a child
 		
 func attempt_to_fire():
@@ -139,8 +140,8 @@ func attempt_to_fire():
 		var direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
 		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
-func deal_damage():
-	Global.PlayerHP -= 10
+func deal_damage(damage):
+	Global.PlayerHP -= damage
 	
 func kill():
 	get_tree().reload_current_scene()

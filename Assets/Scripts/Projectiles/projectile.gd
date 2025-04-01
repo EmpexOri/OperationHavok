@@ -32,17 +32,22 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
-func start(start_position: Vector2, direction: Vector2):
+func start(start_position: Vector2, direction: Vector2, entity_owner: String):
 	global_position = start_position
 	rotation = direction.angle()
 	velocity = direction * speed
+	if entity_owner == "Enemy":
+		collision_layer = 4  # Enemy projectile layer
+		collision_mask = 1  # Only collides with players
+	elif entity_owner == "Player":
+		collision_layer = 3  # Player projectile layer
+		collision_mask = 2  # Only collides with enemies
+	else:
+		print("Unknown owner set for projectile")
 	
-# When we get a collision
+# When we get a collision, uses collision masks
 func _on_body_entered(body: Node2D):
-	# Damage the enemy
-	if body.is_in_group("Enemy"):
-		body.deal_damage()
-	
-	# Destroy the projectile, more groups will be added here when we have an environment
-	if body.is_in_group("Enemy"):
-		queue_free() 
+	# Damage the entity, destroy the projectile
+	if body.has_method("deal_damage"):
+		body.deal_damage(damage)
+		queue_free()

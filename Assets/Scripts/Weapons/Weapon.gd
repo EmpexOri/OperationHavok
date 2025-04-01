@@ -9,6 +9,8 @@ class_name Weapon
 
 var can_fire:bool = true # Boolean for checking if we can fire
 
+var owning_entity: String
+
 @onready var cooldown_timer: Timer = Timer.new() # Fire timer
 
 func _ready() -> void:
@@ -38,7 +40,7 @@ func fire(spawn_position: Vector2, direction: Vector2):
 		main_scene.add_child(projectile_instance) # Add our rpojectile instance to our scene
 	
 	var position = spawn_position + direction * fire_offset  # Get the spawn position and offset
-	projectile_instance.start(position, direction) # Call the start method on the projectile script
+	projectile_instance.start(position, direction, owning_entity) # Call the start method on the projectile script
 	
 	
 	

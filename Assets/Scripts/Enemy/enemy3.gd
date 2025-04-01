@@ -82,12 +82,12 @@ func drop_xp():
 	if pickup:
 		get_parent().add_child(pickup)
 
-func deal_damage():
-	Health -= 20
+func deal_damage(damage):
+	Health -= damage
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
-		body.deal_damage()
+		body.deal_damage(10)
 		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
 		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly
@@ -101,7 +101,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
 		body.queue_free()
-		deal_damage()
+		deal_damage(10)
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
 		add_to_group("Minion")

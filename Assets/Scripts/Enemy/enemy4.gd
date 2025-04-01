@@ -4,18 +4,23 @@ var Speed = 120
 var Health = 40
 #var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
 var BulletSpeed = 680
-var Bullet = preload("res://Scenes/Misc/bullet.tscn")
 var Target = "Player"
+var WeaponScene = preload("res://Scenes/Weapons/enemy_sniper.tscn") 
+var CurrentWeapon: Weapon = null
 
 func _ready():
 	add_to_group("Enemy")
-	start_firing_timer()
+	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
+	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
+	add_child(CurrentWeapon) # Add our new weapon as a child
 	
 func _process(delta):
 	if Health <= 0:
 		for i in range(3):
 			drop_xp()
 		queue_free()	
+	
+	fire()
 
 func _physics_process(_delta):
 	var Player
@@ -44,14 +49,6 @@ func _physics_process(_delta):
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)	
 
-func start_firing_timer():
-	var timer = Timer.new()
-	timer.wait_time = randf_range(3, 5)
-	timer.one_shot = true  # Timer only goes once
-	timer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
-
 func fire():
 	var Player = get_parent().get_node(Target)
 	if is_in_group("Enemy"):
@@ -66,21 +63,10 @@ func fire():
 		Player = get_parent().get_node(self.get_path())
 		return
 	
-	var BulletInstance = Bullet.instantiate()
-	BulletInstance.name = "Laser_" + str(randi())  # Assigns a unique named
-	BulletInstance.get_node("Sprite2D").modulate = Color(1, 0.5, 0.1)  # Orange color
-	if is_in_group("Enemy"):
-		BulletInstance.add_to_group("Laser")
-	elif is_in_group("Minion"):
-		BulletInstance.add_to_group("Bullet")
-	var Direction = (Player.position - position).normalized()
-	var OffsetDistance = 30
-	BulletInstance.position = position + (Direction * OffsetDistance)
-	BulletInstance.rotation = Direction.angle()
-	BulletInstance.linear_velocity = Direction * BulletSpeed
-	get_tree().get_root().call_deferred("add_child", BulletInstance)
+	if CurrentWeapon:
+		var direction_to_player = (Player.global_position - global_position).normalized() # Get direction to player
+		CurrentWeapon.attempt_to_fire(global_position, direction_to_player) # Call weapons attempt to fire method
 	
-	start_firing_timer()
 
 func drop_xp():
 	# Create XP pickup
@@ -97,12 +83,12 @@ func drop_xp():
 	if pickup:
 		get_parent().add_child(pickup)
 
-func deal_damage():
-	Health -= 20
+func deal_damage(damage):
+	Health -= damage
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
-		body.deal_damage()
+		body.deal_damage(10)
 		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
 		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly
@@ -116,7 +102,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
 		body.queue_free()
-		deal_damage()
+		deal_damage(10)
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
 		add_to_group("Minion")
