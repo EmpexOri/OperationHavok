@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Pickups/Bullet.png" id="2_3323x"]
 
 [node name="Bullet" instance=ExtResource("1_12ur6")]
+speed = 300.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
