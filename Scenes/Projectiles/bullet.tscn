@@ -5,5 +5,10 @@
 
 [node name="Bullet" instance=ExtResource("1_12ur6")]
 
+[node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+
 [node name="Sprite2D" parent="." index="1"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_3323x")

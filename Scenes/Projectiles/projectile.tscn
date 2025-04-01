@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_2re41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bece"]
+size = Vector2(4, 8)
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_2re41")
