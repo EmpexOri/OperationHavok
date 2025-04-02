@@ -62,8 +62,8 @@ func burst_fire(Player: Node2D):
 		BulletInstance.add_to_group("Spell")
 		
 		var OffsetDistance = 12
-		BulletInstance.position = Player.global_position + (Direction * OffsetDistance)
-		BulletInstance.rotation = angle + 90
-		BulletInstance.linear_velocity = Direction * BulletSpeed
+		var position = Player.global_position + (Direction * OffsetDistance)
+		rotation = angle + 90
+		BulletInstance.start(position, Direction, "Player")
 		
 		Player.get_tree().get_root().call_deferred("add_child", BulletInstance)
