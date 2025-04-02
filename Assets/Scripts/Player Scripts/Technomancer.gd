@@ -67,6 +67,10 @@ func burst_fire(Player: Node2D):
 		var OffsetDistance = 12
 		BulletInstance.position = Player.global_position + (Direction * OffsetDistance)
 		BulletInstance.rotation = angle + 90
+<<<<<<< HEAD
 		BulletInstance.velocity = Direction * BulletSpeed
+=======
+		BulletInstance.linear_velocity = Direction * BulletSpeed
+>>>>>>> parent of 1751937 (Quick fix for ability)
 		
 		Player.get_tree().get_root().call_deferred("add_child", BulletInstance)
