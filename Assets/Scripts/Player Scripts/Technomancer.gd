@@ -65,12 +65,8 @@ func burst_fire(Player: Node2D):
 		BulletInstance.collision_mask = 2  # Only collides with enemies
 		
 		var OffsetDistance = 12
-		BulletInstance.position = Player.global_position + (Direction * OffsetDistance)
-		BulletInstance.rotation = angle + 90
-<<<<<<< HEAD
-		BulletInstance.velocity = Direction * BulletSpeed
-=======
-		BulletInstance.linear_velocity = Direction * BulletSpeed
->>>>>>> parent of 1751937 (Quick fix for ability)
+		var position = Player.global_position + (Direction * OffsetDistance)
+		rotation = angle + 90
+		BulletInstance.start(position, Direction, "Player")
 		
 		Player.get_tree().get_root().call_deferred("add_child", BulletInstance)
