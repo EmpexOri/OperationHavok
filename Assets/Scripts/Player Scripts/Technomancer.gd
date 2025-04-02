@@ -61,9 +61,12 @@ func burst_fire(Player: Node2D):
 		BulletInstance.get_node("Sprite2D").modulate = Color(0, 0, 0)  # Black color
 		BulletInstance.add_to_group("Spell")
 		
+		BulletInstance.collision_layer = 3  # Player projectile layer
+		BulletInstance.collision_mask = 2  # Only collides with enemies
+		
 		var OffsetDistance = 12
 		BulletInstance.position = Player.global_position + (Direction * OffsetDistance)
 		BulletInstance.rotation = angle + 90
-		BulletInstance.linear_velocity = Direction * BulletSpeed
+		BulletInstance.velocity = Direction * BulletSpeed
 		
 		Player.get_tree().get_root().call_deferred("add_child", BulletInstance)
