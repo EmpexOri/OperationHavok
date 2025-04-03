@@ -41,7 +41,7 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String):
 		collision_mask = 1  # Only collides with players
 		
 		if entity_owner == "Enemy2":
-			sprite_2d.modulate = Color(0, 0, 0)
+			sprite_2d.modulate = Color(0.3, 0.5, 1)
 		if entity_owner == "Enemy4":
 			sprite_2d.modulate = Color(0.5, 0.5, 0.5)
 		
