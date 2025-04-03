@@ -3,10 +3,15 @@ class_name Projectile
 
 # The base projectile script, to be extended, but also works for a typical balistic projectile
 
-# Parameters - Override in derived class
-@export var speed: float = 100
-@export var damage: float = 20.0
-@export var lifetime: float = 10.0
+# Base stats, you set these in the inspector for each projectile
+@export var base_speed: float = 100
+@export var base_damage: float = 20.0
+@export var base_lifetime: float = 10.0
+
+# Current values for projectile stats - these will be modified by effects
+var speed: float
+var damage: float
+var lifetime: float
 
 # Projectile velocity
 var velocity: Vector2 = Vector2.ZERO
@@ -33,6 +38,11 @@ func _process(delta: float) -> void:
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String):
+	# Initialise our stats from base stats
+	speed = base_speed
+	damage = base_damage
+	lifetime = base_lifetime
+	
 	global_position = start_position
 	rotation = direction.angle()
 	velocity = direction * speed
