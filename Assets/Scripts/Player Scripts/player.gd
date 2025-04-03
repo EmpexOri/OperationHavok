@@ -161,7 +161,6 @@ func attempt_to_fire():
 		else:
 			direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
 		
-		print(direction)	
 		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
 func deal_damage(damage):

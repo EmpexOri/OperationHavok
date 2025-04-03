@@ -5,7 +5,7 @@ var Health = 20
 #var Enemy = preload("res://Scenes/Misc/enemy_2.tscn")
 var OrbitSpeed = 50
 var OrbitDirection
-var BulletSpeed = 600
+var BulletSpeed = 800
 var Target = "Player"
 var WeaponScene = preload("res://Scenes/Weapons/enemy_sniper.tscn") 
 var CurrentWeapon: Weapon = null
@@ -22,7 +22,7 @@ func _ready():
 	add_child(timer)
 	
 	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
-	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
+	CurrentWeapon.owning_entity = "Enemy2" # Set the owning entity, used to set collisions for projectile
 	add_child(CurrentWeapon) # Add our new weapon as a child
 	
 func _process(delta):

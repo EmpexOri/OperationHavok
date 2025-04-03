@@ -3,7 +3,7 @@ extends CharacterBody2D
 var Speed = 120
 var Health = 40
 #var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
-var BulletSpeed = 680
+var BulletSpeed = 900
 var Target = "Player"
 var WeaponScene = preload("res://Scenes/Weapons/enemy_sniper.tscn") 
 var CurrentWeapon: Weapon = null
@@ -11,7 +11,7 @@ var CurrentWeapon: Weapon = null
 func _ready():
 	add_to_group("Enemy")
 	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
-	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
+	CurrentWeapon.owning_entity = "Enemy4" # Set the owning entity, used to set collisions for projectile
 	add_child(CurrentWeapon) # Add our new weapon as a child
 	
 func _process(delta):
