@@ -32,6 +32,7 @@ func _process(_delta):
 		
 func _input(event):
 	if Input.is_action_just_pressed("InGameOptions"):
+		GlobalAudioController.PauseMenuMusic()
 		pause_game()
 
 # Function to display the pause menu when game is paused
