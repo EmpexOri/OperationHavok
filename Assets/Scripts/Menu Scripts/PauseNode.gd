@@ -9,11 +9,13 @@ extends Node
 @onready var Title2: Label = $"../PausedLayer/Title2"
 
 func _on_resume_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
 	if get_tree().paused:
 		get_tree().paused = false
 
 
 func _on_controls_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	QuitButton.visible = false
@@ -24,10 +26,12 @@ func _on_controls_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
 	get_tree().quit()
 
 
 func _on_back_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
 	ResumeButton.visible = true
 	ControlsButton.visible = true
 	QuitButton.visible = true

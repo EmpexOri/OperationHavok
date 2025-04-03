@@ -41,6 +41,8 @@ func _process(delta):
 		attempt_to_fire()
 	if Global.PlayerHP <= 0:
 		print("DEAD")
+		# Play a sound upon death
+		GlobalAudioController.DeathSound()
 		Global.PlayerHP = Global.PlayerHPMax
 		kill()
 	

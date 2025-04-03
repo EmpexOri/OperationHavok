@@ -5,3 +5,9 @@ func LevelOneMusic():
 
 func PauseMenuMusic():
 	$PauseMenuSoundtrack.play()
+	
+func DeathSound():
+	$DeathSound.play()
+	
+func ClickSound():
+	$ClickSound.play()
