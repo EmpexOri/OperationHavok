@@ -6,6 +6,7 @@ var Damage_Timer = Timer.new()
 
 var StartingWeapon = preload("res://Scenes/Weapons/smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
+var ControllerEnabled = false
 
 var IsFiring = false
 var CanDodge = true
@@ -36,7 +37,7 @@ func damage_timer():
 	add_child(Damage_Timer)
 	
 func _process(delta):
-	if IsFiring:
+	if IsFiring or InputEventJoypadMotion:
 		attempt_to_fire()
 	if Global.PlayerHP <= 0:
 		print("DEAD")
@@ -108,6 +109,9 @@ func dodge(Direction: Vector2):
 func _input(event):
 	if IsUsingAbility:
 		return
+		
+	if event is InputEventJoypadMotion:
+		ControllerEnabled = true
 
 	if event.is_action_pressed("LMB"):
 		IsFiring = true
@@ -145,7 +149,19 @@ func equip_weapon(WeaponScene: PackedScene):
 		
 func attempt_to_fire():
 	if CurrentWeapon:
-		var direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
+		var direction = Vector2() # Get the direction to fire
+		
+		if ControllerEnabled:
+			direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
+			direction.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
+			if direction.length() > 0.1:
+				direction = direction.normalized()
+			else:
+				return
+		else:
+			direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
+		
+		print(direction)	
 		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
 func deal_damage(damage):
