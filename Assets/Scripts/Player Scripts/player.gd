@@ -115,6 +115,7 @@ func _input(event):
 
 	if event.is_action_pressed("LMB"):
 		IsFiring = true
+		ControllerEnabled = false
 	if event.is_action_released("LMB"):
 		IsFiring = false
 
