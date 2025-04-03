@@ -1,6 +1,7 @@
 extends Node2D
 
 func OnPlayButtonPressed() -> void:
+	GlobalAudioController.LevelOneMusic()
 	get_tree().change_scene_to_file("res:///Scenes/PlaygroundScene.tscn")
 
 
