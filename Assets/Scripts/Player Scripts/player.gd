@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var Class = preload("res://Assets/Scripts/Player Scripts/Technomancer.gd").new()
+var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd").new()
 #var Mode = "fire"
 var Damage_Timer = Timer.new()
 
@@ -108,23 +108,31 @@ func dodge(Direction: Vector2):
 func _input(event):
 	if IsUsingAbility:
 		return
-		
+
 	if event.is_action_pressed("LMB"):
 		IsFiring = true
-		
 	if event.is_action_released("LMB"):
 		IsFiring = false
-		
-	if not Class.Enabled:
-		return
-		
+
+	# Check if the class has the perk and activate it
 	if Input.is_action_just_pressed("ability_1"):
-		IsFiring = false
-		IsUsingAbility = true
-		Class.ability(self)
-		await get_tree().create_timer(2).timeout
-		IsUsingAbility = false
-		#Trigger_Timer.start()
+		ActivatePerk(0)
+	if Input.is_action_just_pressed("ability_2"):
+		ActivatePerk(1)
+	if Input.is_action_just_pressed("ability_3"):
+		ActivatePerk(2)
+	if Input.is_action_just_pressed("ability_4"):
+		ActivatePerk(3)
+
+func ActivatePerk(index: int):
+	var perks = Global.ClassData[Global.CurrentClass]["Perks"]
+	if index < perks.size():
+		var perk_name = perks[index]
+		print("Activating perk: " + perk_name)
+		# Load and execute the perk script dynamically
+		var perk_script = load("res://Assets/Scripts/Player Scripts/Abilities/" + perk_name + ".gd").new()
+		perk_script.activate(self)  # Pass the player as the activator
+
 		
 func equip_weapon(WeaponScene: PackedScene):
 	if CurrentWeapon:

@@ -6,7 +6,7 @@ var CurrentClass: String = "Commando" # Default class for now
 
 var ClassData = {
 	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1000, "Perks": []},
-	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 250, "BulletSpeed": 1500, "Perks": []},
+	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 250, "BulletSpeed": 1500, "Perks": ["ScatterGun", "Death-Nade"]},
 	"Fleshthing": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 500, "Perks": []}
 }
 
@@ -68,15 +68,19 @@ func UnlockPerk():
 	var level = ClassData[CurrentClass]["Level"]
 	var perks_unlocked = []
 
-	# Unlock perks based on the level
+	# Get the full perk list of the current class
+	var full_perk_list = []
 	if CurrentClass == "Technomancer":
-		perks_unlocked = PerkListTechnomancer.slice(0, level)  # Unlock perks up to current level
+		full_perk_list = PerkListTechnomancer
 	elif CurrentClass == "Commando":
-		perks_unlocked = PerkListCommando.slice(0, level)
+		full_perk_list = PerkListCommando
 	elif CurrentClass == "Fleshthing":
-		perks_unlocked = PerkListFleshthing.slice(0, level)
+		full_perk_list = PerkListFleshthing
 
-	# Add the unlocked perks to the class, can do in future
+	# Unlock perks based on level (add perks gradually)
+	perks_unlocked = full_perk_list.slice(0, min(level + 1, full_perk_list.size()))
+
+	# Update the class perks
 	ClassData[CurrentClass]["Perks"] = perks_unlocked
 	UpdatePerkList()
 
