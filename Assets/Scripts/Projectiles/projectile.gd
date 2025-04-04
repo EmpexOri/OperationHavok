@@ -11,7 +11,7 @@ class_name Projectile
 # Current values for projectile stats - these will be modified by effects
 var speed: float
 var damage: float
-var lifetime: float
+var lifetime: float = 1
 
 # Projectile velocity
 var velocity: Vector2 = Vector2.ZERO
@@ -32,7 +32,7 @@ func _ready() -> void:
 	lifetime_timer.timeout.connect(queue_free) # Destroy when lifetime expires
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 	body_entered.connect(_on_body_entered) # Handle collisions
-	lifetime_timer.start() 
+	lifetime_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
