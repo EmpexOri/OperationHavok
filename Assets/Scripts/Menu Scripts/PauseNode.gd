@@ -9,13 +9,18 @@ extends Node
 @onready var Title2: Label = $"../PausedLayer/Title2"
 
 func _on_resume_button_pressed() -> void:
+	# Play sound on button press
 	GlobalAudioController.ClickSound()
+	
 	if get_tree().paused:
 		get_tree().paused = false
 
 
 func _on_controls_button_pressed() -> void:
+	# Play sound on button press
 	GlobalAudioController.ClickSound()
+	
+	# Removing the options menu and displaying controls menu
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	QuitButton.visible = false
@@ -26,12 +31,18 @@ func _on_controls_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	# Play sound on button press and a timer so sound plays before game quits
 	GlobalAudioController.ClickSound()
+	var quitTimer = 0.15
+	await get_tree().create_timer(quitTimer).timeout
 	get_tree().quit()
 
 
 func _on_back_button_pressed() -> void:
+	# Play sound on button press
 	GlobalAudioController.ClickSound()
+	
+	# Removing the controls menu and bringing up options menu
 	ResumeButton.visible = true
 	ControlsButton.visible = true
 	QuitButton.visible = true
