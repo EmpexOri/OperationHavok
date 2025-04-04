@@ -6,7 +6,7 @@ var CurrentClass: String = "Commando" # Default class for now
 
 var ClassData = {
 	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1000, "Perks": []},
-	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 250, "BulletSpeed": 1500, "Perks": ["ScatterGun", "Death-Nade"]},
+	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 1500, "Perks": ["ScatterGun", "Death-Nade"]},
 	"Fleshthing": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 500, "Perks": []}
 }
 
