@@ -13,4 +13,6 @@ func OnOptionsButtonPressed() -> void:
 
 func OnQuitButtonPressed() -> void:
 	GlobalAudioController.ClickSound()
+	var quitTimer = 0.15
+	await get_tree().create_timer(quitTimer).timeout
 	get_tree().quit()

@@ -11,7 +11,7 @@ offset_top = 21.0
 offset_right = 641.0
 offset_bottom = 62.0
 theme_type_variation = &"HeaderLarge"
-text = "Fools ACT"
+text = "Operation: Hav0k"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -35,6 +35,13 @@ offset_top = 236.0
 offset_right = 403.0
 offset_bottom = 267.0
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 277.0
+offset_top = 59.0
+offset_right = 369.0
+offset_bottom = 82.0
+text = "@ct th3 f001"
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="OnOptionsButtonPressed"]
