@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://c0vahobgr2g8" path="res://Assets/Sound/Music/A desperate battle, no way back_ (Track 04).mp3" id="1_bq62r"]
 [ext_resource type="AudioStream" uid="uid://yra0veoy0d5n" path="res://Assets/Sound/Music/MenuMusic.mp3" id="2_2ql4u"]
 [ext_resource type="AudioStream" uid="uid://3svjvkpksu80" path="res://Assets/Sound/DeathSound.mp3" id="4_bq4xx"]
-[ext_resource type="AudioStream" uid="uid://pse4j3wrpyku" path="res://Assets/Sound/ClickSound.mp3" id="5_e30su"]
+[ext_resource type="AudioStream" uid="uid://bjeqt08vvx4aa" path="res://Assets/Sound/ClickSound.wav" id="5_e30su"]
 
 [node name="GlobalAudioController" type="Node2D"]
 script = ExtResource("1_2ql4u")
