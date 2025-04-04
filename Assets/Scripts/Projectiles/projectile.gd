@@ -16,6 +16,9 @@ var lifetime: float
 # Projectile velocity
 var velocity: Vector2 = Vector2.ZERO
 
+# Projectile effects
+var current_effects: ProjectileEffect
+
 # References
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite_2d = $Sprite2D
@@ -35,6 +38,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Basic movement, this can be overriden to get different behaviour depending on projectile type
 	position += velocity * delta
+	
+	# Process effects for projectiles
+	if current_effects:
+		for effect in current_effects:
+			effect.proccess_effect()
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String):
@@ -66,4 +74,10 @@ func _on_body_entered(body: Node2D):
 	# Damage the entity, destroy the projectile
 	if body.has_method("deal_damage"):
 		body.deal_damage(damage)
+	
+	if current_effects:
+		for effect in current_effects:
+			if effect.on_hit():
+				queue_free()
+	else:
 		queue_free()
