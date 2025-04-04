@@ -16,7 +16,7 @@ var lifetime: float
 # Projectile velocity
 var velocity: Vector2 = Vector2.ZERO
 
-# Projectile effects
+# Projectile effects array
 var current_effects: Array[ProjectileEffect] = []
 
 # References
@@ -53,7 +53,8 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String):
 	
 	#if p_effects:
 		#for effect in p_effects:
-			#current_effects.push_front(effect)
+			#effect.setup(self) # Setup the projectile effect
+			#current_effects.push_front(effect) # add effect to array
 	
 	global_position = start_position
 	rotation = direction.angle()
@@ -77,11 +78,11 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String):
 func _on_body_entered(body: Node2D):
 	# Damage the entity, destroy the projectile
 	if body.has_method("deal_damage"):
-		body.deal_damage(damage)
+		body.deal_damage(damage) # Deal damage to entity if it has the deal_damage method
 	
 	if current_effects:
 		for effect in current_effects:
 			if effect.on_hit(self, body):
-				queue_free()
+				queue_free() # If the effects on hit returns true we remove the projectile
 	else:
-		queue_free()
+		queue_free() # If we have no effects, just remove the projectile on hit
