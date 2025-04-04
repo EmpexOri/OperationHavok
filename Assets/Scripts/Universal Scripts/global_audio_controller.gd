@@ -1,13 +1,13 @@
 extends Node2D
 
 func LevelOneMusic():
-	$Level1Soundtrack.play()
+	$Music/Level1Soundtrack.play()
 
 func PauseMenuMusic():
-	$PauseMenuSoundtrack.play()
+	$Music/PauseMenuSoundtrack.play()
 	
 func DeathSound():
-	$DeathSound.play()
+	$SFX/DeathSound.play()
 	
 func ClickSound():
-	$ClickSound.play()
+	$SFX/ClickSound.play()
