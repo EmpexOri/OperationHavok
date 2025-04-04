@@ -7,10 +7,10 @@ class_name ProjectileEffect
 func setup(projectile: Projectile):
 	pass
 
-# Called every frame
+# Called every frame from projectile
 func process_effect(projectile: Projectile, delta: float):
 	pass
 
 # Called when projectile has a collision
 func on_hit(projectile: Projectile, body: Node2D):
-	pass
+	true # Projectile will be destroyed on hit - override in derived class for different effect
