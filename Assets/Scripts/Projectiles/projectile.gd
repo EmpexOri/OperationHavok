@@ -17,7 +17,7 @@ var lifetime: float
 var velocity: Vector2 = Vector2.ZERO
 
 # Projectile effects
-var current_effects: ProjectileEffect
+var current_effects: Array[ProjectileEffect] = []
 
 # References
 @onready var collision_shape_2d = $CollisionShape2D
@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	# Process effects for projectiles
 	if current_effects:
 		for effect in current_effects:
-			effect.proccess_effect()
+			effect.proccess_effect(self, delta)
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String):
@@ -50,6 +50,10 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String):
 	speed = base_speed
 	damage = base_damage
 	lifetime = base_lifetime
+	
+	#if p_effects:
+		#for effect in p_effects:
+			#current_effects.push_front(effect)
 	
 	global_position = start_position
 	rotation = direction.angle()
@@ -77,7 +81,7 @@ func _on_body_entered(body: Node2D):
 	
 	if current_effects:
 		for effect in current_effects:
-			if effect.on_hit():
+			if effect.on_hit(self, body):
 				queue_free()
 	else:
 		queue_free()
