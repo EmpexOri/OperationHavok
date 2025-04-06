@@ -10,11 +10,12 @@ class_name Weapon
 # TEMPORARY TESTING EFFECTS
 var proj_penetrate = preload("res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd")
 var pen_effect = proj_penetrate.new()
+
 @export var projectile_effects: Array[ProjectileEffect] = [pen_effect] # Array for projectile effects to pass to porjectile
 
 var can_fire:bool = true # Boolean for checking if we can fire
 
-var owning_entity: String
+var owning_entity: String # The owning entity of the weapon, used so projectiles can choose their collision channels
 
 @onready var cooldown_timer: Timer = Timer.new() # Fire timer
 
@@ -71,7 +72,7 @@ func remove_effect(effect_to_remove: Resource):
 	if effect_to_remove:
 		if projectile_effects.has(effect_to_remove):
 			print("Removed the projectile effect: ", effect_to_remove.effect_name)
-			projectile_effects.erase(effect_to_remove)
+			projectile_effects.erase(effect_to_remove) # Projectile effects array has the effect, remove it
 		else:
 			print("Attempted to remove efffect, but it does not exist on the weapon")
 		
