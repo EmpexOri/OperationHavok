@@ -16,4 +16,4 @@ func process_effect(projectile: Projectile, delta: float):
 
 # Called when projectile has a collision
 func on_hit(projectile: Projectile, body: Node2D):
-	null # Projectile will be destroyed on hit - override in derived class for different effect
+	null # Override in derived class for different effect - true is destroyed, false is not
