@@ -7,6 +7,8 @@ class_name Weapon
 @export var fire_rate: float = 0.5 # Shots per second, 2/ps by default
 @export var fire_offset: float = 5 # Spawn our projectile away from our player (think varying weapon lengths)
 
+@export var projectile_effects: Array[ProjectileEffect] = [] # Array for projectile effects to pass to porjectile
+
 var can_fire:bool = true # Boolean for checking if we can fire
 
 var owning_entity: String
@@ -40,7 +42,7 @@ func fire(spawn_position: Vector2, direction: Vector2):
 		main_scene.add_child(projectile_instance) # Add our rpojectile instance to our scene
 	
 	var position = spawn_position + direction * fire_offset  # Get the spawn position and offset
-	projectile_instance.start(position, direction, owning_entity) # Call the start method on the projectile script
+	projectile_instance.start(position, direction, owning_entity, projectile_effects) # Call the start method on the projectile script
 	
 	
 	

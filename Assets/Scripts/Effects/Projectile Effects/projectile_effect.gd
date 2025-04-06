@@ -1,9 +1,12 @@
 extends Resource
 class_name ProjectileEffect
 
+# This is a base class, to create a new projectile effect you will extend this class
+# Do not make changes here
+
 @export var effect_name: String
 
-# Call when initialising an effect
+# Call when initialising an effect, initialised from the projectile
 func setup(projectile: Projectile):
 	pass
 
@@ -13,4 +16,4 @@ func process_effect(projectile: Projectile, delta: float):
 
 # Called when projectile has a collision
 func on_hit(projectile: Projectile, body: Node2D):
-	true # Projectile will be destroyed on hit - override in derived class for different effect
+	null # Projectile will be destroyed on hit - override in derived class for different effect

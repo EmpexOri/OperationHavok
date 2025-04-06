@@ -16,7 +16,7 @@ var lifetime: float = 1
 # Projectile velocity
 var velocity: Vector2 = Vector2.ZERO
 
-# Projectile effects array
+# Projectile effects are stored in this array
 var current_effects: Array[ProjectileEffect] = []
 
 # References
@@ -45,16 +45,18 @@ func _process(delta: float) -> void:
 			effect.proccess_effect(self, delta)
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
-func start(start_position: Vector2, direction: Vector2, entity_owner: String):
+func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
 	# Initialise our stats from base stats
 	speed = base_speed
 	damage = base_damage
 	lifetime = base_lifetime
 	
-	#if p_effects:
-		#for effect in p_effects:
-			#effect.setup(self) # Setup the projectile effect
-			#current_effects.push_front(effect) # add effect to array
+	current_effects = p_effects # Store passed references in self current_effects array
+	
+	if current_effects:
+		for effect in current_effects:
+			if effect.has_method("setup"):
+				effect.setup(self) # Setup the projectile effect
 	
 	global_position = start_position
 	rotation = direction.angle()
@@ -82,7 +84,8 @@ func _on_body_entered(body: Node2D):
 	
 	if current_effects:
 		for effect in current_effects:
-			if effect.on_hit(self, body):
-				queue_free() # If the effects on hit returns true we remove the projectile
+			if effect.has_method("on_hit"):
+				if effect.on_hit(self, body):
+					queue_free() # If the effects on hit returns true we remove the projectile
 	else:
 		queue_free() # If we have no effects, just remove the projectile on hit
