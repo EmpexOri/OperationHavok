@@ -42,7 +42,8 @@ func _process(delta: float) -> void:
 	# Process effects for projectiles
 	if current_effects:
 		for effect in current_effects:
-			effect.proccess_effect(self, delta)
+			if effect.has_method("process_effect"):
+				effect.process_effect(self, delta)
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
