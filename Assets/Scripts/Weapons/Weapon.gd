@@ -46,6 +46,27 @@ func fire(spawn_position: Vector2, direction: Vector2):
 	
 	var position = spawn_position + direction * fire_offset  # Get the spawn position and offset
 	projectile_instance.start(position, direction, owning_entity, projectile_effects) # Call the start method on the projectile script
+
+# Adds effects - this is for both weapon and projectile effects (WIP)
+func add_effect(new_effect: Resource):
+	var found = false # Used to determine whether to add the effect or not
+	
+	# Check if we already have the effect applied
+	for i in range(projectile_effects.size()):
+		var exisiting_effect = projectile_effects[i]
+		if typeof(exisiting_effect) == typeof(new_effect) and exisiting_effect.effect_name == new_effect.effect_name:
+			found  = true # The effect is already active, don't do anything
+			# This can be modified later to apply additional effects if one of the same type already exists
+	
+	# Effect not applied, apply it
+	if not found:
+		if new_effect is ProjectileEffect:
+			projectile_effects.append(new_effect) # Add effect to array
+			print("Added new projectile effect: ", new_effect.effect_name) # Print for testing
+		else:
+			print("Tried to add effect, but effect type was unknown")
+			
+		
 	
 	
 	
