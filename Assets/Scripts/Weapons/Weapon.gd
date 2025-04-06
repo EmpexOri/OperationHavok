@@ -66,7 +66,12 @@ func add_effect(new_effect: Resource):
 		else:
 			print("Tried to add effect, but effect type was unknown")
 			
+# Remove an effect - this is for both weapon and projectile effects (WIP)
+func remove_effect(effect_to_remove: Resource):
+	if effect_to_remove:
+		if projectile_effects.has(effect_to_remove):
+			print("Removed the projectile effect: ", effect_to_remove.effect_name)
+			projectile_effects.erase(effect_to_remove)
+		else:
+			print("Attempted to remove efffect, but it does not exist on the weapon")
 		
-	
-	
-	
