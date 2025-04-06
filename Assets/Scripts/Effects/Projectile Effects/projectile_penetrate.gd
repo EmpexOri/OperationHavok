@@ -14,7 +14,6 @@ func setup(projectile: Projectile):
 	pass 
 
 func process_effect(projectile: Projectile, delta: float):
-	print("pen active")
 	pass 
 
 func on_hit(projectile: Projectile, body: Node2D):
