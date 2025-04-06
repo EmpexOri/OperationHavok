@@ -1,14 +1,15 @@
 extends ProjectileEffect
+class_name PenetrationEffect
 
 # Penetration effect for a projectile
 
 @export var max_hits: int = 5 # The maximum number of hits allowed
 var current_hits: int = 0 # How many hits we have actually had
 
-var hit_bodies: Array[Node2D] = [] # Bodies we
+var hit_bodies: Array[Node2D] = [] # Bodies we have hit will be added here
 
 func _init() -> void:
-	effect_name = "Penetrate" #Giggity
+	effect_name = "Penetrate" # Giggity
 	
 func setup(projectile: Projectile):
 	pass 
