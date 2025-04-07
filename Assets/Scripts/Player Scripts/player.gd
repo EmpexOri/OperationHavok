@@ -128,8 +128,8 @@ func _input(event):
 		ActivatePerk(1)
 	if Input.is_action_just_pressed("ability_3"):
 		ActivatePerk(2)
-	if Input.is_action_just_pressed("ability_4"):
-		ActivatePerk(3)
+	#if Input.is_action_just_pressed("ability_4"):
+	#	ActivatePerk(3)
 
 func ActivatePerk(index: int):
 	var perks = Global.ClassData[Global.CurrentClass]["Perks"]

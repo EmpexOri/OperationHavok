@@ -6,13 +6,13 @@ var CurrentClass: String = "Commando" # Default class for now
 
 var ClassData = {
 	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "BulletSpeed": 1000, "Perks": []},
-	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 1500, "Perks": ["ScatterGun", "Death-Nade"]},
+	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 1500, "Perks": ["ScatterGun", "Death-Nade", "SniperBeam"]},
 	"Fleshthing": {"Level": 1, "XP": 0, "MoveSpeed": 150, "BulletSpeed": 500, "Perks": []}
 }
 
 # Perk Lists for each class, just place holders for now :D
 var PerkListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"]
-var PerkListCommando = ["ScatterGun", "Death-Nade", "Dragon-Nade", "Overcharged"]
+var PerkListCommando = ["ScatterGun", "Death-Nade", "Dragon-Nade", "SniperBeam"]
 var PerkListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 # XP scaling formula
