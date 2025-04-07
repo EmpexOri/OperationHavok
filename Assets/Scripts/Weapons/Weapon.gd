@@ -58,18 +58,28 @@ func fire(spawn_position: Vector2, direction: Vector2):
 func add_effect(new_effect: Resource):
 	var found = false # Used to determine whether to add the effect or not
 	
-	# Check if we already have the effect applied
+	# Check if we already have the projectile effect applied
 	for i in range(projectile_effects.size()):
 		var exisiting_effect = projectile_effects[i]
 		if typeof(exisiting_effect) == typeof(new_effect) and exisiting_effect.effect_name == new_effect.effect_name:
 			found  = true # The effect is already active, don't do anything
 			# This can be modified later to apply additional effects if one of the same type already exists
+			
+	# Check if we already have the weapon effect applied
+	for i in range(weapon_effects.size()):
+		var existing_effect = weapon_effects[i]
+		if typeof(existing_effect) == typeof(new_effect) and existing_effect.effect_name == new_effect.effect_name:
+			found = true # The effect is already active, don't do anything
+			# This can be modified later to apply additional effects if one of the same type already exists
 	
 	# Effect not applied, apply it
 	if not found:
 		if new_effect is ProjectileEffect:
-			projectile_effects.append(new_effect) # Add effect to array
+			projectile_effects.append(new_effect) # Add projectile effect to array
 			print("Added new projectile effect: ", new_effect.effect_name) # Print for testing
+		elif new_effect is WeaponEffect:
+			weapon_effects.append(new_effect) # Add weapon effect to array
+			print("Added new weapon effect: ", new_effect.effect_name) # Print for testing
 		else:
 			print("Tried to add effect, but effect type was unknown")
 			
@@ -79,6 +89,9 @@ func remove_effect(effect_to_remove: Resource):
 		if projectile_effects.has(effect_to_remove):
 			print("Removed the projectile effect: ", effect_to_remove.effect_name)
 			projectile_effects.erase(effect_to_remove) # Projectile effects array has the effect, remove it
+		elif weapon_effects.has(effect_to_remove):
+			print("Removed the weapon effect: ", effect_to_remove.effect_name)
+			weapon_effects.erase(effect_to_remove) # Weapon effects array has the effect, remove it
 		else:
 			print("Attempted to remove efffect, but it does not exist on the weapon")
 		
