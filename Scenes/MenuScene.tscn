@@ -1,26 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://kjmdqey636rw"]
+[gd_scene load_steps=3 format=3 uid="uid://kjmdqey636rw"]
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
+[ext_resource type="Texture2D" uid="uid://b7fab4revb7tp" path="res://Assets/Art/OperationHavocTitle.png" id="2_xx56i"]
 
 [node name="MenuScene" type="Node2D"]
 script = ExtResource("1_36iol")
 
-[node name="Title" type="Label" parent="."]
-offset_left = 1.0
-offset_top = 21.0
-offset_right = 641.0
-offset_bottom = 62.0
-theme_type_variation = &"HeaderLarge"
-text = "Operation: Hav0k"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ActTheFool" type="Label" parent="."]
-offset_left = 277.0
-offset_top = 59.0
-offset_right = 373.0
-offset_bottom = 82.0
-text = "@ct th3 f001"
+[node name="OperationHavocTitle" type="Sprite2D" parent="."]
+position = Vector2(320, 65)
+scale = Vector2(0.541667, 0.4875)
+texture = ExtResource("2_xx56i")
 
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 241.0
