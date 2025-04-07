@@ -4,14 +4,17 @@ class_name Weapon
 # The base weapon script for the weapon super class, this should not be instantiated
 
 @export var projectile_scene: PackedScene = null # The projectile the weapon will spawn
-@export var fire_rate: float = 0.5 # Shots per second, 2/ps by default
+@export var base_fire_rate: float = 0.5 # Shots per second, 2/ps by default
 @export var fire_offset: float = 5 # Spawn our projectile away from our player (think varying weapon lengths)
+
+var current_fire_rate: float # The current fire rate, including any modifications
 
 # TEMPORARY TESTING EFFECTS
 var proj_penetrate = preload("res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd")
 var pen_effect = proj_penetrate.new()
 
 @export var projectile_effects: Array[ProjectileEffect] = [pen_effect] # Array for projectile effects to pass to porjectile
+@export var weapon_effects: Array[WeaponEffect] = [] # Array for weapon effects, weapon effects are applied in the weapon
 
 var can_fire:bool = true # Boolean for checking if we can fire
 
@@ -20,9 +23,12 @@ var owning_entity: String # The owning entity of the weapon, used so projectiles
 @onready var cooldown_timer: Timer = Timer.new() # Fire timer
 
 func _ready() -> void:
+	# Initialise fire rate
+	current_fire_rate = base_fire_rate
+	
 	# Setup our weapon fire cooldown timer
 	cooldown_timer.one_shot = true
-	cooldown_timer.wait_time = fire_rate
+	cooldown_timer.wait_time = current_fire_rate
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
 	add_child(cooldown_timer) 
 
