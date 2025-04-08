@@ -37,7 +37,7 @@ func damage_timer():
 	add_child(Damage_Timer)
 	
 func _process(delta):
-	if IsFiring or InputEventJoypadMotion:
+	if IsFiring or (ControllerEnabled and InputEventJoypadMotion):
 		attempt_to_fire()
 	if Global.PlayerHP <= 0:
 		print("DEAD")
