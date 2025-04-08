@@ -45,6 +45,10 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2):
 
 # Fire our weapon, should not be called directly, use attemp to fire
 func fire(spawn_position: Vector2, direction: Vector2):
+	_spawn_projectile(spawn_position, direction)
+
+# This is an interal method, called from fire
+func _spawn_projectile(spawn_position: Vector2, direction: Vector2):
 	var projectile_instance = projectile_scene.instantiate() # Instantiate a projectile
 	
 	var main_scene = get_tree().current_scene # Get the main scene
@@ -52,6 +56,7 @@ func fire(spawn_position: Vector2, direction: Vector2):
 		main_scene.add_child(projectile_instance) # Add our rpojectile instance to our scene
 	
 	var position = spawn_position + direction * fire_offset  # Get the spawn position and offset
+	
 	projectile_instance.start(position, direction, owning_entity, projectile_effects) # Call the start method on the projectile script
 
 # Adds effects - this is for both weapon and projectile effects (WIP)
