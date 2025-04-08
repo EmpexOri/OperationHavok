@@ -27,23 +27,22 @@ var current_effects: Array[ProjectileEffect] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Initialise our stats from base stats
-	speed = base_speed
-	damage = base_damage
-	lifetime = base_lifetime
-	
 	# Connect signals
-	lifetime_timer.wait_time = lifetime
-	lifetime_timer.timeout.connect(queue_free) # Destroy when lifetime expires
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 	body_entered.connect(_on_body_entered) # Handle collisions
-	lifetime_timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# This method MUST be created and called with super() in the derived class
 func _process(delta: float) -> void:
-	# Basic movement, this can be overriden to get different behaviour depending on projectile type
+	_handle_movement(delta) # Call the interal movement method
+	_process_effects(delta) # Call the interal effects process method
+
+# If creating a projectile with different movement, say a grenade arch, you would override this class
+func _handle_movement(delta: float):
+	# Basic movement ballistic movement
 	position += velocity * delta
-	
+
+# This method is always called from _process, it does not need to be touched or created in the derived class
+func _process_effects(delta: float):
 	# Process effects for projectiles
 	if current_effects:
 		for effect in current_effects:
@@ -52,12 +51,12 @@ func _process(delta: float) -> void:
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
+	current_effects = p_effects # Store passed references in self current_effects array
+	
 	# Initialise our stats from base stats
 	speed = base_speed
 	damage = base_damage
 	lifetime = base_lifetime
-	
-	current_effects = p_effects # Store passed references in self current_effects array
 	
 	if current_effects:
 		for effect in current_effects:
@@ -67,6 +66,7 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 	global_position = start_position
 	rotation = direction.angle()
 	velocity = direction * speed
+	
 	if entity_owner == "Enemy" or entity_owner == "Enemy2" or entity_owner == "Enemy4":
 		collision_layer = 4  # Enemy projectile layer
 		collision_mask = 1  # Only collides with players
@@ -75,6 +75,10 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 		collision_mask = 2  # Only collides with enemies
 	else:
 		print("Unknown owner set for projectile")
+		
+	lifetime_timer.wait_time = lifetime # Set the lifetime of the projectile
+	lifetime_timer.timeout.connect(queue_free) # Destroy when lifetime expires
+	lifetime_timer.start() # Start the lifetime timer
 	
 # When we get a collision, uses collision masks
 func _on_body_entered(body: Node2D):
