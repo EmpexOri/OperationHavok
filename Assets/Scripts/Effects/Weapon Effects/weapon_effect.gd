@@ -9,6 +9,11 @@ class_name WeaponEffect
 
 # This method will be used to hold a dict of the changes we want to make to the weapons behvaiour
 func modify_parameters(parameters: Dictionary) -> Dictionary:
+	'''
+	Example for a shotgun effect
+	parameters.projectile_count = 3
+	parameters.spread_angle = 10
+	'''
 	return parameters
 	
 # This method can be used to completely override the firing logic of a weapon, useful for complex firing logic
