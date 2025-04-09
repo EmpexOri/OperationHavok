@@ -45,7 +45,41 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2):
 
 # Fire our weapon, should not be called directly, use attemp to fire
 func fire(spawn_position: Vector2, direction: Vector2):
-	_spawn_projectile(spawn_position, direction)
+	# Completely ignore firing logic to create complex effects that the below can't handle
+	for effect in weapon_effects:
+		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects):
+			return # Effect in the weapon effect handled firing, return
+	
+	# Default parameters for weapon firing, i.e. a single bullet with no spread
+	var fire_parameters = {
+		"projectile_count": 1, # The count of projectiles to shoot
+		"spread_angle": 0, # The angle of spread in degrees
+		"direction": direction # The direction to shoot, where the player is aiming by default
+	}
+	
+	# Aplly any modifiers from the weapon effect, this effects the dict above
+	for effect in weapon_effects:
+		fire_parameters = effect.modify_parameters(fire_parameters)
+	
+	# Create variables for each of our modified (or unmodified) parameters from our dict
+	var projectile_count = fire_parameters["projectile_count"] # The count of projectiles to shoot
+	var spread_radian = deg_to_rad(fire_parameters["spread_angle"]) # Convert degrees into radians
+	var base_angle = fire_parameters["direction"].angle() # Get the central aiming direction in degrees
+	
+	# S on above parameters
+	var angle_step = 0.0
+	if projectile_count > 1: # If we have more than one projectile 
+		angle_step = spread_radian / (projectile_count - 1) # Calculate the step between each projectile
+	
+	var start_angle = base_angle - spread_radian / 2.0 # Calculate angle for the first projectile
+	
+	for i in range(projectile_count): # For each projectile
+		var shot_angle = start_angle + angle_step * i # Calculate specific angle for that projectile
+		if projectile_count == 1: # Only one projectile
+			shot_angle = base_angle # We have one projectile so just use base_angle 
+		
+		var fire_direction = Vector2.RIGHT.rotated(shot_angle) # The normalised direction pointing to shot_angle
+		_spawn_projectile(spawn_position, fire_direction) # Spawn our projectile
 
 # This is an interal method, called from fire
 func _spawn_projectile(spawn_position: Vector2, direction: Vector2):
