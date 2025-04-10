@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://67dpuaam7vlg"]
+
+[ext_resource type="Texture2D" uid="uid://qnj5li40ekpp" path="res://Assets/Art/Menu/LevelSelectTitle.png" id="1_2jav4"]
+[ext_resource type="Script" uid="uid://bk0kbugyn1jxp" path="res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd" id="1_qyu6w"]
+[ext_resource type="Texture2D" uid="uid://cm6wksto0tsna" path="res://Assets/Art/Menu/ClassSelectTitle.png" id="2_qyu6w"]
+[ext_resource type="Texture2D" uid="uid://cgfflscj3lda3" path="res://Assets/Art/Menu/Commando.jpg" id="4_nstsp"]
+[ext_resource type="Texture2D" uid="uid://v54cp8irhyvq" path="res://Assets/Art/Menu/Technomancer.png" id="5_qq5ww"]
+
+[node name="LevelSelect" type="Node2D"]
+script = ExtResource("1_qyu6w")
+
+[node name="LevelSelectButton" type="TextureButton" parent="."]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 303.0
+offset_bottom = 62.0
+texture_normal = ExtResource("1_2jav4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ClassSelectButton" type="TextureButton" parent="."]
+offset_left = 336.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 62.0
+texture_normal = ExtResource("2_qyu6w")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LevelSelect" type="CanvasLayer" parent="."]
+
+[node name="Level1Button" type="Button" parent="LevelSelect"]
+offset_left = 103.0
+offset_top = 124.0
+offset_right = 245.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 28
+text = "Level 1"
+
+[node name="Level2Button" type="Button" parent="LevelSelect"]
+offset_left = 396.0
+offset_top = 124.0
+offset_right = 538.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 28
+text = "Level 2"
+
+[node name="ClassSelect" type="CanvasLayer" parent="."]
+
+[node name="CommandoButton" type="Button" parent="ClassSelect"]
+visible = false
+offset_left = 126.0
+offset_top = 259.0
+offset_right = 224.0
+offset_bottom = 290.0
+text = "Commando"
+
+[node name="TechnomancerButton" type="Button" parent="ClassSelect"]
+visible = false
+offset_left = 406.0
+offset_top = 259.0
+offset_right = 530.0
+offset_bottom = 290.0
+text = "Technomancer"
+
+[node name="Commando" type="Sprite2D" parent="ClassSelect"]
+visible = false
+position = Vector2(174, 171)
+scale = Vector2(0.264, 0.3115)
+texture = ExtResource("4_nstsp")
+
+[node name="Technomancer" type="Sprite2D" parent="ClassSelect"]
+visible = false
+position = Vector2(467, 172)
+scale = Vector2(0.267068, 0.343612)
+texture = ExtResource("5_qq5ww")
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 301.0
+offset_top = 311.0
+offset_right = 346.0
+offset_bottom = 342.0
+text = "Back"
+
+[connection signal="pressed" from="LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="ClassSelectButton" to="." method="_on_class_select_button_pressed"]
+[connection signal="pressed" from="LevelSelect/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

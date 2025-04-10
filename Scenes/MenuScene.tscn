@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
 [ext_resource type="Texture2D" uid="uid://cc3utn107cunr" path="res://Assets/Art/Jerma.jpg" id="2_rae6p"]
-[ext_resource type="Texture2D" uid="uid://b7fab4revb7tp" path="res://Assets/Art/OperationHavocTitle.png" id="2_xx56i"]
+[ext_resource type="Texture2D" uid="uid://b7fab4revb7tp" path="res://Assets/Art/Menu/OperationHavocTitle.png" id="3_rae6p"]
 
 [node name="MenuScene" type="Node2D"]
 script = ExtResource("1_36iol")
@@ -14,7 +14,7 @@ texture = ExtResource("2_rae6p")
 [node name="OperationHavocTitle" type="Sprite2D" parent="."]
 position = Vector2(320, 65)
 scale = Vector2(0.541667, 0.4875)
-texture = ExtResource("2_xx56i")
+texture = ExtResource("3_rae6p")
 
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 241.0

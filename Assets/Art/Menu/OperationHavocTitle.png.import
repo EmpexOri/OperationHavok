@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7fab4revb7tp"
-path="res://.godot/imported/OperationHavocTitle.png-11a38bbf4199bf2d685ad0ed73419582.ctex"
+path="res://.godot/imported/OperationHavocTitle.png-d4239eb499b9fe0907b2b2f51d6cc1ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/OperationHavocTitle.png"
-dest_files=["res://.godot/imported/OperationHavocTitle.png-11a38bbf4199bf2d685ad0ed73419582.ctex"]
+source_file="res://Assets/Art/Menu/OperationHavocTitle.png"
+dest_files=["res://.godot/imported/OperationHavocTitle.png-d4239eb499b9fe0907b2b2f51d6cc1ae.ctex"]
 
 [params]
 

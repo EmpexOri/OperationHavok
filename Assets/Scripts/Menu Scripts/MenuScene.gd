@@ -3,7 +3,7 @@ extends Node2D
 func OnPlayButtonPressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.LevelOneMusic()
-	get_tree().change_scene_to_file("res:///Scenes/PlaygroundScene.tscn")
+	get_tree().change_scene_to_file("res:///Scenes/LevelSelectScene.tscn")
 
 
 func OnOptionsButtonPressed() -> void:
