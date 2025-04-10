@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc3utn107cunr"
-path="res://.godot/imported/Jerma.jpg-69cb23d3f8da95e2adccad3a7ab3d0ec.ctex"
+uid="uid://byipaxhhoaxpd"
+path="res://.godot/imported/MenuBG.png-d518b1c68421d047f3cbcb0d697761d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Jerma.jpg"
-dest_files=["res://.godot/imported/Jerma.jpg-69cb23d3f8da95e2adccad3a7ab3d0ec.ctex"]
+source_file="res://Assets/Art/Menu/MenuBG.png"
+dest_files=["res://.godot/imported/MenuBG.png-d518b1c68421d047f3cbcb0d697761d0.ctex"]
 
 [params]
 

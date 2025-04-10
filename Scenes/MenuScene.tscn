@@ -1,15 +1,29 @@
 [gd_scene load_steps=4 format=3 uid="uid://kjmdqey636rw"]
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
-[ext_resource type="Texture2D" uid="uid://cc3utn107cunr" path="res://Assets/Art/Jerma.jpg" id="2_rae6p"]
 [ext_resource type="Texture2D" uid="uid://b7fab4revb7tp" path="res://Assets/Art/Menu/OperationHavocTitle.png" id="3_rae6p"]
+[ext_resource type="Texture2D" uid="uid://byipaxhhoaxpd" path="res://Assets/Art/Menu/MenuBG.png" id="4_vg0ck"]
 
 [node name="MenuScene" type="Node2D"]
 script = ExtResource("1_36iol")
 
-[node name="Jerma" type="Sprite2D" parent="."]
-position = Vector2(319, 187)
-texture = ExtResource("2_rae6p")
+[node name="Button" type="Button" parent="."]
+offset_left = 116.0
+offset_top = 29.0
+offset_right = 525.0
+offset_bottom = 93.0
+disabled = true
+action_mode = 0
+button_mask = 0
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 116.0
+offset_top = 29.0
+offset_right = 525.0
+offset_bottom = 93.0
+disabled = true
+action_mode = 0
+button_mask = 0
 
 [node name="OperationHavocTitle" type="Sprite2D" parent="."]
 position = Vector2(320, 65)
@@ -36,6 +50,11 @@ offset_top = 236.0
 offset_right = 403.0
 offset_bottom = 267.0
 text = "Quit"
+
+[node name="MenuBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(319, 180)
+texture = ExtResource("4_vg0ck")
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="OnOptionsButtonPressed"]
