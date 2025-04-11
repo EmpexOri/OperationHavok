@@ -25,7 +25,6 @@ func _ready():
 	
 	# Retrieve the class-specific MoveSpeed and BulletSpeed from Global
 	MoveSpeed = Global.ClassData[Global.CurrentClass]["MoveSpeed"]
-	BulletSpeed = Global.ClassData[Global.CurrentClass]["BulletSpeed"]
 	
 	equip_weapon(StartingWeapon) # Equip our starting weapon
 	
@@ -136,9 +135,14 @@ func ActivatePerk(index: int):
 	if index < perks.size():
 		var perk_name = perks[index]
 		print("Activating perk: " + perk_name)
-		# Load and execute the perk script dynamically
-		var perk_script = load("res://Assets/Scripts/Player Scripts/Abilities/" + perk_name + ".gd").new()
-		perk_script.activate(self)  # Pass the player as the activator
+		var scene_path = "res://Scenes/Abilities/" + perk_name + ".tscn"
+		if ResourceLoader.exists(scene_path):
+			var perk_scene = load(scene_path)
+			var perk_instance = perk_scene.instantiate()
+			add_child(perk_instance)
+			perk_instance.activate(self)
+		else:
+			print("Could not find perk scene at: " + scene_path)
 
 		
 func equip_weapon(WeaponScene: PackedScene):
