@@ -2,7 +2,7 @@ extends Node
 
 var PlayerHP: int = 100
 var PlayerHPMax: int = 100
-var CurrentClass: String = "Commando" # Default class for now
+var CurrentClass: String # Class
 
 var ClassData = {
 	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "Perks": []},

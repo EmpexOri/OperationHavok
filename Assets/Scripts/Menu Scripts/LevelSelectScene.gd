@@ -31,7 +31,6 @@ func _on_class_select_button_pressed() -> void:
 	TechnomancerButton.visible = true
 	CommandoImage.visible = true
 	TechnomancerImage.visible = true
-	
 
 
 func _on_level_select_button_pressed() -> void:
@@ -42,3 +41,11 @@ func _on_level_select_button_pressed() -> void:
 	TechnomancerButton.visible = false
 	CommandoImage.visible = false
 	TechnomancerImage.visible = false
+
+
+func _on_commando_button_pressed() -> void:
+	Global.CurrentClass = "Commando"
+
+
+func _on_technomancer_button_pressed() -> void:
+	Global.CurrentClass = "Technomancer"
