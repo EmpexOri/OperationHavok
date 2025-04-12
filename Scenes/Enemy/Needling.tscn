@@ -18,7 +18,7 @@ script = ExtResource("1_lx0aw")
 shape = SubResource("RectangleShape2D_lx0aw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.9, 0.9, 0, 1)
+modulate = Color(0.9, 0.9, 0, 0.2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_na2k3")
 

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
+@onready var sprite = $Sprite2D
 
 var Speed = 120
 var Health = 40
@@ -61,7 +62,14 @@ func _physics_process(_delta):
 	
 	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100):
 		velocity = Vector2(0, 0)
+		sprite.modulate.a = 0.2 # 20% visible
+	elif IsMovingRandomly:
+		Speed = 60 # Half Speed
+		sprite.modulate.a = 0.65 # 65% visible
+		velocity = Direction * Speed
 	else:
+		Speed = 120 # Full Speed
+		sprite.modulate.a = 1 # 100% visible
 		velocity = Direction * Speed
 		
 	look_at(target_pos)
