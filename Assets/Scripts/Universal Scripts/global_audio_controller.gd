@@ -9,6 +9,9 @@ func PauseMenuMusic():
 	$Music/PauseMenuSoundtrack.volume_db = -10
 	$Music/PauseMenuSoundtrack.play()
 	
+func STOPPauseMenuMusic():
+	$Music/PauseMenuSoundtrack.stop()
+	
 func DeathSound():
 	$SFX/DeathSound.play()
 	

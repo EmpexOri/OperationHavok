@@ -11,6 +11,7 @@ extends Node
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
 	GlobalAudioController.ClickSound()
+	GlobalAudioController.STOPPauseMenuMusic()
 	
 	if get_tree().paused:
 		get_tree().paused = false
