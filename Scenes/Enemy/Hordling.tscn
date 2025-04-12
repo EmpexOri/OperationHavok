@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpfbnlphsagev"]
+[gd_scene load_steps=5 format=3 uid="uid://cpfbnlphsagev"]
 
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="1_2k26s"]
+[ext_resource type="Script" uid="uid://dspo3pwd2b07v" path="res://Assets/Scripts/Enemy/Hordling.gd" id="1_okkq5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okkq5"]
 size = Vector2(8, 8)
@@ -9,6 +10,7 @@ size = Vector2(8, 8)
 size = Vector2(10, 10)
 
 [node name="Hordling" type="CharacterBody2D"]
+script = ExtResource("1_okkq5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_okkq5")
@@ -22,3 +24,5 @@ texture = ExtResource("1_2k26s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_flyuw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
