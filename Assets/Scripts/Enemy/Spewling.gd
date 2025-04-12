@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+
 var Speed = 130
 var Health = 20
 #var Enemy = preload("res://Scenes/Misc/enemy_2.tscn")
