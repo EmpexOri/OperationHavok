@@ -210,7 +210,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if Invincible == true:
 		return
 		
-	if body.is_in_group("Enemy") or body.is_in_group("Laser"):
+	if body.is_in_group("eEnemy") or body.is_in_group("eLaser"):
 		Damage_Timer.start()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:

@@ -35,7 +35,10 @@ func _physics_process(_delta):
 	else:
 		Player = get_parent().get_node(self.get_path())
 		
-	var Direction = (Player.position - position).normalized()
+	nav.target_position = Player.position
+	var Direction = nav.get_next_path_position() - global_position
+	Direction = Direction.normalized()
+	
 	velocity = Direction * Speed
 	
 	look_at(Player.position)

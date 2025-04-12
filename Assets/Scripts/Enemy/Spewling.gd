@@ -58,7 +58,9 @@ func _physics_process(_delta):
 		#Player = get_parent().get_node(self.get_path())
 		Player = get_parent().get_node("Player")
 	
-	var Direction = (Player.position - position).normalized()
+	nav.target_position = Player.position
+	var Direction = nav.get_next_path_position() - global_position
+	Direction = Direction.normalized()
 	
 	if position.distance_to(Player.position) >= 150:
 		velocity = Direction * Speed
