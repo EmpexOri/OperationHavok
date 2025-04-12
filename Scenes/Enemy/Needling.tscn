@@ -3,28 +3,29 @@
 [ext_resource type="Script" uid="uid://dwkfdvkgdh6gf" path="res://Assets/Scripts/Enemy/Needling.gd" id="1_lx0aw"]
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_na2k3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiju1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx0aw"]
 size = Vector2(8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqp2d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na2k3"]
 size = Vector2(10, 10)
 
 [node name="Needling" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_lx0aw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_kiju1")
+shape = SubResource("RectangleShape2D_lx0aw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.5, 0, 1)
-self_modulate = Color(0.92224, 1, 0.91857, 1)
+modulate = Color(0.9, 0.9, 0, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_na2k3")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 7
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_cqp2d")
+shape = SubResource("RectangleShape2D_na2k3")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

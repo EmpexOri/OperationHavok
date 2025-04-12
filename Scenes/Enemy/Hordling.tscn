@@ -10,6 +10,8 @@ size = Vector2(8, 8)
 size = Vector2(10, 10)
 
 [node name="Hordling" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_okkq5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,7 +23,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_2k26s")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_flyuw")

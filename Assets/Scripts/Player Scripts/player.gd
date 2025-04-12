@@ -175,17 +175,13 @@ func attempt_to_fire():
 
 			if is_horizontal:
 				if direction.x > 0:
-					print("WalkRight")
 					$PlayerSprite/SpriteAnimation.play("WalkRight")
 				if direction.x < 0:
-					print("WalkLeft")
 					$PlayerSprite/SpriteAnimation.play("WalkLeft")
 			else:
 				if direction.x > 0:
-					print("WalkDown")
 					$PlayerSprite/SpriteAnimation.play("WalkDown")
 				if direction.x < 0:
-					print("WalkUp")
 					$PlayerSprite/SpriteAnimation.play("WalkUp")
 
 

@@ -67,7 +67,7 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 	rotation = direction.angle()
 	velocity = direction * speed
 	
-	if entity_owner == "Enemy" or entity_owner == "Enemy2" or entity_owner == "Enemy4":
+	if entity_owner == "Enemy":
 		collision_layer = 4  # Enemy projectile layer
 		collision_mask = 1  # Only collides with players
 	elif entity_owner == "Player":

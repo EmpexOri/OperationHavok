@@ -11,7 +11,7 @@ var CurrentWeapon: Weapon = null
 func _ready():
 	add_to_group("Enemy")
 	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
-	CurrentWeapon.owning_entity = "Needling" # Set the owning entity, used to set collisions for projectile
+	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
 	add_child(CurrentWeapon) # Add our new weapon as a child
 	
 func _process(delta):

@@ -1,9 +1,9 @@
 extends Node2D
 
-var Enemy = preload("res://Scenes/Enemy/Hordling.tscn")
-var Enemy2 = preload("res://Scenes/Enemy/Spewling.tscn")
+var Hordling = preload("res://Scenes/Enemy/Hordling.tscn")
+var Spewling = preload("res://Scenes/Enemy/Spewling.tscn")
 #var Enemy3 = preload("res://Scenes/Misc/enemy_3.tscn")
-var Enemy4 = preload("res://Scenes/Enemy/Needling.tscn")
+var Needling = preload("res://Scenes/Enemy/Needling.tscn")
 
 @onready var PausedLabel: Label = $PausedLayer/Title
 @onready var ResumeButton: Button = $PausedLayer/ResumeButton
@@ -52,7 +52,7 @@ func start_spawn_timer1():
 	timer.start()
 
 func spawn_enemy1():
-	var EnemyInstance = Enemy.instantiate()
+	var EnemyInstance = Hordling.instantiate()
 	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
 	var viewport = get_viewport_rect().size
 	var random_x = randf_range(0, viewport.x)  # Random X position
@@ -73,7 +73,7 @@ func start_spawn_timer2():
 	timer.start()
 
 func spawn_enemy2():
-	var EnemyInstance = Enemy2.instantiate()
+	var EnemyInstance = Spewling.instantiate()
 	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
 	var viewport = get_viewport_rect().size
 	var random_x = randf_range(0, viewport.x)  # Random X position
@@ -116,7 +116,7 @@ func start_spawn_timer4():
 	timer.start()
 
 func spawn_enemy4():
-	var EnemyInstance = Enemy4.instantiate()
+	var EnemyInstance = Needling.instantiate()
 	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
 	var viewport = get_viewport_rect().size
 	var random_x = randf_range(0, viewport.x)  # Random X position
