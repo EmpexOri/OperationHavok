@@ -121,9 +121,9 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ffkdq")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w5l6p"]
-vertices = PackedVector2Array(21, 14.9766, 635, 14.0078, 372.148, 141.273, 277.539, 138.711, 635, 348, 370.852, 228, 21, 348, 281.43, 228)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 0, 3, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(11, 5, 645, 4, 645, 358, 11, 358), PackedVector2Array(288, 149, 291, 218, 361, 218, 362, 151)])
+vertices = PackedVector2Array(18, 12, 638, 12, 372.148, 141.273, 277.539, 138.711, 18, 352, 281.43, 228, 638, 352, 370.852, 228)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(2, 1, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(8, 2, 648, 2, 648, 362, 8, 362), PackedVector2Array(288, 149, 291, 218, 361, 218, 362, 151)])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_3kogm")

@@ -4,11 +4,14 @@ extends CharacterBody2D
 
 var Speed = 120
 var Health = 40
-#var Enemy = preload("res://Scenes/Misc/enemy_4.tscn")
 var BulletSpeed = 900
 var Target = "Player"
 var WeaponScene = preload("res://Scenes/Weapons/enemy_sniper.tscn") 
 var CurrentWeapon: Weapon = null
+
+var ShotsFired = 0
+var ShotsBeforeMoving = randi_range(1, 3)
+var IsMovingRandomly = false
 
 func _ready():
 	add_to_group("Enemy")
@@ -17,9 +20,9 @@ func _ready():
 	add_child(CurrentWeapon) # Add our new weapon as a child
 	
 	var firetimer = Timer.new()
-	firetimer.wait_time = randf_range(2, 4)  # Fire every 2-4 seconds
+	firetimer.wait_time = randf_range(2, 4) # Fire every 2-4 seconds
 	firetimer.one_shot = false
-	firetimer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
+	firetimer.connect("timeout", Callable(self, "fire"))
 	firetimer.autostart = true
 	add_child(firetimer)
 	
@@ -27,39 +30,52 @@ func _process(delta):
 	if Health <= 0:
 		for i in range(3):
 			drop_xp()
-		queue_free()	
-
+		queue_free()
+		
 func _physics_process(_delta):
-	var Player
-	if is_in_group("Enemy"):
-		Player = get_parent().get_node(Target)
-	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
-		Player = get_parent().get_node(Target)
-	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and not is_instance_valid(Target):
-		if get_tree().get_nodes_in_group("Enemy").size() > 0:
-			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
-			Player = get_parent().get_node(Target)
-	else:
-		Player = get_parent().get_node(self.get_path())
+	var target_pos: Vector2
 	
-	nav.target_position = Player.position
+	if IsMovingRandomly:
+		target_pos = nav.target_position
+		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
+			IsMovingRandomly = false
+			velocity = Vector2(0, 0)
+	else:
+		var Player
+		if is_in_group("Enemy"):
+			Player = get_parent().get_node(Target)
+		elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
+			Player = get_parent().get_node(Target)
+		elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and not is_instance_valid(Target):
+			if get_tree().get_nodes_in_group("Enemy").size() > 0:
+				Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
+				Player = get_parent().get_node(Target)
+		else:
+			Player = get_parent().get_node(self.get_path())
+		
+		target_pos = Player.position
+		nav.target_position = target_pos
+	
 	var Direction = nav.get_next_path_position() - global_position
 	Direction = Direction.normalized()
 	
-	if position.distance_to(Player.position) >= 100:
+	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100):
 		velocity = Vector2(0, 0)
 	else:
 		velocity = Direction * Speed
-	
-	look_at(Player.position)
+		
+	look_at(target_pos)
 	move_and_slide()
 	
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)	
-
+	position.y = clamp(position.y, 0, screen_size.y)
+	
 func fire():
 	var Player = get_parent().get_node(Target)
+	if IsMovingRandomly or velocity.length() > 1:
+		return # Don't fire while moving
+	
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
 	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
@@ -73,10 +89,27 @@ func fire():
 		return
 	
 	if CurrentWeapon:
-		var direction_to_player = (Player.global_position - global_position).normalized() # Get direction to player
-		CurrentWeapon.attempt_to_fire(global_position, direction_to_player) # Call weapons attempt to fire method
+		var direction_to_player = (Player.global_position - global_position).normalized()
+		CurrentWeapon.attempt_to_fire(global_position, direction_to_player)
+		
+		ShotsFired += 1
+		if ShotsFired >= ShotsBeforeMoving:
+			random_move()
+			
+func random_move():
+	IsMovingRandomly = true
+	ShotsFired = 0
+	ShotsBeforeMoving = randi_range(1, 3)
 	
-
+	var offset = Vector2(randf_range(-200, 200), randf_range(-200, 200))
+	var target_pos = global_position + offset
+	
+	var screen_size = get_viewport_rect().size
+	target_pos.x = clamp(target_pos.x, 0, screen_size.x)
+	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
+	
+	nav.target_position = target_pos
+	
 func drop_xp():
 	# Create XP pickup
 	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
@@ -91,22 +124,20 @@ func drop_xp():
 	pickup = PickupFactory.try_chance_pickup(position)
 	if pickup:
 		get_parent().add_child(pickup)
-
+		
 func deal_damage(damage):
 	Health -= damage
-
+	
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
 		body.deal_damage(10)
-		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
-		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly
+		var bounce_target = global_position + (Direction * Speed * 0.3) # Move back slightly
 		
-		# Use Tween for smooth movement
 		var Inbe_tween = get_tree().create_tween()
 		Inbe_tween.tween_property(self, "global_position", bounce_target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-		await Inbe_tween.finished  # Wait for the tween to finish
+		
+		await Inbe_tween.finished # Wait for the tween to finish
 		return
 		
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
