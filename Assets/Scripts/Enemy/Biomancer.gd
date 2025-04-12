@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-var Speed = 0
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+
+var Speed = 170
 var Health = 20
 var FleshSpawn = preload("res://Scenes/Enemy/FleshSpawn.tscn")
 var Group = "Enemy"
@@ -20,7 +22,9 @@ func _process(delta):
 		queue_free()
 	
 func _physics_process(_delta):
+	var target_pos: Vector2
 	var Player
+	
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
 	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
@@ -32,10 +36,18 @@ func _physics_process(_delta):
 	else:
 		Player = get_parent().get_node(self.get_path())
 		
-	var Direction = (Player.position - position).normalized()
-	velocity = Direction * Speed
+	target_pos = Player.position
+	nav.target_position = target_pos
 	
-	look_at(Player.position)
+	var Direction = nav.get_next_path_position() - global_position
+	Direction = Direction.normalized()
+	
+	if position.distance_to(target_pos) >= 150:
+		velocity = Vector2(0, 0)
+	else:
+		velocity = -Direction * Speed
+		
+	look_at(target_pos)
 	move_and_slide()
 	
 	var screen_size = get_viewport_rect().size

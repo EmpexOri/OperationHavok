@@ -13,8 +13,8 @@ var Needling = preload("res://Scenes/Enemy/Needling.tscn")
 func _ready():
 	#start_spawn_timer1()
 	#start_spawn_timer2()
-	#start_spawn_timer3()
-	start_spawn_timer4()
+	start_spawn_timer3()
+	#start_spawn_timer4()
 	
 	# Pause screen assets
 	PausedLabel.visible = false

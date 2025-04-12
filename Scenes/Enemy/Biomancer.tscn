@@ -28,4 +28,9 @@ texture = ExtResource("2_6dopy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_r81sr")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.2, 0.2, 0.2, 1)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
