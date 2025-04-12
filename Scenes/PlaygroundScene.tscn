@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=29 format=3 uid="uid://kmijtn114svf"]
 
 [ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
@@ -6,18 +6,106 @@
 [ext_resource type="Texture2D" uid="uid://dydgl2851ea6v" path="res://Assets/Art/grid.jpg" id="3_kfju6"]
 [ext_resource type="Script" uid="uid://cvs7x0y7n8u5s" path="res://Assets/Scripts/Universal Scripts/background.gd" id="4_aly1e"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/XPCircle.png" id="4_d0q0w"]
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="4_qruto"]
 [ext_resource type="PackedScene" uid="uid://ccv3fxn55gofe" path="res://Scenes/Misc/enemy.tscn" id="5_aly1e"]
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
 [ext_resource type="PackedScene" uid="uid://btmobglafrxdx" path="res://Scenes/Misc/enemy_2.tscn" id="6_w5l6p"]
 [ext_resource type="PackedScene" uid="uid://hugp881sope0" path="res://Scenes/Misc/enemy_3.tscn" id="7_wlc0k"]
 [ext_resource type="PackedScene" uid="uid://djdmgiabwutdt" path="res://Scenes/Misc/enemy_4.tscn" id="8_1cxn6"]
+[ext_resource type="Texture2D" uid="uid://c3cr3biyxxrtb" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="9_3kogm"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="13_1cxn6"]
 [ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/SuspiciousStew.png" id="15_3kogm"]
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/ControlsBg.png" id="15_twjg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0q0w"]
 size = Vector2(8.7, 8.7)
+
+[sub_resource type="Animation" id="Animation_twjg6"]
+resource_name = "WalkRight"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_keglp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_3kogm"]
+resource_name = "WalkLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ayg5y"]
+resource_name = "WalkUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29]
+}
+
+[sub_resource type="Animation" id="Animation_ffkdq"]
+resource_name = "WalkDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ayg5y"]
+_data = {
+&"RESET": SubResource("Animation_keglp"),
+&"WalkDown": SubResource("Animation_ffkdq"),
+&"WalkLeft": SubResource("Animation_3kogm"),
+&"WalkRight": SubResource("Animation_twjg6"),
+&"WalkUp": SubResource("Animation_ayg5y")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kogm"]
 size = Vector2(10, 10)
@@ -111,10 +199,19 @@ script = ExtResource("5_w5l6p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_d0q0w")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
 modulate = Color(0.8, 1, 1, 1)
+texture_filter = 1
 scale = Vector2(0.55, 0.55)
-texture = ExtResource("4_qruto")
+texture = ExtResource("9_3kogm")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="SpriteAnimation" type="AnimationPlayer" parent="Player/PlayerSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_ayg5y")
+}
 
 [node name="Area2D" type="Area2D" parent="Player"]
 

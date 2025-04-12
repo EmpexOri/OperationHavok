@@ -51,12 +51,15 @@ func _physics_process(_delta):
 	if not IsDodging:  # Normal movement
 		if Input.is_action_pressed("up"):
 			Motion.y -= 1
+			$PlayerSprite/SpriteAnimation.play("WalkUp")
 		if Input.is_action_pressed("down"):
 			Motion.y += 1
+			$PlayerSprite/SpriteAnimation.play("WalkDown")
 		if Input.is_action_pressed("left"):
 			Motion.x -= 1
 		if Input.is_action_pressed("right"):
 			Motion.x += 1
+			$PlayerSprite/SpriteAnimation.play("WalkRight")
 
 		if Input.is_action_just_pressed("space") and CanDodge:
 			dodge(Motion.normalized())
