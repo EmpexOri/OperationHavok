@@ -14,24 +14,29 @@ func _ready():
 	add_to_group("Enemy")
 	OrbitDirection = [-1, 1].pick_random()
 	
-	var timer = Timer.new()
-	timer.wait_time = randf_range(3, 6)  # Change direction every 3-6 seconds
-	timer.one_shot = false
-	timer.connect("timeout", Callable(self, "orbit_direction_change")) # Executes the spawn function once timer has ended
-	timer.autostart = true
-	add_child(timer)
+	var orbittimer = Timer.new()
+	orbittimer.wait_time = randf_range(3, 6)  # Change direction every 3-6 seconds
+	orbittimer.one_shot = false
+	orbittimer.connect("timeout", Callable(self, "orbit_direction_change")) # Executes the spawn function once timer has ended
+	orbittimer.autostart = true
+	add_child(orbittimer)
 	
 	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
 	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
 	add_child(CurrentWeapon) # Add our new weapon as a child
+	
+	var firetimer = Timer.new()
+	firetimer.wait_time = randf_range(2, 3)  # Fire every 2-3 seconds
+	firetimer.one_shot = false
+	firetimer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
+	firetimer.autostart = true
+	add_child(firetimer)
 	
 func _process(delta):
 	if Health <= 0:
 		for i in range(2):
 			drop_xp()
 		queue_free()
-	
-	fire()
 	
 func orbit_direction_change():
 	OrbitDirection *= -1

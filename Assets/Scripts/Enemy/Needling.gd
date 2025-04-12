@@ -14,13 +14,18 @@ func _ready():
 	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
 	add_child(CurrentWeapon) # Add our new weapon as a child
 	
+	var firetimer = Timer.new()
+	firetimer.wait_time = randf_range(2, 4)  # Fire every 2-4 seconds
+	firetimer.one_shot = false
+	firetimer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
+	firetimer.autostart = true
+	add_child(firetimer)
+	
 func _process(delta):
 	if Health <= 0:
 		for i in range(3):
 			drop_xp()
 		queue_free()	
-	
-	fire()
 
 func _physics_process(_delta):
 	var Player
