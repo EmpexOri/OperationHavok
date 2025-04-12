@@ -57,6 +57,7 @@ func _physics_process(_delta):
 			$PlayerSprite/SpriteAnimation.play("WalkDown")
 		if Input.is_action_pressed("left"):
 			Motion.x -= 1
+			$PlayerSprite/SpriteAnimation.play("WalkLeft")
 		if Input.is_action_pressed("right"):
 			Motion.x += 1
 			$PlayerSprite/SpriteAnimation.play("WalkRight")
