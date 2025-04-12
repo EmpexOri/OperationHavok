@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs1ufqbb6uouj"]
+[gd_scene load_steps=2 format=3 uid="uid://bs1ufqbb6uouj"]
 
 [ext_resource type="Script" uid="uid://cqumv2fdtsqjp" path="res://Assets/Scripts/Player Scripts/Abilities/SniperBeam.gd" id="1_gp4yv"]
-[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Scenes/Projectiles/projectile.tscn" id="2_ll2tm"]
 
 [node name="SniperBeam" type="Node2D"]
 script = ExtResource("1_gp4yv")
-projectile_scene = ExtResource("2_ll2tm")
