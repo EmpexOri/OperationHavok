@@ -75,8 +75,6 @@ func _physics_process(_delta):
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 	
-	look_at(get_global_mouse_position())
-	
 func dodge(Direction: Vector2):
 	var Collision = get_node("CollisionShape2D")
 	if Direction == Vector2.ZERO:
@@ -170,7 +168,27 @@ func attempt_to_fire():
 				return
 		else:
 			direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
-		
+
+		if direction.length() > 0:
+			var is_horizontal = abs(direction.x) > abs(direction.y)
+
+			if is_horizontal:
+				if direction.x > 0:
+					print("WalkRight")
+					$PlayerSprite/SpriteAnimation.play("WalkRight")
+				if direction.x < 0:
+					print("WalkLeft")
+					$PlayerSprite/SpriteAnimation.play("WalkLeft")
+			else:
+				if direction.x > 0:
+					print("WalkDown")
+					$PlayerSprite/SpriteAnimation.play("WalkDown")
+				if direction.x < 0:
+					print("WalkUp")
+					$PlayerSprite/SpriteAnimation.play("WalkUp")
+
+
+			
 		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
 func deal_damage(damage):
