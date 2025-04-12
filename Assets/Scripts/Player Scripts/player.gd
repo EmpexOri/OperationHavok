@@ -12,6 +12,7 @@ var IsFiring = false
 var CanDodge = true
 var IsDodging = false
 var IsUsingAbility = false
+var PerkCooldowns = {}
 
 var Invincible = false
 
@@ -133,6 +134,10 @@ func _input(event):
 	#	ActivatePerk(3)
 
 func ActivatePerk(index: int):
+	if PerkCooldowns.has(index) and PerkCooldowns[index]:
+		print("Perk", index, "is on cooldown.")
+		return
+		
 	var perks = Global.ClassData[Global.CurrentClass]["Perks"]
 	if index < perks.size():
 		var perk_name = perks[index]
@@ -142,11 +147,18 @@ func ActivatePerk(index: int):
 			var perk_scene = load(scene_path)
 			var perk_instance = perk_scene.instantiate()
 			add_child(perk_instance)
-			perk_instance.activate(self)
+			perk_instance.activate(self, index)
+			PerkCooldowns[index] = true
+
+			if perk_instance.has_signal("perk_finished"):
+				perk_instance.connect("perk_finished", Callable(self, "_on_perk_cooldown_finished"))
 		else:
 			print("Could not find perk scene at: " + scene_path)
 
-		
+func _on_perk_cooldown_finished(index: int):
+	PerkCooldowns[index] = false
+	print("Perk", index, "is now off cooldown.")
+
 func equip_weapon(WeaponScene: PackedScene):
 	if CurrentWeapon:
 		CurrentWeapon.queue_free() # Free our current weapon
