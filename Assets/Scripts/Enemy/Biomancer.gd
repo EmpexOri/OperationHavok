@@ -1,3 +1,4 @@
+# TODO: GIVE THIS CLASS MORE FEATURES FOR IT TO FEEL LIKE AN ACTUAL ROUGH CLONE OF THE TECHNOMANCER
 extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
@@ -42,6 +43,7 @@ func _physics_process(_delta):
 	var Direction = nav.get_next_path_position() - global_position
 	Direction = Direction.normalized()
 	
+	# TODO: FIGURE OUT A BETTER WAY FOR THE BIOMANCER TO RUN AWAY
 	if position.distance_to(target_pos) >= 150:
 		velocity = Vector2(0, 0)
 	else:
