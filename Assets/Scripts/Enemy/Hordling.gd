@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+
 var Speed = 180
 var Health = 60
 #var Enemy = preload("res://Scenes/Misc/enemy.tscn")
@@ -17,6 +19,7 @@ func _process(delta):
 
 func _physics_process(_delta):
 	var Player
+	
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
 	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
@@ -28,7 +31,11 @@ func _physics_process(_delta):
 	else:
 		Player = get_parent().get_node(self.get_path())
 	
-	var Direction = (Player.position - position).normalized()
+	nav.target_position = Player.position
+	#Direction = (Player.position - position).normalized()
+	var Direction = nav.get_next_path_position() - global_position
+	Direction = Direction.normalized()
+	#velocity = Direction * Speed
 	velocity = Direction * Speed
 	
 	look_at(Player.position)

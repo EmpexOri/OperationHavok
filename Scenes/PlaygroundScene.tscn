@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=26 format=3 uid="uid://kmijtn114svf"]
 
 [ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
@@ -119,6 +119,11 @@ VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_twjg6")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ayg5y")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ffkdq")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_w5l6p"]
+vertices = PackedVector2Array(21, 14.9766, 635, 14.0078, 372.148, 141.273, 277.539, 138.711, 635, 348, 370.852, 228, 21, 348, 281.43, 228)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 0, 3, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(11, 5, 645, 4, 645, 358, 11, 358), PackedVector2Array(288, 149, 291, 218, 361, 218, 362, 151)])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_3kogm")
@@ -463,6 +468,9 @@ vertical_alignment = 1
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2
 script = ExtResource("13_1cxn6")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_w5l6p")
 
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_area_2d_body_exited"]
