@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb0qq7tf5boik"]
+
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Scenes/Projectiles/projectile.tscn" id="1_ebkul"]
+[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Bullet.png" id="2_6ghgv"]
+
+[node name="Bullet" instance=ExtResource("1_ebkul")]
+base_speed = 250.0
+base_damage = 10.0
+base_lifetime = 5.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6ghgv")
