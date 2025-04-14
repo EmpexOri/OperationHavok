@@ -4,7 +4,7 @@ var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 #var Mode = "fire"
 var Damage_Timer = Timer.new()
 
-var StartingWeapon = preload("res://Scenes/Weapons/smg.tscn") # Starting weapon
+var StartingWeapon = preload("res://Scenes/Weapons/shotgun.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
 

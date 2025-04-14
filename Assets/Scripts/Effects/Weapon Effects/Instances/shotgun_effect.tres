@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShotgunSpreadEffect" load_steps=2 format=3 uid="uid://dsgjo7ac13qew"]
+
+[ext_resource type="Script" uid="uid://wwee4860hgms" path="res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd" id="1_3hos6"]
+
+[resource]
+script = ExtResource("1_3hos6")
+projectile_count = 3
+spread_angle = 10.0
+effect_name = ""
+metadata/_custom_type_script = "uid://wwee4860hgms"

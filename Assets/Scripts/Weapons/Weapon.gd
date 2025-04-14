@@ -47,7 +47,7 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2):
 func fire(spawn_position: Vector2, direction: Vector2):
 	# Completely ignore firing logic to create complex effects that the below can't handle
 	for effect in weapon_effects:
-		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects):
+		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate()):
 			return # Effect in the weapon effect handled firing, return
 	
 	# Default parameters for weapon firing, i.e. a single bullet with no spread
@@ -91,7 +91,7 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2):
 	
 	var position = spawn_position + direction * fire_offset  # Get the spawn position and offset
 	
-	projectile_instance.start(position, direction, owning_entity, projectile_effects) # Call the start method on the projectile script
+	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate()) # Call the start method on the projectile script
 
 # Adds effects - this is for both weapon and projectile effects (WIP)
 func add_effect(new_effect: Resource):
