@@ -8,4 +8,4 @@ func _ready() -> void:
 	super._ready()
 
 func apply_effect():
-	Global.AddHp(pickup_value)
+	GlobalPlayer.AddHp(pickup_value)

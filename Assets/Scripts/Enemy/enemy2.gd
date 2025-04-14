@@ -129,7 +129,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		sprite.modulate = Color(0.8, 0.9, 1)
 		if get_tree().get_nodes_in_group("Enemy").size() > 0:
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
-			print(Target)
+			#print(Target)
 	elif is_in_group("Minion") and body.is_in_group("Enemy"):
 		await get_tree().process_frame
 		if not is_instance_valid(body) or not body.get_parent():
