@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PenetrationEffect" load_steps=2 format=3 uid="uid://y0ih3u2hwtt8"]
+
+[ext_resource type="Script" uid="uid://bxkwbwtmdvk8p" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd" id="1_jk5i0"]
+
+[resource]
+script = ExtResource("1_jk5i0")
+max_hits = 5
+effect_name = ""
+metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"

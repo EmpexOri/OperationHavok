@@ -9,11 +9,7 @@ class_name Weapon
 
 var current_fire_rate: float # The current fire rate, including any modifications
 
-# TEMPORARY TESTING EFFECTS
-var proj_penetrate = preload("res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd")
-var pen_effect = proj_penetrate.new()
-
-@export var projectile_effects: Array[ProjectileEffect] = [pen_effect] # Array for projectile effects to pass to porjectile
+@export var projectile_effects: Array[ProjectileEffect] = [] # Array for projectile effects to pass to porjectile
 @export var weapon_effects: Array[WeaponEffect] = [] # Array for weapon effects, weapon effects are applied in the weapon
 
 var can_fire:bool = true # Boolean for checking if we can fire
@@ -47,7 +43,7 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2):
 func fire(spawn_position: Vector2, direction: Vector2):
 	# Completely ignore firing logic to create complex effects that the below can't handle
 	for effect in weapon_effects:
-		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate()):
+		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true)):
 			return # Effect in the weapon effect handled firing, return
 	
 	# Default parameters for weapon firing, i.e. a single bullet with no spread
@@ -91,7 +87,7 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2):
 	
 	var position = spawn_position + direction * fire_offset  # Get the spawn position and offset
 	
-	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate()) # Call the start method on the projectile script
+	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate(true)) # Call the start method on the projectile script
 
 # Adds effects - this is for both weapon and projectile effects (WIP)
 func add_effect(new_effect: Resource):

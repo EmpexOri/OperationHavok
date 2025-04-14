@@ -12,7 +12,9 @@ func _init() -> void:
 	effect_name = "Penetrate" # Giggity
 	
 func setup(projectile: Projectile):
-	pass 
+	# For some reason we have to do this as all penetrating projectiles share the same variables
+	current_hits = 0
+	hit_bodies.clear() 
 
 func process_effect(projectile: Projectile, delta: float):
 	pass 

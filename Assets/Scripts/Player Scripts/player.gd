@@ -4,7 +4,7 @@ var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 #var Mode = "fire"
 var Damage_Timer = Timer.new()
 
-var StartingWeapon = preload("res://Scenes/Weapons/shotgun.tscn") # Starting weapon
+var StartingWeapon = preload("res://Scenes/Weapons/smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
 
@@ -28,6 +28,8 @@ func _ready():
 	MoveSpeed = Global.ClassData[Global.CurrentClass]["MoveSpeed"]
 	
 	equip_weapon(StartingWeapon) # Equip our starting weapon
+	var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
+	CurrentWeapon.add_effect(penetrate_effect)
 	
 func damage_timer():
 	Damage_Timer = Timer.new()
