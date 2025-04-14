@@ -25,7 +25,7 @@ func _ready():
 	damage_timer()
 	
 	# Retrieve the class-specific MoveSpeed and BulletSpeed from Global
-	MoveSpeed = Global.ClassData[Global.CurrentClass]["MoveSpeed"]
+	MoveSpeed = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["MoveSpeed"]
 	
 	equip_weapon(StartingWeapon) # Equip our starting weapon
 	var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
@@ -41,11 +41,11 @@ func damage_timer():
 func _process(delta):
 	if IsFiring or (ControllerEnabled and InputEventJoypadMotion):
 		attempt_to_fire()
-	if Global.PlayerHP <= 0:
+	if GlobalPlayer.PlayerHP <= 0:
 		print("DEAD")
 		# Play a sound upon death
 		GlobalAudioController.DeathSound()
-		Global.PlayerHP = Global.PlayerHPMax
+		GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
 		kill()
 	
 func _physics_process(_delta):
@@ -140,7 +140,7 @@ func ActivatePerk(index: int):
 		print("Perk", index, "is on cooldown.")
 		return
 		
-	var perks = Global.ClassData[Global.CurrentClass]["Perks"]
+	var perks = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Perks"]
 	if index < perks.size():
 		var perk_name = perks[index]
 		print("Activating perk: " + perk_name)
@@ -203,7 +203,7 @@ func attempt_to_fire():
 		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
 func deal_damage(damage):
-	Global.PlayerHP -= damage
+	GlobalPlayer.PlayerHP -= damage
 	
 func kill():
 	get_tree().reload_current_scene()

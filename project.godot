@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://Assets/Scripts/Universal Scripts/Global.gd"
 PickupFactory="*res://Assets/Scripts/Pickups/pickup_factory.gd"
 GlobalAudioController="*res://Scenes/GlobalAudioController.tscn"
+GlobalPlayer="*res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd"
 
 [display]
 

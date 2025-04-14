@@ -19,15 +19,15 @@ func _process(_delta):
 func UpdateHealthBar():
 	if HealthBar:
 		#print("HP:", Global.PlayerHP, " / ", Global.PlayerHPMax)
-		HealthBar.max_value = Global.PlayerHPMax
-		HealthBar.value = Global.PlayerHP
+		HealthBar.max_value = GlobalPlayer.PlayerHPMax
+		HealthBar.value = GlobalPlayer.PlayerHP
 
 func UpdateXPBar():
 	if XPCircle:
-		var CurrentClass = Global.CurrentClass
-		var Level = Global.ClassData[CurrentClass]["Level"]
-		var XP = Global.ClassData[CurrentClass]["XP"]
-		var XPNeeded = Global.XPRequiredForLevel(Level)
+		var CurrentClass = GlobalPlayer.CurrentClass
+		var Level = GlobalPlayer.ClassData[CurrentClass]["Level"]
+		var XP = GlobalPlayer.ClassData[CurrentClass]["XP"]
+		var XPNeeded = GlobalPlayer.XPRequiredForLevel(Level)
 
 		#print("XP:", XP, " / ", XPNeeded)
 		XPCircle.max_value = XPNeeded
@@ -35,8 +35,8 @@ func UpdateXPBar():
 
 func UpdateClassInfo():
 	if LevelLabel and ClassLabel:
-		var CurrentClass = Global.CurrentClass
-		var Level = Global.ClassData[CurrentClass]["Level"]
+		var CurrentClass = GlobalPlayer.CurrentClass
+		var Level = GlobalPlayer.ClassData[CurrentClass]["Level"]
 
 		LevelLabel.text = "Level: " + str(Level)
 		ClassLabel.text = "Class: " + CurrentClass
