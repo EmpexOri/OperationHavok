@@ -8,4 +8,5 @@
 [node name="Shotgun" type="Node2D"]
 script = ExtResource("1_0xh1c")
 projectile_scene = ExtResource("2_7b86u")
+base_fire_rate = 1.0
 weapon_effects = Array[ExtResource("3_flskc")]([ExtResource("4_mnmhp")])

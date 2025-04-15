@@ -1,39 +1,41 @@
 extends Node2D
 class_name SniperBeam
 
-signal perk_finished
+signal perk_finished(index: int)
 
-@export var cooldown_time := 5.0 # seconds
-var player = null
-var index = -1
+@export var cooldown_time: float = 1.0
 
-var beam_scene = preload("res://Prefabs/Weapons/beamer.tscn")
+var smg_scene := preload("res://Prefabs/Weapons/Smg.tscn")
+var shotgun_scene := preload("res://Prefabs/Weapons/beamer.tscn")
 
-func activate(p, i):
-	# Store references, because this is a VERY angry script ;-;
-	player = p
-	index = i
+var perk_index: int
 
-	# Simulate "firing" the Sniper Beam
-	print("[SniperBeam] Activated by player: ", player.name)
-	print("[SniperBeam] Charging super beam...")
-	print("[SniperBeam] BOOM! Sniper beam fired across the map.")
-	
-	# Simulate delay if needed before cooldown starts, for now this is just the best
-	# (Here you can wait a second or so for flavor, but we just start cooldown l8r)
-	start_cooldown()
+func activate(player, index = -1):
+	perk_index = index
 
-func start_cooldown():
-	print("[SniperBeam] Cooldown started for ", cooldown_time, " seconds.")
-	
+	if not player or not player.CurrentWeapon:
+		queue_free()
+		return
+
+	var current_weapon_scene = player.CurrentWeapon.scene_file_path
+
+	# Swap logic
+	if current_weapon_scene == smg_scene.resource_path:
+		player.equip_weapon(shotgun_scene)
+		print("Swapped to Shotgun!")
+	else:
+		player.equip_weapon(smg_scene)
+		print("Swapped to SMG!")
+
+	# Start cooldown timer
 	var cooldown_timer := Timer.new()
-	cooldown_timer.wait_time = cooldown_time
 	cooldown_timer.one_shot = true
-	cooldown_timer.connect("timeout", Callable(self, "_on_cooldown_finished"))
+	cooldown_timer.wait_time = cooldown_time
+	cooldown_timer.timeout.connect(_cooldown_complete)
 	add_child(cooldown_timer)
 	cooldown_timer.start()
 
-func _on_cooldown_finished():
-	print("[SniperBeam] Cooldown finished. Perk ready to use again.")
-	emit_signal("perk_finished", index)
+func _cooldown_complete():
+	print("Weapon swap cooldown complete.")
+	emit_signal("perk_finished", perk_index)
 	queue_free()
