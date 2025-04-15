@@ -7,6 +7,8 @@ signal perk_finished
 var player = null
 var index = -1
 
+var beam_scene = preload("res://Prefabs/Weapons/beamer.tscn")
+
 func activate(p, i):
 	# Store references, because this is a VERY angry script ;-;
 	player = p

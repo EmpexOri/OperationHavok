@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://blfxsqho34haf"]
+[gd_scene load_steps=3 format=3 uid="uid://blfxsqho34haf"]
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_wl2v8"]
+[ext_resource type="Script" uid="uid://dkmb22ot6ssvx" path="res://Assets/Scripts/Projectiles/beam_projectile.gd" id="2_qsfej"]
 
 [node name="BeamProjectile" instance=ExtResource("1_wl2v8")]
+script = ExtResource("2_qsfej")
+range = 1000.0
+width = 5.0
 base_speed = 0.0
 base_damage = 5.0
 base_lifetime = 0.1
+
+[node name="CollisionShape2D" parent="." index="0"]
+disabled = true
+
+[node name="Sprite2D" parent="." index="1"]
+visible = false
 
 [node name="Line2D" type="Line2D" parent="." index="4"]
