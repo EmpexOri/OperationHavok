@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blfxsqho34haf"]
+
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_wl2v8"]
+
+[node name="BeamProjectile" instance=ExtResource("1_wl2v8")]
+base_speed = 0.0
+base_damage = 5.0
+base_lifetime = 0.1
+
+[node name="Line2D" type="Line2D" parent="." index="4"]
