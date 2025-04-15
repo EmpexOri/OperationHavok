@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_3hos6")
 projectile_count = 9
-spread_angle = 30.0
+spread_angle = 45.0
 effect_name = ""
 metadata/_custom_type_script = "uid://wwee4860hgms"

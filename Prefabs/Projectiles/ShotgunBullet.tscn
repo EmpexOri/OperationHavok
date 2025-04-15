@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Bullet.png" id="2_6ghgv"]
 
 [node name="Bullet" instance=ExtResource("1_ebkul")]
-base_speed = 250.0
+base_speed = 350.0
 base_damage = 10.0
-base_lifetime = 1.0
+base_lifetime = 0.5
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708

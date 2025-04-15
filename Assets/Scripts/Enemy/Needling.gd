@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 
 var Speed = 120
-var Health = 40
+var Health = 80
 var BulletSpeed = 900
 var Target = "Player"
 var WeaponScene = preload("res://Prefabs/Weapons/enemy_sniper.tscn") 
