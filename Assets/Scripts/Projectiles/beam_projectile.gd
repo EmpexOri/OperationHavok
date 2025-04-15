@@ -4,6 +4,8 @@ class_name BeamProjectile
 @export var range: float = 1000.0 # How far the beam will shoot
 @export var width: float = 5.0 # The width of the beam
 
+var original_width: float = width
+
 var start_point: Vector2 # The start point of the beam
 var end_point: Vector2 # The end point of the beam
 
@@ -62,11 +64,19 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 	end_point = start_point + direction * range
 	beam.points = [Vector2.ZERO, to_local(end_point)]
 	
+# Give the beam some effect over time for some flair
+func _physics_process(delta: float) -> void:
+	if lifetime_timer.time_left > 0 and lifetime > 0:
+		var remaining_ratio = clamp(lifetime_timer.time_left, 0.0, 1.0)
+		beam.width = lerp(0.0, original_width, remaining_ratio)
+	else:
+		beam.width = 0.0
+	
 # No movement on beam, override and pass
 func _handle_movement(delta: float):
 	pass
 
-# Collision will be handled by a ray query, override and pass
+# Collision will be handled by a shape query, override and pass
 func _on_body_entered(body: Node2D):
 	pass
 	
