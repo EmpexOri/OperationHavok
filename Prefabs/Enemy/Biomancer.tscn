@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtra84e58gsn7"]
 
-[ext_resource type="Script" uid="uid://g04nhdfw0ljv" path="res://Assets/Scripts/Enemy/Biomancer.gd" id="1_caht0"]
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_6dopy"]
+[ext_resource type="Script" uid="uid://g04nhdfw0ljv" path="res://Assets/Scripts/Enemy/Biomancer.gd" id="1_seddk"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_bj3rp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry4u2"]
 size = Vector2(8, 8)
@@ -12,7 +12,7 @@ size = Vector2(10, 10)
 [node name="Biomancer" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_caht0")
+script = ExtResource("1_seddk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ry4u2")
@@ -20,7 +20,7 @@ shape = SubResource("RectangleShape2D_ry4u2")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.92224, 1, 0.91857, 1)
-texture = ExtResource("2_6dopy")
+texture = ExtResource("2_bj3rp")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cs50r6rvu7wkt"]
 
-[ext_resource type="Script" uid="uid://c0hgctv1iqivd" path="res://Assets/Scripts/Enemy/FleshSpawn.gd" id="1_qovsp"]
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_vlvym"]
+[ext_resource type="Script" uid="uid://c0hgctv1iqivd" path="res://Assets/Scripts/Enemy/FleshSpawn.gd" id="1_d12lp"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_tum4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gceeu"]
 size = Vector2(8, 8)
@@ -12,7 +12,7 @@ size = Vector2(10, 10)
 [node name="FleshSpawn" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_qovsp")
+script = ExtResource("1_d12lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gceeu")
@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_gceeu")
 modulate = Color(0, 0.5, 0, 1)
 self_modulate = Color(0.92224, 1, 0.91857, 1)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_vlvym")
+texture = ExtResource("2_tum4o")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ea2tpxi7xyf1"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_vhr3s"]
-[ext_resource type="PackedScene" uid="uid://lg400q3grkqe" path="res://Scenes/Projectiles/enemy_bullet.tscn" id="2_7wnh3"]
+[ext_resource type="PackedScene" uid="uid://lg400q3grkqe" path="res://Prefabs/Projectiles/enemy_bullet.tscn" id="2_7wnh3"]
 
 [node name="EnemySniper" type="Node2D"]
 script = ExtResource("1_vhr3s")

@@ -5,8 +5,8 @@ signal perk_finished(index: int)
 
 @export var cooldown_time: float = 1.0
 
-var smg_scene := preload("res://Scenes/Weapons/smg.tscn")
-var shotgun_scene := preload("res://Scenes/Weapons/shotgun.tscn")
+var smg_scene := preload("res://Prefabs/Weapons/Smg.tscn")
+var shotgun_scene := preload("res://Prefabs/Weapons/shotgun.tscn")
 
 var perk_index: int
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://daqiiu34kfw4u"]
+
+[ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_dv7al"]
+[ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/Projectiles/bullet.tscn" id="2_pjv2k"]
+
+[node name="Smg" type="Node2D"]
+script = ExtResource("1_dv7al")
+projectile_scene = ExtResource("2_pjv2k")
+base_fire_rate = 0.1

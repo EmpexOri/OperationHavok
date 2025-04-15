@@ -9,7 +9,7 @@ var OrbitSpeed = 50
 var OrbitDirection
 var BulletSpeed = 800
 var Target = "Player"
-var WeaponScene = preload("res://Scenes/Weapons/enemy_sniper.tscn") 
+var WeaponScene = preload("res://Prefabs/Weapons/enemy_sniper.tscn") 
 var CurrentWeapon: Weapon = null
 
 func _ready():

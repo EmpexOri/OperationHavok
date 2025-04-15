@@ -7,7 +7,7 @@ var Speed = 120
 var Health = 40
 var BulletSpeed = 900
 var Target = "Player"
-var WeaponScene = preload("res://Scenes/Weapons/enemy_sniper.tscn") 
+var WeaponScene = preload("res://Prefabs/Weapons/enemy_sniper.tscn") 
 var CurrentWeapon: Weapon = null
 
 var ShotsFired = 0

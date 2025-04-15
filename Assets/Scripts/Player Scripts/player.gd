@@ -4,7 +4,7 @@ var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 #var Mode = "fire"
 var Damage_Timer = Timer.new()
 
-var StartingWeapon = preload("res://Scenes/Weapons/smg.tscn") # Starting weapon
+var StartingWeapon = preload("res://Prefabs/Weapons/Smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
 
@@ -60,12 +60,9 @@ func _physics_process(_delta):
 			$PlayerSprite/SpriteAnimation.play("WalkDown")
 		if Input.is_action_pressed("left"):
 			Motion.x -= 1
-			$PlayerSprite.flip_h = true
 			$PlayerSprite/SpriteAnimation.play("WalkLeft")
-
 		if Input.is_action_pressed("right"):
 			Motion.x += 1
-			$PlayerSprite.flip_h = false
 			$PlayerSprite/SpriteAnimation.play("WalkRight")
 
 		if Input.is_action_just_pressed("space") and CanDodge:
@@ -147,7 +144,7 @@ func ActivatePerk(index: int):
 	if index < perks.size():
 		var perk_name = perks[index]
 		print("Activating perk: " + perk_name)
-		var scene_path = "res://Scenes/Abilities/" + perk_name + ".tscn"
+		var scene_path = "res://Prefabs/Abilities/" + perk_name + ".tscn"
 		if ResourceLoader.exists(scene_path):
 			var perk_scene = load(scene_path)
 			var perk_instance = perk_scene.instantiate()
@@ -192,12 +189,9 @@ func attempt_to_fire():
 
 			if is_horizontal:
 				if direction.x > 0:
-					$PlayerSprite.flip_h = false
 					$PlayerSprite/SpriteAnimation.play("WalkRight")
 				if direction.x < 0:
-					$PlayerSprite.flip_h = true 
-					$PlayerSprite/SpriteAnimation.play("WalkLeft") 
-
+					$PlayerSprite/SpriteAnimation.play("WalkLeft")
 			else:
 				if direction.x > 0:
 					$PlayerSprite/SpriteAnimation.play("WalkDown")

@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 var Speed = 170
 var Health = 20
-var FleshSpawn = preload("res://Scenes/Enemy/FleshSpawn.tscn")
+var FleshSpawn = preload("res://Prefabs/Enemy/FleshSpawn.tscn")
 var Group = "Enemy"
 var SummonGroup = "EnemySummon"
 var Target = "Player"

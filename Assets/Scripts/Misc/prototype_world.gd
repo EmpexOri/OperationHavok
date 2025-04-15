@@ -1,9 +1,9 @@
 extends Node2D
 
-var Hordling = preload("res://Scenes/Enemy/Hordling.tscn")
-var Spewling = preload("res://Scenes/Enemy/Spewling.tscn")
-var Biomancer = preload("res://Scenes/Enemy/Biomancer.tscn")
-var Needling = preload("res://Scenes/Enemy/Needling.tscn")
+var Hordling = preload("res://Prefabs/Enemy/Hordling.tscn")
+var Spewling = preload("res://Prefabs/Enemy/Spewling.tscn")
+var Biomancer = preload("res://Prefabs/Enemy/Biomancer.tscn")
+var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
 
 @onready var PausedLabel: Label = $PausedLayer/Title
 @onready var ResumeButton: Button = $PausedLayer/ResumeButton

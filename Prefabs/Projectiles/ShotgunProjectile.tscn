@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://ds7n32ox4m1f3"]
 
-[ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_gebfq"]
-[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Bullet.png" id="2_d5ic2"]
+[ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_dfa64"]
+[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Bullet.png" id="2_orrti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bece"]
 size = Vector2(4, 8)
 
 [node name="Projectile" type="Area2D"]
-script = ExtResource("1_gebfq")
+script = ExtResource("1_dfa64")
 base_speed = 50.0
 base_damage = 10.0
 metadata/_edit_group_ = true
@@ -16,7 +16,7 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_1bece")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_d5ic2")
+texture = ExtResource("2_orrti")
 
 [node name="LifetimeTimer" type="Timer" parent="."]
 one_shot = true
