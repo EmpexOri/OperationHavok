@@ -51,6 +51,12 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 	print("Beam results count: ", results.size())
 	for i in range(results.size()):
 		print("Hit: ", results[i].collider.name, " at position: ", results[i].collider.global_position)
+		
+	# Deal damage to enemies in beam
+	for result in results:
+		var body = result.collider
+		if body.has_method("deal_damage"):
+			body.deal_damage(damage)
 	
 	# Draw the beam - this is distinct from the rect we use to query collisions
 	end_point = start_point + direction * range
