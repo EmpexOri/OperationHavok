@@ -60,9 +60,12 @@ func _physics_process(_delta):
 			$PlayerSprite/SpriteAnimation.play("WalkDown")
 		if Input.is_action_pressed("left"):
 			Motion.x -= 1
+			$PlayerSprite.flip_h = true
 			$PlayerSprite/SpriteAnimation.play("WalkLeft")
+
 		if Input.is_action_pressed("right"):
 			Motion.x += 1
+			$PlayerSprite.flip_h = false
 			$PlayerSprite/SpriteAnimation.play("WalkRight")
 
 		if Input.is_action_just_pressed("space") and CanDodge:
@@ -189,9 +192,12 @@ func attempt_to_fire():
 
 			if is_horizontal:
 				if direction.x > 0:
+					$PlayerSprite.flip_h = false
 					$PlayerSprite/SpriteAnimation.play("WalkRight")
 				if direction.x < 0:
-					$PlayerSprite/SpriteAnimation.play("WalkLeft")
+					$PlayerSprite.flip_h = true 
+					$PlayerSprite/SpriteAnimation.play("WalkLeft") 
+
 			else:
 				if direction.x > 0:
 					$PlayerSprite/SpriteAnimation.play("WalkDown")
