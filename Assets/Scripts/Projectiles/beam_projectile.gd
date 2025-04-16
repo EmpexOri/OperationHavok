@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 	if lifetime_timer.time_left > 0 and lifetime > 0:
 		var remaining_ratio = clamp(lifetime_timer.time_left, 0.0, 1.0)
 		beam.width = lerp(0.0, original_width, remaining_ratio)
+		var new_start_point: Vector2 = start_point.lerp(end_point, 1.0 - remaining_ratio)
+		beam.points = [to_local(new_start_point), to_local(end_point)]
 	else:
 		beam.width = 0.0
 	
