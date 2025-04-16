@@ -48,11 +48,6 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 	
 	# Perform the query, store the results
 	var results = space_state.intersect_shape(query)
-	
-	# Print results for debugging
-	print("Beam results count: ", results.size())
-	for i in range(results.size()):
-		print("Hit: ", results[i].collider.name, " at position: ", results[i].collider.global_position)
 		
 	# Deal damage to enemies in beam
 	for result in results:
