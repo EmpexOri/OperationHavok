@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjv878cl7a7kp"]
 
 [ext_resource type="Script" uid="uid://dwkfdvkgdh6gf" path="res://Assets/Scripts/Enemy/Needling.gd" id="1_s4n0f"]
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="2_2mkls"]
+[ext_resource type="Texture2D" uid="uid://l3hvvyuxg3l" path="res://Assets/Art/PlaceHolders/Needling.png" id="2_s4n0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx0aw"]
 size = Vector2(8, 8)
@@ -18,8 +18,7 @@ script = ExtResource("1_s4n0f")
 shape = SubResource("RectangleShape2D_lx0aw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.9, 0.9, 0, 0.2)
-texture = ExtResource("2_2mkls")
+texture = ExtResource("2_s4n0f")
 
 [node name="Area2D" type="Area2D" parent="."]
 

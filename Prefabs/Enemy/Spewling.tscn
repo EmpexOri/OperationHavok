@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3cymoelvi3cn"]
 
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/Player.png" id="1_k08tb"]
 [ext_resource type="Script" uid="uid://dqvehgfws03pn" path="res://Assets/Scripts/Enemy/Spewling.gd" id="1_tpudr"]
+[ext_resource type="Texture2D" uid="uid://iw0hlu4lrro6" path="res://Assets/Art/PlaceHolders/Spewling.png" id="2_iyko2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpudr"]
 size = Vector2(8, 8)
@@ -18,9 +18,7 @@ script = ExtResource("1_tpudr")
 shape = SubResource("RectangleShape2D_tpudr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0.7, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_k08tb")
+texture = ExtResource("2_iyko2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
