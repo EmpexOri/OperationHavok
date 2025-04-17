@@ -29,7 +29,6 @@ texture = ExtResource("2_tum4o")
 shape = SubResource("RectangleShape2D_c2edo")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0, 0.7, 0, 1)
 
