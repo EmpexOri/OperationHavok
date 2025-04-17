@@ -14,6 +14,8 @@ offset_left = 19.0
 offset_top = 12.0
 offset_right = 303.0
 offset_bottom = 62.0
+focus_neighbor_right = NodePath("../ClassSelectButton")
+focus_neighbor_bottom = NodePath("../LevelSelect/Level1Button")
 texture_normal = ExtResource("1_2jav4")
 ignore_texture_size = true
 stretch_mode = 0
@@ -23,6 +25,8 @@ offset_left = 336.0
 offset_top = 12.0
 offset_right = 620.0
 offset_bottom = 62.0
+focus_neighbor_left = NodePath("../LevelSelectButton")
+focus_neighbor_bottom = NodePath("../LevelSelect/Level2Button")
 texture_normal = ExtResource("2_qyu6w")
 ignore_texture_size = true
 stretch_mode = 0
@@ -34,6 +38,9 @@ offset_left = 103.0
 offset_top = 124.0
 offset_right = 245.0
 offset_bottom = 250.0
+focus_neighbor_top = NodePath("../../LevelSelectButton")
+focus_neighbor_right = NodePath("../Level2Button")
+focus_neighbor_bottom = NodePath("../../BackButton")
 theme_override_font_sizes/font_size = 28
 text = "Level 1"
 
@@ -42,6 +49,9 @@ offset_left = 396.0
 offset_top = 124.0
 offset_right = 538.0
 offset_bottom = 250.0
+focus_neighbor_left = NodePath("../Level1Button")
+focus_neighbor_top = NodePath("../../ClassSelectButton")
+focus_neighbor_bottom = NodePath("../../BackButton")
 theme_override_font_sizes/font_size = 28
 text = "Level 2"
 
@@ -53,6 +63,9 @@ offset_left = 126.0
 offset_top = 259.0
 offset_right = 224.0
 offset_bottom = 290.0
+focus_neighbor_top = NodePath("../../LevelSelectButton")
+focus_neighbor_right = NodePath("../TechnomancerButton")
+focus_neighbor_bottom = NodePath("../../BackButton")
 text = "Commando"
 
 [node name="TechnomancerButton" type="Button" parent="ClassSelect"]
@@ -61,6 +74,9 @@ offset_left = 406.0
 offset_top = 259.0
 offset_right = 530.0
 offset_bottom = 290.0
+focus_neighbor_left = NodePath("../CommandoButton")
+focus_neighbor_top = NodePath("../../ClassSelectButton")
+focus_neighbor_bottom = NodePath("../../BackButton")
 text = "Technomancer"
 
 [node name="Commando" type="Sprite2D" parent="ClassSelect"]
@@ -80,6 +96,7 @@ offset_left = 301.0
 offset_top = 311.0
 offset_right = 346.0
 offset_bottom = 342.0
+focus_neighbor_top = NodePath("../LevelSelect/Level1Button")
 text = "Back"
 
 [connection signal="pressed" from="LevelSelectButton" to="." method="_on_level_select_button_pressed"]

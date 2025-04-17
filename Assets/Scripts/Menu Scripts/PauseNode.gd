@@ -29,6 +29,8 @@ func _on_controls_button_pressed() -> void:
 	Title2.visible = true
 	ScrollBox.visible = true
 	BackButton.visible = true
+	
+	BackButton.grab_focus()
 
 
 func _on_quit_button_pressed() -> void:
@@ -51,3 +53,5 @@ func _on_back_button_pressed() -> void:
 	Title2.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
+	
+	ResumeButton.grab_focus()

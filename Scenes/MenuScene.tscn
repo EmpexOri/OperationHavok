@@ -21,6 +21,8 @@ offset_left = 10.0
 offset_top = 129.0
 offset_right = 172.0
 offset_bottom = 160.0
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="."]
@@ -28,6 +30,8 @@ offset_left = 10.0
 offset_top = 183.0
 offset_right = 172.0
 offset_bottom = 214.0
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="."]
@@ -35,6 +39,8 @@ offset_left = 10.0
 offset_top = 236.0
 offset_right = 172.0
 offset_bottom = 267.0
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
 text = "Quit"
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
