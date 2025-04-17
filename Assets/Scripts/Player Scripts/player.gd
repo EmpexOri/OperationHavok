@@ -199,8 +199,6 @@ func attempt_to_fire():
 					$PlayerSprite/SpriteAnimation.play("WalkDown")
 				if direction.y < 0:
 					$PlayerSprite/SpriteAnimation.play("WalkUp")
-
-
 			
 		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
 	
