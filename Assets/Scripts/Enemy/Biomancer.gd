@@ -71,8 +71,8 @@ func spawn():
 		EnemyInstance.Group = Group
 		EnemyInstance.SummonGroup = SummonGroup
 		var viewport = get_viewport_rect().size
-		var random_x = randf_range(0, viewport.x)  # Random X position
-		var random_y = randf_range(0, viewport.y)  # Random Y position
+		var random_x = randf_range((position.x - 50), (position.x + 50))  # Random X position
+		var random_y = randf_range((position.y - 50), (position.y + 50))  # Random Y position
 		EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
 		get_parent().add_child(EnemyInstance)
 	
