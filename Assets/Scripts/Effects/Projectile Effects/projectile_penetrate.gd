@@ -20,13 +20,16 @@ func process_effect(projectile: Projectile, delta: float):
 	pass 
 
 func on_hit(projectile: Projectile, body: Node2D):
-	if body in hit_bodies:
-		return false # We have already hit this entity
+	if body.has_method("take_damage"): # Quick dirty fix for penetrating environment
+		if body in hit_bodies:
+			return false # We have already hit this entity
+			
+		current_hits += 1 # Up our current hits
+		hit_bodies.append(body) # Add the hit body for checking for repeat hits
 		
-	current_hits += 1 # Up our current hits
-	hit_bodies.append(body) # Add the hit body for checking for repeat hits
-	
-	if current_hits > max_hits:
-		return true # Destroy the projectile on hit count matching max_hits
+		if current_hits > max_hits:
+			return true # Destroy the projectile on hit count matching max_hits
+		else:
+			return false # We can still hit more entities, don't destroy the projectile
 	else:
-		return false # We can still hit more entities, don't destroy the projectile
+		return true # We hit the environment, destory projectile
