@@ -1,0 +1,109 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Spawn_Area_Tilemap.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Elevator_Tilemap/Rules/Elevator_Autotile_Rules.tmx": {
+            "scale": 2.318,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 199.95685936151853,
+                "y": 200.17256255392576
+            }
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Elevator_Tilemap/Scaffolding_Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Elevator_Tilemap/Scaffolding_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "Carpark_Tilemap.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 499.75,
+                "y": 275
+            }
+        },
+        "Rules/Carpark_Autotile_Rules.tmx": {
+            "scale": 2.9924999999999997,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 200.00000000000003,
+                "y": 75.52213868003344
+            }
+        },
+        "Rules/Spawn_Area_Autotile_Rules.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 119.54545454545455,
+                "y": 86
+            }
+        },
+        "Rules/Spawn_Area_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "Rules/Spawn_Area_Tilset.tsx": {
+            "scaleInDock": 1
+        },
+        "Spawn_Area_Autotile_Rules.tmx": {
+            "scale": 8,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 100.3125,
+                "y": 39
+            }
+        },
+        "Spawn_Area_Tilemap.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 713.75,
+                "y": 226
+            }
+        },
+        "Spawn_Area_Tileset_Autotile.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 8
+        },
+        "Spawn_Area_Tilset.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 8
+        }
+    },
+    "last.exportedFilePath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/Current_Test_FootAct/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Scenes/Tilemaps",
+    "last.externalTilesetPath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/Current_Test_FootAct/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Carpark_Area_Tilemap",
+    "last.imagePath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/Current_Test_FootAct/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Carpark_Area_Tilemap",
+    "map.height": 25,
+    "map.lastUsedExportFilter": "Godot 4 Scene files (*.tscn)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 25,
+    "openFiles": [
+        "Spawn_Area_Tilset.tsx",
+        "Spawn_Area_Tileset_Autotile.tsx",
+        "Rules/Spawn_Area_Autotile_Rules.tmx",
+        "Spawn_Area_Tilemap.tmx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "Rules/Spawn_Area_Autotile_Rules.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Elevator_Tilemap/Rules/Elevator_Autotile_Rules.tmx",
+        "Spawn_Area_Tilset.tsx",
+        "Spawn_Area_Tileset_Autotile.tsx",
+        "Spawn_Area_Tilemap.tmx",
+        "Spawn_Area_Autotile_Rules.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
