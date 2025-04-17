@@ -533,8 +533,7 @@ process_mode = 2
 script = ExtResource("13_1cxn6")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(-3, 3)
+position = Vector2(-11, 1)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
 use_edge_connections = false
