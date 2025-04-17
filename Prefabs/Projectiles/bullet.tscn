@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Bullet.png" id="2_3323x"]
 
 [node name="Bullet" instance=ExtResource("1_12ur6")]
-base_speed = 300.0
+base_speed = 600.0
 base_damage = 15.0
+base_lifetime = 1.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
+scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" parent="." index="1"]
 rotation = 1.5708
