@@ -173,7 +173,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = SubResource("TileSet_d0q0w")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("1_gnsay")
 
 [node name="UIContainer" type="Control" parent="PlayerUI"]
@@ -268,7 +267,6 @@ shape = SubResource("RectangleShape2D_3kogm")
 position_smoothing_enabled = true
 
 [node name="PausedLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Title" type="Label" parent="PausedLayer"]
 process_mode = 2
