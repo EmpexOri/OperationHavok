@@ -41,7 +41,7 @@ func _physics_process(_delta):
 	
 	velocity = Direction * Speed
 	
-	look_at(Player.position)
+	#look_at(Player.position)
 	move_and_slide()
 	
 	var screen_size = get_viewport_rect().size
