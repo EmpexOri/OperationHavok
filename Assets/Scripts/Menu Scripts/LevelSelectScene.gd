@@ -45,8 +45,8 @@ func _on_level_select_button_pressed() -> void:
 
 func _on_commando_button_pressed() -> void:
 	# Changes class to Commando
-	Global.CurrentClass = "Commando"
+	GlobalPlayer.CurrentClass = "Commando"
 
 	# Changes class to Technomancer
 func _on_technomancer_button_pressed() -> void:
-	Global.CurrentClass = "Technomancer"
+	GlobalPlayer.CurrentClass = "Technomancer"
