@@ -257,7 +257,7 @@ texture = ExtResource("3_kfju6")
 script = ExtResource("4_aly1e")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(315, 181)
+position = Vector2(304, 183)
 collision_mask = 10
 script = ExtResource("5_w5l6p")
 
@@ -533,6 +533,7 @@ process_mode = 2
 script = ExtResource("13_1cxn6")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-11, 1)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
