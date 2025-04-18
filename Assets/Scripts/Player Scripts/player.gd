@@ -132,7 +132,7 @@ func ActivateAbility(index: int):
 	if AbilityCooldowns.has(index) and AbilityCooldowns[index]:
 		print("Ability", index, "is on cooldown.")
 		return
-		
+
 	var abilities = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Abilities"]
 	if index < abilities.size():
 		var ability_name = abilities[index]
