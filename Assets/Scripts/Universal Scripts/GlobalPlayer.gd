@@ -6,32 +6,14 @@ var CurrentClass: String = "Commando"
 
 var ClassData = {
 	"Technomancer": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 200, "Abilities": [],
-		"SkillTree": {
-			"TechAuraUpgrades": [],
-			"JudgementUpgrades": [],
-			"ShieldUpgrades": [],
-			"UtilityUpgrades": []
-		}
+		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 200, "Abilities": []
 	},
 	"Commando": {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150,
-		"Abilities": ["SwapWeapons", "SniperBeam", "WeaponOverCharge"],
-		"SkillTree": {
-			"SMG Upgrades": [false, false, false],
-			"Shotgun Upgrades": [false, false, false],
-			"Grenade Upgrades": [false, false, false],
-			"Utility Upgrades": [false, false, false]
-		}
+		"Abilities": ["SwapWeapons", "SniperBeam", "WeaponOverCharge"]
 	},
 	"Fleshthing": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150, "Abilities": [],
-		"SkillTree": {
-			"TheMoonUpgrades": [],
-			"TheStarUpgrades": [],
-			"MutationUpgrades": [],
-			"MindUpgrades": []
-		}
+		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150, "Abilities": []
 	}
 }
 
@@ -119,29 +101,9 @@ func UpdateHealthBar():
 		UIHandler.HealthBar.max_value = PlayerHPMax
 		UIHandler.HealthBar.value = PlayerHP
 
-func UnlockSkill(path: String, index: int):
-	var skill_tree = ClassData[CurrentClass]["SkillTree"]
-
 	if ClassData[CurrentClass]["PerkPoints"] <= 0:
 		print("Not enough PerkPoints.")
 		return
-
-	if skill_tree.has(path) and index >= 0 and index < skill_tree[path].size():
-		if not skill_tree[path][index]:
-			# Check if the previous skill in the path is unlocked (for sequential unlocking)
-			if index > 0 and not skill_tree[path][index - 1]:
-				print("Previous skill must be unlocked first.")
-				return
-			
-			# Unlock the skill and decrement PerkPoints
-			skill_tree[path][index] = true
-			ClassData[CurrentClass]["PerkPoints"] -= 1
-			print("Unlocked skill:", path, "Index:", index)
-			UpdatePerkPointUI()
-		else:
-			print("Skill already unlocked.")
-	else:
-		print("Invalid skill unlock attempt.")
 
 func UpdatePerkPointUI():
 	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")

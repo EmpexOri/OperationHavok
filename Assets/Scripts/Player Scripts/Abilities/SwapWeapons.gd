@@ -11,11 +11,7 @@ var shotgun_scene := preload("res://Prefabs/Weapons/shotgun.tscn")
 var perk_index: int
 
 func activate(player, index = -1):
-	var smg_upgrades = GlobalPlayer.ClassData["Commando"]["SkillTree"]["SMG Upgrades"]
-
-	if smg_upgrades[0]: # For example, faster reload
-		# Modify stats, swap logic, visuals, etc.
-		pass
+	var smg_upgrades = GlobalPlayer.ClassData["Commando"]
 
 	perk_index = index
 
