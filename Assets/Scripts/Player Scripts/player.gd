@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd").new()
-#var Mode = "fire"
 var Damage_Timer = Timer.new()
 
 var StartingWeapon = preload("res://Prefabs/Weapons/smg.tscn") # Starting weapon
@@ -12,11 +11,10 @@ var IsFiring = false
 var CanDodge = true
 var IsDodging = false
 var IsUsingAbility = false
-var PerkCooldowns = {}
+var AbilityCooldowns = {}
 
 var Invincible = false
 
-# Remove MoveSpeed and BulletSpeed as hardcoded variables
 var MoveSpeed = 0
 var BulletSpeed = 0
 
@@ -24,10 +22,9 @@ func _ready():
 	add_to_group("Player")
 	damage_timer()
 	
-	# Retrieve the class-specific MoveSpeed and BulletSpeed from Global
 	MoveSpeed = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["MoveSpeed"]
 	
-	equip_weapon(StartingWeapon) # Equip our starting weapon
+	equip_weapon(StartingWeapon)
 	var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
 	CurrentWeapon.add_effect(penetrate_effect)
 	
@@ -49,7 +46,7 @@ func _process(delta):
 func _physics_process(_delta):
 	var Motion = Vector2()
 	
-	if not IsDodging:  # Normal movement
+	if not IsDodging:
 		if Input.is_action_pressed("up"):
 			Motion.y -= 1
 			$PlayerSprite/SpriteAnimation.play("WalkUp")
@@ -91,19 +88,16 @@ func dodge(Direction: Vector2):
 	set_collision_layer_value(1, false)
 	Collision.disabled = true
 	
-	# Calculate dodge destination
 	var Dodge_Distance = MoveSpeed * 0.9
 	var Dodge_Target = global_position + (Direction * Dodge_Distance)
-	# Clamp it
 	var Screen_Size = get_viewport_rect().size
 	Dodge_Target.x = clamp(Dodge_Target.x, 0, Screen_Size.x)
 	Dodge_Target.y = clamp(Dodge_Target.y, 0, Screen_Size.y)
 
-	# Use Tween for smooth movement
 	var Inbe_tween = get_tree().create_tween()
 	Inbe_tween.tween_property(self, "global_position", Dodge_Target, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	await Inbe_tween.finished  # Wait for the tween to finish
+	await Inbe_tween.finished
 	IsDodging = false
 	set_collision_layer_value(1, true)
 	Collision.disabled = false
@@ -125,54 +119,53 @@ func _input(event):
 	if event.is_action_released("LMB"):
 		IsFiring = false
 
-	# Check if the class has the perk and activate it
 	if Input.is_action_just_pressed("ability_1"):
-		ActivatePerk(0)
+		ActivateAbility(0)
 	if Input.is_action_just_pressed("ability_2"):
-		ActivatePerk(1)
+		ActivateAbility(1)
 	if Input.is_action_just_pressed("ability_3"):
-		ActivatePerk(2)
-	#if Input.is_action_just_pressed("ability_4"):
-	#	ActivatePerk(3)
+		ActivateAbility(2)
+	# if Input.is_action_just_pressed("ability_4"):
+	# 	ActivateAbility(3)
 
-func ActivatePerk(index: int):
-	if PerkCooldowns.has(index) and PerkCooldowns[index]:
-		print("Perk", index, "is on cooldown.")
+func ActivateAbility(index: int):
+	if AbilityCooldowns.has(index) and AbilityCooldowns[index]:
+		print("Ability", index, "is on cooldown.")
 		return
 		
-	var perks = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Perks"]
-	if index < perks.size():
-		var perk_name = perks[index]
-		print("Activating perk: " + perk_name)
-		var scene_path = "res://Prefabs/Abilities/" + perk_name + ".tscn"
+	var abilities = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Abilities"]
+	if index < abilities.size():
+		var ability_name = abilities[index]
+		print("Activating ability: " + ability_name)
+		var scene_path = "res://Prefabs/Abilities/" + ability_name + ".tscn"
 		if ResourceLoader.exists(scene_path):
-			var perk_scene = load(scene_path)
-			var perk_instance = perk_scene.instantiate()
-			add_child(perk_instance)
-			perk_instance.activate(self, index)
-			PerkCooldowns[index] = true
+			var ability_scene = load(scene_path)
+			var ability_instance = ability_scene.instantiate()
+			add_child(ability_instance)
+			ability_instance.activate(self, index)
+			AbilityCooldowns[index] = true
 
-			if perk_instance.has_signal("perk_finished"):
-				perk_instance.connect("perk_finished", Callable(self, "_on_perk_cooldown_finished"))
+			if ability_instance.has_signal("perk_finished"):
+				ability_instance.connect("perk_finished", Callable(self, "_on_ability_cooldown_finished"))
 		else:
-			print("Could not find perk scene at: " + scene_path)
+			print("Could not find ability scene at: " + scene_path)
 
-func _on_perk_cooldown_finished(index: int):
-	PerkCooldowns[index] = false
-	print("Perk", index, "is now off cooldown.")
+func _on_ability_cooldown_finished(index: int):
+	AbilityCooldowns[index] = false
+	print("Ability", index, "is now off cooldown.")
 
 func equip_weapon(WeaponScene: PackedScene):
 	if CurrentWeapon:
-		CurrentWeapon.queue_free() # Free our current weapon
+		CurrentWeapon.queue_free()
 	
 	if WeaponScene:
-		CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
+		CurrentWeapon = WeaponScene.instantiate()
 		CurrentWeapon.owning_entity = "Player"
-		add_child(CurrentWeapon) # Add our new weapon as a child
+		add_child(CurrentWeapon)
 		
 func attempt_to_fire():
 	if CurrentWeapon:
-		var direction = Vector2() # Get the direction to fire
+		var direction = Vector2()
 		
 		if ControllerEnabled:
 			direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
@@ -182,7 +175,7 @@ func attempt_to_fire():
 			else:
 				return
 		else:
-			direction = (get_global_mouse_position() - global_position).normalized() # Get the direction to fire
+			direction = (get_global_mouse_position() - global_position).normalized()
 
 		if direction.length() > 0:
 			var is_horizontal = abs(direction.x) > abs(direction.y)
@@ -200,7 +193,7 @@ func attempt_to_fire():
 				if direction.y < 0:
 					$PlayerSprite/SpriteAnimation.play("WalkUp")
 			
-		CurrentWeapon.attempt_to_fire(global_position, direction) # Call weapons attempt to fire method
+		CurrentWeapon.attempt_to_fire(global_position, direction)
 	
 func deal_damage(damage):
 	GlobalPlayer.PlayerHP -= damage
@@ -209,7 +202,7 @@ func kill():
 	get_tree().reload_current_scene()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if Invincible == true:
+	if Invincible:
 		return
 		
 	if body.is_in_group("Enemy") or body.is_in_group("Laser"):

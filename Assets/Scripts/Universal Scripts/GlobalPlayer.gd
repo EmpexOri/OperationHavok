@@ -5,89 +5,116 @@ var PlayerHPMax: int = 100
 var CurrentClass: String = "Commando"
 
 var ClassData = {
-	"Technomancer": {"Level": 1, "XP": 0, "MoveSpeed": 200, "Perks": []},
-	"Commando": {"Level": 1, "XP": 0, "MoveSpeed": 150, "Perks": ["SwapWeapons", "SniperBeam", "WeaponOverCharge"]},
-	"Fleshthing": {"Level": 1, "XP": 0, "MoveSpeed": 150, "Perks": []}
+	"Technomancer": {
+		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 200,
+		"Abilities": ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"],
+		"SkillTree": {
+			"TechAuraUpgrades": [],
+			"JudgementUpgrades": [],
+			"ShieldUpgrades": [],
+			"UtilityUpgrades": []
+		}
+	},
+	"Commando": {
+		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150,
+		"Abilities": ["SwapWeapons", "SniperBeam", "WeaponOverCharge"],
+		"SkillTree": {
+			"SMG Upgrades": [false, false, false],
+			"Shotgun Upgrades": [false, false, false],
+			"Grenade Upgrades": [false, false, false],
+			"Utility Upgrades": [false, false, false]
+		}
+	},
+	"Fleshthing": {
+		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150,
+		"Abilities": ["TheEmpress", "TheMoon", "TheSun", "TheStar"],
+		"SkillTree": {
+			"TheMoonUpgrades": [],
+			"TheStarUpgrades": [],
+			"MutationUpgrades": [],
+			"MindUpgrades": []
+		}
+	}
 }
 
-var PerkListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"]
-var PerkListCommando = ["SwapWeapons", "SniperBeam", "WeaponOverCharge"]
-var PerkListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
+func XPRequiredForLevel(level: int) -> int:
+	return 100 * pow(1.2, level - 1)
 
-func XPRequiredForLevel(Level: int) -> int:
-	return 100 * pow(1.2, Level - 1)
+func AddXP(amount: int):
+	var level = ClassData[CurrentClass]["Level"]
+	var xp = ClassData[CurrentClass]["XP"] + amount
+	var xp_required = XPRequiredForLevel(level)
 
-func AddXP(Amount: int):
-	var Level = ClassData[CurrentClass]["Level"]
-	var CurrentXP = ClassData[CurrentClass]["XP"]
-	var XPNecessary = XPRequiredForLevel(Level)
-
-	CurrentXP += Amount
-	while CurrentXP >= XPNecessary:
-		CurrentXP -= XPNecessary
+	while xp >= xp_required:
+		xp -= xp_required
 		LevelUp()
-		XPNecessary = XPRequiredForLevel(ClassData[CurrentClass]["Level"])
+		level = ClassData[CurrentClass]["Level"]
+		xp_required = XPRequiredForLevel(level)
 
-	ClassData[CurrentClass]["XP"] = CurrentXP
+	ClassData[CurrentClass]["XP"] = xp
 	UpdateXPBar()
 
 func LevelUp():
 	ClassData[CurrentClass]["Level"] += 1
-	UnlockPerk()
+	ClassData[CurrentClass]["PerkPoints"] += 1
 	UpdateHP()
+	UpdatePerkPointUI()
 
-func AddHp(Amount: int):
-	var Level = ClassData[CurrentClass]["Level"]
-	var HpGainMultiplier = 1 + ((Level) * 1.5)
-	var AdjustedAmount = int(Amount * HpGainMultiplier)
-	PlayerHP = min(PlayerHP + AdjustedAmount, PlayerHPMax)
+func AddHp(amount: int):
+	var level = ClassData[CurrentClass]["Level"]
+	var multiplier = 1 + level * 1.5
+	PlayerHP = min(PlayerHP + int(amount * multiplier), PlayerHPMax)
 	UpdateHealthBar()
 
 func UpdateHP():
-	var Level = ClassData[CurrentClass]["Level"]
-	if CurrentClass == "Technomancer":
-		PlayerHPMax = 100 + min(Level, 10) * 25 + max(Level - 10, 0) * 10
-	elif CurrentClass == "Commando":
-		PlayerHPMax = 100 + min(Level, 10) * 50 + max(Level - 10, 0) * 25
-	elif CurrentClass == "Fleshthing":
-		PlayerHPMax = 100 + min(Level, 10) * 100 + max(Level - 10, 0) * 50
-	
+	var level = ClassData[CurrentClass]["Level"]
+	match CurrentClass:
+		"Technomancer":
+			PlayerHPMax = 100 + min(level, 10) * 25 + max(level - 10, 0) * 10
+		"Commando":
+			PlayerHPMax = 100 + min(level, 10) * 50 + max(level - 10, 0) * 25
+		"Fleshthing":
+			PlayerHPMax = 100 + min(level, 10) * 100 + max(level - 10, 0) * 50
+
 	PlayerHP += 100
 	UpdateHealthBar()
 
-func UnlockPerk():
-	var Level = ClassData[CurrentClass]["Level"]
-	var FullPerkList = []
-
-	match CurrentClass:
-		"Technomancer":
-			FullPerkList = PerkListTechnomancer
-		"Commando":
-			FullPerkList = PerkListCommando
-		"Fleshthing":
-			FullPerkList = PerkListFleshthing
-
-	var PerksUnlocked = FullPerkList.slice(0, min(Level + 1, FullPerkList.size()))
-	ClassData[CurrentClass]["Perks"] = PerksUnlocked
-	UpdatePerkList()
-
-func UpdatePerkList():
-	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
-	if UIHandler:
-		UIHandler.UpdatePerkList(ClassData[CurrentClass]["Perks"])
+func UpdateAbilityList(abilities: Array):
+	var ui = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if ui:
+		ui.UpdateAbilityList(abilities)
 
 func UpdateXPBar():
-	var Level = ClassData[CurrentClass]["Level"]
-	var XPNecessary = XPRequiredForLevel(Level)
-	var XP = ClassData[CurrentClass]["XP"]
-
-	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
-	if UIHandler:
-		UIHandler.XPBar.max_value = XPNecessary
-		UIHandler.XPBar.value = XP
+	var ui = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if ui:
+		var level = ClassData[CurrentClass]["Level"]
+		ui.XPBar.max_value = XPRequiredForLevel(level)
+		ui.XPBar.value = ClassData[CurrentClass]["XP"]
 
 func UpdateHealthBar():
-	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
-	if UIHandler:
-		UIHandler.HealthBar.max_value = PlayerHPMax
-		UIHandler.HealthBar.value = PlayerHP
+	var ui = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if ui:
+		ui.HealthBar.max_value = PlayerHPMax
+		ui.HealthBar.value = PlayerHP
+
+func UnlockSkill(path: String, index: int):
+	var skill_tree = ClassData[CurrentClass]["SkillTree"]
+	if ClassData[CurrentClass]["PerkPoints"] <= 0:
+		print("Not enough PerkPoints.")
+		return
+
+	if skill_tree.has(path) and index >= 0 and index < skill_tree[path].size():
+		if not skill_tree[path][index]:
+			skill_tree[path][index] = true
+			ClassData[CurrentClass]["PerkPoints"] -= 1
+			print("Unlocked skill:", path, "Index:", index)
+			UpdatePerkPointUI()
+		else:
+			print("Skill already unlocked.")
+	else:
+		print("Invalid skill unlock attempt.")
+
+func UpdatePerkPointUI():
+	var ui = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if ui:
+		ui.UpdatePerkPoints(ClassData[CurrentClass]["PerkPoints"])
