@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddyyhx01icd2n"]
+
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_p2c2s"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_path.gd" id="2_alcsc"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_graph.gd" id="3_oxtxa"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_view_item.gd" id="4_n648w"]
+
+[node name="SkillTree" type="Node2D"]
+
+[node name="WorldmapView" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = nan
+offset_top = nan
+offset_right = nan
+offset_bottom = nan
+script = ExtResource("1_p2c2s")
+metadata/_custom_type_script = "uid://bi56cdco4trhn"
+
+[node name="WorldmapPath" type="Node2D" parent="WorldmapView"]
+position = Vector2(46, 60)
+script = ExtResource("2_alcsc")
+start = Vector2(nan, nan)
+end = Vector2(nan, nan)
+handle_1 = Vector2(nan, nan)
+handle_2 = Vector2(nan, nan)
+node_grid_snap = 1
+node_count = 0
+metadata/_custom_type_script = "uid://cuh32ft4uu6i0"
+
+[node name="WorldmapGraph" type="Node2D" parent="WorldmapView"]
+script = ExtResource("3_oxtxa")
+node_grid_snap = 1
+node_count = 0
+connection_count = 2
+connection_0/nodes = Vector2i(-1, -1)
+connection_1/nodes = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://x0t1ddm63v5o"
+
+[node name="Node2D" type="Node2D" parent="WorldmapView"]
+
+[node name="WorldmapViewItem" type="Node2D" parent="WorldmapView/Node2D"]
+position = Vector2(46, 60)
+script = ExtResource("4_n648w")
+metadata/_custom_type_script = "uid://c8y7s32xsi68s"
+
+[node name="Node2D2" type="Node2D" parent="WorldmapView"]
+position = Vector2(nan, nan)
+
+[node name="WorldmapViewItem" type="Node2D" parent="WorldmapView/Node2D2"]
+script = ExtResource("4_n648w")
+metadata/_custom_type_script = "uid://c8y7s32xsi68s"

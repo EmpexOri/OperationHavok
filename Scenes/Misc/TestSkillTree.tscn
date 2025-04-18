@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://lb1aoduif6ov"]
+
+[ext_resource type="Script" uid="uid://da568u5xmso64" path="res://Scenes/Misc/Talent1.gd" id="1_rituh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iln7"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Talent_Tree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Columns" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Tier1" type="VBoxContainer" parent="MarginContainer/Columns"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Columns/Tier1"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0iln7")
+script = ExtResource("1_rituh")
+
+[node name="Button" type="Button" parent="MarginContainer/Columns/Tier1/PanelContainer"]
+layout_mode = 2
+text = "SwitchAbility 1"
+
+[connection signal="pressed" from="MarginContainer/Columns/Tier1/PanelContainer/Button" to="MarginContainer/Columns/Tier1/PanelContainer" method="_on_button_pressed"]

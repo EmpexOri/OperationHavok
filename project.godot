@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Fools Act"
-run/main_scene="uid://kjmdqey636rw"
+run/main_scene="uid://lb1aoduif6ov"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -31,6 +31,10 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/worldmap_builder/plugin.cfg")
 
 [input]
 
