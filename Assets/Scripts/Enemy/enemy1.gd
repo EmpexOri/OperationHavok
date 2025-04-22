@@ -49,9 +49,9 @@ func drop_xp():
 	pickup = null
 	
 	# Chance for other pickups
-	pickup = PickupFactory.try_chance_pickup(position)
-	if pickup:
-		get_parent().add_child(pickup)
+#	pickup = PickupFactory.try_chance_pickup(position)
+#	if pickup:
+#		get_parent().add_child(pickup)
 
 func deal_damage(damage):
 	Health -= damage
