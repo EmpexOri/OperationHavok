@@ -94,7 +94,8 @@ func drop_xp():
 		get_parent().add_child(pickup)
 
 func deal_damage(damage):
-	Health -= damage
+	#Health -= damage
+	pass
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
@@ -105,7 +106,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		
 		# Use Tween for smooth movement
 		var Inbe_tween = get_tree().create_tween()
-		Inbe_tween.tween_property(self, "global_position", bounce_target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		Inbe_tween.tween_property(self, "global_position", bounce_target, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 		await Inbe_tween.finished  # Wait for the tween to finish
 		return
