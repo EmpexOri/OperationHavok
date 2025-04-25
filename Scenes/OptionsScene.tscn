@@ -19,40 +19,57 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 242.0
-offset_top = 257.0
+offset_top = 273.0
 offset_right = 404.0
-offset_bottom = 288.0
+offset_bottom = 304.0
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 193.0
+offset_top = 70.0
+offset_right = 455.0
+offset_bottom = 254.0
 
-[node name="BrightnessLabel" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.5
-offset_top = 4.5
-offset_right = -57.5
-offset_bottom = 27.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MasterLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume - Master - NO FUNCTION"
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 0.01
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume - Music - NO FUNCTION"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 0.01
+
+[node name="SFXLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume - SFX - NO FUNCTION"
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 0.01
+
+[node name="BrightnessLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Brightness"
 
-[node name="BrightnessSlider" type="HSlider" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = 33.0
-offset_right = 141.0
-offset_bottom = 49.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BrightnessSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
 min_value = 0.01
 max_value = 4.0
 step = 0.01
@@ -60,4 +77,4 @@ value = 1.0
 script = ExtResource("2_1hmx5")
 
 [connection signal="pressed" from="BackButton" to="." method="OnBackButtonPressed"]
-[connection signal="value_changed" from="CanvasLayer/BrightnessSlider" to="CanvasLayer/BrightnessSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/BrightnessSlider" to="VBoxContainer/BrightnessSlider" method="_on_value_changed"]
