@@ -79,23 +79,27 @@ func spawn():
 	start_timer()
 
 func drop_xp():
-	# Create XP pickup
-	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	var Screen_Size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, Screen_Size.x)
-	position.y = clamp(position.y, 0, Screen_Size.y)
-	var pickup = PickupFactory.build_pickup("Xp", position)
-	get_parent().add_child(pickup)
-	pickup = null
-	
-	# Chance for other pickups
-	pickup = PickupFactory.try_chance_pickup(position)
-	if pickup:
-		get_parent().add_child(pickup)
+	var xp_drop_chance := 1.0  # 100% chance to drop XP
+	var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 1 XP pickups
+	# Check if XP should drop at all, we might not want all enemies to drop it
+	if randf() > xp_drop_chance:
+		return
+
+	# Determine how many XP pickups to drop, using above var's
+	var xp_amount = randi_range(xp_drop_range.x, xp_drop_range.y)
+	var screen_size = get_viewport_rect().size
+
+	for i in xp_amount:
+		var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
+		position.x = clamp(position.x, 0, screen_size.x)
+		position.y = clamp(position.y, 0, screen_size.y)
+
+		var xp_pickup = PickupFactory.build_pickup("Xp", position)
+		get_parent().add_child(xp_pickup)
 
 func deal_damage(damage):
-	#Health -= damage
-	pass
+	Health -= damage
+	#pass
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):

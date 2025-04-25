@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var Speed = 130
-var Health = 30
+var Speed = 100
+var Health = 20
 #var Enemy = preload("res://Scenes/Misc/enemy_2.tscn")
 var OrbitSpeed = 50
 var OrbitDirection
 var BulletSpeed = 800
 var Target = "Player"
-var WeaponScene = preload("res://Prefabs/Weapons/enemy_sniper.tscn") 
+var WeaponScene = preload("res://Prefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn") 
 var CurrentWeapon: Weapon = null
 
 func _ready():
@@ -97,19 +97,23 @@ func fire():
 		CurrentWeapon.attempt_to_fire(global_position, direction_to_player) # Call weapons attempt to fire method
 
 func drop_xp():
-	# Create XP pickup
-	var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	var Screen_Size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, Screen_Size.x)
-	position.y = clamp(position.y, 0, Screen_Size.y)
-	var pickup = PickupFactory.build_pickup("Xp", position)
-	get_parent().add_child(pickup)
-	pickup = null
-	
-	# Chance for other pickups
-	pickup = PickupFactory.try_chance_pickup(position)
-	if pickup:
-		get_parent().add_child(pickup)
+	var xp_drop_chance := 0.25  # 25% chance to drop XP
+	var xp_drop_range := Vector2i(1, 1)  # Drop between 1 and 1 XP pickups
+	# Check if XP should drop at all, we might not want all enemies to drop it
+	if randf() > xp_drop_chance:
+		return
+
+	# Determine how many XP pickups to drop, using above var's
+	var xp_amount = randi_range(xp_drop_range.x, xp_drop_range.y)
+	var screen_size = get_viewport_rect().size
+
+	for i in xp_amount:
+		var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
+		position.x = clamp(position.x, 0, screen_size.x)
+		position.y = clamp(position.y, 0, screen_size.y)
+
+		var xp_pickup = PickupFactory.build_pickup("Xp", position)
+		get_parent().add_child(xp_pickup)
 
 func deal_damage(damage):
 	Health -= damage

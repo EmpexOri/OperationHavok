@@ -13,6 +13,7 @@ var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
 
 func _ready():
 	start_spawn_timer1()
+	start_spawn_timer1()
 	start_spawn_timer2()
 	start_spawn_timer3()
 	start_spawn_timer4()
@@ -50,7 +51,7 @@ func pause_game():
 
 func start_spawn_timer1():
 	var timer = Timer.new()
-	timer.wait_time = randf_range(1, 2)
+	timer.wait_time = randf_range(0.1, 0.5)
 	timer.one_shot = true  # Timer only goes once
 	timer.connect("timeout", Callable(self, "spawn_enemy1")) # Executes the spawn function once timer has ended
 	add_child(timer)

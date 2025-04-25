@@ -9,7 +9,7 @@ var ClassData = {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 200, "Abilities": []
 	},
 	"Commando": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150,
+		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 250,
 		"Abilities": ["SwapWeapons", "SniperBeam", "WeaponOverCharge"]
 	},
 	"Fleshthing": {
@@ -47,7 +47,7 @@ func LevelUp():
 
 func AddHp(Amount: int):
 	var Level = ClassData[CurrentClass]["Level"]
-	var HpGainMultiplier = 1 + ((Level) * 1.5)
+	var HpGainMultiplier = 1 + ((Level) * 1.15)
 	var AdjustedAmount = int(Amount * HpGainMultiplier)
 	PlayerHP = min(PlayerHP + AdjustedAmount, PlayerHPMax)
 	UpdateHealthBar()
