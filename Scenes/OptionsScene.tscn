@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bli4fnfa7mnar"]
+[gd_scene load_steps=4 format=3 uid="uid://bli4fnfa7mnar"]
 
 [ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="2_1hmx5"]
+[ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Scenes/Options/volume_control_slider.gd" id="2_4k2k5"]
 
 [node name="OptionsScene" type="Node2D"]
 script = ExtResource("1_ax0sw")
@@ -31,38 +32,48 @@ offset_top = 70.0
 offset_right = 455.0
 offset_bottom = 254.0
 
+[node name="VolumeControlSlider" type="HSlider" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_4k2k5")
+
 [node name="MasterLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Volume - Master - NO FUNCTION"
+text = "Volume - Master"
 
 [node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-min_value = 0.01
-max_value = 4.0
-step = 0.01
-value = 0.01
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("2_4k2k5")
+BusName = "Master"
 
 [node name="MusicLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Volume - Music - NO FUNCTION"
+text = "Volume - Music"
 
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-min_value = 0.01
-max_value = 4.0
-step = 0.01
-value = 0.01
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("2_4k2k5")
+BusName = "Music"
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Volume - SFX - NO FUNCTION"
+text = "Volume - SFX "
 
 [node name="SFXSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-min_value = 0.01
-max_value = 4.0
-step = 0.01
-value = 0.01
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("2_4k2k5")
+BusName = "SFX"
 
 [node name="BrightnessLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
