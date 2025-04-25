@@ -82,7 +82,7 @@ func _on_back_button_pressed() -> void:
 	# Play sound on button press
 	GlobalAudioController.ClickSound()
 	
-	# Removing the controls menu and bringing up options menu
+	# Removing all objects and bringing up the pause menu 
 	ResumeButton.visible = true
 	ControlsButton.visible = true
 	OptionsButton.visible = true
