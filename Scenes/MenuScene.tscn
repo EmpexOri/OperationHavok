@@ -17,32 +17,46 @@ scale = Vector2(0.541667, 0.4875)
 texture = ExtResource("3_rae6p")
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 10.0
-offset_top = 129.0
-offset_right = 172.0
-offset_bottom = 160.0
+offset_left = 41.0
+offset_top = 97.0
+offset_right = 377.0
+offset_bottom = 128.0
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
+theme_override_colors/font_hover_color = Color(0.607843, 0, 0, 1)
+theme_override_colors/font_color = Color(0.378232, 6.04643e-07, 4.81308e-08, 1)
+theme_override_colors/font_focus_color = Color(0.403922, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.72549, 0, 0, 1)
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="."]
 offset_left = 10.0
-offset_top = 183.0
+offset_top = 182.0
 offset_right = 172.0
-offset_bottom = 214.0
+offset_bottom = 213.0
 focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options"
 
+[node name="SkillTreeButton" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 225.0
+offset_right = 172.0
+offset_bottom = 256.0
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+text = "Skill Tree"
+
 [node name="QuitButton" type="Button" parent="."]
 offset_left = 10.0
-offset_top = 236.0
+offset_top = 271.0
 offset_right = 172.0
-offset_bottom = 267.0
+offset_bottom = 302.0
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
 text = "Quit"
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="SkillTreeButton" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]
