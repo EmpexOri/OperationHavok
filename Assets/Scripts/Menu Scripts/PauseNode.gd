@@ -12,8 +12,14 @@ extends Node
 @onready var ScrollBox: ScrollContainer = $"../PausedLayer/ControlsMenu/ControlsContainer"
 
 # Options Menu
-@onready var BrightnessLabel: Label = $"../PausedLayer/OptionsMenu/BrightnessLabel"
-@onready var BrightnessSlider: HSlider = $"../PausedLayer/OptionsMenu/BrightnessSlider"
+@onready var MasterLabel: Label = $"../PausedLayer/OptionsMenu/VBoxContainer/MasterLabel"
+@onready var MasterSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/MasterSlider"
+@onready var MusicLabel: Label =$"../PausedLayer/OptionsMenu/VBoxContainer/MusicLabel"
+@onready var MusicSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/MusicSlider"
+@onready var SFXLabel: Label =$"../PausedLayer/OptionsMenu/VBoxContainer/SFXLabel"
+@onready var SFXSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/SFXSlider"
+@onready var BrightnessLabel: Label = $"../PausedLayer/OptionsMenu/VBoxContainer/BrightnessLabel"
+@onready var BrightnessSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/BrightnessSlider"
 
 
 func _on_resume_button_pressed() -> void:
@@ -51,6 +57,12 @@ func _on_options_button_pressed() -> void:
 	OptionsButton.visible = false
 	QuitButton.visible = false
 	Title.visible = false
+	MasterLabel.visible = true
+	MasterSlider.visible = true
+	MusicLabel.visible = true
+	MusicSlider.visible = true
+	SFXLabel.visible = true
+	SFXSlider.visible = true
 	BrightnessLabel.visible = true
 	BrightnessSlider.visible = true
 	BackButton.visible = true
@@ -79,6 +91,12 @@ func _on_back_button_pressed() -> void:
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
+	MasterLabel.visible = false
+	MasterSlider.visible = false
+	MusicLabel.visible = false
+	MusicSlider.visible = false
+	SFXLabel.visible = false
+	SFXSlider.visible = false
 	BrightnessLabel.visible = false
 	BrightnessSlider.visible = false
 	
