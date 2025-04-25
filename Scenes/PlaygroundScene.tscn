@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=30 format=4 uid="uid://kmijtn114svf"]
 
 [ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/XPCircle.png" id="4_d0q0w"]
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="9_3kogm"]
+[ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="12_1cxn6"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="13_1cxn6"]
 [ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/SuspiciousStew.png" id="15_3kogm"]
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/ControlsBg.png" id="15_twjg6"]
@@ -294,16 +295,16 @@ offset_top = 21.0
 offset_right = 641.0
 offset_bottom = 62.0
 theme_type_variation = &"HeaderLarge"
-text = "Options"
+text = "Pause Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="PausedLayer"]
 process_mode = 2
 offset_left = 241.0
-offset_top = 120.0
+offset_top = 114.0
 offset_right = 403.0
-offset_bottom = 151.0
+offset_bottom = 145.0
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../ControlsButton")
 text = "Resume"
@@ -311,207 +312,32 @@ text = "Resume"
 [node name="ControlsButton" type="Button" parent="PausedLayer"]
 process_mode = 2
 offset_left = 241.0
-offset_top = 180.0
+offset_top = 157.0
 offset_right = 403.0
-offset_bottom = 211.0
+offset_bottom = 188.0
 focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Controls"
 
+[node name="OptionsButton" type="Button" parent="PausedLayer"]
+process_mode = 2
+offset_left = 241.0
+offset_top = 200.0
+offset_right = 403.0
+offset_bottom = 231.0
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "Options"
+
 [node name="QuitButton" type="Button" parent="PausedLayer"]
 process_mode = 2
 offset_left = 241.0
-offset_top = 239.0
+offset_top = 245.0
 offset_right = 403.0
-offset_bottom = 270.0
+offset_bottom = 276.0
 focus_neighbor_top = NodePath("../ControlsButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
 text = "Quit"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PausedLayer"]
-process_mode = 2
-visible = false
-offset_left = 182.0
-offset_top = 82.0
-offset_right = 462.0
-offset_bottom = 280.0
-theme = SubResource("Theme_dthbc")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PausedLayer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Slot1" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot1"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move up"
-
-[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot1"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "W"
-horizontal_alignment = 1
-
-[node name="Slot2" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot2"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move down"
-
-[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot2"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "S"
-horizontal_alignment = 1
-
-[node name="Slot3" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot3"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move left       "
-
-[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot3"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "A"
-horizontal_alignment = 1
-
-[node name="Slot4" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot4"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move right"
-
-[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot4"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "D"
-horizontal_alignment = 1
-
-[node name="Slot5" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot5"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ability 1"
-
-[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot5"]
-layout_mode = 0
-offset_left = 215.0
-offset_top = 6.0
-offset_right = 275.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "LMB"
-horizontal_alignment = 1
-
-[node name="Slot6" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot6"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ability 2"
-
-[node name="Slot7" type="TextureRect" parent="PausedLayer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_twjg6")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot7"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Pause"
-
-[node name="Label2" type="Label" parent="PausedLayer/ScrollContainer/VBoxContainer/Slot7"]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 6.0
-offset_right = 274.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ESC"
-horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="PausedLayer"]
 process_mode = 2
@@ -522,7 +348,9 @@ offset_right = 404.0
 offset_bottom = 322.0
 text = "Back"
 
-[node name="Title2" type="Label" parent="PausedLayer"]
+[node name="ControlsMenu" type="CanvasLayer" parent="PausedLayer"]
+
+[node name="ControlsTitle" type="Label" parent="PausedLayer/ControlsMenu"]
 process_mode = 2
 visible = false
 offset_left = 1.0
@@ -533,6 +361,228 @@ theme_type_variation = &"HeaderLarge"
 text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ControlsContainer" type="ScrollContainer" parent="PausedLayer/ControlsMenu"]
+process_mode = 2
+visible = false
+offset_left = 182.0
+offset_top = 82.0
+offset_right = 462.0
+offset_bottom = 280.0
+theme = SubResource("Theme_dthbc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausedLayer/ControlsMenu/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Slot1" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move up"
+
+[node name="Label2" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot1"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "W"
+horizontal_alignment = 1
+
+[node name="Slot2" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move down"
+
+[node name="Label2" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot2"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "S"
+horizontal_alignment = 1
+
+[node name="Slot3" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move left       "
+
+[node name="Label2" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot3"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A"
+horizontal_alignment = 1
+
+[node name="Slot4" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot4"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move right"
+
+[node name="Label2" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot4"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "D"
+horizontal_alignment = 1
+
+[node name="Slot5" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot5"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ability 1"
+
+[node name="Label2" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot5"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 6.0
+offset_right = 275.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "LMB"
+horizontal_alignment = 1
+
+[node name="Slot6" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot6"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ability 2"
+
+[node name="Slot7" type="TextureRect" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_twjg6")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Pause"
+
+[node name="Label2" type="Label" parent="PausedLayer/ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 6.0
+offset_right = 274.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ESC"
+horizontal_alignment = 1
+
+[node name="OptionsMenu" type="CanvasLayer" parent="PausedLayer"]
+
+[node name="BrightnessLabel" type="Label" parent="PausedLayer/OptionsMenu"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.5
+offset_top = 4.5
+offset_right = -57.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Brightness"
+
+[node name="BrightnessSlider" type="HSlider" parent="PausedLayer/OptionsMenu"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = 33.0
+offset_right = 141.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 1.0
+script = ExtResource("12_1cxn6")
 
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2
@@ -549,5 +599,7 @@ use_edge_connections = false
 [connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="PausedLayer/ResumeButton" to="PauseNode" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PausedLayer/ControlsButton" to="PauseNode" method="_on_controls_button_pressed"]
+[connection signal="pressed" from="PausedLayer/OptionsButton" to="PauseNode" method="_on_options_button_pressed"]
 [connection signal="pressed" from="PausedLayer/QuitButton" to="PauseNode" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PausedLayer/BackButton" to="PauseNode" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="PausedLayer/OptionsMenu/BrightnessSlider" to="PausedLayer/OptionsMenu/BrightnessSlider" method="_on_value_changed"]

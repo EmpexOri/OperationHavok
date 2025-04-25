@@ -8,6 +8,7 @@ var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
 @onready var PausedLabel: Label = $PausedLayer/Title
 @onready var ResumeButton: Button = $PausedLayer/ResumeButton
 @onready var ControlsButton: Button = $PausedLayer/ControlsButton
+@onready var OptionsButton: Button = $PausedLayer/OptionsButton
 @onready var QuitButton: Button = $PausedLayer/QuitButton
 
 func _ready():
@@ -20,6 +21,7 @@ func _ready():
 	PausedLabel.visible = false
 	ResumeButton.visible = false
 	ControlsButton.visible = false
+	OptionsButton.visible = false
 	QuitButton.visible = false
 
 func _process(_delta):
@@ -28,6 +30,7 @@ func _process(_delta):
 		PausedLabel.visible = false
 		ResumeButton.visible = false
 		ControlsButton.visible = false
+		OptionsButton.visible = false
 		QuitButton.visible = false
 		
 func _input(event):
@@ -41,6 +44,7 @@ func pause_game():
 	PausedLabel.visible = true
 	ResumeButton.visible = true
 	ControlsButton.visible = true
+	OptionsButton.visible = true
 	QuitButton.visible = true
 	get_tree().paused = true
 
