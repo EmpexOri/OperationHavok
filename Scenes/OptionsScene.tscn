@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bli4fnfa7mnar"]
+[gd_scene load_steps=3 format=3 uid="uid://bli4fnfa7mnar"]
 
 [ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
+[ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="2_1hmx5"]
 
 [node name="OptionsScene" type="Node2D"]
 script = ExtResource("1_ax0sw")
@@ -24,4 +25,39 @@ offset_bottom = 288.0
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BrightnessLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.5
+offset_top = 4.5
+offset_right = -57.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Brightness"
+
+[node name="BrightnessSlider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = 33.0
+offset_right = 141.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_1hmx5")
+
 [connection signal="pressed" from="BackButton" to="." method="OnBackButtonPressed"]
+[connection signal="value_changed" from="CanvasLayer/BrightnessSlider" to="CanvasLayer/BrightnessSlider" method="_on_value_changed"]
