@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnwtkvevtn04u"]
+
+[ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_0yw36"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0yw36"]
+friction = 0.5
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5kww"]
+radius = 5.0
+
+[node name="MeatChunks" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 129
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_0yw36")
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c5kww")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.565667, 0.117169, 0.0705601, 1)
+texture = ExtResource("1_0yw36")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="wait_time" type="Timer" parent="."]
+wait_time = 5.0

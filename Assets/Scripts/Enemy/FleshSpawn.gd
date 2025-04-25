@@ -20,6 +20,9 @@ func _process(delta):
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()
+			
+		Global.spawn_blood_splatter(global_position)
+		Global.spawn_death_particles(global_position) 
 		queue_free()
 	
 func _physics_process(_delta):

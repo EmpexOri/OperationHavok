@@ -13,9 +13,14 @@ func _ready():
 	
 func _process(delta):
 	if Health <= 0:
-		for i in range(2):
+		if not has_dropped_xp:
 			drop_xp()
-		queue_free()
+			has_dropped_xp = true
+			
+			#Global.spawn_meat_chunk(global_position)
+			Global.spawn_blood_splatter(global_position)
+			Global.spawn_death_particles(global_position) 
+			queue_free()
 
 func _physics_process(_delta):
 	var Player
