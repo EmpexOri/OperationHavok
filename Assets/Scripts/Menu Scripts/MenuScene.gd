@@ -19,3 +19,9 @@ func OnQuitButtonPressed() -> void:
 	var quitTimer = 0.15
 	await get_tree().create_timer(quitTimer).timeout
 	get_tree().quit()
+
+
+func _on_skill_tree_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
+	$Label.visible = not $Label.visible
+	
