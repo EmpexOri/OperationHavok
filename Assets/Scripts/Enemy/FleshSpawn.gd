@@ -21,6 +21,7 @@ func _process(delta):
 		for i in range(1):
 			drop_xp()
 			
+		Global.spawn_meat_chunk(global_position)
 		Global.spawn_blood_splatter(global_position)
 		Global.spawn_death_particles(global_position) 
 		queue_free()

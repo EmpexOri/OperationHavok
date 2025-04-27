@@ -33,7 +33,3 @@ func spawn_meat_chunk(position: Vector2):
 		meat_chunk.z_index = -1  # Still draw it below
 		# You don't need to manually apply forces anymore!
 		get_tree().current_scene.add_child(meat_chunk)
-		# Auto-despawn
-		var timer = meat_chunk.get_node("Timer")
-		timer.timeout.connect(meat_chunk.queue_free)
-		timer.start()

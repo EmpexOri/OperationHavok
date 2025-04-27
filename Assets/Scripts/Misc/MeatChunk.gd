@@ -8,50 +8,62 @@ extends RigidBody2D
 
 @export var blood_smear_scene: PackedScene
 @export var smear_interval: float = 0.05
+@export var chunk_textures: Array[Texture2D]
 
-@export var chunk_textures: Array[Texture2D]  # Drag your chunk sprites here!
+# Max allowed chunks at once
+const MAX_MEAT_CHUNKS = 50
 
-var move_direction := Vector2.ZERO
-var move_speed := 0.0
-var time_left := 0.0
-var smear_timer := 0.0
+# Static array to track all meat chunks globally
+static var active_chunks := []
+
+var move_direction: Vector2
+var move_speed: float
+var time_left: float
+var smear_timer: float
 
 func _ready():
+	_register_chunk()
+
 	randomize()
 
-	# Randomize visual appearance
 	randomize_sprite()
+	setup_movement()
+	setup_timer()
 
-	# Pick random angle
-	var angle = randf_range(0, TAU)
-	move_direction = Vector2(cos(angle), sin(angle)).normalized()
+func _physics_process(delta):
+	if time_left > 0.0:
+		time_left -= delta
+		linear_velocity = move_direction * move_speed
 
-	# Pick random speed
+	smear_timer -= delta
+	if smear_timer <= 0.0:
+		smear_timer += smear_interval  # += for better timing accuracy
+		spawn_blood_smear()
+
+func _register_chunk():
+	active_chunks.append(self)
+	if active_chunks.size() > MAX_MEAT_CHUNKS:
+		var oldest = active_chunks.pop_front()
+		if oldest.is_inside_tree():
+			oldest.queue_free()
+
+func _exit_tree():
+	# Remove self from active list when freed
+	active_chunks.erase(self)
+
+func setup_movement():
+	var angle = randf_range(0.0, TAU)
+	move_direction = Vector2(cos(angle), sin(angle))
 	move_speed = randf_range(min_speed, max_speed)
-
-	# Set timer for how long we "control" it
 	time_left = control_time
 
-	# Apply random torque at start
 	var torque = randf_range(min_torque, max_torque)
 	apply_torque_impulse(torque)
 
-	# Start despawn timer
+func setup_timer():
 	var timer = $Timer
 	timer.timeout.connect(queue_free)
 	timer.start()
-
-func _physics_process(delta):
-	if time_left > 0:
-		time_left -= delta
-		linear_velocity = move_direction * move_speed
-	else:
-		linear_velocity = linear_velocity
-
-	smear_timer -= delta
-	if smear_timer <= 0:
-		smear_timer = smear_interval
-		spawn_blood_smear()
 
 func spawn_blood_smear():
 	if blood_smear_scene:
@@ -63,4 +75,4 @@ func spawn_blood_smear():
 func randomize_sprite():
 	if chunk_textures.size() > 0:
 		var sprite = $Sprite2D
-		sprite.texture = chunk_textures[randi() % chunk_textures.size()]
+		sprite.texture = chunk_textures.pick_random()
