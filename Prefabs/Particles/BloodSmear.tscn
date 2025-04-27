@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu0hd6oio87hx"]
+[gd_scene load_steps=3 format=3 uid="uid://bu0hd6oio87hx"]
 
 [ext_resource type="Texture2D" uid="uid://dp56kn3evjwkb" path="res://Assets/Art/PlaceHolders/Splat.png" id="1_h373p"]
+[ext_resource type="Script" uid="uid://cmhd3w7xxvq0r" path="res://Assets/Scripts/Misc/BloodSmear.gd" id="2_sfkt2"]
 
 [node name="BloodSmear" type="Sprite2D"]
 texture = ExtResource("1_h373p")
+script = ExtResource("2_sfkt2")
+
+[node name="Timer" type="Timer" parent="."]
