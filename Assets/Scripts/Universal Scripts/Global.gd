@@ -33,3 +33,16 @@ func spawn_meat_chunk(position: Vector2):
 		meat_chunk.z_index = -1  # Still draw it below
 		# You don't need to manually apply forces anymore!
 		get_tree().current_scene.add_child(meat_chunk)
+
+const MAX_BLOOD_SMEARS = 500
+var active_smeares := []
+
+func register_smear(smear):
+	active_smeares.append(smear)
+	if active_smeares.size() > MAX_BLOOD_SMEARS:
+		var oldest = active_smeares.pop_front()
+		if oldest.is_inside_tree():
+			oldest.queue_free()
+
+func unregister_smear(smear):
+	active_smeares.erase(smear)

@@ -7,6 +7,7 @@ var timer: Timer
 var fading := false
 
 func _ready():
+	Global.register_smear(self)
 	timer = $Timer
 	timer.wait_time = lifetime
 	timer.timeout.connect(start_fading)
@@ -22,3 +23,6 @@ func _process(delta):
 	if fading:
 		var alpha_decrease = delta / fade_time
 		modulate.a = max(0.0, modulate.a - alpha_decrease)
+
+func _exit_tree():
+	Global.unregister_smear(self)
