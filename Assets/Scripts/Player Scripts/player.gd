@@ -195,7 +195,7 @@ func attempt_to_fire():
 			
 		CurrentWeapon.attempt_to_fire(global_position, direction)
 	
-func deal_damage(damage):
+func deal_damage(damage, from_position = null):
 	GlobalPlayer.PlayerHP -= damage
 	
 func kill():

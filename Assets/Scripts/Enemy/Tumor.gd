@@ -2,14 +2,22 @@ extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var Speed = 150
-var Health = 10
-#var Enemy = preload("res://Scenes/Misc/enemy.tscn")
+var Speed = 175
+var Health = 60
 var Target = "Player"
+var FuseTimer = Timer.new()
+var TorpedoVelocity = Vector2(0,0)
+var IsTorpedo = false
+var LastHitDirection = Vector2(0,0)
 
 func _ready():
 	add_to_group("Enemy")
 	print(Target)
+	
+	FuseTimer.wait_time = 3
+	FuseTimer.one_shot = true  # Timer only goes once
+	FuseTimer.connect("timeout", Callable(self, "explode")) # Executes the spawn function once timer has ended
+	add_child(FuseTimer)
 	
 func _process(delta):
 	if Health <= 0:
@@ -17,13 +25,15 @@ func _process(delta):
 			drop_xp()
 			has_dropped_xp = true
 			
-			Global.spawn_meat_chunk(global_position)
-			Global.spawn_blood_splatter(global_position)
-			Global.spawn_death_particles(global_position) 
-			queue_free()
+			torpedo()
 
 func _physics_process(_delta):
 	var Player
+	
+	if IsTorpedo:
+		velocity = TorpedoVelocity
+		move_and_slide()
+		return
 	
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
@@ -53,12 +63,44 @@ func _physics_process(_delta):
 var has_dropped_xp := false
 
 # Configurable values (can be set per-enemy or globally)
-var xp_drop_chance := 0.5  # 50% chance to drop XP
+var xp_drop_chance := 1.0  # 100% chance to drop XP
 var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 3 XP pickups
 
+func explode():
+	print("KABOOM MF")
+	
+	var explosion_area = $Area2D
+	var collision_shape = explosion_area.get_child(0)  # Get CollisionShape2D
+	
+	# Double the radius of the collision shape (aka the area)
+	if collision_shape is CollisionShape2D:
+		var shape = collision_shape.shape
+		if shape is CircleShape2D:
+			shape.radius *= 2  # Double it and give it to the next enemy
+			
+	# Get all the entities within the range
+	var bodies_in_range = explosion_area.get_overlapping_bodies()
+	
+	# Loop through all bodies and deal damage if they have the "deal_damage" method
+	for body in bodies_in_range:
+		if body.has_method("deal_damage"):
+			body.deal_damage(20, global_position)
+			
+	Global.spawn_meat_chunk(global_position)
+	Global.spawn_blood_splatter(global_position)
+	Global.spawn_death_particles(global_position)
+	
+	queue_free()
+	
+func torpedo():
+	IsTorpedo = true
+	TorpedoVelocity = -LastHitDirection * Speed * 2
+	FuseTimer.start()
+	print("Torpedo velocity: ", TorpedoVelocity)
+
 func drop_xp():
-	var xp_drop_chance := 0.1  # 10% chance to drop XP
-	var xp_drop_range := Vector2i(1, 1)  # Drop between 1 and 1 XP pickups
+	var xp_drop_chance := 1.0  # 10% chance to drop XP
+	var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 3 XP pickups
 	# Check if XP should drop at all, we might not want all enemies to drop it
 	if randf() > xp_drop_chance:
 		return
@@ -82,9 +124,22 @@ func drop_xp():
 
 func deal_damage(damage, from_position = null):
 	Health -= damage
-
+	if from_position:
+		LastHitDirection = (global_position - from_position).normalized()
+		print("LastHitDirection: ", LastHitDirection)
+	else:
+		print("NO from_position PASSED")
+			
 func _on_area_2d_body_entered(body: Node2D):
+	if IsTorpedo and body and not body.is_in_group("Bullet"):
+		print(body)
+		explode()
+		return
+	
 	if is_in_group("Enemy") and body.is_in_group("Player"):
+		FuseTimer.start()
+		
+	if is_in_group("") and body.is_in_group(""):
 		body.deal_damage(2)
 		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
@@ -101,8 +156,8 @@ func _on_area_2d_body_entered(body: Node2D):
 		return
 		
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")): # Fixed
+		deal_damage(10, body.global_position)
 		body.queue_free()
-		deal_damage(10)
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
 		add_to_group("Minion")

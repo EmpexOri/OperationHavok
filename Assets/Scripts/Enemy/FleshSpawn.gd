@@ -70,7 +70,7 @@ func drop_xp():
 		var xp_pickup = PickupFactory.build_pickup("Xp", position)
 		get_parent().add_child(xp_pickup)
 
-func deal_damage(damage):
+func deal_damage(damage, from_position = null):
 	Health -= damage
 
 func _on_area_2d_body_entered(body: Node2D):

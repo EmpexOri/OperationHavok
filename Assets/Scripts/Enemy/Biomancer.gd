@@ -83,7 +83,7 @@ func spawn():
 
 func drop_xp():
 	var xp_drop_chance := 1.0  # 100% chance to drop XP
-	var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 1 XP pickups
+	var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 3 XP pickups
 	# Check if XP should drop at all, we might not want all enemies to drop it
 	if randf() > xp_drop_chance:
 		return
@@ -100,7 +100,7 @@ func drop_xp():
 		var xp_pickup = PickupFactory.build_pickup("Xp", position)
 		get_parent().add_child(xp_pickup)
 
-func deal_damage(damage):
+func deal_damage(damage, from_position = null):
 	Health -= damage
 	#pass
 

@@ -14,11 +14,11 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_okkq5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_okkq5")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_dajsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_okkq5")
 
 [node name="Area2D" type="Area2D" parent="."]
 

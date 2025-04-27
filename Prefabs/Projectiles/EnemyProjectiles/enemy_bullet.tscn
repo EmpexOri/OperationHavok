@@ -12,7 +12,7 @@ base_lifetime = 1.0
 rotation = 1.5708
 
 [node name="Sprite2D" parent="." index="1"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.926299, 2.5028e-06, 1.54018e-06, 1)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_hpsnd")

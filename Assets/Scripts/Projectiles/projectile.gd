@@ -27,6 +27,7 @@ var current_effects: Array[ProjectileEffect] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("Bullet")
 	# Connect signals
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 	body_entered.connect(_on_body_entered) # Handle collisions
@@ -84,7 +85,7 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 func _on_body_entered(body: Node2D):
 	# Damage the entity, destroy the projectile
 	if body.has_method("deal_damage"):
-		body.deal_damage(damage) # Deal damage to entity if it has the deal_damage method
+		body.deal_damage(damage, global_position) # Deal damage to entity if it has the deal_damage method
 	
 	if current_effects:
 		for effect in current_effects:

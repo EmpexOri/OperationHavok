@@ -4,6 +4,7 @@ var Hordling = preload("res://Prefabs/Enemy/Hordling.tscn")
 var Spewling = preload("res://Prefabs/Enemy/Spewling.tscn")
 var Biomancer = preload("res://Prefabs/Enemy/Biomancer.tscn")
 var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
+var Tumor = preload("res://Prefabs/Enemy/Tumor.tscn")
 
 @onready var PausedLabel: Label = $PausedLayer/Title
 @onready var ResumeButton: Button = $PausedLayer/ResumeButton
@@ -12,11 +13,12 @@ var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
 @onready var QuitButton: Button = $PausedLayer/QuitButton
 
 func _ready():
-	start_spawn_timer1()
+	#start_spawn_timer1()
 	start_spawn_timer1()
 	start_spawn_timer2()
 	start_spawn_timer3()
 	start_spawn_timer4()
+	start_spawn_timer5()
 	
 	# Pause screen assets
 	PausedLabel.visible = false
@@ -131,3 +133,24 @@ func spawn_enemy4():
 	add_child(EnemyInstance)
 	
 	start_spawn_timer4()
+	
+		###############################################################################################################
+	
+func start_spawn_timer5():
+	var timer = Timer.new()
+	timer.wait_time = randf_range(5, 7)
+	timer.one_shot = true  # Timer only goes once
+	timer.connect("timeout", Callable(self, "spawn_enemy5")) # Executes the spawn function once timer has ended
+	add_child(timer)
+	timer.start()
+
+func spawn_enemy5():
+	var EnemyInstance = Tumor.instantiate()
+	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
+	var viewport = get_viewport_rect().size
+	var random_x = randf_range(0, viewport.x)  # Random X position
+	var random_y = randf_range(0, viewport.y)  # Random Y position
+	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
+	add_child(EnemyInstance)
+	
+	start_spawn_timer5()
