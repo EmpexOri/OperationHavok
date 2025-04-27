@@ -52,10 +52,6 @@ func _physics_process(_delta):
 	
 var has_dropped_xp := false
 
-# Configurable values (can be set per-enemy or globally)
-var xp_drop_chance := 0.5  # 50% chance to drop XP
-var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 3 XP pickups
-
 func drop_xp():
 	var xp_drop_chance := 0.1  # 10% chance to drop XP
 	var xp_drop_range := Vector2i(1, 1)  # Drop between 1 and 1 XP pickups

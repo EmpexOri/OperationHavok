@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu0hd6oio87hx"]
+
+[ext_resource type="Texture2D" uid="uid://dp56kn3evjwkb" path="res://Assets/Art/PlaceHolders/Splat.png" id="1_h373p"]
+
+[node name="BloodSmear" type="Sprite2D"]
+texture = ExtResource("1_h373p")
