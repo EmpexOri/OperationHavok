@@ -76,7 +76,7 @@ func explode():
 	if collision_shape is CollisionShape2D:
 		var shape = collision_shape.shape
 		if shape is CircleShape2D:
-			shape.radius *= 1.5  # Double it and give it to the next enemy
+			shape.radius *= 1.2  # Double it and give it to the next enemy
 			
 	# Get all the entities within the range
 	var bodies_in_range = explosion_area.get_overlapping_bodies()
