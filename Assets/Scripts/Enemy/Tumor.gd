@@ -70,26 +70,83 @@ var has_dropped_xp := false
 var xp_drop_chance := 1.0  # 100% chance to drop XP
 var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 3 XP pickups
 
+#func explode():
+	#print("KABOOM MF")
+	#
+	#var explosion_area = $Area2D
+	#var collision_shape = explosion_area.get_child(0)  # Get CollisionShape2D
+	#
+	## Double the radius of the collision shape (aka the area)
+	#if collision_shape is CollisionShape2D:
+		#var shape = collision_shape.shape
+		#if shape is CircleShape2D:
+			#shape.radius *= 1.2  # Double it and give it to the next enemy
+			#
+	## Get all the entities within the range
+	#var bodies_in_range = explosion_area.get_overlapping_bodies()
+	#
+	## Loop through all bodies and deal damage if they have the "deal_damage" method
+	#for body in bodies_in_range:
+		#if body.has_method("deal_damage"):
+			#body.deal_damage(20, global_position)
+			#
+	#Global.spawn_meat_chunk(global_position)
+	#Global.spawn_blood_splatter(global_position)
+	#Global.spawn_death_particles(global_position)
+	#
+	#queue_free()
+	
+const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)	
+
 func explode():
 	print("KABOOM MF")
 	
 	var explosion_area = $Area2D
-	var collision_shape = explosion_area.get_child(0)  # Get CollisionShape2D
+	var collision_shape = explosion_area.get_child(0)
 	
-	# Double the radius of the collision shape (aka the area)
+	var shape : Shape2D = null  # Declare shape outside the if block
+	
 	if collision_shape is CollisionShape2D:
-		var shape = collision_shape.shape
+		shape = collision_shape.shape
 		if shape is CircleShape2D:
-			shape.radius *= 1.2  # Double it and give it to the next enemy
+			shape.radius *= 1.2
 			
-	# Get all the entities within the range
+	var space_state = get_world_2d().direct_space_state
 	var bodies_in_range = explosion_area.get_overlapping_bodies()
+	var already_checked = []
 	
-	# Loop through all bodies and deal damage if they have the "deal_damage" method
 	for body in bodies_in_range:
-		if body.has_method("deal_damage"):
-			body.deal_damage(20, global_position)
+		if body in already_checked:
+			continue
+		already_checked.append(body)
+		
+		if not body.has_method("deal_damage"):
+			continue
 			
+		if global_position.distance_to(body.global_position) > shape.radius:
+			continue
+			
+		# Create PhysicsRayQueryParameters2D to use with intersect_ray
+		var ray_params = PhysicsRayQueryParameters2D.new()
+		ray_params.from = global_position
+		ray_params.to = body.global_position
+		ray_params.exclude = [self]  # Exclude the object from the raycast
+		ray_params.collision_mask = WALL_COLLISION_MASK
+		
+		# Perform the raycast using the PhysicsRayQueryParameters2D
+		var result = space_state.intersect_ray(ray_params)
+		
+		if result and result.collider != body:
+			# Check if the result is an enemy or a wall
+				if result.collider.is_in_group("Enemy"):
+					# If the result is an enemy, ignore it as a blocker
+					continue
+				print("Explosion blocked by: ", result.collider)
+				continue
+			
+		print("Explosion hits: ", body)
+		body.deal_damage(20, global_position)
+		
 	Global.spawn_meat_chunk(global_position)
 	Global.spawn_blood_splatter(global_position)
 	Global.spawn_death_particles(global_position)
