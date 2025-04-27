@@ -4,27 +4,27 @@
 [ext_resource type="Texture2D" uid="uid://l3hvvyuxg3l" path="res://Assets/Art/PlaceHolders/Needling.png" id="2_s4n0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx0aw"]
-size = Vector2(23, 26)
+size = Vector2(19, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_na2k3"]
-size = Vector2(23, 26)
+size = Vector2(25, 29)
 
 [node name="Needling" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_s4n0f")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 2)
+shape = SubResource("RectangleShape2D_lx0aw")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_s4n0f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
-shape = SubResource("RectangleShape2D_lx0aw")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 2)
+position = Vector2(2.5, 1.5)
 shape = SubResource("RectangleShape2D_na2k3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

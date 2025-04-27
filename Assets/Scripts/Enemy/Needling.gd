@@ -41,8 +41,12 @@ func _physics_process(_delta):
 	var target_pos: Vector2
 	
 	if IsMovingRandomly:
+		var player = get_parent().get_node(Target)
 		target_pos = nav.target_position
-		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
+		if global_position.distance_to(player.global_position) <= 100:
+			# Cancel random movement and start charging at the player
+			IsMovingRandomly = false
+		elif nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
 			IsMovingRandomly = false
 			velocity = Vector2(0, 0)
 	else:
