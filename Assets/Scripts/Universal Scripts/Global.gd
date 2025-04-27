@@ -34,7 +34,7 @@ func spawn_meat_chunk(position: Vector2):
 		# You don't need to manually apply forces anymore!
 		get_tree().current_scene.add_child(meat_chunk)
 
-const MAX_BLOOD_SMEARS = 500
+const MAX_BLOOD_SMEARS = 1000
 var active_smeares := []
 
 func register_smear(smear):

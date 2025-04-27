@@ -26,6 +26,10 @@ func _process(delta):
 			has_dropped_xp = true
 			
 			torpedo()
+			
+		Global.spawn_meat_chunk(global_position)
+		Global.spawn_blood_splatter(global_position)
+		Global.spawn_death_particles(global_position) 
 
 func _physics_process(_delta):
 	var Player

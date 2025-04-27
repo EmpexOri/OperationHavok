@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cvs7x0y7n8u5s" path="res://Assets/Scripts/Universal Scripts/background.gd" id="4_aly1e"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/XPCircle.png" id="4_d0q0w"]
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
-[ext_resource type="Script" path="res://Assets/Scripts/Misc/FPS.gd" id="7_3kogm"]
+[ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_3kogm"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="9_3kogm"]
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="12_1cxn6"]
 [ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Scenes/Options/volume_control_slider.gd" id="12_d0q0w"]
