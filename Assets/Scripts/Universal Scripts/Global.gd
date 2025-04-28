@@ -7,11 +7,10 @@ func spawn_death_particles(position: Vector2):
 	particle_instance.global_position = position
 	get_tree().current_scene.add_child(particle_instance)
 
-	# Access the CPUParticles2D node inside the scene
 	var particles = particle_instance.get_node("Particles")
 	particles.emitting = true
 
-	# Free after its lifetime
+	# Free after its lifetime, so we despawn it (Might get rid of this system)
 	await get_tree().create_timer(particles.lifetime + 0.5).timeout
 	if is_instance_valid(particle_instance):
 		particle_instance.queue_free()
@@ -20,7 +19,7 @@ func spawn_blood_splatter(position: Vector2):
 	var blood_sprite = Sprite2D.new()
 	blood_sprite.texture = preload("res://Assets/Art/PlaceHolders/Splat.png") 
 	blood_sprite.position = position
-	blood_sprite.z_index = -2  # Ensure the blood sprite is drawn on top of the TileMap
+	blood_sprite.z_index = -2  # Ensure the blood sprite is drawn on top of the TileMap (Lmao)
 	get_tree().current_scene.add_child(blood_sprite)
 
 func spawn_meat_chunk(position: Vector2):
@@ -31,7 +30,7 @@ func spawn_meat_chunk(position: Vector2):
 		var meat_chunk = meat_scene.instantiate()
 		meat_chunk.global_position = position
 		meat_chunk.z_index = -1  # Still draw it below
-		# You don't need to manually apply forces anymore!
+		# You don't need to manually apply forces anymore! I do it all now inside the Meatchunk Script
 		get_tree().current_scene.add_child(meat_chunk)
 
 const MAX_BLOOD_SMEARS = 1000
