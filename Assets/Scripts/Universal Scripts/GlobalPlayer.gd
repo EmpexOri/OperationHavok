@@ -10,7 +10,7 @@ var ClassData = {
 	},
 	"Commando": {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 250,
-		"Abilities": ["SwapWeapons", "SniperBeam", "WeaponOverCharge"]
+		"Abilities": ["SwapWeapons", "SniperBeam", "Minigun"]
 	},
 	"Fleshthing": {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150, "Abilities": []
@@ -18,7 +18,7 @@ var ClassData = {
 }
 
 var AbilityListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"]
-var AbilityListCommando = ["SwapWeapons", "SniperBeam", "WeaponOverCharge"]
+var AbilityListCommando = ["SwapWeapons", "SniperBeam", "Minigun"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 func XPRequiredForLevel(Level: int) -> int:
