@@ -5,7 +5,7 @@
 
 [node name="EnemyBullet" instance=ExtResource("1_a1n2k")]
 base_speed = 500.0
-base_damage = 40.0
+base_damage = 25.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
