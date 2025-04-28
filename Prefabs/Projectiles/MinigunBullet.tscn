@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cosvpnpnfm3b7"]
+
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_q0fmo"]
+[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/Bullet.png" id="2_2pvsy"]
+
+[node name="Bullet" instance=ExtResource("1_q0fmo")]
+base_speed = 400.0
+base_damage = 2.0
+base_lifetime = 1.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2pvsy")

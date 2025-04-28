@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InaccuracyEffect" load_steps=2 format=3 uid="uid://dw48g40tgpcpj"]
+
+[ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="1_is8yh"]
+
+[resource]
+script = ExtResource("1_is8yh")
+inaccuracy_angle = 10.0
+effect_name = ""
+metadata/_custom_type_script = "uid://wwee4860hgms"
