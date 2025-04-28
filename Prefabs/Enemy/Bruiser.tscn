@@ -1,0 +1,137 @@
+[gd_scene load_steps=19 format=3 uid="uid://515xqv0mb0a6"]
+
+[ext_resource type="Texture2D" uid="uid://cm63thydonoab" path="res://Assets/Art/Sprites/Bruiser_Anim_Draft.png" id="1_c51n4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy3cq"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmuqk"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d86ng"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pq76"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(144, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo8a7"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(192, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt6j2"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(240, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxa0g"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(288, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7scw"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(336, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0v3y"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqe2o"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n751u"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keuqn"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8fkn"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta04f"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ynls"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryca1"]
+atlas = ExtResource("1_c51n4")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8oeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy3cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmuqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d86ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pq76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo8a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt6j2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxa0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7scw")
+}],
+"loop": true,
+"name": &"Back_Right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0v3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqe2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n751u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keuqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8fkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta04f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ynls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryca1")
+}],
+"loop": true,
+"name": &"Front_Right",
+"speed": 6.0
+}]
+
+[node name="Bruiser" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r8oeu")
+animation = &"Back_Right"
+frame_progress = 0.500056
