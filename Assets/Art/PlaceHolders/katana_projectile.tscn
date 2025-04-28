@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_n28t4"]
 [ext_resource type="Script" uid="uid://clf4d48n5vkl1" path="res://Assets/Scripts/Projectiles/katana_projectile.gd" id="2_iqrc2"]
-[ext_resource type="Texture2D" uid="uid://btr7b30u5eyo6" path="res://Assets/Art/katana.png" id="2_w360j"]
+[ext_resource type="Texture2D" uid="uid://btr7b30u5eyo6" path="res://Assets/Art/PlaceHolders/katana.png" id="2_w360j"]
 
 [node name="KatanaProjectile" instance=ExtResource("1_n28t4")]
 script = ExtResource("2_iqrc2")

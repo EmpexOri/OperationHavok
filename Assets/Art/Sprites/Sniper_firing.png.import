@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx2v6y6jjrgq2"
-path="res://.godot/imported/SuspiciousStew.png-8152006c951a38d7f4d2e1dd1fba19ef.ctex"
+uid="uid://dlexxr4yfms0v"
+path="res://.godot/imported/Sniper_firing.png-e65e1f38bbcecbf033d67171969845f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/SuspiciousStew.png"
-dest_files=["res://.godot/imported/SuspiciousStew.png-8152006c951a38d7f4d2e1dd1fba19ef.ctex"]
+source_file="res://Assets/Art/Sprites/Sniper_firing.png"
+dest_files=["res://.godot/imported/Sniper_firing.png-e65e1f38bbcecbf033d67171969845f6.ctex"]
 
 [params]
 

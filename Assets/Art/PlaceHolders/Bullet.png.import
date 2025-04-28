@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btr7b30u5eyo6"
-path="res://.godot/imported/katana.png-2f140de69a3668bc56e7470a255eb32f.ctex"
+uid="uid://chs4bvgl6bsti"
+path="res://.godot/imported/Bullet.png-e28bc0992bec885ec433d67cb5732322.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/katana.png"
-dest_files=["res://.godot/imported/katana.png-2f140de69a3668bc56e7470a255eb32f.ctex"]
+source_file="res://Assets/Art/PlaceHolders/Bullet.png"
+dest_files=["res://.godot/imported/Bullet.png-e28bc0992bec885ec433d67cb5732322.ctex"]
 
 [params]
 

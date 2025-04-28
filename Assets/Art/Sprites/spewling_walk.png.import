@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dib45hhu31nt"
-path="res://.godot/imported/ControlsBg.png-85b3f5f6dc37a301a3f3f12f03ebe9a6.ctex"
+uid="uid://be45hqj8n7o53"
+path="res://.godot/imported/spewling_walk.png-87663383832f48e37f081cf371066a0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/ControlsBg.png"
-dest_files=["res://.godot/imported/ControlsBg.png-85b3f5f6dc37a301a3f3f12f03ebe9a6.ctex"]
+source_file="res://Assets/Art/Sprites/spewling_walk.png"
+dest_files=["res://.godot/imported/spewling_walk.png-87663383832f48e37f081cf371066a0a.ctex"]
 
 [params]
 

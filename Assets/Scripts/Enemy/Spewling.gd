@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var Speed = 100
+var Speed = 60
 var Health = 20
 #var Enemy = preload("res://Scenes/Misc/enemy_2.tscn")
 var OrbitSpeed = 50
@@ -15,6 +15,7 @@ var CurrentWeapon: Weapon = null
 func _ready():
 	add_to_group("Enemy")
 	OrbitDirection = [-1, 1].pick_random()
+	$AnimationPlayer.play("WalkLeft") 
 	
 	var orbittimer = Timer.new()
 	orbittimer.wait_time = randf_range(3, 6)  # Change direction every 3-6 seconds
@@ -50,6 +51,7 @@ func orbit_direction_change():
 	
 func _physics_process(_delta):
 	var Player
+
 	if is_in_group("Enemy"):
 		Player = get_parent().get_node(Target)
 	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
@@ -59,25 +61,32 @@ func _physics_process(_delta):
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
 			Player = get_parent().get_node(Target)
 	else:
-		#Player = get_parent().get_node(self.get_path())
 		Player = get_parent().get_node("Player")
-	
+
 	nav.target_position = Player.position
 	var Direction = nav.get_next_path_position() - global_position
 	Direction = Direction.normalized()
-	
+
 	if position.distance_to(Player.position) >= 150:
 		velocity = Direction * Speed
 	else:
 		var Angle = (position - Player.position).angle() + OrbitSpeed * OrbitDirection * _delta
-		var OrbitRadius = 300  # Keep distance from player
+		var OrbitRadius = 300
 		var OrbitPosition = Player.position + Vector2(OrbitRadius, 0).rotated(Angle)
-		
 		velocity = (OrbitPosition - position).normalized() * Speed
-	
-	#look_at(Player.position)
+
+	# Animations for the Spewling Flip Now
+	if velocity.x > 0:
+		$Body.flip_h = true
+		$Body/SpewlingEye.flip_h = true
+		$Body/SpewlingEye.position.x = -abs($Body/SpewlingEye.position.x)
+	elif velocity.x < 0:
+		$Body.flip_h = false
+		$Body/SpewlingEye.flip_h = false
+		$Body/SpewlingEye.position.x = abs($Body/SpewlingEye.position.x)
+
 	move_and_slide()
-	
+
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)

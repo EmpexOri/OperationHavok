@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o3t2gdsrqcux"
-path="res://.godot/imported/BarTemp.png-236b4023bfa69777ea98b2cff19f80f0.ctex"
+uid="uid://dydgl2851ea6v"
+path="res://.godot/imported/grid.jpg-e4476f93fb93a3baaa4758ede774d21b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/BarTemp.png"
-dest_files=["res://.godot/imported/BarTemp.png-236b4023bfa69777ea98b2cff19f80f0.ctex"]
+source_file="res://Assets/Art/PlaceHolders/grid.jpg"
+dest_files=["res://.godot/imported/grid.jpg-e4476f93fb93a3baaa4758ede774d21b.ctex"]
 
 [params]
 

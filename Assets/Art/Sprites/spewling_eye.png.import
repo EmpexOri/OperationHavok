@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmyuiq7n3wok0"
-path="res://.godot/imported/XPCircle.png-812a5c49502367aa09027582492a584d.ctex"
+uid="uid://cilm6pckktu15"
+path="res://.godot/imported/spewling_eye.png-9d8a9d2433c35c32b4da575d83b7f63a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/XPCircle.png"
-dest_files=["res://.godot/imported/XPCircle.png-812a5c49502367aa09027582492a584d.ctex"]
+source_file="res://Assets/Art/Sprites/spewling_eye.png"
+dest_files=["res://.godot/imported/spewling_eye.png-9d8a9d2433c35c32b4da575d83b7f63a.ctex"]
 
 [params]
 

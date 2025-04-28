@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs0bfjn56fwlt"
-path="res://.godot/imported/Player.png-ef19b007b16d694549c5352cc88a05d2.ctex"
+uid="uid://cvn3abbrrm0dl"
+path="res://.godot/imported/Hordling_walk.png-81b4f4d1c6cfad9c2bbb59cc6c84ff2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Player.png"
-dest_files=["res://.godot/imported/Player.png-ef19b007b16d694549c5352cc88a05d2.ctex"]
+source_file="res://Assets/Art/Sprites/Hordling_walk.png"
+dest_files=["res://.godot/imported/Hordling_walk.png-81b4f4d1c6cfad9c2bbb59cc6c84ff2f.ctex"]
 
 [params]
 

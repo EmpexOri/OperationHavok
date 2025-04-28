@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7xhkxpxro5bv"]
 
-[ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/SuspiciousStew.png" id="1_rpgni"]
+[ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/PlaceHolders/SuspiciousStew.png" id="1_rpgni"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iln7"]
 bg_color = Color(0.817521, 0.817521, 0.817521, 1)
