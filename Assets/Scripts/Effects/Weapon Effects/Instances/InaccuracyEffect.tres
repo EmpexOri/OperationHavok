@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ei82b")
-inaccuracy_angle = 15.0
+inaccuracy_angle = 30.0
 effect_name = ""
 metadata/_custom_type_script = "uid://wwee4860hgms"
