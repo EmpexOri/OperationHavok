@@ -1,0 +1,376 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdfpkcvyx66sx"]
+
+[ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
+[ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Scenes/Options/volume_control_slider.gd" id="2_fxfs8"]
+[ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="3_sqgqt"]
+[ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayg5y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffkdq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2c132"]
+
+[sub_resource type="Theme" id="Theme_xpkpk"]
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_twjg6")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ayg5y")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ffkdq")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+
+[node name="ControlsMenu" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ControlsTitle" type="Label" parent="ControlsMenu"]
+process_mode = 2
+visible = false
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 641.0
+offset_bottom = 62.0
+theme_type_variation = &"HeaderLarge"
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsContainer" type="ScrollContainer" parent="ControlsMenu"]
+process_mode = 2
+visible = false
+offset_left = 182.0
+offset_top = 82.0
+offset_right = 462.0
+offset_bottom = 280.0
+theme = SubResource("Theme_xpkpk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlsMenu/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Slot1" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move up"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot1"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "W"
+horizontal_alignment = 1
+
+[node name="Slot2" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move down"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot2"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "S"
+horizontal_alignment = 1
+
+[node name="Slot3" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move left       "
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot3"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A"
+horizontal_alignment = 1
+
+[node name="Slot4" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot4"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Move right"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot4"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 6.0
+offset_right = 272.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "D"
+horizontal_alignment = 1
+
+[node name="Slot5" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot5"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ability 1"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot5"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 6.0
+offset_right = 275.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "LMB"
+horizontal_alignment = 1
+
+[node name="Slot6" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot6"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ability 2"
+
+[node name="Slot7" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Pause"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 6.0
+offset_right = 274.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ESC"
+horizontal_alignment = 1
+
+[node name="OptionsMenu" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
+process_mode = 3
+offset_left = 193.0
+offset_top = 70.0
+offset_right = 455.0
+offset_bottom = 254.0
+
+[node name="VolumeControlSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_fxfs8")
+
+[node name="MasterLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+text = "Volume - Master"
+
+[node name="MasterSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("2_fxfs8")
+BusName = "Master"
+
+[node name="MusicLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+text = "Volume - Music"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("2_fxfs8")
+BusName = "Music"
+
+[node name="SFXLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+text = "Volume - SFX "
+
+[node name="SFXSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("2_fxfs8")
+BusName = "SFX"
+
+[node name="BrightnessLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+text = "Brightness"
+
+[node name="BrightnessSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 1.0
+script = ExtResource("3_sqgqt")
+
+[node name="Title" type="Label" parent="."]
+process_mode = 2
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 641.0
+offset_bottom = 62.0
+theme_type_variation = &"HeaderLarge"
+text = "Pause Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+process_mode = 2
+offset_left = 241.0
+offset_top = 114.0
+offset_right = 403.0
+offset_bottom = 145.0
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../ControlsButton")
+text = "Resume"
+
+[node name="ControlsButton" type="Button" parent="."]
+process_mode = 2
+offset_left = 241.0
+offset_top = 157.0
+offset_right = 403.0
+offset_bottom = 188.0
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "Controls"
+
+[node name="OptionsButton" type="Button" parent="."]
+process_mode = 2
+offset_left = 241.0
+offset_top = 200.0
+offset_right = 403.0
+offset_bottom = 231.0
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="."]
+process_mode = 3
+offset_left = 241.0
+offset_top = 245.0
+offset_right = 403.0
+offset_bottom = 276.0
+focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+text = "Quit"
+
+[node name="BackButton" type="Button" parent="."]
+process_mode = 2
+visible = false
+offset_left = 242.0
+offset_top = 291.0
+offset_right = 404.0
+offset_bottom = 322.0
+text = "Back"
+
+[node name="PauseNode" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("4_fx1m6")
+
+[connection signal="value_changed" from="OptionsMenu/VBoxContainer/BrightnessSlider" to="OptionsMenu/VBoxContainer/BrightnessSlider" method="_on_value_changed"]
+[connection signal="pressed" from="ResumeButton" to="PauseNode" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ControlsButton" to="PauseNode" method="_on_controls_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="PauseNode" method="_on_options_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="PauseNode" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="PauseNode" method="_on_back_button_pressed"]

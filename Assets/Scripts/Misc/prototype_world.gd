@@ -6,11 +6,7 @@ var Biomancer = preload("res://Prefabs/Enemy/Biomancer.tscn")
 var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
 var Tumor = preload("res://Prefabs/Enemy/Tumor.tscn")
 
-@onready var PausedLabel: Label = $PausedLayer/Title
-@onready var ResumeButton: Button = $PausedLayer/ResumeButton
-@onready var ControlsButton: Button = $PausedLayer/ControlsButton
-@onready var OptionsButton: Button = $PausedLayer/OptionsButton
-@onready var QuitButton: Button = $PausedLayer/QuitButton
+var PauseMenu = preload("res://Scenes/Options/PauseMenu.tscn").instantiate()
 
 func _ready():
 	#start_spawn_timer1()
@@ -21,35 +17,24 @@ func _ready():
 	start_spawn_timer5()
 	
 	# Pause screen assets
-	PausedLabel.visible = false
-	ResumeButton.visible = false
-	ControlsButton.visible = false
-	OptionsButton.visible = false
-	QuitButton.visible = false
-
-func _process(_delta):
-	# Make sure that the pause menu isn't being displayed when not paused
-	if PausedLabel.visible:
-		PausedLabel.visible = false
-		ResumeButton.visible = false
-		ControlsButton.visible = false
-		OptionsButton.visible = false
-		QuitButton.visible = false
+	add_child(PauseMenu)
+	PauseMenu.visible = false
 		
 func _input(event):
 	if Input.is_action_just_pressed("InGameOptions"):
 		GlobalAudioController.PauseMenuMusic()
-		$PausedLayer/ResumeButton.grab_focus()
 		pause_game()
 
 # Function to display the pause menu when game is paused
 func pause_game():
-	PausedLabel.visible = true
-	ResumeButton.visible = true
-	ControlsButton.visible = true
-	OptionsButton.visible = true
-	QuitButton.visible = true
-	get_tree().paused = true
+	if get_tree().paused:
+		# Unpause game
+		get_tree().paused = false
+		PauseMenu.visible = false 
+	else:
+		# Pause game
+		get_tree().paused = true
+		PauseMenu.visible = true 
 
 func start_spawn_timer1():
 	var timer = Timer.new()

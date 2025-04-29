@@ -1,31 +1,49 @@
 extends Node
 
-@onready var ResumeButton: Button = $"../PausedLayer/ResumeButton"
-@onready var ControlsButton: Button = $"../PausedLayer/ControlsButton"
-@onready var OptionsButton: Button = $"../PausedLayer/OptionsButton"
-@onready var QuitButton: Button = $"../PausedLayer/QuitButton"
-@onready var BackButton: Button = $"../PausedLayer/BackButton"
-@onready var Title: Label = $"../PausedLayer/Title"
+@onready var ResumeButton: Button = $"../ResumeButton"
+@onready var ControlsButton: Button = $"../ControlsButton"
+@onready var OptionsButton: Button = $"../OptionsButton"
+@onready var QuitButton: Button = $"../QuitButton"
+@onready var BackButton: Button = $"../BackButton"
+@onready var Title: Label = $"../Title"
 
 # Controls Menu
-@onready var ControlsTitle: Label = $"../PausedLayer/ControlsMenu/ControlsTitle"
-@onready var ScrollBox: ScrollContainer = $"../PausedLayer/ControlsMenu/ControlsContainer"
+@onready var ControlsTitle: Label = $"../ControlsMenu/ControlsTitle"
+@onready var ScrollBox: ScrollContainer = $"../ControlsMenu/ControlsContainer"
 
 # Options Menu
-@onready var MasterLabel: Label = $"../PausedLayer/OptionsMenu/VBoxContainer/MasterLabel"
-@onready var MasterSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/MasterSlider"
-@onready var MusicLabel: Label =$"../PausedLayer/OptionsMenu/VBoxContainer/MusicLabel"
-@onready var MusicSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/MusicSlider"
-@onready var SFXLabel: Label =$"../PausedLayer/OptionsMenu/VBoxContainer/SFXLabel"
-@onready var SFXSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/SFXSlider"
-@onready var BrightnessLabel: Label = $"../PausedLayer/OptionsMenu/VBoxContainer/BrightnessLabel"
-@onready var BrightnessSlider: HSlider = $"../PausedLayer/OptionsMenu/VBoxContainer/BrightnessSlider"
+@onready var MasterLabel: Label = $"../OptionsMenu/VBoxContainer/MasterLabel"
+@onready var MasterSlider: HSlider = $"../OptionsMenu/VBoxContainer/MasterSlider"
+@onready var MusicLabel: Label =$"../OptionsMenu/VBoxContainer/MusicLabel"
+@onready var MusicSlider: HSlider = $"../OptionsMenu/VBoxContainer/MusicSlider"
+@onready var SFXLabel: Label =$"../OptionsMenu/VBoxContainer/SFXLabel"
+@onready var SFXSlider: HSlider = $"../OptionsMenu/VBoxContainer/SFXSlider"
+@onready var BrightnessLabel: Label = $"../OptionsMenu/VBoxContainer/BrightnessLabel"
+@onready var BrightnessSlider: HSlider = $"../OptionsMenu/VBoxContainer/BrightnessSlider"
 
 
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
+	
+		# Removing all objects and bringing up the pause menu 
+	ResumeButton.visible = false
+	ControlsButton.visible = false
+	OptionsButton.visible = false
+	QuitButton.visible = false
+	Title.visible = false
+	ControlsTitle.visible = false
+	ScrollBox.visible = false
+	BackButton.visible = false
+	MasterLabel.visible = false
+	MasterSlider.visible = false
+	MusicLabel.visible = false
+	MusicSlider.visible = false
+	SFXLabel.visible = false
+	SFXSlider.visible = false
+	BrightnessLabel.visible = false
+	BrightnessSlider.visible = false
 	
 	if get_tree().paused:
 		get_tree().paused = false
@@ -101,4 +119,3 @@ func _on_back_button_pressed() -> void:
 	BrightnessSlider.visible = false
 	
 	ResumeButton.grab_focus()
-	

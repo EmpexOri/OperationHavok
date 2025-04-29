@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="2_1hmx5"]
 [ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Scenes/Options/volume_control_slider.gd" id="2_4k2k5"]
 
-[node name="OptionsScene" type="Node2D"]
+[node name="OptionsScene" type="CanvasLayer"]
 script = ExtResource("1_ax0sw")
 
 [node name="Title" type="Label" parent="."]
