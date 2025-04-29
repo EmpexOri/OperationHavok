@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://swsed4p33iv"]
+[gd_scene load_steps=3 format=3 uid="uid://swsed4p33iv"]
+
+[ext_resource type="Script" uid="uid://dxainc2u2txj2" path="res://Scenes/Options/global_brightness.gd" id="1_konyk"]
 
 [sub_resource type="Environment" id="Environment_7wxgs"]
 background_mode = 3
@@ -7,3 +9,4 @@ adjustment_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_7wxgs")
+script = ExtResource("1_konyk")
