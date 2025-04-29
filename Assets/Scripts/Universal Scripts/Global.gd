@@ -24,16 +24,17 @@ func spawn_blood_splatter(position: Vector2):
 
 func spawn_meat_chunk(position: Vector2):
 	var meat_scene = preload("res://Prefabs/Particles/MeatChunks.tscn")
-	var num_chunks = randi_range(3, 12)
+	var num_chunks = randi_range(6, 24)
 
 	for i in range(num_chunks):
 		var meat_chunk = meat_scene.instantiate()
 		meat_chunk.global_position = position
 		meat_chunk.z_index = -1  # Still draw it below
-		# You don't need to manually apply forces anymore! I do it all now inside the Meatchunk Script
-		get_tree().current_scene.add_child(meat_chunk)
+		
+		# Use deferred call to safely add the meat_chunk to the scene
+		get_tree().current_scene.call_deferred("add_child", meat_chunk)
 
-const MAX_BLOOD_SMEARS = 1000
+const MAX_BLOOD_SMEARS = 2500
 var active_smeares := []
 
 func register_smear(smear):

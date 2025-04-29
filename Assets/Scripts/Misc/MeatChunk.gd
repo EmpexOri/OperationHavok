@@ -67,6 +67,8 @@ func setup_movement():
 
 func setup_timer():
 	var timer = $Timer
+	timer.wait_time = randf_range(1.5, 3.5)  # Random lifetime between 1.5 and 3.5 seconds
+	timer.one_shot = true
 	timer.timeout.connect(queue_free)
 	timer.start()
 
