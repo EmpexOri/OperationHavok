@@ -21,6 +21,7 @@ VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
+script = ExtResource("4_fx1m6")
 
 [node name="ControlsMenu" type="CanvasLayer" parent="."]
 layer = 0
@@ -366,11 +367,10 @@ text = "Back"
 
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2
-script = ExtResource("4_fx1m6")
 
 [connection signal="value_changed" from="OptionsMenu/VBoxContainer/BrightnessSlider" to="OptionsMenu/VBoxContainer/BrightnessSlider" method="_on_value_changed"]
-[connection signal="pressed" from="ResumeButton" to="PauseNode" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="ControlsButton" to="PauseNode" method="_on_controls_button_pressed"]
-[connection signal="pressed" from="OptionsButton" to="PauseNode" method="_on_options_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="PauseNode" method="_on_quit_button_pressed"]
-[connection signal="pressed" from="BackButton" to="PauseNode" method="_on_back_button_pressed"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

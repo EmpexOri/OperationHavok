@@ -9,32 +9,35 @@ var Tumor = preload("res://Prefabs/Enemy/Tumor.tscn")
 var PauseMenu = preload("res://Scenes/Options/PauseMenu.tscn").instantiate()
 
 func _ready():
-	#start_spawn_timer1()
+	# Start spawn timers
 	start_spawn_timer1()
 	start_spawn_timer2()
 	start_spawn_timer3()
 	start_spawn_timer4()
 	start_spawn_timer5()
 	
-	# Pause screen assets
+	# Add PauseMenu to the scene, but keep it hidden initially
 	add_child(PauseMenu)
 	PauseMenu.visible = false
-		
+	
+# Handle input events like Escape key
 func _input(event):
-	if Input.is_action_just_pressed("InGameOptions"):
+	if Input.is_action_just_pressed("InGameOptions"):  # Escape key or your custom key mapping
 		GlobalAudioController.PauseMenuMusic()
+		PauseMenu.show_pause_menu()
 		pause_game()
 
-# Function to display the pause menu when game is paused
+# Function to display or hide the pause menu when game is paused
 func pause_game():
 	if get_tree().paused:
-		# Unpause game
+		# Unpause the game and hide the pause menu
 		get_tree().paused = false
-		PauseMenu.visible = false 
+		PauseMenu.visible = false
 	else:
-		# Pause game
+		# Pause the game and show the pause menu
 		get_tree().paused = true
-		PauseMenu.visible = true 
+		PauseMenu.visible = true
+
 
 func start_spawn_timer1():
 	var timer = Timer.new()
