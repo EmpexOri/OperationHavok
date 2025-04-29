@@ -18,10 +18,6 @@ func _on_back_button_pressed() -> void:
 	# Go to menu when back button is pressed
 	GlobalAudioController.ClickSound()
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
-	
-	$BackButton.focus_neighbor_top = $LevelSelect/Level1Button.get_path()
-	$BackButton.focus_neighbor_left = $LevelSelect/Level1Button.get_path()
-	$BackButton.focus_neighbor_right = $LevelSelect/Level2Button.get_path()
 
 
 func _on_level_1_button_pressed() -> void:
