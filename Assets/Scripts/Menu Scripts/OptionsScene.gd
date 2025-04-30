@@ -1,7 +1,18 @@
 extends CanvasLayer
 
+var Options = true
+
+@onready var BackButton = $BackButton
+
 func _ready():
 	$BackButton.grab_focus()
+
+func _check_back_button() -> void:
+	if Options == true:
+		print("Options is true")
+		BackButton.visible = false
+	else:
+		BackButton.visible = true
 
 func OnBackButtonPressed() -> void:
 	GlobalAudioController.ClickSound()

@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	$PlayButton.grab_focus()
+	
 
 func OnPlayButtonPressed() -> void:
 	GlobalAudioController.ClickSound()

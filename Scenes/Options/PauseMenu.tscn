@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=9 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
-[ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Scenes/Options/volume_control_slider.gd" id="2_fxfs8"]
-[ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Scenes/Options/brightness_slider.gd" id="3_sqgqt"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
+[ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/OptionsScene.tscn" id="5_fxfs8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
 
@@ -223,89 +222,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "ESC"
 horizontal_alignment = 1
 
-[node name="OptionsMenu" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
-process_mode = 3
-offset_left = 193.0
-offset_top = 70.0
-offset_right = 455.0
-offset_bottom = 254.0
-
-[node name="VolumeControlSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-script = ExtResource("2_fxfs8")
-BusName = "Master"
-
-[node name="MasterLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-text = "Volume - Master"
-
-[node name="MasterSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-value = 0.5
-script = ExtResource("2_fxfs8")
-BusName = "Master"
-
-[node name="MusicLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-text = "Volume - Music"
-
-[node name="MusicSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-value = 0.5
-script = ExtResource("2_fxfs8")
-BusName = "Music"
-
-[node name="SFXLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-text = "Volume - SFX "
-
-[node name="SFXSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-value = 0.5
-script = ExtResource("2_fxfs8")
-BusName = "SFX"
-
-[node name="BrightnessLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-text = "Brightness"
-
-[node name="BrightnessSlider" type="HSlider" parent="OptionsMenu/VBoxContainer"]
-process_mode = 3
-visible = false
-layout_mode = 2
-min_value = 0.01
-max_value = 4.0
-step = 0.01
-value = 1.0
-script = ExtResource("3_sqgqt")
-
 [node name="Title" type="Label" parent="."]
 process_mode = 2
 offset_left = 1.0
@@ -358,7 +274,7 @@ focus_neighbor_bottom = NodePath("../ResumeButton")
 text = "Quit"
 
 [node name="BackButton" type="Button" parent="."]
-process_mode = 2
+process_mode = 3
 visible = false
 offset_left = 242.0
 offset_top = 291.0
@@ -369,7 +285,8 @@ text = "Back"
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2
 
-[connection signal="value_changed" from="OptionsMenu/VBoxContainer/BrightnessSlider" to="OptionsMenu/VBoxContainer/BrightnessSlider" method="_on_value_changed"]
+[node name="OptionsScene" parent="." instance=ExtResource("5_fxfs8")]
+
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

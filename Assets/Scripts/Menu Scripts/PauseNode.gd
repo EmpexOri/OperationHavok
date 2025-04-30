@@ -1,5 +1,6 @@
 extends Node
 
+# Main pause menu
 @onready var ResumeButton: Button = $"ResumeButton"
 @onready var ControlsButton: Button = $"ControlsButton"
 @onready var OptionsButton: Button = $"OptionsButton"
@@ -12,14 +13,10 @@ extends Node
 @onready var ScrollBox: ScrollContainer = $"ControlsMenu/ControlsContainer"
 
 # Options Menu
-@onready var MasterLabel: Label = $"OptionsMenu/VBoxContainer/MasterLabel"
-@onready var MasterSlider: HSlider = $"OptionsMenu/VBoxContainer/MasterSlider"
-@onready var MusicLabel: Label =$"OptionsMenu/VBoxContainer/MusicLabel"
-@onready var MusicSlider: HSlider = $"OptionsMenu/VBoxContainer/MusicSlider"
-@onready var SFXLabel: Label =$"OptionsMenu/VBoxContainer/SFXLabel"
-@onready var SFXSlider: HSlider = $"OptionsMenu/VBoxContainer/SFXSlider"
-@onready var BrightnessLabel: Label = $"OptionsMenu/VBoxContainer/BrightnessLabel"
-@onready var BrightnessSlider: HSlider = $"OptionsMenu/VBoxContainer/BrightnessSlider"
+@onready var OptionsScene = $OptionsScene
+
+func _ready():
+	OptionsScene.visible = false
 
 func show_pause_menu() -> void:
 	# Bringing up the pause menu 
@@ -31,14 +28,7 @@ func show_pause_menu() -> void:
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
-	MasterLabel.visible = false
-	MasterSlider.visible = false
-	MusicLabel.visible = false
-	MusicSlider.visible = false
-	SFXLabel.visible = false
-	SFXSlider.visible = false
-	BrightnessLabel.visible = false
-	BrightnessSlider.visible = false
+	
 
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
@@ -54,14 +44,6 @@ func _on_resume_button_pressed() -> void:
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
-	MasterLabel.visible = false
-	MasterSlider.visible = false
-	MusicLabel.visible = false
-	MusicSlider.visible = false
-	SFXLabel.visible = false
-	SFXSlider.visible = false
-	BrightnessLabel.visible = false
-	BrightnessSlider.visible = false
 	
 	if get_tree().paused:
 		get_tree().paused = false
@@ -88,22 +70,15 @@ func _on_options_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	
 	# Removing the pause menu and displaying options menu
+	OptionsScene.Options = true
+	OptionsScene._check_back_button()
+	OptionsScene.visible = true
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	OptionsButton.visible = false
 	QuitButton.visible = false
 	Title.visible = false
-	MasterLabel.visible = true
-	MasterSlider.visible = true
-	MusicLabel.visible = true
-	MusicSlider.visible = true
-	SFXLabel.visible = true
-	SFXSlider.visible = true
-	BrightnessLabel.visible = true
-	BrightnessSlider.visible = true
 	BackButton.visible = true
-	
-	pass # Replace with function body.
 
 
 func _on_quit_button_pressed() -> void:
@@ -119,6 +94,7 @@ func _on_back_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	
 	# Removing all objects and bringing up the pause menu 
+	OptionsScene.visible = false
 	ResumeButton.visible = true
 	ControlsButton.visible = true
 	OptionsButton.visible = true
@@ -127,13 +103,5 @@ func _on_back_button_pressed() -> void:
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
-	MasterLabel.visible = false
-	MasterSlider.visible = false
-	MusicLabel.visible = false
-	MusicSlider.visible = false
-	SFXLabel.visible = false
-	SFXSlider.visible = false
-	BrightnessLabel.visible = false
-	BrightnessSlider.visible = false
 	
 	ResumeButton.grab_focus()
