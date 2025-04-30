@@ -1,70 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3cymoelvi3cn"]
+[gd_scene load_steps=5 format=3 uid="uid://c3cymoelvi3cn"]
 
 [ext_resource type="Script" uid="uid://dqvehgfws03pn" path="res://Assets/Scripts/Enemy/Spewling.gd" id="1_tpudr"]
-[ext_resource type="Texture2D" uid="uid://be45hqj8n7o53" path="res://Assets/Art/Sprites/spewling_walk.png" id="2_sk6y7"]
-[ext_resource type="Texture2D" uid="uid://cilm6pckktu15" path="res://Assets/Art/Sprites/spewling_eye.png" id="3_tymg4"]
-
-[sub_resource type="Animation" id="Animation_jro5k"]
-resource_name = "WalkLeft"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpewlingEye:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.33, 0.66, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_jgncy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpewlingEye:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ct6ui"]
-_data = {
-&"RESET": SubResource("Animation_jgncy"),
-&"WalkLeft": SubResource("Animation_jro5k")
-}
+[ext_resource type="Texture2D" uid="uid://340foj3kjg61" path="res://Assets/Art/PlaceHolders/spewlingBody.png" id="2_iyko2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpudr"]
 
@@ -76,24 +13,12 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_tpudr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Body")
-libraries = {
-&"": SubResource("AnimationLibrary_ct6ui")
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tpudr")
 
 [node name="Body" type="Sprite2D" parent="."]
-texture = ExtResource("2_sk6y7")
-hframes = 4
-vframes = 2
-frame = 4
-
-[node name="SpewlingEye" type="Sprite2D" parent="Body"]
-texture = ExtResource("3_tymg4")
-hframes = 4
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_iyko2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
