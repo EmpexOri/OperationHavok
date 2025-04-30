@@ -99,7 +99,7 @@ var xp_drop_range := Vector2i(1, 3)  # Drop between 1 and 3 XP pickups
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)	
 
 func explode():
-	Global.spawn_tumor_particles(global_position) 
+	Global.spawn_tumour_particles(global_position) 
 	print("KABOOM MF")
 	
 	var explosion_area = $Area2D

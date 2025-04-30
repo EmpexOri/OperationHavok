@@ -1,7 +1,7 @@
 extends Node
 
 var DeathParticles = preload("res://Prefabs/Particles/DeathGore.tscn")
-var TumorParticles = preload("res://Prefabs/Particles/TumorExplosionGore.tscn")
+var TumourParticles = preload("res://Prefabs/Particles/TumourExplosionGore.tscn")
 
 func spawn_death_particles(position: Vector2):
 	var particle_instance = DeathParticles.instantiate()
@@ -16,8 +16,8 @@ func spawn_death_particles(position: Vector2):
 	if is_instance_valid(particle_instance):
 		particle_instance.queue_free()
 		
-func spawn_tumor_particles(position: Vector2):
-	var particle_instance = TumorParticles.instantiate()
+func spawn_tumour_particles(position: Vector2):
+	var particle_instance = TumourParticles.instantiate()
 	particle_instance.global_position = position
 	get_tree().current_scene.add_child(particle_instance)
 
