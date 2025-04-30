@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://kmijtn114svf"]
+[gd_scene load_steps=38 format=4 uid="uid://kmijtn114svf"]
 
 [ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_3kogm"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="9_3kogm"]
+[ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="11_wlc0k"]
 [ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/PlaceHolders/SuspiciousStew.png" id="15_3kogm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cxn6"]
@@ -177,6 +178,48 @@ vertices = PackedVector2Array(513.078, 309.438, 581.094, 309.438, 357.047, 325.4
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(4, 3, 7), PackedInt32Array(8, 4, 7), PackedInt32Array(4, 8, 9), PackedInt32Array(1, 5, 10, 2), PackedInt32Array(11, 2, 10), PackedInt32Array(12, 11, 10), PackedInt32Array(13, 12, 10), PackedInt32Array(13, 10, 14, 15), PackedInt32Array(16, 14, 10), PackedInt32Array(16, 10, 17, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(15, 14, 23, 22), PackedInt32Array(24, 0, 2, 25, 26), PackedInt32Array(27, 26, 25, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(24, 26, 33), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(8, 7, 38, 37), PackedInt32Array(33, 39, 40, 41), PackedInt32Array(42, 43, 44, 45, 46, 47), PackedInt32Array(32, 48, 49, 21, 20), PackedInt32Array(50, 29, 32, 20, 51), PackedInt32Array(52, 53, 54, 27, 28, 55), PackedInt32Array(28, 11, 12, 55), PackedInt32Array(52, 55, 15, 22), PackedInt32Array(19, 22, 23, 56), PackedInt32Array(56, 23, 18), PackedInt32Array(56, 18, 17), PackedInt32Array(51, 56, 17), PackedInt32Array(50, 51, 17), PackedInt32Array(57, 50, 17), PackedInt32Array(58, 42, 47, 59), PackedInt32Array(34, 37, 38), PackedInt32Array(24, 33, 41), PackedInt32Array(24, 41, 60, 61, 6), PackedInt32Array(34, 38, 61, 60), PackedInt32Array(5, 1, 6), PackedInt32Array(61, 3, 6), PackedInt32Array(34, 60, 43, 42), PackedInt32Array(62, 47, 46, 31), PackedInt32Array(62, 31, 30, 63), PackedInt32Array(4, 9, 36, 35), PackedInt32Array(30, 57, 17, 63), PackedInt32Array(63, 17, 4, 59), PackedInt32Array(58, 59, 4), PackedInt32Array(35, 58, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1.00015, -11.0162, 661.098, -11.0162, 661.098, 369.544, 1.00015, 369.544), PackedVector2Array(293.044, 131.193, 293.044, 227.334, 337.05, 227.334, 337.05, 131.193), PackedVector2Array(347.052, 123.181, 347.052, 166.245, 363.054, 166.245, 363.054, 123.181), PackedVector2Array(267.04, 123.181, 267.04, 166.245, 283.042, 166.245, 283.042, 123.181), PackedVector2Array(347.052, 192.283, 347.052, 235.346, 363.054, 235.346, 363.054, 192.283), PackedVector2Array(267.04, 192.283, 267.04, 235.346, 283.042, 235.346, 283.042, 192.283), PackedVector2Array(523.078, 59.0869, 523.078, 107.158, 571.085, 107.158, 571.085, 59.0869), PackedVector2Array(523.078, 251.37, 523.078, 299.44, 571.085, 299.44, 571.085, 251.37), PackedVector2Array(91.0136, 59.0869, 91.0136, 107.158, 139.021, 107.158, 139.021, 59.0869), PackedVector2Array(91.0136, 251.37, 91.0136, 299.44, 139.021, 299.44, 139.021, 251.37), PackedVector2Array(523.078, 155.228, 523.078, 171.252, 571.085, 171.252, 571.085, 155.228), PackedVector2Array(91.0136, 187.275, 91.0136, 203.299, 139.021, 203.299, 139.021, 187.275), PackedVector2Array(283.042, 299.44, 283.042, 315.464, 299.045, 315.464, 299.045, 299.44), PackedVector2Array(331.049, 299.44, 331.049, 315.464, 347.052, 315.464, 347.052, 299.44), PackedVector2Array(283.042, 27.0398, 283.042, 43.0633, 299.045, 43.0633, 299.045, 27.0398), PackedVector2Array(331.049, 27.0398, 331.049, 43.0633, 347.052, 43.0633, 347.052, 27.0398)])
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wlc0k"]
+polygon = PackedVector2Array(256, 124, 272, 124, 272, 169, 256, 169)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1cxn6"]
+polygon = PackedVector2Array(336, 124, 352, 124, 352, 169, 336, 169)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d0q0w"]
+polygon = PackedVector2Array(256, 188, 272, 188, 272, 233, 256, 233)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3kogm"]
+polygon = PackedVector2Array(336, 188, 352, 188, 352, 233, 336, 233)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_twjg6"]
+polygon = PackedVector2Array(272, 28, 288, 28, 288, 41, 272, 41)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_keglp"]
+polygon = PackedVector2Array(320, 28, 336, 28, 336, 41, 320, 41)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ayg5y"]
+polygon = PackedVector2Array(272, 300, 288, 300, 288, 313, 272, 313)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ffkdq"]
+polygon = PackedVector2Array(320, 300, 336, 300, 336, 313, 320, 313)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2c132"]
+polygon = PackedVector2Array(80, 60, 128, 60, 128, 105, 80, 105)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dthbc"]
+polygon = PackedVector2Array(512, 60, 560, 60, 560, 105, 512, 105)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ge64t"]
+polygon = PackedVector2Array(80, 252, 128, 252, 128, 297, 80, 297)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fc3aj"]
+polygon = PackedVector2Array(512, 252, 560, 252, 560, 297, 512, 297)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vrfo8"]
+polygon = PackedVector2Array(80, 188, 128, 188, 128, 201, 80, 201)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5bft4"]
+polygon = PackedVector2Array(512, 156, 560, 156, 560, 169, 512, 169)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_3kogm")
 
@@ -264,6 +307,14 @@ position = Vector2(304, 183)
 collision_mask = 10
 script = ExtResource("5_w5l6p")
 
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+scale = Vector2(0.35, 0.35)
+color = Color(1, 0.987353, 0.258861, 1)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("11_wlc0k")
+offset = Vector2(5, 40)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_d0q0w")
@@ -295,6 +346,51 @@ position = Vector2(-11, 1)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
 use_edge_connections = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[node name="ShadowAreas" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_wlc0k")
+
+[node name="Column2" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_1cxn6")
+
+[node name="Column3" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_d0q0w")
+
+[node name="Column4" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_3kogm")
+
+[node name="MiniColumn1" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_twjg6")
+
+[node name="MiniColumn2" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_keglp")
+
+[node name="MiniColumn3" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_ayg5y")
+
+[node name="MiniColumn4" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_ffkdq")
+
+[node name="LargeColumn1" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_2c132")
+
+[node name="LargeColumn2" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_dthbc")
+
+[node name="LargeColumn3" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_ge64t")
+
+[node name="LargeColumn4" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_fc3aj")
+
+[node name="SkinnyColumn1" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_vrfo8")
+
+[node name="SkinnyColumn2" type="LightOccluder2D" parent="ShadowAreas"]
+occluder = SubResource("OccluderPolygon2D_5bft4")
 
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_area_2d_body_exited"]
