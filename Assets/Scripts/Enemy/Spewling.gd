@@ -15,7 +15,6 @@ var CurrentWeapon: Weapon = null
 func _ready():
 	add_to_group("Enemy")
 	OrbitDirection = [-1, 1].pick_random()
-	$AnimationPlayer.play("WalkLeft") 
 	
 	var orbittimer = Timer.new()
 	orbittimer.wait_time = randf_range(3, 6)  # Change direction every 3-6 seconds
@@ -74,16 +73,6 @@ func _physics_process(_delta):
 		var OrbitRadius = 300
 		var OrbitPosition = Player.position + Vector2(OrbitRadius, 0).rotated(Angle)
 		velocity = (OrbitPosition - position).normalized() * Speed
-
-	# Animations for the Spewling Flip Now
-	if velocity.x > 0:
-		$Body.flip_h = true
-		$Body/SpewlingEye.flip_h = true
-		$Body/SpewlingEye.position.x = -abs($Body/SpewlingEye.position.x)
-	elif velocity.x < 0:
-		$Body.flip_h = false
-		$Body/SpewlingEye.flip_h = false
-		$Body/SpewlingEye.position.x = abs($Body/SpewlingEye.position.x)
 
 	move_and_slide()
 
