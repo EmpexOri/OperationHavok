@@ -76,8 +76,8 @@ physics_layer_0/collision_layer = 15
 physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_1cxn6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0q0w"]
-size = Vector2(8.7, 28)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aly1e"]
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_keglp"]
 length = 0.001
@@ -168,8 +168,8 @@ _data = {
 &"WalkUp": SubResource("Animation_ayg5y")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kogm"]
-size = Vector2(10, 30)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5l6p"]
+radius = 6.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w5l6p"]
 vertices = PackedVector2Array(513.078, 309.438, 581.094, 309.438, 357.047, 325.461, 581.094, 181.25, 651.102, -1.02344, 651.102, 359.547, 581.094, 241.367, 581.094, 145.227, 581.094, 117.156, 581.094, 49.0938, 11, 359.547, 321.047, 325.461, 309.047, 325.461, 273.039, 325.461, 149.023, 309.438, 273.039, 289.438, 81.0234, 309.438, 11, -1.02344, 81.0234, 241.367, 149.023, 213.297, 149.023, 177.273, 257.039, 182.281, 257.039, 245.344, 149.023, 241.367, 513.078, 241.367, 357.047, 289.438, 373.047, 245.344, 337.047, 245.344, 321.047, 289.438, 149.023, 117.156, 149.023, 49.0938, 257.039, 113.18, 257.039, 176.242, 373.047, 182.281, 357.047, 53.0625, 357.047, 17.0391, 513.078, 49.0938, 513.078, 117.156, 513.078, 145.227, 347.047, 182.281, 347.047, 176.242, 373.047, 176.242, 321.047, 53.0625, 337.047, 113.18, 337.047, 121.203, 293.039, 121.203, 293.039, 113.18, 309.047, 53.0625, 283.047, 176.242, 283.047, 182.281, 81.0234, 117.156, 81.0234, 177.273, 293.039, 245.344, 293.039, 237.344, 337.047, 237.344, 309.047, 289.438, 81.0234, 213.297, 81.0234, 49.0938, 321.047, 17.0391, 309.047, 17.0391, 373.047, 113.18, 513.078, 181.25, 273.039, 53.0625, 273.039, 17.0391)
@@ -307,7 +307,7 @@ offset = Vector2(5, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_d0q0w")
+shape = SubResource("CapsuleShape2D_aly1e")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player"]
 modulate = Color(0.8, 1, 1, 1)
@@ -326,7 +326,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_3kogm")
+shape = SubResource("CapsuleShape2D_w5l6p")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
