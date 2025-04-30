@@ -1,0 +1,21 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq7mgj4anqtf6"]
+
+[ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_xwy3h"]
+[ext_resource type="PackedScene" uid="uid://dryls42ca6ys2" path="res://Prefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn" id="2_0lx2h"]
+[ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_oa2h1"]
+[ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_xtuet"]
+[ext_resource type="Script" uid="uid://bdk8ayxby0fm2" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd" id="4_ccda8"]
+[ext_resource type="Resource" uid="uid://dsgjo7ac13qew" path="res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres" id="4_k36o0"]
+
+[sub_resource type="Resource" id="Resource_aa0ft"]
+script = ExtResource("4_ccda8")
+knockback_force = 1200.0
+effect_name = ""
+metadata/_custom_type_script = "uid://bdk8ayxby0fm2"
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_xwy3h")
+projectile_scene = ExtResource("2_0lx2h")
+base_fire_rate = 1.0
+projectile_effects = Array[ExtResource("3_oa2h1")]([SubResource("Resource_aa0ft")])
+weapon_effects = Array[ExtResource("3_xtuet")]([ExtResource("4_k36o0")])

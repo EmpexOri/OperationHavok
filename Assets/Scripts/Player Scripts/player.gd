@@ -210,3 +210,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	Damage_Timer.stop()
+
+
+# Janky aSS knockback
+var knockback_immune := false
+var knockback_immunity_time := 0.3 # seconds
+
+func apply_knockback(force: Vector2):
+	if knockback_immune:
+		return
+
+	print("Applying knockback:", force)
+	velocity += force
+	move_and_slide()
+	knockback_immune = true
+	await get_tree().create_timer(knockback_immunity_time).timeout
+	knockback_immune = false

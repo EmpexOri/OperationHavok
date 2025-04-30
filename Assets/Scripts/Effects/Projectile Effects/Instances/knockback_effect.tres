@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="KnockbackEffect" load_steps=2 format=3 uid="uid://d34dfndftohyv"]
+
+[ext_resource type="Script" uid="uid://bdk8ayxby0fm2" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd" id="1_5fts0"]
+
+[resource]
+script = ExtResource("1_5fts0")
+knockback_force = 300.0
+effect_name = ""
+metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"

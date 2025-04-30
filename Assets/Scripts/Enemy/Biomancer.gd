@@ -10,11 +10,27 @@ var Group = "Enemy"
 var SummonGroup = "EnemySummon"
 var Target = "Player"
 
+var WeaponScene = preload("res://Prefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn") 
+var CurrentWeapon: Weapon = null
+
 func _ready():
 	add_to_group(Group)
 	add_to_group(SummonGroup)
 	var sprite = get_node("Sprite2D")
 	start_timer()
+	
+	#Shooting
+	
+	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
+	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
+	add_child(CurrentWeapon) # Add our new weapon as a child
+	
+	var firetimer = Timer.new()
+	firetimer.wait_time = randf_range(2, 3)  # Fire every 2-3 seconds
+	firetimer.one_shot = false
+	firetimer.connect("timeout", Callable(self, "fire")) # Executes the spawn function once timer has ended
+	firetimer.autostart = true
+	add_child(firetimer)
 	
 func _process(delta):
 	if Health <= 0:
@@ -137,3 +153,24 @@ func _on_area_2d_body_entered(body: Node2D):
 		await get_tree().process_frame
 		if not is_instance_valid(body) or not body.get_parent():
 			call_deferred("queue_free")
+			
+func fire():
+	var Player = get_parent().get_node(Target)
+	if is_in_group("Enemy"):
+		Player = get_parent().get_node(Target)
+	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
+		Player = get_parent().get_node(Target)
+	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and not is_instance_valid(Target):
+		if get_tree().get_nodes_in_group("Enemy").size() > 0:
+			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
+			Player = get_parent().get_node(Target)
+	else:
+		Player = get_parent().get_node(self.get_path())
+		return
+	
+	# Only fire if player is within 1.5 meters (150 pixels)
+	if global_position.distance_to(Player.global_position) <= 50:
+		print("Player In Range")
+		if CurrentWeapon:
+			var direction_to_player = (Player.global_position - global_position).normalized()
+			CurrentWeapon.attempt_to_fire(global_position, direction_to_player)
