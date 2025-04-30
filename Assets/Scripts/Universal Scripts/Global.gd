@@ -69,7 +69,7 @@ func _spawn_particles(position: Vector2, pool: Array) -> void:
 	particles.emitting = true
 
 	# Reset after lifetime
-	var total_time: float = particles.lifetime + 0.5
+	var total_time: float = particles.lifetime + 0.0
 	_reset_particle_after_delay(instance, particles, total_time)
 
 func _reset_particle_after_delay(instance: Node2D, particles: GPUParticles2D, delay: float) -> void:
