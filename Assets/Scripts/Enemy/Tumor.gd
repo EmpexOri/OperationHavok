@@ -10,6 +10,9 @@ var TorpedoVelocity = Vector2(0,0)
 var IsTorpedo = false
 var LastHitDirection = Vector2(0,0)
 
+var death_frame_counter := 0
+var has_spawned_death_effects := false
+
 func _ready():
 	add_to_group("Enemy")
 	print(Target)
@@ -19,17 +22,21 @@ func _ready():
 	FuseTimer.connect("timeout", Callable(self, "explode")) # Executes the spawn function once timer has ended
 	add_child(FuseTimer)
 	
+var death_effect_frame_counter := 0
+
 func _process(delta):
 	if Health <= 0:
 		if not has_dropped_xp:
 			drop_xp()
 			has_dropped_xp = true
-			
 			torpedo()
-			
-		Global.spawn_meat_chunk(global_position)
-		Global.spawn_blood_splatter(global_position)
-		Global.spawn_death_particles(global_position) 
+
+		death_effect_frame_counter += 1
+		if death_effect_frame_counter >= 10:
+			Global.spawn_meat_chunk(global_position)
+			Global.spawn_blood_splatter(global_position)
+			Global.spawn_death_particles(global_position)
+			death_effect_frame_counter = 0  # Reset to repeat every 10 frames
 
 func _physics_process(_delta):
 	var Player

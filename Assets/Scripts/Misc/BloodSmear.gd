@@ -26,3 +26,7 @@ func _process(delta):
 
 func _exit_tree():
 	Global.unregister_smear(self)
+
+func _on_screen_exited():
+	self.visible = false
+	self.set_process(false)  # Optional if you want to stop any logic

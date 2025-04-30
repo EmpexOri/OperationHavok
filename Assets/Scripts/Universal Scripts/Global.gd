@@ -1,39 +1,88 @@
 extends Node
 
-var DeathParticles = preload("res://Prefabs/Particles/DeathGore.tscn")
-var TumourParticles = preload("res://Prefabs/Particles/TumourExplosionGore.tscn")
+# Preload materials (used only for prewarm trick)
+var materials = [
+	preload("res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres"),
+	preload("res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres")
+]
 
-func spawn_death_particles(position: Vector2):
-	var particle_instance = DeathParticles.instantiate()
-	particle_instance.global_position = position
-	get_tree().current_scene.add_child(particle_instance)
+# Preload particle scenes for instancing
+var TumourParticlesScene = preload("res://Prefabs/Particles/TumourExplosionGore.tscn")
+var DeathParticlesScene = preload("res://Prefabs/Particles/DeathGore.tscn")
 
-	var particles = particle_instance.get_node("Particles")
+# Pools for reusing particle nodes
+var tumour_particle_pool: Array = []
+var death_particle_pool: Array = []
+
+const POOL_SIZE := 16  # Customize based on how many can be active at once
+
+func _ready() -> void:
+	# Prewarm GPU shaders by creating dummy instances briefly
+	for material in materials:
+		var dummy = GPUParticles2D.new()
+		dummy.process_material = material
+		dummy.modulate = Color(1, 1, 1, 0)
+		dummy.emitting = true
+		add_child(dummy)
+
+	# Wait 3 frames before removing dummy nodes
+	await get_tree().create_timer(0.05).timeout
+	for child in get_children():
+		if child is GPUParticles2D:
+			child.queue_free()
+
+	# Fill the pools
+	_fill_pool(TumourParticlesScene, tumour_particle_pool, POOL_SIZE)
+	_fill_pool(DeathParticlesScene, death_particle_pool, POOL_SIZE)
+
+func _fill_pool(scene: PackedScene, pool: Array, count: int) -> void:
+	for i in count:
+		var instance = scene.instantiate()
+		instance.visible = false
+		add_child(instance)
+		pool.append(instance)
+
+# -- Spawning Logic --
+
+func spawn_death_particles(position: Vector2) -> void:
+	_spawn_particles(position, death_particle_pool)
+
+func spawn_tumour_particles(position: Vector2) -> void:
+	_spawn_particles(position, tumour_particle_pool)
+
+func _spawn_particles(position: Vector2, pool: Array) -> void:
+	var instance: Node2D = null
+
+	for p in pool:
+		if not p.visible:
+			instance = p
+			break
+
+	if instance == null:
+		print("No free particles available! Consider increasing POOL_SIZE.")
+		return
+
+	instance.global_position = position
+	instance.visible = true
+
+	var particles = instance.get_node("Particles") as GPUParticles2D
 	particles.emitting = true
 
-	# Free after its lifetime, so we despawn it (Might get rid of this system)
-	await get_tree().create_timer(particles.lifetime + 0.5).timeout
-	if is_instance_valid(particle_instance):
-		particle_instance.queue_free()
-		
-func spawn_tumour_particles(position: Vector2):
-	var particle_instance = TumourParticles.instantiate()
-	particle_instance.global_position = position
-	get_tree().current_scene.add_child(particle_instance)
+	# Reset after lifetime
+	var total_time: float = particles.lifetime + 0.5
+	_reset_particle_after_delay(instance, particles, total_time)
 
-	var particles = particle_instance.get_node("Particles")
-	particles.emitting = true
-
-	# Free after its lifetime, so we despawn it (Might get rid of this system)
-	await get_tree().create_timer(particles.lifetime + 0.5).timeout
-	if is_instance_valid(particle_instance):
-		particle_instance.queue_free()
+func _reset_particle_after_delay(instance: Node2D, particles: GPUParticles2D, delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	if is_instance_valid(instance):
+		particles.emitting = false
+		instance.visible = false
 
 func spawn_blood_splatter(position: Vector2):
 	var blood_sprite = Sprite2D.new()
 	blood_sprite.texture = preload("res://Assets/Art/PlaceHolders/Splat.png") 
 	blood_sprite.position = position
-	blood_sprite.z_index = -2  # Ensure the blood sprite is drawn on top of the TileMap (Lmao)
+	blood_sprite.z_index = -2
 	get_tree().current_scene.add_child(blood_sprite)
 
 func spawn_meat_chunk(position: Vector2):
@@ -43,10 +92,10 @@ func spawn_meat_chunk(position: Vector2):
 	for i in range(num_chunks):
 		var meat_chunk = meat_scene.instantiate()
 		meat_chunk.global_position = position
-		meat_chunk.z_index = -1  # Still draw it below
-		
-		# Use deferred call to safely add the meat_chunk to the scene
+		meat_chunk.z_index = -1
 		get_tree().current_scene.call_deferred("add_child", meat_chunk)
+
+# -- Blood Smear Tracking --
 
 const MAX_BLOOD_SMEARS = 2500
 var active_smeares := []

@@ -6,14 +6,14 @@ var CurrentClass: String = "Commando"
 
 var ClassData = {
 	"Technomancer": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 200, "Abilities": []
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 200, "Abilities": []
 	},
 	"Commando": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 250,
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 250,
 		"Abilities": ["SwapWeapons", "SniperBeam", "Minigun"]
 	},
 	"Fleshthing": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "MoveSpeed": 150, "Abilities": []
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, "Abilities": []
 	}
 }
 
@@ -22,7 +22,7 @@ var AbilityListCommando = ["SwapWeapons", "SniperBeam", "Minigun"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 func XPRequiredForLevel(Level: int) -> int:
-	return 100 * pow(1.2, Level - 1)
+	return 50 * pow(1.2, Level - 1)
 
 func AddXP(Amount: int):
 	var Level = ClassData[CurrentClass]["Level"]
