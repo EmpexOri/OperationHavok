@@ -110,7 +110,7 @@ func explode():
 	if collision_shape is CollisionShape2D:
 		shape = collision_shape.shape
 		if shape is CircleShape2D:
-			shape.radius *= 1.2
+			shape.radius *= 1.5
 			
 	var space_state = get_world_2d().direct_space_state
 	var bodies_in_range = explosion_area.get_overlapping_bodies()
