@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://2g10sb2b7s7"]
+
+[ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_ngjjm"]
+
+[sub_resource type="Curve" id="Curve_lf36w"]
+_data = [Vector2(0.136364, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nyoc5"]
+colors = PackedColorArray(0.65159, 0.440881, 0.125283, 1, 0.533887, 0.0891383, 0.179979, 1)
+
+[node name="Explosion" type="Node2D"]
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 256
+texture = ExtResource("1_ngjjm")
+lifetime = 0.5
+one_shot = true
+preprocess = 0.01
+explosiveness = 1.0
+randomness = 0.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 350.0
+linear_accel_max = 5.0
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_lf36w")
+color_initial_ramp = SubResource("Gradient_nyoc5")

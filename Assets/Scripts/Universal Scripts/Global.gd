@@ -1,9 +1,23 @@
 extends Node
 
 var DeathParticles = preload("res://Prefabs/Particles/DeathGore.tscn")
+var TumorParticles = preload("res://Prefabs/Particles/TumorExplosionGore.tscn")
 
 func spawn_death_particles(position: Vector2):
 	var particle_instance = DeathParticles.instantiate()
+	particle_instance.global_position = position
+	get_tree().current_scene.add_child(particle_instance)
+
+	var particles = particle_instance.get_node("Particles")
+	particles.emitting = true
+
+	# Free after its lifetime, so we despawn it (Might get rid of this system)
+	await get_tree().create_timer(particles.lifetime + 0.5).timeout
+	if is_instance_valid(particle_instance):
+		particle_instance.queue_free()
+		
+func spawn_tumor_particles(position: Vector2):
+	var particle_instance = TumorParticles.instantiate()
 	particle_instance.global_position = position
 	get_tree().current_scene.add_child(particle_instance)
 
