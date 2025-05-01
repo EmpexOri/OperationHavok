@@ -184,7 +184,9 @@ func explode():
 
 		print("Explosion hits: ", body)
 		body.deal_damage(20, global_position)
-
+	
+	# Play a randomised death sound
+	GlobalAudioController.HordlingDeath()
 	queue_free()
 
 func torpedo():

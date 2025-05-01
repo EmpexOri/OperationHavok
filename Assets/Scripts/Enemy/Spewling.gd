@@ -41,6 +41,8 @@ func _process(delta):
 	
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	
+		# Play a randomised death sound
+		GlobalAudioController.HordlingDeath()
 		Global.spawn_meat_chunk(global_position)
 		Global.spawn_blood_splatter(global_position)
 		Global.spawn_death_particles(global_position) 
