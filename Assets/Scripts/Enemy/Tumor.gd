@@ -13,6 +13,12 @@ var LastHitDirection = Vector2(0,0)
 var death_frame_counter := 0
 var has_spawned_death_effects := false
 
+var FuseStarted := false
+
+#Efficency Improvements
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var explosion_area: Area2D = $Area2D
+
 func _ready():
 	add_to_group("Enemy")
 	print(Target)
@@ -205,8 +211,11 @@ func _on_area_2d_body_entered(body: Node2D):
 		explode()
 		return
 	
-	if is_in_group("Enemy") and body.is_in_group("Player"):
+	if is_in_group("Enemy") and body.is_in_group("Player") and not FuseStarted:
+		FuseStarted = true
 		FuseTimer.start()
+	else:
+		print("Lets do something else")
 		
 	if is_in_group("") and body.is_in_group(""):
 		body.deal_damage(2)
