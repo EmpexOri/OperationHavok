@@ -51,35 +51,32 @@ func spawn_tumour_particles(position: Vector2) -> void:
 	_spawn_particles(position, tumour_particle_pool)
 
 func _spawn_particles(position: Vector2, pool: Array) -> void:
-		var instance: Node2D = null
+	var instance: Node2D = null
 
-		# Try to find an invisible particle from the pool
-		for p in pool:
-			if not p.visible:
-				instance = p
-				break
+	# Try to find an invisible particle from the pool
+	for p in pool:
+		if not p.visible and not p.get_node("Particles").emitting:  # Add check for emitting
+			instance = p
+			break
 
-		# If no particle is available, print a warning
-		if instance == null:
-			print("No free particles available! Consider increasing POOL_SIZE.")
-			return
+	# If no particle is available, print a warning
+	if instance == null:
+		print("No free particles available! Consider increasing POOL_SIZE.")
+		return
 
-		# Debugging: Log when the particle is spawned
-		#print("Spawning particle at position: ", position)
+	# Set position and make the particle visible
+	instance.global_position = position
+	instance.visible = true
 
-		# Set position and make the particle visible
-		instance.global_position = position
-		instance.visible = true
+	# Get the particle system and start emitting
+	var particles = instance.get_node("Particles") as GPUParticles2D
+	particles.emitting = true
 
-		# Get the particle system and start emitting
-		var particles = instance.get_node("Particles") as GPUParticles2D
-		particles.emitting = true
+	# Calculate the total time for the reset (use lifetime + 0.0 to ensure a float value)
+	var total_time: float = particles.lifetime + 0.0
 
-		# Calculate the total time for the reset (use lifetime + 0.0 to ensure a float value)
-		var total_time: float = particles.lifetime + 0.0
-
-		# Reset particle after its lifetime expires
-		_reset_particle_after_delay(instance, particles, total_time)
+	# Reset particle after its lifetime expires
+	_reset_particle_after_delay(instance, particles, total_time)
 
 # Reset particle after its lifetime expires
 func _reset_particle_after_delay(instance: Node2D, particles: GPUParticles2D, delay: float) -> void:
