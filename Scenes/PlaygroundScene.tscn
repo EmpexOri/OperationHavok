@@ -341,7 +341,7 @@ navigation_polygon = SubResource("NavigationPolygon_w5l6p")
 use_edge_connections = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.470076, 0.470076, 0.470076, 1)
+color = Color(0.513233, 0.513233, 0.513233, 1)
 
 [node name="ShadowAreas" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_wlc0k")
