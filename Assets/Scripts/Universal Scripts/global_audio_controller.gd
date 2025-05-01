@@ -14,7 +14,7 @@ const MAX_HORDLING_CHANNELS := 5  # You can adjust this number as needed
 var hordling_channels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
-	# Fill up the channel pool with references to the pre-existing AudioStreamPlayers
+	# Fill up the channel pool with references to the pre-existing AudioStreamPlayers, Can make dynamic later for flexible sizing
 	for i in range(MAX_HORDLING_CHANNELS):
 		var player_path = "SFX2/HordlingChannels/Channel%d" % i
 		var player = get_node(player_path) as AudioStreamPlayer2D
