@@ -2,21 +2,19 @@ extends Node2D
 
 # Load sounds into memory for reuse
 var death_sounds: Array[AudioStream] = [
-	preload("res://Assets/Sound/SFX/DeathSFX/Crunch1.mp3"),
-	preload("res://Assets/Sound/SFX/DeathSFX/Crunch2.mp3"),
-	preload("res://Assets/Sound/SFX/DeathSFX/Crunch3.mp3"),
-	preload("res://Assets/Sound/SFX/DeathSFX/Crunch4.mp3"),
-	preload("res://Assets/Sound/SFX/DeathSFX/Crunch5.mp3"),
+	preload("res://Assets/Sound/SFX/HorldingDeath1.wav"),
+	preload("res://Assets/Sound/SFX/HorldingDeath2.wav"),
+	preload("res://Assets/Sound/SFX/HorldingDeath3.wav")
 ]
 
 # Channel pool for simultaneous playback
-const MAX_HORDLING_CHANNELS := 5  # You can adjust this number as needed
+const MAX_HORDLING_CHANNELS := 3  # You can adjust this number as needed
 var hordling_channels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
 	# Fill up the channel pool with references to the pre-existing AudioStreamPlayers, Can make dynamic later for flexible sizing
 	for i in range(MAX_HORDLING_CHANNELS):
-		var player_path = "SFX2/HordlingChannels/Channel%d" % i
+		var player_path = "SFX/HordlingChannels/Channel%d" % i
 		var player = get_node(player_path) as AudioStreamPlayer2D
 		if player:
 			hordling_channels.append(player)
@@ -53,16 +51,3 @@ func HordlingDeath():
 	
 	# If all channels are busy, print a message
 	print("All Hordling channels are busy!")
-	
-#OLD SFX LOADING
-#func HordlingDeath():
-	# Create an array of death sounds
-#	var death_sounds = [
-#		$SFX/HordlingDeath1,
-#		$SFX/HordlingDeath2,
-#		$SFX/HordlingDeath3
-#	]
-
-	# Randomly pick one
-#	var index = randi() % death_sounds.size()
-#	death_sounds[index].play()
