@@ -14,7 +14,7 @@ var DeathParticlesScene = preload("res://Prefabs/Particles/DeathGore.tscn")
 var tumour_particle_pool: Array = []
 var death_particle_pool: Array = []
 
-const POOL_SIZE := 16  # Customize based on how many can be active at once
+const POOL_SIZE := 64  # Customize based on how many can be active at once
 
 func _ready() -> void:
 	# Prewarm GPU shaders by creating dummy instances briefly
@@ -51,30 +51,43 @@ func spawn_tumour_particles(position: Vector2) -> void:
 	_spawn_particles(position, tumour_particle_pool)
 
 func _spawn_particles(position: Vector2, pool: Array) -> void:
-	var instance: Node2D = null
+		var instance: Node2D = null
 
-	for p in pool:
-		if not p.visible:
-			instance = p
-			break
+		# Try to find an invisible particle from the pool
+		for p in pool:
+			if not p.visible:
+				instance = p
+				break
 
-	if instance == null:
-		print("No free particles available! Consider increasing POOL_SIZE.")
-		return
+		# If no particle is available, print a warning
+		if instance == null:
+			print("No free particles available! Consider increasing POOL_SIZE.")
+			return
 
-	instance.global_position = position
-	instance.visible = true
+		# Debugging: Log when the particle is spawned
+		print("Spawning particle at position: ", position)
 
-	var particles = instance.get_node("Particles") as GPUParticles2D
-	particles.emitting = true
+		# Set position and make the particle visible
+		instance.global_position = position
+		instance.visible = true
 
-	# Reset after lifetime
-	var total_time: float = particles.lifetime + 0.0
-	_reset_particle_after_delay(instance, particles, total_time)
+		# Get the particle system and start emitting
+		var particles = instance.get_node("Particles") as GPUParticles2D
+		particles.emitting = true
 
+		# Calculate the total time for the reset (use lifetime + 0.0 to ensure a float value)
+		var total_time: float = particles.lifetime + 0.0
+
+		# Reset particle after its lifetime expires
+		_reset_particle_after_delay(instance, particles, total_time)
+
+# Reset particle after its lifetime expires
 func _reset_particle_after_delay(instance: Node2D, particles: GPUParticles2D, delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
+	
+	# Ensure the instance is valid before trying to modify it
 	if is_instance_valid(instance):
+		# Stop emitting and hide the particle after its lifetime
 		particles.emitting = false
 		instance.visible = false
 
