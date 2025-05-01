@@ -186,7 +186,7 @@ func explode():
 
 func torpedo():
 	IsTorpedo = true
-	TorpedoVelocity = -LastHitDirection * Speed * 2
+	TorpedoVelocity = -LastHitDirection * Speed * 4
 	print("Torpedo velocity: ", TorpedoVelocity)
 
 func drop_xp():
