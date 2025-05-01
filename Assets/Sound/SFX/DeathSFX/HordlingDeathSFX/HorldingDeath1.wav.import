@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c4cntrxeyxx7t"
-path="res://.godot/imported/HorldingDeath1.wav-b66e5008268897610aafb6aedb055723.sample"
+path="res://.godot/imported/HorldingDeath1.wav-5b6560f581ea6947e31d72688ebe350e.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/SFX/HorldingDeath1.wav"
-dest_files=["res://.godot/imported/HorldingDeath1.wav-b66e5008268897610aafb6aedb055723.sample"]
+source_file="res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath1.wav"
+dest_files=["res://.godot/imported/HorldingDeath1.wav-5b6560f581ea6947e31d72688ebe350e.sample"]
 
 [params]
 
