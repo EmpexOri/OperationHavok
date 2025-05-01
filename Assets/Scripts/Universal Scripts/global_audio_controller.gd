@@ -20,11 +20,13 @@ func ClickSound():
 	$SFX/ClickSound.play()
 	
 func HordlingDeath():
+	# Create an array of death sounds
 	var death_sounds = [
 		$SFX/HordlingDeath1,
 		$SFX/HordlingDeath2,
 		$SFX/HordlingDeath3
 	]
 
+	# Randomly pick one
 	var index = randi() % death_sounds.size()
 	death_sounds[index].play()
