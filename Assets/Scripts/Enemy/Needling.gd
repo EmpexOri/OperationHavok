@@ -31,7 +31,9 @@ func _process(delta):
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()
-
+			
+		$Area2D/CollisionShape2D.set_deferred("disabled", true)
+			
 		Global.spawn_meat_chunk(global_position)
 		Global.spawn_blood_splatter(global_position)
 		Global.spawn_death_particles(global_position) 

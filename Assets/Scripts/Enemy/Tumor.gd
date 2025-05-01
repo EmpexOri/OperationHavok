@@ -133,6 +133,9 @@ func _on_area_2d_body_exited(body: Node2D):
 
 func explode():
 	# Additional visual effects
+	
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	
 	Global.spawn_meat_chunk(global_position)
 	Global.spawn_blood_splatter(global_position)
 	Global.spawn_tumour_particles(global_position)
