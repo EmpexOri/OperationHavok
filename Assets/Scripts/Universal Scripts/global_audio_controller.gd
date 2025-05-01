@@ -18,3 +18,13 @@ func DeathSound():
 	
 func ClickSound():
 	$SFX/ClickSound.play()
+	
+func HordlingDeath():
+	var death_sounds = [
+		$SFX/HordlingDeath1,
+		$SFX/HordlingDeath2,
+		$SFX/HordlingDeath3
+	]
+
+	var index = randi() % death_sounds.size()
+	death_sounds[index].play()

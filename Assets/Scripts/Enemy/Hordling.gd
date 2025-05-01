@@ -20,6 +20,10 @@ func _process(delta):
 			Global.spawn_meat_chunk(global_position)
 			Global.spawn_blood_splatter(global_position)
 			Global.spawn_death_particles(global_position) 
+			
+			# Play a randomised death sound
+			GlobalAudioController.HordlingDeath()
+
 			queue_free()
 
 func _physics_process(_delta):

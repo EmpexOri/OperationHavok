@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct47xp74ehl30"]
+[gd_scene load_steps=8 format=3 uid="uid://ct47xp74ehl30"]
 
 [ext_resource type="Script" uid="uid://cfh31cdyrncnm" path="res://Assets/Scripts/Universal Scripts/global_audio_controller.gd" id="1_2ql4u"]
 [ext_resource type="AudioStream" uid="uid://c0vahobgr2g8" path="res://Assets/Sound/Music/A desperate battle, no way back_ (Track 04).mp3" id="1_bq62r"]
 [ext_resource type="AudioStream" uid="uid://yra0veoy0d5n" path="res://Assets/Sound/Music/MenuMusic.mp3" id="2_2ql4u"]
+[ext_resource type="AudioStream" uid="uid://c4cntrxeyxx7t" path="res://Assets/Sound/SFX/HorldingDeath1.wav" id="5_cxlco"]
 [ext_resource type="AudioStream" uid="uid://bjeqt08vvx4aa" path="res://Assets/Sound/ClickSound.wav" id="5_e30su"]
+[ext_resource type="AudioStream" uid="uid://ss3ipm0b52c8" path="res://Assets/Sound/SFX/HorldingDeath2.wav" id="6_cxlco"]
+[ext_resource type="AudioStream" uid="uid://buky61x5uhjm6" path="res://Assets/Sound/SFX/HorldingDeath3.wav" id="7_onqey"]
 
 [node name="GlobalAudioController" type="Node2D"]
 script = ExtResource("1_2ql4u")
@@ -25,3 +28,17 @@ bus = &"Music"
 process_mode = 3
 stream = ExtResource("5_e30su")
 bus = &"SFX"
+
+[node name="HordlingDeath1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_cxlco")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="HordlingDeath2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_cxlco")
+volume_db = 8.0
+bus = &"SFX"
+
+[node name="HordlingDeath3" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_onqey")
+volume_db = 8.0
