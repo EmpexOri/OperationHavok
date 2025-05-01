@@ -65,7 +65,7 @@ func _spawn_particles(position: Vector2, pool: Array) -> void:
 			return
 
 		# Debugging: Log when the particle is spawned
-		print("Spawning particle at position: ", position)
+		#print("Spawning particle at position: ", position)
 
 		# Set position and make the particle visible
 		instance.global_position = position
