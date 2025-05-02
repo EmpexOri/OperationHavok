@@ -2,9 +2,9 @@ extends Node2D
 
 # Load sounds into memory for reuse
 var death_sounds: Array[AudioStream] = [
-	preload("res://Assets/Sound/SFX/HorldingDeath1.wav"),
-	preload("res://Assets/Sound/SFX/HorldingDeath2.wav"),
-	preload("res://Assets/Sound/SFX/HorldingDeath3.wav")
+	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath1.wav"),
+	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath2.wav"),
+	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath3.wav")
 ]
 
 # Channel pool for simultaneous playback
