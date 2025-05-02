@@ -1,28 +1,35 @@
 extends Node2D
 
-# Load sounds into memory for reuse
-var death_sounds: Array[AudioStream] = [
+# Load sounds into memory
+var HordlingDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath1.wav"),
 	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath2.wav"),
 	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath3.wav")
 ]
 
-# Channel pool for simultaneous playback
-const MAX_HORDLING_CHANNELS := 3  # You can adjust this number as needed
-var hordling_channels: Array[AudioStreamPlayer2D] = []
+var BiomancerDeathSounds: Array[AudioStream] = [
+	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch1.mp3"),
+	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch2.mp3"),
+	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch3.mp3"),
+	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch4.mp3"),
+	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
+]
+
+const MAX_CHANNELS := 5
+var DeathChannels: Array[AudioStreamPlayer2D] = []
+#var DeathChannels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
 	randomize()
-	# Fill up the channel pool with references to the pre-existing AudioStreamPlayers, Can make dynamic later for flexible sizing
-	for i in range(MAX_HORDLING_CHANNELS):
-		var player_path = "SFX/HordlingChannels/Channel%d" % i
-		var player = get_node(player_path) as AudioStreamPlayer2D
+	for i in range(MAX_CHANNELS):
+		var path = "SFX/DeathChannelsSFX/Channel%d" % i
+		var player = get_node_or_null(path) as AudioStreamPlayer2D
 		if player:
-			hordling_channels.append(player)
+			DeathChannels.append(player)
 		else:
-			push_error("Missing node at: %s" % player_path)
+			push_error("Missing Death channel player node at: %s" % path)
 
-# Set up functions to play each track when called
+# Music Controls
 func LevelOneMusic():
 	$Music/Level1Soundtrack.play()
 
@@ -32,21 +39,27 @@ func PauseMenuMusic():
 func STOPPauseMenuMusic():
 	$Music/PauseMenuSoundtrack.stop()
 
+# UI SFX
 func DeathSound():
 	$SFX/DeathSound.play()
 
 func ClickSound():
 	$SFX/ClickSound.play()
 
-# Function to play Hordling death sound
+# Play random Hordling death sound
 func HordlingDeath():
-	# Try to find an available channel that is not currently playing
-	for player in hordling_channels:
+	for player in DeathChannels:
 		if not player.playing:
-			# Randomly select one of the death sounds
-			player.stream = death_sounds[randi() % death_sounds.size()]
+			player.stream = HordlingDeathSounds[randi() % HordlingDeathSounds.size()]
 			player.play()
 			return
-	
-	# If all channels are busy, print a message
 	print("All Hordling channels are busy!")
+
+# Play random Biomancer death sound
+func BiomancerDeath():
+	for player in DeathChannels:
+		if not player.playing:
+			player.stream = BiomancerDeathSounds[randi() % BiomancerDeathSounds.size()]
+			player.play()
+			return
+	print("All Biomancer channels are busy!")

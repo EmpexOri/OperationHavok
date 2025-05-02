@@ -28,18 +28,21 @@ process_mode = 3
 stream = ExtResource("5_e30su")
 bus = &"SFX"
 
-[node name="HordlingChannels" type="AudioStreamPlayer2D" parent="SFX"]
-volume_db = 8.0
+[node name="DeathChannelsSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = 5.0
 bus = &"SFX"
 
-[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/HordlingChannels"]
-volume_db = 8.0
+[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
 bus = &"SFX"
 
-[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/HordlingChannels"]
-volume_db = 8.0
+[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
 bus = &"SFX"
 
-[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/HordlingChannels"]
-volume_db = 8.0
+[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="Channel3" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
 bus = &"SFX"
