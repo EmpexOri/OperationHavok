@@ -55,9 +55,12 @@ func _spawn_particles(position: Vector2, pool: Array) -> void:
 
 	# Try to find an invisible particle from the pool
 	for p in pool:
-		if not p.visible and not p.get_node("Particles").emitting:  # Add check for emitting
+		if not p.visible and not p.get_node("Particles").emitting:
+			print("Found free particle.")
 			instance = p
 			break
+		else:
+			print("Checked particle — Visible:", p.visible, ", Emitting:", p.get_node("Particles").emitting)
 
 	# If no particle is available, print a warning
 	if instance == null:
@@ -68,12 +71,14 @@ func _spawn_particles(position: Vector2, pool: Array) -> void:
 	instance.global_position = position
 	instance.visible = true
 
-	# Get the particle system and start emitting
+	# Get the particle system and start emitting, THIS CAUSES ISSUES IF CHANGED WAAAAAAAAAAAAAAAA
 	var particles = instance.get_node("Particles") as GPUParticles2D
-	particles.emitting = true
+	particles.emitting = false  # Stop it cleanly
+	particles.restart()         # Reset its state
+	particles.emitting = true   # Start new emission
 
 	# Calculate the total time for the reset (use lifetime + 0.0 to ensure a float value)
-	var total_time: float = particles.lifetime + 0.0
+	var total_time: float = particles.lifetime + 0.1
 
 	# Reset particle after its lifetime expires
 	_reset_particle_after_delay(instance, particles, total_time)
@@ -82,9 +87,9 @@ func _spawn_particles(position: Vector2, pool: Array) -> void:
 func _reset_particle_after_delay(instance: Node2D, particles: GPUParticles2D, delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
 	
-	# Ensure the instance is valid before trying to modify it
 	if is_instance_valid(instance):
-		# Stop emitting and hide the particle after its lifetime
+		# Only hide after next frame to give time for `emitting` flag to stop properly
+		await get_tree().process_frame
 		particles.emitting = false
 		instance.visible = false
 
@@ -97,7 +102,7 @@ func spawn_blood_splatter(position: Vector2):
 
 func spawn_meat_chunk(position: Vector2):
 	var meat_scene = preload("res://Prefabs/Particles/MeatChunks.tscn")
-	var num_chunks = randi_range(6, 24)
+	var num_chunks = randi_range(12, 36)
 
 	for i in range(num_chunks):
 		var meat_chunk = meat_scene.instantiate()

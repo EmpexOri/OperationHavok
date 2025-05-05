@@ -33,9 +33,11 @@ scale_amount_curve = SubResource("Curve_lf36w")
 color_initial_ramp = SubResource("Gradient_nyoc5")
 
 [node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 256
 texture = ExtResource("1_0kxmj")
 lifetime = 0.25
+one_shot = true
 explosiveness = 1.0
 randomness = 0.2
 process_material = ExtResource("2_47mhe")
