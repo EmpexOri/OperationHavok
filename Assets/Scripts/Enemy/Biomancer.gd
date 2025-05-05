@@ -39,10 +39,12 @@ func _process(delta):
 			
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 			
-		GlobalAudioController.BiomancerDeath()
 		Global.spawn_meat_chunk(global_position)
 		Global.spawn_blood_splatter(global_position)
 		Global.spawn_death_particles(global_position) 	
+		
+		# Play sound on death
+		GlobalAudioController.BiomancerDeath()
 		queue_free()
 	
 func _physics_process(_delta):
