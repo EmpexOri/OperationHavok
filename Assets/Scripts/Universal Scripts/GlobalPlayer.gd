@@ -6,10 +6,10 @@ var CurrentClass: String = "Commando"
 
 var ClassData = {
 	"Technomancer": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 200, "Abilities": []
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, "Abilities": []
 	},
 	"Commando": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 250,
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 200,
 		"Abilities": ["SwapWeapons", "SniperBeam", "Minigun"]
 	},
 	"Fleshthing": {

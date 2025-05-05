@@ -8,6 +8,7 @@ script = ExtResource("2_qsfej")
 range = 1000.0
 width = 5.0
 base_speed = 0.0
+base_damage = 40.0
 base_lifetime = 1.0
 
 [node name="CollisionShape2D" parent="." index="0"]

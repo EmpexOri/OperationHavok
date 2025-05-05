@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var Speed = 100
+var Speed = 140
 var Health = 15
 var Group = "Enemy"
 var SummonGroup = "EnemySummon"

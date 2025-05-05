@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite = $Sprite2D
 
-var Speed = 120
+var Speed = 100
 var Health = 80
 var BulletSpeed = 900
 var Target = "Player"

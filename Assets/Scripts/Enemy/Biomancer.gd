@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var Speed = 170
+var Speed = 110
 var Health = 20
 var FleshSpawn = preload("res://Prefabs/Enemy/FleshSpawn.tscn")
 var Group = "Enemy"
@@ -20,7 +20,6 @@ func _ready():
 	start_timer()
 	
 	#Shooting
-	
 	CurrentWeapon = WeaponScene.instantiate() # Create new weapon instance
 	CurrentWeapon.owning_entity = "Enemy" # Set the owning entity, used to set collisions for projectile
 	add_child(CurrentWeapon) # Add our new weapon as a child
