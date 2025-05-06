@@ -24,10 +24,6 @@ var FuseCounter := 3  # Number of seconds before explosion
 var FuseTickTimer := 0.0
 var PlayerInRange := false
 
-# XP drop configuration
-var xp_drop_chance := 1.0
-var xp_drop_range := Vector2i(1, 3)
-
 func _ready():
 	add_to_group("Enemy")
 	print(Target)
@@ -35,7 +31,6 @@ func _ready():
 func _process(delta):
 	if Health <= 0:
 		if not has_dropped_xp:
-			drop_xp()
 			has_dropped_xp = true
 			torpedo()
 		
@@ -49,7 +44,7 @@ func _process(delta):
 		# Start the fuse when health reaches 0, regardless of player proximity
 		if not FuseStarted:
 			FuseStarted = true
-			PlayerInRange = true  # You can keep this if you want, but PlayerInRange won't block the fuse
+			PlayerInRange = true  # PlayerInRange can be kept to handle player proximity but isn't critical for the fuse
 			print("Fuse started because HP reached 0.")
 
 	if FuseStarted:
@@ -133,7 +128,6 @@ func _on_area_2d_body_exited(body: Node2D):
 
 func explode():
 	# Additional visual effects
-	
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	
 	Global.spawn_meat_chunk(global_position)
@@ -193,20 +187,6 @@ func torpedo():
 	IsTorpedo = true
 	TorpedoVelocity = -LastHitDirection * Speed * 4
 	print("Torpedo velocity: ", TorpedoVelocity)
-
-func drop_xp():
-	if randf() > xp_drop_chance:
-		return
-
-	var xp_amount = randi_range(xp_drop_range.x, xp_drop_range.y)
-	var screen_size = get_viewport_rect().size
-
-	for i in xp_amount:
-		var pos = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-		pos.x = clamp(pos.x, 0, screen_size.x)
-		pos.y = clamp(pos.y, 0, screen_size.y)
-		var xp_pickup = PickupFactory.build_pickup("Xp", pos)
-		get_parent().add_child(xp_pickup)
 
 func deal_damage(damage, from_position = null):
 	Health -= damage

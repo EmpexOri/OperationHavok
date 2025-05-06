@@ -1,67 +1,35 @@
-extends CharacterBody2D
+extends Enemy
 
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
-
-var Speed = 140
-var Health = 15
-var Group = "Enemy"
-var SummonGroup = "EnemySummon"
 var Colour = Color(0, 0.5, 0)
-var Target = "Player"
 
 func _ready():
-	add_to_group(Group)
-	add_to_group(SummonGroup)
-	var sprite = get_node("Sprite2D")
-	sprite.modulate = Colour
-	#start_timer()
-	
+	super._ready()
+	Speed = 140
+	Health = 15
+	$Sprite2D.modulate = Colour
+
+func deal_damage(damage, from_position = null):
+	Health -= damage
+
 func _process(delta):
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()
-			
+
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
-			
+
 		Global.spawn_meat_chunk(global_position)
 		Global.spawn_blood_splatter(global_position)
-		Global.spawn_death_particles(global_position) 
+		Global.spawn_death_particles(global_position)
 		queue_free()
-	
-func _physics_process(_delta):
-	var Player
-	if is_in_group("Enemy"):
-		Player = get_parent().get_node(Target)
-	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and is_instance_valid(Target):
-		Player = get_parent().get_node(Target)
-	elif is_in_group("Minion") and get_tree().get_nodes_in_group("Enemy").size() > 0 and not is_instance_valid(Target):
-		if get_tree().get_nodes_in_group("Enemy").size() > 0:
-			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
-			Player = get_parent().get_node(Target)
-	else:
-		Player = get_parent().get_node(self.get_path())
-		
-	nav.target_position = Player.position
-	var Direction = nav.get_next_path_position() - global_position
-	Direction = Direction.normalized()
-	
-	velocity = Direction * Speed
-	
-	#look_at(Player.position)
-	move_and_slide()
-	
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
 
 func drop_xp():
-	var xp_drop_chance := 0.1  # 10% chance to drop XP
-	var xp_drop_range := Vector2i(1, 1)  # Drop between 1 and 1 XP pickups
-	# Check if XP should drop at all, we might not want all enemies to drop it
+	var xp_drop_chance := 0.1
+	var xp_drop_range := Vector2i(1, 1)
+
 	if randf() > xp_drop_chance:
 		return
 
-	# Determine how many XP pickups to drop, using above var's
 	var xp_amount = randi_range(xp_drop_range.x, xp_drop_range.y)
 	var screen_size = get_viewport_rect().size
 
@@ -73,38 +41,33 @@ func drop_xp():
 		var xp_pickup = PickupFactory.build_pickup("Xp", position)
 		get_parent().add_child(xp_pickup)
 
-func deal_damage(damage, from_position = null):
-	Health -= damage
-
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
 		body.deal_damage(10)
-		# Calculate bounce direction (opposite of movement)
 		var Direction = (position - body.position).normalized()
-		var bounce_target = global_position + (Direction * Speed * 0.3)  # Move back slightly
-		
-		# Use Tween for smooth movement
+		var bounce_target = global_position + (Direction * Speed * 0.3)
+
 		var Inbe_tween = get_tree().create_tween()
 		Inbe_tween.tween_property(self, "global_position", bounce_target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-		await Inbe_tween.finished  # Wait for the tween to finish
+		await Inbe_tween.finished
 		return
-		
+
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
 		body.queue_free()
 		deal_damage(10)
+
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")
 		add_to_group("Minion")
 		Group = "Minion"
 		add_to_group("PlayerSummon")
 		SummonGroup = "PlayerSummon"
-		var sprite = get_node("Sprite2D")
 		Colour = Color(0.9, 1, 0.9)
-		sprite.modulate = Colour
+		$Sprite2D.modulate = Colour
 		if get_tree().get_nodes_in_group("Enemy").size() > 0:
 			Target = get_tree().get_nodes_in_group("Enemy")[0].get_path()
-			print(Target)
+
 	elif is_in_group("Minion") and body.is_in_group("Enemy"):
 		await get_tree().process_frame
 		if not is_instance_valid(body) or not body.get_parent():
