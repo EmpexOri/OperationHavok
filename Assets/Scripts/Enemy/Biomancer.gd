@@ -173,7 +173,7 @@ func fire():
 		return
 	
 	# Only fire if player is within 1.5 meters (150 pixels)
-	if global_position.distance_to(Player.global_position) <= 50:
+	if global_position.distance_to(Player.global_position) <= 150:
 		print("Player In Range")
 		if CurrentWeapon:
 			var direction_to_player = (Player.global_position - global_position).normalized()
