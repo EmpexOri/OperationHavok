@@ -1,14 +1,10 @@
-extends CharacterBody2D
+extends Enemy
 
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
 
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var explosion_area: Area2D = $Area2D
 
-var Speed = 50
-var Health = 60
-var Target = "Player"
 var TorpedoVelocity = Vector2.ZERO
 var IsTorpedo = false
 var LastHitDirection = Vector2.ZERO
@@ -25,8 +21,17 @@ var FuseTickTimer := 0.0
 var PlayerInRange := false
 
 func _ready():
-	add_to_group("Enemy")
-	print(Target)
+	super._ready()  # Runs Enemy's setup: groups, weapon, start()
+
+	# Tumour-specific values
+	Health = 60
+	Speed = 50
+	Group = "Enemy"  # Already default, so dw
+	Target = "Player"
+
+func start():
+	# Tumour-specific startup logic if any, if u want any in future
+	pass
 
 func _process(delta):
 	if Health <= 0:
@@ -35,7 +40,7 @@ func _process(delta):
 			torpedo()
 		
 		death_frame_counter += 1
-		if death_frame_counter >= 10:
+		if death_frame_counter >= 15:
 			Global.spawn_meat_chunk(global_position)
 			Global.spawn_blood_splatter(global_position)
 			Global.spawn_death_particles(global_position)
@@ -142,10 +147,11 @@ func explode():
 	var shape : Shape2D = null
 	if collision_shape is CollisionShape2D:
 		shape = collision_shape.shape
+		var PreExplodeRad = explosion_radius
 		if shape is CircleShape2D:
-			explosion_radius = shape.radius * 1.5
+			explosion_radius = shape.radius * 2.0
 		else:
-			explosion_radius = 900  # fallback radius, fix @Will
+			explosion_radius = PreExplodeRad  # fallback radius, fix @Will
 
 	var space_state = get_world_2d().direct_space_state
 	var bodies_in_range = explosion_area.get_overlapping_bodies()
@@ -181,6 +187,8 @@ func explode():
 	
 	# Play a randomised death sound
 	GlobalAudioController.HordlingDeath()
+	Global.spawn_tumour_particles(global_position)
+	on_death()
 	queue_free()
 
 func torpedo():

@@ -10,10 +10,10 @@ var PauseMenu = preload("res://Scenes/Options/PauseMenu.tscn").instantiate()
 
 func _ready():
 	# Start spawn timers
-	start_spawn_timer1()
-	start_spawn_timer2()
-	start_spawn_timer3()
-	start_spawn_timer4()
+	#start_spawn_timer1()
+	#start_spawn_timer2()
+	#start_spawn_timer3()
+	#start_spawn_timer4()
 	start_spawn_timer5()
 	
 	# Add PauseMenu to the scene, but keep it hidden initially
