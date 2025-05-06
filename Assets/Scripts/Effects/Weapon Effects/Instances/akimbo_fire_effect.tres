@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AkimboWeaponEffect" load_steps=2 format=3 uid="uid://dk0b0g2aim660"]
+
+[ext_resource type="Script" uid="uid://hngk5be2sgte" path="res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd" id="1_0a2f8"]
+
+[resource]
+script = ExtResource("1_0a2f8")
+shot_offset = 10.0
+effect_name = ""
+metadata/_custom_type_script = "uid://hngk5be2sgte"
