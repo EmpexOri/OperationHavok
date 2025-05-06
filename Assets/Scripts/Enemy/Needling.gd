@@ -95,22 +95,3 @@ func random_move():
 	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
 	
 	nav.target_position = target_pos
-	
-func drop_xp():
-	var xp_drop_chance := 0.75  # 75% chance to drop XP
-	var xp_drop_range := Vector2i(1, 5)  # Drop between 1 and 5 XP pickups
-	
-	# Custom XP drop behavior for Needling
-	if randf() > xp_drop_chance:
-		return
-
-	var xp_amount = randi_range(xp_drop_range.x, xp_drop_range.y)
-	var screen_size = get_viewport_rect().size
-
-	for i in xp_amount:
-		var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-		position.x = clamp(position.x, 0, screen_size.x)
-		position.y = clamp(position.y, 0, screen_size.y)
-
-		var xp_pickup = PickupFactory.build_pickup("Xp", position)
-		get_parent().add_child(xp_pickup)
