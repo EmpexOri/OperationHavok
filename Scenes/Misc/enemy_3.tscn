@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://hugp881sope0"]
 
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="1_ipo15"]
-[ext_resource type="Script" uid="uid://7gv0u7m0fnce" path="res://Assets/Scripts/Enemy/enemy3.gd" id="1_mex1v"]
+[ext_resource type="Script" uid="uid://7gv0u7m0fnce" path="res://Assets/Scripts/Enemy/OldEnemies/enemy3.gd" id="1_mex1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hukrr"]
 size = Vector2(8, 8)

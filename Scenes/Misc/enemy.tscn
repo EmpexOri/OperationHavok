@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccv3fxn55gofe"]
 
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="1_hghv2"]
-[ext_resource type="Script" uid="uid://bcgibjer11dey" path="res://Assets/Scripts/Enemy/enemy1.gd" id="1_mvqga"]
+[ext_resource type="Script" uid="uid://bcgibjer11dey" path="res://Assets/Scripts/Enemy/OldEnemies/enemy1.gd" id="1_mvqga"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="2_4cnjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2kcc"]
