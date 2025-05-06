@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 var Speed = 140
-var Health = 10
+var Health = 10 * GlobalPlayer.PlayerHPMax/100 #If you want to scale enemy HP, do it like so
 #var Enemy = preload("res://Scenes/Misc/enemy.tscn")
 var Target = "Player"
 
