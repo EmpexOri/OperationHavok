@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0diyxuhbwmpo"]
+[gd_scene load_steps=6 format=3 uid="uid://d0diyxuhbwmpo"]
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_8xr85"]
+[ext_resource type="Script" uid="uid://oco7h58juew5" path="res://Assets/Scripts/Projectiles/rocket_projectile.gd" id="2_dybd0"]
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_vvo1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dybd0"]
@@ -10,6 +11,9 @@ size = Vector2(20, 10)
 radius = 59.0339
 
 [node name="RocketProjectile" instance=ExtResource("1_8xr85")]
+script = ExtResource("2_dybd0")
+explosion_radius_size = 100.0
+base_speed = 200.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_dybd0")
