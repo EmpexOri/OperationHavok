@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var lifetime: float = 30.0  # Time before it starts fading
-@export var fade_time: float = 5.0   # Time it takes to fade out
+@export var fade_time: float = 5.0  # Time it takes to fade out
 
 var timer: Timer
 var fading := false
@@ -10,14 +10,20 @@ func _ready():
 	Global.register_smear(self)
 	timer = $Timer
 	timer.wait_time = lifetime
+	timer.one_shot = true
 	timer.timeout.connect(start_fading)
 	timer.start()
 
 func start_fading():
 	fading = true
+	timer.stop()  # Stop any current countdown
+	timer.disconnect("timeout", start_fading)  # Clean up old signal
 	timer.wait_time = fade_time
-	timer.timeout.connect(queue_free)
+	timer.timeout.connect(_on_fade_finished)
 	timer.start()
+
+func _on_fade_finished():
+	queue_free()
 
 func _process(delta):
 	if fading:
