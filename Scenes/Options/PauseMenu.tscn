@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
-[ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/OptionsScene.tscn" id="5_fxfs8"]
+[ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/Options/OptionsScene.tscn" id="5_fxfs8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
 

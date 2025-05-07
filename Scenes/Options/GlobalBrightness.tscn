@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://swsed4p33iv"]
 
-[ext_resource type="Script" uid="uid://dxainc2u2txj2" path="res://Scenes/Options/global_brightness.gd" id="1_konyk"]
+[ext_resource type="Script" uid="uid://dxainc2u2txj2" path="res://Assets/Scripts/Menu Scripts/global_brightness.gd" id="1_konyk"]
 
 [sub_resource type="Environment" id="Environment_7wxgs"]
 background_mode = 3

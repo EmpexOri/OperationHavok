@@ -4,18 +4,18 @@ func _ready():
 	$PlayButton.grab_focus()
 	
 
-func OnPlayButtonPressed() -> void:
+func _on_play_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.LevelOneMusic()
 	get_tree().change_scene_to_file("res:///Scenes/LevelSelectScene.tscn")
 
 
-func OnOptionsButtonPressed() -> void:
+func _on_options_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
-	get_tree().change_scene_to_file("res:///Scenes/OptionsScene.tscn")
+	get_tree().change_scene_to_file("res:///Scenes/Options/OptionsScene.tscn")
 
 
-func OnQuitButtonPressed() -> void:
+func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	var quitTimer = 0.15
 	await get_tree().create_timer(quitTimer).timeout
@@ -25,4 +25,5 @@ func OnQuitButtonPressed() -> void:
 func _on_skill_tree_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	$Label.visible = not $Label.visible
-	
+
+ 
