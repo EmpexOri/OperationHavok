@@ -101,9 +101,6 @@ func UpdateHealthBar():
 		UIHandler.HealthBar.max_value = PlayerHPMax
 		UIHandler.HealthBar.value = PlayerHP
 
-	if ClassData[CurrentClass]["PerkPoints"] <= 0:
-		print("Not enough PerkPoints.")
-		return
 
 func UpdatePerkPointUI():
 	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
