@@ -71,7 +71,7 @@ position = Vector2(321, 179.5)
 scale = Vector2(1.09029, 3.41905)
 texture = ExtResource("4_vg0ck")
 
-[connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

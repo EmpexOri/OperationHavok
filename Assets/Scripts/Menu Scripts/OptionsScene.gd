@@ -14,6 +14,7 @@ func _check_back_button() -> void:
 	else:
 		BackButton.visible = true
 
-func OnBackButtonPressed() -> void:
+
+func _on_back_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")

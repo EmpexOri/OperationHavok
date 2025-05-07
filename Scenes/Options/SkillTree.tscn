@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://4xd5807erhxk"]
+
+[ext_resource type="Script" uid="uid://be7byeqqpa0h8" path="res://Assets/Scripts/Menu Scripts/skill_tree.gd" id="1_12h5a"]
+
+[node name="SkillTree" type="CanvasLayer"]
+script = ExtResource("1_12h5a")
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 242.0
+offset_top = 273.0
+offset_right = 404.0
+offset_bottom = 304.0
+text = "Back"
+metadata/_edit_use_anchors_ = true
