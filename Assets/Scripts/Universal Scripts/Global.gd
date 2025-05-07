@@ -56,11 +56,12 @@ func _spawn_particles(position: Vector2, pool: Array) -> void:
 	# Try to find an invisible particle from the pool
 	for p in pool:
 		if not p.visible and not p.get_node("Particles").emitting:
-			print("Found free particle.")
+			#print("Found free particle.")
 			instance = p
 			break
 		else:
-			print("Checked particle — Visible:", p.visible, ", Emitting:", p.get_node("Particles").emitting)
+			#print("Checked particle — Visible:", p.visible, ", Emitting:", p.get_node("Particles").emitting)
+			break
 
 	# If no particle is available, print a warning
 	if instance == null:
