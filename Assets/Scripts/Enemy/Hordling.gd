@@ -2,7 +2,7 @@ extends Enemy
 
 func start():
 	Speed = 140
-	Health = 10 * GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
+	Health = 10
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
 	Target = "Player"
