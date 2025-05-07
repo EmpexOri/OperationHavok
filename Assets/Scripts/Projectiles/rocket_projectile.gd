@@ -38,13 +38,21 @@ func _explode():
 	
 	explosion_area.monitoring = true # Enable collision monitoring for overlaps
 	
+	await get_tree().physics_frame
+	
 	var bodies_in_aoe = explosion_area.get_overlapping_bodies() # Get overlapping bodies
 	
-	# Deal damage
+	# Deal damage to AOE targets
 	for body in bodies_in_aoe:
 		if body == self: continue # Ignore self
 		if body.has_method("deal_damage"):
 			body.deal_damage(damage) # Deal damage to bodies
+		
+		# Apply projectile effects to AOE targets
+		if current_effects:
+			for effect in current_effects:
+				if effect.has_method("on_hit"):
+					effect.on_hit(self, body)
 	
 	explosion_area.monitoring = false # Dissable collision monitoring
 	
