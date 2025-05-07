@@ -14,7 +14,7 @@ var DeathParticlesScene = preload("res://Prefabs/Particles/DeathGore.tscn")
 var tumour_particle_pool: Array = []
 var death_particle_pool: Array = []
 
-const POOL_SIZE := 64  # Customize based on how many can be active at once
+const POOL_SIZE := 128  # Customize based on how many can be active at once
 
 func _ready() -> void:
 	# Prewarm GPU shaders by creating dummy instances briefly

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_6ghgv"]
 
 [node name="Bullet" instance=ExtResource("1_ebkul")]
-base_speed = 600.0
+base_speed = 750.0
 base_damage = 10.0
 base_lifetime = 0.3
 

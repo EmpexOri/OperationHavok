@@ -1,11 +1,11 @@
 extends Node2D
-class_name SwapWeapons_Shotgun2Smg2
+class_name SwapWeapons_Shotgun2Smg1
 
 signal perk_finished(index: int)
 
 @export var cooldown_time: float = 1.0
 
-var smg_scene := preload("res://Prefabs/Weapons/akimbo_smg.tscn")
+var smg_scene := preload("res://Prefabs/Weapons/Smg.tscn")
 var shotgun_scene := preload("res://Prefabs/Weapons/DragonShotgun.tscn")
 
 var perk_index: int

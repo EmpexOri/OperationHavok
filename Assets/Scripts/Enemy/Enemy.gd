@@ -60,6 +60,7 @@ func on_death():
 	Global.spawn_meat_chunk(global_position)
 	Global.spawn_blood_splatter(global_position)
 	Global.spawn_death_particles(global_position)
+	GlobalAudioController.HordlingDeath()
 	queue_free()
 
 func drop_xp():
@@ -90,7 +91,6 @@ func _on_dot_tick(dps: float) -> void:
 	deal_damage(dps)
 	
 func _process(delta: float) -> void:
-	print(dot_timers)
 	for dot in dot_timers:
 		var damage = dot.damage_per_second * delta
 		deal_damage(damage)

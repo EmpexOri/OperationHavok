@@ -16,6 +16,4 @@ func process_effect(projectile: Projectile, delta: float):
 func on_hit(projectile: Projectile, body: Node2D):
 	if body.has_method("apply_dot"):
 		body.apply_dot(damage_per_second, duration)
-	else:
-		print("Warning: Body has no method 'apply_dot'")
 	return true
