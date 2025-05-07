@@ -7,8 +7,8 @@ script = ExtResource("1_12h5a")
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 242.0
-offset_top = 273.0
+offset_top = 307.0
 offset_right = 404.0
-offset_bottom = 304.0
+offset_bottom = 338.0
 text = "Back"
 metadata/_edit_use_anchors_ = true

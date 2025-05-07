@@ -128,6 +128,7 @@ animations = [{
 }]
 
 [node name="Bruiser" type="CharacterBody2D"]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
