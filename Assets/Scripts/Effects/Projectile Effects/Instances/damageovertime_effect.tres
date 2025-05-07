@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DamageOverTimeEffect" load_steps=2 format=3 uid="uid://ch25iethvs31m"]
+
+[ext_resource type="Script" uid="uid://dcs88l8lr8rxw" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_damageovertime.gd" id="1_jmogt"]
+
+[resource]
+script = ExtResource("1_jmogt")
+damage_per_second = 1.0
+duration = 10.0
+effect_name = ""
+metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"

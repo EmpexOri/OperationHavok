@@ -12,6 +12,7 @@ func deal_damage(damage, from_position = null):
 	Health -= damage
 
 func _process(delta):
+	super._process(delta)
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()

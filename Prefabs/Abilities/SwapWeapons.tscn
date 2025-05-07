@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://nogxylnxfxye" path="res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd" id="1_q72b0"]
 
-[node name="SwapWeapons" type="Node2D"]
+[node name="SwapWeapons_Shotgun2Smg1" type="Node2D"]
 script = ExtResource("1_q72b0")

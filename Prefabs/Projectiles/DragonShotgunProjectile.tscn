@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://do8gq320abdil"]
+
+[ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_6oc0v"]
+[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_wbqhc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bece"]
+size = Vector2(4, 8)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_6oc0v")
+base_speed = 50.0
+base_damage = 10.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1bece")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wbqhc")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

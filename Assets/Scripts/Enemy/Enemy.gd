@@ -4,6 +4,8 @@ class_name Enemy
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
+var dot_timers: Array = []
+
 var Speed = 100
 var Health = 10
 var Group = "Enemy"
@@ -48,6 +50,7 @@ func resolve_target():
 	return null
 
 func deal_damage(damage: int, _from_position = null):
+	print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", Health - damage, ")")
 	Health -= damage
 	if Health <= 0:
 		on_death()
@@ -72,3 +75,28 @@ func start():
 func _on_area_2d_body_entered(body: Node2D):
 	# Define generic collisions, Biomancer can override
 	pass
+
+func apply_dot(dps: float, duration: float) -> void:
+	var ticks = int(duration)
+	for i in range(ticks):
+		var t = Timer.new()
+		t.wait_time = 1.0
+		t.one_shot = true
+		t.connect("timeout", Callable(self, "_on_dot_tick").bind(dps))
+		add_child(t)
+		t.start(i) # stagger each tick based on when it should occur
+		
+func _on_dot_tick(dps: float) -> void:
+	deal_damage(dps)
+	
+func _process(delta: float) -> void:
+	print(dot_timers)
+	for dot in dot_timers:
+		var damage = dot.damage_per_second * delta
+		deal_damage(damage)
+		dot.time_remaining -= delta
+
+	# Remove expired effects
+	dot_timers = dot_timers.filter(func(d):
+		return d.time_remaining > 0
+	)

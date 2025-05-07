@@ -8,6 +8,13 @@ var ShotsBeforeMoving = randi_range(1, 3)
 var IsMovingRandomly = false
 var Weapon: PackedScene = preload("res://Prefabs/Weapons/EnemyWeapons/enemy_sniper.tscn")
 
+func start():
+	Speed = 80
+	Health = 50
+	Group = "Enemy"
+	SummonGroup = "EnemySummon"
+	Target = "Player"
+
 func _ready():
 	WeaponScene = Weapon
 	# Call setup_weapon from the base Enemy class
@@ -22,6 +29,7 @@ func _ready():
 	add_child(firetimer)
 
 func _process(delta):
+	super._process(delta)  
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()  # Custom drop_xp in Needling.gd

@@ -34,6 +34,7 @@ func start():
 	pass
 
 func _process(delta):
+	super._process(delta)
 	if Health <= 0:
 		if not has_dropped_xp:
 			has_dropped_xp = true
