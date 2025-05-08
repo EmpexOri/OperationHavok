@@ -41,9 +41,7 @@ func _process(delta):
 			torpedo()
 		
 		death_frame_counter += 1
-		if death_frame_counter >= 15:
-			Global.spawn_meat_chunk(global_position)
-			Global.spawn_blood_splatter(global_position)
+		if death_frame_counter >= 5:
 			Global.spawn_death_particles(global_position)
 			death_frame_counter = 0
 
@@ -91,16 +89,6 @@ func _physics_process(delta):
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-
-	# Handle fuse countdown
-	if FuseStarted and PlayerInRange:
-		FuseTickTimer += delta
-		if FuseTickTimer >= 1.0:
-			FuseCounter -= 1
-			FuseTickTimer = 0.0
-			print("Fuse ticking down: ", FuseCounter)
-			if FuseCounter <= 0:
-				explode()
 
 func _on_area_2d_body_entered(body: Node2D):
 	if IsTorpedo and body and not body.is_in_group("Bullet"):

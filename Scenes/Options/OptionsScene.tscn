@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bli4fnfa7mnar"]
+[gd_scene load_steps=6 format=3 uid="uid://bli4fnfa7mnar"]
 
 [ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Assets/Scripts/Menu Scripts/brightness_slider.gd" id="2_1hmx5"]
 [ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Assets/Scripts/Menu Scripts/volume_control_slider.gd" id="2_4k2k5"]
+[ext_resource type="Script" uid="uid://dptye62ocip5c" path="res://Assets/Scripts/Menu Scripts/particle_options.gd" id="4_ttvai"]
+
+[sub_resource type="Theme" id="Theme_gprv8"]
 
 [node name="OptionsScene" type="CanvasLayer"]
 script = ExtResource("1_ax0sw")
@@ -20,65 +23,92 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 242.0
-offset_top = 273.0
+offset_top = 293.0
 offset_right = 404.0
-offset_bottom = 304.0
+offset_bottom = 324.0
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 193.0
-offset_top = 70.0
-offset_right = 455.0
-offset_bottom = 254.0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 162.0
+offset_top = 66.0
+offset_right = 483.0
+offset_bottom = 276.0
+theme = SubResource("Theme_gprv8")
 
-[node name="MasterLabel" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MasterLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume - Master"
 
-[node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 value = 0.5
+scrollable = false
 script = ExtResource("2_4k2k5")
 BusName = "Master"
 
-[node name="MusicLabel" type="Label" parent="VBoxContainer"]
+[node name="MusicLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume - Music"
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 value = 0.5
+scrollable = false
 script = ExtResource("2_4k2k5")
 BusName = "Music"
 
-[node name="SFXLabel" type="Label" parent="VBoxContainer"]
+[node name="SFXLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume - SFX "
 
-[node name="SFXSlider" type="HSlider" parent="VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 value = 0.5
+scrollable = false
 script = ExtResource("2_4k2k5")
 BusName = "SFX"
 
-[node name="BrightnessLabel" type="Label" parent="VBoxContainer"]
+[node name="BrightnessLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Brightness"
 
-[node name="BrightnessSlider" type="HSlider" parent="VBoxContainer"]
+[node name="BrightnessSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 0.01
 max_value = 4.0
 step = 0.01
 value = 1.0
+scrollable = false
 script = ExtResource("2_1hmx5")
 
+[node name="ParticleLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Particle effects"
+
+[node name="ParticleOptions" type="OptionButton" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "High"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+script = ExtResource("4_ttvai")
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="value_changed" from="VBoxContainer/BrightnessSlider" to="VBoxContainer/BrightnessSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/VBoxContainer/BrightnessSlider" to="ScrollContainer/VBoxContainer/BrightnessSlider" method="_on_value_changed"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/ParticleOptions" to="ScrollContainer/VBoxContainer/ParticleOptions" method="_on_item_selected"]

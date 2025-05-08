@@ -6,8 +6,5 @@
 [node name="BloodSmear" type="Sprite2D"]
 texture = ExtResource("1_sfkt2")
 script = ExtResource("2_sfkt2")
-lifetime = 15.0
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

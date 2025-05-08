@@ -23,6 +23,7 @@ GlobalAudioController="*res://Scenes/GlobalAudioController.tscn"
 GlobalPlayer="*res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd"
 GlobalBrightnessCanvas="*res://Scenes/Options/GlobalBrightness.tscn"
 GlobalBrightness="*res://Assets/Scripts/Menu Scripts/global_brightness.gd"
+SmearManager="*res://Assets/Scripts/Misc/SmearManager.gd"
 
 [display]
 
@@ -140,6 +141,10 @@ fire_right={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="player_projectile"
 2d_physics/layer_4="enemy_projectile"
+
+[physics]
+
+common/max_physics_steps_per_frame=6
 
 [rendering]
 

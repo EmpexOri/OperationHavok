@@ -10,8 +10,12 @@ extends RigidBody2D
 @export var smear_interval: float = 0.05
 @export var chunk_textures: Array[Texture2D]
 
+@export var fade_duration: float = 1.0
+var fade_time_left: float = 0.0
+var is_fading: bool = false
+
 # Max allowed chunks at once
-const MAX_MEAT_CHUNKS = 50
+const MAX_MEAT_CHUNKS = 500
 
 # Static array to track all meat chunks globally
 static var active_chunks := []
@@ -22,6 +26,9 @@ var time_left: float
 var smear_timer: float
 
 func _ready():
+	$FadeTimer.timeout.connect(_on_fade_timer_timeout)
+	$FadeTimer.start()
+
 	_register_chunk()
 
 	randomize()
@@ -35,12 +42,18 @@ func _physics_process(delta):
 		time_left -= delta
 		linear_velocity = move_direction * move_speed
 
+	if is_fading:
+		fade_time_left -= delta
+		var alpha = clamp(fade_time_left / fade_duration, 0, 1)
+		$Sprite2D.modulate.a = alpha  # Set alpha of the sprite
+		if fade_time_left <= 0:
+			queue_free()
+
 	smear_timer -= delta
 	if smear_timer <= 0.0:
-		smear_timer += smear_interval  # += for better timing accuracy
+		smear_timer += smear_interval
 		spawn_blood_smear()
-	
-	# Clamp position inside viewport bounds
+
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
@@ -74,12 +87,16 @@ func setup_timer():
 
 func spawn_blood_smear():
 	if blood_smear_scene:
-		var smear = blood_smear_scene.instantiate()
-		smear.global_position = global_position
-		smear.z_index = -2
-		get_tree().current_scene.add_child(smear)
+		SmearManager.spawn_smear(global_position)
 
 func randomize_sprite():
 	if chunk_textures.size() > 0:
 		var sprite = $Sprite2D
 		sprite.texture = chunk_textures.pick_random()
+
+func _on_fade_timer_timeout():
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	freeze = true  # Disable further physics movement
+	fade_time_left = fade_duration
+	is_fading = true
