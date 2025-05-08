@@ -15,6 +15,9 @@ radius = 59.0339
 script = ExtResource("2_dybd0")
 explosion_radius_size = 50.0
 explosion_scene = ExtResource("3_dybd0")
+initial_speed = 50.0
+max_speed = 2000.0
+acceleration_rate = 1000.0
 base_speed = 200.0
 base_damage = 50.0
 
