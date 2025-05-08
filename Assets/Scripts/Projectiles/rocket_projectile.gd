@@ -1,7 +1,8 @@
 extends Projectile
 class_name RocketProjectile
 
-@export var explosion_radius_size: float = 100.0 # The AOE for explosion
+@export var explosion_radius_size: float = 50.0 # The AOE for explosion
+@export var explosion_scene: PackedScene = null # The explosion VFX
 
 # Get references to our collision areas
 @onready var explosion_area: Area2D = $ExplosionRadius
@@ -17,8 +18,10 @@ func _ready() -> void:
 
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
 	super.start(start_position, direction, entity_owner, p_effects) # Call super
+	has_exploded = false # Ensure has_exploded is false
 	explosion_area.collision_mask = self.collision_mask # Set collision mask based on projectile owner
-
+	explosion_area.position = Vector2.ZERO # Set the collision areas local position to projectiles world location
+		
 # Override movement later if needed, for now it just behaves like a normal projectile
 func _handle_movement(delta: float):
 	super._handle_movement(delta) # Default ballistic movement
@@ -30,11 +33,17 @@ func _on_body_entered(body: Node2D):
 
 # Explode...
 func _explode():
+	if has_exploded: return # Just in case
 	has_exploded = true # We have exploded
 	
-	'''
-	TODO: Perform some VFX to show explosion in AOE radius
-	'''
+	if lifetime_timer and not lifetime_timer.is_stopped():
+		lifetime_timer.stop()
+	
+	# Explosion VFX
+	if explosion_scene:
+		var explosion_instance = explosion_scene.instantiate()
+		get_parent().add_child(explosion_instance)
+		explosion_instance.global_position = self.global_position
 	
 	explosion_area.monitoring = true # Enable collision monitoring for overlaps
 	
@@ -55,5 +64,7 @@ func _explode():
 					effect.on_hit(self, body)
 	
 	explosion_area.monitoring = false # Dissable collision monitoring
+	explosion_shape.disabled = true # Disable collision shape
 	
 	queue_free() # Destroy self
+	

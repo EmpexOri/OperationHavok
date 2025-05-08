@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx126fqmmm8p5"]
+
+[ext_resource type="Script" uid="uid://dpfkbxttl18ut" path="res://Assets/Scripts/Misc/RocketExplosion.gd" id="1_5gk5c"]
+[ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_tnxnn"]
+[ext_resource type="Material" uid="uid://cvgey35vc8ku2" path="res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres" id="2_5gk5c"]
+
+[node name="RocketExplosion" type="Node2D"]
+script = ExtResource("1_5gk5c")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+amount = 256
+texture = ExtResource("1_tnxnn")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+process_material = ExtResource("2_5gk5c")
