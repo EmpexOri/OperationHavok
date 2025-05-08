@@ -103,7 +103,7 @@ func spawn_blood_splatter(position: Vector2):
 
 func spawn_meat_chunk(position: Vector2):
 	var meat_scene = preload("res://Prefabs/Particles/MeatChunks.tscn")
-	var num_chunks = randi_range(24, 128)
+	var num_chunks = randi_range(4, 24)
 
 	for i in range(num_chunks):
 		var meat_chunk = meat_scene.instantiate()
@@ -113,7 +113,7 @@ func spawn_meat_chunk(position: Vector2):
 
 # -- Blood Smear Tracking --
 
-const MAX_BLOOD_SMEARS = 2500
+const MAX_BLOOD_SMEARS = 5000
 var active_smeares := []
 
 func register_smear(smear):

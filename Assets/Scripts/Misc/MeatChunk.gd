@@ -74,10 +74,7 @@ func setup_timer():
 
 func spawn_blood_smear():
 	if blood_smear_scene:
-		var smear = blood_smear_scene.instantiate()
-		smear.global_position = global_position
-		smear.z_index = -2
-		get_tree().current_scene.add_child(smear)
+		SmearManager.spawn_smear(global_position)
 
 func randomize_sprite():
 	if chunk_textures.size() > 0:

@@ -23,6 +23,7 @@ GlobalAudioController="*res://Scenes/GlobalAudioController.tscn"
 GlobalPlayer="*res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd"
 GlobalBrightnessCanvas="*res://Scenes/Options/GlobalBrightness.tscn"
 GlobalBrightness="*res://Assets/Scripts/Menu Scripts/global_brightness.gd"
+SmearManager="*res://Assets/Scripts/Misc/SmearManager.gd"
 
 [display]
 
@@ -144,6 +145,7 @@ fire_right={
 [physics]
 
 2d/run_on_separate_thread=true
+common/max_physics_steps_per_frame=6
 
 [rendering]
 
