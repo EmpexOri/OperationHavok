@@ -1,22 +1,27 @@
 extends Node
 
-const MAX_SMEARS := 2500
+const MAX_SMEARS := 5000
 const FADE_TIME := 5.0
+const CULL_THRESHOLD := MAX_SMEARS/2
+const CULL_FADE_MULTIPLIER := 2.0
 
 var smear_scene := preload("res://Prefabs/Particles/BloodSmear.tscn")
 var smear_pool: Array = []
 var active_smeares: Array = []
 
 func _process(delta: float) -> void:
+	var fade_multiplier := 1.0
+	if active_smeares.size() > CULL_THRESHOLD:
+		fade_multiplier = CULL_FADE_MULTIPLIER
+
 	for i in range(active_smeares.size() - 1, -1, -1):
 		var smear_data = active_smeares[i]
-		smear_data.time_left -= delta
+		smear_data.time_left -= delta * fade_multiplier
 
-		var fade_ratio = smear_data.time_left / 30.0
+		var fade_ratio = smear_data.time_left / 15.0  # Adjust to match time_left on spawn
 		if is_instance_valid(smear_data.sprite):
 			smear_data.sprite.modulate.a = clamp(fade_ratio, 0.0, 1.0)
 		else:
-			# Cleanup to prevent future errors
 			_deactivate_smear(smear_data)
 			active_smeares.remove_at(i)
 			continue
