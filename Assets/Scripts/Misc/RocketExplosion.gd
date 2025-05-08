@@ -2,7 +2,7 @@ extends Node2D
 
 # The explosion effect for the rocket projectile
 
-@export var lifetime: float = 0.5 # How long the debug circle lasts
+@export var lifetime: float = 0.25 # How long the debug circle lasts
 @export var explosion_radius: float # For debug drawing explosion area
 
 # Get shrapnel emitter references
