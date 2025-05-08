@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c26e5m5myf21f"
-path="res://.godot/imported/Hordling_SMALL.png-df9f1dfd8df269840be3f82e4ddfad3e.ctex"
+path="res://godot/imported/Hordling_SMALL.png-df9f1dfd8df269840be3f82e4ddfad3e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Art/Sprites/Hordling_SMALL.png"
-dest_files=["res://.godot/imported/Hordling_SMALL.png-df9f1dfd8df269840be3f82e4ddfad3e.ctex"]
+dest_files=["res://godot/imported/Hordling_SMALL.png-df9f1dfd8df269840be3f82e4ddfad3e.ctex"]
 
 [params]
 

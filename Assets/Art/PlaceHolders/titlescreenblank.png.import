@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dylt3gbm8jxrj"
-path="res://.godot/imported/titlescreenblank.png-b8b2f96c0a39c16b47d91f0f02d79326.ctex"
+path="res://godot/imported/titlescreenblank.png-b8b2f96c0a39c16b47d91f0f02d79326.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Art/PlaceHolders/titlescreenblank.png"
-dest_files=["res://.godot/imported/titlescreenblank.png-b8b2f96c0a39c16b47d91f0f02d79326.ctex"]
+dest_files=["res://godot/imported/titlescreenblank.png-b8b2f96c0a39c16b47d91f0f02d79326.ctex"]
 
 [params]
 

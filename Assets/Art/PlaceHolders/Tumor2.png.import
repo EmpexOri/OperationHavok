@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0c2xaen5yoev"
-path="res://.godot/imported/Tumor2.png-b934fc9ffc3f01abe9de084bc0b2f418.ctex"
+path="res://godot/imported/Tumor2.png-b934fc9ffc3f01abe9de084bc0b2f418.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Art/PlaceHolders/Tumor2.png"
-dest_files=["res://.godot/imported/Tumor2.png-b934fc9ffc3f01abe9de084bc0b2f418.ctex"]
+dest_files=["res://godot/imported/Tumor2.png-b934fc9ffc3f01abe9de084bc0b2f418.ctex"]
 
 [params]
 

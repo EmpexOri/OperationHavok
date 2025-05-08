@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Operation: Havoc"
 run/main_scene="uid://kjmdqey636rw"
+config/use_hidden_project_data_directory=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

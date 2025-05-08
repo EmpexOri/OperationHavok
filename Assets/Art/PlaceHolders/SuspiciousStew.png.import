@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx2v6y6jjrgq2"
-path="res://.godot/imported/SuspiciousStew.png-18942ecd5471ba4d3c7dc93edbcebbb4.ctex"
+path="res://godot/imported/SuspiciousStew.png-18942ecd5471ba4d3c7dc93edbcebbb4.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Art/PlaceHolders/SuspiciousStew.png"
-dest_files=["res://.godot/imported/SuspiciousStew.png-18942ecd5471ba4d3c7dc93edbcebbb4.ctex"]
+dest_files=["res://godot/imported/SuspiciousStew.png-18942ecd5471ba4d3c7dc93edbcebbb4.ctex"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cujo60n8xj7pu"
-path="res://.godot/imported/Crunch3.mp3-eb46a82bfd2bed3ca363b0abbb1912c4.mp3str"
+path="res://godot/imported/Crunch3.mp3-eb46a82bfd2bed3ca363b0abbb1912c4.mp3str"
 
 [deps]
 
 source_file="res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch3.mp3"
-dest_files=["res://.godot/imported/Crunch3.mp3-eb46a82bfd2bed3ca363b0abbb1912c4.mp3str"]
+dest_files=["res://godot/imported/Crunch3.mp3-eb46a82bfd2bed3ca363b0abbb1912c4.mp3str"]
 
 [params]
 
