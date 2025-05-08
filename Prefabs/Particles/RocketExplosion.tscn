@@ -26,6 +26,9 @@ gravity = Vector3(0, 98, 0)
 damping_min = 50.0
 damping_max = 100.0
 color_ramp = SubResource("GradientTexture1D_5gk5c")
+collision_mode = 1
+collision_friction = 0.75
+collision_bounce = 0.5
 
 [node name="RocketExplosion" type="Node2D"]
 script = ExtResource("1_5gk5c")
