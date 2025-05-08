@@ -60,3 +60,18 @@ func _deactivate_smear(smear_data) -> void:
 	if is_instance_valid(sprite):
 		sprite.visible = false
 		smear_pool.append(smear_data)
+
+#-- Settings Logic --
+func apply_graphics_settings():
+	CULL_THRESHOLD = MAX_SMEARS / 2
+	print("Updated SmearManager graphics settings. MAX_SMEARS =", MAX_SMEARS)
+
+func enforce_smear_limit():
+	while active_smeares.size() > MAX_SMEARS:
+		var oldest = active_smeares.pop_front()
+		_deactivate_smear(oldest)
+
+func set_max_smeares(value: int) -> void:
+	MAX_SMEARS = value
+	CULL_THRESHOLD = MAX_SMEARS / 2
+	enforce_smear_limit()

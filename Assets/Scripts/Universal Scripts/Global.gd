@@ -129,3 +129,20 @@ func register_smear(smear):
 
 func unregister_smear(smear):
 	active_smeares.erase(smear)
+
+#-- Settings Logic --
+func apply_graphics_settings() -> void:
+	# Resize particle pools
+	_clear_and_refill_pool(tumour_particle_pool, TumourParticlesScene, POOL_SIZE)
+	_clear_and_refill_pool(death_particle_pool, DeathParticlesScene, POOL_SIZE)
+	print("Reinitialized particle pools to new POOL_SIZE:", POOL_SIZE)
+
+func _clear_and_refill_pool(pool: Array, scene: PackedScene, size: int) -> void:
+	# Remove old particles
+	for p in pool:
+		if is_instance_valid(p):
+			p.queue_free()
+	pool.clear()
+	
+	# Refill with new size
+	_fill_pool(scene, pool, size)
