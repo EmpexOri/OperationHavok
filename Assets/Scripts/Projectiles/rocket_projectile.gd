@@ -4,6 +4,11 @@ class_name RocketProjectile
 @export var explosion_radius_size: float = 50.0 # The AOE for explosion
 @export var explosion_scene: PackedScene = null # The explosion VFX
 
+# Variables to handle increasing the rockets speed over time
+@export var initial_speed: float = 100.0
+@export var max_speed: float = 700.0
+@export var acceleration_rate: float = 1000.0
+
 # Get references to our collision areas
 @onready var explosion_area: Area2D = $ExplosionRadius
 @onready var explosion_shape: CollisionShape2D = $ExplosionRadius/CollisionShape2D
@@ -21,10 +26,20 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_
 	has_exploded = false # Ensure has_exploded is false
 	explosion_area.collision_mask = self.collision_mask # Set collision mask based on projectile owner
 	explosion_area.position = Vector2.ZERO # Set the collision areas local position to projectiles world location
-		
-# Override movement later if needed, for now it just behaves like a normal projectile
+	self.speed = initial_speed # Override speed to use initial speed
+	self.velocity = direction.normalized() * self.speed # Calculate velocity based on new speed
+	
+# Override movement to increase acceleration over time, mimic a rocket...
 func _handle_movement(delta: float):
-	super._handle_movement(delta) # Default ballistic movement
+	# Keep accelerating until max speed is reached
+	if self.speed < max_speed:
+		self.speed += acceleration_rate * delta # Accelerate
+		if self.speed >= max_speed:
+			self.speed = max_speed # clamp max speed
+		
+		self.velocity = self.velocity.normalized() * self.speed # Update velocity
+	
+	super._handle_movement(delta) # position += self.velocity * delta
 	
 # On projectle collision, explode, this overrides the defaut projectile behaviour
 func _on_body_entered(body: Node2D):
@@ -42,11 +57,14 @@ func _explode():
 	# Explosion VFX
 	if explosion_scene:
 		var explosion_instance = explosion_scene.instantiate()
+		explosion_instance.start(explosion_radius_size)
 		get_parent().add_child(explosion_instance)
 		explosion_instance.global_position = self.global_position
+		
 	
 	explosion_area.monitoring = true # Enable collision monitoring for overlaps
 	
+	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
 	var bodies_in_aoe = explosion_area.get_overlapping_bodies() # Get overlapping bodies

@@ -72,9 +72,9 @@ func _physics_process(_delta):
 	velocity = Motion
 	move_and_slide()
 	
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	#var screen_size = get_viewport_rect().size
+	#position.x = clamp(position.x, 0, screen_size.x)
+	#position.y = clamp(position.y, 0, screen_size.y)
 	
 func dodge(Direction: Vector2):
 	var Collision = get_node("CollisionShape2D")
