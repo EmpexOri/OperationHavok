@@ -103,7 +103,7 @@ func spawn_blood_splatter(position: Vector2):
 
 func spawn_meat_chunk(position: Vector2):
 	var meat_scene = preload("res://Prefabs/Particles/MeatChunks.tscn")
-	var num_chunks = randi_range(4, 24)
+	var num_chunks = randi_range(8, 48)
 
 	for i in range(num_chunks):
 		var meat_chunk = meat_scene.instantiate()

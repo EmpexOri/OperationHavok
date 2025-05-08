@@ -1,4 +1,3 @@
-# SmearManager.gd
 extends Node
 
 const MAX_SMEARS := 2500
@@ -9,12 +8,22 @@ var smear_pool: Array = []
 var active_smeares: Array = []
 
 func _process(delta: float) -> void:
-	for smear_data in active_smeares:
+	for i in range(active_smeares.size() - 1, -1, -1):
+		var smear_data = active_smeares[i]
 		smear_data.time_left -= delta
-		if smear_data.time_left <= 0:
-			smear_data.sprite.modulate.a -= delta / FADE_TIME
-			if smear_data.sprite.modulate.a <= 0.0:
-				_deactivate_smear(smear_data)
+
+		var fade_ratio = smear_data.time_left / 30.0
+		if is_instance_valid(smear_data.sprite):
+			smear_data.sprite.modulate.a = clamp(fade_ratio, 0.0, 1.0)
+		else:
+			# Cleanup to prevent future errors
+			_deactivate_smear(smear_data)
+			active_smeares.remove_at(i)
+			continue
+
+		if smear_data.time_left <= 0.0 or smear_data.sprite.modulate.a <= 0.0:
+			_deactivate_smear(smear_data)
+			active_smeares.remove_at(i)
 
 func spawn_smear(position: Vector2) -> void:
 	var smear_data = null
@@ -34,7 +43,7 @@ func spawn_smear(position: Vector2) -> void:
 	smear_data.sprite.global_position = position
 	smear_data.sprite.visible = true
 	smear_data.sprite.modulate = Color(1, 1, 1, 1)
-	smear_data.time_left = 30.0
+	smear_data.time_left = 15.0
 	active_smeares.append(smear_data)
 
 	if active_smeares.size() > MAX_SMEARS:
@@ -43,5 +52,6 @@ func spawn_smear(position: Vector2) -> void:
 
 func _deactivate_smear(smear_data) -> void:
 	var sprite = smear_data.sprite
-	sprite.visible = false
-	smear_pool.append(smear_data)
+	if is_instance_valid(sprite):
+		sprite.visible = false
+		smear_pool.append(smear_data)

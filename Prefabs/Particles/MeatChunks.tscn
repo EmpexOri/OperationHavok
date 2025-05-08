@@ -23,7 +23,7 @@ min_speed = 80.0
 max_speed = 160.0
 control_time = 0.05
 blood_smear_scene = ExtResource("2_c5kww")
-smear_interval = 0.1
+smear_interval = 0.2
 chunk_textures = Array[Texture2D]([ExtResource("1_0yw36"), ExtResource("2_jpuli")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -33,8 +33,10 @@ shape = SubResource("CircleShape2D_c5kww")
 modulate = Color(0.608004, 0.163959, 0.175246, 1)
 texture = ExtResource("2_jpuli")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.5
+[node name="FadeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
-[node name="wait_time" type="Timer" parent="."]
-wait_time = 2.0
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
