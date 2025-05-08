@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_SMEARS := 5000
+const MAX_SMEARS := 4000
 const FADE_TIME := 5.0
 const CULL_THRESHOLD := MAX_SMEARS/2
 const CULL_FADE_MULTIPLIER := 2.0

@@ -15,7 +15,7 @@ var fade_time_left: float = 0.0
 var is_fading: bool = false
 
 # Max allowed chunks at once
-const MAX_MEAT_CHUNKS = 1000
+const MAX_MEAT_CHUNKS = 500
 
 # Static array to track all meat chunks globally
 static var active_chunks := []

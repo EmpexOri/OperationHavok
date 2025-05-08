@@ -113,7 +113,7 @@ func spawn_meat_chunk(position: Vector2):
 
 # -- Blood Smear Tracking --
 
-const MAX_BLOOD_SMEARS = 5000
+const MAX_BLOOD_SMEARS = 4000
 var active_smeares := []
 
 func register_smear(smear):
