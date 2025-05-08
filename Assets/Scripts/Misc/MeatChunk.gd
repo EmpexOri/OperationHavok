@@ -11,7 +11,7 @@ extends RigidBody2D
 @export var chunk_textures: Array[Texture2D]
 
 # Max allowed chunks at once
-const MAX_MEAT_CHUNKS = 50
+const MAX_MEAT_CHUNKS = 128
 
 # Static array to track all meat chunks globally
 static var active_chunks := []

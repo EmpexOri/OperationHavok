@@ -23,7 +23,7 @@ min_speed = 80.0
 max_speed = 160.0
 control_time = 0.05
 blood_smear_scene = ExtResource("2_c5kww")
-smear_interval = 0.075
+smear_interval = 0.1
 chunk_textures = Array[Texture2D]([ExtResource("1_0yw36"), ExtResource("2_jpuli")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
