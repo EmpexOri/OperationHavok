@@ -42,8 +42,10 @@ func _explode():
 	# Explosion VFX
 	if explosion_scene:
 		var explosion_instance = explosion_scene.instantiate()
+		explosion_instance.start(explosion_radius_size)
 		get_parent().add_child(explosion_instance)
 		explosion_instance.global_position = self.global_position
+		
 	
 	explosion_area.monitoring = true # Enable collision monitoring for overlaps
 	
