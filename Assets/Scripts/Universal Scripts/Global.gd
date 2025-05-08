@@ -14,7 +14,11 @@ var DeathParticlesScene = preload("res://Prefabs/Particles/DeathGore.tscn")
 var tumour_particle_pool: Array = []
 var death_particle_pool: Array = []
 
-const POOL_SIZE := 128  # Customize based on how many can be active at once
+var POOL_SIZE := 128  # Customize based on how many can be active at once
+
+# A global variable for the particle options index
+var graphics_quality_index: int = 1 
+
 
 func _ready() -> void:
 	# Prewarm GPU shaders by creating dummy instances briefly
@@ -113,7 +117,7 @@ func spawn_meat_chunk(position: Vector2):
 
 # -- Blood Smear Tracking --
 
-const MAX_BLOOD_SMEARS = 4000
+var MAX_BLOOD_SMEARS = 4000
 var active_smeares := []
 
 func register_smear(smear):
