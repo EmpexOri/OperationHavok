@@ -50,6 +50,7 @@ func _explode():
 	explosion_area.monitoring = true # Enable collision monitoring for overlaps
 	
 	await get_tree().physics_frame
+	await get_tree().physics_frame
 	
 	var bodies_in_aoe = explosion_area.get_overlapping_bodies() # Get overlapping bodies
 	
