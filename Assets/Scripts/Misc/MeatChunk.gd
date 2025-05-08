@@ -25,6 +25,10 @@ var move_speed: float
 var time_left: float
 var smear_timer: float
 
+# Disable collision temporarily after spawn
+var disable_collision_time: float = 0.2
+var collision_disabled: bool = false
+
 func _ready():
 	$FadeTimer.timeout.connect(_on_fade_timer_timeout)
 	$FadeTimer.start()
@@ -36,6 +40,11 @@ func _ready():
 	randomize_sprite()
 	setup_movement()
 	setup_timer()
+
+	# Disable collision for a brief time after spawning
+	set_collision_disabled(true)
+	await get_tree().create_timer(disable_collision_time).timeout  # Use await instead of yield
+	set_collision_disabled(false)
 
 func _physics_process(delta):
 	if time_left > 0.0:
@@ -100,3 +109,8 @@ func _on_fade_timer_timeout():
 	freeze = true  # Disable further physics movement
 	fade_time_left = fade_duration
 	is_fading = true
+
+# Helper function to enable/disable collision
+func set_collision_disabled(disabled: bool) -> void:
+	collision_disabled = disabled
+	$CollisionShape2D.disabled = disabled
