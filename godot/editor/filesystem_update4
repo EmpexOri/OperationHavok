@@ -9,3 +9,5 @@ res://Assets/Scripts/Enemy/Tumor.gd
 res://Assets/Scripts/Enemy/Hordling.gd
 res://Assets/Scripts/Misc/prototype_world.gd
 res://Prefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
+res://Prefabs/Projectiles/MinigunBullet.tscn
+res://Prefabs/Weapons/Minigun.tscn

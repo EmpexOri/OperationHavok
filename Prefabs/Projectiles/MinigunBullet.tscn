@@ -5,8 +5,8 @@
 
 [node name="Bullet" instance=ExtResource("1_q0fmo")]
 base_speed = 450.0
-base_damage = 2.0
-base_lifetime = 1.0
+base_damage = 5.0
+base_lifetime = 2.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
