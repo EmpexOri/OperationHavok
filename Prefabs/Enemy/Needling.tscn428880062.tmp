@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjv878cl7a7kp"]
+
+[ext_resource type="Script" uid="uid://dwkfdvkgdh6gf" path="res://Assets/Scripts/Enemy/Needling.gd" id="1_s4n0f"]
+[ext_resource type="Texture2D" uid="uid://l3hvvyuxg3l" path="res://Assets/Art/PlaceHolders/Needling.png" id="2_s4n0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx0aw"]
+size = Vector2(19, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na2k3"]
+size = Vector2(25, 29)
+
+[node name="Needling" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_s4n0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 2)
+shape = SubResource("RectangleShape2D_lx0aw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_s4n0f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, 1.5)
+shape = SubResource("RectangleShape2D_na2k3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_use_custom = true
+debug_path_custom_color = Color(1.1, 1.1, 0, 1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

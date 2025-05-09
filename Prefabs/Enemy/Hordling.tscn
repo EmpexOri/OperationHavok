@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpfbnlphsagev"]
+[gd_scene load_steps=10 format=3 uid="uid://cpfbnlphsagev"]
 
 [ext_resource type="Script" uid="uid://dspo3pwd2b07v" path="res://Assets/Scripts/Enemy/Hordling.gd" id="1_okkq5"]
-[ext_resource type="Texture2D" uid="uid://c26e5m5myf21f" path="res://Assets/Art/Sprites/Hordling_SMALL.png" id="2_dajsh"]
+[ext_resource type="Texture2D" uid="uid://ddnef3vqy6sav" path="res://Assets/Art/Sprites/Hordling_WALK_FRONT.png" id="2_dajsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okkq5"]
 size = Vector2(14, 12)
@@ -9,12 +9,49 @@ size = Vector2(14, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flyuw"]
 size = Vector2(16, 13)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvkv2"]
+atlas = ExtResource("2_dajsh")
+region = Rect2(0, 0, 30, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx80v"]
+atlas = ExtResource("2_dajsh")
+region = Rect2(30, 0, 30, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjo0p"]
+atlas = ExtResource("2_dajsh")
+region = Rect2(60, 0, 30, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l2p6"]
+atlas = ExtResource("2_dajsh")
+region = Rect2(90, 0, 30, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cthu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvkv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx80v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjo0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l2p6")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}]
+
 [node name="Hordling" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_okkq5")
 
 [node name="Body" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 texture = ExtResource("2_dajsh")
 hframes = 4
@@ -32,5 +69,10 @@ shape = SubResource("RectangleShape2D_flyuw")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_use_custom = true
 debug_path_custom_color = Color(0.9, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8cthu")
+animation = &"crawl"
+speed_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

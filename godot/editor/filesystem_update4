@@ -4,3 +4,8 @@ res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Scenes/MenuScene.tscn
 res://Scenes/Options/OptionsScene.tscn
+res://Assets/Scripts/Enemy/OldEnemies/enemy1.gd
+res://Assets/Scripts/Enemy/OldEnemies/enemy2.gd
+res://Assets/Scripts/Enemy/OldEnemies/enemy3.gd
+res://Assets/Scripts/Enemy/OldEnemies/enemy4.gd
+res://Prefabs/Projectiles/MinigunBullet.tscn

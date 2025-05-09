@@ -1,12 +1,17 @@
 extends Enemy  # Inherit from Enemy.gd
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D  # was $Sprite2D
 
 var BulletSpeed = 900
 var ShotsFired = 0
 var ShotsBeforeMoving = randi_range(1, 3)
 var IsMovingRandomly = false
 var Weapon: PackedScene = preload("res://Prefabs/Weapons/EnemyWeapons/enemy_sniper.tscn")
+@onready var fire_delay_timer = Timer.new()
+
+var queued_fire = false
+var fire_direction = Vector2.ZERO
+var is_firing = false
 
 func start():
 	Speed = 80
@@ -17,12 +22,16 @@ func start():
 
 func _ready():
 	WeaponScene = Weapon
-	# Call setup_weapon from the base Enemy class
 	super._ready()
 
-	# Custom setup specific to Needling
+	# Fire animation delay timer
+	fire_delay_timer.one_shot = true
+	fire_delay_timer.connect("timeout", Callable(self, "_on_fire_delay_timeout"))
+	add_child(fire_delay_timer)
+	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
+
 	var firetimer = Timer.new()
-	firetimer.wait_time = randf_range(2, 4) # Fire every 2-4 seconds
+	firetimer.wait_time = randf_range(2, 4)
 	firetimer.one_shot = false
 	firetimer.connect("timeout", Callable(self, "fire"))
 	firetimer.autostart = true
@@ -48,13 +57,12 @@ func _physics_process(_delta):
 		var player = get_parent().get_node(Target)
 		target_pos = nav.target_position
 		if global_position.distance_to(player.global_position) <= 100:
-			# Cancel random movement and start charging at the player
 			IsMovingRandomly = false
 		elif nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
 			IsMovingRandomly = false
-			velocity = Vector2(0, 0)
+			velocity = Vector2.ZERO
 	else:
-		var Player = resolve_target()  # Use the resolve_target from Enemy.gd
+		var Player = resolve_target()
 		target_pos = Player.position
 		nav.target_position = target_pos
 
@@ -62,16 +70,22 @@ func _physics_process(_delta):
 	Direction = Direction.normalized()
 
 	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100):
-		velocity = Vector2(0, 0)
-		sprite.modulate.a = 0.2 # 20% visible
+		velocity = Vector2.ZERO
+		sprite.modulate.a = 0.2
 	elif IsMovingRandomly:
-		Speed = 60 # Half Speed
-		sprite.modulate.a = 0.65 # 65% visible
+		Speed = 60
+		sprite.modulate.a = 0.65
 		velocity = Direction * Speed
 	else:
-		Speed = 120 # Full Speed
-		sprite.modulate.a = 1 # 100% visible
+		Speed = 120
+		sprite.modulate.a = 1
 		velocity = Direction * Speed
+
+	# ANIMATION HANDLING
+	if IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
+		sprite.play("move")
+		if abs(velocity.x) > 0.1:
+			sprite.flip_h = velocity.x > 0
 
 	move_and_slide()
 
@@ -81,16 +95,15 @@ func _physics_process(_delta):
 
 func fire():
 	var Player = get_parent().get_node(Target)
-	if IsMovingRandomly or velocity.length() > 1:
-		return # Don't fire while moving
+	if IsMovingRandomly or velocity.length() > 1 or is_firing:
+		return # Don't fire while moving or while already firing
 
 	if CurrentWeapon:
-		var direction_to_player = (Player.global_position - global_position).normalized()
-		CurrentWeapon.attempt_to_fire(global_position, direction_to_player)
-
-		ShotsFired += 1
-		if ShotsFired >= ShotsBeforeMoving:
-			random_move()
+		fire_direction = (Player.global_position - global_position).normalized()
+		is_firing = true
+		sprite.play("fire")
+		fire_delay_timer.start(0.2)
+		_on_animation_finished()
 
 func random_move():
 	IsMovingRandomly = true
@@ -105,3 +118,15 @@ func random_move():
 	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
 
 	nav.target_position = target_pos
+
+func _on_fire_delay_timeout():
+	if CurrentWeapon:
+		CurrentWeapon.attempt_to_fire(global_position, fire_direction)
+		ShotsFired += 1
+		if ShotsFired >= ShotsBeforeMoving:
+			random_move()
+
+func _on_animation_finished():
+	if sprite.animation == "fire":
+		is_firing = false
+		sprite.play("move")

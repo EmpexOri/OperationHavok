@@ -1,11 +1,34 @@
 extends Enemy
 
+@onready var sprite := $AnimatedSprite2D  # Ensure this matches your node path!
+
 func start():
 	Speed = 140
 	Health = 10
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
 	Target = "Player"
+
+func _physics_process(_delta):
+	if not nav:
+		return
+
+	var player_node = resolve_target()
+	if player_node:
+		nav.target_position = player_node.global_position
+		var dir = nav.get_next_path_position() - global_position
+
+		if dir.length() > 1:
+			velocity = dir.normalized() * Speed
+			move_and_slide()
+
+			# Play crawl animation and flip
+			if abs(dir.x) > 0.1:
+				sprite.play("crawl")  # Use your walk/crawl anim name
+				sprite.flip_h = dir.x > 0  # Flip if going right
+		else:
+			velocity = Vector2.ZERO
+			sprite.stop()
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
@@ -45,11 +68,11 @@ func _on_area_2d_body_entered(body: Node2D):
 			call_deferred("queue_free")
 
 func drop_xp():
-	var xp_drop_chance := 0.4  # Hordling-specific: 40% chance
-	var xp_drop_range := Vector2i(1, 2)  # Drops 1 to 2 XP pickups
+	var xp_drop_chance := 0.4
+	var xp_drop_range := Vector2i(1, 2)
 
 	if randf() > xp_drop_chance:
-		return  # No drop
+		return
 
 	var screen_size = get_viewport_rect().size
 	var xp_amount = randi_range(xp_drop_range.x, xp_drop_range.y)
