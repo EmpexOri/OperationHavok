@@ -1,8 +1,10 @@
 extends Enemy
 
+@onready var sprite = $Sprite2D
+
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
 
-@onready var sprite: Sprite2D = $Sprite2D
+#@onready var sprite: Sprite2D = $Sprite2D
 @onready var explosion_area: Area2D = $Area2D
 
 var TorpedoVelocity = Vector2.ZERO
