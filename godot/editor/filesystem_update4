@@ -1,3 +1,7 @@
 res://Scenes/MenuScene.tscn
 res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
+res://Assets/Scripts/Enemy/OldEnemies/enemy4.gd
+res://Assets/Scripts/Enemy/OldEnemies/enemy3.gd
+res://Assets/Scripts/Enemy/OldEnemies/enemy2.gd
+res://Assets/Scripts/Enemy/OldEnemies/enemy1.gd
