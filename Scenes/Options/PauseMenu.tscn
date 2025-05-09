@@ -235,9 +235,9 @@ vertical_alignment = 1
 [node name="ResumeButton" type="Button" parent="."]
 process_mode = 2
 offset_left = 241.0
-offset_top = 114.0
+offset_top = 91.0
 offset_right = 403.0
-offset_bottom = 145.0
+offset_bottom = 122.0
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../ControlsButton")
 text = "Resume"
@@ -245,9 +245,9 @@ text = "Resume"
 [node name="ControlsButton" type="Button" parent="."]
 process_mode = 2
 offset_left = 241.0
-offset_top = 157.0
+offset_top = 132.0
 offset_right = 403.0
-offset_bottom = 188.0
+offset_bottom = 163.0
 focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Controls"
@@ -255,9 +255,9 @@ text = "Controls"
 [node name="OptionsButton" type="Button" parent="."]
 process_mode = 2
 offset_left = 241.0
-offset_top = 200.0
+offset_top = 173.0
 offset_right = 403.0
-offset_bottom = 231.0
+offset_bottom = 204.0
 focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options"
@@ -265,16 +265,23 @@ text = "Options"
 [node name="QuitButton" type="Button" parent="."]
 process_mode = 3
 offset_left = 241.0
-offset_top = 245.0
+offset_top = 254.0
 offset_right = 403.0
-offset_bottom = 276.0
+offset_bottom = 285.0
 focus_neighbor_top = NodePath("../ControlsButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
 text = "Quit"
 
+[node name="MenuButton" type="Button" parent="."]
+process_mode = 3
+offset_left = 242.0
+offset_top = 213.0
+offset_right = 404.0
+offset_bottom = 244.0
+text = "Main menu"
+
 [node name="BackButton" type="Button" parent="."]
 process_mode = 3
-visible = false
 offset_left = 242.0
 offset_top = 291.0
 offset_right = 404.0
@@ -285,9 +292,11 @@ text = "Back"
 process_mode = 2
 
 [node name="OptionsScene" parent="." instance=ExtResource("5_fxfs8")]
+visible = false
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -7,6 +7,7 @@ extends Node
 @onready var QuitButton: Button = $"QuitButton"
 @onready var BackButton: Button = $"BackButton"
 @onready var Title: Label = $"Title"
+@onready var MainButton: Button = $MenuButton
 
 # Controls Menu
 @onready var ControlsTitle: Label = $"ControlsMenu/ControlsTitle"
@@ -25,6 +26,7 @@ func show_pause_menu() -> void:
 	OptionsButton.visible = true
 	QuitButton.visible = true
 	Title.visible = true
+	MainButton.visible = true
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
@@ -35,12 +37,13 @@ func _on_resume_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	
-	# Removing all objects and bringing up the pause menu 
+	# Removing all objects
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	OptionsButton.visible = false
 	QuitButton.visible = false
 	Title.visible = false
+	MainButton.visible = false
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
@@ -59,6 +62,7 @@ func _on_controls_button_pressed() -> void:
 	OptionsButton.visible = false
 	QuitButton.visible = false
 	Title.visible = false
+	MainButton.visible = false
 	ControlsTitle.visible = true
 	ScrollBox.visible = true
 	BackButton.visible = true
@@ -78,6 +82,7 @@ func _on_options_button_pressed() -> void:
 	OptionsButton.visible = false
 	QuitButton.visible = false
 	Title.visible = false
+	MainButton.visible = false
 	BackButton.visible = true
 
 
@@ -100,8 +105,30 @@ func _on_back_button_pressed() -> void:
 	OptionsButton.visible = true
 	QuitButton.visible = true
 	Title.visible = true
+	MainButton.visible = true
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
 	
 	ResumeButton.grab_focus()
+
+
+func _on_menu_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
+	GlobalAudioController.STOPPauseMenuMusic()
+	
+	# Removing all objects
+	ResumeButton.visible = false
+	ControlsButton.visible = false
+	OptionsButton.visible = false
+	QuitButton.visible = false
+	Title.visible = false
+	MainButton.visible = false
+	ControlsTitle.visible = false
+	ScrollBox.visible = false
+	BackButton.visible = false
+	
+	if get_tree().paused:
+		get_tree().paused = false
+	
+	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")

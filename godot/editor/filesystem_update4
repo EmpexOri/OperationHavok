@@ -1,7 +1,6 @@
-res://Scenes/MenuScene.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/Options/PauseMenu.tscn
 res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
-res://Assets/Scripts/Enemy/OldEnemies/enemy4.gd
-res://Assets/Scripts/Enemy/OldEnemies/enemy3.gd
-res://Assets/Scripts/Enemy/OldEnemies/enemy2.gd
-res://Assets/Scripts/Enemy/OldEnemies/enemy1.gd
+res://Scenes/MenuScene.tscn
+res://Scenes/Options/OptionsScene.tscn
