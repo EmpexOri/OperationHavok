@@ -54,14 +54,18 @@ func AddHp(Amount: int):
 
 func UpdateHP():
 	var Level = ClassData[CurrentClass]["Level"]
-	if CurrentClass == "Technomancer":
-		PlayerHPMax = 100 + min(Level, 10) * 25 + max(Level - 10, 0) * 10
-	elif CurrentClass == "Commando":
-		PlayerHPMax = 100 + min(Level, 10) * 50 + max(Level - 10, 0) * 25
-	elif CurrentClass == "Fleshthing":
-		PlayerHPMax = 100 + min(Level, 10) * 100 + max(Level - 10, 0) * 50
-	
-	PlayerHP += 100
+	var hp = 100  # Base HP
+
+	for i in range(1, Level + 1):
+		if hp < 200:
+			hp += 10
+		elif i < 20:
+			hp += 5
+		else:
+			hp += 0  # No HP gain at level 20+
+
+	PlayerHPMax = hp
+	PlayerHP += 100  # Optional: only heal up to new max
 	UpdateHealthBar()
 
 func UnlockAbilities():

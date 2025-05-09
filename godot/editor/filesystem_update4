@@ -1,11 +1,16 @@
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
-res://Scenes/Options/PauseMenu.tscn
+res://Prefabs/Enemy/Hordling.tscn
 res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
+res://Assets/Scripts/Enemy/Enemy.gd
 res://Scenes/MenuScene.tscn
-res://Scenes/Options/OptionsScene.tscn
-res://Assets/Scripts/Enemy/OldEnemies/enemy1.gd
-res://Assets/Scripts/Enemy/OldEnemies/enemy2.gd
-res://Assets/Scripts/Enemy/OldEnemies/enemy3.gd
-res://Assets/Scripts/Enemy/OldEnemies/enemy4.gd
+res://Prefabs/Enemy/Needling.tscn
+res://Assets/Scripts/Enemy/Needling.gd
+res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/Enemy/Hordling.gd
+res://Assets/Scripts/Misc/prototype_world.gd
+res://Prefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
 res://Prefabs/Projectiles/MinigunBullet.tscn
+res://Prefabs/Weapons/Minigun.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/Options/PauseMenu.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
