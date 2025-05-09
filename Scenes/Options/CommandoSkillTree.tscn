@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=3 format=3 uid="uid://velkc7chqrtb"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Menu Scripts/skill_tree.gd" id="1_cye56"]
+[ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
+[ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
-script = ExtResource("1_cye56")
+script = ExtResource("1_qqy41")
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 242.0
@@ -13,9 +14,34 @@ offset_bottom = 338.0
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
-offset_left = -1.0
+[node name="PerkPointsLabel" type="Label" parent="."]
+offset_left = 5.0
 offset_top = 2.0
-offset_right = 96.0
+offset_right = 102.0
 offset_bottom = 25.0
-text = "Perk points: "
+text = "Perk points: 0"
+
+[node name="WeaponSwapTitle" type="Label" parent="."]
+offset_top = 15.0
+offset_right = 641.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Weapon swap tree"
+horizontal_alignment = 1
+
+[node name="SkillButton" parent="." instance=ExtResource("1_cye56")]
+offset_left = 296.0
+offset_top = 55.0
+offset_right = 336.0
+offset_bottom = 95.0
+scale = Vector2(1.2, 1.2)
+
+[node name="SkillButton2" parent="SkillButton" instance=ExtResource("1_cye56")]
+layout_mode = 0
+offset_left = 91.6666
+offset_top = 56.6667
+offset_right = 131.667
+offset_bottom = 96.6667
+scale = Vector2(1, 1)

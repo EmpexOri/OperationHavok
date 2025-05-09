@@ -7,6 +7,7 @@
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
 toggle_mode = true
 texture_normal = ExtResource("1_v5jmr")
 stretch_mode = 0
