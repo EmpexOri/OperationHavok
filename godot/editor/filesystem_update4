@@ -5,3 +5,5 @@ res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Prefabs/Enemy/Hordling.tscn
 res://Prefabs/Enemy/Needling.tscn
+res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
