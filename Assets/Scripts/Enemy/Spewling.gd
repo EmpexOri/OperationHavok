@@ -1,6 +1,6 @@
 extends Enemy
 
-@onready var sprite := $AnimatedSprite2D  # Ensure this matches your node path!
+@onready var sprite := $AnimatedSprite2D  
 @onready var orbittimer: Timer
 @onready var firetimer: Timer
 
