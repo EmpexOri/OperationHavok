@@ -7,3 +7,4 @@ res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 res://Assets/Scripts/Menu Scripts/MenuScene.gd
 res://Assets/Scripts/Menu Scripts/skill_button.gd
 res://Assets/Scripts/Player Scripts/player.gd
+res://Scenes/PlaygroundScene.tscn
