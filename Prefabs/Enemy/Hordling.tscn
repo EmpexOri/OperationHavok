@@ -71,6 +71,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.9, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8cthu")
 animation = &"crawl"
 speed_scale = 2.0
