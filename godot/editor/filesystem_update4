@@ -1,10 +1,12 @@
-res://Scenes/MenuScene.tscn
+res://Scenes/PlaygroundScene.tscn
 res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
+res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Scenes/MenuScene.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Prefabs/Enemy/Hordling.tscn
 res://Prefabs/Enemy/Needling.tscn
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Scenes/PlaygroundScene.tscn
-res://Assets/Scripts/Player Scripts/player.gd
