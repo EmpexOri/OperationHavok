@@ -17,6 +17,22 @@ var Invincible = false
 
 var MoveSpeed = 0
 var BulletSpeed = 0
+var frame_counter := 0
+
+var weapon_data := {
+	"res://Prefabs/Weapons/Smg.tscn": {
+		"name": "SMG",
+		"sprite": preload("res://Assets/Art/Sprites/SMG.png"),
+	},
+	"res://Prefabs/Weapons/akimbo_smg.tscn": {
+		"name": "SMG",
+		"sprite": preload("res://Assets/Art/Sprites/SMGAkimbo.png"),
+	},
+	"res://Prefabs/Weapons/Shotgun.tscn": {
+		"name": "Shotgun",
+		"sprite": preload("res://Assets/Art/Sprites/Shotgun.png"),
+	}
+}
 
 func _ready():
 	add_to_group("Player")
@@ -36,6 +52,12 @@ func damage_timer():
 	add_child(Damage_Timer)
 	
 func _process(delta):
+	frame_counter += 1
+	update_weapon_rotation()
+	if frame_counter >= 30:
+		frame_counter = 0
+		update_weapon_sprite()
+
 	if IsFiring or (ControllerEnabled and InputEventJoypadMotion):
 		attempt_to_fire()
 	if GlobalPlayer.PlayerHP <= 0:
@@ -216,6 +238,7 @@ func equip_weapon(WeaponScene: PackedScene):
 		CurrentWeapon = WeaponScene.instantiate()
 		CurrentWeapon.owning_entity = "Player"
 		add_child(CurrentWeapon)
+		CurrentWeapon.position = Vector2(0, 0) # or offset relative to player sprite
 		
 func attempt_to_fire():
 	if CurrentWeapon:
@@ -280,3 +303,40 @@ func apply_knockback(force: Vector2):
 	knockback_immune = true
 	await get_tree().create_timer(knockback_immunity_time).timeout
 	knockback_immune = false
+
+func get_current_weapon_info():
+	if CurrentWeapon and weapon_data.has(CurrentWeapon.scene_file_path):
+		return weapon_data[CurrentWeapon.scene_file_path]
+	return null
+
+func update_weapon_sprite():
+	if not CurrentWeapon:
+		return
+	
+	var weapon_path = CurrentWeapon.scene_file_path
+	if weapon_data.has(weapon_path):
+		var sprite = weapon_data[weapon_path]["sprite"]
+		$Weapon/WeaponSprite.texture = sprite
+
+func update_weapon_rotation():
+	if not CurrentWeapon:
+		return
+
+	var weapon_path = CurrentWeapon.scene_file_path
+	if weapon_data.has(weapon_path):
+		var weapon_info = weapon_data[weapon_path]
+		var weapon_sprite = $Weapon/WeaponSprite
+
+		if weapon_sprite:
+			var direction = (get_global_mouse_position() - global_position).normalized()
+			var angle = direction.angle()
+			# Check if the mouse is on the left side of the character
+			if angle > PI / 2 or angle < -PI / 2:
+				# Flip the weapon horizontally when aiming to the left
+				weapon_sprite.flip_v = true
+			else:
+				# Keep the weapon as it is when aiming to the right
+				weapon_sprite.flip_v = false
+			# Apply the rotation without clamping
+			weapon_sprite.rotation = angle
+			print("Setting weapon rotation to:", angle)
