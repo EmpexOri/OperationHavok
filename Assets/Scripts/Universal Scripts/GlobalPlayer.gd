@@ -9,7 +9,7 @@ var ClassData = {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, "Abilities": []
 	},
 	"Commando": {
-		"Level": 1, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 200,
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 200,
 		"Abilities": ["SwapWeapons_Shotgun2Smg2", "SniperBeam", "Minigun"]
 	},
 	"Fleshthing": {
