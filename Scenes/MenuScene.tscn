@@ -57,14 +57,6 @@ focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
 text = "Quit"
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 93.0
-offset_top = 143.0
-offset_right = 558.0
-offset_bottom = 166.0
-text = "Skill tree image can display when skill tree button is pressed"
-
 [node name="ControlsBg" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(321, 179.5)

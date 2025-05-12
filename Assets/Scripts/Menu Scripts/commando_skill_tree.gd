@@ -12,3 +12,8 @@ func connect_skill_buttons(node):
 		if child is SkillButton:
 			child.connect("perk_point_used", Callable(self, "update_perk_points_label"))
 		connect_skill_buttons(child)  # Recursively connect nested children
+
+
+func _on_back_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")

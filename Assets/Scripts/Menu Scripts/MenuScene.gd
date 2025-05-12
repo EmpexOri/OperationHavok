@@ -24,6 +24,6 @@ func _on_quit_button_pressed() -> void:
 
 func _on_skill_tree_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
-	$Label.visible = not $Label.visible
+	get_tree().change_scene_to_file("res://Scenes/Options/CommandoSkillTree.tscn")
 
  
