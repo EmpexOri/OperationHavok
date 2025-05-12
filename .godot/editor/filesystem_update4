@@ -1,0 +1,13 @@
+res://Scenes/Options/OptionsScene.tscn
+res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
+res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
+res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
+res://Assets/Scripts/Player Scripts/Abilities/SniperBeam.gd
+res://Assets/Scripts/Menu Scripts/particle_options.gd
+res://Prefabs/Particles/MeatChunks.tscn
+res://Prefabs/Particles/BloodSmear.tscn
+res://Scenes/PlaygroundScene.tscn
+res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Misc/SmearManager.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Misc/MeatChunk.gd

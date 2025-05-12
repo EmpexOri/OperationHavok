@@ -1,0 +1,14 @@
+Sprite2D
+Node2D
+SubViewport
+Node
+AudioStreamPlayer2D
+PointLight2D
+LightOccluder2D
+VisibleOnScreenNotifier2D
+GPUParticles2D
+DirectionalLight3D
+AnimationPlayer
+CPUParticles2D
+Label
+Timer

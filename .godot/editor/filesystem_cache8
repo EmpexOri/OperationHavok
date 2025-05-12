@@ -1,0 +1,20 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1742183935
+icon.svg::CompressedTexture2D::5589500310411164062::1741662700::1741662705::1::::<><>::
+README.md::TextFile::-1::1741662802::0::1::::<><>::
+::res://Assets/::1742133345
+::res://Assets/Art/::1742185331
+BarTemp.png::CompressedTexture2D::1041648547959823447::1742185331::1742185333::1::::<><>::
+TempBG.png::CompressedTexture2D::534129739840778490::1742183374::1742183374::1::::<><>::
+TheSquare.png::CompressedTexture2D::7994893732297482876::1742184828::1742184835::1::::<><>::
+::res://Assets/Scripts/::1742183777
+::res://Assets/Scripts/Player Scripts/::1742185299
+PlayerUIHandler.gd::GDScript::-1::1742185137::0::1::::<>Node<>::
+::res://Assets/Scripts/Universal Scripts/::1742183751
+GlobalControls.gd::GDScript::-1::1742183751::0::1::::<>Node<>::
+::res://Assets/Sound/::1742133354
+::res://Assets/Sound/Music/::1742133354
+::res://Assets/Sound/SFX/::1742133350
+::res://Scenes/::1742185300
+MenuScene.tscn::PackedScene::721202645147607588::1742185271::0::1::::<><>::
+PlaygroundScene.tscn::PackedScene::727163796759654175::1742185300::0::1::::<><>::res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd<>uid://dl51y433gmv4o::::res://Assets/Art/TheSquare.png
