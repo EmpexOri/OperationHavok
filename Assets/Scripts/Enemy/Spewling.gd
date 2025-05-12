@@ -1,5 +1,6 @@
 extends Enemy
 
+@onready var sprite := $AnimatedSprite2D  # Ensure this matches your node path!
 @onready var orbittimer: Timer
 @onready var firetimer: Timer
 
@@ -37,8 +38,14 @@ func _physics_process(delta):
 		if position.distance_to(player.global_position) >= 150:
 			var dir = (nav.get_next_path_position() - global_position).normalized()
 			velocity = dir * Speed
+
+			# Play crawl animation and flip sprite
+			if abs(dir.x) > 0.1:
+				sprite.play("crawl")  # Use your crawl/walk animation
+				sprite.flip_h = dir.x > 0  # Flip sprite if moving to the left
 		else:
 			handle_orbiting(player, delta)
+
 	move_and_slide()
 	clamp_position_to_screen()
 
