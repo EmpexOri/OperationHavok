@@ -1,11 +1,9 @@
 extends Enemy
 
 @onready var sprite = $Sprite2D
+@onready var explosion_area: Area2D = $Area2D
 
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
-
-#@onready var sprite: Sprite2D = $Sprite2D
-@onready var explosion_area: Area2D = $Area2D
 
 var TorpedoVelocity = Vector2.ZERO
 var IsTorpedo = false
@@ -32,7 +30,7 @@ func _ready():
 	Target = "Player"
 
 func start():
-	# Tumour-specific startup logic if any, if u want any in future
+	# Tumour-specific startup logic if any
 	pass
 
 func _process(delta):
@@ -41,7 +39,7 @@ func _process(delta):
 		if not has_dropped_xp:
 			has_dropped_xp = true
 			torpedo()
-		
+
 		death_frame_counter += 1
 		if death_frame_counter >= 5:
 			Global.spawn_death_particles(global_position)
@@ -60,7 +58,7 @@ func _process(delta):
 			FuseTickTimer = 0.0
 			print("Fuse ticking down: ", FuseCounter)
 			if FuseCounter <= 0:
-				explode()
+				call_deferred("explode")  # Defer explode to the main thread
 
 func _physics_process(delta):
 	var player = null
@@ -94,7 +92,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D):
 	if IsTorpedo and body and not body.is_in_group("Bullet"):
-		explode()
+		call_deferred("explode")  # Defer explode to the main thread
 		return
 
 	if is_in_group("Enemy") and body.is_in_group("Player") and not FuseStarted:
@@ -123,6 +121,13 @@ func _on_area_2d_body_exited(body: Node2D):
 		PlayerInRange = false
 
 func explode():
+	# Defer the explosion logic to the next frame to avoid space state issues
+	call_deferred("_perform_explode")
+
+func _perform_explode():
+	# Wait for the next frame to ensure the physics space is unlocked
+	await get_tree().physics_frame
+
 	# Additional visual effects
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	

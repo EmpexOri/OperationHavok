@@ -106,7 +106,7 @@ func dodge(direction: Vector2):
 	CanDodge = false
 	Invincible = true
 	
-	var dodge_distance = MoveSpeed * 0.9
+	var dodge_distance = MoveSpeed * 0.6
 	var start_position = global_position
 	var dodge_vector = direction.normalized() * dodge_distance
 	var end_position = start_position + dodge_vector
@@ -124,7 +124,7 @@ func dodge(direction: Vector2):
 	var ray_result = space_state.intersect_ray(ray_params)
 	if ray_result:
 		# Adjust endpoint to stop just before hitting the wall
-		end_position = ray_result.position - direction.normalized() * 2.0  # 2px offset for safety
+		end_position = ray_result.position - direction.normalized() * 4.0  # 2px offset for safety
 		
 	# Tween to final position smoothly
 	var tween = get_tree().create_tween()
