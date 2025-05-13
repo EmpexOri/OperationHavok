@@ -351,4 +351,4 @@ func update_weapon_rotation():
 				weapon_sprite.flip_v = false
 			# Apply the rotation without clamping
 			weapon_sprite.rotation = angle
-			print("Setting weapon rotation to:", angle)
+			#print("Setting weapon rotation to:", angle)
