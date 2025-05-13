@@ -98,36 +98,48 @@ func _physics_process(_delta):
 	#position.x = clamp(position.x, 0, screen_size.x)
 	#position.y = clamp(position.y, 0, screen_size.y)
 	
-func dodge(Direction: Vector2):
-	var Collision = get_node("CollisionShape2D")
-	if Direction == Vector2.ZERO:
+func dodge(direction: Vector2):
+	if direction == Vector2.ZERO:
 		return
-
+		
 	IsDodging = true
 	CanDodge = false
 	Invincible = true
-
-	set_collision_layer_value(1, false)
-	Collision.disabled = true
 	
-	var Dodge_Distance = MoveSpeed * 0.9
-	var Dodge_Target = global_position + (Direction * Dodge_Distance)
-	var Screen_Size = get_viewport_rect().size
-	#Dodge_Target.x = clamp(Dodge_Target.x, 0, Screen_Size.x)
-	#Dodge_Target.y = clamp(Dodge_Target.y, 0, Screen_Size.y)
-
-	var Inbe_tween = get_tree().create_tween()
-	Inbe_tween.tween_property(self, "global_position", Dodge_Target, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-	await Inbe_tween.finished
+	var dodge_distance = MoveSpeed * 0.9
+	var start_position = global_position
+	var dodge_vector = direction.normalized() * dodge_distance
+	var end_position = start_position + dodge_vector
+	
+	# Temporarily disable collisions with enemies
+	var collision_shape = $CollisionShape2D
+	collision_shape.disabled = true
+	
+	# Use raycast-style check to find the first collision point along the path
+	var space_state = get_world_2d().direct_space_state
+	var ray_params = PhysicsRayQueryParameters2D.create(start_position, end_position)
+	ray_params.exclude = [self]
+	ray_params.collision_mask = 1 << 2  # Environment only (e.g., walls)
+	
+	var ray_result = space_state.intersect_ray(ray_params)
+	if ray_result:
+		# Adjust endpoint to stop just before hitting the wall
+		end_position = ray_result.position - direction.normalized() * 2.0  # 2px offset for safety
+		
+	# Tween to final position smoothly
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	
+	# Re-enable collision
+	collision_shape.disabled = false
 	IsDodging = false
-	set_collision_layer_value(1, true)
-	Collision.disabled = false
-
+	
+	# Start cooldown
 	await get_tree().create_timer(0.35).timeout
 	CanDodge = true
 	Invincible = false
-	
+
 #func dodge(Direction: Vector2):
 	#var Collision = get_node("CollisionShape2D")
 	#if Direction == Vector2.ZERO:
