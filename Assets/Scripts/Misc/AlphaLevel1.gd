@@ -1,144 +1,110 @@
 extends Node2D
 
-var Hordling = preload("res://Prefabs/Enemy/Hordling.tscn")
-var Spewling = preload("res://Prefabs/Enemy/Spewling.tscn")
-var Biomancer = preload("res://Prefabs/Enemy/Biomancer.tscn")
-var Needling = preload("res://Prefabs/Enemy/Needling.tscn")
-var Tumor = preload("res://Prefabs/Enemy/Tumor.tscn")
+const HORDLING = preload("res://Prefabs/Enemy/Hordling.tscn")
+const SPEWLING = preload("res://Prefabs/Enemy/Spewling.tscn")
+const BIOMANCER = preload("res://Prefabs/Enemy/Biomancer.tscn")
+const NEEDLING = preload("res://Prefabs/Enemy/Needling.tscn")
+const TUMOR = preload("res://Prefabs/Enemy/Tumor.tscn")
+const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
 
-var PauseMenu = preload("res://Scenes/Options/PauseMenu.tscn").instantiate()
+var current_wave := 0
+var enemies: Array = []
+var pause_menu
+var spawn_points: Array[Node2D] = []
+
+var wave_data = [
+	{ "Hordling": [3,6,3] }, # Wave 1
+	{ "Hordling": [3,6,3], "Spewling": [2,6,0], "Random": [1,6,1] }, # Wave 2
+	{ "Hordling": [5,6,3], "Spewling": [2,6,0], "Biomancer": [1,3,0], "Needling": [1,6,0], "Tumor": [1,6,0] }, # Wave 3
+	{ "Hordling": [5,6,4], "Spewling": [3,6,0], "Biomancer": [1,4,0], "Needling": [2,6,0], "Tumor": [1,6,1] }, # Wave 4
+	{ "Hordling": [6,6,6], "Spewling": [4,6,0], "Biomancer": [1,6,0], "Needling": [3,6,0], "Tumor": [2,6,1] }, # Wave 5
+	{ "Hordling": [6,6,8], "Spewling": [4,6,2], "Biomancer": [1,6,1], "Needling": [3,6,1], "Tumor": [2,6,2] }, # Wave 6
+	{ "Hordling": [7,6,10], "Spewling": [5,6,3], "Biomancer": [2,4,1], "Needling": [4,6,1], "Tumor": [3,6,2] }, # Wave 7
+	{ "Hordling": [7,6,12], "Spewling": [5,6,5], "Biomancer": [2,6,1], "Needling": [4,6,2], "Tumor": [4,6,2] }, # Wave 8
+	{ "Hordling": [8,6,14], "Spewling": [6,6,5], "Biomancer": [2,6,2], "Needling": [4,6,3], "Tumor": [4,6,3] }, # Wave 9
+	{ "Hordling": [10,6,15], "Spewling": [6,6,6], "Biomancer": [3,6,2], "Needling": [5,6,3], "Tumor": [5,6,3] }, # Wave 10
+]
 
 func _ready():
-	# Start spawn timers
-	start_spawn_timer1()
-	start_spawn_timer2()
-	start_spawn_timer3()
-	start_spawn_timer4()
-	start_spawn_timer5()
-	
-	# Add PauseMenu to the scene, but keep it hidden initially
-	add_child(PauseMenu)
-	PauseMenu.visible = false
-	
-# Handle input events like Escape key
+	# Setup spawn points
+	for i in range(5):
+		var node_name = "Spawn%d" % i
+		var spawn_node = get_node_or_null(node_name)
+		if spawn_node:
+			spawn_points.append(spawn_node)
+		else:
+			push_error("Missing spawn point: %s" % node_name)
+
+	# Setup pause menu
+	pause_menu = PAUSE_MENU_SCENE.instantiate()
+	pause_menu.visible = false
+	add_child(pause_menu)
+
+	# Start first wave
+	start_next_wave()
+
 func _input(event):
-	if Input.is_action_just_pressed("InGameOptions"):  # Escape key or your custom key mapping
+	if Input.is_action_just_pressed("InGameOptions"):
 		GlobalAudioController.PauseMenuMusic()
-		PauseMenu.show_pause_menu()
-		pause_game()
-
-# Function to display or hide the pause menu when game is paused
-func pause_game():
-	if get_tree().paused:
-		# Unpause the game and hide the pause menu
-		get_tree().paused = false
-		PauseMenu.visible = false
-	else:
-		# Pause the game and show the pause menu
+		pause_menu.visible = true
 		get_tree().paused = true
-		PauseMenu.visible = true
 
+func start_next_wave():
+	if current_wave >= wave_data.size():
+		print("All waves complete!")
+		return
 
-func start_spawn_timer1():
-	var timer = Timer.new()
-	timer.wait_time = randf_range(0.1, 0.5)
-	timer.one_shot = true  # Timer only goes once
-	timer.connect("timeout", Callable(self, "spawn_enemy1")) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
+	print("Starting wave %d" % (current_wave + 1))
+	var data = wave_data[current_wave]
+	current_wave += 1
 
-func spawn_enemy1():
-	var EnemyInstance = Hordling.instantiate()
-	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
-	var viewport = get_viewport_rect().size
-	var random_x = randf_range(0, viewport.x)  # Random X position
-	var random_y = randf_range(0, viewport.y)  # Random Y position
-	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
-	add_child(EnemyInstance)
-	
-	start_spawn_timer1()
-	
-	###############################################################################################################
-	
-func start_spawn_timer2():
-	var timer = Timer.new()
-	timer.wait_time = randf_range(3, 4)
-	timer.one_shot = true  # Timer only goes once
-	timer.connect("timeout", Callable(self, "spawn_enemy2")) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
+	for key in data.keys():
+		var count = roll(data[key][0], data[key][1]) + data[key][2]
+		var enemy_scene = null
 
-func spawn_enemy2():
-	var EnemyInstance = Spewling.instantiate()
-	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
-	var viewport = get_viewport_rect().size
-	var random_x = randf_range(0, viewport.x)  # Random X position
-	var random_y = randf_range(0, viewport.y)  # Random Y position
-	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
-	EnemyInstance.position = Vector2(randf_range(100, 700), randf_range(100, 500))
-	add_child(EnemyInstance)
-	
-	start_spawn_timer2()
+		match key:
+			"Hordling":
+				enemy_scene = HORDLING
+			"Spewling":
+				enemy_scene = SPEWLING
+			"Biomancer":
+				enemy_scene = BIOMANCER
+			"Needling":
+				enemy_scene = NEEDLING
+			"Tumor":
+				enemy_scene = TUMOR
+			"Random":
+				enemy_scene = [BIOMANCER, NEEDLING, TUMOR].pick_random()
 
-	###############################################################################################################
-	
-func start_spawn_timer3():
-	var timer = Timer.new()
-	timer.wait_time = randf_range(6, 9) # nice
-	timer.one_shot = true  # Timer only goes once
-	timer.connect("timeout", Callable(self, "spawn_enemy3")) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
+		if enemy_scene:
+			for i in range(count):
+				spawn_enemy_delayed(enemy_scene)
 
-func spawn_enemy3():
-	var EnemyInstance = Biomancer.instantiate()
-	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
-	var viewport = get_viewport_rect().size
-	var random_x = randf_range(0, viewport.x)  # Random X position
-	var random_y = randf_range(0, viewport.y)  # Random Y position
-	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
-	add_child(EnemyInstance)
-	
-	start_spawn_timer3()
-	
-	###############################################################################################################
-	
-func start_spawn_timer4():
-	var timer = Timer.new()
-	timer.wait_time = randf_range(5, 7)
-	timer.one_shot = true  # Timer only goes once
-	timer.connect("timeout", Callable(self, "spawn_enemy4")) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
+	await check_for_wave_completion()
 
-func spawn_enemy4():
-	var EnemyInstance = Needling.instantiate()
-	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
-	var viewport = get_viewport_rect().size
-	var random_x = randf_range(0, viewport.x)  # Random X position
-	var random_y = randf_range(0, viewport.y)  # Random Y position
-	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
-	add_child(EnemyInstance)
-	
-	start_spawn_timer4()
-	
-		###############################################################################################################
-	
-func start_spawn_timer5():
-	var timer = Timer.new()
-	timer.wait_time = randf_range(5, 7)
-	timer.one_shot = true  # Timer only goes once
-	timer.connect("timeout", Callable(self, "spawn_enemy5")) # Executes the spawn function once timer has ended
-	add_child(timer)
-	timer.start()
+func spawn_enemy_delayed(scene: PackedScene) -> void:
+	await get_tree().create_timer(randf_range(0.1, 0.4)).timeout
+	var enemy = scene.instantiate()
+	var spawn = spawn_points[randi() % spawn_points.size()]
+	enemy.visible = true
+	enemy.position = spawn.global_position + Vector2(randf_range(-4, 4), randf_range(-4, 4))
+	enemy.name = "Enemy_" + str(randi())
+	enemies.append(enemy)
+	add_child(enemy)
+	enemy.connect("tree_exited", Callable(self, "_on_enemy_died").bind(enemy))
 
-func spawn_enemy5():
-	var EnemyInstance = Tumor.instantiate()
-	EnemyInstance.name = "Enemy_" + str(randi()) # Assigns a unique named
-	var viewport = get_viewport_rect().size
-	var random_x = randf_range(0, viewport.x)  # Random X position
-	var random_y = randf_range(0, viewport.y)  # Random Y position
-	EnemyInstance.position = Vector2(randf_range(100, random_x), randf_range(100, random_y))
-	add_child(EnemyInstance)
-	
-	start_spawn_timer5()
+func _on_enemy_died(enemy):
+	enemies.erase(enemy)
+	if enemies.is_empty():
+		await get_tree().create_timer(1.0).timeout
+		start_next_wave()
+
+func check_for_wave_completion():
+	while not enemies.is_empty():
+		await get_tree().process_frame
+
+func roll(dice: int, sides: int) -> int:
+	var total = 0
+	for i in range(dice):
+		total += randi_range(1, sides)
+	return total
