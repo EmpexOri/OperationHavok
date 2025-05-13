@@ -1,11 +1,23 @@
-res://Scenes/MenuScene.tscn
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
+res://Scenes/MenuScene.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/PlaygroundScene.tscn
 res://Prefabs/Enemy/Spewling.tscn
-res://Scenes/AlphaLevel1.tscn
 res://Prefabs/Enemy/Hordling.tscn
+res://Assets/Scripts/Enemy/Hordling.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Enemy/FleshSpawn.gd
+res://Assets/Scripts/Misc/SmearManager.gd
 res://Assets/Scripts/Misc/AlphaLevel1.gd
-res://Assets/Scripts/Enemy/Enemy.gd
+res://Prefabs/Enemy/Biomancer.tscn
+res://Assets/Scripts/Enemy/Biomancer.gd
+res://Assets/Scripts/Enemy/Needling.gd
+res://Assets/Scripts/Enemy/Spewling.gd
+res://Prefabs/Enemy/Tumor.tscn
+res://Assets/Scripts/Enemy/Tumor.gd
+res://Prefabs/Enemy/Bruiser.tscn
+res://Prefabs/Enemy/FleshSpawn.tscn
+res://Prefabs/Enemy/Needling.tscn

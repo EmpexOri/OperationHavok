@@ -47,7 +47,7 @@ func _physics_process(delta):
 			handle_orbiting(player, delta)
 
 	move_and_slide()
-	clamp_position_to_screen()
+	#clamp_position_to_screen()
 
 func fire():
 	var player = resolve_target()
@@ -61,10 +61,10 @@ func handle_orbiting(player: Node, delta: float):
 	var orbit_pos = player.position + Vector2(orbit_radius, 0).rotated(angle)
 	velocity = (orbit_pos - position).normalized() * Speed
 
-func clamp_position_to_screen():
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+#func clamp_position_to_screen():
+	#var screen_size = get_viewport_rect().size
+	#position.x = clamp(position.x, 0, screen_size.x)
+	#position.y = clamp(position.y, 0, screen_size.y)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
@@ -79,11 +79,42 @@ func _on_area_2d_body_entered(body: Node2D):
 		await handle_minion_collision(body)
 
 func handle_bounce(body: Node2D):
-	var dir = (position - body.position).normalized()
-	var target = global_position + dir * Speed * 0.3
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	await tween.finished
+	if is_in_group("Enemy") and body.is_in_group("Player"):
+		body.deal_damage(2)
+		
+		var direction = (global_position - body.global_position).normalized()
+		var dodge_distance = Speed * 0.6
+		var start_position = global_position
+		var dodge_vector = direction.normalized() * dodge_distance
+		var end_position = start_position + dodge_vector
+		
+		# Temporarily disable collisions with enemies
+		var collision_shape = $CollisionShape2D
+		collision_shape.disabled = true
+		
+		# Use raycast-style check to find the first collision point along the path
+		var space_state = get_world_2d().direct_space_state
+		var ray_params = PhysicsRayQueryParameters2D.create(start_position, end_position)
+		ray_params.exclude = [self]
+		ray_params.collision_mask = 1 << 2  # Environment only (e.g., walls)
+		
+		var ray_result = space_state.intersect_ray(ray_params)
+		if ray_result:
+			# Adjust endpoint to stop just before hitting the wall
+			end_position = ray_result.position - direction.normalized() * 4.0  # 2px offset for safety
+			
+		# Tween to final position smoothly
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		
+		# Re-enable collision
+		collision_shape.disabled = false
+		return
+
+	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
+		body.queue_free()
+		deal_damage(10)
 
 func handle_spell_collision():
 	remove_from_group("Enemy")

@@ -33,17 +33,6 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
 		body.deal_damage(2)
-
-		#var direction = (global_position - body.global_position).normalized()
-		#var bounce_target = global_position + direction * Speed * 0.3
-		#var screen_size = get_viewport_rect().size
-		#bounce_target.x = clamp(bounce_target.x, 0, screen_size.x)
-		#bounce_target.y = clamp(bounce_target.y, 0, screen_size.y)
-#
-		#var bounce_tween = get_tree().create_tween()
-		#bounce_tween.tween_property(self, "global_position", bounce_target, 0.2)\
-			#.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		#await bounce_tween.finished
 		
 		var direction = (global_position - body.global_position).normalized()
 		var dodge_distance = Speed * 0.6

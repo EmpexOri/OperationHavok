@@ -36,8 +36,6 @@ func drop_xp():
 
 	for i in xp_amount:
 		var position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-		position.x = clamp(position.x, 0, screen_size.x)
-		position.y = clamp(position.y, 0, screen_size.y)
 
 		var xp_pickup = PickupFactory.build_pickup("Xp", position)
 		get_parent().add_child(xp_pickup)
@@ -45,15 +43,6 @@ func drop_xp():
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
 		body.deal_damage(10)
-		
-		#var Direction = (position - body.position).normalized()
-		#var bounce_target = global_position + (Direction * Speed * 0.3)
-#
-		#var Inbe_tween = get_tree().create_tween()
-		#Inbe_tween.tween_property(self, "global_position", bounce_target, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-#
-		#await Inbe_tween.finished
-		#return
 		
 		var direction = (global_position - body.global_position).normalized()
 		var dodge_distance = Speed * 0.6
