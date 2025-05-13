@@ -102,6 +102,7 @@ text = "Back"
 [connection signal="pressed" from="LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="ClassSelectButton" to="." method="_on_class_select_button_pressed"]
 [connection signal="pressed" from="LevelSelect/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="LevelSelect/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="ClassSelect/CommandoButton" to="." method="_on_commando_button_pressed"]
 [connection signal="pressed" from="ClassSelect/TechnomancerButton" to="." method="_on_technomancer_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

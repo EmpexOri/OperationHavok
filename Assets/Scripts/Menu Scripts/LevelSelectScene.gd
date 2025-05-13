@@ -23,7 +23,7 @@ func _on_back_button_pressed() -> void:
 func _on_level_1_button_pressed() -> void:
 	# Go to level one when level one button is pressed
 	GlobalAudioController.ClickSound()
-	get_tree().change_scene_to_file("res://Scenes/PlaygroundScene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/AlphaLevel1.tscn")
 
 
 func _on_class_select_button_pressed() -> void:
@@ -60,3 +60,9 @@ func _on_commando_button_pressed() -> void:
 	# Changes class to Technomancer
 func _on_technomancer_button_pressed() -> void:
 	GlobalPlayer.CurrentClass = "Technomancer"
+
+
+func _on_level_2_button_pressed() -> void:
+	# Go to level one when level one button is pressed
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file("res://Scenes/PlaygroundScene.tscn")

@@ -16,3 +16,5 @@ res://Assets/Scripts/Enemy/Hordling.gd
 res://Assets/Scripts/Enemy/Needling.gd
 res://Assets/Scripts/Enemy/Spewling.gd
 res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd
+res://Scenes/LevelSelectScene.tscn
