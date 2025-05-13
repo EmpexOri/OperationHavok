@@ -51,7 +51,7 @@ func spawn_smear(position: Vector2) -> void:
 	smear_data.time_left = 15.0
 	active_smeares.append(smear_data)
 
-	if active_smeares.size() > MAX_SMEARS:
+	if active_smeares.size() >= MAX_SMEARS:
 		var oldest = active_smeares.pop_front()
 		_deactivate_smear(oldest)
 

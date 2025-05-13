@@ -113,8 +113,8 @@ func dodge(Direction: Vector2):
 	var Dodge_Distance = MoveSpeed * 0.9
 	var Dodge_Target = global_position + (Direction * Dodge_Distance)
 	var Screen_Size = get_viewport_rect().size
-	Dodge_Target.x = clamp(Dodge_Target.x, 0, Screen_Size.x)
-	Dodge_Target.y = clamp(Dodge_Target.y, 0, Screen_Size.y)
+	#Dodge_Target.x = clamp(Dodge_Target.x, 0, Screen_Size.x)
+	#Dodge_Target.y = clamp(Dodge_Target.y, 0, Screen_Size.y)
 
 	var Inbe_tween = get_tree().create_tween()
 	Inbe_tween.tween_property(self, "global_position", Dodge_Target, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
