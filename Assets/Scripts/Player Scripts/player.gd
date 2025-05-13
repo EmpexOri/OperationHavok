@@ -140,60 +140,6 @@ func dodge(direction: Vector2):
 	CanDodge = true
 	Invincible = false
 
-#func dodge(Direction: Vector2):
-	#var Collision = get_node("CollisionShape2D")
-	#if Direction == Vector2.ZERO:
-		#return
-#
-	#IsDodging = true
-	#CanDodge = false
-	#Invincible = true
-#
-	#set_collision_layer_value(1, false)
-	#Collision.disabled = true
-#
-	#var Dodge_Distance = MoveSpeed * 0.9
-	#var Dodge_Target = global_position + (Direction * Dodge_Distance)
-#
-	## Access the TileMapLayer
-	#var tilemap_layer = get_node("/root/World/TileMdapLayer")  # Adjust path as needed
-	#var tile_size = tilemap_layer.tile_set.tile_size  # Get the size of each tile
-	#var map_size = tilemap_layer.get_used_rect().size  # Get the size of the tilemap
-#
-	## Convert the dodge target into tilemap coordinates
-	#var dodge_target_in_tiles = (Dodge_Target / tile_size).floor()
-#
-	## Clamp the dodge target to the edges of the TileMapLayer
-	#dodge_target_in_tiles.x = clamp(dodge_target_in_tiles.x, 0, map_size.x - 1)
-	#dodge_target_in_tiles.y = clamp(dodge_target_in_tiles.y, 0, map_size.y - 1)
-#
-	## Convert the clamped target back to world coordinates
-	#Dodge_Target = tilemap_layer.map_to_world(dodge_target_in_tiles)
-#
-	#var Screen_Size = get_viewport_rect().size
-	#Dodge_Target.x = clamp(Dodge_Target.x, 0, Screen_Size.x)
-	#Dodge_Target.y = clamp(Dodge_Target.y, 0, Screen_Size.y)
-#
-	## Check for collisions with the tilemap before moving
-	#var space_state = get_world_2d().direct_space_access
-	#var collision = space_state.intersect_segment(global_position, Dodge_Target, [], 1)
-#
-	#if collision:
-		## If a collision is detected, get BLOCKED
-		#Dodge_Target = collision.position
-#
-	#var Inbe_tween = get_tree().create_tween()
-	#Inbe_tween.tween_property(self, "global_position", Dodge_Target, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-#
-	#await Inbe_tween.finished
-	#IsDodging = false
-	#set_collision_layer_value(1, true)
-	#Collision.disabled = false
-#
-	#await get_tree().create_timer(0.35).timeout
-	#CanDodge = true
-	#Invincible = false
-
 func _input(event):
 	if IsUsingAbility:
 		return

@@ -34,16 +34,45 @@ func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
 		body.deal_damage(2)
 
+		#var direction = (global_position - body.global_position).normalized()
+		#var bounce_target = global_position + direction * Speed * 0.3
+		#var screen_size = get_viewport_rect().size
+		#bounce_target.x = clamp(bounce_target.x, 0, screen_size.x)
+		#bounce_target.y = clamp(bounce_target.y, 0, screen_size.y)
+#
+		#var bounce_tween = get_tree().create_tween()
+		#bounce_tween.tween_property(self, "global_position", bounce_target, 0.2)\
+			#.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		#await bounce_tween.finished
+		
 		var direction = (global_position - body.global_position).normalized()
-		var bounce_target = global_position + direction * Speed * 0.3
-		var screen_size = get_viewport_rect().size
-		bounce_target.x = clamp(bounce_target.x, 0, screen_size.x)
-		bounce_target.y = clamp(bounce_target.y, 0, screen_size.y)
-
-		var bounce_tween = get_tree().create_tween()
-		bounce_tween.tween_property(self, "global_position", bounce_target, 0.2)\
-			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		await bounce_tween.finished
+		var dodge_distance = Speed * 0.6
+		var start_position = global_position
+		var dodge_vector = direction.normalized() * dodge_distance
+		var end_position = start_position + dodge_vector
+		
+		# Temporarily disable collisions with enemies
+		var collision_shape = $CollisionShape2D
+		collision_shape.disabled = true
+		
+		# Use raycast-style check to find the first collision point along the path
+		var space_state = get_world_2d().direct_space_state
+		var ray_params = PhysicsRayQueryParameters2D.create(start_position, end_position)
+		ray_params.exclude = [self]
+		ray_params.collision_mask = 1 << 2  # Environment only (e.g., walls)
+		
+		var ray_result = space_state.intersect_ray(ray_params)
+		if ray_result:
+			# Adjust endpoint to stop just before hitting the wall
+			end_position = ray_result.position - direction.normalized() * 4.0  # 2px offset for safety
+			
+		# Tween to final position smoothly
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		
+		# Re-enable collision
+		collision_shape.disabled = false
 		return
 
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
@@ -79,8 +108,6 @@ func drop_xp():
 
 	for i in xp_amount:
 		var pos = global_position + Vector2(randf_range(-20, 20), randf_range(-20, 20))
-		pos.x = clamp(pos.x, 0, screen_size.x)
-		pos.y = clamp(pos.y, 0, screen_size.y)
 
 		var xp_pickup = PickupFactory.build_pickup("Xp", pos)
 		get_parent().add_child(xp_pickup)
