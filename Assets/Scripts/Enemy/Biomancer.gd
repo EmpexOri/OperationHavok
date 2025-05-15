@@ -16,6 +16,10 @@ func start():
 	firetimer.autostart = true
 	firetimer.connect("timeout", Callable(self, "fire"))
 	add_child(firetimer)
+	
+func _ready():
+	super()
+	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 func update_navigation():
 	var target_node = resolve_target()
@@ -95,3 +99,7 @@ func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
 		body.queue_free()
 		deal_damage(10)
+
+func get_flash_sprite() -> CanvasItem:
+	var sprite = $Sprite2D
+	return sprite

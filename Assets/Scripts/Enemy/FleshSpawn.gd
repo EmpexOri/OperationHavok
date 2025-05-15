@@ -1,5 +1,6 @@
 extends Enemy
 
+@onready var sprite = $Sprite2D
 var Colour = Color(0, 0.5, 0)
 
 func _ready():
@@ -7,6 +8,8 @@ func _ready():
 	Speed = 140
 	Health = 15
 	$Sprite2D.modulate = Colour
+	super()
+	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 func deal_damage(damage, from_position = null):
 	Health -= damage
@@ -93,3 +96,6 @@ func _on_area_2d_body_entered(body: Node2D):
 		await get_tree().process_frame
 		if not is_instance_valid(body) or not body.get_parent():
 			call_deferred("queue_free")
+
+func get_flash_sprite() -> CanvasItem:
+	return sprite 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxkmw5sippw3g"]
+[gd_scene load_steps=6 format=3 uid="uid://dxkmw5sippw3g"]
 
 [ext_resource type="Script" uid="uid://dnpnwa1oi74rf" path="res://Assets/Scripts/Enemy/Tumor.gd" id="1_u7n33"]
+[ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_2ascl"]
 [ext_resource type="Texture2D" uid="uid://brumed0irh5wp" path="res://Assets/Art/PlaceHolders/Tumor.png" id="2_u7n33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8twm"]
@@ -17,6 +18,7 @@ script = ExtResource("1_u7n33")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("2_2ascl")
 position = Vector2(-2, 2)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_u7n33")

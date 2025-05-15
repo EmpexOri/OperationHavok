@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpfbnlphsagev"]
+[gd_scene load_steps=11 format=3 uid="uid://cpfbnlphsagev"]
 
 [ext_resource type="Script" uid="uid://dspo3pwd2b07v" path="res://Assets/Scripts/Enemy/Hordling.gd" id="1_okkq5"]
 [ext_resource type="Texture2D" uid="uid://ddnef3vqy6sav" path="res://Assets/Art/Sprites/Hordling_WALK_FRONT.png" id="2_dajsh"]
+[ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_bvkv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okkq5"]
 size = Vector2(14, 12)
@@ -73,6 +74,7 @@ debug_path_custom_color = Color(0.9, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("3_bvkv2")
 sprite_frames = SubResource("SpriteFrames_8cthu")
 animation = &"crawl"
 speed_scale = 2.0

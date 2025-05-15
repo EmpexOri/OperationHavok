@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjv878cl7a7kp"]
+[gd_scene load_steps=25 format=3 uid="uid://bjv878cl7a7kp"]
 
 [ext_resource type="Script" uid="uid://dwkfdvkgdh6gf" path="res://Assets/Scripts/Enemy/Needling.gd" id="1_s4n0f"]
 [ext_resource type="Texture2D" uid="uid://l3hvvyuxg3l" path="res://Assets/Art/PlaceHolders/Needling.png" id="2_s4n0f"]
 [ext_resource type="Texture2D" uid="uid://cvlo2kvk78m2b" path="res://Assets/Art/Sprites/Sniper_WALK_FRONTCOPY.png" id="3_2mkls"]
 [ext_resource type="Texture2D" uid="uid://5u0f3t2cqsg1" path="res://Assets/Art/Sprites/Sniper_FIRING_FRONTCOPY.png" id="3_7y8fn"]
+[ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_qhjl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx0aw"]
 size = Vector2(16, 26)
@@ -162,6 +163,7 @@ debug_path_custom_color = Color(1.1, 1.1, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("3_qhjl5")
 sprite_frames = SubResource("SpriteFrames_s7iyn")
 animation = &"fire"
 frame = 7

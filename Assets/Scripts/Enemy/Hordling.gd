@@ -1,6 +1,6 @@
 extends Enemy
 
-@onready var sprite := $AnimatedSprite2D  # Ensure this matches your node path!
+@onready var sprite := $AnimatedSprite2D 
 
 func start():
 	Speed = 140
@@ -8,6 +8,11 @@ func start():
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
 	Target = "Player"
+
+func _ready():
+	super()
+	# Ensure the sprite has a unique material instance
+	sprite.material = sprite.material.duplicate()
 
 func _physics_process(_delta):
 	if not nav:
@@ -100,3 +105,6 @@ func drop_xp():
 
 		var xp_pickup = PickupFactory.build_pickup("Xp", pos)
 		get_parent().add_child(xp_pickup)
+
+func get_flash_sprite() -> CanvasItem:
+	return sprite  # or $AnimatedSprite2D depending on the node used

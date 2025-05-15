@@ -54,6 +54,7 @@ func resolve_target():
 func deal_damage(damage: int, _from_position = null):
 	print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", Health - damage, ")")
 	Health -= damage
+	flash_white()
 	if Health <= 0:
 		on_death()
 
@@ -103,3 +104,21 @@ func _process(delta: float) -> void:
 	dot_timers = dot_timers.filter(func(d):
 		return d.time_remaining > 0
 	)
+	
+func get_flash_sprite() -> CanvasItem:
+	push_error("get_flash_sprite() not implemented in subclass")
+	return null
+
+func flash_white(flash_color := Color("cb002e"), times := 4, interval := 0.15):
+	var sprite = get_flash_sprite()
+	if not sprite or not sprite.material:
+		return
+
+	var mat := sprite.material as ShaderMaterial
+	mat.set_shader_parameter("flash_color", flash_color)
+
+	for i in range(times):
+		mat.set_shader_parameter("flash_strength", 0.5)
+		await get_tree().create_timer(interval).timeout
+		mat.set_shader_parameter("flash_strength", 0.0)
+		await get_tree().create_timer(interval).timeout

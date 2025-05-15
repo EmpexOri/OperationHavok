@@ -654,8 +654,12 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_bkju3")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
 position_smoothing_speed = 150.0
+drag_horizontal_enabled = true
+drag_left_margin = 0.02
+drag_top_margin = 0.02
+drag_right_margin = 0.02
+drag_bottom_margin = 0.02
 
 [node name="Weapon" type="Node2D" parent="Player"]
 

@@ -21,7 +21,8 @@ var FuseTickTimer := 0.0
 var PlayerInRange := false
 
 func _ready():
-	super._ready()  # Runs Enemy's setup: groups, weapon, start()
+	super()
+	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 	# Tumour-specific values
 	Health = 60
@@ -255,9 +256,13 @@ func torpedo():
 	print("Torpedo velocity: ", TorpedoVelocity)
 
 func deal_damage(damage, from_position = null):
+	flash_white()
 	Health -= damage
 	if from_position:
 		LastHitDirection = (global_position - from_position).normalized()
 		print("LastHitDirection: ", LastHitDirection)
 	else:
 		print("NO from_position PASSED")
+		
+func get_flash_sprite() -> CanvasItem:
+	return sprite 

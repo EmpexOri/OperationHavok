@@ -29,8 +29,9 @@ func start():
 	add_child(firetimer)
 	
 func _ready():
+	super()
+	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 	WeaponScene = Weapon
-	super._ready()
 
 func orbit_direction_change():
 	OrbitDirection *= -1
@@ -133,3 +134,6 @@ func handle_minion_collision(body: Node2D):
 	await get_tree().process_frame
 	if not is_instance_valid(body) or not body.get_parent():
 		call_deferred("queue_free")
+
+func get_flash_sprite() -> CanvasItem:
+	return sprite 

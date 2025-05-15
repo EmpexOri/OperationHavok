@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtra84e58gsn7"]
+[gd_scene load_steps=6 format=3 uid="uid://dtra84e58gsn7"]
 
 [ext_resource type="Script" uid="uid://g04nhdfw0ljv" path="res://Assets/Scripts/Enemy/Biomancer.gd" id="1_seddk"]
+[ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_bj3rp"]
 [ext_resource type="Texture2D" uid="uid://lvgy0v7pooxo" path="res://Assets/Art/PlaceHolders/Biomancer.png" id="2_seddk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry4u2"]
@@ -16,6 +17,7 @@ script = ExtResource("1_seddk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.92224, 1, 0.91857, 1)
 texture_filter = 1
+material = ExtResource("2_bj3rp")
 texture = ExtResource("2_seddk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

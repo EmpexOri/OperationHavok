@@ -22,7 +22,8 @@ func start():
 
 func _ready():
 	WeaponScene = Weapon
-	super._ready()
+	super()
+	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 	# Fire animation delay timer
 	fire_delay_timer.one_shot = true
@@ -168,3 +169,6 @@ func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
 		body.queue_free()
 		deal_damage(10)
+		
+func get_flash_sprite() -> CanvasItem:
+	return sprite 
