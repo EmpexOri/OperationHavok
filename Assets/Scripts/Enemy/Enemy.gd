@@ -15,6 +15,8 @@ var Target = "Player"
 var WeaponScene: PackedScene
 var CurrentWeapon: Weapon
 
+signal died(enemy)
+
 func _ready():
 	add_to_group(Group)
 	add_to_group(SummonGroup)
@@ -56,6 +58,7 @@ func deal_damage(damage: int, _from_position = null):
 		on_death()
 
 func on_death():
+	emit_signal("died", self)  # Notify the level before removing the enemy
 	drop_xp()
 	Global.spawn_meat_chunk(global_position)
 	Global.spawn_blood_splatter(global_position)

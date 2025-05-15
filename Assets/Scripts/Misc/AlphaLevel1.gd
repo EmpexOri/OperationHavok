@@ -97,7 +97,7 @@ func spawn_enemy_delayed(scene: PackedScene) -> void:
 	enemy.name = "Enemy_" + str(randi())
 	enemies.append(enemy)
 	add_child(enemy)
-	enemy.connect("tree_exited", Callable(self, "_on_enemy_died").bind(enemy))
+	enemy.connect("died", Callable(self, "_on_enemy_died"))
 
 func _on_enemy_died(enemy):
 	enemies.erase(enemy)

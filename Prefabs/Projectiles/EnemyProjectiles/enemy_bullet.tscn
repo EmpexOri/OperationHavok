@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://lg400q3grkqe"]
+[gd_scene load_steps=4 format=3 uid="uid://lg400q3grkqe"]
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_3h68l"]
-[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_hpsnd"]
+[ext_resource type="Texture2D" uid="uid://blamcw8mhja65" path="res://Assets/Art/Sprites/EnemyBullet.png" id="2_3h68l"]
+[ext_resource type="Material" uid="uid://eh4n4hehs0i4" path="res://Assets/Shaders/BulletShader.tres" id="2_hpsnd"]
 
 [node name="EnemyBullet" instance=ExtResource("1_3h68l")]
-base_speed = 200.0
+base_speed = 150.0
 base_damage = 5.0
-base_lifetime = 1.0
+base_lifetime = 2.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
 
 [node name="Sprite2D" parent="." index="1"]
 modulate = Color(0.926299, 2.5028e-06, 1.54018e-06, 1)
+material = ExtResource("2_hpsnd")
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_hpsnd")
+texture = ExtResource("2_3h68l")

@@ -3,6 +3,7 @@ extends Enemy
 @onready var sprite := $AnimatedSprite2D  
 @onready var orbittimer: Timer
 @onready var firetimer: Timer
+var Weapon: PackedScene = preload("res://Prefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn")
 
 var OrbitSpeed = 50
 var OrbitDirection = 1
@@ -26,6 +27,10 @@ func start():
 	firetimer.connect("timeout", Callable(self, "fire"))
 	firetimer.autostart = true
 	add_child(firetimer)
+	
+func _ready():
+	WeaponScene = Weapon
+	super._ready()
 
 func orbit_direction_change():
 	OrbitDirection *= -1
