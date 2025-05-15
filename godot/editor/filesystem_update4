@@ -1,20 +1,8 @@
-res://Assets/Scripts/Enemy/Biomancer.gd
-res://Assets/Scripts/Enemy/FleshSpawn.gd
-res://Assets/Scripts/Enemy/Hordling.gd
-res://Assets/Scripts/Enemy/Needling.gd
-res://Assets/Scripts/Enemy/Spewling.gd
-res://Assets/Scripts/Enemy/Tumor.gd
-res://Assets/Scripts/Misc/AlphaLevel1.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Prefabs/Enemy/Hordling.tscn
-res://Scenes/AlphaLevel1.tscn
+res://Scenes/MenuScene.tscn
 res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
-res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/SwapWeapons_Shotgun2Smg1.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/SwapWeapons_Shotgun2Smg2.gd
-res://Scenes/MenuScene.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/PlaygroundScene.tscn
 res://Prefabs/Enemy/Spewling.tscn
+res://Scenes/AlphaLevel1.tscn
