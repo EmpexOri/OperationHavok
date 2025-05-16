@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=28 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/Misc/AlphaLevel1.gd" id="1_pfke8"]
 [ext_resource type="Texture2D" uid="uid://dxgymr20ddjex" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png" id="2_bkju3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="8_u2862"]
 [ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="9_ms8ft"]
 [ext_resource type="Texture2D" uid="uid://copqcmw1wsir7" path="res://Assets/Art/PlaceHolders/JasonsGun.png" id="9_xngmm"]
+[ext_resource type="Texture2D" uid="uid://bpvtxmtvn5dbo" path="res://Assets/Art/PlaceHolders/JermaAbility.png" id="10_ajhhu"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="10_ooshe"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xngmm"]
@@ -623,14 +624,41 @@ texture_filter = 1
 position = Vector2(617, 339)
 texture = ExtResource("9_xngmm")
 
-[node name="Label" type="Label" parent="PlayerUI/UIContainer"]
-layout_mode = 0
-offset_left = 598.0
-offset_top = 305.0
-offset_right = 638.0
-offset_bottom = 328.0
+[node name="Label" type="Label" parent="PlayerUI/UIContainer/JasonsGun"]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -11.0
 theme_override_font_sizes/font_size = 14
 text = "3"
+horizontal_alignment = 1
+
+[node name="JermaAbility" type="Sprite2D" parent="PlayerUI/UIContainer"]
+texture_filter = 1
+position = Vector2(578, 339)
+texture = ExtResource("10_ajhhu")
+
+[node name="Label2" type="Label" parent="PlayerUI/UIContainer/JermaAbility"]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -11.0
+theme_override_font_sizes/font_size = 14
+text = "2"
+horizontal_alignment = 1
+
+[node name="JermaAbility2" type="Sprite2D" parent="PlayerUI/UIContainer"]
+texture_filter = 1
+position = Vector2(538, 339)
+texture = ExtResource("10_ajhhu")
+
+[node name="Label2" type="Label" parent="PlayerUI/UIContainer/JermaAbility2"]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -11.0
+theme_override_font_sizes/font_size = 14
+text = "1"
 horizontal_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="."]
