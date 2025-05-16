@@ -68,5 +68,7 @@ debug_path_custom_color = Color(0, 0, 0.9, 1)
 material = ExtResource("2_sk6y7")
 sprite_frames = SubResource("SpriteFrames_ct6ui")
 animation = &"crawl"
+frame = 3
+frame_progress = 0.803588
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
