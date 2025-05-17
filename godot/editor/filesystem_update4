@@ -21,3 +21,4 @@ res://Scenes/Options/PauseMenu.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Assets/Scripts/Player Scripts/player.gd
 res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Enemy/Hordling.gd
