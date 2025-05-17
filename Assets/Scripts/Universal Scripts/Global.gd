@@ -19,7 +19,6 @@ var POOL_SIZE := 128  # Customize based on how many can be active at once
 # A global variable for the particle options index
 var graphics_quality_index: int = 1 
 
-
 func _ready() -> void:
 	# Prewarm GPU shaders by creating dummy instances briefly
 	for material in materials:
