@@ -19,3 +19,5 @@ res://Prefabs/Enemy/Needling.tscn
 res://Prefabs/Enemy/Tumor.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/Options/OptionsScene.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Universal Scripts/Global.gd

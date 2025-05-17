@@ -68,6 +68,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_flyuw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.9, 0, 0, 1)
