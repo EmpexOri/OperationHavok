@@ -4,12 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ddnef3vqy6sav" path="res://Assets/Art/Sprites/Hordling_WALK_FRONT.png" id="2_dajsh"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_bvkv2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bvkv2"]
-radius = 6.0
-height = 12.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvkv2"]
+radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flyuw"]
-size = Vector2(16, 13)
+size = Vector2(16, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvkv2"]
 atlas = ExtResource("2_dajsh")
@@ -60,7 +59,7 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_bvkv2")
+shape = SubResource("CircleShape2D_bvkv2")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -21,6 +21,13 @@ func start():
 	Target = "Player"
 
 func _ready():
+	var firetimer = Timer.new()
+	firetimer.wait_time = randf_range(2, 4)
+	firetimer.one_shot = false
+	firetimer.connect("timeout", Callable(self, "fire"))
+	firetimer.autostart = true
+	add_child(firetimer)
+	
 	WeaponScene = Weapon
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
@@ -30,13 +37,6 @@ func _ready():
 	fire_delay_timer.connect("timeout", Callable(self, "_on_fire_delay_timeout"))
 	add_child(fire_delay_timer)
 	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
-
-	var firetimer = Timer.new()
-	firetimer.wait_time = randf_range(2, 4)
-	firetimer.one_shot = false
-	firetimer.connect("timeout", Callable(self, "fire"))
-	firetimer.autostart = true
-	add_child(firetimer)
 
 func _process(delta):
 	super._process(delta)  
@@ -62,6 +62,7 @@ func _physics_process(_delta):
 		elif nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
 			IsMovingRandomly = false
 			velocity = Vector2.ZERO
+			sprite.stop()
 	else:
 		var Player = resolve_target()
 		target_pos = Player.position
@@ -70,7 +71,7 @@ func _physics_process(_delta):
 	var Direction = nav.get_next_path_position() - global_position
 	Direction = Direction.normalized()
 
-	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100):
+	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100) or is_firing:
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
 	elif IsMovingRandomly:
@@ -81,30 +82,33 @@ func _physics_process(_delta):
 		Speed = 120
 		sprite.modulate.a = 1
 		velocity = Direction * Speed
-
+			
 	# ANIMATION HANDLING
-	if IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
-		sprite.play("move")
+	if is_firing:
+		# Keep firing animation playing slowly
+		sprite.speed_scale = 0.35
+		# Moving animation stays the same
+	elif IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
+		if sprite.animation != "move":
+			sprite.speed_scale = 1
+			sprite.play("move")
 		if abs(velocity.x) > 0.1:
 			sprite.flip_h = velocity.x > 0
+	else:
+		# Stop the animation (just don't PAUSE it)
+		sprite.speed_scale = 0
 
 	move_and_slide()
 
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
-
 func fire():
-	var Player = get_parent().get_node(Target)
+	print("Trying to fire...")
 	if IsMovingRandomly or velocity.length() > 1 or is_firing:
 		return # Don't fire while moving or while already firing
 
 	if CurrentWeapon:
-		fire_direction = (Player.global_position - global_position).normalized()
 		is_firing = true
 		sprite.play("fire")
-		fire_delay_timer.start(0.2)
-		_on_animation_finished()
+		fire_delay_timer.start(1.5)
 
 func random_move():
 	IsMovingRandomly = true
@@ -121,7 +125,9 @@ func random_move():
 	nav.target_position = target_pos
 
 func _on_fire_delay_timeout():
+	var Player = get_parent().get_node(Target)
 	if CurrentWeapon:
+		fire_direction = (Player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, fire_direction)
 		ShotsFired += 1
 		if ShotsFired >= ShotsBeforeMoving:
@@ -130,7 +136,6 @@ func _on_fire_delay_timeout():
 func _on_animation_finished():
 	if sprite.animation == "fire":
 		is_firing = false
-		sprite.play("move")
 		
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):

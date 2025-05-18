@@ -4,8 +4,8 @@
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_bj3rp"]
 [ext_resource type="Texture2D" uid="uid://lvgy0v7pooxo" path="res://Assets/Art/PlaceHolders/Biomancer.png" id="2_seddk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry4u2"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj3rp"]
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seddk"]
 
@@ -21,7 +21,7 @@ material = ExtResource("2_bj3rp")
 texture = ExtResource("2_seddk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ry4u2")
+shape = SubResource("CircleShape2D_bj3rp")
 
 [node name="Area2D" type="Area2D" parent="."]
 

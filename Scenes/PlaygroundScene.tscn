@@ -1,6 +1,5 @@
 [gd_scene load_steps=36 format=4 uid="uid://kmijtn114svf"]
 
-[ext_resource type="Script" uid="uid://h0xxtjfgocwf" path="res://Assets/Scripts/Misc/prototype_world.gd" id="1_3kogm"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
 [ext_resource type="Texture2D" uid="uid://dxgymr20ddjex" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png" id="2_wlc0k"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="2_ydcph"]
@@ -8,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_3kogm"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="9_3kogm"]
+[ext_resource type="PackedScene" uid="uid://c3cymoelvi3cn" path="res://Prefabs/Enemy/Spewling.tscn" id="10_aly1e"]
 [ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="11_wlc0k"]
 [ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/PlaceHolders/SuspiciousStew.png" id="15_3kogm"]
 
@@ -221,7 +221,6 @@ polygon = PackedVector2Array(80, 188, 128, 188, 128, 201, 80, 201)
 polygon = PackedVector2Array(512, 156, 560, 156, 560, 169, 512, 169)
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_3kogm")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-16, -4)
@@ -388,6 +387,9 @@ occluder = SubResource("OccluderPolygon2D_vrfo8")
 
 [node name="SkinnyColumn2" type="LightOccluder2D" parent="ShadowAreas"]
 occluder = SubResource("OccluderPolygon2D_5bft4")
+
+[node name="Spewling" parent="." instance=ExtResource("10_aly1e")]
+position = Vector2(436, 124)
 
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_area_2d_body_exited"]

@@ -10,6 +10,7 @@ var OrbitDirection = 1
 var BulletSpeed = 800
 
 func start():
+	print(CurrentWeapon)
 	OrbitDirection = [-1, 1].pick_random()
 
 	# Orbit timer
@@ -29,6 +30,7 @@ func start():
 	add_child(firetimer)
 	
 func _ready():
+	WeaponScene = Weapon
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 	WeaponScene = Weapon
@@ -56,6 +58,7 @@ func _physics_process(delta):
 	#clamp_position_to_screen()
 
 func fire():
+	print("Trying to fire...")
 	var player = resolve_target()
 	if player and CurrentWeapon:
 		var dir = (player.global_position - global_position).normalized()
@@ -66,11 +69,6 @@ func handle_orbiting(player: Node, delta: float):
 	var orbit_radius = 300
 	var orbit_pos = player.position + Vector2(orbit_radius, 0).rotated(angle)
 	velocity = (orbit_pos - position).normalized() * Speed
-
-#func clamp_position_to_screen():
-	#var screen_size = get_viewport_rect().size
-	#position.x = clamp(position.x, 0, screen_size.x)
-	#position.y = clamp(position.y, 0, screen_size.y)
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):

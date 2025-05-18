@@ -1,7 +1,7 @@
 extends Enemy
 
 @onready var sprite = $Sprite2D
-@onready var explosion_area: Area2D = $Area2D
+@onready var explosion_area: Area2D = $ExplosionArea
 
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
 
@@ -87,52 +87,17 @@ func _physics_process(delta):
 		velocity = direction * Speed
 		move_and_slide()
 
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
-
 func _on_area_2d_body_entered(body: Node2D):
 	if IsTorpedo and body and not body.is_in_group("Bullet"):
 		call_deferred("explode")  # Defer explode to the main thread
 		return
 
 	if is_in_group("Enemy") and body.is_in_group("Player") and not FuseStarted:
+		print(FuseStarted)
 		FuseStarted = true
 		PlayerInRange = true
 		body.deal_damage(2)
-		
-		var direction = (global_position - body.global_position).normalized()
-		var dodge_distance = Speed * 0.6
-		var start_position = global_position
-		var dodge_vector = direction.normalized() * dodge_distance
-		var end_position = start_position + dodge_vector
-		
-		# Temporarily disable collisions with enemies
-		var collision_shape = $CollisionShape2D
-		collision_shape.disabled = true
-		
-		# Use raycast-style check to find the first collision point along the path
-		var space_state = get_world_2d().direct_space_state
-		var ray_params = PhysicsRayQueryParameters2D.create(start_position, end_position)
-		ray_params.exclude = [self]
-		ray_params.collision_mask = 1 << 2  # Environment only (e.g., walls)
-		
-		var ray_result = space_state.intersect_ray(ray_params)
-		if ray_result:
-			# Adjust endpoint to stop just before hitting the wall
-			end_position = ray_result.position - direction.normalized() * 4.0  # 2px offset for safety
-			
-		# Tween to final position smoothly
-		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		await tween.finished
-		
-		# Re-enable collision
-		collision_shape.disabled = false
-		return
-	elif is_in_group("Enemy") and body.is_in_group("Player"):
-		PlayerInRange = true
-		body.deal_damage(2)
+		print(FuseStarted)
 		
 		var direction = (global_position - body.global_position).normalized()
 		var dodge_distance = Speed * 0.6
@@ -192,7 +157,8 @@ func _perform_explode():
 	await get_tree().physics_frame
 
 	# Additional visual effects
-	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$Area2D/Fuse_Range.set_deferred("disabled", true)
+	$ExplosionArea/Exploding_Range.set_deferred("disabled", true)
 	
 	Global.spawn_meat_chunk(global_position)
 	Global.spawn_blood_splatter(global_position)

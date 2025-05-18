@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bgrx0pku0nat2" path="res://Assets/Art/PlaceHolders/FleshSpawn.png" id="2_d12lp"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_tum4o"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gceeu"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_tum4o"]
+radius = 6.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2edo"]
-size = Vector2(10, 10)
+size = Vector2(12, 12)
 
 [node name="FleshSpawn" type="CharacterBody2D"]
 collision_layer = 2
@@ -22,11 +22,13 @@ material = ExtResource("2_tum4o")
 texture = ExtResource("2_d12lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gceeu")
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_tum4o")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_c2edo")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
