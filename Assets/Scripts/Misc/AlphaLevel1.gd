@@ -11,6 +11,8 @@ var current_wave := 0
 var enemies: Array = []
 var spawn_points: Array[Node2D] = []
 var PauseMenu  # Will be instance of pause menu
+var wave_in_progress := false
+var wave_ending := false
 
 var wave_data = [
 	{ "Hordling": [3,6,3] },
@@ -56,10 +58,13 @@ func pause_game():
 		PauseMenu.visible = true
 
 func start_next_wave():
+	if wave_in_progress:
+		return
 	if current_wave >= wave_data.size():
 		print("All waves complete!")
 		return
 
+	wave_in_progress = true
 	print("Starting wave %d" % (current_wave + 1))
 	var data = wave_data[current_wave]
 	current_wave += 1
@@ -86,8 +91,6 @@ func start_next_wave():
 			for i in range(count):
 				spawn_enemy_delayed(enemy_scene)
 
-	await check_for_wave_completion()
-
 func spawn_enemy_delayed(scene: PackedScene) -> void:
 	await get_tree().create_timer(randf_range(0.1, 0.4)).timeout
 	var enemy = scene.instantiate()
@@ -101,13 +104,18 @@ func spawn_enemy_delayed(scene: PackedScene) -> void:
 
 func _on_enemy_died(enemy):
 	enemies.erase(enemy)
-	if enemies.is_empty():
+
+	if enemies.is_empty() and not wave_ending:
+		wave_ending = true  
 		await get_tree().create_timer(1.0).timeout
+		wave_in_progress = false
+		wave_ending = false 
 		start_next_wave()
 
 func check_for_wave_completion():
 	while not enemies.is_empty():
 		await get_tree().process_frame
+	print("Wave %d complete!" % current_wave)
 
 func roll(dice: int, sides: int) -> int:
 	var total = 0
