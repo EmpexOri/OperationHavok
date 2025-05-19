@@ -34,3 +34,5 @@ res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
 res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
 res://Assets/Scripts/Player Scripts/Abilities/SniperBeam.gd
+res://Prefabs/GamePrefabs/Enemy/Scenes/AlphaLevel1.tscn
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
