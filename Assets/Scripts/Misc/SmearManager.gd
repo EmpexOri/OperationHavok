@@ -75,3 +75,15 @@ func set_max_smeares(value: int) -> void:
 	MAX_SMEARS = value
 	CULL_THRESHOLD = MAX_SMEARS / 2
 	enforce_smear_limit()
+
+func reset():
+	# Clean up any references to freed nodes
+	for smear_data in smear_pool:
+		if is_instance_valid(smear_data.sprite):
+			smear_data.sprite.queue_free()
+	smear_pool.clear()
+
+	for smear_data in active_smeares:
+		if is_instance_valid(smear_data.sprite):
+			smear_data.sprite.queue_free()
+	active_smeares.clear()
