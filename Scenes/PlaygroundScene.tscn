@@ -220,7 +220,7 @@ polygon = PackedVector2Array(80, 188, 128, 188, 128, 201, 80, 201)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5bft4"]
 polygon = PackedVector2Array(512, 156, 560, 156, 560, 169, 512, 169)
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-16, -4)
