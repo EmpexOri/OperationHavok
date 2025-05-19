@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdul7stkl75pv"]
+
+[ext_resource type="Texture2D" uid="uid://7cuddnlv4o8k" path="res://Assets/Art/Objects/LampPost.png" id="1_74njj"]
+[ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="2_ft8dy"]
+
+[node name="LampPost" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_74njj")
+centered = false
+offset = Vector2(-21, -59)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(18, 29)
+scale = Vector2(0.35, 0.35)
+color = Color(1, 0.987353, 0.258861, 1)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("2_ft8dy")
+offset = Vector2(5, 40)
