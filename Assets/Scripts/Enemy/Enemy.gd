@@ -18,6 +18,7 @@ var CurrentWeapon: Weapon
 signal died(enemy)
 
 func _ready():
+	add_to_group("Player")
 	add_to_group(Group)
 	add_to_group(SummonGroup)
 	
@@ -43,13 +44,9 @@ func update_navigation():
 		velocity = dir.normalized() * Speed
 		move_and_slide()
 
-func resolve_target():
-	if is_in_group("Enemy") or (is_in_group("Minion") and not is_instance_valid(Target)):
-		var players = get_tree().get_nodes_in_group("Player")
-		return players[0] if players.size() > 0 else null
-	if is_instance_valid(Target):
-		return get_node_or_null(Target)
-	return null
+func resolve_target() -> Node2D:
+	var players = get_tree().get_nodes_in_group("Player")
+	return players[0] if players.size() > 0 else null
 
 func deal_damage(damage: int, _from_position = null):
 	print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", Health - damage, ")")

@@ -55,7 +55,7 @@ func _physics_process(_delta):
 	var target_pos: Vector2
 
 	if IsMovingRandomly:
-		var player = get_parent().get_node(Target)
+		var player = resolve_target()
 		target_pos = nav.target_position
 		if global_position.distance_to(player.global_position) <= 100:
 			IsMovingRandomly = false
@@ -125,7 +125,7 @@ func random_move():
 	nav.target_position = target_pos
 
 func _on_fire_delay_timeout():
-	var Player = get_parent().get_node(Target)
+	var Player = get_tree().get_nodes_in_group(Target).front()
 	if CurrentWeapon:
 		fire_direction = (Player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, fire_direction)

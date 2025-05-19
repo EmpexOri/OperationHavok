@@ -70,7 +70,7 @@ func _physics_process(delta):
 		return
 
 	if is_in_group("Enemy"):
-		player = get_parent().get_node(Target)
+		player = resolve_target()
 	elif is_in_group("Minion") and is_instance_valid(Target):
 		player = get_parent().get_node(Target)
 	elif is_in_group("Minion"):
