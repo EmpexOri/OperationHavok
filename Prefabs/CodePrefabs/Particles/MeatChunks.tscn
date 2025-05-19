@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_0yw36"]
 [ext_resource type="Script" uid="uid://dgsmtk57bsy30" path="res://Assets/Scripts/Misc/MeatChunk.gd" id="1_jpuli"]
-[ext_resource type="PackedScene" uid="uid://bu0hd6oio87hx" path="res://Prefabs/Particles/BloodSmear.tscn" id="2_c5kww"]
+[ext_resource type="PackedScene" uid="uid://bu0hd6oio87hx" path="res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn" id="2_c5kww"]
 [ext_resource type="Texture2D" uid="uid://dun2ub8vj0nwo" path="res://Assets/Art/Particles/SmallChunk.png" id="2_jpuli"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0yw36"]

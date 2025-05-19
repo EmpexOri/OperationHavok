@@ -24,3 +24,13 @@ res://Prefabs/Enemy/Bruiser.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Misc/SmearManager.gd
+res://Assets/Scripts/Pickups/pickup_factory.gd
+res://Assets/Scripts/Misc/AlphaLevel1.gd
+res://Assets/Scripts/Enemy/Biomancer.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
+res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
+res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
+res://Assets/Scripts/Player Scripts/Abilities/SniperBeam.gd

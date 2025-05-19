@@ -6,7 +6,7 @@ signal perk_finished(index: int)
 @export var Duration: float = 10.0 # How long the Minigun is active for
 @export var CooldownTime: float = 10.0 # Cooldown *after* Minigun ends
 
-var MinigunScene := preload("res://Prefabs/Weapons/Minigun.tscn")
+var MinigunScene := preload("res://Prefabs/CodePrefabs/Weapons/Minigun.tscn")
 
 var PerkIndex: int
 var OriginalWeaponScene: PackedScene

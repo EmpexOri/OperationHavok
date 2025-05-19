@@ -2,13 +2,13 @@ extends Node
 
 # Preload materials (used only for prewarm trick)
 var materials = [
-	preload("res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres"),
-	preload("res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres")
+	preload("res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres"),
+	preload("res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres")
 ]
 
 # Preload particle scenes for instancing
-var TumourParticlesScene = preload("res://Prefabs/Particles/TumourExplosionGore.tscn")
-var DeathParticlesScene = preload("res://Prefabs/Particles/DeathGore.tscn")
+var TumourParticlesScene = preload("res://Prefabs/CodePrefabs/Particles/TumourExplosionGore.tscn")
+var DeathParticlesScene = preload("res://Prefabs/CodePrefabs/Particles/DeathGore.tscn")
 
 # Pools for reusing particle nodes
 var tumour_particle_pool: Array = []
@@ -105,7 +105,7 @@ func spawn_blood_splatter(position: Vector2):
 	get_tree().current_scene.add_child(blood_sprite)
 
 func spawn_meat_chunk(position: Vector2):
-	var meat_scene = preload("res://Prefabs/Particles/MeatChunks.tscn")
+	var meat_scene = preload("res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn")
 	var num_chunks = randi_range(8, 48)
 
 	for i in range(num_chunks):

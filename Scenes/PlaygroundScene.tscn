@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_3kogm"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="9_3kogm"]
-[ext_resource type="PackedScene" uid="uid://c3cymoelvi3cn" path="res://Prefabs/Enemy/Spewling.tscn" id="10_aly1e"]
+[ext_resource type="PackedScene" uid="uid://c3cymoelvi3cn" path="res://Prefabs/GamePrefabs/Enemy/Spewling.tscn" id="10_aly1e"]
 [ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="11_wlc0k"]
 [ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/PlaceHolders/SuspiciousStew.png" id="15_3kogm"]
 

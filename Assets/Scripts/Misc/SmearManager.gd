@@ -5,7 +5,7 @@ const FADE_TIME := 5.0
 var CULL_THRESHOLD := MAX_SMEARS/2
 const CULL_FADE_MULTIPLIER := 2.0
 
-var smear_scene := preload("res://Prefabs/Particles/BloodSmear.tscn")
+var smear_scene := preload("res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn")
 var smear_pool: Array = []
 var active_smeares: Array = []
 

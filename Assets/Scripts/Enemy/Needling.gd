@@ -6,7 +6,7 @@ var BulletSpeed = 900
 var ShotsFired = 0
 var ShotsBeforeMoving = randi_range(1, 3)
 var IsMovingRandomly = false
-var Weapon: PackedScene = preload("res://Prefabs/Weapons/EnemyWeapons/enemy_sniper.tscn")
+var Weapon: PackedScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn")
 @onready var fire_delay_timer = Timer.new()
 
 var queued_fire = false

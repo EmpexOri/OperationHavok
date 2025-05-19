@@ -3,7 +3,7 @@ extends Enemy
 @onready var sprite := $AnimatedSprite2D  
 @onready var orbittimer: Timer
 @onready var firetimer: Timer
-var Weapon: PackedScene = preload("res://Prefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn")
+var Weapon: PackedScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn")
 
 var OrbitSpeed = 50
 var OrbitDirection = 1

@@ -1,12 +1,12 @@
 extends Enemy
 
-var FleshSpawn = preload("res://Prefabs/Enemy/FleshSpawn.tscn")
+var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn")
 var firetimer: Timer
 
 func start():
 	Speed = 110
 	Health = 20
-	WeaponScene = preload("res://Prefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn")
+	WeaponScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn")
 	setup_weapon()
 	start_timer()
 	

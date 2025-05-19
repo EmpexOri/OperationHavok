@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b36myfjfkjvxb"]
 
-[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_w360j"]
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_w360j"]
 [ext_resource type="Script" uid="uid://clf4d48n5vkl1" path="res://Assets/Scripts/Projectiles/katana_projectile.gd" id="2_iqrc2"]
 [ext_resource type="Texture2D" uid="uid://btr7b30u5eyo6" path="res://Assets/Art/PlaceHolders/katana.png" id="2_w360j"]
 

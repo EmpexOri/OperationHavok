@@ -2,7 +2,7 @@ extends Node2D
 
 #var MoveSpeed = 250
 var BulletSpeed = 100
-var Bullet = preload("res://Prefabs/Projectiles/bullet.tscn")
+var Bullet = preload("res://Prefabs/CodePrefabs/Projectiles/bullet.tscn")
 var BurstAmount = 3
 var CooldownTimer: float = 3
 var Enabled = true

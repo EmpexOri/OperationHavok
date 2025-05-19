@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dryls42ca6ys2"]
 
-[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_7d7ot"]
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_7d7ot"]
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_wpohj"]
 
 [node name="Bullet" instance=ExtResource("1_7d7ot")]

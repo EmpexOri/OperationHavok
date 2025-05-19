@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvnjqxxdjegts"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_6n4n7"]
-[ext_resource type="PackedScene" uid="uid://cb0qq7tf5boik" path="res://Prefabs/Projectiles/ShotgunBullet.tscn" id="2_ni0vb"]
+[ext_resource type="PackedScene" uid="uid://cb0qq7tf5boik" path="res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn" id="2_ni0vb"]
 [ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_klkln"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_w1mo1"]
 [ext_resource type="Resource" uid="uid://ch25iethvs31m" path="res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.tres" id="4_apjbh"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bu8h0wirm4yvn"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_nlw1r"]
-[ext_resource type="PackedScene" uid="uid://b0ut6hr1btnda" path="res://Prefabs/Projectiles/rocket_projectile.tscn" id="2_nlw1r"]
+[ext_resource type="PackedScene" uid="uid://b0ut6hr1btnda" path="res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn" id="2_nlw1r"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_elf2t"]
 [ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="4_btpas"]
 

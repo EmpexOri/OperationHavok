@@ -3,7 +3,7 @@ extends CharacterBody2D
 var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd").new()
 var Damage_Timer = Timer.new()
 
-var StartingWeapon = preload("res://Prefabs/Weapons/Smg.tscn") # Starting weapon
+var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/Smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
 
@@ -171,7 +171,7 @@ func ActivateAbility(index: int):
 	if index < abilities.size():
 		var ability_name = abilities[index]
 		print("Activating ability: " + ability_name)
-		var scene_path = "res://Prefabs/Abilities/" + ability_name + ".tscn"
+		var scene_path = "res://Prefabs/CodePrefabs/Abilities/" + ability_name + ".tscn"
 		if ResourceLoader.exists(scene_path):
 			var ability_scene = load(scene_path)
 			var ability_instance = ability_scene.instantiate()

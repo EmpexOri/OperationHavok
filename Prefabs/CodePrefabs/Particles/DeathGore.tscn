@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdk3f5h6p5n4h"]
 
 [ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_apirg"]
-[ext_resource type="Material" uid="uid://c67ig754t8f54" path="res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres" id="2_cq8d6"]
+[ext_resource type="Material" uid="uid://c67ig754t8f54" path="res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres" id="2_cq8d6"]
 
 [node name="Explosion" type="Node2D"]
 

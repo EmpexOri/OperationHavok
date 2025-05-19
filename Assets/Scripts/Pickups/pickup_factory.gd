@@ -6,7 +6,7 @@ var health_script = preload("res://Assets/Scripts/Pickups/health_pickup.gd")
 var magnet_script = preload("res://Assets/Scripts/Pickups/magnet_pickup.gd")
 
 # The base pickup scene
-var pickup_scene = preload("res://Prefabs/Pickups/pickup.tscn")
+var pickup_scene = preload("res://Prefabs/CodePrefabs/Pickups/pickup.tscn")
 
 func build_pickup(type: String, position: Vector2) -> Node:
 	var pickup = pickup_scene.instantiate()

@@ -1,10 +1,10 @@
 extends Node2D
 
-const HORDLING = preload("res://Prefabs/Enemy/Hordling.tscn")
-const SPEWLING = preload("res://Prefabs/Enemy/Spewling.tscn")
-const BIOMANCER = preload("res://Prefabs/Enemy/Biomancer.tscn")
-const NEEDLING = preload("res://Prefabs/Enemy/Needling.tscn")
-const TUMOR = preload("res://Prefabs/Enemy/Tumor.tscn")
+const HORDLING = preload("res://Prefabs/GamePrefabs/Enemy/Hordling.tscn")
+const SPEWLING = preload("res://Prefabs/GamePrefabs/Enemy/Spewling.tscn")
+const BIOMANCER = preload("res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn")
+const NEEDLING = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
+const TUMOR = preload("res://Prefabs/GamePrefabs/Enemy/Tumor.tscn")
 const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
 
 var current_wave := 0

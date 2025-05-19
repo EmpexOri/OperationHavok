@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dggyelrj1001b"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_0xh1c"]
-[ext_resource type="PackedScene" uid="uid://cb0qq7tf5boik" path="res://Prefabs/Projectiles/ShotgunBullet.tscn" id="2_7b86u"]
+[ext_resource type="PackedScene" uid="uid://cb0qq7tf5boik" path="res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn" id="2_7b86u"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_flskc"]
 [ext_resource type="Resource" uid="uid://dsgjo7ac13qew" path="res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres" id="4_mnmhp"]
 

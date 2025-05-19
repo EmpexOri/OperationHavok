@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://lg400q3grkqe"]
 
-[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/Projectiles/projectile.tscn" id="1_3h68l"]
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_3h68l"]
 [ext_resource type="Texture2D" uid="uid://blamcw8mhja65" path="res://Assets/Art/Sprites/EnemyBullet.png" id="2_3h68l"]
 [ext_resource type="Material" uid="uid://eh4n4hehs0i4" path="res://Assets/Shaders/BulletShader.tres" id="2_hpsnd"]
 

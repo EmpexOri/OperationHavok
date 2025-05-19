@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vemdvs7npfcq"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_rvljw"]
-[ext_resource type="PackedScene" uid="uid://blfxsqho34haf" path="res://Prefabs/Projectiles/beam_projectile.tscn" id="2_rvljw"]
+[ext_resource type="PackedScene" uid="uid://blfxsqho34haf" path="res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn" id="2_rvljw"]
 
 [node name="Beamer" type="Node2D"]
 script = ExtResource("1_rvljw")

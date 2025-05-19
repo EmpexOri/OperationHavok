@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ch8286xheax7p"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_40ojk"]
-[ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/Projectiles/bullet.tscn" id="2_3i8x5"]
+[ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/CodePrefabs/Projectiles/bullet.tscn" id="2_3i8x5"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_8rclf"]
 [ext_resource type="Resource" uid="uid://dk0b0g2aim660" path="res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres" id="4_hpyw3"]
 

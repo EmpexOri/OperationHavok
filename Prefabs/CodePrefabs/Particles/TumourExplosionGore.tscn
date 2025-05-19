@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://2g10sb2b7s7"]
 
 [ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_0kxmj"]
-[ext_resource type="Material" uid="uid://cvgey35vc8ku2" path="res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres" id="2_47mhe"]
+[ext_resource type="Material" uid="uid://cvgey35vc8ku2" path="res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres" id="2_47mhe"]
 
 [sub_resource type="Curve" id="Curve_lf36w"]
 _data = [Vector2(0.136364, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
