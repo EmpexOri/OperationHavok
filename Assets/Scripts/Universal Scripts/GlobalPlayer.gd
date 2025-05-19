@@ -22,7 +22,7 @@ var AbilityListCommando = ["SwapWeapons_Shotgun1Smg2", "SniperBeam", "Minigun"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 func XPRequiredForLevel(Level: int) -> int:
-	return 50 * pow(1.2, Level - 1)
+	return 100 * pow(1.2, Level - 1)
 
 func AddXP(Amount: int):
 	var Level = ClassData[CurrentClass]["Level"]

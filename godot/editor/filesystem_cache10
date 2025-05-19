@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1747635727
+::res://::1747640457
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::6640660801981549538::1745557727::0::1::::<><><>0<>0<><>::
-export_presets.cfg::TextFile/TextFile::-1::1747634497::0::1::::<><><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1747639549::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::5589500310411164062::1741662700::1747048384::1::::<><><>0<>0<>cc428f3bedb1cc563b6ce165c861800c<>res://godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1741662802::0::1::::<><><>0<>0<><>::
 ::res://Assets/::1747290865
@@ -105,14 +105,14 @@ weapon_effect.gd::GDScript/GDScript::988969712274423321::1744170625::0::1::::Wea
 akimbo_fire_effect.tres::Resource/AkimboWeaponEffect::7912865650012529619::1746544112::0::1::::<><><>0<>0<><>::uid://hngk5be2sgte::::res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd
 InaccuracyEffect.tres::Resource/InaccuracyEffect::8765299504177619847::1745831875::0::1::::<><><>0<>0<><>::uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
 shotgun_effect.tres::Resource/ShotgunSpreadEffect::8435620638011750814::1747048382::0::1::::<><><>0<>0<><>::uid://wwee4860hgms::::res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd
-::res://Assets/Scripts/Enemy/::1747635415
-Biomancer.gd::GDScript/GDScript::474526886346116219::1747295616::0::1::::<>Enemy<><>0<>0<><>::
-Enemy.gd::GDScript/GDScript::6553925335879637635::1747635331::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
+::res://Assets/Scripts/Enemy/::1747639098
+Biomancer.gd::GDScript::474526886346116219::1747635886::0::1::::<>Enemy<><>0<>0<><>::
+Enemy.gd::GDScript::6553925335879637635::1747639098::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
 FleshSpawn.gd::GDScript/GDScript::6542382007737034733::1747295639::0::1::::<>Enemy<><>0<>0<><>::
 Hordling.gd::GDScript/GDScript::8454527765011256273::1747295529::0::1::::<>Enemy<><>0<>0<><>::
-Needling.gd::GDScript/GDScript::8724370449717490293::1747635398::0::1::::<>Enemy<><>0<>0<><>::
-Spewling.gd::GDScript/GDScript::8325891174540248547::1747633437::0::1::::<>Enemy<><>0<>0<><>::
-Tumor.gd::GDScript/GDScript::8103511333869485819::1747635415::0::1::::<>Enemy<><>0<>0<><>::
+Needling.gd::GDScript::8724370449717490293::1747635897::0::1::::<>Enemy<><>0<>0<><>::
+Spewling.gd::GDScript::8325891174540248547::1747635857::0::1::::<>Enemy<><>0<>0<><>::
+Tumor.gd::GDScript::8103511333869485819::1747638254::0::1::::<>Enemy<><>0<>0<><>::
 ::res://Assets/Scripts/Enemy/Bosses (Project_Kashima)/::1744442438
 Eucharist-9.gd::GDScript/GDScript::5464321079498786879::1744442438::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Harbinger_Of_Steele.gd::GDScript/GDScript::2666296235998215671::1744442438::0::1::::<>CharacterBody2D<><>0<>0<><>::
@@ -128,8 +128,8 @@ particle_options.gd::GDScript/GDScript::8252783904551614490::1747048382::0::1:::
 PauseNode.gd::GDScript/GDScript::3564231229884328898::1747048382::0::1::::<>Node<><>0<>0<><>::
 skill_button.gd::GDScript/GDScript::3994294361984963463::1747050444::0::1::::SkillButton<>TextureButton<><>0<>0<><>::
 volume_control_slider.gd::GDScript/GDScript::2441179012218671891::1747048382::0::1::::<>HSlider<><>0<>0<><>::
-::res://Assets/Scripts/Misc/::1747635794
-AlphaLevel1.gd::GDScript/GDScript::4023468388545961068::1747290865::0::1::::<>Node2D<><>0<>0<><>::
+::res://Assets/Scripts/Misc/::1747639382
+AlphaLevel1.gd::GDScript::4023468388545961068::1747639382::0::1::::<>Node2D<><>0<>0<><>::
 BloodSmear.gd::GDScript/GDScript::5629791494552685339::1747048382::0::1::::<>Sprite2D<><>0<>0<><>::
 FPS.gd::GDScript/GDScript::6607642126447280131::1745765039::0::1::::<>Label<><>0<>0<><>::
 MeatChunk.gd::GDScript/GDScript::7618317019511604049::1747117316::0::1::::<>RigidBody2D<><>0<>0<><>::
@@ -143,20 +143,20 @@ health_pickup.gd::GDScript/GDScript::7266777099879360524::1744642911::0::1::::<>
 magnet_pickup.gd::GDScript/GDScript::8679685678103505073::1742449181::0::1::::<>CharacterBody2D<><>0<>0<><>::
 pickup_factory.gd::GDScript::9022587712177510433::1747635801::0::1::::<>Node<><>0<>0<><>::
 xp_pickup.gd::GDScript/GDScript::1640889336850580933::1745559151::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Assets/Scripts/Player Scripts/::1747470974
-player.gd::GDScript/GDScript::7719611648655107747::1747470974::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Assets/Scripts/Player Scripts/::1747635969
+player.gd::GDScript::7719611648655107747::1747635969::0::1::::<>CharacterBody2D<><>0<>0<><>::
 PlayerUIHandler.gd::GDScript/GDScript::7296556773058450987::1744642683::0::1::::<>Node<><>0<>0<><>::
-::res://Assets/Scripts/Player Scripts/Abilities/::1747048383
-Minigun.gd::GDScript/GDScript::3832293126739009808::1745831789::0::1::::Minigun<>Node2D<><>0<>0<><>::
-SniperBeam.gd::GDScript/GDScript::5937917952278015073::1746706908::0::1::::SniperBeam<>Node2D<><>0<>0<><>::
-SwapWeapons.gd::GDScript/GDScript::941762909242541448::1745830696::0::1::::WeaponSwap<>Node2D<><>0<>0<><>::
+::res://Assets/Scripts/Player Scripts/Abilities/::1747636007
+Minigun.gd::GDScript::3832293126739009808::1747635993::0::1::::Minigun<>Node2D<><>0<>0<><>::
+SniperBeam.gd::GDScript::5937917952278015073::1747636007::0::1::::SniperBeam<>Node2D<><>0<>0<><>::
+SwapWeapons.gd::GDScript::941762909242541448::1747635982::0::1::::WeaponSwap<>Node2D<><>0<>0<><>::
 WeaponOverCharge.gd::GDScript/GDScript::1551232914016972047::1744473604::0::1::::WeaponOverCharge<>Node2D<><>0<>0<><>::
 ::res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/::1747048383
 SwapWeapons_Shotgun1Smg2.gd::GDScript/GDScript::8289773660406734513::1747048383::0::1::::SwapWeapons_Shotgun2Smg1<>Node2D<><>0<>0<><>::
 SwapWeapons_Shotgun2Smg1.gd::GDScript/GDScript::7063753901764605935::1747048383::0::1::::SwapWeapons_Shotgun2Smg2<>Node2D<><>0<>0<><>::
 SwapWeapons_Shotgun2Smg2.gd::GDScript/GDScript::2730042152988088266::1747048383::0::1::::SwapWeapons_Shotgun1Smg2<>Node2D<><>0<>0<><>::
-::res://Assets/Scripts/Player Scripts/Classes/::1744703374
-Technomancer.gd::GDScript/GDScript::6436871340271233830::1744703374::0::1::::<>Node2D<><>0<>0<><>::
+::res://Assets/Scripts/Player Scripts/Classes/::1747635922
+Technomancer.gd::GDScript::6436871340271233830::1747635922::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Assets/Scripts/Player Scripts/Weapons/::1743655579
 ::res://Assets/Scripts/Projectiles/::1747048383
 beam_projectile.gd::GDScript/GDScript::7886033394599687177::1744857606::0::1::::BeamProjectile<>Projectile<><>0<>0<><>::
@@ -170,11 +170,11 @@ GlobalPlayer.gd::GDScript/GDScript::496252369288005919::1747290865::0::1::::<>No
 global_audio_controller.gd::GDScript/GDScript::5139982847088565894::1746191663::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Assets/Scripts/Weapons/::1746599903
 Weapon.gd::GDScript/GDScript::6145078798145790580::1746599903::0::1::::Weapon<>Node<><>0<>0<><>::
-::res://Assets/Shaders/::1747635802
-BulletShader.gdshader::Shader::2113020432670883470::1747635802::0::1::::<><><>0<>0<><>::
-BulletShader.tres::ShaderMaterial/ShaderMaterial::296991561124156881::1747633469::0::1::::<><><>0<>0<><>::uid://5dtexkqnc5je::::res://Assets/Shaders/BulletShader.gdshader
-FlashShader.gdshader::Shader::1079179016960084297::1747635802::0::1::::<><><>0<>0<><>::
-FlashShader.tres::ShaderMaterial/ShaderMaterial::7821837465772363168::1747633469::0::1::::<><><>0<>0<><>::uid://pm06km0cykir::::res://Assets/Shaders/FlashShader.gdshader
+::res://Assets/Shaders/::1747639591
+BulletShader.gdshader::Shader::2113020432670883470::1747639591::0::1::::<><><>0<>0<><>::
+BulletShader.tres::ShaderMaterial::296991561124156881::1747633469::0::1::::<><><>0<>0<><>::uid://5dtexkqnc5je::::res://Assets/Shaders/BulletShader.gdshader
+FlashShader.gdshader::Shader::1079179016960084297::1747639591::0::1::::<><><>0<>0<><>::
+FlashShader.tres::ShaderMaterial::7821837465772363168::1747633469::0::1::::<><><>0<>0<><>::uid://pm06km0cykir::::res://Assets/Shaders/FlashShader.gdshader
 ::res://Assets/Sound/::1746102558
 ::res://Assets/Sound/Music/::1747048383
 A desperate battle, no way back_ (Track 04).mp3::AudioStreamMP3/AudioStreamMP3::193262577320520801::1742354794::1747048383::1::::<><><>0<>0<>851eb4e14028a964690d5eb286d0cfb2<>res://godot/imported/A desperate battle, no way back_ (Track 04).mp3-64d204bf5385d76e54f7df59b3b0b819.mp3str::
@@ -196,7 +196,7 @@ HorldingDeath3.wav::AudioStreamWAV/AudioStreamWAV::3812355303959474131::17464342
 ::res://example/::1744963797
 ::res://example/skills/::1744963797
 ::res://Prefabs/::1747635727
-::res://Prefabs/CodePrefabs/::1747635727
+::res://Prefabs/CodePrefabs/::1747635814
 ::res://Prefabs/CodePrefabs/Abilities/::1747048383
 Minigun.tscn::PackedScene/PackedScene::7894480174336491479::1745990914::0::1::::<><><>0<>0<><>::uid://buunkp6nv4ads::::res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
 SniperBeam.tscn::PackedScene/PackedScene::3704717801614163417::1745985613::0::1::::<><><>0<>0<><>::uid://cqumv2fdtsqjp::::res://Assets/Scripts/Player Scripts/Abilities/SniperBeam.gd
@@ -205,73 +205,77 @@ SwapWeapons_Shotgun1Smg2.tscn::PackedScene/PackedScene::4353611786111805781::174
 SwapWeapons_Shotgun2Smg1.tscn::PackedScene/PackedScene::8979972624582682175::1747048383::0::1::::<><><>0<>0<><>::uid://c7vy826b17xid::::res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/SwapWeapons_Shotgun2Smg1.gd
 SwapWeapons_Shotgun2Smg2.tscn::PackedScene/PackedScene::3178542621452894129::1747048383::0::1::::<><><>0<>0<><>::uid://be5pnpcvlcr2q::::res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/SwapWeapons_Shotgun2Smg2.gd
 WeaponOverCharge.tscn::PackedScene/PackedScene::2258937758993237733::1744703374::0::1::::<><><>0<>0<><>::uid://wdotx361itpf::::res://Assets/Scripts/Player Scripts/Abilities/WeaponOverCharge.gd
-::res://Prefabs/CodePrefabs/Enemy/::1747635713
+::res://Prefabs/CodePrefabs/Misc/::1745985613
+TalentIcon.tscn::PackedScene/PackedScene::7066809161312464463::1745985613::0::1::::<><><>0<>0<><>::uid://cx2v6y6jjrgq2::::res://Assets/Art/PlaceHolders/SuspiciousStew.png
+::res://Prefabs/CodePrefabs/Particles/::1747635727
+BloodSmear.tscn::PackedScene/PackedScene::3842239026870965741::1747048383::0::1::::<><><>0<>0<><>::uid://il3d77qsjatw::::res://Assets/Art/PlaceHolders/SmallSplat.png<>uid://cmhd3w7xxvq0r::::res://Assets/Scripts/Misc/BloodSmear.gd
+DeathGore.tscn::PackedScene/PackedScene::5005762268551756053::1747635727::0::1::::<><><>0<>0<><>::uid://boidif4r0s2uj::::res://Assets/Art/Particles/Chunk.png<>uid://c67ig754t8f54::::res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
+MeatChunks.tscn::PackedScene/PackedScene::5731885236221195786::1747635727::0::1::::<><><>0<>0<><>::uid://boidif4r0s2uj::::res://Assets/Art/Particles/Chunk.png<>uid://dgsmtk57bsy30::::res://Assets/Scripts/Misc/MeatChunk.gd<>uid://bu0hd6oio87hx::::res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn<>uid://dun2ub8vj0nwo::::res://Assets/Art/Particles/SmallChunk.png
+RocketExplosion.tscn::PackedScene/PackedScene::4056132915284539200::1747048383::0::1::::<><><>0<>0<><>::uid://dpfkbxttl18ut::::res://Assets/Scripts/Misc/RocketExplosion.gd<>uid://dlbcv4fwesinh::::res://Assets/Art/Particles/Shrapnel/Shrapnel1.png<>uid://cdba0j1aivyil::::res://Assets/Art/Particles/Shrapnel/Shrapnel2.png<>uid://cbyayuj1fvwuc::::res://Assets/Art/Particles/Shrapnel/Shrapnel3.png<>uid://doje141ck2jad::::res://Assets/Art/Particles/Shrapnel/Shrapnel4.png
+TumourExplosionGore.tscn::PackedScene/PackedScene::56150272929566556::1747635727::0::1::::<><><>0<>0<><>::uid://boidif4r0s2uj::::res://Assets/Art/Particles/Chunk.png<>uid://cvgey35vc8ku2::::res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
+::res://Prefabs/CodePrefabs/Particles/Preloaded/::1747633469
+DeathExplosionGore.tres::ParticleProcessMaterial/ParticleProcessMaterial::7015253787436338565::1747633469::0::1::::<><><>0<>0<><>::
+TumourExplosionGore.tres::ParticleProcessMaterial/ParticleProcessMaterial::6259480595290086579::1747633469::0::1::::<><><>0<>0<><>::
+::res://Prefabs/CodePrefabs/Pickups/::1745985613
+pickup.tscn::PackedScene/PackedScene::4221443159372412624::1745985613::0::1::::<><><>0<>0<><>::
+::res://Prefabs/CodePrefabs/Projectiles/::1747635727
+beam_projectile.tscn::PackedScene/PackedScene::3170249339467567433::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://dkmb22ot6ssvx::::res://Assets/Scripts/Projectiles/beam_projectile.gd
+bullet.tscn::PackedScene/PackedScene::5551016277185381318::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+DragonShotgunProjectile.tscn::PackedScene/PackedScene::8210424716054258191::1747048383::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+katana_projectile.tscn::PackedScene/PackedScene::4416475755661685675::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://clf4d48n5vkl1::::res://Assets/Scripts/Projectiles/katana_projectile.gd<>uid://btr7b30u5eyo6::::res://Assets/Art/PlaceHolders/katana.png
+MinigunBullet.tscn::PackedScene/PackedScene::5793946528221865026::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+MinigunProjectile.tscn::PackedScene/PackedScene::7895184390031815805::1745990914::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd
+projectile.tscn::PackedScene/PackedScene::2706467634044844464::1746603648::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd
+rocket_projectile.tscn::PackedScene/PackedScene::4183638707307266114::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://oco7h58juew5::::res://Assets/Scripts/Projectiles/rocket_projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png<>uid://bx126fqmmm8p5::::res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
+ShotgunBullet.tscn::PackedScene/PackedScene::4895641409828282138::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+ShotgunProjectile.tscn::PackedScene/PackedScene::8489562088671086142::1746603648::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/::1747635727
+EnemyShotgunBullet.tscn::PackedScene/PackedScene::8402719055212998615::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+EnemySniperBullet.tscn::PackedScene/PackedScene::7475995674594149842::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
+enemy_bullet.tscn::PackedScene/PackedScene::786270323262079156::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://blamcw8mhja65::::res://Assets/Art/Sprites/EnemyBullet.png<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres
+::res://Prefabs/CodePrefabs/Weapons/::1747635727
+akimbo_smg.tscn::PackedScene/PackedScene::5333987692817734539::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://clc7orxvf6iws::::res://Prefabs/CodePrefabs/Projectiles/bullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://dk0b0g2aim660::::res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
+beamer.tscn::PackedScene/PackedScene::1482958320978565296::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://blfxsqho34haf::::res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
+DragonShotgun.tscn::PackedScene/PackedScene::6274220263941088768::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cb0qq7tf5boik::::res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://ch25iethvs31m::::res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.tres<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
+katana.tscn::PackedScene/PackedScene::4541109519708437907::1744703374::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd
+Minigun.tscn::PackedScene/PackedScene::515927735240588731::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cosvpnpnfm3b7::::res://Prefabs/CodePrefabs/Projectiles/MinigunBullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
+rocket_launcher.tscn::PackedScene/PackedScene::3858792854796454015::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://b0ut6hr1btnda::::res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
+Shotgun.tscn::PackedScene/PackedScene::7594246334897073441::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cb0qq7tf5boik::::res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
+Smg.tscn::PackedScene/PackedScene::7192793212490370606::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://clc7orxvf6iws::::res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
+::res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/::1747635727
+EnemyShotgun.tscn::PackedScene/PackedScene::5962662789928762789::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://dryls42ca6ys2::::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://bdk8ayxby0fm2::::res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
+enemy_sniper.tscn::PackedScene/PackedScene::282429487228948892::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://deros6k3h6qqk::::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
+SpewlingWeapon.tscn::PackedScene/PackedScene::5801940965509982911::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://lg400q3grkqe::::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
+::res://Prefabs/GamePrefabs/::1747639188
+::res://Prefabs/GamePrefabs/Enemy/::1747639382
 Biomancer.tscn::PackedScene::8528004963983586978::1747633469::0::1::::<><><>0<>0<><>::uid://g04nhdfw0ljv::::res://Assets/Scripts/Enemy/Biomancer.gd<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://lvgy0v7pooxo::::res://Assets/Art/PlaceHolders/Biomancer.png
 Bruiser.tscn::PackedScene::2161202587755817131::1747633469::0::1::::<><><>0<>0<><>::uid://cm63thydonoab::::res://Assets/Art/Sprites/Bruiser_Anim_Draft.png
 FleshSpawn.tscn::PackedScene::6099721824275806815::1747633470::0::1::::<><><>0<>0<><>::uid://c0hgctv1iqivd::::res://Assets/Scripts/Enemy/FleshSpawn.gd<>uid://bgrx0pku0nat2::::res://Assets/Art/PlaceHolders/FleshSpawn.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres
 Hordling.tscn::PackedScene::5836080444311543797::1747633470::0::1::::<><><>0<>0<><>::uid://dspo3pwd2b07v::::res://Assets/Scripts/Enemy/Hordling.gd<>uid://ddnef3vqy6sav::::res://Assets/Art/Sprites/Hordling_WALK_FRONT.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres
 Needling.tscn::PackedScene::3063534752339651139::1747633470::0::1::::<><><>0<>0<><>::uid://dwkfdvkgdh6gf::::res://Assets/Scripts/Enemy/Needling.gd<>uid://l3hvvyuxg3l::::res://Assets/Art/PlaceHolders/Needling.png<>uid://cvlo2kvk78m2b::::res://Assets/Art/Sprites/Sniper_WALK_FRONTCOPY.png<>uid://5u0f3t2cqsg1::::res://Assets/Art/Sprites/Sniper_FIRING_FRONTCOPY.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres
 Spewling.tscn::PackedScene::6743737124146801585::1747633437::0::1::::<><><>0<>0<><>::uid://dqvehgfws03pn::::res://Assets/Scripts/Enemy/Spewling.gd<>uid://bc0w8bxcxehyv::::res://Assets/Art/Sprites/Spewling_WALK_FRONT.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres
-Tumor.tscn::PackedScene::8795018727564879230::1747633470::0::1::::<><><>0<>0<><>::uid://dnpnwa1oi74rf::::res://Assets/Scripts/Enemy/Tumor.gd<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://brumed0irh5wp::::res://Assets/Art/PlaceHolders/Tumor.png
-::res://Prefabs/CodePrefabs/Misc/::1745985613
-TalentIcon.tscn::PackedScene::7066809161312464463::1745985613::0::1::::<><><>0<>0<><>::uid://cx2v6y6jjrgq2::::res://Assets/Art/PlaceHolders/SuspiciousStew.png
-::res://Prefabs/CodePrefabs/Particles/::1747635727
-BloodSmear.tscn::PackedScene::3842239026870965741::1747048383::0::1::::<><><>0<>0<><>::uid://il3d77qsjatw::::res://Assets/Art/PlaceHolders/SmallSplat.png<>uid://cmhd3w7xxvq0r::::res://Assets/Scripts/Misc/BloodSmear.gd
-DeathGore.tscn::PackedScene::5005762268551756053::1747635727::0::1::::<><><>0<>0<><>::uid://boidif4r0s2uj::::res://Assets/Art/Particles/Chunk.png<>uid://c67ig754t8f54::::res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
-MeatChunks.tscn::PackedScene::5731885236221195786::1747635727::0::1::::<><><>0<>0<><>::uid://boidif4r0s2uj::::res://Assets/Art/Particles/Chunk.png<>uid://dgsmtk57bsy30::::res://Assets/Scripts/Misc/MeatChunk.gd<>uid://bu0hd6oio87hx::::res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn<>uid://dun2ub8vj0nwo::::res://Assets/Art/Particles/SmallChunk.png
-RocketExplosion.tscn::PackedScene::4056132915284539200::1747048383::0::1::::<><><>0<>0<><>::uid://dpfkbxttl18ut::::res://Assets/Scripts/Misc/RocketExplosion.gd<>uid://dlbcv4fwesinh::::res://Assets/Art/Particles/Shrapnel/Shrapnel1.png<>uid://cdba0j1aivyil::::res://Assets/Art/Particles/Shrapnel/Shrapnel2.png<>uid://cbyayuj1fvwuc::::res://Assets/Art/Particles/Shrapnel/Shrapnel3.png<>uid://doje141ck2jad::::res://Assets/Art/Particles/Shrapnel/Shrapnel4.png
-TumourExplosionGore.tscn::PackedScene::56150272929566556::1747635727::0::1::::<><><>0<>0<><>::uid://boidif4r0s2uj::::res://Assets/Art/Particles/Chunk.png<>uid://cvgey35vc8ku2::::res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
-::res://Prefabs/CodePrefabs/Particles/Preloaded/::1747633469
-DeathExplosionGore.tres::ParticleProcessMaterial::7015253787436338565::1747633469::0::1::::<><><>0<>0<><>::
-TumourExplosionGore.tres::ParticleProcessMaterial::6259480595290086579::1747633469::0::1::::<><><>0<>0<><>::
-::res://Prefabs/CodePrefabs/Pickups/::1745985613
-pickup.tscn::PackedScene::4221443159372412624::1745985613::0::1::::<><><>0<>0<><>::
-::res://Prefabs/CodePrefabs/Projectiles/::1747635727
-beam_projectile.tscn::PackedScene::3170249339467567433::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://dkmb22ot6ssvx::::res://Assets/Scripts/Projectiles/beam_projectile.gd
-bullet.tscn::PackedScene::5551016277185381318::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-DragonShotgunProjectile.tscn::PackedScene::8210424716054258191::1747048383::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-katana_projectile.tscn::PackedScene::4416475755661685675::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://clf4d48n5vkl1::::res://Assets/Scripts/Projectiles/katana_projectile.gd<>uid://btr7b30u5eyo6::::res://Assets/Art/PlaceHolders/katana.png
-MinigunBullet.tscn::PackedScene::5793946528221865026::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-MinigunProjectile.tscn::PackedScene::7895184390031815805::1745990914::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd
-projectile.tscn::PackedScene::2706467634044844464::1746603648::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd
-rocket_projectile.tscn::PackedScene::4183638707307266114::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://oco7h58juew5::::res://Assets/Scripts/Projectiles/rocket_projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png<>uid://bx126fqmmm8p5::::res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
-ShotgunBullet.tscn::PackedScene::4895641409828282138::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-ShotgunProjectile.tscn::PackedScene::8489562088671086142::1746603648::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/::1747635727
-EnemyShotgunBullet.tscn::PackedScene::8402719055212998615::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-EnemySniperBullet.tscn::PackedScene::7475995674594149842::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
-enemy_bullet.tscn::PackedScene::786270323262079156::1747635727::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://blamcw8mhja65::::res://Assets/Art/Sprites/EnemyBullet.png<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres
-::res://Prefabs/CodePrefabs/Weapons/::1747635727
-akimbo_smg.tscn::PackedScene::5333987692817734539::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://clc7orxvf6iws::::res://Prefabs/CodePrefabs/Projectiles/bullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://dk0b0g2aim660::::res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
-beamer.tscn::PackedScene::1482958320978565296::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://blfxsqho34haf::::res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
-DragonShotgun.tscn::PackedScene::6274220263941088768::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cb0qq7tf5boik::::res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://ch25iethvs31m::::res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.tres<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
-katana.tscn::PackedScene::4541109519708437907::1744703374::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd
-Minigun.tscn::PackedScene::515927735240588731::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cosvpnpnfm3b7::::res://Prefabs/CodePrefabs/Projectiles/MinigunBullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
-rocket_launcher.tscn::PackedScene::3858792854796454015::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://b0ut6hr1btnda::::res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
-Shotgun.tscn::PackedScene::7594246334897073441::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cb0qq7tf5boik::::res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
-Smg.tscn::PackedScene::7192793212490370606::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://clc7orxvf6iws::::res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
-::res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/::1747635727
-EnemyShotgun.tscn::PackedScene::5962662789928762789::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://dryls42ca6ys2::::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://bdk8ayxby0fm2::::res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
-enemy_sniper.tscn::PackedScene::282429487228948892::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://deros6k3h6qqk::::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
-SpewlingWeapon.tscn::PackedScene::5801940965509982911::1747635727::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://lg400q3grkqe::::res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
-::res://Prefabs/GamePrefabs/::1747635685
-::res://Scenes/::1747635802
-AlphaLevel1.tscn::PackedScene::643266611624645085::1747635801::0::1::::<><><>0<>0<><>::uid://bxk863vd0tmhg::::res://Assets/Scripts/Misc/AlphaLevel1.gd<>uid://dxgymr20ddjex::::res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png<>uid://c4aphhneqg8wg::::res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.png<>uid://db7rhu7tjug88::::res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd<>uid://o3t2gdsrqcux::::res://Assets/Art/PlaceHolders/BarTemp.png<>uid://dmyuiq7n3wok0::::res://Assets/Art/PlaceHolders/XPCircle.png<>uid://cx2v6y6jjrgq2::::res://Assets/Art/PlaceHolders/SuspiciousStew.png<>uid://c1e15u5wmemfj::::res://Assets/Scripts/Misc/FPS.gd<>uid://7cuddnlv4o8k::::res://Assets/Art/Objects/LampPost.png<>uid://dh8o41wpv6qq2::::res://Assets/Scripts/Player Scripts/player.gd<>uid://hgn16cdw4g8d::::res://Assets/Art/Sprites/LightAura.png<>uid://copqcmw1wsir7::::res://Assets/Art/PlaceHolders/JasonsGun.png<>uid://bpvtxmtvn5dbo::::res://Assets/Art/PlaceHolders/JermaAbility.png<>uid://dbi32xbkn2es3::::res://Assets/Art/Sprites/PlaceholderSpriteSheet.png
+Tumor.tscn::PackedScene::8795018727564879230::1747639382::0::1::::<><><>0<>0<><>::uid://dnpnwa1oi74rf::::res://Assets/Scripts/Enemy/Tumor.gd<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://brumed0irh5wp::::res://Assets/Art/PlaceHolders/Tumor.png
+::res://Prefabs/GamePrefabs/Objects/::1747639194
+lamp_post.tscn::PackedScene::2639000777255714875::1747639194::0::1::::<><><>0<>0<><>::uid://7cuddnlv4o8k::::res://Assets/Art/Objects/LampPost.png<>uid://hgn16cdw4g8d::::res://Assets/Art/Sprites/LightAura.png
+::res://Prefabs/GamePrefabs/Player/::1747639179
+player.tscn::PackedScene::5426244444747495076::1747639179::0::1::::<><><>0<>0<><>::uid://dh8o41wpv6qq2::::res://Assets/Scripts/Player Scripts/player.gd<>uid://hgn16cdw4g8d::::res://Assets/Art/Sprites/LightAura.png<>uid://dbi32xbkn2es3::::res://Assets/Art/Sprites/PlaceholderSpriteSheet.png
+::res://Scenes/::1747639382
+AlphaLevel1.tscn::PackedScene::643266611624645085::1747639382::0::1::::<><><>0<>0<><>::uid://bxk863vd0tmhg::::res://Assets/Scripts/Misc/AlphaLevel1.gd<>uid://dxgymr20ddjex::::res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png<>uid://c4aphhneqg8wg::::res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.png<>uid://db7rhu7tjug88::::res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd<>uid://o3t2gdsrqcux::::res://Assets/Art/PlaceHolders/BarTemp.png<>uid://cjkrpn6nhhs0c::::res://Prefabs/GamePrefabs/Player/player.tscn<>uid://dmyuiq7n3wok0::::res://Assets/Art/PlaceHolders/XPCircle.png<>uid://bdul7stkl75pv::::res://Prefabs/GamePrefabs/Objects/lamp_post.tscn<>uid://cx2v6y6jjrgq2::::res://Assets/Art/PlaceHolders/SuspiciousStew.png<>uid://c1e15u5wmemfj::::res://Assets/Scripts/Misc/FPS.gd<>uid://copqcmw1wsir7::::res://Assets/Art/PlaceHolders/JasonsGun.png<>uid://bpvtxmtvn5dbo::::res://Assets/Art/PlaceHolders/JermaAbility.png
 GlobalAudioController.tscn::PackedScene/PackedScene::6168281207012145301::1746603647::0::1::::<><><>0<>0<><>::uid://cfh31cdyrncnm::::res://Assets/Scripts/Universal Scripts/global_audio_controller.gd<>uid://c0vahobgr2g8::::res://Assets/Sound/Music/A desperate battle, no way back_ (Track 04).mp3<>uid://yra0veoy0d5n::::res://Assets/Sound/Music/MenuMusic.mp3<>uid://bjeqt08vvx4aa::::res://Assets/Sound/SFX/ClickSound.wav
 LevelSelectScene.tscn::PackedScene/PackedScene::2242124229280110864::1747124900::0::1::::<><><>0<>0<><>::uid://qnj5li40ekpp::::res://Assets/Art/Menu/LevelSelectTitle.png<>uid://bk0kbugyn1jxp::::res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd<>uid://cm6wksto0tsna::::res://Assets/Art/Menu/ClassSelectTitle.png<>uid://cgfflscj3lda3::::res://Assets/Art/Menu/Commando.jpg<>uid://v54cp8irhyvq::::res://Assets/Art/Menu/Technomancer.png
-MenuScene.tscn::PackedScene/PackedScene::721202645147607588::1747633469::0::1::::<><><>0<>0<><>::uid://oppimbyc3te2::::res://Assets/Scripts/Menu Scripts/MenuScene.gd<>uid://dylt3gbm8jxrj::::res://Assets/Art/PlaceHolders/titlescreenblank.png<>uid://b7fab4revb7tp::::res://Assets/Art/Menu/OperationHavocTitle.png<>uid://dib45hhu31nt::::res://Assets/Art/PlaceHolders/ControlsBg.png
-PlaygroundScene.tscn::PackedScene::727163796759654175::1747635724::0::1::::<><><>0<>0<><>::uid://db7rhu7tjug88::::res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd<>uid://dxgymr20ddjex::::res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png<>uid://o3t2gdsrqcux::::res://Assets/Art/PlaceHolders/BarTemp.png<>uid://dmyuiq7n3wok0::::res://Assets/Art/PlaceHolders/XPCircle.png<>uid://dh8o41wpv6qq2::::res://Assets/Scripts/Player Scripts/player.gd<>uid://c1e15u5wmemfj::::res://Assets/Scripts/Misc/FPS.gd<>uid://dbi32xbkn2es3::::res://Assets/Art/Sprites/PlaceholderSpriteSheet.png<>uid://c3cymoelvi3cn::::res://Prefabs/CodePrefabs/Enemy/Spewling.tscn<>uid://hgn16cdw4g8d::::res://Assets/Art/Sprites/LightAura.png<>uid://cx2v6y6jjrgq2::::res://Assets/Art/PlaceHolders/SuspiciousStew.png
-::res://Scenes/Misc/::1747048383
+MenuScene.tscn::PackedScene::721202645147607588::1747633469::0::1::::<><><>0<>0<><>::uid://oppimbyc3te2::::res://Assets/Scripts/Menu Scripts/MenuScene.gd<>uid://dylt3gbm8jxrj::::res://Assets/Art/PlaceHolders/titlescreenblank.png<>uid://b7fab4revb7tp::::res://Assets/Art/Menu/OperationHavocTitle.png<>uid://dib45hhu31nt::::res://Assets/Art/PlaceHolders/ControlsBg.png
+PlaygroundScene.tscn::PackedScene::727163796759654175::1747635814::0::1::::<><><>0<>0<><>::uid://db7rhu7tjug88::::res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd<>uid://dxgymr20ddjex::::res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png<>uid://o3t2gdsrqcux::::res://Assets/Art/PlaceHolders/BarTemp.png<>uid://dmyuiq7n3wok0::::res://Assets/Art/PlaceHolders/XPCircle.png<>uid://dh8o41wpv6qq2::::res://Assets/Scripts/Player Scripts/player.gd<>uid://c1e15u5wmemfj::::res://Assets/Scripts/Misc/FPS.gd<>uid://dbi32xbkn2es3::::res://Assets/Art/Sprites/PlaceholderSpriteSheet.png<>uid://c3cymoelvi3cn::::res://Prefabs/GamePrefabs/Enemy/Spewling.tscn<>uid://hgn16cdw4g8d::::res://Assets/Art/Sprites/LightAura.png<>uid://cx2v6y6jjrgq2::::res://Assets/Art/PlaceHolders/SuspiciousStew.png
+::res://Scenes/Misc/::1747638259
 desktop.ini::TextFile/TextFile::-1::1742189924::0::1::::<><><>0<>0<><>::
 enemy.tscn::PackedScene/PackedScene::4958281221787423350::1746544112::0::1::::<><><>0<>0<><>::uid://bs0bfjn56fwlt::::res://Assets/Art/PlaceHolders/Player.png<>uid://bcgibjer11dey::::res://Assets/Scripts/Enemy/OldEnemies/enemy1.gd<>uid://o3t2gdsrqcux::::res://Assets/Art/PlaceHolders/BarTemp.png
 enemy_2.tscn::PackedScene/PackedScene::3745633401697395057::1746544112::0::1::::<><><>0<>0<><>::uid://j2brxgn7po3j::::res://Assets/Scripts/Enemy/OldEnemies/enemy2.gd<>uid://bs0bfjn56fwlt::::res://Assets/Art/PlaceHolders/Player.png
 enemy_3.tscn::PackedScene/PackedScene::533002334867637741::1746544112::0::1::::<><><>0<>0<><>::uid://bs0bfjn56fwlt::::res://Assets/Art/PlaceHolders/Player.png<>uid://7gv0u7m0fnce::::res://Assets/Scripts/Enemy/OldEnemies/enemy3.gd
 enemy_4.tscn::PackedScene/PackedScene::7797894516022845029::1746544112::0::1::::<><><>0<>0<><>::uid://bs0bfjn56fwlt::::res://Assets/Art/PlaceHolders/Player.png<>uid://b7d7d020brysy::::res://Assets/Scripts/Enemy/OldEnemies/enemy4.gd
 Talent1.gd::GDScript/GDScript::7223135639548629283::1744965774::0::1::::<>PanelContainer<><>0<>0<><>::
-TestSkillTree.tscn::PackedScene/PackedScene::775721040465291349::1747048383::0::1::::<><><>0<>0<><>::res://Scenes/Misc/Talent1.gd
-::res://Scenes/Options/::1747633470
-CommandoSkillTree.tscn::PackedScene/PackedScene::1482909126855715195::1747633469::0::1::::<><><>0<>0<><>::uid://dh4kv8hmrue0o::::res://Scenes/Options/SkillButton.tscn<>uid://dovo4j0y266qt::::res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+TestSkillTree.tscn::PackedScene::775721040465291349::1747638259::0::1::::<><><>0<>0<><>::res://Scenes/Misc/Talent1.gd
+::res://Scenes/Options/::1747637139
+CommandoSkillTree.tscn::PackedScene::1482909126855715195::1747637139::0::1::::<><><>0<>0<><>::uid://dh4kv8hmrue0o::::res://Scenes/Options/SkillButton.tscn<>uid://dovo4j0y266qt::::res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 GlobalBrightness.tscn::PackedScene/PackedScene::38526933770845637::1747048383::0::1::::<><><>0<>0<><>::uid://dxainc2u2txj2::::res://Assets/Scripts/Menu Scripts/global_brightness.gd
-OptionsScene.tscn::PackedScene/PackedScene::3176783398074510821::1747633470::0::1::::<><><>0<>0<><>::uid://bjja86ke8qrmn::::res://Assets/Scripts/Menu Scripts/OptionsScene.gd<>uid://b83rsxcl721n7::::res://Assets/Scripts/Menu Scripts/brightness_slider.gd<>uid://ba1r4kddlu76f::::res://Assets/Scripts/Menu Scripts/volume_control_slider.gd<>uid://dptye62ocip5c::::res://Assets/Scripts/Menu Scripts/particle_options.gd
-PauseMenu.tscn::PackedScene/PackedScene::4994658538511177887::1747633470::0::1::::<><><>0<>0<><>::uid://dib45hhu31nt::::res://Assets/Art/PlaceHolders/ControlsBg.png<>uid://bq1smq7025jr3::::res://Assets/Scripts/Menu Scripts/PauseNode.gd<>uid://bli4fnfa7mnar::::res://Scenes/Options/OptionsScene.tscn
-SkillButton.tscn::PackedScene/PackedScene::7711097327665850848::1747633469::0::1::::<><><>0<>0<><>::uid://cwv5csmk6r8ne::::res://Assets/Art/PlaceHolders/TestSkillButton.png<>uid://bw54pd6kp40nr::::res://Assets/Scripts/Menu Scripts/skill_button.gd
+OptionsScene.tscn::PackedScene::3176783398074510821::1747633470::0::1::::<><><>0<>0<><>::uid://bjja86ke8qrmn::::res://Assets/Scripts/Menu Scripts/OptionsScene.gd<>uid://b83rsxcl721n7::::res://Assets/Scripts/Menu Scripts/brightness_slider.gd<>uid://ba1r4kddlu76f::::res://Assets/Scripts/Menu Scripts/volume_control_slider.gd<>uid://dptye62ocip5c::::res://Assets/Scripts/Menu Scripts/particle_options.gd
+PauseMenu.tscn::PackedScene::4994658538511177887::1747637139::0::1::::<><><>0<>0<><>::uid://dib45hhu31nt::::res://Assets/Art/PlaceHolders/ControlsBg.png<>uid://bq1smq7025jr3::::res://Assets/Scripts/Menu Scripts/PauseNode.gd<>uid://bli4fnfa7mnar::::res://Scenes/Options/OptionsScene.tscn
+SkillButton.tscn::PackedScene::7711097327665850848::1747633469::0::1::::<><><>0<>0<><>::uid://cwv5csmk6r8ne::::res://Assets/Art/PlaceHolders/TestSkillButton.png<>uid://bw54pd6kp40nr::::res://Assets/Scripts/Menu Scripts/skill_button.gd
