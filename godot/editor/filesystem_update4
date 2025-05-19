@@ -1,36 +1,14 @@
 res://Scenes/AlphaLevel1.tscn
-<<<<<<< Updated upstream
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
-=======
-res://Prefabs/Particles/Preloaded/TumourExplosionGore.tres
-res://Prefabs/Particles/Preloaded/DeathExplosionGore.tres
->>>>>>> Stashed changes
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
-<<<<<<< Updated upstream
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-=======
-res://Scenes/PlaygroundScene.tscn
-res://Assets/Scripts/Enemy/Biomancer.gd
-res://Assets/Scripts/Enemy/Needling.gd
-res://Assets/Scripts/Enemy/Spewling.gd
-res://Assets/Scripts/Misc/AlphaLevel1.gd
-res://Assets/Scripts/Misc/SmearManager.gd
-res://Assets/Scripts/Pickups/pickup_factory.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
-res://Assets/Scripts/Player Scripts/Abilities/SniperBeam.gd
-res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
-res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
-res://Assets/Scripts/Universal Scripts/Global.gd
-res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
-res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
-res://Assets/Scripts/Enemy/Tumor.gd
-res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Enemy/Needling.gd
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
-res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/SwapWeapons_Shotgun1Smg2.gd
->>>>>>> Stashed changes
+res://Prefabs/GamePrefabs/Objects/lamp_post.tscn
+res://Prefabs/GamePrefabs/Player/player.tscn
+res://Assets/Scripts/Player Scripts/player.gd

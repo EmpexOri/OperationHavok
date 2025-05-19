@@ -20,15 +20,15 @@ var BulletSpeed = 0
 var frame_counter := 0
 
 var weapon_data := {
-	"res://Prefabs/Weapons/Smg.tscn": {
+	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
 		"name": "SMG",
 		"sprite": preload("res://Assets/Art/Sprites/SMG.png"),
 	},
-	"res://Prefabs/Weapons/akimbo_smg.tscn": {
+	"res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn": {
 		"name": "SMG",
 		"sprite": preload("res://Assets/Art/Sprites/SMGAkimbo.png"),
 	},
-	"res://Prefabs/Weapons/Shotgun.tscn": {
+	"res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn": {
 		"name": "Shotgun",
 		"sprite": preload("res://Assets/Art/Sprites/Shotgun.png"),
 	}
