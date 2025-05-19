@@ -86,7 +86,7 @@ func _physics_process(_delta):
 	# ANIMATION HANDLING
 	if is_firing:
 		# Keep firing animation playing slowly
-		sprite.speed_scale = 0.35
+		sprite.speed_scale = 1 #0.35
 		# Moving animation stays the same
 	elif IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
 		if sprite.animation != "move":
@@ -108,7 +108,7 @@ func fire():
 	if CurrentWeapon:
 		is_firing = true
 		sprite.play("fire")
-		fire_delay_timer.start(1.5)
+		fire_delay_timer.start(0.5)
 
 func random_move():
 	IsMovingRandomly = true
