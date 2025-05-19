@@ -49,10 +49,11 @@ func resolve_target() -> Node2D:
 	return players[0] if players.size() > 0 else null
 
 func deal_damage(damage: int, _from_position = null):
-	print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", Health - damage, ")")
-	Health -= damage
+	var new_health = max(0, Health - damage)
+	print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", new_health, ")")
+	Health = new_health
 	flash_white()
-	if Health <= 0:
+	if Health == 0:
 		on_death()
 
 func on_death():
