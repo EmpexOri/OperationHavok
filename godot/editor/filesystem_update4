@@ -18,3 +18,6 @@ res://Assets/Scripts/Menu Scripts/skill_button.gd
 res://Scenes/Misc/TestSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Prefabs/CodePrefabs/Abilities/SwapWeapons_Shotgun1Smg2.tscn
+res://Scenes/Options/PauseMenu.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
