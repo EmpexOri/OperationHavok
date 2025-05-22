@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://hl6iwd1rn8ux"]
+[gd_scene load_steps=7 format=3 uid="uid://hl6iwd1rn8ux"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_oiv7d"]
 [ext_resource type="PackedScene" uid="uid://cosvpnpnfm3b7" path="res://Prefabs/CodePrefabs/Projectiles/MinigunBullet.tscn" id="2_f75ah"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_rqw4w"]
 [ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="4_f75ah"]
+[ext_resource type="Resource" uid="uid://dk0b0g2aim660" path="res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres" id="5_0t4vm"]
 
 [sub_resource type="Resource" id="Resource_t2yw2"]
 script = ExtResource("4_f75ah")
@@ -14,5 +15,4 @@ metadata/_custom_type_script = "uid://cvwir6rctxwae"
 [node name="Minigun" type="Node2D"]
 script = ExtResource("1_oiv7d")
 projectile_scene = ExtResource("2_f75ah")
-base_fire_rate = 0.025
-weapon_effects = Array[ExtResource("3_rqw4w")]([SubResource("Resource_t2yw2")])
+weapon_effects = Array[ExtResource("3_rqw4w")]([ExtResource("5_0t4vm"), SubResource("Resource_t2yw2")])

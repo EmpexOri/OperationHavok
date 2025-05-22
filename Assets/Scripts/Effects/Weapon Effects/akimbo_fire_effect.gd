@@ -1,51 +1,56 @@
 extends WeaponEffect
 class_name AkimboWeaponEffect
 
-# An offset firing effect for a weapon firing two projectiles
+@export var shot_offset: float = 10.0
+@export var barrel_count: int = 2 # Supports 1, 2, or 3 barrels
 
-@export var shot_offset: float = 10.0 # The offset distance between the two projectiles
-
-# Initialise the effects name
 func _init() -> void:
 	effect_name = "AkimboEffect"
 
-# Not neccessary as we are just modifying the firing logic
 func modify_parameters(parameters: Dictionary) -> Dictionary:
 	return parameters
-	
-# Override weapon firing logic
-func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect]):
-	# Get the direction perpendicular to the firing direction 
+
+func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect]) -> bool:
+	var fire_parameters = {
+		"projectile_count": 1,
+		"spread_angle": 0,
+		"direction": direction
+	}
+
+	# Allow other weapon effects to modify parameters, so we can work with iaccruay :D
+	for effect in weapon.weapon_effects:
+		if effect != self:
+			fire_parameters = effect.modify_parameters(fire_parameters)
+
+	var inaccuracy_angle: float = fire_parameters.get("inaccuracy_angle", 0)
 	var perp_direction = Vector2(direction.y, -direction.x).normalized()
-	
-	# Calculate the offset origins - relative to spawn_position
-	var origin_1 = spawn_position + perp_direction * (shot_offset / 2.0)
-	var origin_2 = spawn_position - perp_direction * (shot_offset / 2.0)
-	
-	# Calculate the final spawn positions, considering offset
-	var final_pos_1 = origin_1 + direction * weapon.fire_offset
-	var final_pos_2 = origin_2 + direction * weapon.fire_offset
-	
-	# Spawn the first projectile
-	var proj1 = weapon.projectile_scene.instantiate()
-	var main_scene1 = weapon.get_tree().current_scene
-	if main_scene1:
-		main_scene1.add_child(proj1)
-	else:
-		if proj1: proj1.queue_free()
+
+	# Clamp barrel count between 1 and 3, PLEASE DO NOT ADD MORE
+	var clamped_barrel_count = clamp(barrel_count, 1, 3)
+
+	var fire_data = []
+
+	# Calculate origins for each barrel
+	for i in range(clamped_barrel_count):
+		var offset_index = i - (clamped_barrel_count - 1) / 2.0 # Basically we just move ur fire point depending on barrels
+		var offset = offset_index * shot_offset
+		var origin = spawn_position + perp_direction * offset
+
+		var dir = direction.normalized()
+		if inaccuracy_angle != 0:
+			dir = dir.rotated(deg_to_rad(randf_range(-inaccuracy_angle, inaccuracy_angle)))
+
+		var final_pos = origin + dir * weapon.fire_offset
+		fire_data.append({ "pos": final_pos, "dir": dir })
+
+	# Fire each projectile
+	var main_scene = weapon.get_tree().current_scene
+	if not main_scene:
 		return false
-		
-	proj1.start(final_pos_1, direction, weapon.owning_entity, projectile_effects.duplicate(true))
-	
-	# Spawn the second projectile
-	var proj2 = weapon.projectile_scene.instantiate()
-	var main_scene2 = weapon.get_tree().current_scene
-	if main_scene2:
-		main_scene2.add_child(proj2)
-	else:
-		if proj2: proj2.queue_free()
-		return true
-	
-	proj2.start(final_pos_2, direction, weapon.owning_entity, projectile_effects.duplicate(true))
-	
-	return true # We must return true or this code won't override the base firing logic in the weapon object
+
+	for data in fire_data:
+		var proj = weapon.projectile_scene.instantiate()
+		main_scene.add_child(proj)
+		proj.start(data["pos"], data["dir"], weapon.owning_entity, projectile_effects.duplicate(true))
+
+	return true
