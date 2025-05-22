@@ -9,6 +9,7 @@ extends Node
 @onready var Title: Label = $"Title"
 @onready var MainButton: Button = $MenuButton
 @onready var BackPanel: ColorRect = $Background
+@onready var BackPanel2: ColorRect = $Background2
 
 # Controls Menu
 @onready var ControlsTitle: Label = $"ControlsMenu/ControlsTitle"
@@ -29,6 +30,7 @@ func show_pause_menu() -> void:
 	Title.visible = true
 	MainButton.visible = true
 	BackPanel.visible = true
+	BackPanel2.visible = true
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
@@ -47,6 +49,7 @@ func _on_resume_button_pressed() -> void:
 	Title.visible = false
 	MainButton.visible = false
 	BackPanel.visible = false
+	BackPanel2.visible = false
 	ControlsTitle.visible = false
 	ScrollBox.visible = false
 	BackButton.visible = false
