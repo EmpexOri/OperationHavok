@@ -13,3 +13,7 @@ res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
 res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Assets/Scripts/Effects/Weapon Effects/shot_delay.gd
+res://Assets/Scripts/Effects/Weapon Effects/Instances/shot_delay.tres
