@@ -18,11 +18,10 @@ var CurrentWeapon: Weapon
 signal died(enemy)
 
 func _ready():
-	add_to_group("Player")
 	add_to_group(Group)
 	add_to_group(SummonGroup)
-	
 	setup_weapon()
+	await get_tree().process_frame  # Give time for Player to exist in their pretty little eyes <3
 	start()
 
 func setup_weapon():

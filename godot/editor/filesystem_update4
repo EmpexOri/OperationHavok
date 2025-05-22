@@ -5,19 +5,16 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
-res://Prefabs/GamePrefabs/Objects/lamp_post.tscn
-res://Prefabs/GamePrefabs/Player/player.tscn
-res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
-res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
-res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
-res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tilemap.tscn
 res://Scenes/Misc/TestSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Prefabs/CodePrefabs/Abilities/SwapWeapons_Shotgun1Smg2.tscn
 res://Scenes/Options/PauseMenu.tscn
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
+res://Prefabs/GamePrefabs/Player/player.tscn
+res://Assets/Scripts/Misc/AlphaLevel1.gd
+res://Assets/Scripts/Misc/AlphaLevel1Manager.gd
+res://Assets/Scripts/Misc/ArenaManager.gd
+res://Assets/Scripts/Misc/Arena.gd
+res://Assets/Scripts/Misc/CarparkArena.gd
+res://Assets/Scripts/Misc/Level1Manager.gd
+res://Assets/Scripts/Enemy/Enemy.gd

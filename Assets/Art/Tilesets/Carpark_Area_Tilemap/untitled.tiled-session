@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Spawn_Area_Tilemap.tmx",
+    "activeFile": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tilemap.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -22,20 +22,125 @@
         "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Elevator_Tilemap/Scaffolding_Tileset_Autotile.tsx": {
             "scaleInDock": 1
         },
-        "Carpark_Tilemap.tmx": {
-            "scale": 2,
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled/Tiled_Project/Prototype_Tilemaps/Spawn_Area_Tilemap/Spawn_Area_Tilemap.tmx": {
+            "scale": 1.4563839285714284,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 499.75,
-                "y": 275
+                "x": 559.9485025901972,
+                "y": 319.97057290868406
             }
         },
-        "Rules/Carpark_Autotile_Rules.tmx": {
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled/Tiled_Project/Prototype_Tilemaps/Spawn_Area_Tilemap/Spawn_Area_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled/Tiled_Project/Prototype_Tilemaps/Spawn_Area_Tilemap/Spawn_Area_Tilset.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap - Copy/Carpark_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap - Copy/Carpark_Tilset.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap - Copy/Rules/Carpark_Autotile_Rules.tmx": {
             "scale": 2.9924999999999997,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 200.00000000000003,
-                "y": 75.52213868003344
+                "x": -27.234753550543026,
+                "y": 51.29490392648288
+            }
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Carpark_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Carpark_Tilset.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tilemap.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1218.3333333333333,
+                "y": 490.66666666666663
+            }
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tileset.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 4
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tileset_Autotile.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Rules/Park_Autotile_Rules.tmx": {
+            "scale": 4,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 115.125,
+                "y": 137
+            }
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Carpark_Area_Tilemap/Carpark_Tilemap.tmx": {
+            "scale": 0.6234375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 799.5989974937344,
+                "y": 959.1979949874687
+            }
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Carpark_Area_Tilemap/Carpark_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Carpark_Area_Tilemap/Carpark_Tilset.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Scaffolding_Tilemap/Scaffolding_Tilemap.tmx": {
+            "scale": 2.5486718749999997,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 319.97057290868406,
+                "y": 160.08337675872852
+            }
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Scaffolding_Tilemap/Scaffolding_Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Scaffolding_Tilemap/Scaffolding_Tileset_Autotile.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Test_Area_Tilemap/city-tileset-1.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Test_Area_Tilemap/prototype-level-road.tmx": {
+            "scale": 1.0619466145833334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 767.9293749808417,
+                "y": 208.108389786347
+            }
+        },
+        "Carpark_Tilemap.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 665.6666666666665,
+                "y": 973.3333333333333
+            }
+        },
+        "Carpark_Tileset_Autotile.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 5.5
+        },
+        "Carpark_Tilset.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 5.5
+        },
+        "Rules/Carpark_Autotile_Rules.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 201.1818181818182,
+                "y": 200.09090909090912
             }
         },
         "Rules/Spawn_Area_Autotile_Rules.tmx": {
@@ -77,9 +182,9 @@
             "scaleInEditor": 8
         }
     },
-    "last.exportedFilePath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/Current_Test_FootAct/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Scenes/Tilemaps",
-    "last.externalTilesetPath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/Current_Test_FootAct/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Carpark_Area_Tilemap",
-    "last.imagePath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/Current_Test_FootAct/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Carpark_Area_Tilemap",
+    "last.exportedFilePath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Scenes",
+    "last.externalTilesetPath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap",
+    "last.imagePath": "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap",
     "map.height": 25,
     "map.lastUsedExportFilter": "Godot 4 Scene files (*.tscn)",
     "map.lastUsedFormat": "tmx",
@@ -87,19 +192,26 @@
     "map.tileWidth": 16,
     "map.width": 25,
     "openFiles": [
-        "Spawn_Area_Tilset.tsx",
-        "Spawn_Area_Tileset_Autotile.tsx",
-        "Rules/Spawn_Area_Autotile_Rules.tmx",
-        "Spawn_Area_Tilemap.tmx"
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tileset.tsx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Rules/Park_Autotile_Rules.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tileset_Autotile.tsx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tilemap.tmx"
     ],
     "project": "untitled.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
-        "Rules/Spawn_Area_Autotile_Rules.tmx",
-        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Github Downloads/FoolsAct-e5e5af32fe977159b578dbff664688f7fa67a03c/Tiled_Project/Elevator_Tilemap/Rules/Elevator_Autotile_Rules.tmx",
-        "Spawn_Area_Tilset.tsx",
-        "Spawn_Area_Tileset_Autotile.tsx",
-        "Spawn_Area_Tilemap.tmx",
-        "Spawn_Area_Autotile_Rules.tmx"
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tileset.tsx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Rules/Park_Autotile_Rules.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tileset_Autotile.tsx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Godot_Testing/FoolsAct-main/Tilemaps/Park_Area_Tilemap/Park_Tilemap.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled/Tiled_Project/Prototype_Tilemaps/Spawn_Area_Tilemap/Spawn_Area_Tilemap.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Test_Area_Tilemap/prototype-level-road.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Scaffolding_Tilemap/Scaffolding_Tilemap.tmx",
+        "C:/Users/James/Documents/James' Documents/Uni Dcouments/2025-S1/GAM30002/Tiled_Maps_Operation_Havok/Old_Prototype_Tilemaps/Carpark_Area_Tilemap/Carpark_Tilemap.tmx",
+        "Carpark_Tilemap.tmx",
+        "Carpark_Tilset.tsx",
+        "Carpark_Tileset_Autotile.tsx",
+        "Rules/Carpark_Autotile_Rules.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

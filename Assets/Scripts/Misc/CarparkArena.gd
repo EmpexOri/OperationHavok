@@ -1,5 +1,7 @@
 extends Node2D
 
+var CarparkAreaActivated := false
+
 const HORDLING = preload("res://Prefabs/GamePrefabs/Enemy/Hordling.tscn")
 const SPEWLING = preload("res://Prefabs/GamePrefabs/Enemy/Spewling.tscn")
 const BIOMANCER = preload("res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn")
@@ -35,12 +37,12 @@ func _ready():
 			spawn_points.append(spawn_node)
 		else:
 			push_error("Missing spawn point: %s" % node_name)
-
+	
 	PauseMenu = PAUSE_MENU_SCENE.instantiate()
 	PauseMenu.visible = false
 	add_child(PauseMenu)
-
-	start_next_wave()
+	
+	# start_next_wave()
 
 func _input(event):
 	if Input.is_action_just_pressed("InGameOptions"):
@@ -58,6 +60,8 @@ func pause_game():
 		PauseMenu.visible = true
 
 func start_next_wave():
+	if not CarparkAreaActivated:
+		return
 	if wave_in_progress:
 		return
 	if current_wave >= wave_data.size():
@@ -72,7 +76,7 @@ func start_next_wave():
 	for key in data.keys():
 		var count = roll(data[key][0], data[key][1]) + data[key][2]
 		var enemy_scene = null
-
+	
 		match key:
 			"Hordling":
 				enemy_scene = HORDLING
@@ -86,7 +90,7 @@ func start_next_wave():
 				enemy_scene = TUMOR
 			"Random":
 				enemy_scene = [BIOMANCER, NEEDLING, TUMOR].pick_random()
-
+	
 		if enemy_scene:
 			for i in range(count):
 				spawn_enemy_delayed(enemy_scene)
@@ -122,3 +126,8 @@ func roll(dice: int, sides: int) -> int:
 	for i in range(dice):
 		total += randi_range(1, sides)
 	return total
+
+func activate_carpark_area():
+	if not CarparkAreaActivated:
+		CarparkAreaActivated = true
+		start_next_wave()
