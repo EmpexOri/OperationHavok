@@ -191,7 +191,6 @@ scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.513233, 0.513233, 0.513233, 1)
 
 [connection signal="body_entered" from="LevelManager/CarparkTrigger" to="LevelManager" method="_on_carpark_trigger_entered"]
