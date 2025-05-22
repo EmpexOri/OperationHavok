@@ -32,4 +32,11 @@ theme_override_font_sizes/font_size = 11
 text = "Locked"
 horizontal_alignment = 1
 
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+points = PackedVector2Array(712, 274)
+width = 3.0
+default_color = Color(0.136826, 0.136826, 0.136826, 1)
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]

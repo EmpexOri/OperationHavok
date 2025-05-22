@@ -11,7 +11,8 @@ func connect_skill_buttons(node):
 	for child in node.get_children():
 		if child is SkillButton:
 			child.connect("perk_point_used", Callable(self, "update_perk_points_label"))
-		connect_skill_buttons(child)  # Recursively connect nested children
+		# Recursively connect nested children
+		connect_skill_buttons(child)  
 
 
 func _on_back_button_pressed() -> void:

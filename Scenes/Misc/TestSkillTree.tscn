@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://lb1aoduif6ov"]
 
-[ext_resource type="Script" path="res://Scenes/Misc/Talent1.gd" id="1_rituh"]
+[ext_resource type="Script" uid="uid://da568u5xmso64" path="res://Scenes/Misc/Talent1.gd" id="1_rituh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iln7"]
 border_width_left = 2
