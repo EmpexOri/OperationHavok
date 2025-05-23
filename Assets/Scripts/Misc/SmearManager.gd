@@ -34,9 +34,15 @@ func spawn_smear(position: Vector2) -> void:
 	var smear_data = null
 	
 	# Reuse or instantiate
-	if smear_pool.size() > 0:
+	while smear_pool.size() > 0:
 		smear_data = smear_pool.pop_back()
-	else:
+		if is_instance_valid(smear_data.sprite):
+			break
+		else:
+			smear_data = null
+
+	# If no valid smear_data found, instantiate a new one
+	if smear_data == null:
 		var sprite = smear_scene.instantiate()
 		sprite.z_index = -2
 		get_tree().current_scene.add_child(sprite)
