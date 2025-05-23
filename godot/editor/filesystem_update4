@@ -24,3 +24,6 @@ res://Assets/Scripts/Universal Scripts/WeaponData.gd
 res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
+res://Assets/Scripts/Weapons/Weapon.gd

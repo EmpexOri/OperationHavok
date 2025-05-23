@@ -106,7 +106,7 @@ func get_flash_sprite() -> CanvasItem:
 	push_error("get_flash_sprite() not implemented in subclass")
 	return null
 
-func flash_white(flash_color := Color("cb002e"), times := 4, interval := 0.15):
+func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 	var sprite = get_flash_sprite()
 	if not sprite or not sprite.material:
 		return
