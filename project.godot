@@ -151,7 +151,6 @@ DebugInput={
 [physics]
 
 2d/run_on_separate_thread=true
-common/max_physics_steps_per_frame=6
 
 [rendering]
 

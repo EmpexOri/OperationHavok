@@ -27,3 +27,7 @@ res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
 res://Assets/Scripts/Enemy/Enemy.gd
 res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
 res://Assets/Scripts/Weapons/Weapon.gd
+res://Prefabs/CodePrefabs/Weapons/beamer.tscn
+res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
+res://Assets/Scripts/Projectiles/beam_projectile.gd
+res://Prefabs/CodePrefabs/Abilities/SniperBeam.tscn

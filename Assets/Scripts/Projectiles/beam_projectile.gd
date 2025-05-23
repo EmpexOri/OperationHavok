@@ -16,7 +16,9 @@ var hit_this_beam: Array[Node2D] = [] # Bodies hit by this beam
 var pending_collision_query: bool = true
 var direction_for_query: Vector2
 
-func _ready() -> void:
+func _ready():
+	await get_tree().process_frame
+	pending_collision_query = true
 	beam.width = width # Set the beams width
 	beam.points = [Vector2.ZERO, Vector2.ZERO] # Initially set all points to zero
 	
@@ -56,7 +58,8 @@ func perform_beam_query():
 	# Deal damage to enemies in beam
 	for result in results:
 		var body = result.collider
-		if body.has_method("deal_damage"):
+		if body and not hit_this_beam.has(body) and body.has_method("deal_damage"):
+			hit_this_beam.append(body)
 			body.deal_damage(damage)
 	
 	# Draw the beam - this is distinct from the rect we use to query collisions
