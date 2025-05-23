@@ -4,6 +4,11 @@ var PlayerHP: int = 100
 var PlayerHPMax: int = 100
 var CurrentClass: String = "Commando"
 
+var weapon_upgrades = {
+	1: "Smg",
+	2: "Shotgun"
+}
+
 var ClassData = {
 	"Technomancer": {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, "Abilities": []
@@ -18,7 +23,7 @@ var ClassData = {
 }
 
 var AbilityListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"]
-var AbilityListCommando = ["SwapWeapons_Shotgun1Smg2", "SniperBeam", "Minigun"]
+var AbilityListCommando = ["SwapWeapons", "SniperBeam", "Minigun"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 func XPRequiredForLevel(Level: int) -> int:
@@ -110,3 +115,11 @@ func UpdatePerkPointUI():
 	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
 	if UIHandler and UIHandler.has_method("UpdatePerkPoints"):
 		UIHandler.UpdatePerkPoints(ClassData[CurrentClass]["PerkPoints"])
+
+func upgrade_weapon(weapon_name: String, slot: int) -> void:
+	if not WeaponData.weapon_scenes.has(weapon_name):
+		print("Invalid weapon upgrade: ", weapon_name)
+		return
+	
+	weapon_upgrades[slot] = weapon_name
+	print("GlobalPlayer upgraded weapon slot ", slot, " to ", weapon_name)

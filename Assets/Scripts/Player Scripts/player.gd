@@ -52,6 +52,8 @@ func damage_timer():
 	add_child(Damage_Timer)
 	
 func _process(delta):
+	if Input.is_action_just_pressed("DebugInput"):
+		GlobalPlayer.upgrade_weapon("AkimboSmg", 1)
 	frame_counter += 1
 	update_weapon_rotation()
 	if frame_counter >= 30:
