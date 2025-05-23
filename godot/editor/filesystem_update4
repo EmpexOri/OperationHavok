@@ -22,3 +22,5 @@ res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
 res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
 res://Assets/Scripts/Universal Scripts/WeaponData.gd
 res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
+res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
+res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
