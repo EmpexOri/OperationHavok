@@ -1,4 +1,3 @@
-res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
@@ -6,6 +5,7 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/GamePrefabs/Objects/lamp_post.tscn
 res://Prefabs/GamePrefabs/Player/player.tscn
 res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
@@ -13,21 +13,17 @@ res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
 res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
 res://Scenes/AlphaLevel1.tscn
-res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Player Scripts/player.gd
 res://Scenes/Misc/TestSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Scenes/Options/CommandoSkillTree.tscn
 res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
-res://Assets/Scripts/Universal Scripts/WeaponData.gd
-res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
-res://Assets/Scripts/Enemy/Enemy.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
-res://Assets/Scripts/Weapons/Weapon.gd
 res://Prefabs/CodePrefabs/Weapons/beamer.tscn
 res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
-res://Assets/Scripts/Projectiles/beam_projectile.gd
 res://Prefabs/CodePrefabs/Abilities/SniperBeam.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Misc/SmearManager.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Misc/Level1Manager.gd
+res://Assets/Scripts/Misc/CarparkArena.gd

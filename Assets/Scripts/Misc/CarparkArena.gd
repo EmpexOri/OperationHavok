@@ -103,7 +103,7 @@ func spawn_enemy_delayed(scene: PackedScene) -> void:
 	enemy.position = spawn.global_position + Vector2(randf_range(-4, 4), randf_range(-4, 4))
 	enemy.name = "Enemy_" + str(randi())
 	enemies.append(enemy)
-	add_child(enemy)
+	call_deferred("add_child", enemy)  # <-- defer adding the enemy
 	enemy.connect("died", Callable(self, "_on_enemy_died"))
 
 func _on_enemy_died(enemy):

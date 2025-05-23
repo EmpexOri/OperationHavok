@@ -30,23 +30,17 @@ theme_override_font_sizes/font_size = 24
 text = "Weapon swap tree"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 242.0
-offset_top = 307.0
-offset_right = 404.0
-offset_bottom = 338.0
-text = "Back"
-
-[node name="Shotgun" type="Label" parent="."]
+[node name="Shotgun" type="Label" parent="WeaponSwapTitle"]
+layout_mode = 0
 offset_left = 170.0
-offset_top = 45.0
+offset_top = 38.0
 offset_right = 235.0
-offset_bottom = 68.0
+offset_bottom = 61.0
 theme_override_font_sizes/font_size = 14
 text = "Shotgun"
 horizontal_alignment = 1
 
-[node name="DBShotgun" type="Label" parent="Shotgun"]
+[node name="DBShotgun" type="Label" parent="WeaponSwapTitle/Shotgun"]
 layout_mode = 0
 offset_left = -42.0
 offset_top = 21.0
@@ -56,7 +50,7 @@ theme_override_font_sizes/font_size = 10
 text = "Dragon's Breath Shotgun"
 horizontal_alignment = 1
 
-[node name="DragonsBreath" parent="Shotgun" instance=ExtResource("1_cye56")]
+[node name="DragonsBreath" parent="WeaponSwapTitle/Shotgun" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 7.99988
 offset_top = 35.0
@@ -64,7 +58,7 @@ offset_right = 48.0003
 offset_bottom = 75.0
 scale = Vector2(1.2, 1.2)
 
-[node name="RoarAzure" type="Label" parent="Shotgun/DragonsBreath"]
+[node name="RoarAzure" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 72.5
@@ -75,23 +69,24 @@ text = "Roar of the
 Azure Dragon"
 horizontal_alignment = 1
 
-[node name="AzureDragon" parent="Shotgun/DragonsBreath" instance=ExtResource("1_cye56")]
+[node name="AzureDragon" parent="WeaponSwapTitle/Shotgun/DragonsBreath" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.833
 offset_bottom = 140.833
 scale = Vector2(1, 1)
 disabled = true
 
-[node name="SMG" type="Label" parent="."]
+[node name="SMG" type="Label" parent="WeaponSwapTitle"]
+layout_mode = 0
 offset_left = 288.0
-offset_top = 45.0
+offset_top = 38.0
 offset_right = 353.0
-offset_bottom = 68.0
+offset_bottom = 61.0
 theme_override_font_sizes/font_size = 14
 text = "SMG"
 horizontal_alignment = 1
 
-[node name="Akimbo2" type="Label" parent="SMG"]
+[node name="Akimbo2" type="Label" parent="WeaponSwapTitle/SMG"]
 layout_mode = 0
 offset_left = -42.0
 offset_top = 21.0
@@ -101,7 +96,7 @@ theme_override_font_sizes/font_size = 10
 text = "Akimbo SMGs"
 horizontal_alignment = 1
 
-[node name="Akimbo" parent="SMG" instance=ExtResource("1_cye56")]
+[node name="Akimbo" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 7.99991
 offset_top = 35.0
@@ -109,7 +104,7 @@ offset_right = 48.0003
 offset_bottom = 75.0
 scale = Vector2(1.2, 1.2)
 
-[node name="JohnWoo2" type="Label" parent="SMG/Akimbo"]
+[node name="JohnWoo2" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 85.8333
@@ -119,23 +114,24 @@ theme_override_font_sizes/font_size = 9
 text = "John Woo Ref?"
 horizontal_alignment = 1
 
-[node name="JohnWoo" parent="SMG/Akimbo" instance=ExtResource("1_cye56")]
+[node name="JohnWoo" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
 scale = Vector2(1, 1)
 disabled = true
 
-[node name="Sniper" type="Label" parent="."]
+[node name="Sniper" type="Label" parent="WeaponSwapTitle"]
+layout_mode = 0
 offset_left = 406.0
-offset_top = 45.0
+offset_top = 38.0
 offset_right = 471.0
-offset_bottom = 68.0
+offset_bottom = 61.0
 theme_override_font_sizes/font_size = 14
 text = "Sniper"
 horizontal_alignment = 1
 
-[node name="RailgunLabel" type="Label" parent="Sniper"]
+[node name="RailgunLabel" type="Label" parent="WeaponSwapTitle/Sniper"]
 layout_mode = 0
 offset_left = -42.0
 offset_top = 21.0
@@ -145,7 +141,7 @@ theme_override_font_sizes/font_size = 10
 text = "Railgun"
 horizontal_alignment = 1
 
-[node name="Railgun" parent="Sniper" instance=ExtResource("1_cye56")]
+[node name="Railgun" parent="WeaponSwapTitle/Sniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 7.99991
 offset_top = 35.0
@@ -153,7 +149,7 @@ offset_right = 48.0003
 offset_bottom = 75.0
 scale = Vector2(1.2, 1.2)
 
-[node name="LaserSnipe" type="Label" parent="Sniper/Railgun"]
+[node name="LaserSnipe" type="Label" parent="WeaponSwapTitle/Sniper/Railgun"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 85.8333
@@ -163,11 +159,18 @@ theme_override_font_sizes/font_size = 9
 text = "Laser Sniper"
 horizontal_alignment = 1
 
-[node name="LaserSniper" parent="Sniper/Railgun" instance=ExtResource("1_cye56")]
+[node name="LaserSniper" parent="WeaponSwapTitle/Sniper/Railgun" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
 scale = Vector2(1, 1)
 disabled = true
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 242.0
+offset_top = 307.0
+offset_right = 404.0
+offset_bottom = 338.0
+text = "Back"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

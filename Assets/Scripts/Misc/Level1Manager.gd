@@ -6,7 +6,8 @@ var carpark_triggered := false
 @onready var CarparkArea := get_node("../CarparkArea")
 
 func _ready():
-	carpark_trigger.body_entered.connect(_on_carpark_trigger_entered)
+	if not carpark_trigger.body_entered.is_connected(_on_carpark_trigger_entered):
+		carpark_trigger.body_entered.connect(_on_carpark_trigger_entered)
 
 func _on_carpark_trigger_entered(body):
 	if body.name != "Player":
