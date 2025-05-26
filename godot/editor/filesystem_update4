@@ -32,3 +32,5 @@ res://Scenes/GlobalAudioController.tscn
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 res://Assets/Scripts/Misc/SmearManager.gd
+res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
+res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd

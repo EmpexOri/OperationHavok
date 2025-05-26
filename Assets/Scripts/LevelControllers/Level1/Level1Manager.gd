@@ -6,13 +6,8 @@ var carpark_triggered := false
 @onready var CarparkArea := get_node("../CarparkArea")
 
 func _ready():
-<<<<<<< Updated upstream:Assets/Scripts/Misc/Level1Manager.gd
-	if not carpark_trigger.body_entered.is_connected(_on_carpark_trigger_entered):
-		carpark_trigger.body_entered.connect(_on_carpark_trigger_entered)
-=======
 	carpark_trigger.body_entered.connect(_on_carpark_trigger_entered)
 	CarparkArea.carpark_arena_complete.connect(_on_carpark_arena_complete)
->>>>>>> Stashed changes:Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
 
 func _on_carpark_trigger_entered(body):
 	if body.name != "Player":
