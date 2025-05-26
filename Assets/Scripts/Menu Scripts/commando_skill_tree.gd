@@ -26,7 +26,7 @@ func _on_skill_button_used(button: SkillButton):
 			GlobalPlayer.upgrade_weapon("AkimboSmg", 1)
 			print("Upgraded Akimbo SMG!")
 		"DragonsBreath":
-			GlobalPlayer.upgrade_weapon("DragonShotgun", 1)
+			GlobalPlayer.upgrade_weapon("DragonShotgun", 2)
 			print("Upgraded DragonsShotgun")
 
 func _on_back_button_pressed() -> void:

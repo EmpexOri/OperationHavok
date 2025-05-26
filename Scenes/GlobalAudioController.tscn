@@ -10,12 +10,12 @@ script = ExtResource("1_2ql4u")
 
 [node name="Music" type="CanvasLayer" parent="."]
 
-[node name="Level1Soundtrack" type="AudioStreamPlayer2D" parent="Music"]
+[node name="Level1Soundtrack" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("1_bq62r")
 volume_db = -10.0
 bus = &"Music"
 
-[node name="PauseMenuSoundtrack" type="AudioStreamPlayer2D" parent="Music"]
+[node name="PauseMenuSoundtrack" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
 stream = ExtResource("2_2ql4u")
 volume_db = -10.0
