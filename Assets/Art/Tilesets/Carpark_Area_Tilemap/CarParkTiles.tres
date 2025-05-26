@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://ccxxedbsicdmw"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://ccxxedbsicdmw"]
 
 [ext_resource type="Texture2D" uid="uid://dxgymr20ddjex" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png" id="1_wqnuv"]
 
@@ -16,6 +16,9 @@ tile_data = PackedInt32Array(0, 1, 4, 65536, 1, 5, 131072, 1, 6, 196608, 1, 7, 1
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_wqnuv"]
 tile_data = PackedInt32Array(0, 393217, 25, 65536, 393217, 26, 131072, 393217, 27, 196608, 393217, 28, 262144, 393217, 29, 1, 458753, 25, 65537, 458753, 26, 131073, 458753, 27, 196609, 458753, 28, 262145, 458753, 29, 2, 524289, 25, 65538, 524289, 26, 131074, 524289, 27, 196610, 524289, 28, 262146, 524289, 29, 3, 589825, 25, 65539, 589825, 26, 131075, 589825, 27, 196611, 589825, 28, 262147, 589825, 29, 4, 655361, 25, 65540, 655361, 26, 131076, 655361, 27, 196612, 655361, 28, 262148, 655361, 29, 5, 720897, 25, 65541, 720897, 26, 131077, 720897, 27, 196613, 720897, 28, 262149, 720897, 29, 6, 786433, 25, 65542, 786433, 26, 131078, 786433, 27, 196614, 786433, 28, 262150, 786433, 29, 7, 851969, 25, 65543, 851969, 26, 131079, 851969, 27, 196615, 851969, 28, 262151, 851969, 29)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_0vd72"]
+tile_data = PackedInt32Array(0, 1, 1, 65536, 1, 1, 131072, 1, 1, 196608, 1, 1, 1, 65537, 1, 65537, 65537, 1, 131073, 65537, 1, 196609, 65537, 1, 2, 524289, 9, 65538, 524289, 9, 131074, 524289, 9, 196610, 524289, 9, 3, 65537, 1, 65539, 65537, 1, 131075, 65537, 1, 196611, 65537, 1, 4, 131073, 1, 65540, 131073, 1, 131076, 131073, 1, 196612, 131073, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vd72"]
 texture = ExtResource("1_wqnuv")
@@ -815,3 +818,4 @@ pattern_1 = SubResource("TileMapPattern_ajhhu")
 pattern_2 = SubResource("TileMapPattern_cmlxw")
 pattern_3 = SubResource("TileMapPattern_ci12n")
 pattern_4 = SubResource("TileMapPattern_wqnuv")
+pattern_5 = SubResource("TileMapPattern_0vd72")

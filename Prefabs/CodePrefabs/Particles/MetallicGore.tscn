@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://5yolel5ubyg1"]
+
+[ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_ibr6o"]
+[ext_resource type="Material" uid="uid://d5aa2yamr8fg" path="res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres" id="2_ibr6o"]
+
+[node name="Explosion" type="Node2D"]
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 128
+texture = ExtResource("1_ibr6o")
+lifetime = 0.5
+explosiveness = 0.85
+randomness = 0.2
+trail_sections = 24
+trail_section_subdivisions = 6
+process_material = ExtResource("2_ibr6o")

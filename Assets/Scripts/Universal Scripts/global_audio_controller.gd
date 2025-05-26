@@ -15,19 +15,30 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var MetalCreakSFX: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
+
 const MAX_CHANNELS := 5
 var DeathChannels: Array[AudioStreamPlayer2D] = []
-#var DeathChannels: Array[AudioStreamPlayer2D] = []
+var GeneralSFXChannels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
 	randomize()
 	for i in range(MAX_CHANNELS):
-		var path = "SFX/DeathChannelsSFX/Channel%d" % i
-		var player = get_node_or_null(path) as AudioStreamPlayer2D
-		if player:
-			DeathChannels.append(player)
+		# Load Death Channels
+		var death_path = "SFX/DeathChannelsSFX/Channel%d" % i
+		var death_player = get_node_or_null(death_path) as AudioStreamPlayer2D
+		if death_player:
+			DeathChannels.append(death_player)
 		else:
-			push_error("Missing Death channel player node at: %s" % path)
+			push_error("Missing Death channel player node at: %s" % death_path)
+
+		# Load General SFX Channels
+		var general_path = "SFX/GeneralSFX/Channel%d" % i
+		var general_player = get_node_or_null(general_path) as AudioStreamPlayer2D
+		if general_player:
+			GeneralSFXChannels.append(general_player)
+		else:
+			push_error("Missing General SFX channel player node at: %s" % general_path)
 
 # Music Controls
 func LevelOneMusic():
@@ -63,3 +74,12 @@ func BiomancerDeath():
 			player.play()
 			return
 	print("All Biomancer channels are busy!")
+
+# Play the Metal Creak sound
+func PlayMetalCreak():
+	for player in GeneralSFXChannels:
+		if not player.playing:
+			player.stream = MetalCreakSFX
+			player.play()
+			return
+	print("All General SFX channels are busy!")

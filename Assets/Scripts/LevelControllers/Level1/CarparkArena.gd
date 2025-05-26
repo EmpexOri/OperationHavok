@@ -1,6 +1,7 @@
 extends Node2D
 
 var CarparkAreaActivated := false
+signal carpark_arena_complete
 
 const HORDLING = preload("res://Prefabs/GamePrefabs/Enemy/Hordling.tscn")
 const SPEWLING = preload("res://Prefabs/GamePrefabs/Enemy/Spewling.tscn")
@@ -66,6 +67,7 @@ func start_next_wave():
 		return
 	if current_wave >= wave_data.size():
 		print("All waves complete!")
+		emit_signal("carpark_arena_complete")
 		return
 
 	wave_in_progress = true

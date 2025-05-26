@@ -46,3 +46,22 @@ bus = &"SFX"
 
 [node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
 bus = &"SFX"
+
+[node name="GeneralSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel3" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
