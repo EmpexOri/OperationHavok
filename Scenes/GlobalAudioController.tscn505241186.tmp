@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct47xp74ehl30"]
+
+[ext_resource type="Script" uid="uid://cfh31cdyrncnm" path="res://Assets/Scripts/Universal Scripts/global_audio_controller.gd" id="1_2ql4u"]
+[ext_resource type="AudioStream" uid="uid://c0vahobgr2g8" path="res://Assets/Sound/Music/A desperate battle, no way back_ (Track 04).mp3" id="1_bq62r"]
+[ext_resource type="AudioStream" uid="uid://yra0veoy0d5n" path="res://Assets/Sound/Music/MenuMusic.mp3" id="2_2ql4u"]
+[ext_resource type="AudioStream" uid="uid://bjeqt08vvx4aa" path="res://Assets/Sound/SFX/ClickSound.wav" id="5_e30su"]
+
+[node name="GlobalAudioController" type="Node2D"]
+script = ExtResource("1_2ql4u")
+
+[node name="Music" type="CanvasLayer" parent="."]
+
+[node name="Level1Soundtrack" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("1_bq62r")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="PauseMenuSoundtrack" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("2_2ql4u")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="SFX" type="CanvasLayer" parent="."]
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="SFX"]
+process_mode = 3
+stream = ExtResource("5_e30su")
+bus = &"SFX"
+
+[node name="DeathChannelsSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="Channel3" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="GeneralSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel3" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"

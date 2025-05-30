@@ -70,3 +70,8 @@ func BiomancerDeath():
 			player.play()
 			return
 	print("All Biomancer channels are busy!")
+	
+func PauseMenuMusic():
+	var player = $Music/PauseMenuSoundtrack
+	player.stream = load("res://Assets/Sound/Music/MenuMusic.mp3")
+	player.play()
