@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4aphhneqg8wg"
-path="res://godot/imported/CarParkTiles.png-743c1fcfc3a59839e8e3640e44254229.ctex"
+uid="uid://c44foldyjmmux"
+path="res://godot/imported/Road_Block.png-94548a7c396e38cb8418832350bf805d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.png"
-dest_files=["res://godot/imported/CarParkTiles.png-743c1fcfc3a59839e8e3640e44254229.ctex"]
+source_file="res://Assets/Art/Objects/Road_Block.png"
+dest_files=["res://godot/imported/Road_Block.png-94548a7c396e38cb8418832350bf805d.ctex"]
 
 [params]
 

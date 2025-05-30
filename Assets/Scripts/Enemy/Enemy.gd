@@ -18,11 +18,10 @@ var CurrentWeapon: Weapon
 signal died(enemy)
 
 func _ready():
-	add_to_group("Player")
 	add_to_group(Group)
 	add_to_group(SummonGroup)
-	
 	setup_weapon()
+	await get_tree().process_frame  # Give time for Player to exist in their pretty little eyes <3
 	start()
 
 func setup_weapon():
@@ -107,7 +106,7 @@ func get_flash_sprite() -> CanvasItem:
 	push_error("get_flash_sprite() not implemented in subclass")
 	return null
 
-func flash_white(flash_color := Color("cb002e"), times := 4, interval := 0.15):
+func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 	var sprite = get_flash_sprite()
 	if not sprite or not sprite.material:
 		return

@@ -10,12 +10,12 @@ script = ExtResource("1_2ql4u")
 
 [node name="Music" type="CanvasLayer" parent="."]
 
-[node name="Level1Soundtrack" type="AudioStreamPlayer2D" parent="Music"]
+[node name="Level1Soundtrack" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("1_bq62r")
 volume_db = -10.0
 bus = &"Music"
 
-[node name="PauseMenuSoundtrack" type="AudioStreamPlayer2D" parent="Music"]
+[node name="PauseMenuSoundtrack" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
 stream = ExtResource("2_2ql4u")
 volume_db = -10.0
@@ -45,4 +45,23 @@ bus = &"SFX"
 bus = &"SFX"
 
 [node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/DeathChannelsSFX"]
+bus = &"SFX"
+
+[node name="GeneralSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel3" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+bus = &"SFX"
+
+[node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
 bus = &"SFX"

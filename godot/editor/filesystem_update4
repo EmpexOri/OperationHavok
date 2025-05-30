@@ -13,3 +13,20 @@ res://Scenes/Options/PauseMenu.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Prefabs/GamePrefabs/Player/player.tscn
 res://Scenes/LevelSelectScene.tscn
+res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Misc/SmearManager.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
+res://Assets/Scripts/Projectiles/beam_projectile.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
+res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
