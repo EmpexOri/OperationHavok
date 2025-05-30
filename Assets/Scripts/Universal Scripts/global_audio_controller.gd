@@ -45,6 +45,10 @@ func PausingLevelOneMusic():
 
 func STOPPauseMenuMusic():
 	$Music/PauseMenuSoundtrack.stop()
+	
+func STOPAllMusic():
+	var player1 = $Music/Level1Soundtrack
+	var player2 = $Music/PauseMenuSoundtrack
 
 # UI SFX
 func DeathSound():
