@@ -1,0 +1,2 @@
+extends WeaponEffect
+class_name LightningChainEffect
