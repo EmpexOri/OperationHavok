@@ -25,7 +25,7 @@ process_mode = 2
 script = ExtResource("4_fx1m6")
 
 [node name="Background2" type="ColorRect" parent="."]
-z_index = -1
+z_index = -2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,7 +40,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.619608)
 
 [node name="Background" type="ColorRect" parent="."]
-z_index = -1
+z_index = -2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -55,10 +55,12 @@ grow_vertical = 2
 color = Color(0.313726, 0, 0.00784314, 0.713726)
 
 [node name="ControlsMenu" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
 
 [node name="ControlsTitle" type="Label" parent="ControlsMenu"]
 process_mode = 2
-visible = false
+z_index = 1
 offset_left = 1.0
 offset_top = 21.0
 offset_right = 641.0
@@ -70,7 +72,7 @@ vertical_alignment = 1
 
 [node name="ControlsContainer" type="ScrollContainer" parent="ControlsMenu"]
 process_mode = 2
-visible = false
+z_index = 1
 offset_left = 182.0
 offset_top = 82.0
 offset_right = 462.0
@@ -78,11 +80,13 @@ offset_bottom = 280.0
 theme = SubResource("Theme_xpkpk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ControlsMenu/ControlsContainer"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Slot1" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 texture = ExtResource("1_4tvo1")
 expand_mode = 5
@@ -109,6 +113,7 @@ text = "W"
 horizontal_alignment = 1
 
 [node name="Slot2" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 texture = ExtResource("1_4tvo1")
 expand_mode = 5
@@ -209,7 +214,7 @@ offset_right = 275.0
 offset_bottom = 45.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "LMB"
+text = "1"
 horizontal_alignment = 1
 
 [node name="Slot6" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
@@ -227,6 +232,16 @@ theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Ability 2"
 
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot6"]
+offset_left = 215.0
+offset_top = 6.0
+offset_right = 275.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2"
+horizontal_alignment = 1
+
 [node name="Slot7" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_4tvo1")
@@ -240,9 +255,35 @@ offset_right = 125.0
 offset_bottom = 45.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Pause"
+text = "Ability 3"
 
 [node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 6.0
+offset_right = 274.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "3"
+horizontal_alignment = 1
+
+[node name="Slot8" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot8"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Pause Menu"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot8"]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 6.0

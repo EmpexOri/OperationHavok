@@ -11,8 +11,8 @@ extends Node
 @onready var BackPanel2: ColorRect = $Background2
 
 # Controls Menu
-@onready var ControlsTitle: Label = $"ControlsMenu/ControlsTitle"
-@onready var ScrollBox: ScrollContainer = $"ControlsMenu/ControlsContainer"
+@onready var ControlsMenu: CanvasLayer = $ControlsMenu
+
 
 # Options Menu
 @onready var OptionsScene = $OptionsScene
@@ -29,8 +29,7 @@ func show_pause_menu() -> void:
 	MainButton.visible = true
 	BackPanel.visible = true
 	BackPanel2.visible = true
-	ControlsTitle.visible = false
-	ScrollBox.visible = false
+	ControlsMenu.visible = false
 	BackButton.visible = false
 	
 
@@ -47,8 +46,7 @@ func _on_resume_button_pressed() -> void:
 	MainButton.visible = false
 	BackPanel.visible = false
 	BackPanel2.visible = false
-	ControlsTitle.visible = false
-	ScrollBox.visible = false
+	ControlsMenu.visible = false
 	BackButton.visible = false
 	
 	if get_tree().paused:
@@ -65,8 +63,7 @@ func _on_controls_button_pressed() -> void:
 	OptionsButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
-	ControlsTitle.visible = true
-	ScrollBox.visible = true
+	ControlsMenu.visible = true
 	BackButton.visible = true
 	
 	BackButton.grab_focus()
@@ -98,8 +95,7 @@ func _on_back_button_pressed() -> void:
 	OptionsButton.visible = true
 	Title.visible = true
 	MainButton.visible = true
-	ControlsTitle.visible = false
-	ScrollBox.visible = false
+	ControlsMenu.visible = false
 	BackButton.visible = false
 	
 	ResumeButton.grab_focus()
@@ -115,8 +111,7 @@ func _on_menu_button_pressed() -> void:
 	OptionsButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
-	ControlsTitle.visible = false
-	ScrollBox.visible = false
+	ControlsMenu.visible = false
 	BackButton.visible = false
 	
 	if get_tree().paused:
