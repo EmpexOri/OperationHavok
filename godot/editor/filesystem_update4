@@ -1,4 +1,4 @@
-res://Scenes/Misc/TestSkillTree.tscn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/FlashShader.gdshader
@@ -7,6 +7,9 @@ res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
+res://Scenes/Misc/TestSkillTree.tscn
+res://Assets/Scripts/Player Scripts/player.gd
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Scenes/Options/PauseMenu.tscn
@@ -14,6 +17,10 @@ res://Scenes/GlobalAudioController.tscn
 res://Prefabs/GamePrefabs/Player/player.tscn
 res://Scenes/LevelSelectScene.tscn
 res://Scenes/MenuScene.tscn
-res://Scenes/PlaygroundScene.tscn
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn
+res://Prefabs/GamePrefabs/Enemy/Bruiser.tscn
+res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn

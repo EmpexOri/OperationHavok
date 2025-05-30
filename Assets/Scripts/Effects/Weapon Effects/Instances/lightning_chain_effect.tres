@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LightningChainEffect" load_steps=2 format=3 uid="uid://f5wxvyokrly7"]
+
+[ext_resource type="Script" uid="uid://cvfjsrg5vg7e2" path="res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd" id="1_66rtl"]
+
+[resource]
+script = ExtResource("1_66rtl")
+max_chains = 3
+chain_radius = 150.0
+damage_per_hit = 10.0
+initial_target_cone_angle = 60.0
+target_collision_mask = 2
+effect_name = ""
+metadata/_custom_type_script = "uid://cvfjsrg5vg7e2"
