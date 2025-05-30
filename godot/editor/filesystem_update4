@@ -15,5 +15,5 @@ res://Prefabs/GamePrefabs/Player/player.tscn
 res://Scenes/LevelSelectScene.tscn
 res://Scenes/MenuScene.tscn
 res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd

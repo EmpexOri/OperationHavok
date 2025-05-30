@@ -3,8 +3,7 @@ extends Node
 # Main pause menu
 @onready var ResumeButton: Button = $"ResumeButton"
 @onready var ControlsButton: Button = $"ControlsButton"
-@onready var OptionsButton: Button = $"OptionsButton"
-@onready var QuitButton: Button = $"QuitButton"
+@onready var OptionsButton: TextureButton = $"OptionsButton"
 @onready var BackButton: Button = $"BackButton"
 @onready var Title: Label = $"Title"
 @onready var MainButton: Button = $MenuButton
@@ -26,7 +25,6 @@ func show_pause_menu() -> void:
 	ResumeButton.visible = true
 	ControlsButton.visible = true
 	OptionsButton.visible = true
-	QuitButton.visible = true
 	Title.visible = true
 	MainButton.visible = true
 	BackPanel.visible = true
@@ -45,7 +43,6 @@ func _on_resume_button_pressed() -> void:
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	OptionsButton.visible = false
-	QuitButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
 	BackPanel.visible = false
@@ -66,7 +63,6 @@ func _on_controls_button_pressed() -> void:
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	OptionsButton.visible = false
-	QuitButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
 	ControlsTitle.visible = true
@@ -86,18 +82,9 @@ func _on_options_button_pressed() -> void:
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	OptionsButton.visible = false
-	QuitButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
 	BackButton.visible = true
-
-
-func _on_quit_button_pressed() -> void:
-	# Play sound on button press and a timer so sound plays before game quits
-	GlobalAudioController.ClickSound()
-	var quitTimer = 0.15
-	await get_tree().create_timer(quitTimer).timeout
-	get_tree().quit()
 
 
 func _on_back_button_pressed() -> void:
@@ -109,7 +96,6 @@ func _on_back_button_pressed() -> void:
 	ResumeButton.visible = true
 	ControlsButton.visible = true
 	OptionsButton.visible = true
-	QuitButton.visible = true
 	Title.visible = true
 	MainButton.visible = true
 	ControlsTitle.visible = false
@@ -127,7 +113,6 @@ func _on_menu_button_pressed() -> void:
 	ResumeButton.visible = false
 	ControlsButton.visible = false
 	OptionsButton.visible = false
-	QuitButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
 	ControlsTitle.visible = false
