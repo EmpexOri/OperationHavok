@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://kjmdqey636rw"]
+[gd_scene load_steps=14 format=3 uid="uid://kjmdqey636rw"]
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
 [ext_resource type="Texture2D" uid="uid://dylt3gbm8jxrj" path="res://Assets/Art/PlaceHolders/titlescreenblank.png" id="2_rae6p"]
 [ext_resource type="Texture2D" uid="uid://b7fab4revb7tp" path="res://Assets/Art/Menu/OperationHavocTitle.png" id="3_rae6p"]
-[ext_resource type="Texture2D" uid="uid://cgy6ii650axiw" path="res://Assets/Art/Menu/PlayOff.png" id="4_6sxrv"]
+[ext_resource type="Texture2D" uid="uid://3230cb7hloyf" path="res://Assets/Art/Menu/PlayOff.png" id="4_6sxrv"]
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="4_vg0ck"]
-[ext_resource type="Texture2D" uid="uid://berr0xxywx3m1" path="res://Assets/Art/Menu/PlayOn.png" id="5_nmi4p"]
+[ext_resource type="Texture2D" uid="uid://bgoviyy4fexxl" path="res://Assets/Art/Menu/PlayOn.png" id="5_nmi4p"]
 [ext_resource type="Texture2D" uid="uid://bewl45qdirp8w" path="res://Assets/Art/Menu/OptionsOff.png" id="5_w4qjd"]
 [ext_resource type="Texture2D" uid="uid://crcon2xwm5xj6" path="res://Assets/Art/Menu/OptionsOn.png" id="6_at33a"]
+[ext_resource type="Texture2D" uid="uid://cic2bgcwvkb14" path="res://Assets/Art/Menu/PlayHavokOff.png" id="6_dxffo"]
 [ext_resource type="Texture2D" uid="uid://s8xese62w78i" path="res://Assets/Art/Menu/SkillTreeOff.png" id="8_1l0d8"]
 [ext_resource type="Texture2D" uid="uid://cb88t31e37n5j" path="res://Assets/Art/Menu/SkillTreeOn.png" id="9_p146f"]
 [ext_resource type="Texture2D" uid="uid://djd0jsh4fs7dx" path="res://Assets/Art/Menu/QuitOff.png" id="10_mp4id"]
@@ -26,6 +27,7 @@ scale = Vector2(0.541667, 0.4875)
 texture = ExtResource("3_rae6p")
 
 [node name="PlayButton" type="TextureButton" parent="."]
+texture_filter = 1
 offset_left = 107.0
 offset_top = 90.0
 offset_right = 318.0
@@ -33,8 +35,10 @@ offset_bottom = 132.0
 focus_neighbor_top = NodePath("../QuitButton")
 texture_normal = ExtResource("4_6sxrv")
 texture_pressed = ExtResource("5_nmi4p")
+texture_hover = ExtResource("6_dxffo")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
+texture_filter = 1
 offset_left = 22.0
 offset_top = 164.0
 offset_right = 127.0
@@ -43,6 +47,7 @@ texture_normal = ExtResource("5_w4qjd")
 texture_pressed = ExtResource("6_at33a")
 
 [node name="SkillTreeButton" type="TextureButton" parent="."]
+texture_filter = 1
 offset_left = 22.0
 offset_top = 218.0
 offset_right = 127.0
@@ -52,6 +57,7 @@ texture_normal = ExtResource("8_1l0d8")
 texture_pressed = ExtResource("9_p146f")
 
 [node name="QuitButton" type="TextureButton" parent="."]
+texture_filter = 1
 offset_left = 22.0
 offset_top = 272.0
 offset_right = 127.0
