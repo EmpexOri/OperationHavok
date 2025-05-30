@@ -14,8 +14,8 @@ var base_aim_angle: float # The initial direction angle in radians
 var start_arc_angle: float # Starting angle of the arc in radians
 var end_arc_angle: float # Ending angle of the arc in radians
 
-func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
-	super.start(start_position, direction, entity_owner, p_effects) # Call the super class to setup inital parameters
+func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D):
+	super.start(start_position, direction, entity_owner, p_effects, space_state) # Call the super class to setup inital parameters
 	
 	initial_position = start_position
 	base_aim_angle = direction.angle()

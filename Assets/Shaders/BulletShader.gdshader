@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform vec4 glow_color;         // e.g. (1.0, 0.5, 0.0, 1.0)
 uniform float glow_strength;     // e.g. 1.0
 uniform float highlight_radius;  // e.g. 0.3
-uniform float softness;    
+uniform float softness;
 uniform float pulse_speed;
 
 void fragment() {

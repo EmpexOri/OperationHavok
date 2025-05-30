@@ -21,8 +21,8 @@ func _ready() -> void:
 	explosion_area.monitoring = false # Initially disable the aoe area
 	explosion_area.monitorable = false # Ensure it doesn't get hit by other things
 
-func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
-	super.start(start_position, direction, entity_owner, p_effects) # Call super
+func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D):
+	super.start(start_position, direction, entity_owner, p_effects, space_state) # Call super
 	has_exploded = false # Ensure has_exploded is false
 	explosion_area.collision_mask = self.collision_mask # Set collision mask based on projectile owner
 	explosion_area.position = Vector2.ZERO # Set the collision areas local position to projectiles world location

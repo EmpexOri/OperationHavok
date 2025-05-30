@@ -9,6 +9,4 @@
 script = ExtResource("1_bnmth")
 projectile_scene = ExtResource("2_ctalg")
 base_fire_rate = 0.1
-fire_offset = null
-projectile_effects = null
 weapon_effects = Array[ExtResource("3_ed1p8")]([ExtResource("4_6ww2s")])

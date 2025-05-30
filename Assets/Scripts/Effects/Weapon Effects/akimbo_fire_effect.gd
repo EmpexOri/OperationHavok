@@ -10,7 +10,7 @@ func _init() -> void:
 func modify_parameters(parameters: Dictionary) -> Dictionary:
 	return parameters
 
-func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect], space_state) -> bool:
+func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D) -> bool:
 	var fire_parameters = {
 		"projectile_count": 1,
 		"spread_angle": 0,
@@ -51,6 +51,6 @@ func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vec
 	for data in fire_data:
 		var proj = weapon.projectile_scene.instantiate()
 		main_scene.add_child(proj)
-		proj.start(data["pos"], data["dir"], weapon.owning_entity, projectile_effects.duplicate(true))
+		proj.start(data["pos"], data["dir"], weapon.owning_entity, projectile_effects.duplicate(true), space_state)
 
 	return true

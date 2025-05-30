@@ -98,7 +98,7 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 		main_scene.add_child(projectile_instance)
 
 	var position = spawn_position + direction * fire_offset
-	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate(true))
+	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate(true), space_state)
 
 # Adds an effect to the weapon or projectiles
 func add_effect(new_effect: Resource) -> void:

@@ -22,8 +22,8 @@ func _ready():
 	beam.width = width # Set the beams width
 	beam.points = [Vector2.ZERO, Vector2.ZERO] # Initially set all points to zero
 	
-func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect]):
-	super.start(start_position, direction, entity_owner, p_effects) # Call the super
+func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D):
+	super.start(start_position, direction, entity_owner, p_effects, space_state) # Call the super
 	start_point = global_position # Get the starting point
 	direction_for_query = direction # Set the direction for query
 	hit_this_beam.clear() # Clear the hit entites array for safety
