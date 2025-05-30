@@ -13,12 +13,12 @@ extends Node
 # Controls Menu
 @onready var ControlsMenu: CanvasLayer = $ControlsMenu
 
-
 # Options Menu
 @onready var OptionsScene = $OptionsScene
 
 func _ready():
 	OptionsScene.visible = false
+
 
 func show_pause_menu() -> void:
 	# Bringing up the pause menu 

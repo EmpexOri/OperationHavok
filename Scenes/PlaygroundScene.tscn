@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=4 uid="uid://kmijtn114svf"]
 
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="1_gnsay"]
-[ext_resource type="Texture2D" uid="uid://dxgymr20ddjex" path="res://Assets/Art/Tilesets/TestingTileSet/Carpark_Tileset.png" id="2_wlc0k"]
+[ext_resource type="Texture2D" uid="uid://dxgymr20ddjex" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tileset.png" id="2_wlc0k"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="2_ydcph"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="4_d0q0w"]
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="5_w5l6p"]
