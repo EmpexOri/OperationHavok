@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Weapon
 
 # Base weapon script for the Weapon superclass — should not be instantiated directly.
@@ -16,6 +16,8 @@ var owning_entity: String
 
 @onready var cooldown_timer: Timer = Timer.new()
 
+var space_state: PhysicsDirectSpaceState2D # The space state, used to pass to weapon effects
+
 func _ready() -> void:
 	# Initialize fire rate
 	current_fire_rate = base_fire_rate
@@ -25,6 +27,11 @@ func _ready() -> void:
 	cooldown_timer.wait_time = current_fire_rate
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
 	add_child(cooldown_timer)
+
+# Get the space state, needed due to multithreading
+func _physics_process(delta: float) -> void:
+	var current_world = get_world_2d()
+	space_state = current_world.direct_space_state
 
 func _on_cooldown_timer_timeout() -> void:
 	can_fire = true
@@ -39,7 +46,7 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2) -> void:
 func fire(spawn_position: Vector2, direction: Vector2) -> void:
 	# Check if any weapon effect overrides the firing logic
 	for effect in weapon_effects:
-		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true)):
+		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true), space_state):
 			return
 	
 	# Default firing parameters

@@ -17,6 +17,6 @@ func modify_parameters(parameters: Dictionary) -> Dictionary:
 	return parameters
 	
 # This method can be used to completely override the firing logic of a weapon, useful for complex firing logic
-func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect]):
+func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect], space_state):
 	# Return true in the derived weapon effect if you are overriding the default firing behaviour
 	return false

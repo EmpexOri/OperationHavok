@@ -24,3 +24,6 @@ res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Assets/Scripts/Weapons/Weapon.gd
+res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd
+res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd

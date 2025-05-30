@@ -11,7 +11,7 @@ class_name LightningChainEffect
 func _init():
 	effect_name = "Lightning Chain"
 	
-func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects_to_apply: Array[ProjectileEffect]) -> bool:
+func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects_to_apply: Array[ProjectileEffect], space_state) -> bool:
 	call_deferred("_execute_lightning_chain", weapon, spawn_position, direction) # Necessary to get the space state due to multithreading
 	return true # Have to return true to override fire logic
 	
