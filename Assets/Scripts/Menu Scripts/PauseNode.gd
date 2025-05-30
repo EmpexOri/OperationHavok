@@ -39,7 +39,7 @@ func show_pause_menu() -> void:
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
 	GlobalAudioController.ClickSound()
-	GlobalAudioController.STOPPauseMenuMusic()
+	GlobalAudioController.PausingLevelOneMusic()
 	
 	# Removing all objects
 	ResumeButton.visible = false

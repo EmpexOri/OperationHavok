@@ -10,11 +10,6 @@ func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res:///Scenes/LevelSelectScene.tscn")
 
 
-func _on_options_button_pressed() -> void:
-	GlobalAudioController.ClickSound()
-	get_tree().change_scene_to_file("res:///Scenes/Options/OptionsScene.tscn")
-
-
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	var quitTimer = 0.15
@@ -26,4 +21,7 @@ func _on_skill_tree_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	get_tree().change_scene_to_file("res://Scenes/Options/CommandoSkillTree.tscn")
 
- 
+
+func _on_options_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file("res:///Scenes/Options/OptionsScene.tscn")

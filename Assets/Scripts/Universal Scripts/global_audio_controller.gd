@@ -15,6 +15,7 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var paused: bool = false
 const MAX_CHANNELS := 5
 var DeathChannels: Array[AudioStreamPlayer2D] = []
 #var DeathChannels: Array[AudioStreamPlayer2D] = []
@@ -31,10 +32,16 @@ func _ready():
 
 # Music Controls
 func LevelOneMusic():
-	$Music/Level1Soundtrack.play()
+	if paused:
+		$Music/Level1Soundtrack.stream_paused = false
+		paused = false
+	else:
+		$Music/Level1Soundtrack.play()
 
-func PauseMenuMusic():
-	$Music/PauseMenuSoundtrack.play()
+func PausingLevelOneMusic():
+	if $Music/Level1Soundtrack.playing:
+		$Music/Level1Soundtrack.stream_paused = true
+		paused = true
 
 func STOPPauseMenuMusic():
 	$Music/PauseMenuSoundtrack.stop()
