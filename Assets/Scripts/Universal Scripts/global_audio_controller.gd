@@ -15,9 +15,12 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
+
 var paused: bool = false
 const MAX_CHANNELS := 5
 var DeathChannels: Array[AudioStreamPlayer2D] = []
+var GeneralChannels: Array[AudioStreamPlayer2D] = []
 #var DeathChannels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
@@ -29,6 +32,15 @@ func _ready():
 			DeathChannels.append(player)
 		else:
 			push_error("Missing Death channel player node at: %s" % path)
+			
+	# Setup General SFX Channels
+	for i in range(MAX_CHANNELS):
+		var path = "SFX/GeneralSFX/Channel%d" % i
+		var player = get_node_or_null(path) as AudioStreamPlayer2D
+		if player:
+			GeneralChannels.append(player)
+		else:
+			push_error("Missing General SFX channel at: %s" % path)
 
 # Music Controls
 func LevelOneMusic():
@@ -79,3 +91,11 @@ func PauseMenuMusic():
 	var player = $Music/PauseMenuSoundtrack
 	player.stream = load("res://Assets/Sound/Music/MenuMusic.mp3")
 	player.play()
+
+func PlayMetalCreak():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = MetalCreakSound
+			player.play()
+			return
+	print("All General SFX channels are busy!")

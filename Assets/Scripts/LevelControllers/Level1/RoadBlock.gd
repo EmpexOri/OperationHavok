@@ -11,7 +11,7 @@ func handle_arena_completion():
 	queue_free()  
 
 func spawn_hordlings():
-	for i in range(30):
+	for i in range(60):
 		await get_tree().create_timer(randf_range(0.05, 0.1)).timeout
 		
 		var enemy = HORDLING.instantiate()
