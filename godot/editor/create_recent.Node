@@ -1,3 +1,5 @@
+CollisionShape2D
+CharacterBody2D
 TextureButton
 ColorRect
 TextureRect

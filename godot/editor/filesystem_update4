@@ -22,6 +22,3 @@ res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd
-res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
