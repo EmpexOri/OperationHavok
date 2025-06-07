@@ -2,13 +2,15 @@ extends Node2D
 
 func _ready():
 	$PlayButton.grab_focus()
+	GlobalAudioController.StopAllMusic()
+	GlobalAudioController.PlayMainMenuMusic()
 	
 
 func _on_play_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
+	GlobalAudioController.StopMainMenuMusic()
 	GlobalAudioController.LevelOneMusic()
 	get_tree().change_scene_to_file("res:///Scenes/LevelSelectScene.tscn")
-
 
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ClickSound()

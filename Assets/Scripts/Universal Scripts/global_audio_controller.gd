@@ -58,9 +58,15 @@ func PausingLevelOneMusic():
 func STOPPauseMenuMusic():
 	$Music/PauseMenuSoundtrack.stop()
 	
-func STOPAllMusic():
+func STOPAllMusic(): #Kinda Legacy, see new below
 	var player1 = $Music/Level1Soundtrack
 	var player2 = $Music/PauseMenuSoundtrack
+	
+func StopAllMusic():
+	var music_node = $Music
+	for child in music_node.get_children():
+		if child is AudioStreamPlayer:
+			child.stop()
 
 # UI SFX
 func DeathSound():
@@ -99,3 +105,28 @@ func PlayMetalCreak():
 			player.play()
 			return
 	print("All General SFX channels are busy!")
+
+func PlayMainMenuMusic():
+	var player = $Music/MainMenuLoop
+	var stream: AudioStream = load("res://Assets/Sound/Music/MainMenuMusicLoop.mp3")
+
+	if stream is AudioStream:
+		var stream_copy = stream.duplicate() as AudioStream
+		stream_copy.set_loop(true)
+		player.stream = stream_copy
+
+		# Start at silence, we can tween out :D
+		player.volume_db = -80
+		player.play()
+
+		# Create fade-in tween
+		var tween = create_tween()
+		tween.tween_property(
+			player,
+			"volume_db",
+			-20,
+			3.0
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func StopMainMenuMusic():
+	$Music/MainMenuLoop.stop()
