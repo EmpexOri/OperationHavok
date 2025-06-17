@@ -214,7 +214,7 @@ offset_right = 275.0
 offset_bottom = 45.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "1"
+text = "A / 1"
 horizontal_alignment = 1
 
 [node name="Slot6" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
@@ -240,7 +240,7 @@ offset_right = 275.0
 offset_bottom = 45.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "2"
+text = "B / 2"
 horizontal_alignment = 1
 
 [node name="Slot7" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
@@ -260,14 +260,15 @@ text = "Ability 3"
 
 [node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
 layout_mode = 0
-offset_left = 225.0
+offset_left = 207.0
 offset_top = 6.0
-offset_right = 274.0
+offset_right = 283.0
 offset_bottom = 45.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "3"
+text = "Y / 3"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Slot8" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
 layout_mode = 2
@@ -293,6 +294,32 @@ offset_bottom = 45.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "ESC"
+horizontal_alignment = 1
+
+[node name="Slot9" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4tvo1")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot9"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Dash"
+
+[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot9"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 6.0
+offset_right = 320.0
+offset_bottom = 45.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "LSB / Space"
 horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="."]
