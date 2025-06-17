@@ -1,3 +1,6 @@
+AnimatedSprite2D
+Sprite2D
+Button
 CollisionShape2D
 CharacterBody2D
 TextureButton
@@ -9,6 +12,3 @@ Node2D
 Area2D
 Label
 Node
-AnimatedSprite2D
-Sprite2D
-Button

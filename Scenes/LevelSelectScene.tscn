@@ -1,10 +1,229 @@
-[gd_scene load_steps=6 format=3 uid="uid://67dpuaam7vlg"]
+[gd_scene load_steps=38 format=3 uid="uid://67dpuaam7vlg"]
 
 [ext_resource type="Texture2D" uid="uid://qnj5li40ekpp" path="res://Assets/Art/Menu/LevelSelectTitle.png" id="1_2jav4"]
 [ext_resource type="Script" uid="uid://bk0kbugyn1jxp" path="res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd" id="1_qyu6w"]
 [ext_resource type="Texture2D" uid="uid://cm6wksto0tsna" path="res://Assets/Art/Menu/ClassSelectTitle.png" id="2_qyu6w"]
 [ext_resource type="Texture2D" uid="uid://cgfflscj3lda3" path="res://Assets/Art/Menu/Commando.jpg" id="4_nstsp"]
 [ext_resource type="Texture2D" uid="uid://v54cp8irhyvq" path="res://Assets/Art/Menu/Technomancer.png" id="5_qq5ww"]
+[ext_resource type="Texture2D" uid="uid://cafkablbeyama" path="res://Assets/Art/PlaceHolders/LoadingScreenSpriteSheet.png" id="6_qq5ww"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq5ww"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(0, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwi0v"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(4800, 540, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxjo3"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(3840, 1620, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyf1d"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(0, 2160, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pqoy"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(960, 2160, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks6ax"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(1920, 2160, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qra1j"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(2880, 2160, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs7gw"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(3840, 2160, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyqw4"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(4800, 2160, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nhep"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(960, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u77p0"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(1920, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyp71"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(2880, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tif6"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(3840, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kunhy"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(4800, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um72b"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(0, 540, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf63f"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(960, 540, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6boi"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(1920, 540, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgybi"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(2880, 540, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7d08"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(3840, 540, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7wjk"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(0, 1080, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60u2i"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(960, 1080, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j3oh"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(1920, 1080, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr28q"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(2880, 1080, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuj5p"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(3840, 1080, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqqla"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(4800, 1080, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej4u6"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(0, 1620, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11s5p"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(960, 1620, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo1wk"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(1920, 1620, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnc8i"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(2880, 1620, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxuad"]
+atlas = ExtResource("6_qq5ww")
+region = Rect2(4800, 1620, 960, 540)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5u48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq5ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwi0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxjo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyf1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pqoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks6ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qra1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs7gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyqw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nhep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u77p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyp71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tif6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kunhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um72b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf63f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6boi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgybi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7d08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7wjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60u2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j3oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr28q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuj5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqqla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej4u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11s5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo1wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnc8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxuad")
+}],
+"loop": true,
+"name": &"Loading",
+"speed": 5.0
+}]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_qyu6w")
@@ -91,6 +310,24 @@ position = Vector2(467, 172)
 scale = Vector2(0.267068, 0.343612)
 texture = ExtResource("5_qq5ww")
 
+[node name="Loading" type="Button" parent="ClassSelect"]
+visible = false
+offset_left = 245.0
+offset_top = 272.0
+offset_right = 404.0
+offset_bottom = 303.0
+text = "Loading screen test"
+
+[node name="LoadingScreenSprite" type="AnimatedSprite2D" parent="ClassSelect"]
+visible = false
+position = Vector2(320, 180)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_d5u48")
+animation = &"Loading"
+frame = 24
+frame_progress = 0.297366
+speed_scale = 1.2
+
 [node name="BackButton" type="Button" parent="."]
 offset_left = 301.0
 offset_top = 311.0
@@ -105,4 +342,5 @@ text = "Back"
 [connection signal="pressed" from="LevelSelect/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="ClassSelect/CommandoButton" to="." method="_on_commando_button_pressed"]
 [connection signal="pressed" from="ClassSelect/TechnomancerButton" to="." method="_on_technomancer_button_pressed"]
+[connection signal="pressed" from="ClassSelect/Loading" to="." method="_on_loading_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

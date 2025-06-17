@@ -12,7 +12,8 @@ func _ready():
 @onready var TechnomancerButton = $ClassSelect/TechnomancerButton
 @onready var CommandoImage = $ClassSelect/Commando
 @onready var TechnomancerImage = $ClassSelect/Technomancer
-
+@onready var LoadingButton = $ClassSelect/Loading
+@onready var LoadingSprite = $ClassSelect/LoadingScreenSprite
 
 func _on_back_button_pressed() -> void:
 	# Go to menu when back button is pressed
@@ -34,6 +35,8 @@ func _on_class_select_button_pressed() -> void:
 	TechnomancerButton.visible = true
 	CommandoImage.visible = true
 	TechnomancerImage.visible = true
+	LoadingButton.visible = true
+	LoadingSprite.visible = false
 	
 	CommandoButton.grab_focus()
 	$BackButton.focus_neighbor_top = $ClassSelect/CommandoButton.get_path()
@@ -49,6 +52,8 @@ func _on_level_select_button_pressed() -> void:
 	TechnomancerButton.visible = false
 	CommandoImage.visible = false
 	TechnomancerImage.visible = false
+	LoadingButton.visible = false
+	LoadingSprite.visible = false
 	
 	Level1Button.grab_focus()
 
@@ -66,3 +71,8 @@ func _on_level_2_button_pressed() -> void:
 	# Go to level one when level one button is pressed
 	GlobalAudioController.ClickSound()
 	get_tree().change_scene_to_file("res://Scenes/PlaygroundScene.tscn")
+
+
+func _on_loading_pressed() -> void:
+	LoadingSprite.visible = true
+	LoadingSprite.play("Loading")
