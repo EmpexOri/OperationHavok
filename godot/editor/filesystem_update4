@@ -23,3 +23,5 @@ res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Scenes/Options/OptionsScene.tscn
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd

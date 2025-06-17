@@ -11,14 +11,16 @@ var weapon_upgrades = {
 
 var ClassData = {
 	"Technomancer": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, "Abilities": []
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, 
+		"Abilities": [], "UnlockedAbilities": []
 	},
 	"Commando": {
 		"Level": 1, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 200,
-		"Abilities": ["SwapWeapons", "SniperBeam", "Minigun"]
+		"Abilities": ["SwapWeapons", "SniperBeam", "Minigun"], "UnlockedAbilities": []
 	},
 	"Fleshthing": {
-		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, "Abilities": []
+		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, 
+		"Abilities": [], "UnlockedAbilities": []
 	}
 }
 
