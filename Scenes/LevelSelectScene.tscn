@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://67dpuaam7vlg"]
+[gd_scene load_steps=39 format=3 uid="uid://67dpuaam7vlg"]
 
 [ext_resource type="Texture2D" uid="uid://qnj5li40ekpp" path="res://Assets/Art/Menu/LevelSelectTitle.png" id="1_2jav4"]
 [ext_resource type="Script" uid="uid://bk0kbugyn1jxp" path="res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd" id="1_qyu6w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgfflscj3lda3" path="res://Assets/Art/Menu/Commando.jpg" id="4_nstsp"]
 [ext_resource type="Texture2D" uid="uid://v54cp8irhyvq" path="res://Assets/Art/Menu/Technomancer.png" id="5_qq5ww"]
 [ext_resource type="Texture2D" uid="uid://cafkablbeyama" path="res://Assets/Art/PlaceHolders/LoadingScreenSpriteSheet.png" id="6_qq5ww"]
+[ext_resource type="Texture2D" uid="uid://dtxg0tdpsqa27" path="res://Assets/Art/PlaceHolders/LoadingFinished.png" id="7_lwi0v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qq5ww"]
 atlas = ExtResource("6_qq5ww")
@@ -327,6 +328,12 @@ animation = &"Loading"
 frame = 24
 frame_progress = 0.297366
 speed_scale = 1.2
+
+[node name="LoadingFinished" type="Sprite2D" parent="ClassSelect"]
+visible = false
+position = Vector2(320, 180)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("7_lwi0v")
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 301.0

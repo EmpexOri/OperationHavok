@@ -14,6 +14,7 @@ func _ready():
 @onready var TechnomancerImage = $ClassSelect/Technomancer
 @onready var LoadingButton = $ClassSelect/Loading
 @onready var LoadingSprite = $ClassSelect/LoadingScreenSprite
+@onready var LoadingFinished = $ClassSelect/LoadingFinished
 
 func _on_back_button_pressed() -> void:
 	# Go to menu when back button is pressed
@@ -37,6 +38,7 @@ func _on_class_select_button_pressed() -> void:
 	TechnomancerImage.visible = true
 	LoadingButton.visible = true
 	LoadingSprite.visible = false
+	LoadingFinished.visible = false
 	
 	CommandoButton.grab_focus()
 	$BackButton.focus_neighbor_top = $ClassSelect/CommandoButton.get_path()
@@ -54,6 +56,7 @@ func _on_level_select_button_pressed() -> void:
 	TechnomancerImage.visible = false
 	LoadingButton.visible = false
 	LoadingSprite.visible = false
+	LoadingFinished.visible = false
 	
 	Level1Button.grab_focus()
 
@@ -76,3 +79,10 @@ func _on_level_2_button_pressed() -> void:
 func _on_loading_pressed() -> void:
 	LoadingSprite.visible = true
 	LoadingSprite.play("Loading")
+	
+	var TimeInSeconds = 5.0
+	
+	await get_tree().create_timer(TimeInSeconds).timeout
+	LoadingSprite.queue_free()
+	LoadingFinished.visible = true
+	
