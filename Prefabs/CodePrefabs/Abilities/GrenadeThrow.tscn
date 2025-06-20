@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x62sefuk72ij"]
+
+[ext_resource type="Script" uid="uid://bmawvkjv570uv" path="res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd" id="1_62t0h"]
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource("1_62t0h")
