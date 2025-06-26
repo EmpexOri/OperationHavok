@@ -11,56 +11,99 @@ class_name LightningChainEffect
 func _init():
 	effect_name = "Lightning Chain"
 	
-func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects_to_apply: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D) -> bool:
-	call_deferred("_execute_lightning_chain", weapon, spawn_position, direction) # Necessary to get the space state due to multithreading
+func override_fire_logic(
+	weapon: Weapon, spawn_position: Vector2,
+	direction: Vector2,
+	projectile_effects_to_apply: Array[ProjectileEffect],
+	space_state: PhysicsDirectSpaceState2D) -> bool:
+	
+	if not is_instance_valid(space_state):
+		print("Space state invalid in chain lightning")
+		
+	var targets_hit_this_chain: Array[Node2D] = []
+	var current_source_pos_for_next_link = spawn_position
+	var current_aim_direction_for_next_link = direction
+	var current_chain_target: Node2D = null
+	
+	for i in range(max_chains):
+		var next_target_in_chain: Node2D = null
+		var exclusions: Array = []
+		exclusions.append(weapon)
+		if is_instance_valid(weapon.get_parent()):
+			exclusions.append(weapon.get_parent())
+		exclusions.append_array(targets_hit_this_chain)
+		
+		# Find the initial target, cone based
+		if i == 0:
+			next_target_in_chain = _find_initial_target(
+				space_state,
+				spawn_position,
+				current_aim_direction_for_next_link,
+				weapon,
+				exclusions)
+		
+		else:
+			if not is_instance_valid(current_chain_target):
+				break
+			
+			next_target_in_chain = _find_next_chain_target(
+				space_state,
+				current_chain_target.global_position,
+				weapon,
+				exclusions
+			)
+		
+		# Deal damage if possible
+		if is_instance_valid(next_target_in_chain):
+			targets_hit_this_chain.append(next_target_in_chain)
+			if next_target_in_chain.has_method("deal_damage"):
+				next_target_in_chain.deal_damage(damage_per_hit)
+				
+			# Apply ProjectileEffects 
+			for p_effect_resource in projectile_effects_to_apply:
+				if p_effect_resource:
+					var p_effect_instance = p_effect_resource.duplicate(true)
+					if p_effect_instance.has_method("on_hit"):
+						p_effect_instance.on_hit(null, next_target_in_chain)
+					
+			current_chain_target = next_target_in_chain
+			current_source_pos_for_next_link = next_target_in_chain.global_position
+			
+		else:
+			break
+	
 	return true # Have to return true to override fire logic
-	
-func _execute_lightning_chain(weapon: Weapon, spawn_position: Vector2, direction: Vector2):
-	var targets_hit: Array[Node2D] = []
-	var current_source_pos = spawn_position
-	var current_direction = direction
-	
-	var space_state = weapon.get_world_2d().direct_space_state
-	
-	if space_state == null:
-		return
-	
-	var initial_target = _find_initial_target(space_state, current_source_pos, current_direction, weapon)
-	
-	if initial_target:
-		targets_hit.append(initial_target)
-	
-func _find_initial_target(space_state, origin: Vector2, aim_dir: Vector2, weapon_node: Weapon) -> Node2D:
-	# Find closest enemy within a cone
-	var closest_target: Node2D = null # The closest target, will be returned
+
+# Uses a cone based query to ensure that the initial target is somewhere in the direction the user is aiming
+func _find_initial_target(
+		space_state: PhysicsDirectSpaceState2D,
+		origin: Vector2,
+		aim_dir: Vector2,
+		weapon_node: Weapon,
+		current_exclusions: Array
+		) -> Node2D:
+			
+	var closest_target: Node2D = null
 	var min_dist_sq = INF
 	
-	# Create a query shape
-	var query_shape = CircleShape2D.new() # The circle for finding the first target
-	query_shape.radius = chain_radius # Set the radius to our chain radius
+	var query_shape = CircleShape2D.new()
+	query_shape.radius = chain_radius
 	
-	# Initialise a query
-	var query_params = PhysicsShapeQueryParameters2D.new() # Create a new query
-	query_params.shape = query_shape # Set the queries shape to our circle
-	query_params.transform = Transform2D(0, origin) # Centered at weapon origin
-	query_params.collision_mask = target_collision_mask # Hacky way to set collision mask as we have no projectile
-	var exclusions = [weapon_node]
-	if weapon_node.get_parent() is Node2D: # Check if parent exists and is Node2D
-		exclusions.append(weapon_node.get_parent())
-	query_params.exclude = exclusions # Avoid chainging to self
+	var query_params = PhysicsShapeQueryParameters2D.new()
+	query_params.shape = query_shape
+	query_params.transform = Transform2D(0, origin)
+	query_params.collision_mask = target_collision_mask
+	query_params.exclude = current_exclusions
 	query_params.collide_with_areas = true
 	query_params.collide_with_bodies = true
 	
-	# Conduct a query
-	var results = space_state.intersect_shape(query_params) # Conduct the query
+	var results = space_state.intersect_shape(query_params)
+	var cone_angle_rad = deg_to_rad(initial_target_cone_angle) / 2.0
 	
-	var cone_angle_rad = deg_to_rad(initial_target_cone_angle) / 2.0 # Create the cone 
-	
-	# Iterate through our results to find closest target
 	for r in results:
 		var body: Node2D = r.collider
-		if body == weapon_node.get_parent(): continue # Skip owner
-		if not body.has_method("deal_damage"): continue # Not a damageable target
+		if is_instance_valid(weapon_node.get_parent()) and body == weapon_node.get_parent(): continue
+		if not body.has_method("deal_damage"): continue
 		
 		var dir_to_body = (body.global_position - origin).normalized()
 		var angle_to_body = aim_dir.angle_to(dir_to_body)
@@ -71,11 +114,39 @@ func _find_initial_target(space_state, origin: Vector2, aim_dir: Vector2, weapon
 				min_dist_sq = dist_sq
 				closest_target = body
 				
-	# Temp print to console
-	if closest_target:
-		print("Lightning target found: ", closest_target.name, " at distance: ", sqrt(min_dist_sq))
-		print("Line from: ", origin, " to: ", closest_target.global_position)
-	else:
-		print("No lightning target found in cone")
-				
+	return closest_target
+
+# Find the next closest target, regardless of direction
+func _find_next_chain_target(
+		space_state: PhysicsDirectSpaceState2D,
+		current_link_origin: Vector2,
+		weapon_node: Weapon,
+		current_exclusions: Array
+		) -> Node2D:
+	
+	var closest_target: Node2D = null
+	var min_dist_sq = chain_radius * chain_radius
+	
+	var query_shape = CircleShape2D.new()
+	query_shape.radius = chain_radius
+	
+	var query_params = PhysicsShapeQueryParameters2D.new()
+	query_params.shape = query_shape
+	query_params.transform = Transform2D(0, current_link_origin)
+	query_params.collision_mask = target_collision_mask
+	query_params.exclude = current_exclusions
+	query_params.collide_with_areas = true
+	query_params.collide_with_bodies = true
+	
+	var results = space_state.intersect_shape(query_params)
+	
+	for r in results:
+		var body: Node2D = r.collider
+		if not body.has_method("deal_damage"): continue
+		
+		var dist_sq = current_link_origin.distance_squared_to(body.global_position)
+		if dist_sq < min_dist_sq:
+			min_dist_sq = dist_sq
+			closest_target = body
+	
 	return closest_target

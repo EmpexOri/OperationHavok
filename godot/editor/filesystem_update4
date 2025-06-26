@@ -1,14 +1,13 @@
+res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
-res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
-res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
-res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
-res://Scenes/AlphaLevel1.tscn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
-res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
+res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres
