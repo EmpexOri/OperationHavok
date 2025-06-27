@@ -15,7 +15,7 @@ var is_firing = false
 
 func start():
 	Speed = 80
-	Health = 50
+	Health = 40
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
 	Target = "Player"
