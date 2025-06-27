@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct47xp74ehl30"]
+[gd_scene load_steps=4 format=3 uid="uid://ct47xp74ehl30"]
 
 [ext_resource type="Script" uid="uid://cfh31cdyrncnm" path="res://Assets/Scripts/Universal Scripts/global_audio_controller.gd" id="1_2ql4u"]
-[ext_resource type="AudioStream" uid="uid://yra0veoy0d5n" path="res://Assets/Sound/Music/MenuMusic.mp3" id="2_2ql4u"]
 [ext_resource type="AudioStream" uid="uid://c84jtwjrq5xno" path="res://Assets/Sound/Music/untitled_doom_style_video_game_music.mp3" id="2_bq4xx"]
 [ext_resource type="AudioStream" uid="uid://bjeqt08vvx4aa" path="res://Assets/Sound/SFX/ClickSound.wav" id="5_e30su"]
 
@@ -17,7 +16,7 @@ bus = &"Music"
 
 [node name="PauseMenuSoundtrack" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
-stream = ExtResource("2_2ql4u")
+stream = ExtResource("2_bq4xx")
 volume_db = -10.0
 bus = &"Music"
 

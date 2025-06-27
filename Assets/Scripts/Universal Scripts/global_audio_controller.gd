@@ -104,7 +104,7 @@ func PlayGrenadeExplosion():
 	
 func PauseMenuMusic():
 	var player = $Music/PauseMenuSoundtrack
-	player.stream = load("res://Assets/Sound/Music/MenuMusic.mp3")
+	player.stream = load("res://Assets/Sound/Music/draft 1 M.mp3")
 	player.play()
 
 func PlayMetalCreak():

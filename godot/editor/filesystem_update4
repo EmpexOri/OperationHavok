@@ -32,3 +32,4 @@ res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
 res://Prefabs/GamePrefabs/Enemy/Bruiser.tscn
 res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
