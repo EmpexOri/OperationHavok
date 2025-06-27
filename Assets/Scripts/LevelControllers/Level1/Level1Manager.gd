@@ -16,6 +16,7 @@ func _on_carpark_trigger_entered(body):
 		return
 	
 	carpark_triggered = true
+	GlobalAudioController.LevelOneMusic()
 	print("Carpark area triggered.")
 	CarparkArea.activate_carpark_area()
 

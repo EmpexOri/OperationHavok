@@ -139,3 +139,6 @@ func PlayMainMenuMusic():
 
 func StopMainMenuMusic():
 	$Music/MainMenuLoop.stop()
+
+func is_main_menu_music_playing() -> bool:
+	return $Music/MainMenuLoop.playing

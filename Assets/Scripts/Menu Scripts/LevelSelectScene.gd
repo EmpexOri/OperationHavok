@@ -25,6 +25,7 @@ func _on_back_button_pressed() -> void:
 func _on_level_1_button_pressed() -> void:
 	# Go to level one when level one button is pressed
 	GlobalAudioController.ClickSound()
+	GlobalAudioController.StopMainMenuMusic()
 	get_tree().change_scene_to_file("res://Scenes/AlphaLevel1.tscn")
 
 

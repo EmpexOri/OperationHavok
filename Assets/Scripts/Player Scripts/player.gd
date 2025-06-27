@@ -260,6 +260,7 @@ func deal_damage(damage, from_position = null):
 	
 func kill():
 	SmearManager.reset()
+	GlobalAudioController.StopAllMusic()
 	get_tree().reload_current_scene()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
