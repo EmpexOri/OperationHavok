@@ -56,13 +56,10 @@ func pause_game():
 		PauseMenu.visible = true
 
 func start_next_wave():
-	if not CarparkAreaActivated:
-		return
-	if wave_in_progress:
-		return
-	if current_wave >= wave_data.size():
-		print("All waves complete!")
-		emit_signal("carpark_arena_complete")
+	if not CarparkAreaActivated or wave_in_progress or current_wave >= wave_data.size():
+		if current_wave >= wave_data.size():
+			print("All waves complete!")
+			emit_signal("carpark_arena_complete")
 		return
 
 	wave_in_progress = true
@@ -70,27 +67,52 @@ func start_next_wave():
 	var data = wave_data[current_wave]
 	current_wave += 1
 
+	await spawn_wave_enemies(data)
+
+func roll(dice: int, sides: int) -> int:
+	var total = 0
+	for i in range(dice):
+		total += randi_range(1, sides)
+	return total
+
+func get_scene_for_key(key: String):
+	match key:
+		"Hordling":
+			return HORDLING
+		"Spewling":
+			return SPEWLING
+		"Biomancer":
+			return BIOMANCER
+		"Needling":
+			return NEEDLING
+		"Tumor":
+			return TUMOR
+		"Random":
+			return [BIOMANCER, NEEDLING, TUMOR].pick_random()
+	return null
+
+func spawn_wave_enemies(data: Dictionary) -> void:
 	for key in data.keys():
 		var count = roll(data[key][0], data[key][1]) + data[key][2]
-		var enemy_scene = null
-	
-		match key:
-			"Hordling":
-				enemy_scene = HORDLING
-			"Spewling":
-				enemy_scene = SPEWLING
-			"Biomancer":
-				enemy_scene = BIOMANCER
-			"Needling":
-				enemy_scene = NEEDLING
-			"Tumor":
-				enemy_scene = TUMOR
-			"Random":
-				enemy_scene = [BIOMANCER, NEEDLING, TUMOR].pick_random()
-	
-		if enemy_scene:
-			for i in range(count):
-				spawn_enemy_delayed(enemy_scene)
+		var scene = get_scene_for_key(key)
+		
+		var enemies_remaining = count
+		while enemies_remaining > 0:
+			var batch_size = min(5, enemies_remaining)
+			for i in range(batch_size):
+				spawn_enemy(scene)
+			enemies_remaining -= batch_size
+			await get_tree().create_timer(randf_range(0.05, 0.25)).timeout 
+
+func spawn_enemy(scene: PackedScene) -> void:
+	var enemy = scene.instantiate()
+	var spawn = spawn_points[randi() % spawn_points.size()]
+	enemy.visible = true
+	enemy.position = spawn.global_position + Vector2(randf_range(-8, 8), randf_range(-8, 8))
+	enemy.name = "Enemy_" + str(randi())
+	enemies.append(enemy)
+	call_deferred("add_child", enemy)
+	enemy.connect("died", Callable(self, "_on_enemy_died"))
 
 func spawn_enemy_delayed(scene: PackedScene) -> void:
 	await get_tree().create_timer(randf_range(0.1, 0.4)).timeout
@@ -117,12 +139,6 @@ func check_for_wave_completion():
 	while not enemies.is_empty():
 		await get_tree().process_frame
 	print("Wave %d complete!" % current_wave)
-
-func roll(dice: int, sides: int) -> int:
-	var total = 0
-	for i in range(dice):
-		total += randi_range(1, sides)
-	return total
 
 func activate_carpark_area():
 	if not CarparkAreaActivated:

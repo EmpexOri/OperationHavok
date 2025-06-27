@@ -17,3 +17,4 @@ res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd
 res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
