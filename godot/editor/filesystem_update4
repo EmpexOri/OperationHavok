@@ -18,3 +18,4 @@ res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Scenes/LevelSelectScene.tscn
+res://Assets/Scripts/Projectiles/rocket_projectile.gd

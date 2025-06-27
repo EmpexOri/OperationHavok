@@ -1,15 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ut6hr1btnda"]
+[gd_scene load_steps=12 format=3 uid="uid://b0ut6hr1btnda"]
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_8xr85"]
 [ext_resource type="Script" uid="uid://oco7h58juew5" path="res://Assets/Scripts/Projectiles/rocket_projectile.gd" id="2_dybd0"]
 [ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_vvo1a"]
 [ext_resource type="PackedScene" uid="uid://bx126fqmmm8p5" path="res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn" id="3_dybd0"]
+[ext_resource type="Texture2D" uid="uid://dun2ub8vj0nwo" path="res://Assets/Art/Particles/SmallChunk.png" id="5_533ne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dybd0"]
 size = Vector2(20, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xr85"]
 radius = 59.0339
+
+[sub_resource type="Gradient" id="Gradient_533ne"]
+colors = PackedColorArray(0.72549, 0.72549, 0.72549, 0.827451, 0.47451, 0.47451, 0.47451, 0.72549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2tdls"]
+gradient = SubResource("Gradient_533ne")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2tdls"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -180.0
+angle_max = 180.0
+spread = 90.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 98, 0)
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.0
+color_ramp = SubResource("GradientTexture1D_2tdls")
+turbulence_enabled = true
+turbulence_noise_scale = 0.74
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_533ne"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 15.0
+angle_min = -180.0
+angle_max = 180.0
+spread = 90.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 98, 0)
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.0
+color_ramp = SubResource("GradientTexture1D_2tdls")
+turbulence_enabled = true
+turbulence_noise_scale = 0.74
 
 [node name="RocketProjectile" instance=ExtResource("1_8xr85")]
 script = ExtResource("2_dybd0")
@@ -32,3 +69,22 @@ texture = ExtResource("2_vvo1a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius" index="0"]
 shape = SubResource("CircleShape2D_8xr85")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
+amount = 256
+texture = ExtResource("5_533ne")
+explosiveness = 0.1
+randomness = 0.46
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_2tdls")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." index="6"]
+emitting = false
+amount = 256
+texture = ExtResource("5_533ne")
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.31
+randomness = 0.46
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_533ne")

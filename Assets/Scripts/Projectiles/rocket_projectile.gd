@@ -12,6 +12,7 @@ class_name RocketProjectile
 # Get references to our collision areas
 @onready var explosion_area: Area2D = $ExplosionRadius
 @onready var explosion_shape: CollisionShape2D = $ExplosionRadius/CollisionShape2D
+@onready var explosioncloud: GPUParticles2D = $GPUParticles2D2
 
 var has_exploded:bool = false # Class variable for if the explosion has occurerd
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 	explosion_shape.shape.radius = explosion_radius_size # Set the AOE size
 	explosion_area.monitoring = false # Initially disable the aoe area
 	explosion_area.monitorable = false # Ensure it doesn't get hit by other things
+	explosioncloud.emitting = true
 
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D):
 	super.start(start_position, direction, entity_owner, p_effects, space_state) # Call super
