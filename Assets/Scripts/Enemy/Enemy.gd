@@ -39,8 +39,8 @@ func update_navigation():
 	var player_node = resolve_target()
 	if player_node:
 		nav.target_position = player_node.global_position
-		var dir = nav.get_next_path_position() - global_position
-		velocity = dir.normalized() * Speed
+		var dir = (nav.get_next_path_position() - global_position).normalized()
+		velocity = dir * Speed
 		move_and_slide()
 
 func resolve_target() -> Node2D:
