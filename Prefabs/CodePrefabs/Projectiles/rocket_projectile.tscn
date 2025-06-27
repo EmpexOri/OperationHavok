@@ -19,7 +19,7 @@ initial_speed = 50.0
 max_speed = 2000.0
 acceleration_rate = 1000.0
 base_speed = 200.0
-base_damage = 50.0
+base_damage = 30.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_dybd0")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn7fueyyy77ju"]
+
+[ext_resource type="Script" uid="uid://u3w4ih1h70iw" path="res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd" id="1_kp1v0"]
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource("1_kp1v0")
+CooldownTime = 15.0

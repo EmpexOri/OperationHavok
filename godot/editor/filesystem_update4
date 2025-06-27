@@ -18,3 +18,11 @@ res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Enemy/Tumor.gd
 res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn
+res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
+res://Prefabs/CodePrefabs/Abilities/Minigun.tscn
+res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
+res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
+res://Assets/Scripts/Misc/RocketExplosion.gd
+res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn

@@ -14,5 +14,5 @@ metadata/_custom_type_script = "uid://cvwir6rctxwae"
 [node name="RocketLauncher" type="Node2D"]
 script = ExtResource("1_nlw1r")
 projectile_scene = ExtResource("2_nlw1r")
-base_fire_rate = 0.25
+base_fire_rate = 0.75
 weapon_effects = Array[ExtResource("3_elf2t")]([SubResource("Resource_t2yw2")])

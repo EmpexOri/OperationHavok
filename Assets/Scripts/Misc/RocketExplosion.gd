@@ -1,8 +1,9 @@
 extends Node2D
 
 # The explosion effect for the rocket projectile
+@onready var explosion_anim: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var lifetime: float = 0.25 # How long the debug circle lasts
+@export var lifetime: float = 0.3 # How long the debug circle lasts
 @export var explosion_radius: float # For debug drawing explosion area
 
 # Get shrapnel emitter references
@@ -18,6 +19,8 @@ func _ready() -> void:
 	shrapnel_emitter_2.restart()
 	shrapnel_emitter_3.restart()
 	shrapnel_emitter_4.restart()
+	GlobalAudioController.PlayGrenadeExplosion()
+	explosion_anim.play("explode")
 	
 	# Start lifetime timer
 	var timer = get_tree().create_timer(lifetime)
