@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://crtkfqk6sofc8"]
+
+[ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_4jry5"]
+[ext_resource type="Texture2D" uid="uid://chs4bvgl6bsti" path="res://Assets/Art/PlaceHolders/Bullet.png" id="2_bl1f1"]
+
+[node name="EnemyBullet" instance=ExtResource("1_4jry5")]
+base_damage = 5.0
+base_lifetime = 3.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(1, 0, 0, 1)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bl1f1")

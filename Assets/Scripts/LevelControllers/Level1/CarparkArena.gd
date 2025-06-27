@@ -7,6 +7,7 @@ const HORDLING = preload("res://Prefabs/GamePrefabs/Enemy/Hordling.tscn")
 const SPEWLING = preload("res://Prefabs/GamePrefabs/Enemy/Spewling.tscn")
 const BIOMANCER = preload("res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn")
 const NEEDLING = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
+const GATLING = preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn")
 const TUMOR = preload("res://Prefabs/GamePrefabs/Enemy/Tumor.tscn")
 const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
 
@@ -22,7 +23,7 @@ var wave_data = [
 	{ "Hordling": [5,6,4], "Spewling": [3,6,0], "Biomancer": [1,4,0], "Needling": [2,6,0], "Tumor": [1,6,1] },
 	{ "Hordling": [6,6,8], "Spewling": [4,6,2], "Biomancer": [1,6,1], "Needling": [3,6,1], "Tumor": [2,6,2] },
 	{ "Hordling": [7,6,12], "Spewling": [5,6,5], "Biomancer": [2,6,1], "Needling": [4,6,2], "Tumor": [4,6,2] },
-	{ "Hordling": [10,6,15], "Spewling": [6,6,6], "Biomancer": [3,6,2], "Needling": [5,6,3], "Tumor": [5,6,3] },
+	{ "Hordling": [10,6,15], "Spewling": [6,6,6], "Biomancer": [3,6,2], "Needling": [5,6,3], "Tumor": [5,6,3], "GATLING": [1,6,0] },
 ]
 
 func _ready():
@@ -85,6 +86,8 @@ func get_scene_for_key(key: String):
 			return BIOMANCER
 		"Needling":
 			return NEEDLING
+		"Gatling":
+			return GATLING
 		"Tumor":
 			return TUMOR
 		"Random":
