@@ -5,7 +5,7 @@ class_name Grenade
 @export var explosion_delay: float = 0.5
 @export var explosion_radius: float = 150.0
 @export var damage: float = 50.0
-@export var stop_on_enemy_hit: bool = true
+@export var stop_on_enemy_hit: bool = false
 @onready var explosion_anim: AnimatedSprite2D = $AnimatedSprite2D
 
 var velocity: Vector2
@@ -40,8 +40,26 @@ func start(start_position: Vector2, direction: Vector2):
 	global_position = start_position
 	velocity = direction.normalized() * throw_force
 
-func _process(delta):
-	position += velocity * delta
+func _physics_process(delta):
+	var new_position = position + velocity * delta
+
+	var query = PhysicsRayQueryParameters2D.create(position, new_position)
+	query.exclude = [self]
+	query.collision_mask = 1 << 2  # Adjust layer to match your wall layer
+
+	var space_state = get_world_2d().direct_space_state
+	if space_state == null:
+		print("Warning: space_state is null")
+		return
+
+	var result = space_state.intersect_ray(query)
+
+	if result:
+		velocity = Vector2.ZERO
+		position = result.position
+	else:
+		position = new_position
+
 	velocity = velocity.move_toward(Vector2.ZERO, 1000 * delta)
 
 func _on_body_entered(body: Node2D) -> void:
