@@ -25,7 +25,7 @@ func _ready():
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 	# Tumour-specific values
-	Health = 60
+	Health = 50
 	Speed = 50
 	Group = "Enemy"  # Already default, so dw
 	Target = "Player"

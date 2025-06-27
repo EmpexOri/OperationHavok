@@ -4,12 +4,15 @@ extends Node
 @onready var LevelLabel: Label = $UIContainer/LevelLabel
 @onready var ClassLabel: Label = $UIContainer/ClassLabel
 @onready var XPCircle: TextureProgressBar = $UIContainer/TextureProgressBar
+@onready var DodgeBar: TextureProgressBar = $UIContainer/DodgeBar 
 
 func _ready():
+	add_to_group("PlayerUI")
 	await get_tree().process_frame  # Ensures UI elements are ready before updating
 	UpdateHealthBar()
 	UpdateXPBar()
 	UpdateClassInfo()
+	UpdateDodgeBar(1.0)
 
 func _process(_delta):
 	UpdateHealthBar()
@@ -40,3 +43,8 @@ func UpdateClassInfo():
 
 		LevelLabel.text = "Level: " + str(Level)
 		ClassLabel.text = "Class: " + CurrentClass
+
+func UpdateDodgeBar(ratio: float):
+	if DodgeBar:
+		# Clamp between 0 and 1 just in case
+		DodgeBar.value = clamp(ratio, 0.0, 1.0)

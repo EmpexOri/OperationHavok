@@ -16,6 +16,7 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 ]
 
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
+var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
 
 var paused: bool = false
 const MAX_CHANNELS := 5
@@ -92,6 +93,14 @@ func BiomancerDeath():
 			player.play()
 			return
 	print("All Biomancer channels are busy!")
+	
+func PlayGrenadeExplosion():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = GrenadeExplosionSound
+			player.play()
+			return
+	print("All General SFX channels are busy!")
 	
 func PauseMenuMusic():
 	var player = $Music/PauseMenuSoundtrack

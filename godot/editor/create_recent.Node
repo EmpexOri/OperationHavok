@@ -1,8 +1,9 @@
+AnimatedSprite2D
+TextureProgressBar
 Sprite2D
 Area2D
 Timer
 CollisionShape2D
-AnimatedSprite2D
 Button
 CharacterBody2D
 TextureButton
@@ -11,4 +12,3 @@ TextureRect
 Panel
 Line2D
 Node2D
-Label

@@ -3,7 +3,7 @@ extends Enemy
 @onready var sprite := $AnimatedSprite2D 
 
 func start():
-	Speed = 140
+	Speed = 150
 	Health = 10
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"

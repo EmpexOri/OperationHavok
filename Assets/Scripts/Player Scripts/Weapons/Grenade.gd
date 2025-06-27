@@ -6,6 +6,7 @@ class_name Grenade
 @export var explosion_radius: float = 150.0
 @export var damage: float = 50.0
 @export var stop_on_enemy_hit: bool = true
+@onready var explosion_anim: AnimatedSprite2D = $AnimatedSprite2D
 
 var velocity: Vector2
 var timer: Timer
@@ -48,9 +49,25 @@ func _on_body_entered(body: Node2D) -> void:
 		velocity = Vector2.ZERO
 
 func _explode():
+	velocity = Vector2.ZERO
+
+	# Damage enemies in radius first
 	for body in $Area2D.get_overlapping_bodies():
 		if body.has_method("deal_damage") and body.is_in_group("Enemy"):
 			body.deal_damage(damage, global_position)
 
-	Global.spawn_death_particles(global_position)
+	# Now disable monitoring so no further detections happen
+	$Area2D.monitoring = false
+	$Area2D.set_deferred("monitorable", false)
+
+	# Play explosion animation
+	$Sprite2D.visible = false  
+	explosion_anim.visible = true
+	GlobalAudioController.PlayGrenadeExplosion()
+	explosion_anim.play("explode")
+
+	await explosion_anim.animation_finished
+	_on_explosion_animation_finished()
+
+func _on_explosion_animation_finished():
 	queue_free()

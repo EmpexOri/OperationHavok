@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=26 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_34rfs"]
 [ext_resource type="PackedScene" uid="uid://5yolel5ubyg1" path="res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn" id="8_oiiaa"]
 [ext_resource type="Texture2D" uid="uid://cbv2n7ean778a" path="res://Assets/Art/Objects/StandInCar.png" id="9_34rfs"]
+[ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
 [ext_resource type="Texture2D" uid="uid://cgb5o6u5vddpn" path="res://Assets/Art/HUD/ABase.png" id="15_16lhd"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
 [ext_resource type="Texture2D" uid="uid://c0657ubcafc6g" path="res://Assets/Art/HUD/BBase.png" id="17_3e4vp"]
@@ -175,6 +176,7 @@ offset_bottom = 60.0
 value = 100.0
 texture_under = ExtResource("4_ajhhu")
 texture_progress = ExtResource("4_ajhhu")
+tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
@@ -186,6 +188,7 @@ offset_bottom = 70.0
 text = "Level: 1"
 
 [node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
+visible = false
 layout_mode = 0
 offset_left = 9.0
 offset_top = 65.0
@@ -204,6 +207,21 @@ texture_under = ExtResource("5_rqnm1")
 texture_progress = ExtResource("5_rqnm1")
 tint_under = Color(0.481789, 0.481789, 0.481789, 1)
 tint_progress = Color(0.331582, 0.534591, 0.947811, 1)
+
+[node name="DodgeBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+clip_contents = true
+layout_mode = 0
+offset_left = 59.0
+offset_top = 26.0
+offset_right = 109.0
+offset_bottom = 36.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+texture_under = ExtResource("13_spgp8")
+texture_progress = ExtResource("13_spgp8")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
 position = Vector2(32, 27)

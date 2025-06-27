@@ -19,6 +19,8 @@ var MoveSpeed = 0
 var BulletSpeed = 0
 var frame_counter := 0
 
+var PlayerUIHandler: Node = null
+
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
 		"name": "SMG",
@@ -35,6 +37,14 @@ var weapon_data := {
 }
 
 func _ready():
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var ui_list = get_tree().get_nodes_in_group("PlayerUI")
+	if ui_list.size() > 0:
+		PlayerUIHandler = ui_list[0]
+		print("PlayerUIHandler found: ", PlayerUIHandler)
+	else:
+		print("PlayerUIHandler not found!")
 	add_to_group("Player")
 	damage_timer()
 	
@@ -103,44 +113,57 @@ func _physics_process(_delta):
 func dodge(direction: Vector2):
 	if direction == Vector2.ZERO:
 		return
-		
+
 	IsDodging = true
 	CanDodge = false
 	Invincible = true
-	
+
 	var dodge_distance = MoveSpeed * 0.7
 	var start_position = global_position
 	var dodge_vector = direction.normalized() * dodge_distance
 	var end_position = start_position + dodge_vector
-	
-	# Temporarily disable collisions with enemies
+
+	# Temporarily disable collisions
 	var collision_shape = $CollisionShape2D
 	collision_shape.disabled = true
-	
-	# Use raycast-style check to find the first collision point along the path
+
+	# Raycast to prevent clipping into walls
 	var space_state = get_world_2d().direct_space_state
 	var ray_params = PhysicsRayQueryParameters2D.create(start_position, end_position)
 	ray_params.exclude = [self]
-	ray_params.collision_mask = 1 << 2  # Environment only (e.g., walls)
-	
+	ray_params.collision_mask = 1 << 2  # Environment only
 	var ray_result = space_state.intersect_ray(ray_params)
 	if ray_result:
-		# Adjust endpoint to stop just before hitting the wall
-		end_position = ray_result.position - direction.normalized() * 4.0  # 4px offset for safety
-		
-	# Tween to final position smoothly
+		end_position = ray_result.position - direction.normalized() * 4.0
+
+	# Tween movement
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	await tween.finished
-	
-	# Re-enable collision
+
+	# Re-enable collisions
 	collision_shape.disabled = false
 	IsDodging = false
-	
-	# Start cooldown
-	await get_tree().create_timer(0.35).timeout
-	CanDodge = true
 	Invincible = false
+
+	# Begin cooldown and update UI
+	start_dodge_cooldown(0.5)
+	
+func start_dodge_cooldown(duration: float):
+	if PlayerUIHandler:
+		# Start at 0
+		PlayerUIHandler.call("UpdateDodgeBar", 0.0)
+		
+		var tween = get_tree().create_tween()
+		tween.tween_method(
+			func(ratio):
+			PlayerUIHandler.call("UpdateDodgeBar", ratio)
+			, 0.0, 1.0, duration)
+	else:
+		print("No PlayerUIHandler to update dodge bar!")
+
+	await get_tree().create_timer(duration).timeout
+	CanDodge = true
 
 func _input(event):
 	if IsUsingAbility:
