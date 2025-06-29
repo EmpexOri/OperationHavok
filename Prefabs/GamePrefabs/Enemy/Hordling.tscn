@@ -76,7 +76,6 @@ radius = 40.0
 max_speed = 150.0
 avoidance_layers = 15
 avoidance_mask = 15
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.9, 0, 0, 1)
 
