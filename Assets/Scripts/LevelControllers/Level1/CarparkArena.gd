@@ -14,7 +14,7 @@ const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
 var current_wave := 0
 var enemies: Array = []
 var spawn_points: Array[Node2D] = []
-var PauseMenu  # Will be instance of pause menu
+var PauseMenu  
 var wave_in_progress := false
 var wave_ending := false
 
@@ -91,21 +91,26 @@ func get_scene_for_key(key: String):
 		"Tumor":
 			return TUMOR
 		"Random":
-			return [BIOMANCER, NEEDLING, TUMOR].pick_random()
+			return [BIOMANCER, NEEDLING, TUMOR]
 	return null
 
 func spawn_wave_enemies(data: Dictionary) -> void:
 	for key in data.keys():
 		var count = roll(data[key][0], data[key][1]) + data[key][2]
-		var scene = get_scene_for_key(key)
+		var scene_data = get_scene_for_key(key)
 		
 		var enemies_remaining = count
 		while enemies_remaining > 0:
 			var batch_size = min(5, enemies_remaining)
 			for i in range(batch_size):
+				var scene
+				if key == "Random":
+					scene = scene_data.pick_random()  # Pick a new one each time
+				else:
+					scene = scene_data
 				spawn_enemy(scene)
 			enemies_remaining -= batch_size
-			await get_tree().create_timer(randf_range(0.05, 0.25)).timeout 
+			await get_tree().create_timer(randf_range(0.05, 0.25)).timeout
 
 func spawn_enemy(scene: PackedScene) -> void:
 	var enemy = scene.instantiate()
