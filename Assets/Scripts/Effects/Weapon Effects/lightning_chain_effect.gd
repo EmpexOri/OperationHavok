@@ -6,7 +6,7 @@ class_name LightningChainEffect
 @export var damage_per_hit: float = 10.0 # Because we have no projectile, damage is set here
 @export var initial_target_cone_angle: float = 60.0 # Degrees, for finding first target
 @export var target_collision_mask: int = 2 # Default to mask for layer 2 (e.g., Enemies, again, beacause we have no projectile)
-#@export var lightning_arc_drawer_scene: PackedScene = null # TODO Assign LightningArcDrawer.tscn, this will be the effect
+@export var lightning_arc_drawer_scene: PackedScene = null # The arc effect
 
 func _init():
 	effect_name = "Lightning Chain"
@@ -20,10 +20,14 @@ func override_fire_logic(
 	if not is_instance_valid(space_state):
 		print("Space state invalid in chain lightning")
 		
+	if not lightning_arc_drawer_scene:
+		print("Lighting arc drawer is null")
+		
 	var targets_hit_this_chain: Array[Node2D] = []
 	var current_source_pos_for_next_link = spawn_position
 	var current_aim_direction_for_next_link = direction
 	var current_chain_target: Node2D = null
+	var arc_visual_points: Array[Vector2] = [spawn_position]
 	
 	for i in range(max_chains):
 		var next_target_in_chain: Node2D = null
@@ -56,6 +60,7 @@ func override_fire_logic(
 		# Deal damage if possible
 		if is_instance_valid(next_target_in_chain):
 			targets_hit_this_chain.append(next_target_in_chain)
+			arc_visual_points.append(next_target_in_chain.global_position)
 			if next_target_in_chain.has_method("deal_damage"):
 				next_target_in_chain.deal_damage(damage_per_hit)
 				
@@ -71,6 +76,13 @@ func override_fire_logic(
 			
 		else:
 			break
+	
+	if arc_visual_points.size() >= 2:
+		var arc_drawer_instance = lightning_arc_drawer_scene.instantiate()
+		var vfx_parent = weapon.get_tree().current_scene
+		if vfx_parent:
+			vfx_parent.add_child(arc_drawer_instance)
+			arc_drawer_instance.setup_arcs(arc_visual_points)
 	
 	return true # Have to return true to override fire logic
 

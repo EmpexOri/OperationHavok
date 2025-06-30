@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtw43wdh8hqt3"]
+
+[ext_resource type="Script" uid="uid://bq6dyhdivhdl2" path="res://Assets/Scripts/Misc/LightningArcDrawer.gd" id="1_vb4ev"]
+
+[node name="LightningArcDrawer" type="Node2D"]
+script = ExtResource("1_vb4ev")
