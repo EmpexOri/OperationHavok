@@ -52,34 +52,49 @@ func _process_effects(delta: float):
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D):
-	current_effects = p_effects # Store passed references in self current_effects array
+	# Store any effects attached to the projectile
+	current_effects = p_effects
 	
-	# Initialise our stats from base stats
+	# Initialize projectile stats
 	speed = base_speed
 	damage = base_damage
 	lifetime = base_lifetime
 	
+	# Setup any effects if they support initialization
 	if current_effects:
 		for effect in current_effects:
 			if effect.has_method("setup"):
-				effect.setup(self) # Setup the projectile effect
+				effect.setup(self)
 	
+	# Set initial position
 	global_position = start_position
-	rotation = direction.angle()
-	velocity = direction * speed
 	
+	# Apply direction vector and scale by speed to get final velocity
+	velocity = direction.normalized() * speed
+
+	# Set the projectile's visual rotation to match movement direction
+	rotation = direction.angle()
+
+	# Flip sprite vertically if it's aiming to the left to avoid upside-down visuals
+	if abs(rotation) > PI / 2:
+		sprite_2d.scale.y = -1
+	else:
+		sprite_2d.scale.y = 1
+	
+	# Configure collision layers depending on the projectile owner
 	if entity_owner == "Enemy":
 		collision_layer = 4  # Enemy projectile layer
-		collision_mask = 1  # Only collides with players
+		collision_mask = 1   # Collides with player layer
 	elif entity_owner == "Player":
 		collision_layer = 3  # Player projectile layer
-		collision_mask = 2  # Only collides with enemies
+		collision_mask = 2   # Collides with enemy layer
 	else:
-		print("Unknown owner set for projectile")
-		
-	lifetime_timer.wait_time = lifetime # Set the lifetime of the projectile
-	lifetime_timer.timeout.connect(queue_free) # Destroy when lifetime expires
-	lifetime_timer.start() # Start the lifetime timer
+		print("Unknown owner set for projectile")  # Fallback warning
+	
+	# Start lifetime timer to automatically free the projectile after expiration
+	lifetime_timer.wait_time = lifetime
+	lifetime_timer.timeout.connect(queue_free)
+	lifetime_timer.start()
 	
 # When we get a collision, uses collision masks
 func _on_body_entered(body: Node2D):
