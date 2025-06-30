@@ -1,3 +1,4 @@
+Line2D
 Node2D
 NavigationObstacle2D
 CollisionPolygon2D
@@ -12,4 +13,3 @@ CollisionShape2D
 Button
 CharacterBody2D
 TextureButton
-ColorRect

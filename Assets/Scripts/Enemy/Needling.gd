@@ -8,6 +8,10 @@ var ShotsBeforeMoving = randi_range(1, 3)
 var IsMovingRandomly = false
 var Weapon: PackedScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn")
 @onready var fire_delay_timer = Timer.new()
+@onready var aim_line: Line2D = $AimLine
+
+var los_check_ready := false
+var los_check
 
 var queued_fire = false
 var fire_direction = Vector2.ZERO
@@ -21,18 +25,21 @@ func start():
 	Target = "Player"
 
 func _ready():
+	await get_tree().physics_frame  # Ensures physics state is initialized
+	los_check = get_world_2d().direct_space_state
+	los_check_ready = true  # <-- You were missing this line
+
 	var firetimer = Timer.new()
 	firetimer.wait_time = randf_range(2, 4)
 	firetimer.one_shot = false
 	firetimer.connect("timeout", Callable(self, "fire"))
 	firetimer.autostart = true
 	add_child(firetimer)
-	
+
 	WeaponScene = Weapon
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
-	# Fire animation delay timer
 	fire_delay_timer.one_shot = true
 	fire_delay_timer.connect("timeout", Callable(self, "_on_fire_delay_timeout"))
 	add_child(fire_delay_timer)
@@ -101,11 +108,27 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func fire():
-	print("Trying to fire...")
-	if IsMovingRandomly or velocity.length() > 1 or is_firing:
-		return # Don't fire while moving or while already firing
+	if IsMovingRandomly or velocity.length() > 1 or is_firing or not los_check_ready:
+		return
 
-	if CurrentWeapon:
+	var player = resolve_target()
+	if not player:
+		return
+
+	var player_pos = player.global_position
+	var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
+	query.exclude = [self]
+	query.collision_mask = 1 << 2  # Wall/environment layer
+
+	var result = los_check.intersect_ray(query)
+
+	if not result or result.collider.is_in_group("Player"):
+		# Show laser telegraph
+		aim_line.clear_points()
+		aim_line.add_point(Vector2.ZERO)
+		aim_line.add_point(to_local(player_pos))
+		aim_line.visible = true
+
 		is_firing = true
 		sprite.play("fire")
 		fire_delay_timer.start(0.5)
@@ -125,6 +148,7 @@ func random_move():
 	nav.target_position = target_pos
 
 func _on_fire_delay_timeout():
+	aim_line.visible = false  # Hide the laser line
 	var Player = get_tree().get_nodes_in_group(Target).front()
 	if CurrentWeapon:
 		fire_direction = (Player.global_position - global_position).normalized()

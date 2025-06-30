@@ -29,3 +29,4 @@ res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
+res://Assets/Scripts/Enemy/Needling.gd
