@@ -1,4 +1,4 @@
-res://Scenes/AlphaLevel1.tscn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/FlashShader.gdshader
@@ -7,7 +7,9 @@ res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Enemy/Gatling.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
@@ -17,8 +19,5 @@ res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
 res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn
 res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
-res://Assets/Scripts/Misc/LightningArcDrawer.gd
 res://Prefabs/CodePrefabs/Particles/LightningArcDrawer.tscn
-res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
-res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
-res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn

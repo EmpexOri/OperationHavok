@@ -112,7 +112,7 @@ func fire():
 		is_firing = true
 		sprite.play("fire")
 		
-		var fire_duration = randf_range(1.0, 3.0)
+		var fire_duration = randf_range(2.0, 5.0)
 		fire_duration_timer.start(fire_duration)
 		
 		_fire_burst()  # Start firing loop
