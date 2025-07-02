@@ -1,4 +1,4 @@
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -7,7 +7,8 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/Misc/SmearCanvas.gd
+res://Assets/Scripts/Misc/MeatChunk.gd
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
@@ -30,5 +31,7 @@ res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
-res://Assets/Scripts/Enemy/Needling.gd
-res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Assets/Scripts/Menu Scripts/particle_options.gd
+res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
+res://Assets/Scripts/Misc/SmearManager.gd

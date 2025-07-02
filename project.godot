@@ -25,6 +25,7 @@ GlobalPlayer="*res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd"
 GlobalBrightnessCanvas="*res://Scenes/Options/GlobalBrightness.tscn"
 GlobalBrightness="*res://Assets/Scripts/Menu Scripts/global_brightness.gd"
 SmearManager="*res://Assets/Scripts/Misc/SmearManager.gd"
+SmearCanvas="*res://Assets/Scripts/Misc/SmearCanvas.gd"
 
 [display]
 

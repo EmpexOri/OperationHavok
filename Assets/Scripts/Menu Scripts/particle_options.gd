@@ -9,15 +9,15 @@ func _on_item_selected(index: int) -> void:
 	
 	match index:
 		0:
-			SmearManager.set_max_smeares(4000)
-			Global.MAX_BLOOD_SMEARS = 4000
-			Global.POOL_SIZE = 128
+			SmearCanvas.set_max_smeares(10000)
+			Global.MAX_BLOOD_SMEARS = 10000
+			Global.POOL_SIZE = 256
 		1:
-			SmearManager.set_max_smeares(2000)
-			Global.MAX_BLOOD_SMEARS = 2000
-			Global.POOL_SIZE = 64
+			SmearCanvas.set_max_smeares(5000)
+			Global.MAX_BLOOD_SMEARS = 5000
+			Global.POOL_SIZE = 128
 		2:
-			SmearManager.set_max_smeares(1000)  # <- don't use 0 unless you truly want none
+			SmearCanvas.set_max_smeares(1000)  # <- don't use 0 unless you truly want none
 			Global.MAX_BLOOD_SMEARS = 1000
 			Global.POOL_SIZE = 32
 	
@@ -26,4 +26,4 @@ func _on_item_selected(index: int) -> void:
 	#print("Pool size:", Global.POOL_SIZE)
 
 	Global.apply_graphics_settings()
-	SmearManager.apply_graphics_settings()
+	SmearCanvas.apply_graphics_settings()

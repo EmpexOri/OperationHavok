@@ -1,7 +1,9 @@
+# This script is basically redundant now, and I will only keep around incase something breaks
+
 extends Node
 
-var MAX_SMEARS := 4000
-const FADE_TIME := 5.0
+var MAX_SMEARS := 5000
+const FADE_TIME := 60.0
 var CULL_THRESHOLD := MAX_SMEARS/2
 const CULL_FADE_MULTIPLIER := 2.0
 
