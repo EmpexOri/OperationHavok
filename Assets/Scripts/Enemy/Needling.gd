@@ -105,6 +105,8 @@ func _physics_process(_delta):
 		# Stop the animation (just don't PAUSE it)
 		sprite.speed_scale = 0
 
+	update_aim_laser()
+
 	move_and_slide()
 
 func fire():
@@ -118,20 +120,21 @@ func fire():
 	var player_pos = player.global_position
 	var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
 	query.exclude = [self]
-	query.collision_mask = 1 << 2  # Wall/environment layer
+	query.collision_mask = 1 << 2  # Wall/environment
 
 	var result = los_check.intersect_ray(query)
 
 	if not result or result.collider.is_in_group("Player"):
-		# Show laser telegraph
+		# Show bright red laser before firing
 		aim_line.clear_points()
 		aim_line.add_point(Vector2.ZERO)
 		aim_line.add_point(to_local(player_pos))
 		aim_line.visible = true
+		aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)  # Bright red
 
 		is_firing = true
 		sprite.play("fire")
-		fire_delay_timer.start(0.5)
+		fire_delay_timer.start(0.0)
 
 func random_move():
 	IsMovingRandomly = true
@@ -148,7 +151,6 @@ func random_move():
 	nav.target_position = target_pos
 
 func _on_fire_delay_timeout():
-	aim_line.visible = false  # Hide the laser line
 	var Player = get_tree().get_nodes_in_group(Target).front()
 	if CurrentWeapon:
 		fire_direction = (Player.global_position - global_position).normalized()
@@ -160,6 +162,7 @@ func _on_fire_delay_timeout():
 func _on_animation_finished():
 	if sprite.animation == "fire":
 		is_firing = false
+		#aim_line.visible = false 
 		
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
@@ -201,3 +204,40 @@ func _on_area_2d_body_entered(body: Node2D):
 		
 func get_flash_sprite() -> CanvasItem:
 	return sprite 
+
+func update_aim_laser():
+	if not los_check_ready:
+		aim_line.visible = false
+		return
+
+	var player = resolve_target()
+	if not player:
+		aim_line.visible = false
+		return
+
+	var player_pos = player.global_position
+	var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
+	query.exclude = [self]
+	query.collision_mask = 1 << 2  # Only collide with walls
+
+	var result = los_check.intersect_ray(query)
+
+	var hit_pos = player_pos
+	var has_los = true
+
+	if result and not result.collider.is_in_group("Player"):
+		hit_pos = result.position
+		has_los = false
+
+	aim_line.clear_points()
+	aim_line.add_point(Vector2.ZERO)
+	aim_line.add_point(to_local(hit_pos))
+	aim_line.visible = true
+
+	# Laser color while firing
+	if is_firing:
+		aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)  # Bright red
+	elif has_los:
+		aim_line.default_color = Color(0.5, 0.0, 0.0, 0.75)  # Dim Red
+	else:
+		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.5)  # Dim red 
