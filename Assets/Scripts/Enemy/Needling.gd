@@ -7,8 +7,8 @@ var ShotsFired = 0
 var ShotsBeforeMoving = randi_range(1, 3)
 var IsMovingRandomly = false
 var Weapon: PackedScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn")
-@onready var fire_delay_timer = Timer.new()
 @onready var aim_line: Line2D = $AimLine
+@onready var laser_flash_tween := create_tween()
 
 var los_check_ready := false
 var los_check
@@ -26,8 +26,10 @@ func start():
 
 func _ready():
 	await get_tree().physics_frame  # Ensures physics state is initialized
+	sprite.connect("frame_changed", Callable(self, "_on_sprite_frame_changed"))
+	laser_flash_tween = get_tree().create_tween()
 	los_check = get_world_2d().direct_space_state
-	los_check_ready = true  # <-- You were missing this line
+	los_check_ready = true  
 
 	var firetimer = Timer.new()
 	firetimer.wait_time = randf_range(2, 4)
@@ -40,9 +42,6 @@ func _ready():
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
-	fire_delay_timer.one_shot = true
-	fire_delay_timer.connect("timeout", Callable(self, "_on_fire_delay_timeout"))
-	add_child(fire_delay_timer)
 	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 func _process(delta):
@@ -125,16 +124,23 @@ func fire():
 	var result = los_check.intersect_ray(query)
 
 	if not result or result.collider.is_in_group("Player"):
-		# Show bright red laser before firing
+		# Set up laser line
 		aim_line.clear_points()
 		aim_line.add_point(Vector2.ZERO)
 		aim_line.add_point(to_local(player_pos))
 		aim_line.visible = true
-		aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)  # Bright red
+		aim_line.default_color = Color(0.0, 0.8, 0.0, 0.0)  # Start transparent
 
-		is_firing = true
-		sprite.play("fire")
-		fire_delay_timer.start(0.0)
+		# Flash the laser a few times
+		var flashes = 6
+		var flash_duration = 0.05
+		laser_flash_tween = get_tree().create_tween()
+		for i in range(flashes):
+			laser_flash_tween.tween_property(aim_line, "modulate:a", 1.0, flash_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+			laser_flash_tween.tween_property(aim_line, "modulate:a", 0.0, flash_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+		# After flashing, fire
+		laser_flash_tween.tween_callback(Callable(self, "_begin_fire_animation"))
 
 func random_move():
 	IsMovingRandomly = true
@@ -150,8 +156,11 @@ func random_move():
 
 	nav.target_position = target_pos
 
-func _on_fire_delay_timeout():
+func shoot_now():
 	var Player = get_tree().get_nodes_in_group(Target).front()
+	if not Player:
+		return
+
 	if CurrentWeapon:
 		fire_direction = (Player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, fire_direction)
@@ -236,8 +245,18 @@ func update_aim_laser():
 
 	# Laser color while firing
 	if is_firing:
-		aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)  # Bright red
+		aim_line.default_color = Color(0.0, 0.8, 0.0, 1.0)  # Bright Green
 	elif has_los:
-		aim_line.default_color = Color(0.5, 0.0, 0.0, 0.75)  # Dim Red
+		aim_line.default_color = Color(0.9, 0.1, 0.0, 1.0)  # Dim Red
 	else:
 		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.5)  # Dim red 
+
+func _on_sprite_frame_changed():
+	if sprite.animation == "fire" and sprite.frame == 2 and is_firing:  # adjust frame index as needed
+		shoot_now()
+
+func _begin_fire_animation():
+	aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)  # Bright red
+	aim_line.modulate.a = 1.0
+	is_firing = true
+	sprite.play("fire")
