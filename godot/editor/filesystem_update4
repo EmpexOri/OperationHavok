@@ -33,3 +33,6 @@ res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn
 res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
+res://Assets/Scripts/Enemy/Biomancer.gd
+res://Assets/Scripts/Enemy/FleshSpawn.gd
+res://Assets/Scripts/Enemy/Needling.gd

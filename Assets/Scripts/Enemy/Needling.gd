@@ -245,11 +245,11 @@ func update_aim_laser():
 
 	# Laser color while firing
 	if is_firing:
-		aim_line.default_color = Color(0.0, 0.8, 0.0, 1.0)  # Bright Green
+		aim_line.default_color = Color(0.0, 0.8, 0.0, 0.8)  # Bright Green
 	elif has_los:
-		aim_line.default_color = Color(0.9, 0.1, 0.0, 1.0)  # Dim Red
+		aim_line.default_color = Color(0.9, 0.1, 0.0, 0.8)  # Dim Red
 	else:
-		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.5)  # Dim red 
+		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.4)  # Dim red 
 
 func _on_sprite_frame_changed():
 	if sprite.animation == "fire" and sprite.frame == 2 and is_firing:  # adjust frame index as needed

@@ -144,7 +144,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_na2k3"]
-size = Vector2(22, 29)
+size = Vector2(22, 31)
 
 [node name="Needling" type="CharacterBody2D"]
 collision_layer = 2
@@ -169,7 +169,7 @@ animation = &"fire"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 1.5)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_na2k3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -178,6 +178,6 @@ debug_use_custom = true
 debug_path_custom_color = Color(1.1, 1.1, 0, 1)
 
 [node name="AimLine" type="Line2D" parent="."]
-width = 2.0
+width = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
