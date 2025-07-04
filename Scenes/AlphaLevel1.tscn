@@ -245,6 +245,7 @@ texture = ExtResource("19_4kqft")
 texture = ExtResource("20_8mwex")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(62, 34)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
@@ -268,6 +269,6 @@ carve_navigation_mesh = true
 avoidance_layers = 15
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.513233, 0.513233, 0.513233, 1)
+color = Color(0.629675, 0.629675, 0.629675, 1)
 
 [connection signal="body_entered" from="LevelManager/CarparkTrigger" to="LevelManager" method="_on_carpark_trigger_entered"]

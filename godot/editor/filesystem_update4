@@ -7,6 +7,7 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
@@ -31,5 +32,4 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn
 res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
-res://Assets/Scripts/Enemy/Needling.gd
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
