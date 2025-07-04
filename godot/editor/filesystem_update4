@@ -1,4 +1,4 @@
-res://Scenes/AlphaLevel1.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -7,9 +7,9 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn
+res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
@@ -33,6 +33,6 @@ res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn
 res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
-res://Assets/Scripts/Enemy/Biomancer.gd
-res://Assets/Scripts/Enemy/FleshSpawn.gd
-res://Assets/Scripts/Enemy/Needling.gd
+res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd

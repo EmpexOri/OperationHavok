@@ -36,10 +36,10 @@ func activate(player, index = -1):
 	var current_weapon_scene = player.CurrentWeapon.scene_file_path
 	
 	if current_weapon_scene == weapon1_scene.resource_path:
-		player.equip_weapon(weapon2_scene)
+		player.equip_weapon(weapon2_scene, "SwapWeapons")
 		print("Swapped to weapon 2!")
 	else:
-		player.equip_weapon(weapon1_scene)
+		player.equip_weapon(weapon1_scene, "SwapWeapons")
 		print("Swapped to weapon 1!")
 
 	var cooldown_timer := Timer.new()

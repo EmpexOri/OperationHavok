@@ -12,6 +12,7 @@ var CanDodge = true
 var IsDodging = false
 var IsUsingAbility = false
 var AbilityCooldowns = {}
+var current_weapon_source := ""
 
 var Invincible = false
 
@@ -213,7 +214,7 @@ func _on_ability_cooldown_finished(index: int):
 	AbilityCooldowns[index] = false
 	print("Ability", index, "is now off cooldown.")
 
-func equip_weapon(WeaponScene: PackedScene):
+func equip_weapon(WeaponScene: PackedScene, source: String = ""):
 	if CurrentWeapon:
 		CurrentWeapon.queue_free()
 	
@@ -221,7 +222,9 @@ func equip_weapon(WeaponScene: PackedScene):
 		CurrentWeapon = WeaponScene.instantiate()
 		CurrentWeapon.owning_entity = "Player"
 		add_child(CurrentWeapon)
-		CurrentWeapon.position = Vector2(0, 0) # or offset relative to player sprite
+		CurrentWeapon.position = Vector2(0, 0)
+
+		current_weapon_source = source
 		
 func attempt_to_fire():
 	if CurrentWeapon:

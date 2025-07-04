@@ -3,10 +3,10 @@ class_name RocketLauncher
 
 signal perk_finished(index: int)
 
-@export var Duration: float = 10.0 # How long the Minigun is active for
-@export var CooldownTime: float = 10.0 # Cooldown *after* Minigun ends
+@export var Duration: float = 10.0 # How long the LauncherScene is active for
+@export var CooldownTime: float = 10.0 # Cooldown *after* LauncherScene ends
 
-var MinigunScene := preload("res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn")
+var LauncherScene := preload("res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn")
 
 var PerkIndex: int
 var OriginalWeaponScene: PackedScene
@@ -22,8 +22,8 @@ func activate(player, index = -1):
 	var weaponPath = player.CurrentWeapon.scene_file_path
 	OriginalWeaponScene = load(weaponPath)
 
-	# Equip the Minigun, so we actually like get it
-	player.equip_weapon(MinigunScene)
+	# Equip the LauncherScene, so we actually like get it
+	player.equip_weapon(LauncherScene, "RocketLauncher")
 	print("Swapped to rocket_launcher!")
 
 	# Start duration timer, this is a bit of a funky one, Godot doesn't like these
@@ -38,7 +38,8 @@ func activate(player, index = -1):
 
 func _restore_weapon(player):
 	if player and OriginalWeaponScene:
-		player.equip_weapon(OriginalWeaponScene)
+		if player and OriginalWeaponScene and player.current_weapon_source == "RocketLauncher":
+			player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
 		print("Restored original weapon.")
 
 	# After restoring, start the cooldown timer, like SwapWeapons :D
