@@ -17,6 +17,7 @@ func activate(player, index = -1):
 		return
 
 	PerkIndex = index
+	self.owner = player  
 
 	# Save the player's current weapon, so we can change things in future :D
 	var weaponPath = player.CurrentWeapon.scene_file_path
@@ -25,6 +26,13 @@ func activate(player, index = -1):
 	# Equip the LauncherScene, so we actually like get it
 	player.equip_weapon(LauncherScene, "RocketLauncher")
 	print("Swapped to rocket_launcher!")
+
+	# --- UI Cooldown hookup ---
+	var icon = get_node_or_null("/root/PlayerUI/AbilitiesUI/Icon3")
+	if icon:
+		if icon.has_method("start_cooldown"):
+			icon.start_cooldown(CooldownTime)
+	# --------------------------
 
 	# Start duration timer, this is a bit of a funky one, Godot doesn't like these
 	var durationTimer := Timer.new()
@@ -42,7 +50,11 @@ func _restore_weapon(player):
 			player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
 		print("Restored original weapon.")
 
-	# After restoring, start the cooldown timer, like SwapWeapons :D
+		# Notify UI cooldown starts NOW, not later
+		if player.has_method("start_cooldown_on_slot"):
+			player.start_cooldown_on_slot(3, CooldownTime)  # slot 3 for rocket launcher
+
+	# Start cooldown timer for actual cooldown period
 	var cooldownTimer := Timer.new()
 	cooldownTimer.one_shot = true
 	cooldownTimer.wait_time = CooldownTime
@@ -51,6 +63,7 @@ func _restore_weapon(player):
 	cooldownTimer.start()
 
 func _cooldown_complete():
-	print("Minigun cooldown complete.")
+	print("RocketLauncher cooldown complete.")
+		
 	emit_signal("perk_finished", PerkIndex)
 	queue_free()

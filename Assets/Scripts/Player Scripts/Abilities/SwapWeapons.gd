@@ -13,6 +13,7 @@ var perk_index: int
 
 func activate(player, index = -1):
 	perk_index = index
+	self.owner = player  # Save reference for UI updates
 
 	# Pull weapon upgrades from GlobalPlayer
 	var upgrade_slot_1 = GlobalPlayer.weapon_upgrades.get(1, null)
@@ -23,24 +24,30 @@ func activate(player, index = -1):
 	if upgrade_slot_2 and weapon_scenes.has(upgrade_slot_2):
 		weapon2_scene = weapon_scenes[upgrade_slot_2]
 
-	# Fallback to default weapons if not set, I wont set it manually btw for saftey
+	# Fallback to default weapons if not set
 	if weapon1_scene == null:
 		weapon1_scene = weapon_scenes["Smg"]
 	if weapon2_scene == null:
 		weapon2_scene = weapon_scenes["Shotgun"]
-		
+
 	if not player or not player.CurrentWeapon:
 		queue_free()
 		return
-		
+
 	var current_weapon_scene = player.CurrentWeapon.scene_file_path
-	
+
 	if current_weapon_scene == weapon1_scene.resource_path:
 		player.equip_weapon(weapon2_scene, "SwapWeapons")
 		print("Swapped to weapon 2!")
+		_update_icon_sprite(weapon2_scene)
 	else:
 		player.equip_weapon(weapon1_scene, "SwapWeapons")
 		print("Swapped to weapon 1!")
+		_update_icon_sprite(weapon1_scene)
+
+	# Start cooldown UI on Icon1 via player helper
+	if player.has_method("start_cooldown_on_slot"):
+		player.start_cooldown_on_slot(1, cooldown_time)
 
 	var cooldown_timer := Timer.new()
 	cooldown_timer.one_shot = true
@@ -54,19 +61,9 @@ func _cooldown_complete():
 	emit_signal("perk_finished", perk_index)
 	queue_free()
 
-func apply_weapon_upgrade(weapon_name: String, slot: int) -> void:
-	if not weapon_scenes.has(weapon_name):
-		print("Invalid weapon name: ", weapon_name)
+func _update_icon_sprite(weapon_scene: PackedScene) -> void:
+	if not owner:
 		return
-
-	var new_scene = weapon_scenes[weapon_name]
-
-	match slot:
-		1:
-			weapon1_scene = new_scene
-			print("Weapon 1 upgraded to ", weapon_name)
-		2:
-			weapon2_scene = new_scene
-			print("Weapon 2 upgraded to ", weapon_name)
-		_:
-			print("Invalid slot: ", slot)
+	if not owner.has_method("update_ability_icon_sprite"):
+		return
+	owner.update_ability_icon_sprite(1, weapon_scene)  # Slot 1 for WeaponSwap

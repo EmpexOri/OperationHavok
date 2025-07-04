@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=26 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://co12wru674270" path="res://Assets/Art/HUD/GrenadeIcon.png" id="18_t1xay"]
 [ext_resource type="Texture2D" uid="uid://p2q26baamseu" path="res://Assets/Art/HUD/YBase.png" id="19_4kqft"]
 [ext_resource type="Texture2D" uid="uid://bbsovscil4ukr" path="res://Assets/Art/HUD/Minigun.png" id="20_8mwex"]
+[ext_resource type="Script" uid="uid://6s1bqy0wr87w" path="res://Assets/Scripts/Player Scripts/AbilityIcon.gd" id="22_3e4vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
 size = Vector2(204, 101)
@@ -220,29 +221,37 @@ offset_bottom = 27.0
 text = "FPS:01"
 script = ExtResource("7_34rfs")
 
-[node name="ABase" type="Sprite2D" parent="PlayerUI/UIContainer"]
+[node name="AbilitiesUI" type="CanvasLayer" parent="PlayerUI"]
+
+[node name="ABase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(529, 326)
 texture = ExtResource("15_16lhd")
 
-[node name="SwapIcon" type="Sprite2D" parent="PlayerUI/UIContainer/ABase"]
-texture = ExtResource("16_spgp8")
-
-[node name="BBase" type="Sprite2D" parent="PlayerUI/UIContainer"]
+[node name="BBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(573, 326)
 texture = ExtResource("17_3e4vp")
 
-[node name="GrenadeIcon" type="Sprite2D" parent="PlayerUI/UIContainer/BBase"]
-texture = ExtResource("18_t1xay")
-
-[node name="YBase" type="Sprite2D" parent="PlayerUI/UIContainer"]
+[node name="YBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(617, 326)
 texture = ExtResource("19_4kqft")
 
-[node name="Minigun" type="Sprite2D" parent="PlayerUI/UIContainer/YBase"]
+[node name="Icon1" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+position = Vector2(529, 326)
+texture = ExtResource("16_spgp8")
+script = ExtResource("22_3e4vp")
+
+[node name="Icon2" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+position = Vector2(573, 326)
+texture = ExtResource("18_t1xay")
+script = ExtResource("22_3e4vp")
+
+[node name="Icon3" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+position = Vector2(617, 326)
 texture = ExtResource("20_8mwex")
+script = ExtResource("22_3e4vp")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

@@ -22,6 +22,10 @@ var frame_counter := 0
 
 var PlayerUIHandler: Node = null
 
+var icon1: Node = null
+var icon2: Node = null
+var icon3: Node = null
+
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
 		"name": "SMG",
@@ -54,6 +58,14 @@ func _ready():
 	equip_weapon(StartingWeapon)
 	var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
 	CurrentWeapon.add_effect(penetrate_effect)
+
+	var root = get_tree().get_current_scene()
+	if root:
+		# Adjust path according to your actual scene hierarchy!
+		icon1 = root.get_node("PlayerUI/AbilitiesUI/Icon1")
+		icon2 = root.get_node("PlayerUI/AbilitiesUI/Icon2")
+		icon3 = root.get_node("PlayerUI/AbilitiesUI/Icon3")
+
 	
 func damage_timer():
 	Damage_Timer = Timer.new()
@@ -328,3 +340,18 @@ func update_weapon_rotation():
 			# Apply the rotation without clamping
 			weapon_sprite.rotation = angle
 			#print("Setting weapon rotation to:", angle)
+
+func start_cooldown_on_slot(slot_index: int, duration: float) -> void:
+	print("start_cooldown_on_slot called for slot:", slot_index, "duration:", duration)
+	match slot_index:
+		1:
+			if icon1:
+				icon1.start_cooldown(duration)
+		2:
+			if icon2:
+				icon2.start_cooldown(duration)
+		3:
+			if icon3:
+				icon3.start_cooldown(duration)
+		_:
+			print("Invalid slot index: ", slot_index)

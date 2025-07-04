@@ -7,6 +7,7 @@ var perk_index: int
 
 func activate(player, index = -1):
 	perk_index = index
+	self.owner = player
 
 	var grenade_scene = preload("res://Prefabs/CodePrefabs/Weapons/Grenade.tscn")
 	var grenade = grenade_scene.instantiate()
@@ -18,6 +19,9 @@ func activate(player, index = -1):
 	_start_cooldown()
 
 func _start_cooldown():
+	if owner and owner.has_method("start_cooldown_on_slot"):
+		owner.start_cooldown_on_slot(2, cooldown_time)  # slot 2 is grenade
+	
 	var timer = Timer.new()
 	timer.one_shot = true
 	timer.wait_time = cooldown_time
