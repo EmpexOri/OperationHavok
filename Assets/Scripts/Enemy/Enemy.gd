@@ -102,6 +102,12 @@ func _process(delta: float) -> void:
 		return d.time_remaining > 0
 	)
 	
+	# MY NEW BIT YIPPEEEEE
+	if is_buffed:
+		buff_timer -= delta
+		if buff_timer <= 0:
+			remove_buff()
+	
 func get_flash_sprite() -> CanvasItem:
 	push_error("get_flash_sprite() not implemented in subclass")
 	return null
@@ -119,3 +125,47 @@ func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 		await get_tree().create_timer(interval).timeout
 		mat.set_shader_parameter("flash_strength", 0.0)
 		await get_tree().create_timer(interval).timeout
+
+
+# STIILL MY NEW BIT YIPPEEE
+func has_weapon() -> bool:
+	if CurrentWeapon == null: # Does the enemy have a weapon? 
+		return false
+	if not is_instance_valid(CurrentWeapon): # Is the enemies weapon existing?
+		return false
+	return true
+
+var is_buffed := false
+var buff_timer := 0.0
+const BUFF_DURATION := 5.0  # seconds
+
+func apply_buff(flash_color := Color("cb002e")):
+	var sprite = get_flash_sprite()
+	var mat := sprite.material as ShaderMaterial
+	mat.set_shader_parameter("flash_color", flash_color)
+	
+	if is_buffed:
+		return
+	is_buffed = true
+	add_to_group("Buffed")
+	Speed *= 1.5
+	if has_weapon():
+		CurrentWeapon.current_fire_rate *= 0.8 # 20% faster
+		CurrentWeapon.cooldown_timer.wait_time = CurrentWeapon.current_fire_rate
+	mat.set_shader_parameter("flash_strength", 0.5)
+	buff_timer = BUFF_DURATION
+	print("Buff applied to:", name)
+	
+func remove_buff(flash_color := Color("cb002e")):
+	var sprite = get_flash_sprite()
+	var mat := sprite.material as ShaderMaterial
+	mat.set_shader_parameter("flash_color", flash_color)
+	
+	is_buffed = false
+	remove_from_group("Buffed")
+	Speed /= 1.5
+	if has_weapon():
+		CurrentWeapon.current_fire_rate = CurrentWeapon.base_fire_rate
+		CurrentWeapon.cooldown_timer.wait_time = CurrentWeapon.base_fire_rate
+	mat.set_shader_parameter("flash_strength", 0.0)
+	print("Buff expired for:", name)

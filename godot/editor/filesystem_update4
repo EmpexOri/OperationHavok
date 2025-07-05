@@ -7,6 +7,7 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+<<<<<<< Updated upstream
 res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
@@ -38,3 +39,14 @@ res://Assets/Scripts/Player Scripts/player.gd
 res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
 res://Assets/Scripts/Player Scripts/AbilityIcon.gd
 res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
+=======
+res://Prefabs/GamePrefabs/Enemy/Network.tscn
+res://Assets/Scripts/Enemy/Network.gd
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Assets/Scripts/Enemy/Tumor.gd
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
+>>>>>>> Stashed changes
