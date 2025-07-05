@@ -1,5 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ::res://::1751605777
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::6640660801981549538::1745557727::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1751526765::0::1::::<><><>0<>0<><>::
@@ -344,6 +345,8 @@ OptionsScene.tscn::PackedScene/PackedScene::3176783398074510821::1747633470::0::
 PauseMenu.tscn::PackedScene/PackedScene::4994658538511177887::1750386180::0::1::::<><><>0<>0<><>::uid://dib45hhu31nt::::res://Assets/Art/PlaceHolders/ControlsBg.png<>uid://bewl45qdirp8w::::res://Assets/Art/Menu/OptionsOff.png<>uid://bq1smq7025jr3::::res://Assets/Scripts/Menu Scripts/PauseNode.gd<>uid://crcon2xwm5xj6::::res://Assets/Art/Menu/OptionsOn.png<>uid://bli4fnfa7mnar::::res://Scenes/Options/OptionsScene.tscn
 SkillButton.tscn::PackedScene/PackedScene::7711097327665850848::1749737975::0::1::::<><><>0<>0<><>::uid://cwv5csmk6r8ne::::res://Assets/Art/PlaceHolders/TestSkillButton.png<>uid://bw54pd6kp40nr::::res://Assets/Scripts/Menu Scripts/skill_button.gd
 =======
+=======
+>>>>>>> Stashed changes
 ::res://::1751686062
 default_bus_layout.tres::AudioBusLayout::6640660801981549538::1745565505::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1747972509::0::1::::<><><>0<>0<><>::
@@ -683,4 +686,7 @@ GlobalBrightness.tscn::PackedScene::38526933770845637::1746589105::0::1::::<><><
 OptionsScene.tscn::PackedScene::3176783398074510821::1747599408::0::1::::<><><>0<>0<><>::uid://bjja86ke8qrmn::::res://Assets/Scripts/Menu Scripts/OptionsScene.gd<>uid://b83rsxcl721n7::::res://Assets/Scripts/Menu Scripts/brightness_slider.gd<>uid://ba1r4kddlu76f::::res://Assets/Scripts/Menu Scripts/volume_control_slider.gd<>uid://dptye62ocip5c::::res://Assets/Scripts/Menu Scripts/particle_options.gd
 PauseMenu.tscn::PackedScene::4994658538511177887::1751529279::0::1::::<><><>0<>0<><>::uid://dib45hhu31nt::::res://Assets/Art/PlaceHolders/ControlsBg.png<>uid://bewl45qdirp8w::::res://Assets/Art/Menu/OptionsOff.png<>uid://bq1smq7025jr3::::res://Assets/Scripts/Menu Scripts/PauseNode.gd<>uid://crcon2xwm5xj6::::res://Assets/Art/Menu/OptionsOn.png<>uid://bli4fnfa7mnar::::res://Scenes/Options/OptionsScene.tscn
 SkillButton.tscn::PackedScene::7711097327665850848::1749734157::0::1::::<><><>0<>0<><>::uid://cwv5csmk6r8ne::::res://Assets/Art/PlaceHolders/TestSkillButton.png<>uid://bw54pd6kp40nr::::res://Assets/Scripts/Menu Scripts/skill_button.gd
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
