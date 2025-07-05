@@ -155,7 +155,7 @@ func apply_buff(flash_color := Color("cb002e")):
 	mat.set_shader_parameter("flash_strength", 0.5)
 	buff_timer = BUFF_DURATION
 	print("Buff applied to:", name)
-	
+	 
 func remove_buff(flash_color := Color("cb002e")):
 	var sprite = get_flash_sprite()
 	var mat := sprite.material as ShaderMaterial

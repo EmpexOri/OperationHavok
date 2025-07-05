@@ -1,15 +1,9 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-CanvasLayer
-=======
-Area2D
-CharacterBody2D
->>>>>>> Stashed changes
-=======
-Area2D
-CharacterBody2D
->>>>>>> Stashed changes
 AnimatedSprite2D
+CanvasLayer
+Area2D
+CharacterBody2D
+Area2D
+CharacterBody2D
 Line2D
 Node2D
 NavigationObstacle2D
@@ -18,6 +12,3 @@ GPUParticles2D
 CPUParticles2D
 TextureProgressBar
 Sprite2D
-Timer
-CollisionShape2D
-Button

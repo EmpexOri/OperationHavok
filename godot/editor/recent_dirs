@@ -1,3 +1,4 @@
+res://Assets/Art/Sprites
 res://Assets/Scripts/Enemy
 res://Prefabs/GamePrefabs/Enemy
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha] - Linux
@@ -5,7 +6,6 @@ C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
 res://Assets/Scripts/Misc
 res://Assets/Art/Particles/Explosion/Explosion64
 res://Prefabs/CodePrefabs/Particles
-res://Assets/Art/Sprites
 res://Assets/Art/PlaceHolders
 res://Assets/Scripts/Effects/Weapon Effects/Instances
 res://Assets/Scripts/Effects/Weapon Effects

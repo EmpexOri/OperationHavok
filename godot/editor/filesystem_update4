@@ -1,61 +1,11 @@
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Scenes/MenuScene.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
-res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Shaders/BulletShader.tres
-res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
+res://Scenes/AlphaLevel1.tscn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
-res://Scenes/AlphaLevel1.tscn
-res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
-res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
-res://Scenes/GlobalAudioController.tscn
-res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
-res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn
-res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
-res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn
-res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
-res://Prefabs/CodePrefabs/Particles/LightningArcDrawer.tscn
-res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
-res://Prefabs/CodePrefabs/Weapons/Smg.tscn
-res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/MinigunBullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
-res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn
-res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
-res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
-res://Assets/Scripts/Player Scripts/AbilityIcon.gd
-res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
-=======
-res://Prefabs/GamePrefabs/Enemy/Network.tscn
-res://Assets/Scripts/Enemy/Network.gd
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
-=======
-res://Prefabs/GamePrefabs/Enemy/Network.tscn
-res://Assets/Scripts/Enemy/Network.gd
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
->>>>>>> Stashed changes
-res://Assets/Scripts/Enemy/Enemy.gd
 res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
-res://Assets/Scripts/Enemy/Tumor.gd
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
-res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+res://Prefabs/GamePrefabs/Enemy/Network.tscn
+res://Assets/Scripts/Enemy/Enemy.gd

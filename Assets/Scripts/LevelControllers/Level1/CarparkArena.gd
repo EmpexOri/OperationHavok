@@ -9,7 +9,6 @@ const BIOMANCER = preload("res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn")
 const NEEDLING = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
 const GATLING = preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn")
 const TUMOR = preload("res://Prefabs/GamePrefabs/Enemy/Tumor.tscn")
-
 const NETWORK = preload("res://Prefabs/GamePrefabs/Enemy/Network.tscn")
 
 const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
