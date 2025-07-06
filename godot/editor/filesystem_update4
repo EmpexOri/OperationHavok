@@ -8,3 +8,6 @@ res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Scenes/MenuScene.tscn
 res://Scenes/AlphaLevel1.tscn
+res://Assets/Scripts/LevelControllers/Level1/Test2Area.gd
+res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd

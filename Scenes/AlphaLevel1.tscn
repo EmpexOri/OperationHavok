@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=28 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="3_xngmm"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="4_ajhhu"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="4_rqnm1"]
+[ext_resource type="Script" uid="uid://7b1jlrmdexi2" path="res://Assets/Scripts/LevelControllers/Level1/Test2Area.gd" id="4_t1xay"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="5_rqnm1"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="5_xngmm"]
 [ext_resource type="Texture2D" uid="uid://c44foldyjmmux" path="res://Assets/Art/Objects/Road_Block.png" id="6_ajhhu"]
@@ -25,6 +26,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
 size = Vector2(204, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3e4vp"]
+size = Vector2(160, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqnm1"]
 size = Vector2(216, 48)
@@ -46,6 +50,13 @@ script = ExtResource("1_xngmm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelManager/CarparkTrigger"]
 position = Vector2(129, 36.5)
 shape = SubResource("RectangleShape2D_xngmm")
+
+[node name="Test2Trigger" type="Area2D" parent="LevelManager"]
+position = Vector2(0, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelManager/Test2Trigger"]
+position = Vector2(-176, 20)
+shape = SubResource("RectangleShape2D_3e4vp")
 
 [node name="CarparkArea" type="Node2D" parent="."]
 script = ExtResource("1_pfke8")
@@ -75,6 +86,7 @@ position = Vector2(536, 489)
 position = Vector2(656, 402)
 
 [node name="Test2Area" type="Node2D" parent="."]
+script = ExtResource("4_t1xay")
 
 [node name="FloorTileMap2" type="TileMapLayer" parent="Test2Area"]
 position = Vector2(-16, -4)
@@ -84,6 +96,33 @@ tile_set = ExtResource("2_bkju3")
 [node name="WallTileMap" type="TileMapLayer" parent="Test2Area/FloorTileMap2"]
 tile_map_data = PackedByteArray("AAD6/z0AAAAEAAQAAAD6/z4AAAAEAAUAAAD5/z0AAAAEAAQAAAD5/z4AAAAEAAUAAAD4/z0AAAAEAAQAAAD4/z4AAAAEAAUAAAD3/z0AAAAEAAQAAAD3/z4AAAAEAAUAAAD2/z0AAAAEAAQAAAD2/z4AAAAEAAUAAAD1/z0AAAAEAAQAAAD1/z4AAAAEAAUAAAD0/z0AAAAEAAQAAAD0/z4AAAAEAAUAAADz/z0AAAAEAAQAAADz/z4AAAAEAAUAAADy/z0AAAAEAAQAAADy/z4AAAAEAAUAAADx/z0AAAADAAQAAADx/z4AAAADAAUAAAD6/0EAAAAEAAEAAAD5/0EAAAAEAAEAAAD4/0EAAAAEAAEAAAD3/0EAAAAEAAEAAAD2/0EAAAAEAAEAAAD1/0EAAAAEAAEAAAD0/0EAAAAEAAEAAADz/0EAAAAEAAEAAADy/0EAAAAEAAEAAADx/0EAAAAEAAEAAADo/0EAAAAEAAEAAADp/0EAAAAEAAEAAADq/0EAAAAEAAEAAADr/0EAAAAEAAEAAADs/0EAAAAEAAEAAADt/0EAAAAEAAEAAADu/0EAAAAEAAEAAADv/0EAAAAEAAEAAADw/0EAAAAEAAEAAADn/zEAAAAFAAIAAADn/zIAAAAFAAIAAADn/zMAAAAFAAIAAADn/zQAAAAFAAIAAADn/zUAAAAFAAMAAADn/zYAAAAFAAQAAADn/zcAAAAFAAUAAADn/zwAAAAFAAIAAADn/z0AAAAFAAIAAADn/z4AAAAFAAIAAADn/z8AAAAFAAIAAADn/0AAAAAFAAIAAADo/y8AAAAEAAQAAADo/zAAAAAEAAUAAADp/y8AAAAEAAQAAADp/zAAAAAEAAUAAADq/y8AAAAFAAQAAADq/zAAAAAFAAUAAADu/y8AAAADAAQAAADu/zAAAAADAAUAAADv/y8AAAAEAAQAAADv/zAAAAAEAAUAAADw/y8AAAAEAAQAAADw/zAAAAAEAAUAAADx/zEAAAADAAIAAADx/zIAAAADAAIAAADx/zMAAAADAAIAAADx/zQAAAADAAIAAADx/zUAAAADAAIAAADx/zYAAAADAAQAAADx/zcAAAADAAUAAADx/zwAAAADAAMAAADn/0EAAAAAAAQAAADn/y8AAAAAAAEAAADn/zAAAAAAAAIAAADx/y8AAAACAAEAAADx/zAAAAACAAIAAADx/zsAAAADAAEAAADy/zsAAAAEAAEAAADz/zsAAAAEAAEAAAD0/zsAAAAEAAEAAAD1/zsAAAAEAAEAAADy/zwAAAAEAAIAAADz/zwAAAAEAAIAAAD0/zwAAAAEAAIAAAD1/zwAAAAEAAIAAAD2/zAAAAADAAIAAAD2/zEAAAADAAIAAAD2/zIAAAADAAIAAAD2/zMAAAADAAIAAAD2/zQAAAADAAIAAAD2/zUAAAADAAIAAAD2/zYAAAADAAIAAAD2/zcAAAADAAIAAAD2/zgAAAADAAIAAAD2/zkAAAADAAIAAAD2/zoAAAADAAIAAAD2/y8AAAADAAEAAADi/y8AAAAFAAEAAADi/zAAAAAFAAIAAADi/zEAAAAFAAIAAADi/zIAAAAFAAIAAADi/zMAAAAFAAIAAADi/zQAAAAFAAIAAADi/zUAAAAFAAIAAADi/zYAAAAFAAIAAADi/zcAAAAFAAIAAADi/zgAAAAFAAIAAADi/zkAAAAFAAIAAADi/zoAAAAFAAIAAADj/zsAAAAEAAEAAADk/zsAAAAEAAEAAADl/zsAAAAEAAEAAADm/zsAAAAEAAEAAADn/zsAAAAFAAEAAADi/zsAAAAAAAQAAAD2/zsAAAACAAQAAADy/zAAAAAFAAIAAADy/zEAAAAFAAIAAADy/zIAAAAFAAIAAADy/zMAAAAFAAIAAADy/zQAAAAFAAIAAADy/zUAAAAFAAIAAADy/zYAAAAFAAQAAADy/zcAAAAFAAUAAADm/zYAAAADAAQAAADm/zcAAAADAAUAAADm/zUAAAADAAMAAADm/zAAAAADAAIAAADm/zEAAAADAAIAAADm/zIAAAADAAIAAADm/zMAAAADAAIAAADm/zQAAAADAAIAAADm/y8AAAADAAIAAADy/y8AAAAFAAIAAADh/y8AAAAAAAQAAAD3/y8AAAACAAQAAAD2/zwAAAAEAAIAAAD3/ycAAAADAAIAAAD3/ygAAAADAAIAAAD3/ykAAAADAAIAAAD3/yoAAAADAAIAAAD3/ysAAAADAAIAAAD3/ywAAAADAAIAAAD3/y0AAAADAAIAAAD3/y4AAAADAAIAAADh/ycAAAAFAAIAAADh/ygAAAAFAAIAAADh/ykAAAAFAAIAAADh/yoAAAAFAAIAAADh/ysAAAAFAAIAAADh/ywAAAAFAAIAAADh/y0AAAAFAAIAAADh/y4AAAAFAAIAAADh/yUAAAAAAAEAAADh/yYAAAAAAAIAAADi/yUAAAABAAEAAADi/yYAAAABAAIAAADj/yUAAAABAAEAAADj/yYAAAABAAIAAADk/yUAAAABAAEAAADk/yYAAAABAAIAAADl/yUAAAABAAEAAADl/yYAAAABAAIAAADm/yUAAAABAAEAAADm/yYAAAABAAIAAADn/yUAAAABAAEAAADn/yYAAAABAAIAAADo/yUAAAABAAEAAADo/yYAAAABAAIAAADp/yUAAAABAAEAAADp/yYAAAABAAIAAADq/yUAAAABAAEAAADq/yYAAAABAAIAAADr/yUAAAABAAEAAADr/yYAAAABAAIAAADs/yUAAAABAAEAAADs/yYAAAABAAIAAADt/yUAAAABAAEAAADt/yYAAAABAAIAAADu/yUAAAABAAEAAADu/yYAAAABAAIAAADv/yUAAAABAAEAAADv/yYAAAABAAIAAADw/yUAAAABAAEAAADw/yYAAAABAAIAAADx/yUAAAABAAEAAADx/yYAAAABAAIAAADy/yUAAAABAAEAAADy/yYAAAABAAIAAADz/yUAAAABAAEAAADz/yYAAAABAAIAAAD0/yUAAAABAAEAAAD0/yYAAAABAAIAAAD1/yUAAAABAAEAAAD1/yYAAAABAAIAAAD2/yUAAAABAAEAAAD2/yYAAAABAAIAAAD3/yUAAAACAAEAAAD3/yYAAAACAAIAAADq/y4AAAAFAAEAAADn/y4AAAAEAAEAAADo/y4AAAAEAAEAAADp/y4AAAAEAAEAAADm/y4AAAADAAEAAADy/y4AAAAFAAEAAADv/y4AAAAEAAEAAADw/y4AAAAEAAEAAADx/y4AAAAEAAEAAADu/y4AAAADAAEAAAA=")
 tile_set = ExtResource("2_bkju3")
+
+[node name="Spawn0" type="Node2D" parent="Test2Area"]
+position = Vector2(-289, 1003)
+
+[node name="Spawn1" type="Node2D" parent="Test2Area"]
+position = Vector2(-322, 835)
+
+[node name="Spawn2" type="Node2D" parent="Test2Area"]
+position = Vector2(-193, 652)
+
+[node name="Spawn3" type="Node2D" parent="Test2Area"]
+position = Vector2(-448, 699)
+
+[node name="RoadBlock2" type="CharacterBody2D" parent="Test2Area"]
+position = Vector2(-75, 925)
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+collision_layer = 15
+collision_mask = 15
+
+[node name="RoadBlock" type="Sprite2D" parent="Test2Area/RoadBlock2"]
+position = Vector2(122.667, -4)
+texture = ExtResource("6_ajhhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test2Area/RoadBlock2"]
+position = Vector2(126.667, -5.53678e-06)
+shape = SubResource("RectangleShape2D_rqnm1")
 
 [node name="YSortedObjects" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -265,6 +304,7 @@ texture = ExtResource("20_8mwex")
 script = ExtResource("22_3e4vp")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(62, 34)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
@@ -291,3 +331,4 @@ avoidance_layers = 15
 color = Color(0.629675, 0.629675, 0.629675, 1)
 
 [connection signal="body_entered" from="LevelManager/CarparkTrigger" to="LevelManager" method="_on_carpark_trigger_entered"]
+[connection signal="body_entered" from="LevelManager/Test2Trigger" to="LevelManager" method="_on_carpark_trigger_entered"]
