@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u2mf73ulpnqs"]
+
+[ext_resource type="Script" uid="uid://cf6co63nf3a5k" path="res://Assets/Scripts/Player Scripts/Abilities/LightningLauncher.gd" id="1_8hmgb"]
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource("1_8hmgb")

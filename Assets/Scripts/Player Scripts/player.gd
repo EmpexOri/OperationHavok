@@ -55,7 +55,8 @@ func _ready():
 	
 	MoveSpeed = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["MoveSpeed"]
 	
-	equip_weapon(StartingWeapon)
+	var default_weapon = get_default_weapon_from_swap_upgrade()
+	equip_weapon(default_weapon, "SwapWeapons")
 	var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
 	CurrentWeapon.add_effect(penetrate_effect)
 
@@ -355,3 +356,12 @@ func start_cooldown_on_slot(slot_index: int, duration: float) -> void:
 				icon3.start_cooldown(duration)
 		_:
 			print("Invalid slot index: ", slot_index)
+
+func get_default_weapon_from_swap_upgrade() -> PackedScene:
+	var weapon_scenes = WeaponData.weapon_scenes
+	var upgrade_slot_1 = GlobalPlayer.weapon_upgrades.get(1, null)
+
+	if upgrade_slot_1 and weapon_scenes.has(upgrade_slot_1):
+		return weapon_scenes[upgrade_slot_1]
+
+	return weapon_scenes.get("Smg") # fallback
