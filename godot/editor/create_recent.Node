@@ -1,3 +1,5 @@
+TileMapLayer
+Node2D
 AnimatedSprite2D
 CanvasLayer
 Area2D
@@ -5,10 +7,8 @@ CharacterBody2D
 Area2D
 CharacterBody2D
 Line2D
-Node2D
 NavigationObstacle2D
 CollisionPolygon2D
 GPUParticles2D
 CPUParticles2D
 TextureProgressBar
-Sprite2D

@@ -1,3 +1,4 @@
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap
 res://Assets/Art/Sprites
 res://Assets/Scripts/Enemy
 res://Prefabs/GamePrefabs/Enemy
@@ -10,7 +11,6 @@ res://Assets/Art/PlaceHolders
 res://Assets/Scripts/Effects/Weapon Effects/Instances
 res://Assets/Scripts/Effects/Weapon Effects
 res://Prefabs/CodePrefabs/Particles/Preloaded
-res://Assets/Art/Tilesets/Carpark_Area_Tilemap
 res://Prefabs/GamePrefabs/Objects
 res://Prefabs/GamePrefabs/Player
 res://Assets/Shaders

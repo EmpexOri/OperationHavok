@@ -104,6 +104,7 @@ func _on_back_button_pressed() -> void:
 func _on_menu_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
+	SmearCanvas.reset()
 	
 	# Removing all objects
 	ResumeButton.visible = false

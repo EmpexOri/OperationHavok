@@ -1,11 +1,10 @@
-res://Scenes/MenuScene.tscn
+res://Prefabs/GamePrefabs/Enemy/Network.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Shaders/FlashShader.tres
-res://Scenes/AlphaLevel1.tscn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
-res://Prefabs/GamePrefabs/Enemy/Network.tscn
-res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/MenuScene.tscn
+res://Scenes/AlphaLevel1.tscn
