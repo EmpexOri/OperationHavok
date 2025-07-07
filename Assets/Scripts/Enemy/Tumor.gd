@@ -26,6 +26,7 @@ func _ready():
 
 	# Tumour-specific values
 	Health = 50
+	MaxHealth = Health
 	Speed = 50
 	Group = "Enemy"  # Already default, so dw
 	Target = "Player"

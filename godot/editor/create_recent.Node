@@ -1,3 +1,4 @@
+GPUParticles2D
 Node2D
 TileMapLayer
 AnimatedSprite2D
@@ -9,6 +10,5 @@ CharacterBody2D
 Line2D
 NavigationObstacle2D
 CollisionPolygon2D
-GPUParticles2D
 CPUParticles2D
 TextureProgressBar

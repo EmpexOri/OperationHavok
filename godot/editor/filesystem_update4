@@ -17,3 +17,18 @@ res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
 res://Assets/Scripts/Enemy/Enemy.gd
 res://Assets/Scripts/Enemy/Network.gd
 res://Assets/Shaders/FlashShader.gdshader
+res://Assets/Art/Particles/Misc/HealingEffect.tscn
+res://Assets/Scripts/Enemy/Hordling.gd
+res://Assets/Scripts/Enemy/Biomancer.gd
+res://Assets/Scripts/Enemy/FleshSpawn.gd
+res://Assets/Scripts/Enemy/Gatling.gd
+res://Assets/Scripts/Enemy/Needling.gd
+res://Assets/Scripts/Enemy/Tumor.gd
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
+res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
+res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres

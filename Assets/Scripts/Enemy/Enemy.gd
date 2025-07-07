@@ -7,7 +7,8 @@ class_name Enemy
 var dot_timers: Array = []
 
 var Speed = 100
-var Health = 10
+var MaxHealth: int = 10
+var Health: int = 10
 var Group = "Enemy"
 var SummonGroup = "EnemySummon"
 var Target = "Player"
@@ -146,16 +147,51 @@ func apply_buff(flash_color := Color("98fb98")):
 	
 	if is_buffed:
 		return
+	
 	is_buffed = true
 	add_to_group("Buffed")
 	Speed *= 1.25
+
 	if has_weapon():
-		CurrentWeapon.current_fire_rate *= 0.8 # 20% faster
+		CurrentWeapon.current_fire_rate *= 0.8
 		CurrentWeapon.cooldown_timer.wait_time = CurrentWeapon.current_fire_rate
+
 	mat.set_shader_parameter("flash_strength", 0.5)
 	buff_timer = BUFF_DURATION
+
+	# Start healing timer ticks
+	for i in range(int(BUFF_DURATION)):
+		var t = Timer.new()
+		t.wait_time = 1.0
+		t.one_shot = true
+		t.connect("timeout", Callable(self, "_on_buff_heal_tick"))
+		add_child(t)
+		t.start(i)
+		
 	print("Buff applied to:", name)
 	 
+func _on_buff_heal_tick():
+	if Health <= 0:
+		return  # Don't heal dead enemies LMAO
+		
+	Health = min(Health + 5, MaxHealth)
+	print(name, " healed 5hp during buff → now has ", Health)
+	
+	# Spawn healing particles
+	var particles = preload("res://Assets/Art/Particles/Misc/HealingEffect.tscn").instantiate()
+	add_child(particles)
+	particles.position = Vector2.ZERO
+	
+	var pfx = particles.get_node("GPUParticles2D")
+	pfx.emitting = true
+	pfx.one_shot = true
+	pfx.restart()  # Just to be safe
+	
+	# Auto-queue_free the wrapper node after emission ends
+	await get_tree().create_timer(pfx.lifetime).timeout
+	if is_instance_valid(particles):
+		particles.queue_free()
+
 func remove_buff(flash_color := Color("98fb98")):
 	var sprite = get_flash_sprite()
 	var mat := sprite.material as ShaderMaterial

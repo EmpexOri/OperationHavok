@@ -8,5 +8,5 @@
 [node name="AkimboSMG" type="Node2D"]
 script = ExtResource("1_40ojk")
 projectile_scene = ExtResource("2_3i8x5")
-base_fire_rate = 0.1
+base_fire_rate = 0.05
 weapon_effects = Array[ExtResource("3_8rclf")]([ExtResource("4_hpyw3")])

@@ -7,6 +7,7 @@ func _ready():
 	super._ready()
 	Speed = 50
 	Health = 5
+	MaxHealth = Health
 	$Sprite2D.modulate = Colour
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()

@@ -11,6 +11,7 @@ func _ready():
 	
 	Speed = 50
 	Health = 120
+	MaxHealth = Health
 	Group = "Enemy" # having trouble here
 	add_to_group("Support") # band aid solution for the time
 	Target = null
