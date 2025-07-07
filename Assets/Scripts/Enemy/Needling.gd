@@ -17,8 +17,13 @@ var queued_fire = false
 var fire_direction = Vector2.ZERO
 var is_firing = false
 
+var flee_timer := 0.0
+var is_fleeing := false
+const FLEE_DISTANCE := 120.0
+const FLEE_RECALCULATE_INTERVAL := 0.5
+
 func start():
-	Speed = 80
+	Speed = 150
 	Health = 40
 	MaxHealth = Health
 	Group = "Enemy"
@@ -58,30 +63,47 @@ func _process(delta):
 		Global.spawn_death_particles(global_position) 
 		queue_free()
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	var player = resolve_target()
 	var target_pos: Vector2
 
-	if IsMovingRandomly:
-		var player = resolve_target()
-		target_pos = nav.target_position
-		if global_position.distance_to(player.global_position) <= 100:
-			IsMovingRandomly = false
-		elif nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
-			IsMovingRandomly = false
-			velocity = Vector2.ZERO
-			sprite.stop()
-	else:
-		var Player = resolve_target()
-		target_pos = Player.position
-		nav.target_position = target_pos
+	# Handle fleeing logic
+	if player:
+		var dist = global_position.distance_to(player.global_position)
+		
+		if dist < FLEE_DISTANCE:
+			is_fleeing = true
+			flee_timer -= delta
+			if flee_timer <= 0:
+				move_away_from_player()
+				flee_timer = FLEE_RECALCULATE_INTERVAL
+		else:
+			is_fleeing = false
 
+	# Only use random movement if fleeing or patrolling
+	if IsMovingRandomly or is_fleeing:
+		target_pos = nav.target_position
+
+		if not is_fleeing:
+			# If not fleeing, stop random move if we’re near target
+			if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
+				IsMovingRandomly = false
+				velocity = Vector2.ZERO
+				sprite.stop()
+	else:
+		if player:
+			target_pos = player.global_position
+			nav.target_position = target_pos
+
+	# Movement direction
 	var Direction = nav.get_next_path_position() - global_position
 	Direction = Direction.normalized()
 
-	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100) or is_firing:
+	# Movement control
+	if not IsMovingRandomly and not is_fleeing and (position.distance_to(target_pos) >= 100 or is_firing):
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
-	elif IsMovingRandomly:
+	elif IsMovingRandomly or is_fleeing:
 		Speed = 60
 		sprite.modulate.a = 0.65
 		velocity = Direction * Speed
@@ -89,20 +111,17 @@ func _physics_process(_delta):
 		Speed = 120
 		sprite.modulate.a = 1
 		velocity = Direction * Speed
-			
-	# ANIMATION HANDLING
+
+	# Animation control
 	if is_firing:
-		# Keep firing animation playing slowly
-		sprite.speed_scale = 1 #0.35
-		# Moving animation stays the same
-	elif IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
+		sprite.speed_scale = 1
+	elif IsMovingRandomly or is_fleeing or velocity.length() > 0.1:
 		if sprite.animation != "move":
 			sprite.speed_scale = 1
 			sprite.play("move")
 		if abs(velocity.x) > 0.1:
 			sprite.flip_h = velocity.x > 0
 	else:
-		# Stop the animation (just don't PAUSE it)
 		sprite.speed_scale = 0
 
 	update_aim_laser()
@@ -261,3 +280,20 @@ func _begin_fire_animation():
 	aim_line.modulate.a = 1.0
 	is_firing = true
 	sprite.play("fire")
+
+func move_away_from_player():
+	var player = resolve_target()
+	if not player:
+		return
+	
+	var direction_away = (global_position - player.global_position).normalized()
+	var distance = randf_range(150, 250)
+	var safe_position = global_position + direction_away * distance
+	
+	# Clamp within screen
+	var screen_size = get_viewport_rect().size
+	safe_position.x = clamp(safe_position.x, 0, screen_size.x)
+	safe_position.y = clamp(safe_position.y, 0, screen_size.y)
+	
+	IsMovingRandomly = true
+	nav.target_position = safe_position

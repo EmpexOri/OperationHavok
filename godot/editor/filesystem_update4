@@ -32,3 +32,7 @@ res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
 res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
 res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
+res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
+res://Assets/Scripts/Misc/RocketExplosion.gd
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd

@@ -14,9 +14,17 @@ var queued_fire = false
 var fire_direction = Vector2.ZERO
 var is_firing = false
 
+var is_ramming = false
+var ram_direction = Vector2.ZERO
+const RAM_TRIGGER_DISTANCE = 100
+const RAM_SPEED_MULTIPLIER = 1.75
+const RAM_DURATION = 0.6
+const RAM_DAMAGE = 15
+@onready var ram_timer := Timer.new()
+
 func start():
 	Speed = 80
-	Health = 40
+	Health = 50
 	MaxHealth = Health
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
@@ -42,6 +50,11 @@ func _ready():
 	fire_delay_timer.connect("timeout", Callable(self, "_on_fire_delay_timeout"))
 	add_child(fire_delay_timer)
 	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	
+	ram_timer.one_shot = true
+	ram_timer.wait_time = RAM_DURATION
+	ram_timer.connect("timeout", Callable(self, "_on_ram_timeout"))
+	add_child(ram_timer)
 
 func _process(delta):
 	super._process(delta)  
@@ -57,6 +70,15 @@ func _process(delta):
 		queue_free()
 
 func _physics_process(_delta):
+	if is_ramming:
+		velocity = ram_direction * Speed * RAM_SPEED_MULTIPLIER
+		sprite.modulate.a = 1.0
+		sprite.speed_scale = 1.0
+		if sprite.animation != "move":
+			sprite.play("move")
+		move_and_slide()
+		return
+
 	var target_pos: Vector2
 
 	if IsMovingRandomly:
@@ -70,6 +92,9 @@ func _physics_process(_delta):
 			sprite.stop()
 	else:
 		var Player = resolve_target()
+		if not is_ramming and Player and global_position.distance_to(Player.global_position) <= RAM_TRIGGER_DISTANCE:
+			start_ramming(Player)
+			return  # Stop all normal logic during ramming
 		target_pos = Player.position
 		nav.target_position = target_pos
 
@@ -159,7 +184,10 @@ func _on_animation_finished():
 		
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
-		body.deal_damage(2)
+		if is_ramming:
+			body.deal_damage(RAM_DAMAGE)
+		else:
+			body.deal_damage(2)
 		
 		var direction = (global_position - body.global_position).normalized()
 		var dodge_distance = Speed * 0.6
@@ -197,3 +225,14 @@ func _on_area_2d_body_entered(body: Node2D):
 		
 func get_flash_sprite() -> CanvasItem:
 	return sprite 
+
+func start_ramming(player):
+	is_ramming = true
+	is_firing = false
+	IsMovingRandomly = false
+	ram_direction = (player.global_position - global_position).normalized()
+	ram_timer.start()
+
+func _on_ram_timeout():
+	is_ramming = false
+	velocity = Vector2.ZERO

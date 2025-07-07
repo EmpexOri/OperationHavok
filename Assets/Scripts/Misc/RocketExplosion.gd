@@ -34,4 +34,5 @@ func start(_radius: float):
 
 func _draw():
 	# Debug draw for the explosion scene itself
-	draw_circle(Vector2.ZERO, explosion_radius, Color(1,0,0,0.3))
+	#draw_circle(Vector2.ZERO, explosion_radius, Color(1,0,0,0.3))
+	pass
