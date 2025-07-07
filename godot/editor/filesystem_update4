@@ -36,3 +36,9 @@ res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
 res://Assets/Scripts/Misc/RocketExplosion.gd
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
 res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/WarmachineBullet.tscn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyMinigun.tscn
+res://Prefabs/GamePrefabs/Enemy/Gatling.tscn
