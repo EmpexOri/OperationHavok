@@ -1,21 +1,19 @@
-res://Scenes/AlphaLevel1.tscn
+res://Prefabs/CodePrefabs/Abilities/LightningLauncher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Player Scripts/player.gd
 res://Scenes/MenuScene.tscn
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Network.tscn
-res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
-res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
 res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
-res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
-res://Assets/Scripts/Player Scripts/Abilities/LightningLauncher.gd
-res://Prefabs/CodePrefabs/Abilities/LightningLauncher.tscn
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Enemy/Network.gd
+res://Assets/Shaders/FlashShader.gdshader

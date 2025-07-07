@@ -10,7 +10,7 @@ func _ready():
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 	
 	Speed = 50
-	Health = 60
+	Health = 120
 	Group = "Enemy" # having trouble here
 	add_to_group("Support") # band aid solution for the time
 	Target = null

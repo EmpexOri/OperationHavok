@@ -139,7 +139,7 @@ var is_buffed := false
 var buff_timer := 0.0
 const BUFF_DURATION := 5.0  # seconds
 
-func apply_buff(flash_color := Color("cb002e")):
+func apply_buff(flash_color := Color("98fb98")):
 	var sprite = get_flash_sprite()
 	var mat := sprite.material as ShaderMaterial
 	mat.set_shader_parameter("flash_color", flash_color)
@@ -148,7 +148,7 @@ func apply_buff(flash_color := Color("cb002e")):
 		return
 	is_buffed = true
 	add_to_group("Buffed")
-	Speed *= 1.5
+	Speed *= 1.25
 	if has_weapon():
 		CurrentWeapon.current_fire_rate *= 0.8 # 20% faster
 		CurrentWeapon.cooldown_timer.wait_time = CurrentWeapon.current_fire_rate
@@ -156,14 +156,14 @@ func apply_buff(flash_color := Color("cb002e")):
 	buff_timer = BUFF_DURATION
 	print("Buff applied to:", name)
 	 
-func remove_buff(flash_color := Color("cb002e")):
+func remove_buff(flash_color := Color("98fb98")):
 	var sprite = get_flash_sprite()
 	var mat := sprite.material as ShaderMaterial
 	mat.set_shader_parameter("flash_color", flash_color)
 	
 	is_buffed = false
 	remove_from_group("Buffed")
-	Speed /= 1.5
+	Speed /= 1.25
 	if has_weapon():
 		CurrentWeapon.current_fire_rate = CurrentWeapon.base_fire_rate
 		CurrentWeapon.cooldown_timer.wait_time = CurrentWeapon.base_fire_rate
