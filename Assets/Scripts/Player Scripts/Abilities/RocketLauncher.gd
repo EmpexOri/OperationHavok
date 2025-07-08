@@ -28,8 +28,10 @@ func activate(player, index = -1):
 	var weaponPath = player.CurrentWeapon.scene_file_path
 	OriginalWeaponScene = load(weaponPath)
 
-	player.equip_weapon(LauncherScene, "RocketLauncher")
-	print("Swapped to rocket_launcher!")
+	await get_tree().process_frame
+	if is_instance_valid(player) and is_instance_valid(self):  # Safety guard
+		player.equip_weapon(LauncherScene, "RocketLauncher")
+		print("Swapped to rocket_launcher!")
 
 	# UI cooldown hookup for cooldown time starting NOW (even though actual cooldown starts after duration)
 	var icon = get_node_or_null("/root/PlayerUI/AbilitiesUI/Icon3")
