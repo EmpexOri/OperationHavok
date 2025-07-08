@@ -131,7 +131,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		return
 
 	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
-		deal_damage(10, body.global_position)
+		deal_damage(25, body.global_position)
 		body.queue_free()
 	elif body.is_in_group("Spell"):
 		remove_from_group("Enemy")

@@ -5,9 +5,9 @@
 [ext_resource type="Material" uid="uid://eh4n4hehs0i4" path="res://Assets/Shaders/BulletShader.tres" id="2_61lek"]
 
 [node name="Bullet" instance=ExtResource("1_ebkul")]
-base_speed = 750.0
-base_damage = 10.0
-base_lifetime = 0.2
+base_speed = 800.0
+base_damage = 9.0
+base_lifetime = 0.3
 
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
