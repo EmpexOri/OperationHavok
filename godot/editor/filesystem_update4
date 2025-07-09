@@ -1,4 +1,4 @@
-res://Scenes/AlphaLevel1.tscn
+res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -6,18 +6,15 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
 res://Prefabs/GamePrefabs/Enemy/Gatling.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyMinigun.tscn
-res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
-res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
-res://Assets/Scripts/Enemy/Tumor.gd
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
-res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/ShotgunProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.tres
