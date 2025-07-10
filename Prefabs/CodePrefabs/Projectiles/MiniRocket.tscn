@@ -52,8 +52,8 @@ turbulence_noise_scale = 0.74
 script = ExtResource("2_ujp57")
 explosion_radius_size = 50.0
 explosion_scene = ExtResource("3_5jat3")
-initial_speed = 100.0
-max_speed = 2000.0
+initial_speed = 500.0
+max_speed = 500.0
 acceleration_rate = 500.0
 base_speed = 200.0
 base_damage = 10.0
@@ -81,7 +81,7 @@ process_material = SubResource("ParticleProcessMaterial_2tdls")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="." index="6"]
 emitting = false
-amount = 256
+amount = 1
 texture = ExtResource("5_rujs5")
 lifetime = 0.1
 one_shot = true

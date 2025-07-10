@@ -1,12 +1,12 @@
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
+res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Enemy/Tumor.gd
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
@@ -20,22 +20,14 @@ res://Prefabs/CodePrefabs/Projectiles/ShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
 res://Prefabs/CodePrefabs/Weapons/M60.tscn
 res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
-res://Assets/Scripts/Universal Scripts/WeaponData.gd
-res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
-res://Prefabs/CodePrefabs/Projectiles/M60Bullet.tscn
-res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd
-res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
-res://Assets/Scripts/Weapons/Weapon.gd
-res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn
 res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
+res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn

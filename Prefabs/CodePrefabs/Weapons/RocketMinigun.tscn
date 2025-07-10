@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccq8phhgg3ea1"]
+[gd_scene load_steps=6 format=3 uid="uid://ccq8phhgg3ea1"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_p5q3g"]
-[ext_resource type="PackedScene" uid="uid://b0ut6hr1btnda" path="res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn" id="2_p5q3g"]
+[ext_resource type="PackedScene" uid="uid://u0jv2osthn6k" path="res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn" id="2_bytts"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_bv8n3"]
-[ext_resource type="Resource" uid="uid://dk0b0g2aim660" path="res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres" id="4_pmp2p"]
 [ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="5_qssb2"]
 
 [sub_resource type="Resource" id="Resource_t2yw2"]
@@ -14,6 +13,6 @@ metadata/_custom_type_script = "uid://cvwir6rctxwae"
 
 [node name="RocketMinigun" type="Node2D"]
 script = ExtResource("1_p5q3g")
-projectile_scene = ExtResource("2_p5q3g")
-base_fire_rate = 0.025
-weapon_effects = Array[ExtResource("3_bv8n3")]([ExtResource("4_pmp2p"), SubResource("Resource_t2yw2")])
+projectile_scene = ExtResource("2_bytts")
+base_fire_rate = 0.05
+weapon_effects = Array[ExtResource("3_bv8n3")]([SubResource("Resource_t2yw2")])
