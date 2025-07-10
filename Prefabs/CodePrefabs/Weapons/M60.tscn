@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccby8d8w2spp8"]
+
+[ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_b1rlo"]
+[ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/CodePrefabs/Projectiles/bullet.tscn" id="2_hq30g"]
+[ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_gvhy6"]
+[ext_resource type="Script" uid="uid://bdk8ayxby0fm2" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd" id="4_1lxoq"]
+[ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="5_r41jt"]
+[ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="6_gvhy6"]
+
+[sub_resource type="Resource" id="Resource_s3fd3"]
+script = ExtResource("4_1lxoq")
+knockback_force = 10.0
+effect_name = ""
+metadata/_custom_type_script = "uid://bdk8ayxby0fm2"
+
+[sub_resource type="Resource" id="Resource_1lxoq"]
+script = ExtResource("6_gvhy6")
+inaccuracy_angle = 5.0
+effect_name = ""
+metadata/_custom_type_script = "uid://cvwir6rctxwae"
+
+[node name="M60" type="Node2D"]
+script = ExtResource("1_b1rlo")
+projectile_scene = ExtResource("2_hq30g")
+base_fire_rate = 0.025
+projectile_effects = Array[ExtResource("3_gvhy6")]([SubResource("Resource_s3fd3")])
+weapon_effects = Array[ExtResource("5_r41jt")]([SubResource("Resource_1lxoq")])

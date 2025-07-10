@@ -166,6 +166,13 @@ func _perform_explode():
 	Global.spawn_tumour_particles(global_position)
 	Global.spawn_death_particles(global_position)
 	print("KABOOM MF")
+	
+	var anim_a = $ExplosionAnimation
+	var anim_b = anim_a.get_node("ExplosionAnimation")
+	var anim_c = anim_b.get_node("ExplosionAnimation")
+	anim_a.play()
+	anim_b.play()
+	anim_c.play()
 
 	var explosion_area = $Area2D
 	var collision_shape = explosion_area.get_child(0)
@@ -212,6 +219,11 @@ func _perform_explode():
 		body.deal_damage(20, global_position)
 	
 	# Play a randomised death sound
+	GlobalAudioController.PlayGrenadeExplosion()
+	sprite.visible = false
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	await get_tree().create_timer(0.5).timeout
 	GlobalAudioController.HordlingDeath()
 	Global.spawn_tumour_particles(global_position)
 	on_death()

@@ -1,11 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://bx126fqmmm8p5"]
+[gd_scene load_steps=10 format=3 uid="uid://bx126fqmmm8p5"]
 
 [ext_resource type="Script" uid="uid://dpfkbxttl18ut" path="res://Assets/Scripts/Misc/RocketExplosion.gd" id="1_5gk5c"]
 [ext_resource type="Texture2D" uid="uid://dlbcv4fwesinh" path="res://Assets/Art/Particles/Shrapnel/Shrapnel1.png" id="2_tnxnn"]
 [ext_resource type="Texture2D" uid="uid://cdba0j1aivyil" path="res://Assets/Art/Particles/Shrapnel/Shrapnel2.png" id="3_v7ahm"]
 [ext_resource type="Texture2D" uid="uid://cbyayuj1fvwuc" path="res://Assets/Art/Particles/Shrapnel/Shrapnel3.png" id="4_x81j4"]
 [ext_resource type="Texture2D" uid="uid://doje141ck2jad" path="res://Assets/Art/Particles/Shrapnel/Shrapnel4.png" id="5_oa77l"]
-[ext_resource type="Texture2D" uid="uid://dm72vrnncic6q" path="res://Assets/Art/Particles/Explosion/Explosion64/Explosion.png" id="6_rnydw"]
+[ext_resource type="SpriteFrames" uid="uid://oa2hk4gs8yud" path="res://Assets/Art/Effects/ExplodedAnim.tres" id="6_rnydw"]
 
 [sub_resource type="Gradient" id="Gradient_tnxnn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -30,105 +30,6 @@ color_ramp = SubResource("GradientTexture1D_5gk5c")
 collision_mode = 1
 collision_friction = 0.75
 collision_bounce = 0.5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_slkba"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_exvit"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6brsw"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ox7q"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_172ut"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1oekm"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcmxj"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(576, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dufph"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(672, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3t7dk"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(768, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjeqn"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(864, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jjal"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(960, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8lnx"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(1056, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4cfxk"]
-atlas = ExtResource("6_rnydw")
-region = Rect2(1152, 0, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mfrs3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_slkba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_exvit")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6brsw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ox7q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_172ut")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1oekm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xcmxj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dufph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3t7dk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qjeqn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3jjal")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p8lnx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4cfxk")
-}],
-"loop": false,
-"name": &"explode",
-"speed": 30.0
-}]
 
 [node name="RocketExplosion" type="Node2D"]
 script = ExtResource("1_5gk5c")
@@ -174,5 +75,5 @@ randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_8mduc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_mfrs3")
+sprite_frames = ExtResource("6_rnydw")
 animation = &"explode"
