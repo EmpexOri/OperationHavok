@@ -25,9 +25,15 @@ func _on_skill_button_used(button: SkillButton):
 		"Akimbo":
 			GlobalPlayer.upgrade_weapon("AkimboSmg", 1)
 			print("Upgraded Akimbo SMG!")
+		"M60":
+			GlobalPlayer.upgrade_weapon("M60", 1)
+			print("Upgraded M60!")
 		"DragonsBreath":
 			GlobalPlayer.upgrade_weapon("DragonShotgun", 2)
 			print("Upgraded DragonsShotgun")
+		"SniperRifle":
+			GlobalPlayer.upgrade_weapon("Sniper", 2)
+			print("Upgraded Sniper")
 
 func _on_back_button_pressed() -> void:
 	GlobalAudioController.ClickSound()

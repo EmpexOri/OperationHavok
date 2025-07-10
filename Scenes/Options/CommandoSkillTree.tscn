@@ -114,7 +114,7 @@ theme_override_font_sizes/font_size = 9
 text = "John Woo Ref?"
 horizontal_alignment = 1
 
-[node name="JohnWoo" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]
+[node name="M60" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
@@ -138,10 +138,10 @@ offset_top = 21.0
 offset_right = 104.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 10
-text = "Railgun"
+text = "Sniper Rifle"
 horizontal_alignment = 1
 
-[node name="Railgun" parent="WeaponSwapTitle/Sniper" instance=ExtResource("1_cye56")]
+[node name="SniperRifle" parent="WeaponSwapTitle/Sniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 7.99991
 offset_top = 35.0
@@ -149,7 +149,7 @@ offset_right = 48.0003
 offset_bottom = 75.0
 scale = Vector2(1.2, 1.2)
 
-[node name="LaserSnipe" type="Label" parent="WeaponSwapTitle/Sniper/Railgun"]
+[node name="LaserSnipe" type="Label" parent="WeaponSwapTitle/Sniper/SniperRifle"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 85.8333
@@ -159,7 +159,7 @@ theme_override_font_sizes/font_size = 9
 text = "Laser Sniper"
 horizontal_alignment = 1
 
-[node name="LaserSniper" parent="WeaponSwapTitle/Sniper/Railgun" instance=ExtResource("1_cye56")]
+[node name="LaserSniper" parent="WeaponSwapTitle/Sniper/SniperRifle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
