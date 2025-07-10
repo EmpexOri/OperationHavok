@@ -6,7 +6,7 @@ signal perk_finished(index: int)
 @export var Duration: float = 10.0 # How long the LauncherScene is active for
 @export var CooldownTime: float = 10.0 # Cooldown *after* LauncherScene ends
 
-var LauncherScene := preload("res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn")
+var LauncherScene := preload("res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn")
 
 var PerkIndex: int
 var OriginalWeaponScene: PackedScene
