@@ -1,4 +1,4 @@
-res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,7 +7,6 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Scenes/AlphaLevel1.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
 res://Prefabs/GamePrefabs/Enemy/Gatling.tscn
@@ -24,10 +23,15 @@ res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
 res://Prefabs/CodePrefabs/Weapons/M60.tscn
 res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
+res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn
 res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
 res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
+res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
+res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
+res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Enemy/Tumor.gd

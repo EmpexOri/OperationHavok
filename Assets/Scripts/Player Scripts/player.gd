@@ -132,7 +132,7 @@ func dodge(direction: Vector2):
 	CanDodge = false
 	Invincible = true
 
-	var dodge_distance = MoveSpeed * 0.7
+	var dodge_distance = MoveSpeed * 0.4
 	var start_position = global_position
 	var dodge_vector = direction.normalized() * dodge_distance
 	var end_position = start_position + dodge_vector
