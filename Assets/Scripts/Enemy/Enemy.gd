@@ -150,7 +150,7 @@ func apply_buff(flash_color := Color("98fb98")):
 	
 	is_buffed = true
 	add_to_group("Buffed")
-	Speed *= 1.25
+	Speed *= 1.35
 
 	if has_weapon():
 		CurrentWeapon.current_fire_rate *= 0.8
