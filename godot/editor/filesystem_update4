@@ -31,3 +31,5 @@ res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
 res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
 res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
+res://Scenes/Options/PauseMenu.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
