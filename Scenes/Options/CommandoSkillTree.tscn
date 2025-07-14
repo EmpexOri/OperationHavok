@@ -104,14 +104,14 @@ offset_right = 48.0003
 offset_bottom = 75.0
 scale = Vector2(1.2, 1.2)
 
-[node name="JohnWoo2" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
+[node name="M60Label" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 85.8333
 offset_right = 93.5001
 offset_bottom = 103.833
 theme_override_font_sizes/font_size = 9
-text = "John Woo Ref?"
+text = "M60"
 horizontal_alignment = 1
 
 [node name="M60" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]

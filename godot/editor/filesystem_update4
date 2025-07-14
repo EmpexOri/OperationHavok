@@ -30,9 +30,4 @@ res://Scenes/Options/CommandoSkillTree.tscn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
 res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
-res://Assets/Scripts/Player Scripts/Abilities/Minigun.gd
 res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Enemy/Tumor.gd
-res://Assets/Scripts/Enemy/Enemy.gd
