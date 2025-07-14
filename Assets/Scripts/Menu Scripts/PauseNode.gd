@@ -105,7 +105,7 @@ func _on_menu_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
-
+	
 	GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
 	
 	# Removing all objects
