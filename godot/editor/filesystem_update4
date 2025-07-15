@@ -1,40 +1,7 @@
-res://Prefabs/GamePrefabs/Enemy/Network.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
-res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Scenes/AlphaLevel1.tscn
-res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
-res://Prefabs/GamePrefabs/Enemy/Gatling.tscn
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyMinigun.tscn
-res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
-res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
-res://Prefabs/CodePrefabs/Weapons/Smg.tscn
-res://Prefabs/CodePrefabs/Projectiles/ShotgunProjectile.tscn
-res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
-res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
-res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
-res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
-res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
-res://Prefabs/CodePrefabs/Weapons/M60.tscn
-res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
-res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn
-res://Prefabs/CodePrefabs/Projectiles/rocket_projectile.tscn
-res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn
-res://Prefabs/CodePrefabs/Weapons/Sniper.tscn
-res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
-res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
-res://Assets/Scripts/Player Scripts/AbilityIcon.gd
-res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
-res://Assets/Scripts/Enemy/Needling.gd
