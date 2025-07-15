@@ -13,7 +13,19 @@ func activate(player, index = -1):
 	var grenade = grenade_scene.instantiate()
 	get_tree().current_scene.add_child(grenade)
 
-	var direction = (get_global_mouse_position() - player.global_position).normalized()
+	#var direction = (get_global_mouse_position() - player.global_position).normalized()
+	var direction = Vector2()
+	
+	if player.ControllerEnabled:
+		direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
+		direction.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
+		if direction.length() > 0.1:
+			direction = direction.normalized()
+		else:
+			return
+	else:
+		direction = (get_global_mouse_position() - global_position).normalized()
+			
 	grenade.start(player.global_position, direction)
 
 	_start_cooldown()
