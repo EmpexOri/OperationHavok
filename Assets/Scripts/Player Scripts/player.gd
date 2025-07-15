@@ -253,6 +253,8 @@ func attempt_to_fire():
 		else:
 			direction = (get_global_mouse_position() - global_position).normalized()
 
+		direction = eight_directions_snap(direction) 
+
 		if direction.length() > 0:
 			var is_horizontal = abs(direction.x) > abs(direction.y)
 
@@ -270,6 +272,28 @@ func attempt_to_fire():
 					$PlayerSprite/SpriteAnimation.play("WalkUp")
 			
 		CurrentWeapon.attempt_to_fire(global_position, direction)
+	
+func eight_directions_snap(direction: Vector2):
+	if direction.length() == 0:
+		return Vector2.ZERO
+	
+	var angle = direction.angle()
+	
+	if angle < 0:
+		angle += 2 * PI # turn negatoves to positives (so the north area works!)
+	
+	var octant_slice = int(round(8 * angle / (2 * PI))) % 8
+
+	match octant_slice:
+		0: return Vector2(1, 0) # Right
+		1: return Vector2(1, 1).normalized() # Bottom Right
+		2: return Vector2(0, 1) # Down
+		3: return Vector2(-1, 1).normalized() # Bottom Left
+		4: return Vector2(-1, 0) # Left
+		5: return Vector2(-1, -1).normalized() # Top Left
+		6: return Vector2(0, -1) # Up
+		7: return Vector2(1, -1).normalized() # Top Right
+		_: return direction.normalized() # Nothing
 	
 func deal_damage(damage, from_position = null):
 	GlobalPlayer.PlayerHP -= damage

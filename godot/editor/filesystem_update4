@@ -35,3 +35,4 @@ res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Assets/Scripts/Player Scripts/AbilityIcon.gd
 res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
+res://Assets/Scripts/Player Scripts/player.gd
