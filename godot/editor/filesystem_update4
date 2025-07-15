@@ -36,3 +36,5 @@ res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Assets/Scripts/Player Scripts/AbilityIcon.gd
 res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
 res://Assets/Scripts/Player Scripts/player.gd
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Assets/Scripts/Enemy/Needling.gd

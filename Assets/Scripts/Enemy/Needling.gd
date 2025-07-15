@@ -239,6 +239,13 @@ func update_aim_laser():
 		aim_line.visible = false
 		return
 
+###
+	# Hide aim line when moving or fleeing
+	if velocity.length() > 0.5 or IsMovingRandomly or is_fleeing:
+		aim_line.visible = false
+		return
+###
+
 	var player = resolve_target()
 	if not player:
 		aim_line.visible = false
