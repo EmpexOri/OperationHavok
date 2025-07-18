@@ -102,6 +102,8 @@ texture_filter = 1
 material = ExtResource("3_87uh0")
 sprite_frames = SubResource("SpriteFrames_4vqps")
 animation = &"fire"
+frame = 1
+frame_progress = 0.56762
 
 [node name="Area2D" type="Area2D" parent="."]
 

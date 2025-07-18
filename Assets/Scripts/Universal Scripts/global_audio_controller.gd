@@ -15,6 +15,8 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
+
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
 
@@ -22,9 +24,18 @@ var paused: bool = false
 const MAX_CHANNELS := 5
 var DeathChannels: Array[AudioStreamPlayer2D] = []
 var GeneralChannels: Array[AudioStreamPlayer2D] = []
+var xp_channel = null
+
+var xp_pitch_timer := 0.0
+var xp_pitch_multiplier := 1.0
+const XP_PITCH_MAX := 2.0
+const XP_PITCH_RISE := 0.1
+const XP_PITCH_DECAY_RATE := 0.5 # per second
 #var DeathChannels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
+	var xp_channel = $SFX/XPPickupChannel as AudioStreamPlayer
+
 	randomize()
 	for i in range(MAX_CHANNELS):
 		var path = "SFX/DeathChannelsSFX/Channel%d" % i
@@ -42,6 +53,10 @@ func _ready():
 			GeneralChannels.append(player)
 		else:
 			push_error("Missing General SFX channel at: %s" % path)
+
+func _process(delta: float) -> void:
+	if xp_pitch_multiplier > 1.0:
+		xp_pitch_multiplier = max(1.0, xp_pitch_multiplier - XP_PITCH_DECAY_RATE * delta)
 
 # Music Controls
 func LevelOneMusic():
@@ -142,3 +157,19 @@ func StopMainMenuMusic():
 
 func is_main_menu_music_playing() -> bool:
 	return $Music/MainMenuLoop.playing
+
+func PlayXPPickupSound():
+	var xp_player := $SFX/XPPickupChannel
+	if not xp_player:
+		print("Missing XP player")
+		return
+
+	if xp_player.playing:
+		xp_player.stop()
+
+	xp_player.stream = XPPickupSound
+	xp_player.pitch_scale = clamp(xp_pitch_multiplier, 0.5, XP_PITCH_MAX)
+	xp_player.play()
+
+	# Increase pitch for next pickup if called rapidly
+	xp_pitch_multiplier = min(XP_PITCH_MAX, xp_pitch_multiplier + XP_PITCH_RISE)

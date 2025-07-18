@@ -10,3 +10,4 @@ func _ready() -> void:
 func apply_effect():
 	GlobalPlayer.AddXP(pickup_value)
 	GlobalPlayer.AddHp(1)
+	GlobalAudioController.PlayXPPickupSound()

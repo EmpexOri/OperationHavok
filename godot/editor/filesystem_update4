@@ -5,5 +5,7 @@ res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Scenes/GlobalAudioController.tscn
+res://Assets/Scripts/Pickups/xp_pickup.gd
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
