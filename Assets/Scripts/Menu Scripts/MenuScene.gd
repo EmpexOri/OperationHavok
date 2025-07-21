@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var LoadingSprite = $LoadingScreenSprite
+@onready var LoadingFinished = $LoadingFinished
+
 func _ready():
 	$PlayButton.grab_focus()
 	
@@ -10,7 +13,21 @@ func _ready():
 
 func _on_play_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
-	get_tree().change_scene_to_file("res:///Scenes/LevelSelectScene.tscn")
+	GlobalAudioController.StopMainMenuMusic()
+	
+	# DEMO LOADING SCREEN
+	LoadingSprite.visible = true
+	LoadingSprite.play("Loading")
+	var TimeInSeconds = 3.0
+	await get_tree().create_timer(TimeInSeconds).timeout
+	LoadingSprite.queue_free()
+	
+	LoadingFinished.visible = true
+	var TimeInSeconds2 = 0.8
+	await get_tree().create_timer(TimeInSeconds2).timeout
+	LoadingFinished.queue_free()
+	
+	get_tree().change_scene_to_file("res://Scenes/AlphaLevel1.tscn")
 
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
