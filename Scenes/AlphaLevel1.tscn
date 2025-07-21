@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=29 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_34rfs"]
 [ext_resource type="PackedScene" uid="uid://5yolel5ubyg1" path="res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn" id="8_oiiaa"]
 [ext_resource type="Texture2D" uid="uid://cbv2n7ean778a" path="res://Assets/Art/Objects/StandInCar.png" id="9_34rfs"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="13_4kqft"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
 [ext_resource type="Texture2D" uid="uid://cgb5o6u5vddpn" path="res://Assets/Art/HUD/ABase.png" id="15_16lhd"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
@@ -214,11 +215,13 @@ tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 9.0
-offset_top = 47.0
-offset_right = 67.0
-offset_bottom = 70.0
+offset_top = 50.0
+offset_right = 107.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("13_4kqft")
 text = "Level: 1"
 
 [node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
@@ -263,11 +266,14 @@ scale = Vector2(0.107353, 0.108088)
 texture = ExtResource("6_oiiaa")
 
 [node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 573.0
+offset_left = 542.0
 offset_top = 4.0
-offset_right = 623.0
+offset_right = 619.0
 offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("13_4kqft")
+theme_override_font_sizes/font_size = 15
 text = "FPS:01"
 script = ExtResource("7_34rfs")
 
