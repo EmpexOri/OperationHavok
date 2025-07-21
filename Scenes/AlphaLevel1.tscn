@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_34rfs"]
 [ext_resource type="PackedScene" uid="uid://5yolel5ubyg1" path="res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn" id="8_oiiaa"]
 [ext_resource type="Texture2D" uid="uid://cbv2n7ean778a" path="res://Assets/Art/Objects/StandInCar.png" id="9_34rfs"]
-[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="13_4kqft"]
+[ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="13_8mwex"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
 [ext_resource type="Texture2D" uid="uid://cgb5o6u5vddpn" path="res://Assets/Art/HUD/ABase.png" id="15_16lhd"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
@@ -221,7 +221,8 @@ offset_left = 9.0
 offset_top = 50.0
 offset_right = 107.0
 offset_bottom = 73.0
-theme_override_fonts/font = ExtResource("13_4kqft")
+scale = Vector2(2.2, 2.2)
+theme_override_fonts/font = ExtResource("13_8mwex")
 text = "Level: 1"
 
 [node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
@@ -268,12 +269,12 @@ texture = ExtResource("6_oiiaa")
 [node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 542.0
+offset_left = 533.0
 offset_top = 4.0
-offset_right = 619.0
+offset_right = 610.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("13_4kqft")
-theme_override_font_sizes/font_size = 15
+scale = Vector2(2.2, 2.2)
+theme_override_fonts/font = ExtResource("13_8mwex")
 text = "FPS:01"
 script = ExtResource("7_34rfs")
 
