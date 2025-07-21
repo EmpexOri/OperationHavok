@@ -1,11 +1,9 @@
-res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
-res://Assets/Scripts/Pickups/xp_pickup.gd
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn

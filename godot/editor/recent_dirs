@@ -1,3 +1,4 @@
+res://Assets/Art/PlaceHolders
 C:/Users/olive/OneDrive/Desktop/Uni/Year3/CapStone/Operation Havok Alpha
 res://Assets/Art/Effects
 res://Assets/Art/Sprites/Minibosses
@@ -8,7 +9,6 @@ res://Prefabs/GamePrefabs/Enemy
 res://Assets/Scripts/Misc
 res://Assets/Art/Particles/Explosion/Explosion64
 res://Prefabs/CodePrefabs/Particles
-res://Assets/Art/PlaceHolders
 res://Assets/Scripts/Effects/Weapon Effects/Instances
 res://Assets/Scripts/Effects/Weapon Effects
 res://Prefabs/CodePrefabs/Particles/Preloaded
