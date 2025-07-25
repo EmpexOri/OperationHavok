@@ -14,3 +14,9 @@ res://Scenes/MenuScene.tscn
 res://Scenes/LevelSelectScene.tscn
 res://Assets/Scripts/Enemy/Tumor.gd
 res://Assets/Scripts/Player Scripts/player.gd
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
+res://Assets/Scripts/Player Scripts/Weapons/EnemyGrenade.gd
+res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.gd
