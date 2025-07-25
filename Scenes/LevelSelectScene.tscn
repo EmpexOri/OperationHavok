@@ -1,12 +1,111 @@
-[gd_scene load_steps=39 format=3 uid="uid://67dpuaam7vlg"]
+[gd_scene load_steps=39 format=3 uid="uid://c6pwqw7p34rmx"]
 
-[ext_resource type="Texture2D" uid="uid://qnj5li40ekpp" path="res://Assets/Art/Menu/LevelSelectTitle.png" id="1_2jav4"]
-[ext_resource type="Script" uid="uid://bk0kbugyn1jxp" path="res://Assets/Scripts/Menu Scripts/LevelSelectScene.gd" id="1_qyu6w"]
-[ext_resource type="Texture2D" uid="uid://cm6wksto0tsna" path="res://Assets/Art/Menu/ClassSelectTitle.png" id="2_qyu6w"]
-[ext_resource type="Texture2D" uid="uid://cgfflscj3lda3" path="res://Assets/Art/Menu/Commando.jpg" id="4_nstsp"]
-[ext_resource type="Texture2D" uid="uid://v54cp8irhyvq" path="res://Assets/Art/Menu/Technomancer.png" id="5_qq5ww"]
 [ext_resource type="Texture2D" uid="uid://cafkablbeyama" path="res://Assets/Art/PlaceHolders/LoadingScreenSpriteSheet.png" id="6_qq5ww"]
 [ext_resource type="Texture2D" uid="uid://dtxg0tdpsqa27" path="res://Assets/Art/PlaceHolders/LoadingFinished.png" id="7_lwi0v"]
+
+[sub_resource type="GDScript" id="GDScript_2jav4"]
+script/source = "extends Node2D
+
+func _ready():
+	$LevelSelect/Level1Button.grab_focus()
+
+# Level Select screen variables
+@onready var Level1Button = $LevelSelect/Level1Button
+@onready var Level2Button = $LevelSelect/Level2Button
+
+# Class Select screen variables
+@onready var CommandoButton = $ClassSelect/CommandoButton
+@onready var TechnomancerButton = $ClassSelect/TechnomancerButton
+@onready var CommandoImage = $ClassSelect/Commando
+@onready var TechnomancerImage = $ClassSelect/Technomancer
+@onready var LoadingButton = $ClassSelect/Loading
+@onready var LoadingSprite = $ClassSelect/LoadingScreenSprite
+@onready var LoadingFinished = $ClassSelect/LoadingFinished
+
+func _on_back_button_pressed() -> void:
+	# Go to menu when back button is pressed
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file(\"res://Scenes/MenuScene.tscn\")
+
+
+func _on_level_1_button_pressed() -> void:
+	# Go to level one when level one button is pressed
+	GlobalAudioController.ClickSound()
+	GlobalAudioController.StopMainMenuMusic()
+	get_tree().change_scene_to_file(\"res://Scenes/AlphaLevel1.tscn\")
+
+
+func _on_class_select_button_pressed() -> void:
+	# Remove the level select screen and display the class select screen 
+	Level1Button.visible = false
+	Level2Button.visible = false
+	CommandoButton.visible = true
+	TechnomancerButton.visible = true
+	CommandoImage.visible = true
+	TechnomancerImage.visible = true
+	LoadingButton.visible = true
+	LoadingSprite.visible = false
+	LoadingFinished.visible = false
+	
+	CommandoButton.grab_focus()
+	$BackButton.focus_neighbor_top = $ClassSelect/CommandoButton.get_path()
+	$BackButton.focus_neighbor_left = $ClassSelect/CommandoButton.get_path()
+	$BackButton.focus_neighbor_right = $ClassSelect/TechnomancerButton.get_path()
+
+
+func _on_level_select_button_pressed() -> void:
+	# Remove the class select screen and display the level select screen 
+	Level1Button.visible = true
+	Level2Button.visible = true
+	CommandoButton.visible = false
+	TechnomancerButton.visible = false
+	CommandoImage.visible = false
+	TechnomancerImage.visible = false
+	LoadingButton.visible = false
+	LoadingSprite.visible = false
+	LoadingFinished.visible = false
+	
+	Level1Button.grab_focus()
+
+
+func _on_commando_button_pressed() -> void:
+	# Changes class to Commando
+	GlobalPlayer.CurrentClass = \"Commando\"
+
+	# Changes class to Technomancer
+func _on_technomancer_button_pressed() -> void:
+	GlobalPlayer.CurrentClass = \"Technomancer\"
+
+
+func _on_level_2_button_pressed() -> void:
+	# Go to level one when level one button is pressed
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file(\"res://Scenes/PlaygroundScene.tscn\")
+
+
+func _on_loading_pressed() -> void:
+	LoadingSprite.visible = true
+	LoadingSprite.play(\"Loading\")
+	
+	var TimeInSeconds = 5.0
+	
+	await get_tree().create_timer(TimeInSeconds).timeout
+	LoadingSprite.queue_free()
+	LoadingFinished.visible = true
+	
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qyu6w"]
+load_path = "res://godot/imported/LevelSelectTitle.png-5eaf59045fa7c40b678bb7876f17445f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_woaua"]
+load_path = "res://godot/imported/ClassSelectTitle.png-3207e43ffabd4f2497e3f6ad9f74eded.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nstsp"]
+load_path = "res://godot/imported/Commando.jpg-b9b17bd56b6181b27459149099cc549a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq5ww"]
+load_path = "res://godot/imported/Technomancer.png-ec4df0032419ab5f507cd2dc52e14ab8.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qq5ww"]
 atlas = ExtResource("6_qq5ww")
@@ -227,7 +326,7 @@ animations = [{
 }]
 
 [node name="LevelSelect" type="Node2D"]
-script = ExtResource("1_qyu6w")
+script = SubResource("GDScript_2jav4")
 
 [node name="LevelSelectButton" type="TextureButton" parent="."]
 offset_left = 19.0
@@ -236,7 +335,7 @@ offset_right = 303.0
 offset_bottom = 62.0
 focus_neighbor_right = NodePath("../ClassSelectButton")
 focus_neighbor_bottom = NodePath("../LevelSelect/Level1Button")
-texture_normal = ExtResource("1_2jav4")
+texture_normal = SubResource("CompressedTexture2D_qyu6w")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -247,7 +346,7 @@ offset_right = 620.0
 offset_bottom = 62.0
 focus_neighbor_left = NodePath("../LevelSelectButton")
 focus_neighbor_bottom = NodePath("../LevelSelect/Level2Button")
-texture_normal = ExtResource("2_qyu6w")
+texture_normal = SubResource("CompressedTexture2D_woaua")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -303,13 +402,13 @@ text = "Technomancer"
 visible = false
 position = Vector2(174, 171)
 scale = Vector2(0.264, 0.3115)
-texture = ExtResource("4_nstsp")
+texture = SubResource("CompressedTexture2D_nstsp")
 
 [node name="Technomancer" type="Sprite2D" parent="ClassSelect"]
 visible = false
 position = Vector2(467, 172)
 scale = Vector2(0.267068, 0.343612)
-texture = ExtResource("5_qq5ww")
+texture = SubResource("CompressedTexture2D_qq5ww")
 
 [node name="Loading" type="Button" parent="ClassSelect"]
 visible = false
