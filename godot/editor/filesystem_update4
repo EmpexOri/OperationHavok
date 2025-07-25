@@ -1,4 +1,4 @@
-res://Scenes/AlphaLevel1.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,16 +7,11 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Scenes/MenuScene.tscn
 res://Scenes/LevelSelectScene.tscn
-res://Assets/Scripts/Enemy/Tumor.gd
-res://Assets/Scripts/Player Scripts/player.gd
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
-res://Assets/Scripts/Player Scripts/Weapons/EnemyGrenade.gd
-res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
-res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
