@@ -9,7 +9,12 @@ func _ready():
 	if not GlobalAudioController.is_main_menu_music_playing():
 		GlobalAudioController.StopAllMusic()
 		GlobalAudioController.PlayMainMenuMusic()
-	
+
+func _input(Event):
+	if Input.is_action_just_pressed("SkipLoad"):
+		LoadingSprite.queue_free()
+		LoadingFinished.queue_free()
+		get_tree().change_scene_to_file("res://Scenes/AlphaLevel1.tscn")
 
 func _on_play_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
