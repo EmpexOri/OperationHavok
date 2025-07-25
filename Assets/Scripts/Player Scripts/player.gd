@@ -299,7 +299,7 @@ func deal_damage(damage, from_position = null):
 	GlobalPlayer.PlayerHP -= damage
 	
 func kill():
-	SmearManager.reset()
+	SmearCanvas.reset()
 	GlobalAudioController.StopAllMusic()
 	get_tree().reload_current_scene()
 

@@ -20,6 +20,9 @@ var FuseCounter := 3  # Number of seconds before explosion
 var FuseTickTimer := 0.0
 var PlayerInRange := false
 
+var _blood_timer := 0.0
+const BLOOD_INTERVAL := 0.25
+
 func _ready():
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
@@ -44,7 +47,7 @@ func _process(delta):
 
 		death_frame_counter += 1
 		if death_frame_counter >= 5:
-			Global.spawn_death_particles(global_position)
+			SmearCanvas.spawn_smear(global_position)
 			death_frame_counter = 0
 
 		# Start the fuse when health reaches 0, regardless of player proximity
@@ -64,6 +67,11 @@ func _process(delta):
 
 func _physics_process(delta):
 	var player = null
+	
+	_blood_timer += delta
+	if _blood_timer >= BLOOD_INTERVAL:
+		_blood_timer = 0.0
+		Global.spawn_blood_splatter(global_position)
 
 	if IsTorpedo:
 		velocity = TorpedoVelocity

@@ -12,3 +12,5 @@ res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Scenes/MenuScene.tscn
 res://Scenes/LevelSelectScene.tscn
+res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/Player Scripts/player.gd
