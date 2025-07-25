@@ -1,5 +1,5 @@
-AudioStreamPlayer
 Label
+AudioStreamPlayer
 AnimatedSprite2D
 GPUParticles2D
 Node2D
@@ -12,4 +12,3 @@ CharacterBody2D
 Line2D
 NavigationObstacle2D
 CollisionPolygon2D
-CPUParticles2D
