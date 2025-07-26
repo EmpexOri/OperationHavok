@@ -233,6 +233,7 @@ offset_bottom = 141.167
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
+disabled = true
 
 [node name="HomeRunLabel" type="Label" parent="GrenadeTitle"]
 layout_mode = 0
@@ -276,6 +277,7 @@ offset_bottom = 141.167
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
+disabled = true
 
 [node name="MinigunTitle" type="Label" parent="."]
 offset_left = 417.0
@@ -330,6 +332,7 @@ offset_bottom = 141.167
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
+disabled = true
 
 [node name="TyphoonLabel" type="Label" parent="MinigunTitle"]
 layout_mode = 0
@@ -372,6 +375,7 @@ offset_bottom = 142.0
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
+disabled = true
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 242.0
