@@ -4,7 +4,7 @@ class_name EnemyGrenade
 @export var throw_force: float = 500.0
 @export var explosion_delay: float = 1.0
 @export var explosion_radius: float = 150.0
-@export var damage: float = 20.0
+@export var damage: float = 15.0
 @export var stop_on_enemy_hit: bool = false
 @onready var explosion_anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -35,31 +35,33 @@ func _ready():
 	else:
 		push_warning("ExplosionRadiusIndicator not found")
 
-func start(start_position: Vector2, direction: Vector2):
+func start(start_position: Vector2, target_position: Vector2):
 	global_position = start_position
-	velocity = direction.normalized() * throw_force
+
+	var displacement = target_position - start_position
+	var time = explosion_delay
+
+	# Use slightly higher velocity to compensate for slowing down
+	velocity = displacement / time * 1.2  # Tweak multiplier to taste
 
 func _physics_process(delta):
 	var new_position = position + velocity * delta
 
 	var query = PhysicsRayQueryParameters2D.create(position, new_position)
 	query.exclude = [self]
-	query.collision_mask = 1 << 2  # Adjust layer to match wall layer
+	query.collision_mask = 1 << 2  # Adjust layer to match walls
 
 	var space_state = get_world_2d().direct_space_state
-	if space_state == null:
-		print("Warning: space_state is null")
-		return
+	if space_state:
+		var result = space_state.intersect_ray(query)
+		if result:
+			velocity = Vector2.ZERO
+			position = result.position
+		else:
+			position = new_position
 
-	var result = space_state.intersect_ray(query)
-
-	if result:
-		velocity = Vector2.ZERO
-		position = result.position
-	else:
-		position = new_position
-
-	velocity = velocity.move_toward(Vector2.ZERO, 1000 * delta)
+	# Apply smooth deceleration
+	velocity = velocity.move_toward(Vector2.ZERO, 100 * delta)
 
 func _on_body_entered(body: Node2D) -> void:
 	if stop_on_enemy_hit and body.is_in_group("Player"):

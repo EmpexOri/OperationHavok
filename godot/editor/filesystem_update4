@@ -18,3 +18,7 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
 res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.gd
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn

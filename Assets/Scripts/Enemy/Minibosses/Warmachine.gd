@@ -10,6 +10,11 @@ var IsMovingRandomly = false
 var Weapon: PackedScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn")
 @onready var fire_delay_timer = Timer.new()
 
+@export var grenade_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn")
+var grenade_mode = false
+var grenade_shots_remaining = 0
+var grenade_salvo_timer: Timer
+
 var queued_fire = false
 var fire_direction = Vector2.ZERO
 var is_firing = false
@@ -40,6 +45,10 @@ func _ready():
 	firetimer.connect("timeout", Callable(self, "fire"))
 	firetimer.autostart = true
 	add_child(firetimer)
+	grenade_salvo_timer = Timer.new()
+	grenade_salvo_timer.one_shot = true
+	grenade_salvo_timer.connect("timeout", Callable(self, "_fire_grenade_salvo"))
+	add_child(grenade_salvo_timer)
 	
 	WeaponScene = Weapon
 	super()
@@ -131,17 +140,25 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func fire():
-	if IsMovingRandomly or velocity.length() > 1 or is_firing:
+	if IsMovingRandomly or velocity.length() > 1 or is_firing or is_ramming:
 		return
 
+	var player = resolve_target()
+	if player and global_position.distance_to(player.global_position) <= 400:
+		if randi_range(0, 100) < 50:  # 40% chance to grenade
+			grenade_mode = true
+			grenade_shots_remaining = randi_range(2, 4)  # 2-4 grenade salvos
+			is_firing = true
+			sprite.play("fire")
+			_fire_grenade_salvo()
+			return
+	
+	# Default gunfire
 	if CurrentWeapon:
 		is_firing = true
 		sprite.play("fire")
-		
-		var fire_duration = randf_range(3.0, 9.0)
-		fire_duration_timer.start(fire_duration)
-		
-		_fire_burst()  # Start firing loop
+		fire_duration_timer.start(randf_range(3.0, 9.0))
+		_fire_burst()
 		
 func _fire_burst():
 	if not is_firing or not CurrentWeapon:
@@ -155,6 +172,43 @@ func _fire_burst():
 
 	# Fire again in 0.1–0.2 seconds (simulate burst fire)
 	fire_delay_timer.start(randf_range(0.1, 0.2))
+
+func _fire_grenade_salvo():
+	if not grenade_mode or grenade_shots_remaining <= 0 or is_ramming:
+		# Cancel or end grenade attack
+		grenade_mode = false
+		is_firing = false
+		sprite.stop()
+		random_move()
+		return
+
+	var player = resolve_target()
+	if not player:
+		grenade_mode = false
+		is_firing = false
+		return
+
+	# Play same fire animation
+	if sprite.animation != "fire":
+		sprite.play("fire")
+
+	# Determine direction and offset baseline
+	var base_dir = (player.global_position - global_position).normalized()
+	var right = Vector2(-base_dir.y, base_dir.x)  # Perpendicular to direction
+
+	for i in range(2):
+		var grenade = grenade_scene.instantiate()
+		get_parent().add_child(grenade)
+
+		# 40% offset left or right
+		var offset_dir = right * (randf_range(-0.4, 0.4))  # 40% sideways deviation
+		var spawn_position = global_position + offset_dir * 48  # ~20-30 px shift
+
+		var target_position = player.global_position + Vector2(randf_range(-24, 24), randf_range(-24, 24))
+		grenade.start(spawn_position, target_position)
+
+	grenade_shots_remaining -= 1
+	grenade_salvo_timer.start(randf_range(0.4, 0.8))
 
 func random_move():
 	IsMovingRandomly = true
