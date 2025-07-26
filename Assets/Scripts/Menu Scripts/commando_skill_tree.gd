@@ -37,6 +37,10 @@ func _on_skill_button_used(button: SkillButton):
 			print("Upgraded Sniper")
 		"LightningLauncher":
 			upgrade_minigun_ability("LightningLauncher")
+		"RocketLauncher":
+			upgrade_minigun_ability("RocketLauncher")
+		"RocketMinigun":
+			upgrade_minigun_ability("RocketMinigun")
 
 func _on_back_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
