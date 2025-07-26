@@ -180,6 +180,7 @@ text = "Grenade"
 horizontal_alignment = 1
 
 [node name="PlasmaLabel" type="Label" parent="GrenadeTitle"]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 57.0
 offset_right = 149.0
@@ -189,6 +190,7 @@ text = "Plasma Caster"
 horizontal_alignment = 1
 
 [node name="PlasmaCaster" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 88.0
 offset_right = 104.0
@@ -196,6 +198,7 @@ offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
 
 [node name="NovacasterLabel" type="Label" parent="GrenadeTitle/PlasmaCaster"]
+layout_mode = 0
 offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
@@ -205,6 +208,7 @@ text = "Novacaster"
 horizontal_alignment = 1
 
 [node name="Novacaster" parent="GrenadeTitle/PlasmaCaster" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 0.166672
 offset_top = 101.167
 offset_right = 40.1671
@@ -212,6 +216,7 @@ offset_bottom = 141.167
 scale = Vector2(1, 1)
 
 [node name="HomeRunLabel" type="Label" parent="GrenadeTitle"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 57.0
 offset_right = 230.0
@@ -222,6 +227,7 @@ Grenade"
 horizontal_alignment = 1
 
 [node name="HomeRunGrenade" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 145.0
 offset_top = 88.0
 offset_right = 185.0
@@ -229,6 +235,7 @@ offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
 
 [node name="BaseballLabel" type="Label" parent="GrenadeTitle/HomeRunGrenade"]
+layout_mode = 0
 offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
@@ -239,6 +246,7 @@ Grenade"
 horizontal_alignment = 1
 
 [node name="BaseballGrenade" parent="GrenadeTitle/HomeRunGrenade" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 1.00003
 offset_top = 101.167
 offset_right = 41.0005
@@ -257,6 +265,7 @@ text = "Minigun"
 horizontal_alignment = 1
 
 [node name="RocketLabel" type="Label" parent="MinigunTitle"]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 57.0
 offset_right = 149.0
@@ -267,6 +276,7 @@ Minigun"
 horizontal_alignment = 1
 
 [node name="RocketMinigun" parent="MinigunTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 88.0
 offset_right = 104.0
@@ -274,6 +284,7 @@ offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
 
 [node name="RocketLaunchLabel" type="Label" parent="MinigunTitle/RocketMinigun"]
+layout_mode = 0
 offset_left = -39.1667
 offset_top = 71.6667
 offset_right = 81.8333
@@ -284,6 +295,7 @@ Launcher"
 horizontal_alignment = 1
 
 [node name="RocketLauncher" parent="MinigunTitle/RocketMinigun" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 1.00003
 offset_top = 101.167
 offset_right = 41.0005
@@ -291,6 +303,7 @@ offset_bottom = 141.167
 scale = Vector2(1, 1)
 
 [node name="TyphoonLabel" type="Label" parent="MinigunTitle"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 57.0
 offset_right = 224.0
@@ -301,6 +314,7 @@ Cannon"
 horizontal_alignment = 1
 
 [node name="TyphoonCannon" parent="MinigunTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 139.0
 offset_top = 87.0
 offset_right = 179.0
@@ -308,6 +322,7 @@ offset_bottom = 127.0
 scale = Vector2(1.2, 1.2)
 
 [node name="LightningLabel" type="Label" parent="MinigunTitle/TyphoonCannon"]
+layout_mode = 0
 offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
@@ -318,6 +333,7 @@ Launcher"
 horizontal_alignment = 1
 
 [node name="LightningLauncher" parent="MinigunTitle/TyphoonCannon" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 1.00003
 offset_top = 102.0
 offset_right = 41.0005
@@ -330,5 +346,19 @@ offset_top = 307.0
 offset_right = 404.0
 offset_bottom = 338.0
 text = "Back"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 262.0
+offset_top = 17.0
+offset_right = 264.0
+offset_bottom = 287.0
+color = Color(0.235738, 0.235755, 0.25414, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 452.0
+offset_top = 17.0
+offset_right = 454.0
+offset_bottom = 287.0
+color = Color(0.235738, 0.235755, 0.25414, 1)
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

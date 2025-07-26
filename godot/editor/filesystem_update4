@@ -14,6 +14,7 @@ res://Scenes/LevelSelectScene.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Menu Scripts/MenuScene.gd
 res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn

@@ -96,16 +96,12 @@ func _on_loading_pressed() -> void:
 "
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qyu6w"]
-load_path = "res://godot/imported/LevelSelectTitle.png-5eaf59045fa7c40b678bb7876f17445f.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_woaua"]
-load_path = "res://godot/imported/ClassSelectTitle.png-3207e43ffabd4f2497e3f6ad9f74eded.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nstsp"]
-load_path = "res://godot/imported/Commando.jpg-b9b17bd56b6181b27459149099cc549a.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq5ww"]
-load_path = "res://godot/imported/Technomancer.png-ec4df0032419ab5f507cd2dc52e14ab8.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qq5ww"]
 atlas = ExtResource("6_qq5ww")
