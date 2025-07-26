@@ -4,6 +4,7 @@ func _ready():
 	$BackButton.grab_focus()
 	update_perk_points_label()
 	connect_skill_buttons(self)
+	restore_unlocked_skills(self)
 
 func update_perk_points_label():
 	# Updates the perk points counter
@@ -20,27 +21,36 @@ func _on_skill_button_used(button: SkillButton):
 	# Tells us when a skill has been bought and what the name is and updates the label
 	print("Skill bought:", button.name)
 	update_perk_points_label()
-	
+
+	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
+	var unlocked = class_data["UnlockedAbilities"]
+	if not unlocked.has(button.name):
+		unlocked.append(button.name)
+
 	# Changes the ability being used
 	match button.name:
 		"Akimbo":
 			GlobalPlayer.upgrade_weapon("AkimboSmg", 1)
-			print("Upgraded Akimbo SMG!")
 		"M60":
 			GlobalPlayer.upgrade_weapon("M60", 1)
-			print("Upgraded M60!")
 		"DragonsBreath":
 			GlobalPlayer.upgrade_weapon("DragonShotgun", 2)
-			print("Upgraded DragonsShotgun")
 		"SniperRifle":
 			GlobalPlayer.upgrade_weapon("Sniper", 2)
-			print("Upgraded Sniper")
 		"LightningLauncher":
 			upgrade_minigun_ability("LightningLauncher")
 		"RocketLauncher":
 			upgrade_minigun_ability("RocketLauncher")
 		"RocketMinigun":
 			upgrade_minigun_ability("RocketMinigun")
+
+func restore_unlocked_skills(node):
+	for child in node.get_children():
+		if child is SkillButton:
+			var skill_name = child.name
+			var is_unlocked = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["UnlockedAbilities"].has(skill_name)
+			child.set_unlocked_state(is_unlocked)
+		restore_unlocked_skills(child)
 
 func _on_back_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
@@ -50,10 +60,10 @@ func upgrade_minigun_ability(NewAbility):
 	# Find the current abilities, get the minigun index and then swap in the new skill
 	var Abilities = GlobalPlayer.ClassData["Commando"]["Abilities"]
 	Abilities[2] = NewAbility
-	print("Skills updated to ", GlobalPlayer.ClassData["Commando"]["Abilities"])
+	print("Skills updated to ", Abilities)
 
 func upgrade_grenade_ability(NewAbility):
 	# Find the current abilities, get the grenade index and then swap in the new skill
 	var Abilities = GlobalPlayer.ClassData["Commando"]["Abilities"]
 	Abilities[1] = NewAbility
-	print("Skills updated to ", GlobalPlayer.ClassData["Commando"]["Abilities"])
+	print("Skills updated to ", Abilities)
