@@ -26,6 +26,7 @@ offset_left = 242.0
 offset_top = 293.0
 offset_right = 404.0
 offset_bottom = 324.0
+focus_neighbor_top = NodePath("../ScrollContainer/VBoxContainer/ParticleOptions")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
@@ -86,6 +87,7 @@ text = "Brightness"
 
 [node name="BrightnessSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ParticleOptions")
 min_value = 0.01
 max_value = 4.0
 step = 0.01
@@ -99,6 +101,7 @@ text = "Particle effects"
 
 [node name="ParticleOptions" type="OptionButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../BackButton")
 selected = 1
 item_count = 3
 popup/item_0/text = "High"
