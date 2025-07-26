@@ -61,22 +61,21 @@ offset_right = 49.0004
 offset_bottom = 94.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_right = NodePath("../../SMG/Akimbo")
-focus_neighbor_bottom = NodePath("AzureDragon")
+focus_neighbor_bottom = NodePath("Flamethrower")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="RoarAzure" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
+[node name="FlamethrowerLabel" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 72.5
 offset_right = 93.5001
 offset_bottom = 101.5
 theme_override_font_sizes/font_size = 9
-text = "Roar of the 
-Azure Dragon"
+text = "Flamethrower"
 horizontal_alignment = 1
 
-[node name="AzureDragon" parent="WeaponSwapTitle/Shotgun/DragonsBreath" instance=ExtResource("1_cye56")]
+[node name="Flamethrower" parent="WeaponSwapTitle/Shotgun/DragonsBreath" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.833
 offset_bottom = 140.833
@@ -115,7 +114,7 @@ offset_right = 48.0004
 offset_bottom = 93.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../Shotgun/DragonsBreath")
-focus_neighbor_right = NodePath("../../Sniper/SniperRifle")
+focus_neighbor_right = NodePath("../../Sniper/LaserSniper")
 focus_neighbor_bottom = NodePath("M60")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
@@ -151,17 +150,17 @@ theme_override_font_sizes/font_size = 14
 text = "Sniper"
 horizontal_alignment = 1
 
-[node name="RailgunLabel" type="Label" parent="WeaponSwapTitle/Sniper"]
+[node name="LaserLabel" type="Label" parent="WeaponSwapTitle/Sniper"]
 layout_mode = 0
 offset_left = -42.0
 offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 10
-text = "Sniper Rifle"
+text = "Laser Sniper"
 horizontal_alignment = 1
 
-[node name="SniperRifle" parent="WeaponSwapTitle/Sniper" instance=ExtResource("1_cye56")]
+[node name="LaserSniper" parent="WeaponSwapTitle/Sniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 53.0
@@ -169,22 +168,22 @@ offset_right = 48.0004
 offset_bottom = 93.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../SMG/Akimbo")
-focus_neighbor_right = NodePath("../../../GrenadeTitle/PlasmaCaster")
-focus_neighbor_bottom = NodePath("LaserSniper")
+focus_neighbor_right = NodePath("../../../GrenadeTitle/Novacaster")
+focus_neighbor_bottom = NodePath("RaygunRifle")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="LaserSnipe" type="Label" parent="WeaponSwapTitle/Sniper/SniperRifle"]
+[node name="RaygunLabel" type="Label" parent="WeaponSwapTitle/Sniper/LaserSniper"]
 layout_mode = 0
 offset_left = -52.4999
 offset_top = 72.5
 offset_right = 93.5001
 offset_bottom = 90.4997
 theme_override_font_sizes/font_size = 9
-text = "Laser Sniper"
+text = "Raygun Rifle"
 horizontal_alignment = 1
 
-[node name="LaserSniper" parent="WeaponSwapTitle/Sniper/SniperRifle" instance=ExtResource("1_cye56")]
+[node name="RaygunRifle" parent="WeaponSwapTitle/Sniper/LaserSniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
@@ -206,40 +205,40 @@ theme_override_font_sizes/font_size = 24
 text = "Grenade"
 horizontal_alignment = 1
 
-[node name="PlasmaLabel" type="Label" parent="GrenadeTitle"]
+[node name="NovacasterLabel" type="Label" parent="GrenadeTitle"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 57.0
 offset_right = 149.0
 offset_bottom = 88.0
 theme_override_font_sizes/font_size = 10
-text = "Plasma Caster"
+text = "Novacaster"
 horizontal_alignment = 1
 
-[node name="PlasmaCaster" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
+[node name="Novacaster" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 88.0
 offset_right = 104.0
 offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
-focus_neighbor_left = NodePath("../../WeaponSwapTitle/Sniper/SniperRifle")
-focus_neighbor_right = NodePath("../HomeRunGrenade")
-focus_neighbor_bottom = NodePath("Novacaster")
+focus_neighbor_left = NodePath("../../WeaponSwapTitle/Sniper/LaserSniper")
+focus_neighbor_right = NodePath("../BaseballGrenade")
+focus_neighbor_bottom = NodePath("PlasmaCaster")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="NovacasterLabel" type="Label" parent="GrenadeTitle/PlasmaCaster"]
+[node name="PlasmaCasterLabel" type="Label" parent="GrenadeTitle/Novacaster"]
 layout_mode = 0
 offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
 offset_bottom = 104.333
 theme_override_font_sizes/font_size = 9
-text = "Novacaster"
+text = "Plasma Caster"
 horizontal_alignment = 1
 
-[node name="Novacaster" parent="GrenadeTitle/PlasmaCaster" instance=ExtResource("1_cye56")]
+[node name="PlasmaCaster" parent="GrenadeTitle/Novacaster" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 0.166672
 offset_top = 101.167
@@ -252,42 +251,42 @@ disabled = true
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="HomeRunLabel" type="Label" parent="GrenadeTitle"]
+[node name="BaseballLabel" type="Label" parent="GrenadeTitle"]
 layout_mode = 0
 offset_left = 109.0
 offset_top = 57.0
 offset_right = 230.0
 offset_bottom = 88.0
 theme_override_font_sizes/font_size = 10
-text = "Home Run
+text = "Baseball
 Grenade"
 horizontal_alignment = 1
 
-[node name="HomeRunGrenade" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
+[node name="BaseballGrenade" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 145.0
 offset_top = 88.0
 offset_right = 185.0
 offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
-focus_neighbor_left = NodePath("../PlasmaCaster")
-focus_neighbor_right = NodePath("../../MinigunTitle/RocketMinigun")
-focus_neighbor_bottom = NodePath("BaseballGrenade")
+focus_neighbor_left = NodePath("../Novacaster")
+focus_neighbor_right = NodePath("../../MinigunTitle/RocketLauncher")
+focus_neighbor_bottom = NodePath("HomeRunGrenade")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="BaseballLabel" type="Label" parent="GrenadeTitle/HomeRunGrenade"]
+[node name="HomeRunLabel" type="Label" parent="GrenadeTitle/BaseballGrenade"]
 layout_mode = 0
 offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
 offset_bottom = 104.333
 theme_override_font_sizes/font_size = 9
-text = "Baseball
+text = "Home Run
 Grenade"
 horizontal_alignment = 1
 
-[node name="BaseballGrenade" parent="GrenadeTitle/HomeRunGrenade" instance=ExtResource("1_cye56")]
+[node name="HomeRunGrenade" parent="GrenadeTitle/BaseballGrenade" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 1.00003
 offset_top = 101.167
@@ -319,23 +318,23 @@ offset_right = 149.0
 offset_bottom = 88.0
 theme_override_font_sizes/font_size = 10
 text = "Rocket
-Minigun"
+Launcher"
 horizontal_alignment = 1
 
-[node name="RocketMinigun" parent="MinigunTitle" instance=ExtResource("1_cye56")]
+[node name="RocketLauncher" parent="MinigunTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 88.0
 offset_right = 104.0
 offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
-focus_neighbor_left = NodePath("../../GrenadeTitle/HomeRunGrenade")
-focus_neighbor_right = NodePath("../TyphoonCannon")
-focus_neighbor_bottom = NodePath("RocketLauncher")
+focus_neighbor_left = NodePath("../../GrenadeTitle/BaseballGrenade")
+focus_neighbor_right = NodePath("../LightningLauncher")
+focus_neighbor_bottom = NodePath("RocketMinigun")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="RocketLaunchLabel" type="Label" parent="MinigunTitle/RocketMinigun"]
+[node name="RocketMiniLabel" type="Label" parent="MinigunTitle/RocketLauncher"]
 layout_mode = 0
 offset_left = -39.1667
 offset_top = 71.6667
@@ -343,10 +342,10 @@ offset_right = 81.8333
 offset_bottom = 102.667
 theme_override_font_sizes/font_size = 9
 text = "Rocket
-Launcher"
+Minigun"
 horizontal_alignment = 1
 
-[node name="RocketLauncher" parent="MinigunTitle/RocketMinigun" instance=ExtResource("1_cye56")]
+[node name="RocketMinigun" parent="MinigunTitle/RocketLauncher" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 1.00003
 offset_top = 101.167
@@ -359,41 +358,41 @@ disabled = true
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="TyphoonLabel" type="Label" parent="MinigunTitle"]
+[node name="LightningLabel" type="Label" parent="MinigunTitle"]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 57.0
 offset_right = 224.0
 offset_bottom = 88.0
 theme_override_font_sizes/font_size = 10
-text = "Typhoon
-Cannon"
+text = "Lightning
+Launcher"
 horizontal_alignment = 1
 
-[node name="TyphoonCannon" parent="MinigunTitle" instance=ExtResource("1_cye56")]
+[node name="LightningLauncher" parent="MinigunTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 139.0
 offset_top = 87.0
 offset_right = 179.0
 offset_bottom = 127.0
 scale = Vector2(1.2, 1.2)
-focus_neighbor_left = NodePath("../RocketMinigun")
-focus_neighbor_bottom = NodePath("LightningLauncher")
+focus_neighbor_left = NodePath("../RocketLauncher")
+focus_neighbor_bottom = NodePath("TyphoonCannon")
 texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
-[node name="LightningLabel" type="Label" parent="MinigunTitle/TyphoonCannon"]
+[node name="TyphoonLabel" type="Label" parent="MinigunTitle/LightningLauncher"]
 layout_mode = 0
 offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
 offset_bottom = 104.333
 theme_override_font_sizes/font_size = 9
-text = "Lightning
-Launcher"
+text = "Typhoon
+Cannon"
 horizontal_alignment = 1
 
-[node name="LightningLauncher" parent="MinigunTitle/TyphoonCannon" instance=ExtResource("1_cye56")]
+[node name="TyphoonCannon" parent="MinigunTitle/LightningLauncher" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 1.00003
 offset_top = 102.0

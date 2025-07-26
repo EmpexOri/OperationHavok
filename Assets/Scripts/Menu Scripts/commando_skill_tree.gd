@@ -35,7 +35,21 @@ func _on_skill_button_used(button: SkillButton):
 		"SniperRifle":
 			GlobalPlayer.upgrade_weapon("Sniper", 2)
 			print("Upgraded Sniper")
+		"LightningLauncher":
+			upgrade_minigun_ability("LightningLauncher")
 
 func _on_back_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+
+func upgrade_minigun_ability(NewAbility):
+	# Find the current abilities, get the minigun index and then swap in the new skill
+	var Abilities = GlobalPlayer.ClassData["Commando"]["Abilities"]
+	Abilities[2] = NewAbility
+	print("Skills updated to ", GlobalPlayer.ClassData["Commando"]["Abilities"])
+
+func upgrade_grenade_ability(NewAbility):
+	# Find the current abilities, get the grenade index and then swap in the new skill
+	var Abilities = GlobalPlayer.ClassData["Commando"]["Abilities"]
+	Abilities[1] = NewAbility
+	print("Skills updated to ", GlobalPlayer.ClassData["Commando"]["Abilities"])
