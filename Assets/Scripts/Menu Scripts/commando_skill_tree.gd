@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready():
+	$BackButton.grab_focus()
 	update_perk_points_label()
 	connect_skill_buttons(self)
 

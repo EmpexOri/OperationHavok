@@ -59,6 +59,8 @@ offset_top = 54.0
 offset_right = 49.0004
 offset_bottom = 94.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_right = NodePath("../../SMG/Akimbo")
+focus_neighbor_bottom = NodePath("AzureDragon")
 
 [node name="RoarAzure" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
 layout_mode = 0
@@ -76,6 +78,8 @@ layout_mode = 0
 offset_top = 100.833
 offset_bottom = 140.833
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 
 [node name="SMG" type="Label" parent="WeaponSwapTitle"]
@@ -105,6 +109,9 @@ offset_top = 53.0
 offset_right = 48.0004
 offset_bottom = 93.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_left = NodePath("../../Shotgun/DragonsBreath")
+focus_neighbor_right = NodePath("../../Sniper/SniperRifle")
+focus_neighbor_bottom = NodePath("M60")
 
 [node name="M60Label" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
 layout_mode = 0
@@ -121,6 +128,8 @@ layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 
 [node name="Sniper" type="Label" parent="WeaponSwapTitle"]
@@ -150,6 +159,9 @@ offset_top = 53.0
 offset_right = 48.0004
 offset_bottom = 93.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_left = NodePath("../../SMG/Akimbo")
+focus_neighbor_right = NodePath("../../../GrenadeTitle/PlasmaCaster")
+focus_neighbor_bottom = NodePath("LaserSniper")
 
 [node name="LaserSnipe" type="Label" parent="WeaponSwapTitle/Sniper/SniperRifle"]
 layout_mode = 0
@@ -166,6 +178,8 @@ layout_mode = 0
 offset_top = 100.0
 offset_bottom = 140.0
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 
 [node name="GrenadeTitle" type="Label" parent="."]
@@ -196,6 +210,9 @@ offset_top = 88.0
 offset_right = 104.0
 offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_left = NodePath("../../WeaponSwapTitle/Sniper/SniperRifle")
+focus_neighbor_right = NodePath("../HomeRunGrenade")
+focus_neighbor_bottom = NodePath("Novacaster")
 
 [node name="NovacasterLabel" type="Label" parent="GrenadeTitle/PlasmaCaster"]
 layout_mode = 0
@@ -214,6 +231,8 @@ offset_top = 101.167
 offset_right = 40.1671
 offset_bottom = 141.167
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 
 [node name="HomeRunLabel" type="Label" parent="GrenadeTitle"]
 layout_mode = 0
@@ -233,6 +252,9 @@ offset_top = 88.0
 offset_right = 185.0
 offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_left = NodePath("../PlasmaCaster")
+focus_neighbor_right = NodePath("../../MinigunTitle/RocketMinigun")
+focus_neighbor_bottom = NodePath("BaseballGrenade")
 
 [node name="BaseballLabel" type="Label" parent="GrenadeTitle/HomeRunGrenade"]
 layout_mode = 0
@@ -252,6 +274,8 @@ offset_top = 101.167
 offset_right = 41.0005
 offset_bottom = 141.167
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 
 [node name="MinigunTitle" type="Label" parent="."]
 offset_left = 417.0
@@ -282,6 +306,9 @@ offset_top = 88.0
 offset_right = 104.0
 offset_bottom = 128.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_left = NodePath("../../GrenadeTitle/HomeRunGrenade")
+focus_neighbor_right = NodePath("../TyphoonCannon")
+focus_neighbor_bottom = NodePath("RocketLauncher")
 
 [node name="RocketLaunchLabel" type="Label" parent="MinigunTitle/RocketMinigun"]
 layout_mode = 0
@@ -301,6 +328,8 @@ offset_top = 101.167
 offset_right = 41.0005
 offset_bottom = 141.167
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 
 [node name="TyphoonLabel" type="Label" parent="MinigunTitle"]
 layout_mode = 0
@@ -320,6 +349,8 @@ offset_top = 87.0
 offset_right = 179.0
 offset_bottom = 127.0
 scale = Vector2(1.2, 1.2)
+focus_neighbor_left = NodePath("../RocketMinigun")
+focus_neighbor_bottom = NodePath("LightningLauncher")
 
 [node name="LightningLabel" type="Label" parent="MinigunTitle/TyphoonCannon"]
 layout_mode = 0
@@ -339,12 +370,15 @@ offset_top = 102.0
 offset_right = 41.0005
 offset_bottom = 142.0
 scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 242.0
 offset_top = 307.0
 offset_right = 404.0
 offset_bottom = 338.0
+focus_neighbor_top = NodePath("../WeaponSwapTitle/Shotgun/DragonsBreath")
 text = "Back"
 
 [node name="ColorRect" type="ColorRect" parent="."]
