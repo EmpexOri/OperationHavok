@@ -3,6 +3,8 @@ extends Node2D
 @onready var LoadingSprite = $LoadingScreenSprite
 @onready var LoadingFinished = $LoadingFinished
 
+var SkipLoading = false
+
 func _ready():
 	$PlayButton.grab_focus()
 	
@@ -10,10 +12,11 @@ func _ready():
 		GlobalAudioController.StopAllMusic()
 		GlobalAudioController.PlayMainMenuMusic()
 
-func _input(Event):
-	if Input.is_action_just_pressed("SkipLoad"):
-		LoadingSprite.queue_free()
-		LoadingFinished.queue_free()
+# Causes problems, will sort out after demo
+#func _input(Event):
+#	if Input.is_action_just_pressed("SkipLoad"):
+#		LoadingSprite.queue_free()
+#		LoadingFinished.queue_free()
 
 func _on_play_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
