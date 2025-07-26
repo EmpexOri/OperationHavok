@@ -271,6 +271,7 @@ focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../SkillTreeButton")
 texture_normal = ExtResource("5_w4qjd")
 texture_pressed = ExtResource("6_at33a")
+texture_hover = ExtResource("6_at33a")
 texture_focused = ExtResource("6_at33a")
 
 [node name="SkillTreeButton" type="TextureButton" parent="."]
@@ -283,6 +284,7 @@ focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 texture_normal = ExtResource("8_1l0d8")
 texture_pressed = ExtResource("9_p146f")
+texture_hover = ExtResource("9_p146f")
 texture_focused = ExtResource("9_p146f")
 
 [node name="QuitButton" type="TextureButton" parent="."]
@@ -295,6 +297,7 @@ focus_neighbor_top = NodePath("../SkillTreeButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
 texture_normal = ExtResource("10_mp4id")
 texture_pressed = ExtResource("11_dxffo")
+texture_hover = ExtResource("11_dxffo")
 texture_focused = ExtResource("11_dxffo")
 
 [node name="ControlsBg" type="Sprite2D" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=4 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
+[ext_resource type="Texture2D" uid="uid://kxxa65qyrhrf" path="res://Prefabs/GamePrefabs/Enemy/Minibosses/British_Bloke.png" id="3_w615b"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
 script = ExtResource("1_qqy41")
@@ -61,6 +62,7 @@ offset_bottom = 94.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_right = NodePath("../../SMG/Akimbo")
 focus_neighbor_bottom = NodePath("AzureDragon")
+texture_focused = ExtResource("3_w615b")
 
 [node name="RoarAzure" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
 layout_mode = 0
@@ -81,6 +83,7 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
+texture_focused = ExtResource("3_w615b")
 
 [node name="SMG" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
@@ -112,6 +115,7 @@ scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../Shotgun/DragonsBreath")
 focus_neighbor_right = NodePath("../../Sniper/SniperRifle")
 focus_neighbor_bottom = NodePath("M60")
+texture_focused = ExtResource("3_w615b")
 
 [node name="M60Label" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
 layout_mode = 0
@@ -125,8 +129,8 @@ horizontal_alignment = 1
 
 [node name="M60" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_top = 100.0
-offset_bottom = 140.0
+offset_top = 100.833
+offset_bottom = 140.833
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
