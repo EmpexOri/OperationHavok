@@ -132,7 +132,7 @@ func PlayMetalCreak():
 
 func PlayMainMenuMusic():
 	var player = $Music/MainMenuLoop
-	var stream: AudioStream = load("res://Assets/Sound/Music/MainMenuMusicLoop.mp3")
+	var stream: AudioStream = load("res://Assets/Sound/Music/Luxopolis.mp3")
 
 	if stream is AudioStream:
 		var stream_copy = stream.duplicate() as AudioStream

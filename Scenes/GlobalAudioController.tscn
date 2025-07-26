@@ -22,7 +22,7 @@ bus = &"Music"
 
 [node name="MainMenuLoop" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
-volume_db = -20.0
+volume_db = -15.0
 bus = &"Music"
 
 [node name="SFX" type="CanvasLayer" parent="."]
