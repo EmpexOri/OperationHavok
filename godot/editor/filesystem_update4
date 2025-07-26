@@ -23,3 +23,4 @@ res://Scenes/Options/OptionsScene.tscn
 res://Scenes/Options/GlobalBrightness.tscn
 res://Assets/Scripts/Menu Scripts/MenuScene.gd
 res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Scenes/Options/SkillButton.tscn
