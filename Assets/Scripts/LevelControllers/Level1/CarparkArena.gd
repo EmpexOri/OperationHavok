@@ -96,10 +96,12 @@ func get_scene_for_key(key: String):
 			return TUMOR
 		"Network":
 			return NETWORK
+		"Goolum":
+			return GOOLUM
 		"Warmachine":
 			return WARMACHINE
 		"Random":
-			return [GOOLUM] #[NETWORK, GOOLUM, BIOMANCER, NEEDLING, TUMOR]
+			return [NETWORK, GOOLUM, BIOMANCER, NEEDLING, TUMOR]
 	return null
 
 func spawn_wave_enemies(data: Dictionary) -> void:
