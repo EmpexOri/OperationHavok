@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bli4fnfa7mnar"]
+[gd_scene load_steps=7 format=3 uid="uid://bli4fnfa7mnar"]
 
 [ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Assets/Scripts/Menu Scripts/brightness_slider.gd" id="2_1hmx5"]
 [ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Assets/Scripts/Menu Scripts/volume_control_slider.gd" id="2_4k2k5"]
 [ext_resource type="Script" uid="uid://dptye62ocip5c" path="res://Assets/Scripts/Menu Scripts/particle_options.gd" id="4_ttvai"]
+[ext_resource type="Script" uid="uid://bgbmywtypvas4" path="res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd" id="5_byqjn"]
 
 [sub_resource type="Theme" id="Theme_gprv8"]
 
@@ -113,6 +114,12 @@ popup/item_2/text = "Low"
 popup/item_2/id = 2
 script = ExtResource("4_ttvai")
 
+[node name="CensorBlood" type="CheckButton" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Censor Blood"
+script = ExtResource("5_byqjn")
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/BrightnessSlider" to="ScrollContainer/VBoxContainer/BrightnessSlider" method="_on_value_changed"]
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/ParticleOptions" to="ScrollContainer/VBoxContainer/ParticleOptions" method="_on_item_selected"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/CensorBlood" to="." method="_on_censor_blood_toggled"]

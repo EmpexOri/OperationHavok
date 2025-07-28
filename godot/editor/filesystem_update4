@@ -24,3 +24,6 @@ res://Scenes/Options/OptionsScene.tscn
 res://Scenes/Options/GlobalBrightness.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Menu Scripts/OptionsScene.gd
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
+res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd

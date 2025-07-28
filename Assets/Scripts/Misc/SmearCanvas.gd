@@ -5,8 +5,11 @@ var MAX_SMEARS := 5000
 const FADE_TIME := 30.0
 var CULL_THRESHOLD := MAX_SMEARS / 2
 const CULL_FADE_MULTIPLIER := 2.0
+
+var blood_censorship_enabled := false
 var bloodcolor := '63070fd4'
 var censoredbloodcolor := '4a0642cc'
+var nullcolor := Color("ffffffd4")
 
 var smear_texture: Texture2D
 var smears: Array = []
@@ -31,11 +34,14 @@ func _draw():
 		var mod_color = smear.get("color", Color(1, 1, 1)) * Color(1, 1, 1, ratio)
 		draw_texture(smear_texture, smear["position"], mod_color)
 
-func spawn_smear(position: Vector2, color := Color(bloodcolor)) -> void:
+func spawn_smear(position: Vector2, color := nullcolor) -> void:
 	if smears.size() >= MAX_SMEARS:
 		smears.pop_front()
-		
-	var varied_color = randomize_color(color, 0.08)
+
+	if color == nullcolor:
+		color = get_active_blood_color()
+
+	var varied_color = randomize_color(color, 0.06)
 
 	smears.append({
 		"position": position,
@@ -67,3 +73,11 @@ func randomize_color(base_color: Color, variation := 0.1) -> Color:
 	var g = clamp(base_color.g + randf_range(-variation, variation), 0.0, 1.0)
 	var b = clamp(base_color.b + randf_range(-variation, variation), 0.0, 1.0)
 	return Color(r, g, b, base_color.a)
+
+func get_active_blood_color() -> Color:
+	return Color(censoredbloodcolor) if blood_censorship_enabled else Color(bloodcolor)
+	
+
+func toggle_blood_censorship(state: bool) -> void:
+	blood_censorship_enabled = state
+	print("Blood censorship is now: ", state)
