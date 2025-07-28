@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgb5o6u5vddpn"
-path="res://godot/imported/ABase.png-56a1109580677d67bf22abf282a3e2ea.ctex"
+uid="uid://b35y7v2rx6ajh"
+path="res://godot/imported/SmallSplatWhite.png-e324e92fbe4a4984392fa72752842cae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/HUD/ABase.png"
-dest_files=["res://godot/imported/ABase.png-56a1109580677d67bf22abf282a3e2ea.ctex"]
+source_file="res://Assets/Art/PlaceHolders/SmallSplatWhite.png"
+dest_files=["res://godot/imported/SmallSplatWhite.png-e324e92fbe4a4984392fa72752842cae.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

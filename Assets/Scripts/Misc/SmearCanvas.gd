@@ -5,12 +5,14 @@ var MAX_SMEARS := 5000
 const FADE_TIME := 30.0
 var CULL_THRESHOLD := MAX_SMEARS / 2
 const CULL_FADE_MULTIPLIER := 2.0
+var bloodcolor := '63070fd4'
+var censoredbloodcolor := '4a0642cc'
 
 var smear_texture: Texture2D
 var smears: Array = []
 
 func _ready():
-	smear_texture = preload("res://Assets/Art/PlaceHolders/SmallSplat.png")
+	smear_texture = preload("res://Assets/Art/PlaceHolders/SmallSplatWhite.png")
 
 func _process(delta: float):
 	var fade_multiplier := CULL_FADE_MULTIPLIER if smears.size() > CULL_THRESHOLD else 1.0
@@ -26,15 +28,19 @@ func _process(delta: float):
 func _draw():
 	for smear in smears:
 		var ratio = clamp(smear["time_left"] / FADE_TIME, 0.0, 1.0)
-		draw_texture(smear_texture, smear["position"], Color(1, 1, 1, ratio))
+		var mod_color = smear.get("color", Color(1, 1, 1)) * Color(1, 1, 1, ratio)
+		draw_texture(smear_texture, smear["position"], mod_color)
 
-func spawn_smear(position: Vector2) -> void:
+func spawn_smear(position: Vector2, color := Color(bloodcolor)) -> void:
 	if smears.size() >= MAX_SMEARS:
 		smears.pop_front()
+		
+	var varied_color = randomize_color(color, 0.08)
 
 	smears.append({
 		"position": position,
 		"time_left": FADE_TIME,
+		"color": varied_color,
 	})
 
 # -- Settings logic --
@@ -55,3 +61,9 @@ func set_max_smeares(value: int) -> void:
 func reset():
 	smears.clear()
 	queue_redraw()
+
+func randomize_color(base_color: Color, variation := 0.1) -> Color:
+	var r = clamp(base_color.r + randf_range(-variation, variation), 0.0, 1.0)
+	var g = clamp(base_color.g + randf_range(-variation, variation), 0.0, 1.0)
+	var b = clamp(base_color.b + randf_range(-variation, variation), 0.0, 1.0)
+	return Color(r, g, b, base_color.a)

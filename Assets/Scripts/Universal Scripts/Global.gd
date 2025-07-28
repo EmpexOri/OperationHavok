@@ -98,11 +98,7 @@ func _reset_particle_after_delay(instance: Node2D, particles: GPUParticles2D, de
 		instance.visible = false
 
 func spawn_blood_splatter(position: Vector2):
-	var blood_sprite = Sprite2D.new()
-	blood_sprite.texture = preload("res://Assets/Art/PlaceHolders/Splat.png") 
-	blood_sprite.position = position
-	blood_sprite.z_index = -2
-	get_tree().current_scene.add_child(blood_sprite)
+	SmearCanvas.spawn_smear(position)
 
 func spawn_meat_chunk(position: Vector2):
 	var meat_scene = preload("res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn")

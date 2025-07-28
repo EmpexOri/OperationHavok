@@ -285,21 +285,21 @@ script = ExtResource("7_34rfs")
 
 [node name="ABase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
-position = Vector2(529, 326)
+position = Vector2(530, 324.5)
 texture = ExtResource("15_16lhd")
 
 [node name="BBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
-position = Vector2(573, 326)
+position = Vector2(574, 324.5)
 texture = ExtResource("17_3e4vp")
 
 [node name="YBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
-position = Vector2(617, 326)
+position = Vector2(618, 324.5)
 texture = ExtResource("19_4kqft")
 
 [node name="Icon1" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-position = Vector2(529, 326)
+position = Vector2(530, 324.5)
 texture = ExtResource("16_spgp8")
 script = ExtResource("22_3e4vp")
 
@@ -309,9 +309,10 @@ offset_top = 2.0
 offset_right = 20.0
 offset_bottom = 25.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Icon2" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-position = Vector2(573, 326)
+position = Vector2(574, 324.5)
 texture = ExtResource("18_t1xay")
 script = ExtResource("22_3e4vp")
 
@@ -321,9 +322,10 @@ offset_top = 2.0
 offset_right = 20.0
 offset_bottom = 25.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Icon3" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-position = Vector2(617, 326)
+position = Vector2(618, 324.5)
 texture = ExtResource("20_8mwex")
 script = ExtResource("22_3e4vp")
 
@@ -333,6 +335,7 @@ offset_top = 2.0
 offset_right = 20.0
 offset_bottom = 25.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
