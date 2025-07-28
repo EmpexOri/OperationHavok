@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqtolfw0vt2vw"]
+
+[ext_resource type="Texture2D" uid="uid://bsvgw2kwqlsdx" path="res://Assets/Art/PlaceHolders/Hordling.png" id="1_41aux"]
+[ext_resource type="Script" uid="uid://d3co4wq6bwrd7" path="res://Assets/Scripts/Enemy/Goolum.gd" id="1_cmbwj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_41aux"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cmbwj"]
+
+[node name="Goolum" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_cmbwj")
+
+[node name="Body" type="Sprite2D" parent="."]
+modulate = Color(0, 0.384314, 1, 1)
+texture = ExtResource("1_41aux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_41aux")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cmbwj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationAgent2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

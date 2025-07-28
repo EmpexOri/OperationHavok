@@ -10,6 +10,7 @@ const NEEDLING = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
 const GATLING = preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn")
 const TUMOR = preload("res://Prefabs/GamePrefabs/Enemy/Tumor.tscn")
 const NETWORK = preload("res://Prefabs/GamePrefabs/Enemy/Network.tscn")
+const GOOLUM = preload("res://Prefabs/GamePrefabs/Enemy/Goolum.tscn")
 const WARMACHINE = preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn")
 
 const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
@@ -98,7 +99,7 @@ func get_scene_for_key(key: String):
 		"Warmachine":
 			return WARMACHINE
 		"Random":
-			return [NETWORK, BIOMANCER, NEEDLING, TUMOR]
+			return [GOOLUM] #[NETWORK, GOOLUM, BIOMANCER, NEEDLING, TUMOR]
 	return null
 
 func spawn_wave_enemies(data: Dictionary) -> void:

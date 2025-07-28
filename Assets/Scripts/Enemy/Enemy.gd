@@ -48,13 +48,46 @@ func resolve_target() -> Node2D:
 	var players = get_tree().get_nodes_in_group("Player")
 	return players[0] if players.size() > 0 else null
 
-func deal_damage(damage: int, _from_position = null):
-	var new_health = max(0, Health - damage)
-	print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", new_health, ")")
-	Health = new_health
-	flash_white()
-	if Health == 0:
-		on_death()
+#func deal_damage(damage: int, _from_position = null):
+	#var new_health = max(0, Health - damage)
+	#print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", new_health, ")")
+	#Health = new_health
+	#flash_white()
+	#if Health == 0:
+		#on_death()
+
+#func deal_damage(damage: int, _from_position = null):
+	#var new_health = max(0, Health - damage)
+	#print("Dealt ", damage, " damage to ", self.name, " (", Health, " → ", new_health, ")")
+	#Health = new_health
+	#flash_white()
+	#if Health == 0:
+		#on_death()
+
+func deal_damage(damage: int, from_position = null):
+	var original_health = Health
+
+	if Armor > 0:
+		var absorbed = min(damage, Armor)
+		Armor -= absorbed
+		damage -= absorbed
+		print("Armor absorbed:", absorbed, " | Remaining armor:", Armor)
+
+		# Shrink the enemy based on new armor value
+		update_scale()
+
+		if Armor <= 0:
+			remove_from_group("Armored")
+			modulate = Color(1, 1, 1)  # Reset tint
+			print(name, " has lost all armor!")
+
+	if damage > 0:
+		Health = max(0, Health - damage)
+		flash_white()
+		print("Dealt ", damage, " damage to ", name, " (", original_health, " → ", Health, ")")
+
+		if Health == 0:
+			on_death()
 
 func on_death():
 	emit_signal("died", self)  # Notify the level before removing the enemy
@@ -205,3 +238,30 @@ func remove_buff(flash_color := Color("98fb98")):
 		CurrentWeapon.cooldown_timer.wait_time = CurrentWeapon.base_fire_rate
 	mat.set_shader_parameter("flash_strength", 0.0)
 	print("Buff expired for:", name)
+
+
+############################################################################################################
+############################################################################################################
+############################################################################################################
+
+var Armor: int = 0
+var MaxArmor: int = 0
+var BaseScale: Vector2 = Vector2.ONE
+
+func update_scale():
+	if MaxArmor <= 0:
+		self.scale = BaseScale
+		return
+
+	var ratio := float(Armor) / MaxArmor
+	var scale_increase := ratio * 0.8  # Max growth +80%
+	self.scale = BaseScale + Vector2.ONE * scale_increase
+
+func apply_armor_buff(amount: int) -> void:
+	Armor += amount
+	MaxArmor = Armor  # Set max for shrink reference
+	print("Armor buff applied:", amount)
+	add_to_group("Armored")
+	
+	# Scale up based on armor (e.g., each 100 HP = +1x scale)
+	update_scale()
