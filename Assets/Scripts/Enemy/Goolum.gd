@@ -5,18 +5,28 @@ extends Enemy
 
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
 
+@onready var attach_timer: Timer = Timer.new()
+var nearby_targets: Array[Node2D] = []
+
 func _ready():
 	super()
-	#get_flash_sprite().material = get_flash_sprite().material.duplicate()
-	
-	latch_area.body_entered.connect(_on_area_2d_body_entered)
 
-	Speed = 60
-	Health = 80
+	latch_area.body_entered.connect(_on_area_2d_body_entered)
+	latch_area.body_exited.connect(_on_area_2d_body_exited)
+
+	Speed = 50
+	Health = 120
 	MaxHealth = Health
 	Group = "Enemy"
 	add_to_group("Support")
 	Target = null
+
+	# Setup attach timer
+	attach_timer.wait_time = 1.0
+	attach_timer.one_shot = false
+	attach_timer.autostart = true
+	add_child(attach_timer)
+	attach_timer.timeout.connect(_on_attach_timer_timeout)
 
 func _process(delta):
 	super._process(delta)
@@ -35,6 +45,19 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
+
+	# Handle animation and flipping
+	if velocity.length() > 0.1:
+		var moving_up = velocity.y < 0
+		if moving_up:
+			sprite.animation = "move_up_left"
+		else:
+			sprite.animation = "move_down_left"
+
+		sprite.flip_h = velocity.x > 0  # Flip for rightward movement
+		sprite.play()
+	else:
+		sprite.stop()
 
 func find_strongest_target():
 	var candidates := get_tree().get_nodes_in_group("Enemy")
@@ -63,12 +86,17 @@ func find_strongest_target():
 
 	Target = strongest
 
-func transfer_health_to(target):
+@warning_ignore("unused_parameter")
+func attempt_transfer_health_async(target: Node2D) -> void:
+	await get_tree().physics_frame
+
 	if not is_instance_valid(target) or target.is_in_group("Armored"):
 		return
 
-	# Check line of sight with raycast
 	var space_state = get_world_2d().direct_space_state
+	if space_state == null:
+		return
+
 	var ray_params = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
 	ray_params.exclude = [self]
 	ray_params.collision_mask = WALL_COLLISION_MASK
@@ -80,22 +108,31 @@ func transfer_health_to(target):
 	if target.has_method("apply_armor_buff"):
 		print("Goolum grants armor to:", target.name)
 		target.apply_armor_buff(Health)
+
+		if target.has_node("AnimatedSprite2D"):
+			var sprite = target.get_node("AnimatedSprite2D")
+			sprite.modulate = Color(0, 0, 1)
+
 		on_death()
 
 func get_flash_sprite() -> CanvasItem:
 	return sprite
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Hit something")
 	if body.is_in_group("Enemy") and not body.is_in_group("Armored") and body.has_method("apply_armor_buff") and not body.is_in_group("Support"):
-		transfer_health_to(body)
-		
-		print("ADMINISTARED HEALTH KYS NOW")
-		
-		# Change the enemy's color to blue to show buff
-		if body.has_node("AnimatedSprite2D"):
-			var sprite = body.get_node("AnimatedSprite2D")
-			sprite.modulate = Color(0, 0, 1)  # Pure blue
-			
-		# Make Goolum disappear after giving buff
-		on_death()
+		if not nearby_targets.has(body):
+			nearby_targets.append(body)
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	nearby_targets.erase(body)
+
+func _on_attach_timer_timeout():
+	if nearby_targets.is_empty():
+		return
+
+	for body in nearby_targets:
+		if is_instance_valid(body) and body.Health > 0:
+			if randf() <= 0.4:
+				# Now safe to await within a coroutine
+				attempt_transfer_health_async(body)
+				return

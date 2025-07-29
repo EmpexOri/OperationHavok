@@ -1,12 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqtolfw0vt2vw"]
+[gd_scene load_steps=18 format=3 uid="uid://dqtolfw0vt2vw"]
 
 [ext_resource type="Texture2D" uid="uid://bsvgw2kwqlsdx" path="res://Assets/Art/PlaceHolders/Hordling.png" id="1_41aux"]
 [ext_resource type="Script" uid="uid://d3co4wq6bwrd7" path="res://Assets/Scripts/Enemy/Goolum.gd" id="1_cmbwj"]
+[ext_resource type="Texture2D" uid="uid://brv63cvhwl8hg" path="res://Assets/Art/Sprites/Goolem_WALK_FRONT.png" id="3_856o0"]
+[ext_resource type="Texture2D" uid="uid://dhqbrgpsngv5o" path="res://Assets/Art/Sprites/Goolem_WALK_BACK.png" id="4_40gtq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_41aux"]
-radius = 8.0
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmbwj"]
+radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_punyr"]
+atlas = ExtResource("3_856o0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avcq6"]
+atlas = ExtResource("3_856o0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0736j"]
+atlas = ExtResource("3_856o0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdnhy"]
+atlas = ExtResource("3_856o0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6qas"]
+atlas = ExtResource("3_856o0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13kjh"]
+atlas = ExtResource("4_40gtq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4vw7"]
+atlas = ExtResource("4_40gtq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjymj"]
+atlas = ExtResource("4_40gtq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmy0x"]
+atlas = ExtResource("4_40gtq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw770"]
+atlas = ExtResource("4_40gtq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1a8em"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_punyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avcq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0736j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdnhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6qas")
+}],
+"loop": true,
+"name": &"move_down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13kjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4vw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjymj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmy0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw770")
+}],
+"loop": true,
+"name": &"move_up_left",
+"speed": 5.0
+}]
 
 [node name="Goolum" type="CharacterBody2D"]
 collision_layer = 2
@@ -14,6 +100,7 @@ collision_mask = 7
 script = ExtResource("1_cmbwj")
 
 [node name="Body" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0.384314, 1, 1)
 texture = ExtResource("1_41aux")
 
@@ -34,5 +121,7 @@ shape = SubResource("CircleShape2D_cmbwj")
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationAgent2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1a8em")
+animation = &"move_down_left"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
