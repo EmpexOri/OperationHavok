@@ -1,4 +1,4 @@
-res://Prefabs/GamePrefabs/Enemy/Goolum.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,8 +7,6 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Enemy/Goolum.gd
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Scenes/LevelSelectScene.tscn
@@ -24,5 +22,6 @@ res://Scenes/Options/PauseMenu.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Scenes/Options/GlobalBrightness.tscn
 res://Scenes/Options/SkillButton.tscn
+res://Prefabs/GamePrefabs/Enemy/Goolum.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
 res://Prefabs/GamePrefabs/Enemy/Tumor.tscn

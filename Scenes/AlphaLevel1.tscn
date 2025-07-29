@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=31 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://co8satb05d6rr" path="res://Assets/Art/Objects/Car_Object_v3_blue.png" id="11_m3m5o"]
 [ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="13_8mwex"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="14_m3m5o"]
 [ext_resource type="Texture2D" uid="uid://cgb5o6u5vddpn" path="res://Assets/Art/HUD/ABase.png" id="15_16lhd"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
 [ext_resource type="Texture2D" uid="uid://c0657ubcafc6g" path="res://Assets/Art/HUD/BBase.png" id="17_3e4vp"]
@@ -220,12 +221,13 @@ tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 9.0
-offset_top = 50.0
-offset_right = 107.0
-offset_bottom = 73.0
+offset_left = 161.0
+offset_top = 12.0
+offset_right = 186.0
+offset_bottom = 17.0
 scale = Vector2(2.2, 2.2)
-theme_override_fonts/font = ExtResource("13_8mwex")
+theme_override_fonts/font = ExtResource("14_m3m5o")
+theme_override_font_sizes/font_size = 4
 text = "Level: 1"
 
 [node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
