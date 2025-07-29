@@ -9,6 +9,7 @@ const BIOMANCER = preload("res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn")
 const NEEDLING = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
 const GATLING = preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn")
 const TUMOR = preload("res://Prefabs/GamePrefabs/Enemy/Tumor.tscn")
+const MALIGNANTTUMOR = preload("res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn")
 const NETWORK = preload("res://Prefabs/GamePrefabs/Enemy/Network.tscn")
 const GOOLUM = preload("res://Prefabs/GamePrefabs/Enemy/Goolum.tscn")
 const WARMACHINE = preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn")
@@ -94,6 +95,8 @@ func get_scene_for_key(key: String):
 			return GATLING
 		"Tumor":
 			return TUMOR
+		"MalignantTumor":
+			return MALIGNANTTUMOR
 		"Network":
 			return NETWORK
 		"Goolum":
