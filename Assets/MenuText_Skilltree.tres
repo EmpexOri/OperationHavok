@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bf4d62y4dv8rw"]
+
+[ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="1_dtyys"]
+
+[resource]
+default_font = ExtResource("1_dtyys")
+default_font_size = 14

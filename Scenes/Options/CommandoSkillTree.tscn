@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=6 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_74uq5"]
+[ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="3_1kq37"]
 [ext_resource type="Texture2D" uid="uid://bkb02gc6u1v8f" path="res://Assets/Art/PlaceHolders/TestSkillButtonHOVER.png" id="3_w615b"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
@@ -15,21 +17,27 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PerkPointsLabel" type="Label" parent="."]
-offset_left = 4.0
-offset_top = -1.0
-offset_right = 110.0
-offset_bottom = 22.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 12
 text = "Perk points: 0"
+horizontal_alignment = 1
 
 [node name="WeaponSwapTitle" type="Label" parent="."]
-offset_top = 7.0
+offset_top = 14.0
 offset_right = 253.0
-offset_bottom = 41.0
+offset_bottom = 48.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 24
-text = "Weapon swap tree"
+text = "Weapons Tree"
 horizontal_alignment = 1
 
 [node name="Shotgun" type="Label" parent="WeaponSwapTitle"]
@@ -38,6 +46,7 @@ offset_left = 14.0
 offset_top = 34.0
 offset_right = 79.0
 offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
 text = "Shotgun"
 horizontal_alignment = 1
@@ -48,7 +57,7 @@ offset_left = -27.0
 offset_top = 22.0
 offset_right = 94.0
 offset_bottom = 53.0
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1kq37")
 text = "Dragon's Breath 
 Shotgun"
 horizontal_alignment = 1
@@ -71,7 +80,7 @@ offset_left = -52.4999
 offset_top = 72.5
 offset_right = 93.5001
 offset_bottom = 101.5
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "Flamethrower"
 horizontal_alignment = 1
 
@@ -89,9 +98,10 @@ texture_focused = ExtResource("3_w615b")
 [node name="SMG" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
 offset_left = 97.0
-offset_top = 35.0
+offset_top = 34.0
 offset_right = 162.0
-offset_bottom = 58.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
 text = "SMG"
 horizontal_alignment = 1
@@ -102,8 +112,9 @@ offset_left = -42.0
 offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 45.0
-theme_override_font_sizes/font_size = 10
-text = "Akimbo SMGs"
+theme = ExtResource("3_1kq37")
+text = "Akimbo 
+SMGs"
 horizontal_alignment = 1
 
 [node name="Akimbo" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
@@ -125,7 +136,7 @@ offset_left = -52.4999
 offset_top = 72.5
 offset_right = 93.5001
 offset_bottom = 90.4997
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "M60"
 horizontal_alignment = 1
 
@@ -143,9 +154,10 @@ texture_focused = ExtResource("3_w615b")
 [node name="Sniper" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
 offset_left = 177.0
-offset_top = 35.0
-offset_right = 242.0
-offset_bottom = 58.0
+offset_top = 34.0
+offset_right = 244.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
 text = "Sniper"
 horizontal_alignment = 1
@@ -156,7 +168,7 @@ offset_left = -42.0
 offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 45.0
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1kq37")
 text = "Laser Sniper"
 horizontal_alignment = 1
 
@@ -179,7 +191,7 @@ offset_left = -52.4999
 offset_top = 72.5
 offset_right = 93.5001
 offset_bottom = 90.4997
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "Raygun Rifle"
 horizontal_alignment = 1
 
@@ -196,11 +208,12 @@ texture_focused = ExtResource("3_w615b")
 
 [node name="GrenadeTitle" type="Label" parent="."]
 offset_left = 228.0
-offset_top = 7.0
+offset_top = 14.0
 offset_right = 481.0
-offset_bottom = 41.0
+offset_bottom = 48.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 24
 text = "Grenade"
 horizontal_alignment = 1
@@ -211,7 +224,7 @@ offset_left = 28.0
 offset_top = 57.0
 offset_right = 149.0
 offset_bottom = 88.0
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1kq37")
 text = "Novacaster"
 horizontal_alignment = 1
 
@@ -234,7 +247,7 @@ offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
 offset_bottom = 104.333
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "Plasma Caster"
 horizontal_alignment = 1
 
@@ -257,7 +270,7 @@ offset_left = 109.0
 offset_top = 57.0
 offset_right = 230.0
 offset_bottom = 88.0
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1kq37")
 text = "Baseball
 Grenade"
 horizontal_alignment = 1
@@ -281,7 +294,7 @@ offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
 offset_bottom = 104.333
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "Home Run
 Grenade"
 horizontal_alignment = 1
@@ -301,11 +314,12 @@ texture_focused = ExtResource("3_w615b")
 
 [node name="MinigunTitle" type="Label" parent="."]
 offset_left = 417.0
-offset_top = 7.0
+offset_top = 14.0
 offset_right = 670.0
-offset_bottom = 41.0
+offset_bottom = 48.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 24
 text = "Minigun"
 horizontal_alignment = 1
@@ -316,7 +330,7 @@ offset_left = 28.0
 offset_top = 57.0
 offset_right = 149.0
 offset_bottom = 88.0
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1kq37")
 text = "Rocket
 Launcher"
 horizontal_alignment = 1
@@ -340,7 +354,7 @@ offset_left = -39.1667
 offset_top = 71.6667
 offset_right = 81.8333
 offset_bottom = 102.667
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "Rocket
 Minigun"
 horizontal_alignment = 1
@@ -364,7 +378,7 @@ offset_left = 103.0
 offset_top = 57.0
 offset_right = 224.0
 offset_bottom = 88.0
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1kq37")
 text = "Lightning
 Launcher"
 horizontal_alignment = 1
@@ -387,7 +401,7 @@ offset_left = -39.1667
 offset_top = 73.3333
 offset_right = 81.8333
 offset_bottom = 104.333
-theme_override_font_sizes/font_size = 9
+theme = ExtResource("3_1kq37")
 text = "Typhoon
 Cannon"
 horizontal_alignment = 1
@@ -411,6 +425,7 @@ offset_top = 307.0
 offset_right = 404.0
 offset_bottom = 338.0
 focus_neighbor_top = NodePath("../WeaponSwapTitle/Shotgun/DragonsBreath")
+theme_override_fonts/font = ExtResource("2_74uq5")
 text = "Back"
 
 [node name="ColorRect" type="ColorRect" parent="."]
