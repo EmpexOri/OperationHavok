@@ -31,3 +31,4 @@ res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn

@@ -3,7 +3,7 @@ extends Enemy
 @onready var sprite = $Sprite2D
 @onready var explosion_area: Area2D = $ExplosionArea
 
-@export var grenade_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn")
+@export var grenade_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn")
 
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
 
@@ -234,10 +234,7 @@ func _perform_explode():
 	sprite.visible = false
 	velocity = Vector2.ZERO
 	set_physics_process(false)
-	await get_tree().create_timer(0.5).timeout
-	GlobalAudioController.HordlingDeath()
-	Global.spawn_tumour_particles(global_position)
-	# === Death Grenade Burst ===
+		# === Death Grenade Burst ===
 	var grenade_count = randi_range(8, 16)
 	for i in range(grenade_count):
 		var grenade = grenade_scene.instantiate()
@@ -253,6 +250,9 @@ func _perform_explode():
 		var spawn_position = global_position + spawn_offset
 
 		grenade.start(spawn_position, target_position)
+	await get_tree().create_timer(0.5).timeout
+	GlobalAudioController.HordlingDeath()
+	Global.spawn_tumour_particles(global_position)
 	on_death()
 	queue_free()
 
