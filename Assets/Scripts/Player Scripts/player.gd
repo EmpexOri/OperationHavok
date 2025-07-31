@@ -211,12 +211,25 @@ func ActivateAbility(index: int):
 		var ability_name = abilities[index]
 		print("Activating ability: " + ability_name)
 		var scene_path = "res://Prefabs/CodePrefabs/Abilities/" + ability_name + ".tscn"
+		print("Checking scene path: ", scene_path)
 		if ResourceLoader.exists(scene_path):
 			var ability_scene = load(scene_path)
 			var ability_instance = ability_scene.instantiate()
 			add_child(ability_instance)
 			ability_instance.activate(self, index)
 			AbilityCooldowns[index] = true
+			
+			# Start a failsafe timer in case ability doesn't emit signal
+			#var failsafe_timer := Timer.new()
+			#failsafe_timer.one_shot = true
+			#failsafe_timer.wait_time = 1.2 * get_ability_duration_guess(ability_instance) # safe buffer
+			#failsafe_timer.timeout.connect(func():
+#				if AbilityCooldowns.has(index) and AbilityCooldowns[index]:
+#					print("Failsafe triggered for ability", index)
+#					_on_ability_cooldown_finished(index)
+#			)
+#			add_child(failsafe_timer)
+#			failsafe_timer.start()
 
 			if ability_instance.has_signal("perk_finished"):
 				ability_instance.connect("perk_finished", Callable(self, "_on_ability_cooldown_finished"))
@@ -226,6 +239,20 @@ func ActivateAbility(index: int):
 func _on_ability_cooldown_finished(index: int):
 	AbilityCooldowns[index] = false
 	print("Ability", index, "is now off cooldown.")
+	
+func get_ability_duration_guess(ability) -> float: #This entire method is just a failsafe now lmao
+	var props = ability.get_property_list()
+	for prop in props:
+		if prop.name == "Duration":
+			return ability.Duration + 1.0
+		if prop.name == "CooldownTime":
+			return ability.CooldownTime + 1.0
+	return 15.0 # Fallback default
+	
+func _check_for_stuck_cooldowns():
+	for index in AbilityCooldowns.keys():
+		if AbilityCooldowns[index]:
+			print("Warning: Ability", index, "is still on cooldown unexpectedly.")
 
 func equip_weapon(WeaponScene: PackedScene, source: String = ""):
 	if CurrentWeapon:

@@ -17,7 +17,9 @@ var cooldownTimer: Timer
 var owner_player = null
 
 func activate(player, index = -1):
+	print("RocketLauncher: activate() called")
 	if not player or not player.CurrentWeapon:
+		print("RocketLauncher aborting: no player or no current weapon")
 		queue_free()
 		return
 
@@ -78,7 +80,6 @@ func _start_cooldown_early():
 	# Start cooldown timer if not already started
 	if cooldownTimer == null or cooldownTimer.is_stopped():
 		_start_cooldown_timer()
-
 	# Stop monitoring
 	set_process(false)
 

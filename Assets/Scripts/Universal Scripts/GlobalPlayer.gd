@@ -48,7 +48,7 @@ func AddXP(Amount: int):
 func LevelUp():
 	ClassData[CurrentClass]["Level"] += 1
 	ClassData[CurrentClass]["PerkPoints"] += 1
-	UnlockAbilities()
+	#UnlockAbilities()
 	UpdateHP()
 	UpdatePerkPointUI()
 
@@ -75,21 +75,21 @@ func UpdateHP():
 	PlayerHP += 100  # Optional: only heal up to new max
 	UpdateHealthBar()
 
-func UnlockAbilities():
-	var Level = ClassData[CurrentClass]["Level"]
-	var FullAbilityList = []
-	
-	match CurrentClass:
-		"Technomancer":
-			FullAbilityList = AbilityListTechnomancer
-		"Commando":
-			FullAbilityList = AbilityListCommando
-		"Fleshthing":
-			FullAbilityList = AbilityListFleshthing
-
-	var AbilitiesUnlocked = FullAbilityList.slice(0, min(Level, FullAbilityList.size()))  # Unlock abilities based on level
-	ClassData[CurrentClass]["Abilities"] = AbilitiesUnlocked
-	UpdateAbilityList()
+#func UnlockAbilities():
+#	var Level = ClassData[CurrentClass]["Level"]
+#	var FullAbilityList = []
+#	
+#	match CurrentClass:
+#		"Technomancer":
+#			FullAbilityList = AbilityListTechnomancer
+#		"Commando":
+#			FullAbilityList = AbilityListCommando
+#		"Fleshthing":
+#			FullAbilityList = AbilityListFleshthing
+#
+#	var AbilitiesUnlocked = FullAbilityList.slice(0, min(Level, FullAbilityList.size()))  # Unlock abilities based on level
+#	ClassData[CurrentClass]["Abilities"] = AbilitiesUnlocked
+#	UpdateAbilityList()
 
 func UpdateAbilityList():
 	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
