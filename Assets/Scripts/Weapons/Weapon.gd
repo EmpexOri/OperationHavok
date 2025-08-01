@@ -7,12 +7,15 @@ class_name Weapon
 @export var base_fire_rate: float = 0.5 # Shots per second
 @export var fire_offset: float = 5.0 # Offset from player to spawn projectile (weapon length)
 
+@export var fire_sound_method: StringName = ""
+
 @export var projectile_effects: Array[ProjectileEffect] = [] # Effects applied to projectiles
 @export var weapon_effects: Array[WeaponEffect] = [] # Effects applied at the weapon level
 
 var current_fire_rate: float
 var can_fire: bool = true
 var owning_entity: String
+signal shot_fired(direction)
 
 @onready var cooldown_timer: Timer = Timer.new()
 
@@ -39,6 +42,7 @@ func _on_cooldown_timer_timeout() -> void:
 func attempt_to_fire(spawn_position: Vector2, direction: Vector2) -> void:
 	if can_fire and projectile_scene != null:
 		fire(spawn_position, direction)
+		emit_signal("shot_fired", direction)
 		can_fire = false
 		cooldown_timer.start()
 
@@ -46,8 +50,9 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2) -> void:
 func fire(spawn_position: Vector2, direction: Vector2) -> void:
 	# Check if any weapon effect overrides the firing logic
 	for effect in weapon_effects:
-		if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true), space_state):
-			return
+		if effect and effect.has_method("override_fire_logic"):
+			if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true), space_state):
+				return
 	
 	# Default firing parameters
 	var fire_parameters = {
@@ -58,7 +63,8 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 
 	# Allow weapon effects to modify firing parameters
 	for effect in weapon_effects:
-		fire_parameters = effect.modify_parameters(fire_parameters)
+		if effect and effect.has_method("modify_parameters"):
+			fire_parameters = effect.modify_parameters(fire_parameters)
 
 	# Extract parameters
 	var projectile_count: int = fire_parameters["projectile_count"]
@@ -73,6 +79,8 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 		angle_step = spread_radian / (projectile_count - 1)
 
 	var start_angle: float = base_angle - spread_radian / 2.0
+
+	_play_fire_sound()
 
 	for i in range(projectile_count):
 		var shot_angle: float = start_angle + angle_step * i
@@ -106,9 +114,8 @@ func add_effect(new_effect: Resource) -> void:
 
 	# Check projectile effects
 	for existing_effect in projectile_effects:
-		if typeof(existing_effect) == typeof(new_effect) and existing_effect.effect_name == new_effect.effect_name:
+		if existing_effect != null and typeof(existing_effect) == typeof(new_effect) and existing_effect.effect_name == new_effect.effect_name:
 			found = true
-			break
 
 	# Check weapon effects
 	for existing_effect in weapon_effects:
@@ -140,3 +147,15 @@ func remove_effect(effect_to_remove: Resource) -> void:
 		print("Removed weapon effect: ", effect_to_remove.effect_name)
 	else:
 		print("Attempted to remove an effect that does not exist.")
+
+var owning_entity_node: Node2D = null
+
+func set_owning_entity(node: Node2D) -> void:
+	owning_entity_node = node
+
+func get_owning_entity() -> Node2D:
+	return owning_entity_node
+
+func _play_fire_sound() -> void:
+	if fire_sound_method != "" and GlobalAudioController.has_method(fire_sound_method):
+		GlobalAudioController.call(fire_sound_method)

@@ -3,6 +3,8 @@ extends CharacterBody2D
 var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd").new()
 var Damage_Timer = Timer.new()
 
+var RecoilEffectResource = preload("res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd")
+
 var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/Smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
@@ -25,6 +27,8 @@ var PlayerUIHandler: Node = null
 var icon1: Node = null
 var icon2: Node = null
 var icon3: Node = null
+
+var owning_entity: Node = null
 
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
@@ -92,33 +96,30 @@ func _process(delta):
 		kill()
 	
 func _physics_process(_delta):
-	var Motion = Vector2()
-	
+	var Motion = Input.get_vector("left", "right", "up", "down")
+
 	if not IsDodging:
-		if Input.is_action_pressed("up"):
-			Motion.y -= 1
-			$PlayerSprite/SpriteAnimation.play("WalkUp")
-		if Input.is_action_pressed("down"):
-			Motion.y += 1
-			$PlayerSprite/SpriteAnimation.play("WalkDown")
-		if Input.is_action_pressed("left"):
-			Motion.x -= 1
-			$PlayerSprite.flip_h = true
-			$PlayerSprite/SpriteAnimation.play("WalkLeft")
-		if Input.is_action_pressed("right"):
-			Motion.x += 1
-			$PlayerSprite.flip_h = false
-			$PlayerSprite/SpriteAnimation.play("WalkRight")
+		if Motion.length() > 0:
+			if abs(Motion.x) > abs(Motion.y):
+				$PlayerSprite.flip_h = Motion.x < 0
+				$PlayerSprite/SpriteAnimation.play("WalkRight" if Motion.x > 0 else "WalkLeft")
+			else:
+				$PlayerSprite/SpriteAnimation.play("WalkDown" if Motion.y > 0 else "WalkUp")
+		else:
+			#$PlayerSprite/SpriteAnimation.play("Idle")
+			pass
+			
 
 		if Input.is_action_just_pressed("space") and CanDodge:
 			dodge(Motion.normalized())
 
-		Motion = Motion.normalized() * MoveSpeed
+		velocity = Motion.normalized() * MoveSpeed + velocityknock
 	else:
-		Motion = velocity
-		
-	velocity = Motion
+		velocity += velocityknock
+
 	move_and_slide()
+
+	velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * _delta)
 	
 	#var screen_size = get_viewport_rect().size
 	#position.x = clamp(position.x, 0, screen_size.x)
@@ -265,6 +266,9 @@ func equip_weapon(WeaponScene: PackedScene, source: String = ""):
 		CurrentWeapon.position = Vector2(0, 0)
 
 		current_weapon_source = source
+
+		if CurrentWeapon.has_signal("shot_fired"):
+			CurrentWeapon.connect("shot_fired", Callable(self, "_on_weapon_shot_fired"))
 		
 func attempt_to_fire():
 	if CurrentWeapon:
@@ -279,8 +283,6 @@ func attempt_to_fire():
 				return
 		else:
 			direction = (get_global_mouse_position() - global_position).normalized()
-
-		#direction = eight_directions_snap(direction) 
 
 		if direction.length() > 0:
 			var is_horizontal = abs(direction.x) > abs(direction.y)
@@ -298,6 +300,7 @@ func attempt_to_fire():
 				if direction.y < 0:
 					$PlayerSprite/SpriteAnimation.play("WalkUp")
 			
+		# Fire the weapon
 		CurrentWeapon.attempt_to_fire(global_position, direction)
 	
 #func eight_directions_snap(direction: Vector2):
@@ -342,19 +345,29 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 # Janky aSS knockback
-var knockback_immune := false
-var knockback_immunity_time := 0.3 # seconds
 
-func apply_knockback(force: Vector2):
+var velocityknock = Vector2.ZERO
+var knockback_immune = false
+var knockback_immunity_time = 0.2
+
+func apply_knockback(force: Vector2) -> void:
 	if knockback_immune:
 		return
 
-	print("Applying knockback:", force)
-	velocity += force
-	move_and_slide()
+	velocityknock += force
 	knockback_immune = true
 	await get_tree().create_timer(knockback_immunity_time).timeout
 	knockback_immune = false
+	
+func apply_weapon_knockback(direction: Vector2, force: float) -> void:
+	var knockback_vector = -direction.normalized() * force
+	apply_knockback(knockback_vector)
+	
+func _on_weapon_shot_fired(direction: Vector2) -> void:
+	var weapon_path = CurrentWeapon.scene_file_path
+	if weapon_path == "res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn" or weapon_path == "res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn":
+		var knockback_force = 200.0 
+		apply_weapon_knockback(direction, knockback_force)
 
 func get_current_weapon_info():
 	if CurrentWeapon and weapon_data.has(CurrentWeapon.scene_file_path):
@@ -416,3 +429,14 @@ func get_default_weapon_from_swap_upgrade() -> PackedScene:
 		return weapon_scenes[upgrade_slot_1]
 
 	return weapon_scenes.get("Smg") # fallback
+
+func is_knockback_weapon(weapon: Weapon) -> bool:
+	if weapon == null:
+		return false
+	
+	var weapon_path = weapon.scene_file_path
+	if weapon_path == "res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn":
+		return true
+	if weapon_path == "res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn":
+		return true
+	return false

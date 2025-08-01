@@ -7,7 +7,7 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Player Scripts/Abilities/RocketLauncher.gd
+res://Assets/Scripts/Player Scripts/player.gd
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
@@ -31,5 +31,13 @@ res://Prefabs/CodePrefabs/Weapons/Smg.tscn
 res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
 res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd
+res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
+res://Assets/Scripts/Weapons/Weapon.gd
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
+res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
+res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.tres
+res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn

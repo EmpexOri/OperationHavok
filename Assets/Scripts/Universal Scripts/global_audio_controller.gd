@@ -15,6 +15,9 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/SMG Shot.mp3")
+var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
+
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
@@ -24,6 +27,7 @@ var paused: bool = false
 const MAX_CHANNELS := 5
 var DeathChannels: Array[AudioStreamPlayer2D] = []
 var GeneralChannels: Array[AudioStreamPlayer2D] = []
+var PlayerSFXChannels: Array[AudioStreamPlayer] = []
 var xp_channel = null
 
 var xp_pitch_timer := 0.0
@@ -53,6 +57,15 @@ func _ready():
 			GeneralChannels.append(player)
 		else:
 			push_error("Missing General SFX channel at: %s" % path)
+			
+	# Setup the Player SFX
+	for i in range(MAX_CHANNELS):
+		var path = "SFX/PlayerSFX/Channel%d" % i
+		var player = get_node_or_null(path) as AudioStreamPlayer
+		if player:
+			PlayerSFXChannels.append(player)
+		else:
+			push_error("Missing Player SFX channel at: %s" % path)
 
 func _process(delta: float) -> void:
 	if xp_pitch_multiplier > 1.0:
@@ -173,3 +186,27 @@ func PlayXPPickupSound():
 
 	# Increase pitch for next pickup if called rapidly
 	xp_pitch_multiplier = min(XP_PITCH_MAX, xp_pitch_multiplier + XP_PITCH_RISE)
+
+func SmgFire():
+	PlayFromPlayerSFX(Smg_fire_sfx)
+
+func ShotgunFire():
+	PlayFromPlayerSFX(Shotgun_fire_sfx)
+
+var player_sfx_index := 0
+
+func PlayFromPlayerSFX(stream: AudioStream) -> void:
+	# Try to find a free channel
+	for player in PlayerSFXChannels:
+		if not player.playing:
+			player.stream = stream
+			player.play()
+			return
+	
+	# All channels busy, overwrite the next in round-robin order
+	if PlayerSFXChannels.size() > 0:
+		player_sfx_index = (player_sfx_index + 1) % PlayerSFXChannels.size()
+		var player = PlayerSFXChannels[player_sfx_index]
+		player.stop()
+		player.stream = stream
+		player.play()

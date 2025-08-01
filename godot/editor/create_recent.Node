@@ -1,8 +1,8 @@
+AudioStreamPlayer
 CheckButton
 CanvasLayer
 ColorRect
 Label
-AudioStreamPlayer
 AnimatedSprite2D
 GPUParticles2D
 Node2D
@@ -12,4 +12,3 @@ CharacterBody2D
 Area2D
 CharacterBody2D
 Line2D
-NavigationObstacle2D

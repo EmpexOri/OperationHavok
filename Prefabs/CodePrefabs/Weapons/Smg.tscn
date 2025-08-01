@@ -7,3 +7,4 @@
 script = ExtResource("1_dv7al")
 projectile_scene = ExtResource("2_pjv2k")
 base_fire_rate = 0.05
+fire_sound_method = &"SmgFire"
