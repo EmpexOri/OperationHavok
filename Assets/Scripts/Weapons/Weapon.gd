@@ -80,8 +80,6 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 
 	var start_angle: float = base_angle - spread_radian / 2.0
 
-	_play_fire_sound()
-
 	for i in range(projectile_count):
 		var shot_angle: float = start_angle + angle_step * i
 		if projectile_count == 1:
@@ -96,6 +94,7 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 			fire_direction = fire_direction.rotated(random_angle)
 		
 		_spawn_projectile(spawn_position, fire_direction)
+		_play_fire_sound()
 
 # Internal method for spawning a projectile
 func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:

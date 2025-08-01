@@ -41,3 +41,5 @@ res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.
 res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
+res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd

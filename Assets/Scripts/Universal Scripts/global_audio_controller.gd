@@ -15,7 +15,7 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
-var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/SMG Shot.mp3")
+var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Silencetest1.mp3")
 var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
 
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
