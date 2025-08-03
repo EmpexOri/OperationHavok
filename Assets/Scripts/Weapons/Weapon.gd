@@ -6,6 +6,7 @@ class_name Weapon
 @export var projectile_scene: PackedScene = null # The projectile this weapon will spawn
 @export var base_fire_rate: float = 0.5 # Shots per second
 @export var fire_offset: float = 5.0 # Offset from player to spawn projectile (weapon length)
+@export var damage_multiplier: float = 1.0 # Multipy damage by this amount
 
 @export var fire_sound_method: StringName = ""
 
@@ -105,7 +106,7 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 		main_scene.add_child(projectile_instance)
 
 	var position = spawn_position + direction * fire_offset
-	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate(true), space_state)
+	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate(true), space_state, damage_multiplier)
 
 # Adds an effect to the weapon or projectiles
 func add_effect(new_effect: Resource) -> void:
