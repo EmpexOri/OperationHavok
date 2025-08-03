@@ -39,3 +39,5 @@ res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
 res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
 res://Assets/Scripts/Projectiles/rocket_projectile.gd
+res://Prefabs/CodePrefabs/Weapons/beamer.tscn
+res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd

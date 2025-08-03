@@ -20,7 +20,7 @@ func process_effect(projectile: Projectile, delta: float):
 	pass 
 
 func on_hit(projectile: Projectile, body: Node2D):
-	if body.has_method("take_damage"): # Quick dirty fix for penetrating environment
+	if body.has_method("deal_damage"): # Quick dirty fix for penetrating environment
 		if body in hit_bodies:
 			return false # We have already hit this entity
 			
