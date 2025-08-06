@@ -6,7 +6,8 @@ class_name Weapon
 @export var projectile_scene: PackedScene = null # The projectile this weapon will spawn
 @export var base_fire_rate: float = 0.5 # Shots per second
 @export var fire_offset: float = 5.0 # Offset from player to spawn projectile (weapon length)
-@export var damage_multiplier: float = 1.0 # Multipy damage by this amount
+
+var damage_multiplier: float = 1.0 # Multipy damage by this amount, use for runtime adjustments to damage
 
 @export var fire_sound_method: StringName = ""
 
