@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=37 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -42,6 +42,24 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(-81.0121, -33.0486, 690.103, -33.0486, 687.102, 431.635, -82.0122, 431.635), PackedVector2Array(430.064, 805.184, 582.087, 805.184, 582.087, 431.635, 430.064, 431.635), PackedVector2Array(24.0036, -128.189, 109.016, -128.189, 109.016, -33.0486, 24.0036, -33.0486), PackedVector2Array(582.087, 805.184, 58.0086, 804.183, 58.0086, 974.433, -458.068, 974.433, -458.068, 1000.47, 58.0086, 1000.47, 58.0086, 1172.73, 581.087, 1171.72), PackedVector2Array(-321.048, 974.433, -458.068, 974.433, -458.068, 751.105, -321.048, 751.105), PackedVector2Array(-556.083, 712.047, -496.074, 712.047, -496.074, 697.025, -283.042, 697.025, -283.267, 712.047, -225.034, 712.047, -225.034, 584.86, -556.083, 584.86), PackedVector2Array(-411.061, 697.025, -411.061, 751.105, -369.055, 751.105, -369.055, 697.025), PackedVector2Array(-540.08, 712.047, -539.08, 904.33, -458.068, 904.33, -458.068, 863.27, -497.074, 863.27, -496.074, 712.047), PackedVector2Array(-321.048, 904.33, -241.036, 904.33, -241.036, 712.047, -283.042, 712.047, -283.042, 862.268, -321.048, 862.268)])
 sample_partition_type = 1
 agent_radius = 5.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m3m5o"]
+polygon = PackedVector2Array(178, 226, 337, 226, 337, 242, 178, 242)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kbd7x"]
+polygon = PackedVector2Array(-353, 732, -353, 751, -401, 750, -401, 862, -432, 862, -432, 732)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_udyv4"]
+polygon = PackedVector2Array(-304, 732, -304, 750, -255, 750, -255, 862, -224, 862, -224, 732)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bvftn"]
+polygon = PackedVector2Array(198, 230, 198, 266, 299, 266, 299, 230, 270, 229, 259, 218, 232, 218, 221, 230)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3i11d"]
+polygon = PackedVector2Array(469, 201, 469, 234, 570, 234, 570, 201, 546, 199, 536, 188, 508, 188, 497, 199)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_llolq"]
+polygon = PackedVector2Array(-60, 940, -60, 1095, -76, 1095, -76, 939)
 
 [node name="World" type="Node2D"]
 
@@ -362,6 +380,25 @@ vertices = PackedVector2Array(-34.5697, 14.0003, 73.4302, 12.0001, 72.4301, -23,
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 avoidance_layers = 15
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+position = Vector2(310, 363)
+occluder = SubResource("OccluderPolygon2D_m3m5o")
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_kbd7x")
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_udyv4")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_bvftn")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_3i11d")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_llolq")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.629675, 0.629675, 0.629675, 1)

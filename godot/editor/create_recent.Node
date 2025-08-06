@@ -1,3 +1,4 @@
+LightOccluder2D
 AudioStreamPlayer
 CheckButton
 CanvasLayer
@@ -11,4 +12,3 @@ Area2D
 CharacterBody2D
 Area2D
 CharacterBody2D
-Line2D
