@@ -1,4 +1,4 @@
-res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,9 +7,6 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Weapons/Weapon.gd
-res://Assets/Scripts/Projectiles/projectile.gd
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Scenes/LevelSelectScene.tscn
@@ -38,6 +35,7 @@ res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
 res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
 res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
-res://Assets/Scripts/Projectiles/rocket_projectile.gd
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Weapons/beamer.tscn
-res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd
