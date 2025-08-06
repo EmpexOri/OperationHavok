@@ -19,13 +19,13 @@
 [ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="13_8mwex"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="14_m3m5o"]
-[ext_resource type="Texture2D" uid="uid://cgb5o6u5vddpn" path="res://Assets/Art/HUD/ABase.png" id="15_16lhd"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
-[ext_resource type="Texture2D" uid="uid://c0657ubcafc6g" path="res://Assets/Art/HUD/BBase.png" id="17_3e4vp"]
 [ext_resource type="Texture2D" uid="uid://co12wru674270" path="res://Assets/Art/HUD/GrenadeIcon.png" id="18_t1xay"]
-[ext_resource type="Texture2D" uid="uid://p2q26baamseu" path="res://Assets/Art/HUD/YBase.png" id="19_4kqft"]
 [ext_resource type="Texture2D" uid="uid://bbsovscil4ukr" path="res://Assets/Art/HUD/Minigun.png" id="20_8mwex"]
+[ext_resource type="Texture2D" uid="uid://cmg5cqhw6xlbn" path="res://Assets/Art/HUD/LBBase.png" id="20_m3m5o"]
+[ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="21_kbd7x"]
 [ext_resource type="Script" uid="uid://6s1bqy0wr87w" path="res://Assets/Scripts/Player Scripts/AbilityIcon.gd" id="22_3e4vp"]
+[ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="22_udyv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
 size = Vector2(204, 101)
@@ -285,20 +285,20 @@ script = ExtResource("7_34rfs")
 
 [node name="AbilitiesUI" type="CanvasLayer" parent="PlayerUI"]
 
-[node name="ABase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+[node name="LBBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(530, 324.5)
-texture = ExtResource("15_16lhd")
+texture = ExtResource("20_m3m5o")
 
-[node name="BBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+[node name="LTBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(574, 324.5)
-texture = ExtResource("17_3e4vp")
+texture = ExtResource("21_kbd7x")
 
-[node name="YBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+[node name="RBBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(618, 324.5)
-texture = ExtResource("19_4kqft")
+texture = ExtResource("22_udyv4")
 
 [node name="Icon1" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 position = Vector2(530, 324.5)
