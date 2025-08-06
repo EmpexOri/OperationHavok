@@ -221,13 +221,13 @@ tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 161.0
-offset_top = 12.0
-offset_right = 186.0
-offset_bottom = 17.0
+offset_left = 58.0
+offset_top = 37.0
+offset_right = 89.0
+offset_bottom = 42.7292
 scale = Vector2(2.2, 2.2)
 theme_override_fonts/font = ExtResource("14_m3m5o")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 5
 text = "Level: 1"
 
 [node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
