@@ -11,11 +11,9 @@ class_name LightningChainEffect
 func _init():
 	effect_name = "Lightning Chain"
 	
-func override_fire_logic(
-	weapon: Weapon, spawn_position: Vector2,
-	direction: Vector2,
-	projectile_effects_to_apply: Array[ProjectileEffect],
-	space_state: PhysicsDirectSpaceState2D) -> bool:
+func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, 
+		projectile_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D, 
+		damage_multiplier: float):
 	
 	if not is_instance_valid(space_state):
 		print("Space state invalid in chain lightning")
@@ -62,10 +60,10 @@ func override_fire_logic(
 			targets_hit_this_chain.append(next_target_in_chain)
 			arc_visual_points.append(next_target_in_chain.global_position)
 			if next_target_in_chain.has_method("deal_damage"):
-				next_target_in_chain.deal_damage(damage_per_hit)
+				next_target_in_chain.deal_damage(damage_per_hit * damage_multiplier)
 				
 			# Apply ProjectileEffects 
-			for p_effect_resource in projectile_effects_to_apply:
+			for p_effect_resource in projectile_effects:
 				if p_effect_resource:
 					var p_effect_instance = p_effect_resource.duplicate(true)
 					if p_effect_instance.has_method("on_hit"):

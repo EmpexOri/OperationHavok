@@ -10,7 +10,10 @@ func _init() -> void:
 func modify_parameters(parameters: Dictionary) -> Dictionary:
 	return parameters
 
-func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, projectile_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D) -> bool:
+func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vector2, 
+		projectile_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D, 
+		damage_multiplier: float):
+		
 	var fire_parameters = {
 		"projectile_count": 1,
 		"spread_angle": 0,

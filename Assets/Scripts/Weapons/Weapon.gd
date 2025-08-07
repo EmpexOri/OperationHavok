@@ -53,7 +53,7 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 	# Check if any weapon effect overrides the firing logic
 	for effect in weapon_effects:
 		if effect and effect.has_method("override_fire_logic"):
-			if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true), space_state):
+			if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true), space_state, damage_multiplier):
 				return
 	
 	# Default firing parameters

@@ -7,4 +7,36 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd
+res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd
+res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
+res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
+res://Scenes/GlobalAudioController.tscn
+res://Scenes/LevelSelectScene.tscn
+res://Scenes/MenuScene.tscn
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
+res://Scenes/Options/PauseMenu.tscn
+res://Scenes/Options/OptionsScene.tscn
+res://Prefabs/GamePrefabs/Enemy/Goolum.tscn
+res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
+res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
+res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/CodePrefabs/Weapons/beamer.tscn
 res://Assets/Scripts/Weapons/Weapon.gd
