@@ -52,7 +52,8 @@ func _process_effects(delta: float):
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, 
-		p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D, damage_multiplier: float):
+		p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D, 
+		damage_multiplier: float):
 	# Store any effects attached to the projectile
 	current_effects = p_effects
 	
