@@ -1,4 +1,4 @@
-res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,10 +7,6 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Misc/ChainLightningUtil.gd
-res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
-res://Prefabs/GamePrefabs/Enemy/Needling.tscn
-res://Assets/Scripts/Player Scripts/player.gd
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Scenes/LevelSelectScene.tscn
@@ -40,15 +36,9 @@ res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Weapons/beamer.tscn
 res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
-res://Assets/Scripts/Misc/ChainLightningUtility.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_damageovertime.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
-res://Assets/Scripts/Projectiles/projectile.gd
-res://Assets/Scripts/Effects/Projectile Effects/Instances/chain_interval_effect.tres
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
-res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
+res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd

@@ -54,7 +54,7 @@ func override_fire_logic(weapon: Weapon, spawn_position: Vector2, direction: Vec
 	for data in fire_data:
 		var proj = weapon.projectile_scene.instantiate()
 		main_scene.add_child(proj)
-		proj.start(data["pos"], data["dir"], weapon.owning_entity, projectile_effects.duplicate(true), space_state)
+		proj.start(data["pos"], data["dir"], weapon.owning_entity, projectile_effects.duplicate(true), space_state, damage_multiplier)
 		
 	weapon._play_fire_sound()
 	return true
