@@ -19,6 +19,9 @@ var velocity: Vector2 = Vector2.ZERO
 # Projectile effects are stored in this array
 var current_effects: Array[ProjectileEffect] = []
 
+# The space state, used to pass to weapon effects
+var _space_state: PhysicsDirectSpaceState2D 
+
 # References
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite_2d = $Sprite2D
@@ -48,7 +51,7 @@ func _process_effects(delta: float):
 	if current_effects:
 		for effect in current_effects:
 			if effect.has_method("process_effect"):
-				effect.process_effect(self, delta)
+				effect.process_effect(self, delta, _space_state)
 
 # Called when instatiating the projectile, sets the initial position, rotation and velocity
 func start(start_position: Vector2, direction: Vector2, entity_owner: String, 
@@ -56,6 +59,9 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 		damage_multiplier: float):
 	# Store any effects attached to the projectile
 	current_effects = p_effects
+	
+	# Set space state for effects
+	_space_state = space_state
 	
 	# Initialize projectile stats
 	speed = base_speed

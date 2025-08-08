@@ -11,7 +11,7 @@ func setup(projectile: Projectile):
 	pass
 
 # Called every frame from projectile
-func process_effect(projectile: Projectile, delta: float):
+func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
 	pass
 
 # Called when projectile has a collision

@@ -16,7 +16,7 @@ func setup(projectile: Projectile):
 	current_hits = 0
 	hit_bodies.clear() 
 
-func process_effect(projectile: Projectile, delta: float):
+func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
 	pass 
 
 func on_hit(projectile: Projectile, body: Node2D):

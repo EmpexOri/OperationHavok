@@ -10,7 +10,7 @@ func _init() -> void:
 func setup(projectile: Projectile):
 	pass
 
-func process_effect(projectile: Projectile, delta: float):
+func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
 	pass
 
 func on_hit(projectile: Projectile, body: Node2D):

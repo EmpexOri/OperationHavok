@@ -1,2 +1,3 @@
+Resource
 LightningChainEffect
 ShaderMaterial

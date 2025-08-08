@@ -41,3 +41,14 @@ res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Weapons/beamer.tscn
 res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
 res://Assets/Scripts/Misc/ChainLightningUtility.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_damageovertime.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
+res://Assets/Scripts/Projectiles/projectile.gd
+res://Assets/Scripts/Effects/Projectile Effects/Instances/chain_interval_effect.tres
+res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
+res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
