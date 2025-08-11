@@ -122,6 +122,7 @@ shape = SubResource("CircleShape2D_cmbwj")
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationAgent2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 material = ExtResource("3_40gtq")
 sprite_frames = SubResource("SpriteFrames_1a8em")
 animation = &"move_down_left"
