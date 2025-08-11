@@ -21,3 +21,7 @@ res://Assets/Scripts/Enemy/Spewling.gd
 res://Assets/Scripts/Enemy/Hordling.gd
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Scenes/Options/PauseMenu.tscn
+res://Assets/Scripts/Effects/Projectile Effects/Instances/knockback_effect.tres
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
+res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn

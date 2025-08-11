@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_5fts0")
-knockback_force = 300.0
+knockback_force = 15.0
 effect_name = ""
 metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"
