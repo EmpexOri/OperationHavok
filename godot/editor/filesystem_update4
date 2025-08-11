@@ -19,3 +19,5 @@ res://Assets/Scripts/Enemy/Goolum.gd
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
 res://Assets/Scripts/Enemy/Spewling.gd
 res://Assets/Scripts/Enemy/Hordling.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Scenes/Options/PauseMenu.tscn

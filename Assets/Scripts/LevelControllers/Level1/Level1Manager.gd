@@ -2,6 +2,8 @@ extends Node
 
 var carpark_triggered := false
 
+const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
+
 @onready var carpark_trigger := $CarparkTrigger
 @onready var carpark_area := get_node("../CarparkArea")
 @onready var test2_area := get_node("../Test2Area")
@@ -9,8 +11,16 @@ var carpark_triggered := false
 @onready var roadblock2 = get_node("../Test2Area/RoadBlock2")
 @onready var roadblock2_col = get_node("../Test2Area/RoadBlock2/CollisionShape2D")
 
+var PauseMenu
+
 func _ready():
 	await get_tree().physics_frame
+
+	# Setup pause menu instance
+	PauseMenu = PAUSE_MENU_SCENE.instantiate()
+	PauseMenu.visible = false
+	add_child(PauseMenu)
+
 	carpark_trigger.body_entered.connect(_on_carpark_trigger_entered)
 	carpark_area.carpark_arena_complete.connect(_on_carpark_arena_complete)
 	test2_trigger.body_entered.connect(_on_test2_trigger_entered)
@@ -18,6 +28,23 @@ func _ready():
 
 	roadblock2.visible = false
 	roadblock2_col.disabled = true
+	
+func toggle_pause_menu():
+	if PauseMenu.visible:
+		# Hide menu and unpause
+		PauseMenu.visible = false
+		get_tree().paused = false
+	else:
+		# Show menu and pause
+		PauseMenu.visible = true
+		get_tree().paused = true
+		if PauseMenu.has_method("show_pause_menu"):
+			PauseMenu.show_pause_menu()
+			
+func _input(event):
+	if Input.is_action_just_pressed("InGameOptions"):
+		GlobalAudioController.PauseMenuMusic()
+		toggle_pause_menu()
 
 func _on_carpark_trigger_entered(body):
 	if body.name != "Player" or carpark_triggered:

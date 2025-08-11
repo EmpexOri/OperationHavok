@@ -200,6 +200,7 @@ func PlayFromPlayerSFX(stream: AudioStream) -> void:
 	for player in PlayerSFXChannels:
 		if not player.playing:
 			player.stream = stream
+			player.pitch_scale = randf_range(0.9, 1.1)  # Random pitch modulation
 			player.play()
 			return
 	
@@ -209,4 +210,5 @@ func PlayFromPlayerSFX(stream: AudioStream) -> void:
 		var player = PlayerSFXChannels[player_sfx_index]
 		player.stop()
 		player.stream = stream
+		player.pitch_scale = randf_range(0.9, 1.1)  # Random pitch modulation
 		player.play()
