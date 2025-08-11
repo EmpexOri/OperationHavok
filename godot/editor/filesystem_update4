@@ -41,4 +41,6 @@ res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
-res://Assets/Scripts/Effects/Weapon Effects/akimbo_fire_effect.gd
+res://Prefabs/GamePrefabs/Player/player.tscn
+res://Assets/Scripts/Enemy/Gatling.gd
+res://Prefabs/GamePrefabs/Enemy/Network.tscn
