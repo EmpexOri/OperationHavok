@@ -30,10 +30,17 @@ func start():
 	add_child(firetimer)
 	
 func _ready():
-	WeaponScene = Weapon
 	super()
-	get_flash_sprite().material = get_flash_sprite().material.duplicate()
-	WeaponScene = Weapon
+	var player = resolve_target()
+	if player:
+		_orbit_angle = (position - player.position).angle()
+		_orbit_angle_initialized = true
+		
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
+	else:
+		var new_mat = ShaderMaterial.new()
+		sprite.material = new_mat
 
 func orbit_direction_change():
 	OrbitDirection *= -1
@@ -64,11 +71,47 @@ func fire():
 		var dir = (player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, dir)
 
+var _orbit_angle: float = 0.0
+var _orbit_angle_initialized: bool = false
+const ORBIT_RADIUS = 300
+const ORBIT_SPEED_DEGREES = 90  # degrees per second orbit speed
+const ORBIT_THRESHOLD = 10.0
+
 func handle_orbiting(player: Node, delta: float):
-	var angle = (position - player.position).angle() + OrbitSpeed * OrbitDirection * delta
-	var orbit_radius = 300
-	var orbit_pos = player.position + Vector2(orbit_radius, 0).rotated(angle)
-	velocity = (orbit_pos - position).normalized() * Speed
+	if not _orbit_angle_initialized:
+		_orbit_angle = (position - player.position).angle()
+		_orbit_angle_initialized = true
+
+	# Increase orbit angle in radians (convert degrees to radians)
+	_orbit_angle += deg_to_rad(ORBIT_SPEED_DEGREES) * OrbitDirection * delta
+	_orbit_angle = fmod(_orbit_angle, PI * 2)  # keep angle between 0 and 2π
+
+	# Calculate the next point on the orbit circle
+	var orbit_target_pos = player.position + Vector2(ORBIT_RADIUS, 0).rotated(_orbit_angle)
+
+	# Use navmesh pathfinding to get path to orbit target point
+	nav.target_position = orbit_target_pos
+
+	# Get next position on the path from navmesh agent
+	var next_path_pos = nav.get_next_path_position()
+
+	# If navmesh returns no next point, stop moving
+	if next_path_pos == Vector2.ZERO:
+		velocity = Vector2.ZERO
+		return
+
+	# Calculate direction toward next path point
+	var direction = (next_path_pos - global_position).normalized()
+
+	# Set velocity to move toward next path point at Speed
+	velocity = direction * Speed
+
+	# Play animation & flip if needed
+	if abs(direction.x) > 0.1:
+		sprite.play("crawl")
+		sprite.flip_h = direction.x > 0
+	else:
+		sprite.stop()
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):

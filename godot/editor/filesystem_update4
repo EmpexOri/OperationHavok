@@ -17,3 +17,5 @@ res://Assets/Scripts/Enemy/Enemy.gd
 res://Assets/Scripts/Player Scripts/player.gd
 res://Assets/Scripts/Enemy/Goolum.gd
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
+res://Assets/Scripts/Enemy/Spewling.gd
+res://Assets/Scripts/Enemy/Hordling.gd

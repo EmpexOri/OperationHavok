@@ -12,8 +12,15 @@ func start():
 
 func _ready():
 	super()
-	# Ensure the sprite has a unique material instance
-	sprite.material = sprite.material.duplicate()
+	
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
+	else:
+		# Assign a new ShaderMaterial or CanvasItemMaterial here if needed
+		# so you always have a unique material per sprite
+		var new_mat = ShaderMaterial.new()
+		# Optionally load or assign a shader here
+		sprite.material = new_mat
 
 func _physics_process(_delta):
 	if not nav:

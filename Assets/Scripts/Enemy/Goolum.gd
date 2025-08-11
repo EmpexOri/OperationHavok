@@ -103,11 +103,9 @@ func attempt_transfer_health_async(target: Node2D) -> void:
 		print("Goolum grants armor to:", target.name)
 		target.apply_armor_buff(Health)
 
-		# Use shader-based flash instead of modulate
 		if target.has_method("flash_white"):
-			target.flash_white(Color(0, 0, 1))  # Blue flash
+			target.flash_white(Color(0, 0, 1))  # Blue flash using shader
 		else:
-			# Fallback: set modulate and reset after delay (avoid if possible)
 			var spr = target.get_node_or_null("AnimatedSprite2D")
 			if spr:
 				spr.modulate = Color(0, 0, 1)
@@ -118,7 +116,7 @@ func attempt_transfer_health_async(target: Node2D) -> void:
 				timer.timeout.connect(Callable(self, "_reset_modulate_color").bind(spr))
 				timer.start()
 
-		on_death()
+	on_death()
 
 func get_flash_sprite() -> CanvasItem:
 	return sprite
