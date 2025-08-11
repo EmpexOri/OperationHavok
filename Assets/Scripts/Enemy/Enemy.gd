@@ -78,7 +78,7 @@ func deal_damage(damage: int, from_position = null):
 
 		if Armor <= 0:
 			remove_from_group("Armored")
-			modulate = Color(1, 1, 1)  # Reset tint
+			#modulate = Color(1, 1, 1)  # Reset tint
 			print(name, " has lost all armor!")
 
 	if damage > 0:

@@ -6,5 +6,5 @@
 [node name="Smg" type="Node2D"]
 script = ExtResource("1_dv7al")
 projectile_scene = ExtResource("2_pjv2k")
-base_fire_rate = 0.05
+base_fire_rate = 0.075
 fire_sound_method = &"SmgFire"

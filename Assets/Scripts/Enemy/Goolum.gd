@@ -10,6 +10,10 @@ var nearby_targets: Array[Node2D] = []
 
 func _ready():
 	super()
+	
+	# Duplicate material to avoid shared material issues
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
 
 	latch_area.body_entered.connect(_on_area_2d_body_entered)
 	latch_area.body_exited.connect(_on_area_2d_body_exited)
@@ -21,7 +25,6 @@ func _ready():
 	add_to_group("Support")
 	Target = null
 
-	# Setup attach timer
 	attach_timer.wait_time = 1.0
 	attach_timer.one_shot = false
 	attach_timer.autostart = true
@@ -30,7 +33,6 @@ func _ready():
 
 func _process(delta):
 	super._process(delta)
-
 	if Health <= 0:
 		on_death()
 
@@ -46,15 +48,10 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 
-	# Handle animation and flipping
 	if velocity.length() > 0.1:
 		var moving_up = velocity.y < 0
-		if moving_up:
-			sprite.animation = "move_up_left"
-		else:
-			sprite.animation = "move_down_left"
-
-		sprite.flip_h = velocity.x > 0  # Flip for rightward movement
+		sprite.animation = "move_up_left" if moving_up else "move_down_left"
+		sprite.flip_h = velocity.x > 0
 		sprite.play()
 	else:
 		sprite.stop()
@@ -62,7 +59,6 @@ func _physics_process(delta):
 func find_strongest_target():
 	var candidates := get_tree().get_nodes_in_group("Enemy")
 
-	# Filter out invalid targets
 	var valid_candidates := []
 	for enemy in candidates:
 		if enemy == self:
@@ -73,12 +69,10 @@ func find_strongest_target():
 			continue
 		valid_candidates.append(enemy)
 
-	# If no valid targets, clear the current target
 	if valid_candidates.is_empty():
 		Target = null
 		return
 
-	# Find the enemy with the highest health
 	var strongest = valid_candidates[0]
 	for enemy in valid_candidates:
 		if enemy.Health > strongest.Health:
@@ -109,14 +103,29 @@ func attempt_transfer_health_async(target: Node2D) -> void:
 		print("Goolum grants armor to:", target.name)
 		target.apply_armor_buff(Health)
 
-		if target.has_node("AnimatedSprite2D"):
-			var sprite = target.get_node("AnimatedSprite2D")
-			sprite.modulate = Color(0, 0, 1)
+		# Use shader-based flash instead of modulate
+		if target.has_method("flash_white"):
+			target.flash_white(Color(0, 0, 1))  # Blue flash
+		else:
+			# Fallback: set modulate and reset after delay (avoid if possible)
+			var spr = target.get_node_or_null("AnimatedSprite2D")
+			if spr:
+				spr.modulate = Color(0, 0, 1)
+				var timer = Timer.new()
+				timer.one_shot = true
+				timer.wait_time = 1.0
+				add_child(timer)
+				timer.timeout.connect(Callable(self, "_reset_modulate_color").bind(spr))
+				timer.start()
 
 		on_death()
 
 func get_flash_sprite() -> CanvasItem:
 	return sprite
+
+func _reset_modulate_color(sprite: CanvasItem):
+	if is_instance_valid(sprite):
+		sprite.modulate = Color(1, 1, 1)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and not body.is_in_group("Armored") and body.has_method("apply_armor_buff") and not body.is_in_group("Support"):
@@ -133,6 +142,5 @@ func _on_attach_timer_timeout():
 	for body in nearby_targets:
 		if is_instance_valid(body) and body.Health > 0:
 			if randf() <= 0.4:
-				# Now safe to await within a coroutine
 				attempt_transfer_health_async(body)
 				return

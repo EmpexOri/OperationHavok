@@ -61,8 +61,8 @@ func _ready():
 	
 	var default_weapon = get_default_weapon_from_swap_upgrade()
 	equip_weapon(default_weapon, "SwapWeapons")
-	var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
-	CurrentWeapon.add_effect(penetrate_effect)
+	#var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
+	#CurrentWeapon.add_effect(penetrate_effect)
 
 	var root = get_tree().get_current_scene()
 	if root:
