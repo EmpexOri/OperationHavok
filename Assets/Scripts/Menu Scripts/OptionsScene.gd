@@ -9,7 +9,6 @@ func _ready():
 
 func _check_back_button() -> void:
 	if Options == true:
-		print("Options is true")
 		BackButton.visible = false
 	else:
 		BackButton.visible = true

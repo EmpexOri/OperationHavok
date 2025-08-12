@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=12 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
 [ext_resource type="Texture2D" uid="uid://bewl45qdirp8w" path="res://Assets/Art/Menu/OptionsOff.png" id="3_fxfs8"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
 [ext_resource type="Texture2D" uid="uid://crcon2xwm5xj6" path="res://Assets/Art/Menu/OptionsOn.png" id="4_sqgqt"]
 [ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/Options/OptionsScene.tscn" id="5_fxfs8"]
+[ext_resource type="PackedScene" uid="uid://velkc7chqrtb" path="res://Scenes/Options/CommandoSkillTree.tscn" id="6_sqgqt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
 
@@ -336,27 +337,36 @@ vertical_alignment = 1
 [node name="ResumeButton" type="Button" parent="."]
 process_mode = 2
 offset_left = 241.0
-offset_top = 91.0
+offset_top = 76.0
 offset_right = 403.0
-offset_bottom = 122.0
+offset_bottom = 107.0
 focus_neighbor_bottom = NodePath("../ControlsButton")
 text = "Resume"
 
 [node name="ControlsButton" type="Button" parent="."]
 process_mode = 2
 offset_left = 241.0
-offset_top = 148.0
+offset_top = 121.0
 offset_right = 403.0
-offset_bottom = 179.0
+offset_bottom = 152.0
 focus_neighbor_top = NodePath("../ResumeButton")
 text = "Controls"
+
+[node name="SkillTreeButton" type="Button" parent="."]
+process_mode = 2
+offset_left = 241.0
+offset_top = 166.0
+offset_right = 403.0
+offset_bottom = 197.0
+focus_neighbor_top = NodePath("../ResumeButton")
+text = "Skill tree"
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 process_mode = 2
 offset_left = 270.0
-offset_top = 201.0
+offset_top = 211.0
 offset_right = 376.0
-offset_bottom = 243.0
+offset_bottom = 253.0
 focus_neighbor_top = NodePath("../ResumeButton")
 texture_normal = ExtResource("3_fxfs8")
 texture_pressed = ExtResource("4_sqgqt")
@@ -383,8 +393,13 @@ process_mode = 2
 [node name="OptionsScene" parent="." instance=ExtResource("5_fxfs8")]
 visible = false
 
+[node name="CommandoSkillTree" parent="." instance=ExtResource("6_sqgqt")]
+process_mode = 3
+visible = false
+
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

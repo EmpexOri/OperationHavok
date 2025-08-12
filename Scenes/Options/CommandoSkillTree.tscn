@@ -420,6 +420,8 @@ texture_hover = ExtResource("3_w615b")
 texture_focused = ExtResource("3_w615b")
 
 [node name="BackButton" type="Button" parent="."]
+process_mode = 3
+z_index = 10
 offset_left = 242.0
 offset_top = 307.0
 offset_right = 404.0

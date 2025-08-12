@@ -1,27 +1,22 @@
-res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
-res://Assets/Scripts/LevelControllers/Level1/Test2Area.gd
-res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
-res://Scenes/AlphaLevel1.tscn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
-res://Assets/Scripts/Enemy/Enemy.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Enemy/Goolum.gd
+res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
-res://Assets/Scripts/Enemy/Spewling.gd
-res://Assets/Scripts/Enemy/Hordling.gd
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Scenes/Options/PauseMenu.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/knockback_effect.tres
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
 res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/MenuScene.tscn
+res://Scenes/Options/OptionsScene.tscn
+res://Assets/Scripts/Menu Scripts/OptionsScene.gd
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd

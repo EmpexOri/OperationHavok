@@ -16,6 +16,9 @@ extends Node
 # Options Menu
 @onready var OptionsScene = $OptionsScene
 
+# Commando Skill Tree
+@onready var SkillTree = $CommandoSkillTree
+
 func _ready():
 	OptionsScene.visible = false
 
@@ -121,3 +124,17 @@ func _on_menu_button_pressed() -> void:
 		get_tree().paused = false
 	
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+
+
+func _on_skill_tree_button_pressed() -> void:
+	SkillTree.Options = true
+	SkillTree._check_back_button_state()
+	SkillTree.visible = true
+	ResumeButton.visible = false
+	ControlsButton.visible = false
+	OptionsButton.visible = false
+	Title.visible = false
+	MainButton.visible = false
+	BackButton.visible = false
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file("res://Scenes/Options/CommandoSkillTree.tscn")
