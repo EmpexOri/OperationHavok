@@ -1,3 +1,4 @@
+res://Assets/Art/Particles/Lightning
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
 res://Prefabs/CodePrefabs/Projectiles
 res://Assets/Scripts/Effects/Projectile Effects
@@ -19,4 +20,3 @@ res://Assets/Scripts/Effects/Weapon Effects/Instances
 res://Assets/Scripts/Effects/Weapon Effects
 res://Prefabs/CodePrefabs/Particles/Preloaded
 res://Prefabs/GamePrefabs/Objects
-res://Prefabs/GamePrefabs/Player

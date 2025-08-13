@@ -1,10 +1,10 @@
+AnimatedSprite2D
 CanvasLayer
 LightOccluder2D
 AudioStreamPlayer
 CheckButton
 ColorRect
 Label
-AnimatedSprite2D
 GPUParticles2D
 Node2D
 TileMapLayer
