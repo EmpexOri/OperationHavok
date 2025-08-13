@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=13 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
 [ext_resource type="Texture2D" uid="uid://bewl45qdirp8w" path="res://Assets/Art/Menu/OptionsOff.png" id="3_fxfs8"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
 [ext_resource type="Texture2D" uid="uid://crcon2xwm5xj6" path="res://Assets/Art/Menu/OptionsOn.png" id="4_sqgqt"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="5_fx1m6"]
 [ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/Options/OptionsScene.tscn" id="5_fxfs8"]
 [ext_resource type="PackedScene" uid="uid://velkc7chqrtb" path="res://Scenes/Options/CommandoSkillTree.tscn" id="6_sqgqt"]
 
@@ -23,6 +24,7 @@ VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
+layer = 3
 script = ExtResource("4_fx1m6")
 
 [node name="Background2" type="ColorRect" parent="."]
@@ -391,11 +393,25 @@ text = "Back"
 process_mode = 2
 
 [node name="OptionsScene" parent="." instance=ExtResource("5_fxfs8")]
+layer = 4
 visible = false
 
 [node name="CommandoSkillTree" parent="." instance=ExtResource("6_sqgqt")]
 process_mode = 3
+layer = 5
 visible = false
+
+[node name="BackButton2" type="Button" parent="CommandoSkillTree"]
+process_mode = 3
+visible = false
+z_index = 20
+offset_left = 242.0
+offset_top = 307.0
+offset_right = 404.0
+offset_bottom = 338.0
+focus_neighbor_top = NodePath("../WeaponSwapTitle/Shotgun/DragonsBreath")
+theme_override_fonts/font = ExtResource("5_fx1m6")
+text = "Back"
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
@@ -403,3 +419,4 @@ visible = false
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CommandoSkillTree/BackButton2" to="." method="_on_back_button_2_pressed"]

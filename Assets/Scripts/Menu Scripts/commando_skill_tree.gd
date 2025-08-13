@@ -1,6 +1,8 @@
 extends CanvasLayer
 
-var Options = false
+var Options = true
+
+@onready var BackButton = $BackButton
 
 func _ready():
 	$BackButton.grab_focus()
@@ -54,20 +56,15 @@ func restore_unlocked_skills(node):
 			child.set_unlocked_state(is_unlocked)
 		restore_unlocked_skills(child)
 
-func _on_back_button_pressed() -> void:
-	if Options:
-		GlobalAudioController.ClickSound()
-		get_tree().change_scene_to_file("res://Scenes/Options/PauseMenu.tscn")
+func _check_back_button() -> void:
+	if Options == true:
+		BackButton.visible = false
 	else:
-		GlobalAudioController.ClickSound()
-		get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+		BackButton.visible = true
 
-func _check_back_button_state() -> void:
-	if Options:
-		print("Came from pause menu")
-		
-	else:
-		print("Came from main menu")
+func _on_back_button_pressed() -> void:
+	GlobalAudioController.ClickSound()
+	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 
 func upgrade_minigun_ability(NewAbility):
 	# Find the current abilities, get the minigun index and then swap in the new skill

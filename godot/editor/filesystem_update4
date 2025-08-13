@@ -1,4 +1,4 @@
-res://Scenes/AlphaLevel1.tscn
+res://Scenes/Options/PauseMenu.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,16 +7,17 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Universal Scripts/Global.gd
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
-res://Scenes/Options/PauseMenu.tscn
 res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Scenes/MenuScene.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Assets/Scripts/Menu Scripts/OptionsScene.gd
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
