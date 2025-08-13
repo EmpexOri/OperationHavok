@@ -58,7 +58,7 @@ grow_vertical = 2
 color = Color(0.313726, 0, 0.00784314, 0.713726)
 
 [node name="ControlsMenu" type="CanvasLayer" parent="."]
-layer = 2
+layer = 4
 visible = false
 
 [node name="ControlsTitle" type="Label" parent="ControlsMenu"]
@@ -383,6 +383,7 @@ text = "Main menu"
 
 [node name="BackButton" type="Button" parent="."]
 process_mode = 3
+visible = false
 offset_left = 242.0
 offset_top = 292.0
 offset_right = 404.0
