@@ -174,7 +174,7 @@ scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_umuyd")
 animation = &"Explosion"
 autoplay = "Explosion"
-frame_progress = 0.213408
+frame_progress = 0.0344963
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
 [connection signal="timeout" from="Explosion/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
