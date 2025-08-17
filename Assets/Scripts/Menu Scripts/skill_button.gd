@@ -37,29 +37,30 @@ func draw_connection_line():
 		Line.hide()
 
 func _on_pressed() -> void:
-	if GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerkPoints"] <= 0:
-		return
-	
-	# If the button has a SkillButton parent, check if it's unlocked
-	var parent_skill = get_parent()
-	if parent_skill is SkillButton and not parent_skill.unlocked:
-		print("Cannot unlock", name, " until parent", parent_skill.name, " is unlocked.")
-		return
-	
-	# Skill is unlocked
-	GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerkPoints"] -= 1
-	panel.show_behind_parent = true
-	lockedCondition = ""
-	unlocked = true
-	
-	Line.default_color = Color(0.71, 0.0, 0.107)
-	
-	# Enable second tier skills
-	for skill in get_children():
-		if skill is SkillButton:
-			skill.disabled = false
-	
-	emit_signal("perk_point_used")
+	if lockedCondition == "Locked":
+		if GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerkPoints"] <= 0:
+			return
+		
+		# If the button has a SkillButton parent, check if it's unlocked
+		var parent_skill = get_parent()
+		if parent_skill is SkillButton and not parent_skill.unlocked:
+			print("Cannot unlock", name, " until parent", parent_skill.name, " is unlocked.")
+			return
+		
+		# Skill is unlocked
+		GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerkPoints"] -= 1
+		panel.show_behind_parent = true
+		lockedCondition = ""
+		unlocked = true
+		
+		Line.default_color = Color(0.71, 0.0, 0.107)
+		
+		# Enable second tier skills
+		for skill in get_children():
+			if skill is SkillButton:
+				skill.disabled = false
+		
+		emit_signal("perk_point_used")
 
 func set_unlocked_state(state: bool):
 	unlocked = state
