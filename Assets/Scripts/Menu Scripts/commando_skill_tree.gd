@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 var Options = true
-var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
 
 @onready var WeaponTree = $WeaponSwapTitle
 @onready var GrenadeTree = $GrenadeTitle
@@ -14,6 +13,31 @@ func _ready():
 	update_perk_points_label()
 	connect_skill_buttons(self)
 	restore_unlocked_skills(self)
+
+func _process(_delta):
+	# Fetching the player current level
+	var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
+	
+	# Displaying the respective skill tree/s
+	if Level == 1:
+		WeaponTree.visible = true
+		GrenadeTree.visible = false
+		MinigunTree.visible = false
+	elif Level == 2:
+		WeaponTree.visible = false
+		GrenadeTree.visible = true
+		MinigunTree.visible = false
+	elif Level == 3:
+		WeaponTree.visible = false
+		GrenadeTree.visible = false
+		MinigunTree.visible = true
+	else:
+		WeaponTree.visible = true
+		GrenadeTree.visible = true
+		MinigunTree.visible = true
+	
+	# Making sure the perk points label stays updated
+	update_perk_points_label()
 
 func update_perk_points_label():
 	# Updates the perk points counter
