@@ -42,9 +42,9 @@ horizontal_alignment = 1
 
 [node name="Shotgun" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
-offset_left = 14.0
+offset_left = 6.0
 offset_top = 34.0
-offset_right = 79.0
+offset_right = 93.0
 offset_bottom = 57.0
 theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
@@ -53,9 +53,9 @@ horizontal_alignment = 1
 
 [node name="DBShotgun" type="Label" parent="WeaponSwapTitle/Shotgun"]
 layout_mode = 0
-offset_left = -27.0
+offset_left = -14.0
 offset_top = 22.0
-offset_right = 94.0
+offset_right = 107.0
 offset_bottom = 53.0
 theme = ExtResource("3_1kq37")
 text = "Dragon's Breath 
@@ -64,9 +64,9 @@ horizontal_alignment = 1
 
 [node name="DragonsBreath" parent="WeaponSwapTitle/Shotgun" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 22.0
 offset_top = 54.0
-offset_right = 49.0004
+offset_right = 62.0004
 offset_bottom = 94.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_right = NodePath("../../SMG/Akimbo")
@@ -77,9 +77,9 @@ texture_focused = ExtResource("3_w615b")
 [node name="FlamethrowerLabel" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
 layout_mode = 0
 offset_left = -52.4999
-offset_top = 72.5
+offset_top = 73.3333
 offset_right = 93.5001
-offset_bottom = 101.5
+offset_bottom = 102.333
 theme = ExtResource("3_1kq37")
 text = "Flamethrower"
 horizontal_alignment = 1
@@ -97,9 +97,9 @@ texture_focused = ExtResource("3_w615b")
 
 [node name="SMG" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
-offset_left = 97.0
+offset_left = 101.0
 offset_top = 34.0
-offset_right = 162.0
+offset_right = 166.0
 offset_bottom = 57.0
 theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
@@ -108,10 +108,10 @@ horizontal_alignment = 1
 
 [node name="Akimbo2" type="Label" parent="WeaponSwapTitle/SMG"]
 layout_mode = 0
-offset_left = -42.0
+offset_left = -38.0
 offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 45.0
+offset_right = 108.0
+offset_bottom = 51.0
 theme = ExtResource("3_1kq37")
 text = "Akimbo 
 SMGs"
@@ -119,10 +119,10 @@ horizontal_alignment = 1
 
 [node name="Akimbo" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 53.0
-offset_right = 48.0004
-offset_bottom = 93.0
+offset_left = 10.0
+offset_top = 55.0
+offset_right = 50.0004
+offset_bottom = 95.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../Shotgun/DragonsBreath")
 focus_neighbor_right = NodePath("../../Sniper/LaserSniper")
@@ -133,16 +133,18 @@ texture_focused = ExtResource("3_w615b")
 [node name="M60Label" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
 layout_mode = 0
 offset_left = -52.4999
-offset_top = 72.5
+offset_top = 73.3333
 offset_right = 93.5001
-offset_bottom = 90.4997
+offset_bottom = 91.333
 theme = ExtResource("3_1kq37")
 text = "M60"
 horizontal_alignment = 1
 
 [node name="M60" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]
 layout_mode = 0
+offset_left = 0.833336
 offset_top = 100.833
+offset_right = 40.8333
 offset_bottom = 140.833
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
@@ -153,9 +155,9 @@ texture_focused = ExtResource("3_w615b")
 
 [node name="Sniper" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
-offset_left = 177.0
+offset_left = 180.0
 offset_top = 34.0
-offset_right = 244.0
+offset_right = 247.0
 offset_bottom = 57.0
 theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
@@ -164,9 +166,9 @@ horizontal_alignment = 1
 
 [node name="LaserLabel" type="Label" parent="WeaponSwapTitle/Sniper"]
 layout_mode = 0
-offset_left = -42.0
+offset_left = -37.0
 offset_top = 22.0
-offset_right = 104.0
+offset_right = 109.0
 offset_bottom = 45.0
 theme = ExtResource("3_1kq37")
 text = "Laser Sniper"
@@ -174,10 +176,10 @@ horizontal_alignment = 1
 
 [node name="LaserSniper" parent="WeaponSwapTitle/Sniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 53.0
-offset_right = 48.0004
-offset_bottom = 93.0
+offset_left = 10.0
+offset_top = 55.0
+offset_right = 50.0004
+offset_bottom = 95.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../SMG/Akimbo")
 focus_neighbor_right = NodePath("../../../GrenadeTitle/Novacaster")
@@ -187,9 +189,9 @@ texture_focused = ExtResource("3_w615b")
 
 [node name="RaygunLabel" type="Label" parent="WeaponSwapTitle/Sniper/LaserSniper"]
 layout_mode = 0
-offset_left = -52.4999
+offset_left = -51.6666
 offset_top = 72.5
-offset_right = 93.5001
+offset_right = 94.3334
 offset_bottom = 90.4997
 theme = ExtResource("3_1kq37")
 text = "Raygun Rifle"
@@ -197,7 +199,9 @@ horizontal_alignment = 1
 
 [node name="RaygunRifle" parent="WeaponSwapTitle/Sniper/LaserSniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
+offset_left = 0.833328
 offset_top = 100.0
+offset_right = 40.8333
 offset_bottom = 140.0
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")

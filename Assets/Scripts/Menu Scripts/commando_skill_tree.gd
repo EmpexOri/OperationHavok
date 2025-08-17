@@ -1,6 +1,11 @@
 extends CanvasLayer
 
 var Options = true
+var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
+
+@onready var WeaponTree = $WeaponSwapTitle
+@onready var GrenadeTree = $GrenadeTitle
+@onready var MinigunTree = $MinigunTitle
 
 @onready var BackButton = $BackButton
 
