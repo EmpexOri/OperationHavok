@@ -7,7 +7,9 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Enemy/Network.gd
+res://Assets/Scripts/Universal Scripts/GlobalEffects.gd
+res://Assets/Scripts/Pickups/base_pickup.gd
+res://Assets/Scripts/Pickups/xp_pickup.gd
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
@@ -18,3 +20,5 @@ res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
 res://Scenes/MenuScene.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/OptionsScene.tscn
+res://Assets/Scripts/Pickups/Effects/pickup_range_bonus.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd

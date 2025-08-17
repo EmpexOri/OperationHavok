@@ -15,4 +15,5 @@ func _ready():
 	]
 
 func arena_completed():
+	GlobalEffects.activate_xp_buff(5000, 5.0)
 	emit_signal("carpark_arena_complete")

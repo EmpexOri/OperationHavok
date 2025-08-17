@@ -1,4 +1,4 @@
-extends "res://Assets/Scripts/Pickups/base_pickup.gd"
+extends BasePickup
 
 func _ready() -> void:
 	pickup_range = 75
