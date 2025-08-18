@@ -6,6 +6,7 @@
 size = Vector2(43.9999, 40.0002)
 
 [node name="Projectile" type="Area2D"]
+monitorable = false
 script = ExtResource("1_2re41")
 metadata/_edit_group_ = true
 
