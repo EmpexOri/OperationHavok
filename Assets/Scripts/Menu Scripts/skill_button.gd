@@ -10,7 +10,7 @@ signal perk_point_used
 var lockedCondition = "Locked":
 	set(value):
 		lockedCondition = value
-		label.text = str(lockedCondition)
+		label.visible = false
 
 var unlocked := false
 
@@ -64,12 +64,10 @@ func _on_pressed() -> void:
 
 func set_unlocked_state(state: bool):
 	unlocked = state
-	lockedCondition = "" if unlocked else "Locked"
+	label.visible = true
 	update_visuals()
 
 func update_visuals():
-	label.text = str(lockedCondition)
-	
 	if unlocked:
 		panel.show_behind_parent = true
 		disabled = false

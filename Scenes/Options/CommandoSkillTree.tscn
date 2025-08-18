@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=19 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_74uq5"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="3_1kq37"]
-[ext_resource type="Texture2D" uid="uid://bkb02gc6u1v8f" path="res://Assets/Art/PlaceHolders/TestSkillButtonHOVER.png" id="3_w615b"]
+[ext_resource type="Texture2D" uid="uid://c3avalga102rd" path="res://Assets/Art/HUD/Shotgun.png" id="5_ciio1"]
+[ext_resource type="Texture2D" uid="uid://nbt57jqk3aep" path="res://Assets/Art/HUD/Flamethrower.png" id="6_1kq37"]
+[ext_resource type="Texture2D" uid="uid://cjkp44054rnub" path="res://Assets/Art/HUD/M60.png" id="7_0cs3v"]
+[ext_resource type="Texture2D" uid="uid://v7xyvs0ub8g4" path="res://Assets/Art/HUD/SMGs.png" id="7_k5h02"]
+[ext_resource type="Texture2D" uid="uid://bh2lxa26utvgi" path="res://Assets/Art/HUD/LaseSniper.png" id="8_ioi7u"]
+[ext_resource type="Texture2D" uid="uid://o2mbpfo6gegs" path="res://Assets/Art/HUD/RaygunRifleRetroStyle.png" id="9_kcvj1"]
+[ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="10_ciio1"]
+[ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="11_k5h02"]
+[ext_resource type="Texture2D" uid="uid://cwcdqy5jts8as" path="res://Assets/Art/HUD/HomerunGrenade.png" id="12_2p3y5"]
+[ext_resource type="Texture2D" uid="uid://c0fornnjemo8r" path="res://Assets/Art/HUD/BaseballGrenade.png" id="13_2p3y5"]
+[ext_resource type="Texture2D" uid="uid://br1566g7sr3av" path="res://Assets/Art/HUD/RocketMingun.png" id="13_wo6gr"]
+[ext_resource type="Texture2D" uid="uid://gs6orj5fv1ob" path="res://Assets/Art/HUD/LightningGun.png" id="14_jp367"]
+[ext_resource type="Texture2D" uid="uid://2dpwtocu5gxt" path="res://Assets/Art/HUD/TyphoonCannon.png" id="15_scflt"]
+[ext_resource type="Texture2D" uid="uid://drhcw6hpaceow" path="res://Assets/Art/HUD/RocketLauncher.png" id="15_wo6gr"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
 script = ExtResource("1_qqy41")
@@ -71,8 +84,9 @@ offset_bottom = 94.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_right = NodePath("../../SMG/Akimbo")
 focus_neighbor_bottom = NodePath("Flamethrower")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("5_ciio1")
+texture_hover = ExtResource("5_ciio1")
+texture_focused = ExtResource("5_ciio1")
 
 [node name="FlamethrowerLabel" type="Label" parent="WeaponSwapTitle/Shotgun/DragonsBreath"]
 layout_mode = 0
@@ -92,8 +106,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("6_1kq37")
+texture_hover = ExtResource("6_1kq37")
+texture_focused = ExtResource("6_1kq37")
 
 [node name="SMG" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
@@ -127,8 +142,9 @@ scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../Shotgun/DragonsBreath")
 focus_neighbor_right = NodePath("../../Sniper/LaserSniper")
 focus_neighbor_bottom = NodePath("M60")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("7_k5h02")
+texture_hover = ExtResource("7_k5h02")
+texture_focused = ExtResource("7_k5h02")
 
 [node name="M60Label" type="Label" parent="WeaponSwapTitle/SMG/Akimbo"]
 layout_mode = 0
@@ -150,8 +166,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("7_0cs3v")
+texture_hover = ExtResource("7_0cs3v")
+texture_focused = ExtResource("7_0cs3v")
 
 [node name="Sniper" type="Label" parent="WeaponSwapTitle"]
 layout_mode = 0
@@ -184,8 +201,9 @@ scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../SMG/Akimbo")
 focus_neighbor_right = NodePath("../../../GrenadeTitle/Novacaster")
 focus_neighbor_bottom = NodePath("RaygunRifle")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("8_ioi7u")
+texture_hover = ExtResource("8_ioi7u")
+texture_focused = ExtResource("8_ioi7u")
 
 [node name="RaygunLabel" type="Label" parent="WeaponSwapTitle/Sniper/LaserSniper"]
 layout_mode = 0
@@ -207,8 +225,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("9_kcvj1")
+texture_hover = ExtResource("9_kcvj1")
+texture_focused = ExtResource("9_kcvj1")
 
 [node name="GrenadeTitle" type="Label" parent="."]
 offset_left = 228.0
@@ -242,8 +261,9 @@ scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../WeaponSwapTitle/Sniper/LaserSniper")
 focus_neighbor_right = NodePath("../BaseballGrenade")
 focus_neighbor_bottom = NodePath("PlasmaCaster")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("10_ciio1")
+texture_hover = ExtResource("10_ciio1")
+texture_focused = ExtResource("10_ciio1")
 
 [node name="PlasmaCasterLabel" type="Label" parent="GrenadeTitle/Novacaster"]
 layout_mode = 0
@@ -265,8 +285,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("11_k5h02")
+texture_hover = ExtResource("11_k5h02")
+texture_focused = ExtResource("11_k5h02")
 
 [node name="BaseballLabel" type="Label" parent="GrenadeTitle"]
 layout_mode = 0
@@ -289,8 +310,9 @@ scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../Novacaster")
 focus_neighbor_right = NodePath("../../MinigunTitle/RocketLauncher")
 focus_neighbor_bottom = NodePath("HomeRunGrenade")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("13_2p3y5")
+texture_hover = ExtResource("13_2p3y5")
+texture_focused = ExtResource("13_2p3y5")
 
 [node name="HomeRunLabel" type="Label" parent="GrenadeTitle/BaseballGrenade"]
 layout_mode = 0
@@ -313,8 +335,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("12_2p3y5")
+texture_hover = ExtResource("12_2p3y5")
+texture_focused = ExtResource("12_2p3y5")
 
 [node name="MinigunTitle" type="Label" parent="."]
 offset_left = 417.0
@@ -349,8 +372,9 @@ scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../../GrenadeTitle/BaseballGrenade")
 focus_neighbor_right = NodePath("../LightningLauncher")
 focus_neighbor_bottom = NodePath("RocketMinigun")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("15_wo6gr")
+texture_hover = ExtResource("15_wo6gr")
+texture_focused = ExtResource("15_wo6gr")
 
 [node name="RocketMiniLabel" type="Label" parent="MinigunTitle/RocketLauncher"]
 layout_mode = 0
@@ -373,8 +397,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("13_wo6gr")
+texture_hover = ExtResource("13_wo6gr")
+texture_focused = ExtResource("13_wo6gr")
 
 [node name="LightningLabel" type="Label" parent="MinigunTitle"]
 layout_mode = 0
@@ -396,8 +421,9 @@ offset_bottom = 127.0
 scale = Vector2(1.2, 1.2)
 focus_neighbor_left = NodePath("../RocketLauncher")
 focus_neighbor_bottom = NodePath("TyphoonCannon")
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("14_jp367")
+texture_hover = ExtResource("14_jp367")
+texture_focused = ExtResource("14_jp367")
 
 [node name="TyphoonLabel" type="Label" parent="MinigunTitle/LightningLauncher"]
 layout_mode = 0
@@ -420,8 +446,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
-texture_hover = ExtResource("3_w615b")
-texture_focused = ExtResource("3_w615b")
+texture_normal = ExtResource("15_scflt")
+texture_hover = ExtResource("15_scflt")
+texture_focused = ExtResource("15_scflt")
 
 [node name="BackButton" type="Button" parent="."]
 process_mode = 3
