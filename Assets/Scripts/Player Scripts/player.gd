@@ -326,7 +326,7 @@ func attempt_to_fire():
 		#_: return direction.normalized() # Nothing
 	
 func deal_damage(damage, from_position = null):
-	ScreenShake.shake(1.0, 0.1)
+	ScreenShake.shake(damage, 0.1)
 	GlobalPlayer.PlayerHP -= damage
 	
 func kill():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3uuptwia5uyv"]
+[gd_scene load_steps=26 format=3 uid="uid://b3uuptwia5uyv"]
 
 [ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/CodePrefabs/Projectiles/bullet.tscn" id="1_p3drv"]
 [ext_resource type="Script" uid="uid://dwypxyhdx7spp" path="res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd" id="2_x2tpg"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="5_bb8ww"]
 [ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="6_qdo6v"]
 [ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="7_t3syc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3syc"]
+radius = 24.037
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2tpg"]
 atlas = ExtResource("2_xju45")
@@ -127,12 +130,13 @@ animations = [{
 
 [node name="TyphoonProjectile" instance=ExtResource("1_p3drv")]
 script = ExtResource("2_x2tpg")
-base_speed = 50.0
-base_damage = 8.0
-base_lifetime = 5.0
+base_speed = 100.0
+base_damage = 20.0
+base_lifetime = 10.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-1.19209e-07, 2.98023e-08)
+shape = SubResource("CircleShape2D_t3syc")
 
 [node name="Sprite2D" parent="." index="1"]
 visible = false
@@ -141,7 +145,8 @@ visible = false
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_t3syc")
 animation = &"BallLightning"
-frame_progress = 0.335918
+frame_progress = 0.69332
+offset = Vector2(0, -20)
 
 [node name="Explosion" type="Node2D" parent="." index="5"]
 script = ExtResource("4_t3syc")
@@ -174,7 +179,6 @@ scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_umuyd")
 animation = &"Explosion"
 autoplay = "Explosion"
-frame_progress = 0.0344963
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
 [connection signal="timeout" from="Explosion/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
