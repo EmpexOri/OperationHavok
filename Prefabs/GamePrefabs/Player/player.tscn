@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjkrpn6nhhs0c"]
+[gd_scene load_steps=13 format=3 uid="uid://cjkrpn6nhhs0c"]
 
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="1_5wdm8"]
 [ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="2_b8405"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="3_dolgl"]
+[ext_resource type="Script" uid="uid://pfo7tvxnb3ab" path="res://Assets/Scripts/Player Scripts/Camera2D.gd" id="4_b8405"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pfke8"]
 radius = 6.0
@@ -144,6 +145,7 @@ drag_left_margin = 0.02
 drag_top_margin = 0.02
 drag_right_margin = 0.02
 drag_bottom_margin = 0.02
+script = ExtResource("4_b8405")
 
 [node name="Weapon" type="Node2D" parent="."]
 

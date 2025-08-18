@@ -127,6 +127,7 @@ func PlayGrenadeExplosion():
 		if not player.playing:
 			player.stream = GrenadeExplosionSound
 			player.play()
+			ScreenShake.shake(12.0, 0.4)
 			return
 	print("All General SFX channels are busy!")
 	
@@ -192,6 +193,7 @@ func SmgFire():
 
 func ShotgunFire():
 	PlayFromPlayerSFX(Shotgun_fire_sfx)
+	ScreenShake.shake(4.0, 0.2)
 
 var player_sfx_index := 0
 

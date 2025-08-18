@@ -27,6 +27,7 @@ GlobalBrightness="*res://Assets/Scripts/Menu Scripts/global_brightness.gd"
 SmearManager="*res://Assets/Scripts/Misc/SmearManager.gd"
 SmearCanvas="*res://Assets/Scripts/Misc/SmearCanvas.gd"
 GlobalEffects="*res://Assets/Scripts/Universal Scripts/GlobalEffects.gd"
+ScreenShake="*res://Assets/Scripts/Universal Scripts/ScreenShake.gd"
 
 [display]
 
