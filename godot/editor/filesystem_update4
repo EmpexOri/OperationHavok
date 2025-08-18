@@ -22,3 +22,4 @@ res://Scenes/MenuScene.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
