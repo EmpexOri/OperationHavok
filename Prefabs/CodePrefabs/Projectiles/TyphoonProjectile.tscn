@@ -129,6 +129,7 @@ animations = [{
 }]
 
 [node name="TyphoonProjectile" instance=ExtResource("1_p3drv")]
+monitorable = false
 script = ExtResource("2_x2tpg")
 base_speed = 100.0
 base_damage = 20.0

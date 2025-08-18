@@ -32,3 +32,4 @@ res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
 res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
 res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn

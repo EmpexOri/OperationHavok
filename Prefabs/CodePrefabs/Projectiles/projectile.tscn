@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_2re41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bece"]
-size = Vector2(43.9999, 40.0002)
+size = Vector2(3.99998, 6.66668)
 
 [node name="Projectile" type="Area2D"]
-monitorable = false
 script = ExtResource("1_2re41")
 metadata/_edit_group_ = true
 
