@@ -19,3 +19,13 @@ res://Scenes/MenuScene.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Assets/Scripts/Enemy/Network.gd
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Assets/Scripts/Pickups/base_pickup.gd
+res://Assets/Scripts/Pickups/xp_pickup.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn

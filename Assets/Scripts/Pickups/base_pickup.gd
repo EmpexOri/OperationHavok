@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
 # Base pickup class, override values/apply effect in derived class
+class_name BasePickup
 
-var pickup_range
-var pickup_type
-var pickup_value
-var sprite_path
+var pickup_range: int
+var pickup_type: String
+var pickup_value: int
+var sprite_path: String
 
-var player_in_range = false
+var default_pickup_range: int
+var player_in_range: bool = false
 
 var speed = 300.0
 
@@ -22,12 +24,20 @@ var target_velocity = Vector2.ZERO
 func _ready() -> void:
 	add_to_group("Pickups")
 	add_to_group(pickup_type)
+
+	# Store the original pickup range
+	default_pickup_range = pickup_range
 	
 	var texture = load(sprite_path)
 	if texture:
 		$Sprite2D.texture = texture
 	else:
 		print("Failed to load texture for: " + pickup_type)
+
+	# Listen for XP pickup buff
+	if pickup_type == "Xp":
+		GlobalEffects.xp_buff_started.connect(_on_xp_buff_started)
+		GlobalEffects.xp_buff_ended.connect(_on_xp_buff_ended)
 
 func _physics_process(delta: float) -> void:
 	var player = get_tree().get_nodes_in_group("Player")
@@ -73,3 +83,10 @@ func _physics_process(delta: float) -> void:
 # Override and handle in derived class
 func apply_effect():
 	pass
+
+# Buff event handlers
+func _on_xp_buff_started(bonus: int) -> void:
+	pickup_range = default_pickup_range + bonus
+
+func _on_xp_buff_ended() -> void:
+	pickup_range = default_pickup_range

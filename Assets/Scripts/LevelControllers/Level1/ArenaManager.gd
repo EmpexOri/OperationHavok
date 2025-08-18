@@ -29,7 +29,7 @@ var wave_data: Array = []
 
 func _ready():
 	# Detect spawn points
-	for i in range(5):
+	for i in range(4):
 		var node_name = "Spawn%d" % i
 		var spawn_node = get_node_or_null(node_name)
 		if spawn_node:
