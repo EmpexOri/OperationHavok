@@ -2,9 +2,9 @@ extends CanvasLayer
 
 var Options = true
 
-@onready var WeaponTree = $WeaponSwapTitle
-@onready var GrenadeTree = $GrenadeTitle
-@onready var MinigunTree = $MinigunTitle
+@onready var WeaponTree = $WeaponsTree/WeaponSwapTitle
+@onready var GrenadeTree = $WeaponsTree/GrenadeTitle
+@onready var MinigunTree = $WeaponsTree/MinigunTitle
 
 @onready var BackButton = $BackButton
 

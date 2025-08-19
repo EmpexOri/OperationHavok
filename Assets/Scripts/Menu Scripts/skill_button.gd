@@ -27,8 +27,8 @@ func draw_connection_line():
 		var local_start = Line.to_local(start)
 		var local_end = Line.to_local(end)
 		
-		local_start.x += 4
-		local_end.x += 4
+		#local_start.x += 4
+		#local_end.x += 4
 		
 		Line.clear_points()
 		Line.add_point(local_start)
