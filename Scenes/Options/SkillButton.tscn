@@ -15,21 +15,19 @@ stretch_mode = 0
 script = ExtResource("2_fhl0g")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(20, 19.6667)
-scale = Vector2(1.13725, 1.11765)
+position = Vector2(20, 20.7778)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_pwvhs")
 
 [node name="Line2D" type="Line2D" parent="."]

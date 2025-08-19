@@ -1,9 +1,9 @@
+ColorRect
 CanvasLayer
 AnimatedSprite2D
 LightOccluder2D
 AudioStreamPlayer
 CheckButton
-ColorRect
 Label
 GPUParticles2D
 Node2D

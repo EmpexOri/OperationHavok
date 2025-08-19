@@ -395,12 +395,10 @@ process_mode = 2
 
 [node name="OptionsScene" parent="." instance=ExtResource("5_fxfs8")]
 layer = 4
-visible = false
 
 [node name="CommandoSkillTree" parent="." instance=ExtResource("6_sqgqt")]
 process_mode = 3
 layer = 5
-visible = false
 
 [node name="BackButton2" type="Button" parent="CommandoSkillTree"]
 process_mode = 3

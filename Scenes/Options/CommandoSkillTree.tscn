@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=20 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
@@ -18,13 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://gs6orj5fv1ob" path="res://Assets/Art/HUD/LightningGun.png" id="14_jp367"]
 [ext_resource type="Texture2D" uid="uid://2dpwtocu5gxt" path="res://Assets/Art/HUD/TyphoonCannon.png" id="15_scflt"]
 [ext_resource type="Texture2D" uid="uid://drhcw6hpaceow" path="res://Assets/Art/HUD/RocketLauncher.png" id="15_wo6gr"]
+[ext_resource type="Texture2D" uid="uid://j140hxqss6ei" path="res://Assets/Art/SkillTree/BoxBack.png" id="19_k5h02"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
 script = ExtResource("1_qqy41")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(232, 234)
-texture = ExtResource("2_k5h02")
+[node name="TheBackgroundsBackground" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.10465, 0.213647, 0.291498, 1)
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -33,14 +35,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(232, 234)
+texture = ExtResource("2_k5h02")
+
+[node name="BoxBack" type="Sprite2D" parent="."]
+position = Vector2(552, 143)
+texture = ExtResource("19_k5h02")
+
 [node name="PickAPerk" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -319.0
-offset_top = 24.0
+offset_top = 32.0
 offset_right = 143.0
-offset_bottom = 47.0
+offset_bottom = 55.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 20
@@ -52,22 +62,20 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -319.0
-offset_top = 46.0
+offset_top = 56.0
 offset_right = 143.0
-offset_bottom = 69.0
+offset_bottom = 79.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
 text = "Perk points: 0"
 horizontal_alignment = 1
 
-[node name="WeaponsTree" type="CanvasLayer" parent="."]
-layer = 10
-
-[node name="WeaponSwapTitle" type="Label" parent="WeaponsTree"]
-offset_top = 341.0
+[node name="WeaponSwapTitle" type="Label" parent="."]
+z_index = 10
+offset_top = 339.0
 offset_right = 155.0
-offset_bottom = 375.0
+offset_bottom = 373.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -75,7 +83,8 @@ theme_override_font_sizes/font_size = 14
 text = "Weapons Tree"
 horizontal_alignment = 1
 
-[node name="DragonsBreath" parent="WeaponsTree/WeaponSwapTitle" instance=ExtResource("1_cye56")]
+[node name="DragonsBreath" parent="WeaponSwapTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 8.0
 offset_top = -109.0
 offset_right = 48.0004
@@ -86,19 +95,20 @@ texture_normal = ExtResource("5_ciio1")
 texture_hover = ExtResource("5_ciio1")
 texture_focused = ExtResource("5_ciio1")
 
-[node name="Flamethrower" parent="WeaponsTree/WeaponSwapTitle/DragonsBreath" instance=ExtResource("1_cye56")]
+[node name="Flamethrower" parent="WeaponSwapTitle/DragonsBreath" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.0004
 offset_bottom = -57.0004
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("6_1kq37")
 texture_hover = ExtResource("6_1kq37")
 texture_focused = ExtResource("6_1kq37")
 
-[node name="Akimbo" parent="WeaponsTree/WeaponSwapTitle" instance=ExtResource("1_cye56")]
+[node name="Akimbo" parent="WeaponSwapTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 60.0
 offset_top = -109.0
 offset_right = 100.0
@@ -110,19 +120,20 @@ texture_normal = ExtResource("7_k5h02")
 texture_hover = ExtResource("7_k5h02")
 texture_focused = ExtResource("7_k5h02")
 
-[node name="M60" parent="WeaponsTree/WeaponSwapTitle/Akimbo" instance=ExtResource("1_cye56")]
+[node name="M60" parent="WeaponSwapTitle/Akimbo" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.7778
 offset_bottom = -57.7778
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("7_0cs3v")
 texture_hover = ExtResource("7_0cs3v")
 texture_focused = ExtResource("7_0cs3v")
 
-[node name="LaserSniper" parent="WeaponsTree/WeaponSwapTitle" instance=ExtResource("1_cye56")]
+[node name="LaserSniper" parent="WeaponSwapTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 110.0
 offset_top = -109.0
 offset_right = 150.0
@@ -134,23 +145,23 @@ texture_normal = ExtResource("8_ioi7u")
 texture_hover = ExtResource("8_ioi7u")
 texture_focused = ExtResource("8_ioi7u")
 
-[node name="RaygunRifle" parent="WeaponsTree/WeaponSwapTitle/LaserSniper" instance=ExtResource("1_cye56")]
+[node name="RaygunRifle" parent="WeaponSwapTitle/LaserSniper" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.7778
 offset_bottom = -57.7778
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("9_kcvj1")
 texture_hover = ExtResource("9_kcvj1")
 texture_focused = ExtResource("9_kcvj1")
 
-[node name="GrenadeTitle" type="Label" parent="WeaponsTree"]
+[node name="GrenadeTitle" type="Label" parent="."]
 offset_left = 155.0
-offset_top = 341.0
+offset_top = 339.0
 offset_right = 309.0
-offset_bottom = 375.0
+offset_bottom = 373.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -158,7 +169,7 @@ theme_override_font_sizes/font_size = 14
 text = "Grenade"
 horizontal_alignment = 1
 
-[node name="Novacaster" parent="WeaponsTree/GrenadeTitle" instance=ExtResource("1_cye56")]
+[node name="Novacaster" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 26.0
 offset_top = -109.0
@@ -171,20 +182,20 @@ texture_normal = ExtResource("10_ciio1")
 texture_hover = ExtResource("10_ciio1")
 texture_focused = ExtResource("10_ciio1")
 
-[node name="PlasmaCaster" parent="WeaponsTree/GrenadeTitle/Novacaster" instance=ExtResource("1_cye56")]
+[node name="PlasmaCaster" parent="GrenadeTitle/Novacaster" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.7778
 offset_right = 40.0004
 offset_bottom = -57.7778
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("11_k5h02")
 texture_hover = ExtResource("11_k5h02")
 texture_focused = ExtResource("11_k5h02")
 
-[node name="BaseballGrenade" parent="WeaponsTree/GrenadeTitle" instance=ExtResource("1_cye56")]
+[node name="BaseballGrenade" parent="GrenadeTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 93.0
 offset_top = -109.0
@@ -197,24 +208,24 @@ texture_normal = ExtResource("13_2p3y5")
 texture_hover = ExtResource("13_2p3y5")
 texture_focused = ExtResource("13_2p3y5")
 
-[node name="HomeRunGrenade" parent="WeaponsTree/GrenadeTitle/BaseballGrenade" instance=ExtResource("1_cye56")]
+[node name="HomeRunGrenade" parent="GrenadeTitle/BaseballGrenade" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.7778
 offset_right = 40.0005
 offset_bottom = -57.7778
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("12_2p3y5")
 texture_hover = ExtResource("12_2p3y5")
 texture_focused = ExtResource("12_2p3y5")
 
-[node name="MinigunTitle" type="Label" parent="WeaponsTree"]
+[node name="MinigunTitle" type="Label" parent="."]
 offset_left = 309.0
-offset_top = 341.0
+offset_top = 339.0
 offset_right = 463.0
-offset_bottom = 375.0
+offset_bottom = 373.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -222,7 +233,7 @@ theme_override_font_sizes/font_size = 14
 text = "Minigun"
 horizontal_alignment = 1
 
-[node name="RocketLauncher" parent="WeaponsTree/MinigunTitle" instance=ExtResource("1_cye56")]
+[node name="RocketLauncher" parent="MinigunTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 25.0
 offset_top = -109.0
@@ -235,20 +246,20 @@ texture_normal = ExtResource("15_wo6gr")
 texture_hover = ExtResource("15_wo6gr")
 texture_focused = ExtResource("15_wo6gr")
 
-[node name="RocketMinigun" parent="WeaponsTree/MinigunTitle/RocketLauncher" instance=ExtResource("1_cye56")]
+[node name="RocketMinigun" parent="MinigunTitle/RocketLauncher" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.7778
 offset_right = 40.0005
 offset_bottom = -57.7777
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("13_wo6gr")
 texture_hover = ExtResource("13_wo6gr")
 texture_focused = ExtResource("13_wo6gr")
 
-[node name="LightningLauncher" parent="WeaponsTree/MinigunTitle" instance=ExtResource("1_cye56")]
+[node name="LightningLauncher" parent="MinigunTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 96.0
 offset_top = -109.0
@@ -260,7 +271,7 @@ texture_normal = ExtResource("14_jp367")
 texture_hover = ExtResource("14_jp367")
 texture_focused = ExtResource("14_jp367")
 
-[node name="TyphoonCannon" parent="WeaponsTree/MinigunTitle/LightningLauncher" instance=ExtResource("1_cye56")]
+[node name="TyphoonCannon" parent="MinigunTitle/LightningLauncher" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = -2.09808e-05
 offset_top = -97.7778
@@ -268,7 +279,7 @@ offset_right = 40.0005
 offset_bottom = -57.7778
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
 texture_normal = ExtResource("15_scflt")
 texture_hover = ExtResource("15_scflt")
@@ -281,7 +292,7 @@ offset_left = 469.0
 offset_top = 321.0
 offset_right = 631.0
 offset_bottom = 352.0
-focus_neighbor_top = NodePath("../WeaponsTree/WeaponSwapTitle/DragonsBreath")
+focus_neighbor_top = NodePath("../WeaponSwapTitle/DragonsBreath")
 theme_override_fonts/font = ExtResource("2_74uq5")
 text = "Back"
 

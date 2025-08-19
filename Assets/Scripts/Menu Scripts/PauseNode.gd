@@ -39,6 +39,7 @@ func show_pause_menu() -> void:
 	ControlsMenu.visible = false
 	BackButton.visible = false
 	BackButton2.visible = false
+	SkillTree.visible = false
 	
 
 func _on_resume_button_pressed() -> void:
@@ -58,6 +59,7 @@ func _on_resume_button_pressed() -> void:
 	ControlsMenu.visible = false
 	BackButton.visible = false
 	BackButton2.visible = false
+	SkillTree.visible = false
 	
 	if get_tree().paused:
 		get_tree().paused = false
@@ -77,6 +79,7 @@ func _on_controls_button_pressed() -> void:
 	ControlsMenu.visible = true
 	BackButton.visible = true
 	BackButton2.visible = false
+	SkillTree.visible = false
 	
 	BackButton.grab_focus()
 
@@ -96,6 +99,7 @@ func _on_options_button_pressed() -> void:
 	MainButton.visible = false
 	BackButton.visible = true
 	BackButton2.visible = false
+	SkillTree.visible = false
 
 
 func _on_back_button_pressed() -> void:
@@ -113,6 +117,7 @@ func _on_back_button_pressed() -> void:
 	ControlsMenu.visible = false
 	BackButton.visible = false
 	BackButton2.visible = false
+	SkillTree.visible = false
 	
 	ResumeButton.grab_focus()
 
@@ -134,6 +139,7 @@ func _on_menu_button_pressed() -> void:
 	ControlsMenu.visible = false
 	BackButton.visible = false
 	BackButton2.visible = false
+	SkillTree.visible = false
 	
 	if get_tree().paused:
 		get_tree().paused = false
@@ -153,6 +159,8 @@ func _on_skill_tree_button_pressed() -> void:
 	MainButton.visible = false
 	BackButton.visible = false
 	BackButton2.visible = true
+	SkillTree.update_skill_trees_shown()
+	SkillTree.restore_unlocked_skills(self)   
 	GlobalAudioController.ClickSound()
 
 

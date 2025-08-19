@@ -2,40 +2,20 @@ extends CanvasLayer
 
 var Options = true
 
-@onready var WeaponTree = $WeaponsTree/WeaponSwapTitle
-@onready var GrenadeTree = $WeaponsTree/GrenadeTitle
-@onready var MinigunTree = $WeaponsTree/MinigunTitle
+@onready var WeaponTree = $WeaponSwapTitle
+@onready var GrenadeTree = $GrenadeTitle
+@onready var MinigunTree = $MinigunTitle
 
 @onready var BackButton = $BackButton
 
 func _ready():
 	$BackButton.grab_focus()
 	update_perk_points_label()
-	connect_skill_buttons(self)
-	restore_unlocked_skills(self)
+	update_skill_trees_shown()
+	connect_skill_buttons(self)       
+	restore_unlocked_skills(self)      
 
 func _process(_delta):
-	# Fetching the player current level
-	var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
-	
-	# Displaying the respective skill tree/s
-	if Level == 1:
-		WeaponTree.visible = true
-		GrenadeTree.visible = false
-		MinigunTree.visible = false
-	elif Level == 2:
-		WeaponTree.visible = false
-		GrenadeTree.visible = true
-		MinigunTree.visible = false
-	elif Level == 3:
-		WeaponTree.visible = false
-		GrenadeTree.visible = false
-		MinigunTree.visible = true
-	else:
-		WeaponTree.visible = true
-		GrenadeTree.visible = true
-		MinigunTree.visible = true
-	
 	# Making sure the perk points label stays updated
 	update_perk_points_label()
 
@@ -47,18 +27,23 @@ func connect_skill_buttons(node):
 	# This connects the skill buttons to the skill tree
 	for child in node.get_children():
 		if child is SkillButton:
-			child.connect("perk_point_used", Callable(self, "_on_skill_button_used").bind(child))
+			if not child.is_connected("perk_point_used", Callable(self, "_on_skill_button_used")):
+				child.connect("perk_point_used", Callable(self, "_on_skill_button_used").bind(child))
 		connect_skill_buttons(child)
 
 func _on_skill_button_used(button: SkillButton):
 	# Tells us when a skill has been bought and what the name is and updates the label
+	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
+	var unlocked = class_data["UnlockedAbilities"]
+
+	# Prevent spending points on skills already unlocked
+	if unlocked.has(button.name):
+		return
+
 	print("Skill bought:", button.name)
 	update_perk_points_label()
 
-	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
-	var unlocked = class_data["UnlockedAbilities"]
-	if not unlocked.has(button.name):
-		unlocked.append(button.name)
+	unlocked.append(button.name)
 
 	# Changes the ability being used
 	match button.name:
@@ -78,6 +63,7 @@ func _on_skill_button_used(button: SkillButton):
 			upgrade_minigun_ability("RocketMinigun")
 
 func restore_unlocked_skills(node):
+	# Restores the unlocked state of skills from saved data
 	for child in node.get_children():
 		if child is SkillButton:
 			var skill_name = child.name
@@ -106,3 +92,25 @@ func upgrade_grenade_ability(NewAbility):
 	var Abilities = GlobalPlayer.ClassData["Commando"]["Abilities"]
 	Abilities[1] = NewAbility
 	print("Skills updated to ", Abilities)
+
+func update_skill_trees_shown():
+	# Fetching the player current level
+	var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
+	
+	# Displaying the respective skill tree/s
+	if Level == 1:
+		WeaponTree.visible = true
+		GrenadeTree.visible = false
+		MinigunTree.visible = false
+	elif Level == 2:
+		WeaponTree.visible = false
+		GrenadeTree.visible = true
+		MinigunTree.visible = false
+	elif Level == 3:
+		WeaponTree.visible = false
+		GrenadeTree.visible = false
+		MinigunTree.visible = true
+	else:
+		WeaponTree.visible = true
+		GrenadeTree.visible = true
+		MinigunTree.visible = true
