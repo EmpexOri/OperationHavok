@@ -6,7 +6,7 @@ var CurrentClass: String = "Commando"
 
 var weapon_upgrades = {
 	1: "Smg",
-	2: "TyphoonCannon"
+	2: "Shotgun"
 }
 
 var ClassData = {
@@ -16,7 +16,7 @@ var ClassData = {
 	},
 	"Commando": {
 		"Level": 3, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 150,
-		"Abilities": ["SwapWeapons", "GrenadeThrow", "RocketLauncher"], "UnlockedAbilities": []
+		"Abilities": ["SwapWeapons", "GrenadeThrow", "TyphoonCannon"], "UnlockedAbilities": []
 	},
 	"Fleshthing": {
 		"Level": 1, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150, 
@@ -25,7 +25,7 @@ var ClassData = {
 }
 
 var AbilityListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement", "Strength"]
-var AbilityListCommando = ["SwapWeapons", "GrenadeThrow", "RocketLauncher"]
+var AbilityListCommando = ["SwapWeapons", "GrenadeThrow", "TyphoonCannon"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 func XPRequiredForLevel(Level: int) -> int:

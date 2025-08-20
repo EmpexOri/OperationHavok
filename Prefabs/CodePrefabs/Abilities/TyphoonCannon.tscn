@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpeu7ed5i04p0"]
+
+[ext_resource type="Script" uid="uid://c3f4c5hyucd51" path="res://Assets/Scripts/Player Scripts/Abilities/TyphoonCannon.gd" id="1_uok7p"]
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource("1_uok7p")

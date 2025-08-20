@@ -9,6 +9,8 @@ var exploded: bool = false
 func _ready() -> void:
 	super._ready()
 	ball_anim.play()
+	if visible_on_screen_notifier_2d.screen_exited.is_connected(queue_free):
+		visible_on_screen_notifier_2d.screen_exited.disconnect(queue_free) #Don't free this projectile off screen <3
 	explosion_ref.start(global_position, Vector2.ZERO)
 	explosion_ref.explosion_delay = base_lifetime - 1
 
