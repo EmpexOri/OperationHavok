@@ -3,8 +3,8 @@ class_name RocketLauncher
 
 signal perk_finished(index: int)
 
-@export var Duration: float = 10.0 # How long the LauncherScene is active for
-@export var CooldownTime: float = 10.0 # Cooldown *after* LauncherScene ends
+@export var Duration: float = 15.0 # How long the LauncherScene is active for
+@export var CooldownTime: float = 7.5 # Cooldown *after* LauncherScene ends
 
 var LauncherScene := preload("res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn")
 

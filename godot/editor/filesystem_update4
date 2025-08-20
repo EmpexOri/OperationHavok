@@ -32,3 +32,4 @@ res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
 res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd
 res://Scenes/Misc/TestSkillTree.tscn
+res://Assets/Scripts/Player Scripts/Abilities/LightningLauncher.gd
