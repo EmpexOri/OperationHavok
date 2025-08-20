@@ -31,3 +31,4 @@ res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
 res://Assets/Scripts/Projectiles/physics_projectile.gd
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
