@@ -57,5 +57,5 @@ func _on_zap_timer_timeout():
 func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
 	_space_state = space_state
 
-func on_hit(projectile: Projectile, body: Node2D):
+func on_hit(projectile: Projectile, body: Node2D, collision: KinematicCollision2D = null):
 	false

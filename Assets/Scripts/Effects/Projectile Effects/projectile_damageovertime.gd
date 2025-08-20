@@ -13,7 +13,7 @@ func setup(projectile: Projectile):
 func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
 	pass
 
-func on_hit(projectile: Projectile, body: Node2D):
+func on_hit(projectile: Projectile, body: Node2D, collision: KinematicCollision2D = null):
 	if body.has_method("apply_dot"):
 		body.apply_dot(damage_per_second, duration)
 	return true

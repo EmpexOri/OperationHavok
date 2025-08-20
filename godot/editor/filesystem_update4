@@ -9,3 +9,25 @@ res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Assets/Scripts/Projectiles/physics_projectile.gd
 res://Scenes/Options/OptionsScene.tscn
+res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
+res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
+res://Scenes/Options/PauseMenu.tscn
+res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
+res://Scenes/MenuScene.tscn
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Scenes/Options/SkillButton.tscn
+res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
+res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
+res://Assets/Scripts/Effects/Projectile Effects/projectile_damageovertime.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
+res://Assets/Scripts/Player Scripts/player.gd

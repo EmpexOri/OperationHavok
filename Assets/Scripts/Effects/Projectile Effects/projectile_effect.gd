@@ -7,13 +7,13 @@ class_name ProjectileEffect
 @export var effect_name: String
 
 # Call when initialising an effect, initialised from the projectile
-func setup(projectile: Projectile):
+func setup(projectile):
 	pass
 
 # Called every frame from projectile
-func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
+func process_effect(projectile, delta: float, space_state: PhysicsDirectSpaceState2D):
 	pass
 
 # Called when projectile has a collision
-func on_hit(projectile: Projectile, body: Node2D):
+func on_hit(projectile, body: Node2D, collision: KinematicCollision2D = null):
 	null # Override in derived class for different effect - true is destroyed, false is not
