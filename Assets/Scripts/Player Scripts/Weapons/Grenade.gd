@@ -89,3 +89,7 @@ func _explode():
 
 func _on_explosion_animation_finished():
 	queue_free()
+
+# Public wrapper
+func explode():
+	_explode()
