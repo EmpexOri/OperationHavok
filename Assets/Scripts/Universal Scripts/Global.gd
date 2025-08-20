@@ -141,3 +141,24 @@ func _clear_and_refill_pool(pool: Array, scene: PackedScene, size: int) -> void:
 	
 	# Refill with new size
 	_fill_pool(scene, pool, size)
+
+
+## Settings Options
+
+const RESOLUTIONS = [
+	Vector2i(1280, 720),
+	Vector2i(1920, 1080),
+	Vector2i(2560, 1440)
+]
+
+var resolution_index := 1
+var fullscreen_enabled := false
+
+func apply_display_settings():
+	var resolution = RESOLUTIONS[resolution_index]
+
+	if fullscreen_enabled:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(resolution)

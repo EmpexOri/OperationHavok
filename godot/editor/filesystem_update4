@@ -30,3 +30,4 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Assets/Scripts/Player Scripts/Weapons/SuperGrenade.gd
 res://Assets/Scripts/Menu Scripts/ScreenOptions.gd
 res://Assets/Scripts/Menu Scripts/ResolutionSettings.gd
+res://Assets/Scripts/Universal Scripts/Global.gd

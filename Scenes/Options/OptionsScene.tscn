@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bli4fnfa7mnar"]
+[gd_scene load_steps=13 format=3 uid="uid://bli4fnfa7mnar"]
 
 [ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Assets/Scripts/Menu Scripts/brightness_slider.gd" id="2_1hmx5"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_vh6j5"]
 [ext_resource type="Script" uid="uid://dptye62ocip5c" path="res://Assets/Scripts/Menu Scripts/particle_options.gd" id="4_ttvai"]
 [ext_resource type="Script" uid="uid://bgbmywtypvas4" path="res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd" id="5_byqjn"]
+[ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="6_dbvyl"]
 [ext_resource type="Script" uid="uid://bshgqpmqwchbr" path="res://Assets/Scripts/Menu Scripts/ScreenOptions.gd" id="7_qhusp"]
 [ext_resource type="Script" uid="uid://c12y7w8j2cvx" path="res://Assets/Scripts/Menu Scripts/ResolutionSettings.gd" id="8_o3fs6"]
 
@@ -47,7 +48,7 @@ metadata/_edit_use_anchors_ = true
 offset_left = 162.0
 offset_top = 66.0
 offset_right = 483.0
-offset_bottom = 289.0
+offset_bottom = 287.0
 theme = SubResource("Theme_gprv8")
 follow_focus = true
 
@@ -136,6 +137,18 @@ popup/item_2/text = "Low"
 popup/item_2/id = 2
 script = ExtResource("4_ttvai")
 
+[node name="ResolutionLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_o3fs6")
+text = "Window Resolution"
+
+[node name="ResolutionsSettings" type="OptionButton" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_dbvyl")
+theme_override_fonts/font = ExtResource("2_vh6j5")
+theme_override_font_sizes/font_size = 18
+script = ExtResource("8_o3fs6")
+
 [node name="CensorBlood" type="CheckButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_o3fs6")
@@ -148,15 +161,8 @@ theme_override_fonts/font = ExtResource("2_vh6j5")
 text = "Toggle Fullscreen"
 script = ExtResource("7_qhusp")
 
-[node name="ResolutionsSettings" type="Button" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vh6j5")
-text = "Toggle Fullscreen"
-script = ExtResource("8_o3fs6")
-
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/BrightnessSlider" to="ScrollContainer/VBoxContainer/BrightnessSlider" method="_on_value_changed"]
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/ParticleOptions" to="ScrollContainer/VBoxContainer/ParticleOptions" method="_on_item_selected"]
 [connection signal="toggled" from="ScrollContainer/VBoxContainer/CensorBlood" to="ScrollContainer/VBoxContainer/CensorBlood" method="_on_censor_toggle_toggled"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/FullscreenToggle" to="ScrollContainer/VBoxContainer/FullscreenToggle" method="_on_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/ResolutionsSettings" to="ScrollContainer/VBoxContainer/ResolutionsSettings" method="_on_pressed"]
