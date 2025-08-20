@@ -124,7 +124,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1l4lc")
 }],
 "loop": true,
-"name": &"Explosion",
+"name": &"explode",
 "speed": 10.0
 }]
 
@@ -178,8 +178,8 @@ texture = ExtResource("6_qdo6v")
 visible = false
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_umuyd")
-animation = &"Explosion"
-autoplay = "Explosion"
+animation = &"explode"
+autoplay = "explode"
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
 [connection signal="timeout" from="Explosion/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

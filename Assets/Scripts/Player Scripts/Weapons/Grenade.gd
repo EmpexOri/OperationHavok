@@ -6,11 +6,13 @@ class_name Grenade
 @export var explosion_radius: float = 150.0
 @export var damage: float = 50.0
 @export var stop_on_enemy_hit: bool = false
+@export var explode_on_walls: bool = true 
 @onready var explosion_anim: AnimatedSprite2D = $AnimatedSprite2D
 
 var velocity: Vector2
 var timer: Timer
 var radius_indicator: Sprite2D
+var exploding: bool = false  # Tracks if grenade is currently exploding
 
 func _ready():
 	await get_tree().process_frame
@@ -30,7 +32,6 @@ func _ready():
 		radius_indicator.scale = Vector2(radius_in_pixels, radius_in_pixels) / tex_size
 		radius_indicator.modulate = Color(1, 0, 0, 0.3)
 
-		# Optional: fade out before explosion
 		var tween = create_tween()
 		tween.tween_property(radius_indicator, "modulate:a", 0.0, explosion_delay).set_ease(Tween.EASE_IN)
 	else:
@@ -41,51 +42,60 @@ func start(start_position: Vector2, direction: Vector2):
 	velocity = direction.normalized() * throw_force
 
 func _physics_process(delta):
-	var new_position = position + velocity * delta
-
-	var query = PhysicsRayQueryParameters2D.create(position, new_position)
-	query.exclude = [self]
-	query.collision_mask = 1 << 2  # Adjust layer to match your wall layer
-
-	var space_state = get_world_2d().direct_space_state
-	if space_state == null:
-		print("Warning: space_state is null")
-		return
-
-	var result = space_state.intersect_ray(query)
-
-	if result:
-		velocity = Vector2.ZERO
-		position = result.position
+	if exploding:
+		if explosion_anim.visible:
+			var frame_count = explosion_anim.sprite_frames.get_frame_count("explode")
+			if explosion_anim.frame >= frame_count - 1:
+				_on_explosion_animation_finished()
 	else:
-		position = new_position
+		# Movement
+		var new_position = position + velocity * delta
+		var query = PhysicsRayQueryParameters2D.create(position, new_position)
+		query.exclude = [self]
+		query.collision_mask = 1 << 2  
 
-	velocity = velocity.move_toward(Vector2.ZERO, 1000 * delta)
+		var space_state = get_world_2d().direct_space_state
+		if space_state == null:
+			print("Warning: space_state is null")
+			return
+
+		var result = space_state.intersect_ray(query)
+
+		if result:
+			velocity = Vector2.ZERO
+			position = result.position
+			if explode_on_walls:
+				_explode()  # Only explode if toggle is true
+		else:
+			position = new_position
+
+		velocity = velocity.move_toward(Vector2.ZERO, 1000 * delta)
 
 func _on_body_entered(body: Node2D) -> void:
 	if stop_on_enemy_hit and body.is_in_group("Enemy"):
 		velocity = Vector2.ZERO
 
 func _explode():
+	if exploding:
+		return
+	exploding = true
 	velocity = Vector2.ZERO
 
-	# Damage enemies in radius first
+	# Damage enemies
 	for body in $Area2D.get_overlapping_bodies():
 		if body.has_method("deal_damage") and body.is_in_group("Enemy"):
 			body.deal_damage(damage, global_position)
 
-	# Now disable monitoring so no further detections happen
+	# Disable monitoring
 	$Area2D.monitoring = false
 	$Area2D.set_deferred("monitorable", false)
 
-	# Play explosion animation
-	$Sprite2D.visible = false  
+	# Explosion visuals
+	$Sprite2D.visible = false
 	explosion_anim.visible = true
-	GlobalAudioController.PlayGrenadeExplosion()
 	explosion_anim.play("explode")
 
-	await explosion_anim.animation_finished
-	_on_explosion_animation_finished()
+	GlobalAudioController.PlayGrenadeExplosion()
 
 func _on_explosion_animation_finished():
 	queue_free()
@@ -93,3 +103,26 @@ func _on_explosion_animation_finished():
 # Public wrapper
 func explode():
 	_explode()
+
+func start_explosion():
+	if exploding:
+		return
+	exploding = true
+	velocity = Vector2.ZERO
+
+	# Damage enemies
+	for body in $Area2D.get_overlapping_bodies():
+		if body.has_method("deal_damage") and body.is_in_group("Enemy"):
+			body.deal_damage(damage, global_position)
+
+	# Disable monitoring
+	$Area2D.monitoring = false
+	$Area2D.set_deferred("monitorable", false)
+
+	# Explosion visuals
+	$Sprite2D.visible = false
+	explosion_anim.visible = true
+	explosion_anim.frame = 0  # Ensure animation starts at first frame
+	explosion_anim.play("explode")
+
+	GlobalAudioController.PlayGrenadeExplosion()
