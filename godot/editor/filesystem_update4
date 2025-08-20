@@ -27,3 +27,4 @@ res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
 res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
 res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Assets/Scripts/Player Scripts/Weapons/SuperGrenade.gd
