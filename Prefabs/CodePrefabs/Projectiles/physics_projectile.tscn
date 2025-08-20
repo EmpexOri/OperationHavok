@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://uy66843n3v0h"]
 
-[ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_1ydf3"]
+[ext_resource type="Script" uid="uid://b2ibd6y2cs3xo" path="res://Assets/Scripts/Projectiles/physics_projectile.gd" id="1_1ydf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bece"]
 size = Vector2(3.99998, 6.66668)
