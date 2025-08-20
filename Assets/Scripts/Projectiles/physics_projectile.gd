@@ -72,12 +72,6 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 
 	# Set the projectile's visual rotation to match movement direction
 	rotation = direction.angle()
-
-	# Flip sprite vertically if it's aiming to the left to avoid upside-down visuals
-	if abs(rotation) > PI / 2:
-		sprite_2d.scale.y = -1
-	else:
-		sprite_2d.scale.y = 1
 	
 	# Configure collision layers depending on the projectile owner
 	if entity_owner == "Enemy":
@@ -108,5 +102,7 @@ func _on_collision(collision: KinematicCollision2D):
 			if effect.has_method("on_hit"):
 				if effect.on_hit(self, body, collision):
 					queue_free()
+				else:
+					return
 	
 	queue_free()

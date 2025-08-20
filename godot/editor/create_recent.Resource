@@ -1,3 +1,4 @@
+ProjectileEffect
 Resource
 LightningChainEffect
 ShaderMaterial
