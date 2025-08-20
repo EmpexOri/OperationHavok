@@ -32,9 +32,9 @@ func _check_wall_collision(delta: float) -> void:
 	var query := PhysicsRayQueryParameters2D.create(from, to)
 	query.collision_mask = collision_mask
 
-	# Exclude enemies so it won't collide with them
+	# Exclude enemies so the ray won't hit them
 	var enemies = get_tree().get_nodes_in_group("Enemy")
-	query.exclude = enemies
+	query.exclude = enemies.map(func(e): return e.get_rid())
 
 	var result: Dictionary = space_state.intersect_ray(query)
 
