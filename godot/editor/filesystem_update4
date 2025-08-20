@@ -1,4 +1,4 @@
-res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn
+res://Scenes/Options/SkillButton.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,12 +7,9 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
-res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
-res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 res://Scenes/AlphaLevel1.tscn
-res://Assets/Scripts/Player Scripts/player.gd
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
@@ -21,14 +18,14 @@ res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
 res://Scenes/MenuScene.tscn
-res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/OptionsScene.tscn
-res://Scenes/Options/SkillButton.tscn
 res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn
 res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
-res://Assets/Scripts/Projectiles/physics_projectile.gd
-res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn
+res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
+res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd

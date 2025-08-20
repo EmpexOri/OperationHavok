@@ -109,9 +109,9 @@ texture_focused = ExtResource("6_1kq37")
 
 [node name="Akimbo" parent="WeaponSwapTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_left = 60.0
+offset_left = 59.0
 offset_top = -109.0
-offset_right = 100.0
+offset_right = 99.0
 offset_bottom = -69.0
 focus_neighbor_left = NodePath("../DragonsBreath")
 focus_neighbor_right = NodePath("../LaserSniper")
