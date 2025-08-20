@@ -31,3 +31,4 @@ res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
 res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd
 res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
 res://Assets/Scripts/Player Scripts/player.gd
+res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn

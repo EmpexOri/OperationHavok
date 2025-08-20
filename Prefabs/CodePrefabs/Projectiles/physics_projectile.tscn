@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://uy66843n3v0h"]
+
+[ext_resource type="Script" uid="uid://cmoi6522kj26u" path="res://Assets/Scripts/Projectiles/projectile.gd" id="1_1ydf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bece"]
+size = Vector2(3.99998, 6.66668)
+
+[node name="PhysicsProjectile" type="CharacterBody2D"]
+script = ExtResource("1_1ydf3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_1bece")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

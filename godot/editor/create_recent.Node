@@ -1,3 +1,4 @@
+CharacterBody2D
 Button
 Control
 ColorRect
@@ -11,4 +12,3 @@ GPUParticles2D
 Node2D
 TileMapLayer
 Area2D
-CharacterBody2D
