@@ -54,16 +54,13 @@ func start_timer():
 
 # --- Show FX before spawning ---
 func _begin_summon():
-	# Play FX first
 	var fx = SummonFX.instantiate()
 	fx.global_position = global_position
-	get_parent().add_child(fx)
+	add_child(fx)  
 
-	# When FX animation is done -> call real spawn
 	if fx.has_signal("finished"):
 		fx.connect("finished", Callable(self, "_on_summon_fx_finished").bind(fx))
 	else:
-		# fallback if no signal exists, just wait ~1s
 		await get_tree().create_timer(1.0).timeout
 		_on_summon_fx_finished(fx)
 

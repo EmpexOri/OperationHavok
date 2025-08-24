@@ -15,3 +15,4 @@ res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Enemy/Biomancer.gd
