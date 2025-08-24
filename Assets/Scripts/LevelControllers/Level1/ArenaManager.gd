@@ -13,7 +13,8 @@ var ENEMY_SCENES := {
 	"MalignantTumor": preload("res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn"),
 	"Network": preload("res://Prefabs/GamePrefabs/Enemy/Network.tscn"),
 	"Goolum": preload("res://Prefabs/GamePrefabs/Enemy/Goolum.tscn"),
-	"Warmachine": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn")
+	"Warmachine": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn"),
+	"Bruiser": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn")
 }
 
 # Arena state

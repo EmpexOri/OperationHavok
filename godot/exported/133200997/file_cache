@@ -70,13 +70,13 @@ res://Prefabs/GamePrefabs/Objects/lamp_post.tscn::81c1f10687280f0290f17922ef4f84
 res://Prefabs/GamePrefabs/Player/player.tscn::d63763c61dc77a598023ecb1328d3d0e::1755502685::res://godot/exported/133200997/export-8ee673113faa1e3116f837fd76377de5-player.scn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres::40cc35e17348b074fc22a3652857c101::1756029661::res://godot/exported/133200997/export-bb69537ca0cc7aee628c91470d9bd3a3-CarParkTiles.res
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tilemap.tscn::1dbde8901bea5c276ab8991e20f7c191::1747909952::res://godot/exported/133200997/export-223a4a565712c275c1c203c73a0ed017-Carpark_Tilemap.scn
-res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres::12a98fad04a16392a015c648064ef03d::1756030286::res://godot/exported/133200997/export-07d696846e0114661b6ec49b62762ef0-lightning_chain_effect.res
+res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres::c3333b35ef1368787d7fb5fef4813574::1756031017::res://godot/exported/133200997/export-07d696846e0114661b6ec49b62762ef0-lightning_chain_effect.res
 res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn::c2a3bdf714532d225d921e575a592ad6::1755690776::res://godot/exported/133200997/export-cc49b349749202d83cd0826995ed143e-GrenadeThrow.scn
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres::e6e890de697252273261a39050c9c8a8::1756029661::res://godot/exported/133200997/export-c00e49a15b25079e5103e799924bc3e0-MetallicGore.res
 res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn::cd6b257f843e3de74abe570a180e8672::1748246376::res://godot/exported/133200997/export-cf109abbb6fce1d03d119501e92d698b-MetallicGore.scn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn::7198e8a2c1da2bb0344bc65063750d85::1752136867::res://godot/exported/133200997/export-09a7774c2ccf114e34c337be4c971f83-SniperBullet.scn
 res://Prefabs/CodePrefabs/Weapons/Grenade.tscn::55fa518cbc3209db0bfbced623419c64::1755690776::res://godot/exported/133200997/export-85b39b73874c5d85bc00580dc58e4d45-Grenade.scn
-res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn::7f3fb4c25f058edaca99cd1190050380::1756030790::res://godot/exported/133200997/export-a7394e84af2454964ccc0f8c330d9d84-lightning_launcher.scn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn::7f3fb4c25f058edaca99cd1190050380::1756031017::res://godot/exported/133200997/export-a7394e84af2454964ccc0f8c330d9d84-lightning_launcher.scn
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn::47637c20367d3fee33d896f81fb20c6d::1752136867::res://godot/exported/133200997/export-524bb7ba0bc9938150db9a50e7f31185-Sniper.scn
 res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn::613349157b7e1fe79696dc7449175505::1751606288::res://godot/exported/133200997/export-d8493dc39fcc01a6b714465983b62ffe-RocketLauncher.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn::82c6ff0b5b965e8e0e6a7a9a4c961fb0::1754644582::res://godot/exported/133200997/export-412a35c7e3d1987cacdc367b2d19458f-EnemyMinigunBullet.scn

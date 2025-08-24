@@ -16,3 +16,8 @@ res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Enemy/Biomancer.gd
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn
+res://Assets/Scripts/Enemy/Minibosses/Bruiser.gd
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
