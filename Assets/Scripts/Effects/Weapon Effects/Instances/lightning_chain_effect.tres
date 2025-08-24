@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_66rtl")
 max_chains = 3
-chain_radius = 150.0
+chain_radius = 100.0
 damage_per_hit = 10.0
 initial_target_cone_angle = 60.0
 target_collision_mask = 2

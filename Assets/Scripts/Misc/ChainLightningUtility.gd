@@ -49,24 +49,25 @@ static func execute_chain_lightning(
 		var next_target_in_chain: Node2D = null
 		var current_exclusions = nodes_to_exclude + targets_hit_this_chain
 		
-		if not is_instance_valid(current_chain_target): # No valid previous target to chain from
+		if not is_instance_valid(current_chain_target):
 			next_target_in_chain = _find_target_in_cone(
-				space_state,
-				origin_pos,
-				initial_aim_dir,
-				chain_radius * 1.5,
-				60.0,
-				target_collision_mask,
-				current_exclusions
-			)
-		else: # Chain from the last hit target's position
+			space_state,
+			origin_pos,
+			initial_aim_dir,
+			chain_radius * 1.5,
+			60.0,
+			target_collision_mask,
+			current_exclusions
+		)
+		if not is_instance_valid(next_target_in_chain):
+			# fallback: just grab closest in radius
 			next_target_in_chain = _find_closest_target_in_radius(
-				space_state,
-				last_hit_pos,
-				chain_radius,
-				target_collision_mask,
-				current_exclusions
-			)
+			space_state,
+			origin_pos,
+			chain_radius * 1.5,
+			target_collision_mask,
+			current_exclusions
+		)
 		
 		if is_instance_valid(next_target_in_chain):
 			targets_hit_this_chain.append(next_target_in_chain)
