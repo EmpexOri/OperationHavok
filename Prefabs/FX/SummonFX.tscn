@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://biqd11qhkttmh"]
+
+[ext_resource type="Texture2D" uid="uid://cxcf1qnt1owcy" path="res://Assets/Art/Sprites/FX/BluePoof.png" id="1_tnutu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fqqo"]
+atlas = ExtResource("1_tnutu")
+region = Rect2(0, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gwkg"]
+atlas = ExtResource("1_tnutu")
+region = Rect2(48, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e0qd"]
+atlas = ExtResource("1_tnutu")
+region = Rect2(96, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk3m1"]
+atlas = ExtResource("1_tnutu")
+region = Rect2(144, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2h0f"]
+atlas = ExtResource("1_tnutu")
+region = Rect2(192, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3y0k"]
+atlas = ExtResource("1_tnutu")
+region = Rect2(240, 0, 48, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enawd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fqqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gwkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e0qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk3m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2h0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3y0k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SummonFx" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_enawd")
+autoplay = "default"

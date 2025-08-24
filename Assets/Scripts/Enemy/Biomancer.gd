@@ -1,6 +1,13 @@
 extends Enemy
 
 var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn")
+#Special Enemies we can spawn
+var Gatling = preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn")
+var Needling = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
+var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/Goolum.tscn")
+
+var SummonFX = preload("res://Prefabs/FX/SummonFX.tscn")
+
 var firetimer: Timer
 
 func start():
@@ -41,10 +48,31 @@ func start_timer():
 	var timer = Timer.new()
 	timer.wait_time = randf_range(4, 8)
 	timer.one_shot = true
-	timer.connect("timeout", Callable(self, "spawn"))
+	timer.connect("timeout", Callable(self, "_begin_summon"))
 	add_child(timer)
 	timer.start()
 
+# --- Show FX before spawning ---
+func _begin_summon():
+	# Play FX first
+	var fx = SummonFX.instantiate()
+	fx.global_position = global_position
+	get_parent().add_child(fx)
+
+	# When FX animation is done -> call real spawn
+	if fx.has_signal("finished"):
+		fx.connect("finished", Callable(self, "_on_summon_fx_finished").bind(fx))
+	else:
+		# fallback if no signal exists, just wait ~1s
+		await get_tree().create_timer(1.0).timeout
+		_on_summon_fx_finished(fx)
+
+func _on_summon_fx_finished(fx):
+	if is_instance_valid(fx):
+		fx.queue_free()
+	spawn() # Actually summon enemies after FX ends <3
+
+# --- Actual New summoning logic ---
 func spawn():
 	if get_tree().get_nodes_in_group(SummonGroup).size() >= 51:
 		start_timer()
@@ -66,7 +94,7 @@ func spawn():
 		query.collide_with_areas = false
 		query.collision_mask = 1 << 2  # Assumes environment layer is 2
 		if space_state.intersect_point(query).is_empty():
-			var instance = FleshSpawn.instantiate()
+			var instance = _pick_enemy().instantiate()
 			instance.name = "Enemy_" + str(randi())
 			instance.Group = Group
 			instance.SummonGroup = SummonGroup
@@ -75,6 +103,13 @@ func spawn():
 			spawned += 1
 
 	start_timer()
+
+# --- NEW FUNCTION: 10% chance to summon special enemy ---
+func _pick_enemy() -> PackedScene:
+	if randf() <= 0.1: # 10% chance
+		var specials = [Gatling, Needling, Goolum]
+		return specials.pick_random()
+	return FleshSpawn
 
 func fire():
 	var target = resolve_target()

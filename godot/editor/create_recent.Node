@@ -1,9 +1,9 @@
+AnimatedSprite2D
 OptionButton
 Button
 Control
 ColorRect
 CanvasLayer
-AnimatedSprite2D
 LightOccluder2D
 AudioStreamPlayer
 CheckButton
@@ -12,4 +12,3 @@ GPUParticles2D
 Node2D
 TileMapLayer
 Area2D
-CharacterBody2D
