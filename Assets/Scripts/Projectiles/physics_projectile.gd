@@ -28,7 +28,7 @@ func _ready() -> void:
 	# Connect signals
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_handle_movement(delta) # Call the interal movement method
 	_process_effects(delta) # Call the interal effects process method
 
