@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://nfqjhf1l51te"]
 
 [ext_resource type="PackedScene" uid="uid://uy66843n3v0h" path="res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn" id="1_pw2cs"]
-[ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="2_a3p7d"]
+[ext_resource type="Texture2D" uid="uid://d2f37t4vqnaew" path="res://Assets/Art/PlaceHolders/BaseballSprite.png" id="2_a3p7d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1toi"]
 radius = 3.0
@@ -13,5 +13,5 @@ base_speed = 500.0
 shape = SubResource("CircleShape2D_f1toi")
 
 [node name="Sprite2D" parent="." index="1"]
-scale = Vector2(0.025, 0.025)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_a3p7d")
