@@ -15,3 +15,4 @@ res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Assets/Scripts/Projectiles/physics_projectile.gd
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
+res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd

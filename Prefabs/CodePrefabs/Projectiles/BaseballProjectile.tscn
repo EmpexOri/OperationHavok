@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d2f37t4vqnaew" path="res://Assets/Art/PlaceHolders/BaseballSprite.png" id="2_a3p7d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1toi"]
-radius = 3.0
+radius = 4.0
 
 [node name="BaseballProjectile" instance=ExtResource("1_pw2cs")]
 base_speed = 500.0
