@@ -91,11 +91,11 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 	
 	# Configure collision layers depending on the projectile owner
 	if entity_owner == "Enemy":
-		collision_layer = 4  # Enemy projectile layer
-		collision_mask = 1   # Collides with player layer
+		self.collision_layer = 1 << 3  # 1 shifted left by 3 bits = 8 (for Layer 4)
+		self.collision_mask = 1 << 0   # 1 shifted left by 0 bits = 1 (for Layer 1)
 	elif entity_owner == "Player":
-		collision_layer = 3  # Player projectile layer
-		collision_mask = 2   # Collides with enemy layer
+		self.collision_layer = 1 << 2  # 1 shifted left by 2 bits = 4 (for Layer 3)
+		self.collision_mask = 1 << 1   # 1 shifted left by 1 bit = 2 (for Layer 2)
 	else:
 		print("Unknown owner set for projectile")  # Fallback warning
 	

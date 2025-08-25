@@ -25,3 +25,5 @@ res://Assets/Scripts/Enemy/Minibosses/Bruiser.gd
 res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
 res://Assets/Scripts/Player Scripts/player.gd
 res://Assets/Scripts/Projectiles/physics_projectile.gd
+res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
+res://Assets/Scripts/Projectiles/projectile.gd
