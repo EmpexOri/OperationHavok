@@ -24,3 +24,4 @@ res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
 res://Assets/Scripts/Enemy/Minibosses/Bruiser.gd
 res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
 res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Projectiles/physics_projectile.gd

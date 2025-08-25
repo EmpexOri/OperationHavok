@@ -7,6 +7,8 @@
 radius = 4.0
 
 [node name="BaseballProjectile" instance=ExtResource("1_pw2cs")]
+collision_layer = 0
+collision_mask = 0
 base_speed = 500.0
 
 [node name="CollisionShape2D" parent="." index="0"]
