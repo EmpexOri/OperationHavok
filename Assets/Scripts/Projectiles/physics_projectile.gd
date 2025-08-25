@@ -94,15 +94,17 @@ func _on_collision(collision: KinematicCollision2D):
 	if not is_instance_valid(body):
 		return
 	
+	var destroy_projectile = true
+	
 	if body.has_method("deal_damage"):
 			body.deal_damage(damage, global_position)
 	
 	if current_effects:
 		for effect in current_effects:
 			if effect.has_method("on_hit"):
-				if effect.on_hit(self, body, collision):
-					queue_free()
-				else:
-					return
+				if not effect.on_hit(self, body, collision):
+					destroy_projectile = false
 	
-	queue_free()
+	if destroy_projectile:
+		print("Destroying projectile")
+		queue_free()
