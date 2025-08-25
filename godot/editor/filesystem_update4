@@ -13,6 +13,17 @@ res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Enemy/Needling.gd
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
+res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunProjectile.tscn
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Prefabs/CodePrefabs/Abilities/SniperBeam.tscn
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
+res://Assets/Scripts/Effects/Projectile Effects/Instances/damageovertime_effect.tres
+res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotGunBullet.tscn

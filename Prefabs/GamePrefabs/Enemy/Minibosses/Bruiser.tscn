@@ -94,8 +94,7 @@ texture_filter = 1
 material = ExtResource("3_smcl5")
 sprite_frames = SubResource("SpriteFrames_p6i67")
 animation = &"move"
-frame = 2
-frame_progress = 0.981885
+frame_progress = 0.971433
 
 [node name="Area2D" type="Area2D" parent="."]
 

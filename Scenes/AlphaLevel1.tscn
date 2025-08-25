@@ -365,7 +365,6 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(62, 34)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")

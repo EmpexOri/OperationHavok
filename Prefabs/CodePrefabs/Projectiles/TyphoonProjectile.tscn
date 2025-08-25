@@ -146,7 +146,7 @@ visible = false
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_t3syc")
 animation = &"BallLightning"
-frame_progress = 0.69332
+frame_progress = 0.608334
 offset = Vector2(0, -20)
 
 [node name="Explosion" type="Node2D" parent="." index="5"]
@@ -180,6 +180,7 @@ scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_umuyd")
 animation = &"explode"
 autoplay = "explode"
+frame_progress = 0.354062
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
 [connection signal="timeout" from="Explosion/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

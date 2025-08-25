@@ -8,6 +8,7 @@ const weapon_scenes = {
 	"Shotgun": preload("res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn"),
 	"DragonShotgun": preload("res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn"),
 	"Sniper": preload("res://Prefabs/CodePrefabs/Weapons/Sniper.tscn"),
+	"SniperBeam": preload("res://Prefabs/CodePrefabs/Weapons/beamer.tscn"),
 	"LightningLauncher": preload("res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn"),
 	"RocketLauncher": preload("res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn"),
 	"RocketMinigun": preload("res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn"),
