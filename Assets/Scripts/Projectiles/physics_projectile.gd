@@ -26,7 +26,7 @@ var _space_state: PhysicsDirectSpaceState2D
 func _ready() -> void:
 	add_to_group("Bullet")
 	# Connect signals
-	visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
+	#visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta) # Call the interal movement method
