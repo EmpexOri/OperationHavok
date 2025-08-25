@@ -287,7 +287,17 @@ func _begin_fire_animation():
 	aim_line.modulate.a = 1.0
 	is_firing = true
 	sprite.play("fire")
-
+	
+	# Fallback: force stop after 1s if animation doesn't finish
+	var stop_timer = get_tree().create_timer(1.0)
+	stop_timer.timeout.connect(Callable(self, "_force_stop_fire"))
+	
+func _force_stop_fire():
+	if is_firing:  # still stuck
+		sprite.play("idle")
+		aim_line.visible = false
+		is_firing = false
+		
 func move_away_from_player():
 	var player = resolve_target()
 	if not player:
