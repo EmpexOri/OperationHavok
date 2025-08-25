@@ -17,7 +17,7 @@ var queued_fire = false
 var fire_direction = Vector2.ZERO
 var is_firing = false
 
-var flee_timer := 0.0
+var flee_timer := 3.0
 var is_fleeing := false
 const FLEE_DISTANCE := 120.0
 const FLEE_RECALCULATE_INTERVAL := 0.5

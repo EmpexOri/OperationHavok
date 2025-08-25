@@ -7,12 +7,12 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Player Scripts/player.gd
 res://Prefabs/FX/SummonFX.tscn
 res://Prefabs/CodePrefabs/Abilities/LightningLauncher.tscn
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
-res://Assets/Scripts/Projectiles/physics_projectile.gd
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
-res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Enemy/Needling.gd
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
