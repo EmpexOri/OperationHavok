@@ -121,7 +121,7 @@ func _on_area_2d_body_entered(body: Node2D):
 	elif body.is_in_group("Enemy") and not is_ramming:
 		# Do nothing when bumping normally
 		pass
-	elif body.is_in_group("Bullet") or body.is_in_group("Minion"):
+	elif body.is_in_group("Minion"):
 		body.queue_free()
 		deal_damage(10)
 

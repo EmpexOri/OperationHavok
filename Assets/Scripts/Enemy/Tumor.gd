@@ -138,7 +138,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		collision_shape.disabled = false
 		return
 
-	if is_in_group("Enemy") and (body.is_in_group("Bullet") or body.is_in_group("Minion")):
+	if is_in_group("Enemy") and body.is_in_group("Minion"):
 		deal_damage(25, body.global_position)
 		body.queue_free()
 	elif body.is_in_group("Spell"):
