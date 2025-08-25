@@ -107,7 +107,7 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 		main_scene.add_child(projectile_instance)
 
 	var position = spawn_position + direction * fire_offset
-	projectile_instance.start(position, direction, owning_entity, projectile_effects.duplicate(true), space_state, damage_multiplier)
+	projectile_instance.start(position, direction, owning_entity, _create_fresh_effect_instances(), space_state, damage_multiplier)
 
 # Adds an effect to the weapon or projectiles
 func add_effect(new_effect: Resource) -> void:
@@ -148,6 +148,15 @@ func remove_effect(effect_to_remove: Resource) -> void:
 		print("Removed weapon effect: ", effect_to_remove.effect_name)
 	else:
 		print("Attempted to remove an effect that does not exist.")
+
+# Create a fresh instance of the effect for each projectile
+func _create_fresh_effect_instances() -> Array[ProjectileEffect]:
+	var fresh_effects: Array[ProjectileEffect] = []
+	for effect in projectile_effects:
+		if effect:
+			var new_effect = effect.get_script().new()
+			fresh_effects.append(new_effect)
+	return fresh_effects
 
 var owning_entity_node: Node2D = null
 
