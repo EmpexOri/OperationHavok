@@ -11,6 +11,8 @@ const PAUSE_MENU_SCENE = preload("res://Scenes/Options/PauseMenu.tscn")
 @onready var roadblock2 = get_node("../Test2Area/RoadBlock2")
 @onready var roadblock2_col = get_node("../Test2Area/RoadBlock2/CollisionShape2D")
 
+@onready var DeathLabel: Label = $"../PlayerUI/YouDiedLabel"
+
 var PauseMenu
 
 func _ready():
@@ -28,7 +30,16 @@ func _ready():
 
 	roadblock2.visible = false
 	roadblock2_col.disabled = true
+
+func _process(delta):
+	var TimeInSeconds = 2
 	
+	if GlobalPlayer.PlayerHP <= 0:
+		DeathLabel.visible = true
+		await get_tree().create_timer(TimeInSeconds).timeout
+	else:
+		DeathLabel.visible = false
+
 func toggle_pause_menu():
 	if PauseMenu.visible:
 		# Hide menu and unpause

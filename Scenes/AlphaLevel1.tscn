@@ -63,6 +63,7 @@ polygon = PackedVector2Array(469, 201, 469, 234, 570, 234, 570, 201, 546, 199, 5
 polygon = PackedVector2Array(-60, 940, -60, 1095, -76, 1095, -76, 939)
 
 [node name="World" type="Node2D"]
+z_index = 10
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("1_xngmm")
@@ -363,6 +364,22 @@ theme = ExtResource("27_kbd7x")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="YouDiedLabel" type="Label" parent="PlayerUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -192.0
+offset_right = 343.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "You died"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(62, 34)

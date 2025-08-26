@@ -7,23 +7,13 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/Enemy/Biomancer.gd
-res://Assets/Scripts/Enemy/FleshSpawn.gd
-res://Assets/Scripts/Enemy/Gatling.gd
-res://Assets/Scripts/Enemy/Hordling.gd
-res://Assets/Scripts/Enemy/MalignantTumor.gd
-res://Assets/Scripts/Enemy/Needling.gd
-res://Assets/Scripts/Enemy/Spewling.gd
-res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
 res://Prefabs/FX/SummonFX.tscn
 res://Prefabs/CodePrefabs/Abilities/LightningLauncher.tscn
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
-res://Assets/Scripts/Enemy/Minibosses/Bruiser.gd
-res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
-res://Assets/Scripts/Player Scripts/player.gd
-res://Assets/Scripts/Projectiles/physics_projectile.gd
 res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
-res://Assets/Scripts/Projectiles/projectile.gd
+res://Scenes/Options/OptionsScene.tscn
+res://Prefabs/GamePrefabs/Player/player.tscn
