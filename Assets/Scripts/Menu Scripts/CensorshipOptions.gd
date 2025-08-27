@@ -3,6 +3,7 @@ extends CheckButton
 @onready var censor_toggle := get_node_or_null("ScrollContainer/VBoxContainer/CensorBlood")
 
 func _ready():
+	var censor_toggle := get_node_or_null("ScrollContainer/VBoxContainer/CensorBlood")
 	# Check if the toggle exists
 	if censor_toggle:
 		# Initialize toggle state from Smearcanvas

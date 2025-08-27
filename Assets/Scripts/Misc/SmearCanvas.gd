@@ -16,6 +16,8 @@ var smears: Array = []
 
 func _ready():
 	smear_texture = preload("res://Assets/Art/PlaceHolders/SmallSplatWhite.png")
+	z_index = 1  # ensure it's above tiles
+	visible = true
 
 func _process(delta: float):
 	var fade_multiplier := CULL_FADE_MULTIPLIER if smears.size() > CULL_THRESHOLD else 1.0
@@ -31,20 +33,22 @@ func _process(delta: float):
 func _draw():
 	for smear in smears:
 		var ratio = clamp(smear["time_left"] / FADE_TIME, 0.0, 1.0)
-		var mod_color = smear.get("color", Color(1, 1, 1)) * Color(1, 1, 1, ratio)
+		var mod_color = smear.get("color", Color(1, 1, 1, 1)) * Color(1, 1, 1, ratio)
 		draw_texture(smear_texture, smear["position"], mod_color)
 
-func spawn_smear(position: Vector2, color := nullcolor) -> void:
+func spawn_smear(global_position: Vector2, color := nullcolor) -> void:
 	if smears.size() >= MAX_SMEARS:
 		smears.pop_front()
 
 	if color == nullcolor:
 		color = get_active_blood_color()
 
+	# Convert global to local coordinates
+	var local_pos = to_local(global_position)
 	var varied_color = randomize_color(color, 0.06)
 
 	smears.append({
-		"position": position,
+		"position": local_pos,
 		"time_left": FADE_TIME,
 		"color": varied_color,
 	})
@@ -77,7 +81,6 @@ func randomize_color(base_color: Color, variation := 0.1) -> Color:
 func get_active_blood_color() -> Color:
 	return Color(censoredbloodcolor) if blood_censorship_enabled else Color(bloodcolor)
 	
-
 func toggle_blood_censorship(state: bool) -> void:
 	blood_censorship_enabled = state
 	print("Blood censorship is now: ", state)

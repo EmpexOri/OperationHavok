@@ -24,3 +24,6 @@ res://Scenes/Options/CommandoSkillTree.tscn
 res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 res://Assets/Scripts/LevelControllers/Level1/TutorialArea.gd
 res://Assets/Scripts/LevelControllers/Level1/TutorialTeleporter.gd
+res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd
+res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Misc/SmearCanvas.gd

@@ -56,35 +56,25 @@ func spawn_tumour_particles(position: Vector2) -> void:
 func _spawn_particles(position: Vector2, pool: Array) -> void:
 	var instance: Node2D = null
 
-	# Try to find an invisible particle from the pool
 	for p in pool:
-		if not p.visible and not p.get_node("Particles").emitting:
-			#print("Found free particle.")
+		var particles := p.get_node("Particles") as GPUParticles2D
+		if not p.visible and (particles == null or not particles.emitting):
 			instance = p
-			break
-		else:
-			#print("Checked particle — Visible:", p.visible, ", Emitting:", p.get_node("Particles").emitting)
-			break
+			break  # break only when found
 
-	# If no particle is available, print a warning
 	if instance == null:
 		print("No free particles available! Consider increasing POOL_SIZE.")
 		return
 
-	# Set position and make the particle visible
 	instance.global_position = position
 	instance.visible = true
 
-	# Get the particle system and start emitting, THIS CAUSES ISSUES IF CHANGED WAAAAAAAAAAAAAAAA
-	var particles = instance.get_node("Particles") as GPUParticles2D
-	particles.emitting = false  # Stop it cleanly
-	particles.restart()         # Reset its state
-	particles.emitting = true   # Start new emission
+	var particles := instance.get_node("Particles") as GPUParticles2D
+	particles.emitting = false
+	particles.restart()
+	particles.emitting = true
 
-	# Calculate the total time for the reset (use lifetime + 0.0 to ensure a float value)
 	var total_time: float = particles.lifetime + 0.1
-
-	# Reset particle after its lifetime expires
 	_reset_particle_after_delay(instance, particles, total_time)
 
 # Reset particle after its lifetime expires
