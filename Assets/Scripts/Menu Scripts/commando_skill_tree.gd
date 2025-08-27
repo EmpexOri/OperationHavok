@@ -67,6 +67,8 @@ func _on_skill_button_used(button: SkillButton):
 			upgrade_minigun_ability("RocketMinigun")
 		"TyphoonCannon":
 			upgrade_minigun_ability("TyphoonCannon")
+		"BaseballGrenade":
+			upgrade_grenade_ability("BaseballLauncher")
 
 func restore_unlocked_skills(node):
 	# Restores the unlocked state of skills from saved data
