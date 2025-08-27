@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(232, 234)
+position = Vector2(241, 224)
 texture = ExtResource("2_k5h02")
 
 [node name="BoxBack" type="Sprite2D" parent="."]
@@ -47,9 +47,9 @@ texture = ExtResource("19_k5h02")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -319.0
+offset_left = -310.0
 offset_top = 32.0
-offset_right = 143.0
+offset_right = 153.0
 offset_bottom = 55.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -61,9 +61,9 @@ horizontal_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -319.0
+offset_left = -311.0
 offset_top = 56.0
-offset_right = 143.0
+offset_right = 152.0
 offset_bottom = 79.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -73,9 +73,10 @@ horizontal_alignment = 1
 
 [node name="WeaponSwapTitle" type="Label" parent="."]
 z_index = 10
-offset_top = 339.0
-offset_right = 155.0
-offset_bottom = 373.0
+offset_left = 8.0
+offset_top = 330.0
+offset_right = 163.0
+offset_bottom = 364.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -158,10 +159,10 @@ texture_hover = ExtResource("9_kcvj1")
 texture_focused = ExtResource("9_kcvj1")
 
 [node name="GrenadeTitle" type="Label" parent="."]
-offset_left = 155.0
-offset_top = 339.0
-offset_right = 309.0
-offset_bottom = 373.0
+offset_left = 164.0
+offset_top = 330.0
+offset_right = 318.0
+offset_bottom = 364.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -222,10 +223,10 @@ texture_hover = ExtResource("12_2p3y5")
 texture_focused = ExtResource("12_2p3y5")
 
 [node name="MinigunTitle" type="Label" parent="."]
-offset_left = 309.0
-offset_top = 339.0
-offset_right = 463.0
-offset_bottom = 373.0
+offset_left = 318.0
+offset_top = 330.0
+offset_right = 472.0
+offset_bottom = 364.0
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
@@ -288,10 +289,10 @@ texture_focused = ExtResource("15_scflt")
 [node name="BackButton" type="Button" parent="."]
 process_mode = 3
 z_index = 10
-offset_left = 469.0
+offset_left = 477.0
 offset_top = 321.0
-offset_right = 631.0
-offset_bottom = 352.0
+offset_right = 626.0
+offset_bottom = 348.0
 focus_neighbor_top = NodePath("../WeaponSwapTitle/DragonsBreath")
 theme_override_fonts/font = ExtResource("2_74uq5")
 text = "Back"
