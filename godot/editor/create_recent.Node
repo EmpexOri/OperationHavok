@@ -1,9 +1,9 @@
+ColorRect
 Label
 AnimatedSprite2D
 OptionButton
 Button
 Control
-ColorRect
 CanvasLayer
 LightOccluder2D
 AudioStreamPlayer

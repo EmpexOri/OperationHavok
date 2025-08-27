@@ -365,17 +365,27 @@ theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="DeathBG" type="ColorRect" parent="PlayerUI"]
+visible = false
+offset_left = 157.0
+offset_top = 137.0
+offset_right = 490.0
+offset_bottom = 222.0
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.623529)
+
 [node name="YouDiedLabel" type="Label" parent="PlayerUI"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -296.0
-offset_top = -192.0
-offset_right = 343.0
-offset_bottom = 167.0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.588235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_m3m5o")
 theme_override_font_sizes/font_size = 50
 text = "You died"
 horizontal_alignment = 1
