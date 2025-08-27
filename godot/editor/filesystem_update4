@@ -17,3 +17,5 @@ res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
 res://Scenes/Options/OptionsScene.tscn
+res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
+res://Assets/Scripts/Player Scripts/player.gd
