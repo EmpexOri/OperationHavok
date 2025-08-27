@@ -18,3 +18,4 @@ res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Prefabs/GamePrefabs/Player/player.tscn
 res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd

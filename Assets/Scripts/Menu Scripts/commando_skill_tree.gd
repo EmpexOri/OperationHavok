@@ -13,7 +13,11 @@ func _ready():
 	update_perk_points_label()
 	update_skill_trees_shown()
 	connect_skill_buttons(self)       
-	restore_unlocked_skills(self)      
+	
+	# Restore the states of each skill tree   
+	restore_unlocked_skills(WeaponTree)   
+	restore_unlocked_skills(GrenadeTree)  
+	restore_unlocked_skills(MinigunTree)  
 
 func _process(_delta):
 	# Making sure the perk points label stays updated
