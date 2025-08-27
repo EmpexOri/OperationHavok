@@ -27,8 +27,12 @@ func draw_connection_line():
 		var local_start = Line.to_local(start)
 		var local_end = Line.to_local(end)
 		
+		# Ensuring the line is centered
 		local_start.x -= 2
 		local_end.x -= 2
+		
+		# Making sure line appears on top of everything else
+		Line.z_index = 5
 		
 		Line.clear_points()
 		Line.add_point(local_start)
