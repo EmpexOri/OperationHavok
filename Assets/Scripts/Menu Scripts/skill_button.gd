@@ -68,7 +68,8 @@ func _on_pressed() -> void:
 
 func set_unlocked_state(state: bool):
 	unlocked = state
-	label.visible = true
+	# Make the locked symbol disappear if the skill is unlocked
+	label.visible = not state
 	update_visuals()
 
 func update_visuals():

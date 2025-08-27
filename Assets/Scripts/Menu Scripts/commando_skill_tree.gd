@@ -13,7 +13,11 @@ func _ready():
 	update_perk_points_label()
 	update_skill_trees_shown()
 	connect_skill_buttons(self)       
-	restore_unlocked_skills(self)      
+	
+	# Restore the states of each skill tree   
+	restore_unlocked_skills(WeaponTree)   
+	restore_unlocked_skills(GrenadeTree)  
+	restore_unlocked_skills(MinigunTree)  
 
 func _process(_delta):
 	# Making sure the perk points label stays updated
@@ -63,6 +67,8 @@ func _on_skill_button_used(button: SkillButton):
 			upgrade_minigun_ability("RocketMinigun")
 		"TyphoonCannon":
 			upgrade_minigun_ability("TyphoonCannon")
+		"BaseballGrenade":
+			upgrade_grenade_ability("BaseballLauncher")
 
 func restore_unlocked_skills(node):
 	# Restores the unlocked state of skills from saved data
