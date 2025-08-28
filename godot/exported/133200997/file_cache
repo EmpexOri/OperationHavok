@@ -104,7 +104,7 @@ res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn::691795a8450fcf6885
 res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn::608110f6bc0aa3443662555828d36518::1755503511::res://godot/exported/133200997/export-d803737dd54ec507529f69c3b36f2c68-TyphoonCannon.scn
 res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres::7f230e02b07b271c210a7b0885b299ae::1756341618::res://godot/exported/133200997/export-97f519d23a91f8e479fdb77362e24ce1-phys_bounce_effect.res
 res://Prefabs/CodePrefabs/Abilities/TyphoonCannon.tscn::c8feac0c27e72f532fdc6796cf5a5781::1755690777::res://godot/exported/133200997/export-42d88b5a83b057c4298a2fe91811541c-TyphoonCannon.scn
-res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn::908fd4e52f42b2cbafb5541d8ef6badb::1756341752::res://godot/exported/133200997/export-1af042dd8aef5959c8c4860c19e42960-BaseballProjectile.scn
+res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn::908fd4e52f42b2cbafb5541d8ef6badb::1756341905::res://godot/exported/133200997/export-1af042dd8aef5959c8c4860c19e42960-BaseballProjectile.scn
 res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn::e5ad1d5ad42ea93caa132b96e2704bee::1755690776::res://godot/exported/133200997/export-5f3b19b9b7b60b4400447319be5fd1e3-physics_projectile.scn
 res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn::6e5e766f4dca48a4d9efba6f7de1ef84::1756341743::res://godot/exported/133200997/export-ca89e7aea5b2161b2892a0409eafdd6d-BaseBallLauncher.scn
 res://Prefabs/FX/SummonFX.tscn::1ff6b662975507571f18826bb0e00fcb::1756341619::res://godot/exported/133200997/export-f94ae1b8c0ff42db39b421bd4e8aa836-SummonFX.scn
