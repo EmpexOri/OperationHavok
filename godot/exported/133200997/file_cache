@@ -9,12 +9,12 @@ res://Scenes/Misc/enemy_2.tscn::ab7f37d5301d939ffffa44306981e08c::1746544112::re
 res://Scenes/Misc/enemy_3.tscn::f611642ff2cb3929c1a7fca32e8accbf::1746544112::res://godot/exported/133200997/export-2641ea07c8b59c9acb907e14fdce157e-enemy_3.scn
 res://Scenes/Misc/enemy_4.tscn::607983f4c5f5ff887bb8566fddad8890::1746544112::res://godot/exported/133200997/export-b2d9fe977b129f8f4f9aa6f06b4bdd2f-enemy_4.scn
 res://Scenes/Misc/TestSkillTree.tscn::1311094229e1fde9a916c95e2efe68c6::1755690777::res://godot/exported/133200997/export-5ce8dc265028a692ec88ea9460f63522-TestSkillTree.scn
-res://Scenes/Options/CommandoSkillTree.tscn::273eee1939bf3b7fc9062806166ba86b::1755690952::res://godot/exported/133200997/export-7ad3627efdf1bee1ed60b36e9f0f1ca3-CommandoSkillTree.scn
+res://Scenes/Options/CommandoSkillTree.tscn::82867ac1370bb72e198df9114c9a3781::1756291882::res://godot/exported/133200997/export-7ad3627efdf1bee1ed60b36e9f0f1ca3-CommandoSkillTree.scn
 res://Scenes/Options/GlobalBrightness.tscn::feea4013be4f454e15e077c2c5444381::1754030057::res://godot/exported/133200997/export-6af7cfd5cd45ffafc190f97384099eea-GlobalBrightness.scn
 res://Scenes/Options/OptionsScene.tscn::395e20d524562fb96c8c31113a31f28f::1755690776::res://godot/exported/133200997/export-4df2f2e968ddf3a664c48e176447bd7a-OptionsScene.scn
 res://Scenes/Options/PauseMenu.tscn::44cdc1787a2c252744c199766fc67664::1755690776::res://godot/exported/133200997/export-160b170cfd0d52b71df079fc0d9f398c-PauseMenu.scn
 res://Scenes/Options/SkillButton.tscn::5970b42f965577a3176524a83d2c6c3e::1755690776::res://godot/exported/133200997/export-0637e98af7127dedcdaa51de7fc8657d-SkillButton.scn
-res://Scenes/AlphaLevel1.tscn::b57b2e886ff427d69dbd5a35f0e6d5a8::1756030790::res://godot/exported/133200997/export-584ac8825b179d858c21bc7f315397f5-AlphaLevel1.scn
+res://Scenes/AlphaLevel1.tscn::342feedabdd0b74edd2da70727f55a9f::1756291882::res://godot/exported/133200997/export-584ac8825b179d858c21bc7f315397f5-AlphaLevel1.scn
 res://Scenes/GlobalAudioController.tscn::6b342cdc6ecc304d5b27fff392afcfba::1754644581::res://godot/exported/133200997/export-e9da480b9e8d980faa90c5005ef88967-GlobalAudioController.scn
 res://Scenes/LevelSelectScene.tscn::57d4a82ed0f8b629e2a8ae716f8bd7ce::1754644581::res://godot/exported/133200997/export-42bef879e1f73c4734ecd2d6f9327bae-LevelSelectScene.scn
 res://Scenes/MenuScene.tscn::7ee5eb99e8dfa1fbe14a69808c6be4fc::1755690776::res://godot/exported/133200997/export-716ac41b21035b24bd7267cbf66bdb61-MenuScene.scn
@@ -40,7 +40,7 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn::2
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn::75cf287db098704cbcf40239df907574::1751606289::res://godot/exported/133200997/export-7c982ddb2a62ec8faa49215d3affdb96-enemy_bullet.scn
 res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn::2f70e3a8b73595777dba4bdc695ba6bb::1754644584::res://godot/exported/133200997/export-620b5c2d6556c39ae70f736efe58bae3-beam_projectile.scn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn::e7c31609bee04cd4560956b54bc37a23::1755690775::res://godot/exported/133200997/export-ecd280d1f24e7c44d4337a598f35561d-bullet.scn
-res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn::c47fea05f29f189d20aa7ed7b1881ca8::1754644583::res://godot/exported/133200997/export-122792c99ee1b01d3591b5351df35f28-DragonShotgunProjectile.scn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn::89f8e7b9cd8a1498321508baf4b712ee::1756291882::res://godot/exported/133200997/export-122792c99ee1b01d3591b5351df35f28-DragonShotgunProjectile.scn
 res://Prefabs/CodePrefabs/Projectiles/katana_projectile.tscn::8d6adda01d28beae272588df49076b5a::1747635727::res://godot/exported/133200997/export-c53b351c0612b21b7e4aedf3c726d0f0-katana_projectile.scn
 res://Prefabs/CodePrefabs/Projectiles/MinigunBullet.tscn::f7395bf0a61cce7ff8bb5847807f3c4f::1751606289::res://godot/exported/133200997/export-3b95fb5438009d8dd200565cccca1662-MinigunBullet.scn
 res://Prefabs/CodePrefabs/Projectiles/MinigunProjectile.tscn::0fbfb3d2f3763f09802b03d878800ac4::1755690776::res://godot/exported/133200997/export-9fe5676b4aad8d644e29bef93f8d3790-MinigunProjectile.scn
@@ -53,14 +53,13 @@ res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn::333f31f9404708
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn::3bdf20db4b5d74dde5fa8277d8a9a542::1754644583::res://godot/exported/133200997/export-253a8296c4d08a6be4e0b9f110f9075e-SpewlingWeapon.scn
 res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn::a68f32534d1a15e48ee7cb5d9ede7888::1754644583::res://godot/exported/133200997/export-fcfc3a4bfb1b74eb573e6fb824abc3dc-akimbo_smg.scn
 res://Prefabs/CodePrefabs/Weapons/beamer.tscn::7ae88bcce628330a348b11dca100a9a5::1754644584::res://godot/exported/133200997/export-26dc7bf85d61e347012b6542710dc119-beamer.scn
-res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn::e0b416093a2d87aea53e8377c83ceac6::1754644583::res://godot/exported/133200997/export-f0dd18041c63054e5eb016e5bab15e66-DragonShotgun.scn
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn::ecac75b91e927e19a991774e2cc8b161::1756291882::res://godot/exported/133200997/export-f0dd18041c63054e5eb016e5bab15e66-DragonShotgun.scn
 res://Prefabs/CodePrefabs/Weapons/katana.tscn::6d291aca3acbea32e1e5bf56caf09a9e::1744703374::res://godot/exported/133200997/export-758dfde3cdd5c475ceaeaec9e9223d3d-katana.scn
 res://Prefabs/CodePrefabs/Weapons/Minigun.tscn::f8be31d651ce74c3f258fe772512ae5e::1748234409::res://godot/exported/133200997/export-5ca5513a1d28424ccd6f3adaafe7ec83-Minigun.scn
 res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn::62dd5a04ba2ab29a53aa0594997fcc7c::1751606288::res://godot/exported/133200997/export-845516808ecdf4f5d7dc9f16588363f9-rocket_launcher.scn
 res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn::ee06c180879e2889341b26a045267e9c::1754644583::res://godot/exported/133200997/export-cc8d6fa8feaf66bab3ad07f64deca6df-Shotgun.scn
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn::0fb0fbeebe66282bf2aca0a04a1bf57f::1755690775::res://godot/exported/133200997/export-a5ce0482df6f95359dab71e26d0ac915-Smg.scn
 res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn::425cfabd9d65da880fa2fee04e8f675d::1755690776::res://godot/exported/133200997/export-1530bb056a3beb085418d8ea772a766a-Biomancer.scn
-res://Prefabs/GamePrefabs/Enemy/Bruiser.tscn::0ea4bd0e105afdf2a3b5b6fe24c6b5cf::1751026259::res://godot/exported/133200997/export-0bdb40f997aa1fcc41f0f4e1640e6bcf-Bruiser.scn
 res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn::96813c535d4dd51ef83553dcc8df3450::1751606290::res://godot/exported/133200997/export-6bd700a7eefb1b310d5dcadd9fd1a6a7-FleshSpawn.scn
 res://Prefabs/GamePrefabs/Enemy/Hordling.tscn::0bce508a8d783bd81ab6e7853a27b791::1755690776::res://godot/exported/133200997/export-5deb54aaad6b540157aaba13511155a1-Hordling.scn
 res://Prefabs/GamePrefabs/Enemy/Needling.tscn::e72c68003f17c90ce739729189e3da04::1754644581::res://godot/exported/133200997/export-4401882ebe4330c19f10995f071a7244-Needling.scn
@@ -76,7 +75,7 @@ res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres::e6e890de6972522
 res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn::cd6b257f843e3de74abe570a180e8672::1748246376::res://godot/exported/133200997/export-cf109abbb6fce1d03d119501e92d698b-MetallicGore.scn
 res://Prefabs/CodePrefabs/Projectiles/SniperBullet.tscn::7198e8a2c1da2bb0344bc65063750d85::1752136867::res://godot/exported/133200997/export-09a7774c2ccf114e34c337be4c971f83-SniperBullet.scn
 res://Prefabs/CodePrefabs/Weapons/Grenade.tscn::55fa518cbc3209db0bfbced623419c64::1755690776::res://godot/exported/133200997/export-85b39b73874c5d85bc00580dc58e4d45-Grenade.scn
-res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn::7f3fb4c25f058edaca99cd1190050380::1756031017::res://godot/exported/133200997/export-a7394e84af2454964ccc0f8c330d9d84-lightning_launcher.scn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn::7f3fb4c25f058edaca99cd1190050380::1756034206::res://godot/exported/133200997/export-a7394e84af2454964ccc0f8c330d9d84-lightning_launcher.scn
 res://Prefabs/CodePrefabs/Weapons/Sniper.tscn::47637c20367d3fee33d896f81fb20c6d::1752136867::res://godot/exported/133200997/export-524bb7ba0bc9938150db9a50e7f31185-Sniper.scn
 res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn::613349157b7e1fe79696dc7449175505::1751606288::res://godot/exported/133200997/export-d8493dc39fcc01a6b714465983b62ffe-RocketLauncher.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn::82c6ff0b5b965e8e0e6a7a9a4c961fb0::1754644582::res://godot/exported/133200997/export-412a35c7e3d1987cacdc367b2d19458f-EnemyMinigunBullet.scn
@@ -85,12 +84,12 @@ res://Prefabs/GamePrefabs/Enemy/Gatling.tscn::f725ec6af61db28766a00630b2df4c10::
 res://Prefabs/CodePrefabs/Particles/LightningArcDrawer.tscn::22ee53b19eab462fca2a40c48d5d6334::1751606288::res://godot/exported/133200997/export-f3c470dd598926c7e324099e6e94e5fd-LightningArcDrawer.scn
 res://Prefabs/GamePrefabs/Enemy/Network.tscn::649520bb105f20ac94e262a65a947486::1754901309::res://godot/exported/133200997/export-a50807c20077a139fb372ea13fa0dfad-Network.scn
 res://Assets/Art/Particles/Misc/HealingEffect.tscn::2614202bd49ba93ebd161ca969e8e369::1751880556::res://godot/exported/133200997/export-32f4d0712f8e08f2a4688d73eae9ba9e-HealingEffect.scn
-res://Prefabs/CodePrefabs/Abilities/LightningLauncher.tscn::d35816a6390bc2ee7c3b120e25e7a5ee::1756030790::res://godot/exported/133200997/export-34adf82ae4396b10666c6f848d46b8b6-LightningLauncher.scn
+res://Prefabs/CodePrefabs/Abilities/LightningLauncher.tscn::d35816a6390bc2ee7c3b120e25e7a5ee::1756034206::res://godot/exported/133200997/export-34adf82ae4396b10666c6f848d46b8b6-LightningLauncher.scn
 res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn::8f5625d7ea6c414f6ec488820804fbfe::1754644583::res://godot/exported/133200997/export-8bdef7789d6fff3e0cd3b15c2e7bd5b3-AkimboBullet.scn
 res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn::7fb9ebb79468300a1d40e295dd6a6ca4::1752136867::res://godot/exported/133200997/export-2724d191dfdf1ed98ffe0aac1f864ea4-RocketMinigun.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/WarmachineBullet.tscn::8d5fd2103edb9fbd9a80663bf1432905::1751881833::res://godot/exported/133200997/export-6c80a270a1822a9e04f7f28d910cc366-WarmachineBullet.scn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn::c8db3d3b6fdc537063cdf0811be6f62d::1754644582::res://godot/exported/133200997/export-39b5292a7804a53155605cfa24ee7e5a-WarmachineGun.scn
-res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn::09d1e2ef94b7a21073e128793a72a009::1754644581::res://godot/exported/133200997/export-d5e5163bbd032fa4e97f4fcee1ba65f9-Warmachine.scn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn::09d1e2ef94b7a21073e128793a72a009::1756034206::res://godot/exported/133200997/export-d5e5163bbd032fa4e97f4fcee1ba65f9-Warmachine.scn
 res://Assets/Art/Effects/ExplodedAnim.tres::ffeaaadab15b9bd1353982c1626d3986::1756029661::res://godot/exported/133200997/export-6d16fa53643f5a1391c8bfdd95182371-ExplodedAnim.res
 res://Prefabs/CodePrefabs/Projectiles/MiniRocket.tscn::4bd51b1a5213b14423a1c4014074b711::1752136962::res://godot/exported/133200997/export-5c96522b7e13bf853efcc571e2370543-MiniRocket.scn
 res://Prefabs/CodePrefabs/Projectiles/M60Bullet.tscn::add312898e8e91fcc4af9da1a30a2e21::1752134911::res://godot/exported/133200997/export-168f52eecd64d86b03b52aa69889eec1-M60Bullet.scn
@@ -101,11 +100,14 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn:
 res://Prefabs/GamePrefabs/Enemy/Goolum.tscn::7af95a8aa30684d5f4989010168c91fa::1754901309::res://godot/exported/133200997/export-b9f6493ec08ee5cea4f8af377b0fe42f-Goolum.scn
 res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn::0b0e134da8d22c883de68fe42f562b4f::1754644583::res://godot/exported/133200997/export-325ab215d846a6e657948c4508bc031a-MalignantTumor.scn
 res://Assets/Scripts/Effects/Projectile Effects/Instances/chain_interval_effect.tres::d5874780a4733217e03fa0bd5fb2e41a::1754644264::res://godot/exported/133200997/export-2a1f0c320b3d9bc7105691af0f104bf3-chain_interval_effect.res
-res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn::cc16f439b67c6d689ac9040620503502::1755690776::res://godot/exported/133200997/export-24ebfaed3bb0db6bb5174936ecf92e05-TyphoonProjectile.scn
+res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn::691795a8450fcf688562176570234f04::1756291882::res://godot/exported/133200997/export-24ebfaed3bb0db6bb5174936ecf92e05-TyphoonProjectile.scn
 res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn::608110f6bc0aa3443662555828d36518::1755503511::res://godot/exported/133200997/export-d803737dd54ec507529f69c3b36f2c68-TyphoonCannon.scn
 res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres::d484e25a3e05b65cdb7548d3a155a08e::1755690082::res://godot/exported/133200997/export-97f519d23a91f8e479fdb77362e24ce1-phys_bounce_effect.res
 res://Prefabs/CodePrefabs/Abilities/TyphoonCannon.tscn::c8feac0c27e72f532fdc6796cf5a5781::1755690777::res://godot/exported/133200997/export-42d88b5a83b057c4298a2fe91811541c-TyphoonCannon.scn
-res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn::0a6c5d8c818e63b281768d667e881db4::1755690776::res://godot/exported/133200997/export-1af042dd8aef5959c8c4860c19e42960-BaseballProjectile.scn
+res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn::11d55431f6af22c6db27e3faebfdf7a9::1756291882::res://godot/exported/133200997/export-1af042dd8aef5959c8c4860c19e42960-BaseballProjectile.scn
 res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn::e5ad1d5ad42ea93caa132b96e2704bee::1755690776::res://godot/exported/133200997/export-5f3b19b9b7b60b4400447319be5fd1e3-physics_projectile.scn
 res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn::6e5e766f4dca48a4d9efba6f7de1ef84::1755690776::res://godot/exported/133200997/export-ca89e7aea5b2161b2892a0409eafdd6d-BaseBallLauncher.scn
-res://Prefabs/FX/SummonFX.tscn::1ff6b662975507571f18826bb0e00fcb::1756030919::res://godot/exported/133200997/export-f94ae1b8c0ff42db39b421bd4e8aa836-SummonFX.scn
+res://Prefabs/FX/SummonFX.tscn::1ff6b662975507571f18826bb0e00fcb::1756034206::res://godot/exported/133200997/export-f94ae1b8c0ff42db39b421bd4e8aa836-SummonFX.scn
+res://Prefabs/CodePrefabs/Abilities/BaseballGrenade.tscn::3c0e4554761b0ec805e4e00bf798cd0e::1756291882::res://godot/exported/133200997/export-eda5db884b1cbfdee9cd46e7a1bb6a41-BaseballGrenade.scn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotGunBullet.tscn::b99f186720c6493f5d31e70aa2f46c98::1756291882::res://godot/exported/133200997/export-024978f852fddbc085dda7d14d815f41-DragonShotGunBullet.scn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn::f52396e06b238d709f148bbb487e9ee5::1756291882::res://godot/exported/133200997/export-b986b5b9a3e003daf6f0c62e9cfd5335-Bruiser.scn
