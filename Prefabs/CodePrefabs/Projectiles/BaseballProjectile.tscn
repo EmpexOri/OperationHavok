@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://d2f37t4vqnaew" path="res://Assets/Art/PlaceHolders/BaseballSprite.png" id="2_a3p7d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1toi"]
-radius = 4.0
+radius = 7.0
 
 [node name="BaseballProjectile" instance=ExtResource("1_pw2cs")]
 collision_layer = 0
 collision_mask = 0
-base_speed = 500.0
+base_speed = 700.0
+base_damage = 30.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_f1toi")

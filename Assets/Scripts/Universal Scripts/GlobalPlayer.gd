@@ -15,7 +15,7 @@ var ClassData = {
 		"Abilities": [], "UnlockedAbilities": []
 	},
 	"Commando": {
-		"Level": 1, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 150,
+		"Level": 2, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 150,
 		"Abilities": ["SwapWeapons", "GrenadeThrow", "RocketLauncher"], "UnlockedAbilities": []
 	},
 	"Fleshthing": {
@@ -29,7 +29,7 @@ var AbilityListCommando = ["SwapWeapons", "GrenadeThrow", "TyphoonCannon"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 func XPRequiredForLevel(Level: int) -> int:
-	return 150 * pow(1.2, Level - 1)
+	return 100 * pow(1.2, Level - 1)
 
 func AddXP(Amount: int):
 	var Level = ClassData[CurrentClass]["Level"]

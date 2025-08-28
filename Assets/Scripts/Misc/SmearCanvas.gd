@@ -16,7 +16,7 @@ var smears: Array = []
 
 func _ready():
 	smear_texture = preload("res://Assets/Art/PlaceHolders/SmallSplatWhite.png")
-	z_index = 1  # ensure it's above tiles
+	z_index = 1
 	visible = true
 
 func _process(delta: float):

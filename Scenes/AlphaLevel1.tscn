@@ -41,7 +41,7 @@
 size = Vector2(204, 101)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd2nm"]
-size = Vector2(571, 203)
+size = Vector2(571, 287)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3e4vp"]
 size = Vector2(160, 30)
@@ -2332,7 +2332,7 @@ shape = SubResource("RectangleShape2D_xngmm")
 position = Vector2(1500, 1000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelManager/TutorialTrigger"]
-position = Vector2(-47.5, -814.5)
+position = Vector2(-47.5, -856.5)
 shape = SubResource("RectangleShape2D_fd2nm")
 
 [node name="Test2Trigger" type="Area2D" parent="LevelManager"]
@@ -2379,10 +2379,10 @@ tile_map_data = PackedByteArray("AAAPANP/AgABAAAAAAAPANL/AgABAAAAAAAPANH/AgABAAA
 tile_set = SubResource("TileSet_qk4wj")
 
 [node name="Spawn0" type="Node2D" parent="TutorialArea"]
-position = Vector2(1200, 255)
+position = Vector2(1238, 229)
 
 [node name="Spawn1" type="Node2D" parent="TutorialArea"]
-position = Vector2(1358, 266)
+position = Vector2(1358, 240)
 
 [node name="Spawn2" type="Node2D" parent="TutorialArea"]
 position = Vector2(2013, 363)
@@ -2741,6 +2741,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(62, 34)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
