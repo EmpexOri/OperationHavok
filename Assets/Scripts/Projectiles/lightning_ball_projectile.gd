@@ -2,7 +2,7 @@ extends Projectile
 class_name LightningBallProjectile
 
 @onready var ball_anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var explosion_ref: Grenade = $Explosion
+@onready var explosion_ref: TyphoonExplosion = $Explosion
 
 var exploded: bool = false
 
