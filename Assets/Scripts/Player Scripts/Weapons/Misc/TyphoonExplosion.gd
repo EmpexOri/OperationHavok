@@ -2,7 +2,7 @@ extends SuperGrenade
 class_name TyphoonExplosion
 
 # Assign audio streams in inspector or preload them here
-@export var explosion_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/New grenade explosion.mp3")
+@export var explosion_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/TyphoonBoom.wav")
 
 var has_landed: bool = false
 var land_sound_played: bool = false

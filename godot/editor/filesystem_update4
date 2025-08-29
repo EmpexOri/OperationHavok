@@ -1,20 +1,17 @@
-res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
+res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
 res://Prefabs/CodePrefabs/Particles/LightningArcDrawer.tscn
-res://Assets/Scripts/Misc/ChainLightningUtility.gd
-res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
-res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
 res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
 res://Assets/Scripts/Player Scripts/Weapons/Misc/TyphoonExplosion.gd
 res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd
