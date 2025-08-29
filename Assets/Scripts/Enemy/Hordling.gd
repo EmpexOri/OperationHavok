@@ -4,7 +4,7 @@ extends Enemy
 
 func start():
 	Speed = 150
-	Health = 10
+	Health = 20
 	MaxHealth = Health
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"

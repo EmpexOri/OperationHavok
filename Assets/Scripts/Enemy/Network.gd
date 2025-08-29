@@ -17,7 +17,7 @@ func _ready():
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 	
 	Speed = 50
-	Health = 120
+	Health = 150
 	MaxHealth = Health
 	Group = "Enemy"
 	add_to_group("Support")

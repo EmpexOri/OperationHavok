@@ -30,7 +30,7 @@ func _ready():
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 	# Tumour-specific values
-	Health = 50
+	Health = 40
 	MaxHealth = Health
 	Speed = 50
 	Group = "Enemy"  # Already default, so dw

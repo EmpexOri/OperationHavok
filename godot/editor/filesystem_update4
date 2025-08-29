@@ -1,17 +1,27 @@
-res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
-res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
 res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
-res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
 res://Prefabs/CodePrefabs/Particles/LightningArcDrawer.tscn
-res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
-res://Assets/Scripts/Player Scripts/Weapons/Misc/TyphoonExplosion.gd
-res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotGunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
+res://Assets/Scripts/Enemy/Network.gd
+res://Assets/Scripts/Enemy/Gatling.gd
+res://Assets/Scripts/Enemy/MalignantTumor.gd
+res://Assets/Scripts/Enemy/FleshSpawn.gd
+res://Assets/Scripts/Enemy/Hordling.gd
+res://Assets/Scripts/Enemy/Spewling.gd

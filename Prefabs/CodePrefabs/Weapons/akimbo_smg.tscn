@@ -15,6 +15,6 @@ metadata/_custom_type_script = "uid://cvwir6rctxwae"
 [node name="AkimboSMG" type="Node2D"]
 script = ExtResource("1_40ojk")
 projectile_scene = ExtResource("2_3i8x5")
-base_fire_rate = 0.05
+base_fire_rate = 0.09
 fire_sound_method = &"SmgFire"
 weapon_effects = Array[ExtResource("3_8rclf")]([ExtResource("4_hpyw3"), SubResource("Resource_e0fhh")])

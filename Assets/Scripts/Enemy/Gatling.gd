@@ -24,7 +24,7 @@ const RAM_DAMAGE = 15
 
 func start():
 	Speed = 80
-	Health = 50
+	Health = 75
 	MaxHealth = Health
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"

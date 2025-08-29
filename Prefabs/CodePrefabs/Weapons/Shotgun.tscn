@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dggyelrj1001b"]
+[gd_scene load_steps=8 format=3 uid="uid://dggyelrj1001b"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_0xh1c"]
 [ext_resource type="PackedScene" uid="uid://cb0qq7tf5boik" path="res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn" id="2_7b86u"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_flskc"]
+[ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_x2viq"]
+[ext_resource type="Script" uid="uid://bxkwbwtmdvk8p" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd" id="4_56wy7"]
 [ext_resource type="Resource" uid="uid://dsgjo7ac13qew" path="res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres" id="4_mnmhp"]
+
+[sub_resource type="Resource" id="Resource_atkl6"]
+script = ExtResource("4_56wy7")
+max_hits = 99999
+effect_name = ""
+metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"
 
 [node name="Shotgun" type="Node2D"]
 script = ExtResource("1_0xh1c")
 projectile_scene = ExtResource("2_7b86u")
 base_fire_rate = 0.8
 fire_sound_method = &"ShotgunFire"
+projectile_effects = Array[ExtResource("3_x2viq")]([SubResource("Resource_atkl6")])
 weapon_effects = Array[ExtResource("3_flskc")]([ExtResource("4_mnmhp")])

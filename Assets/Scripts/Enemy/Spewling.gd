@@ -11,6 +11,7 @@ var BulletSpeed = 800
 
 func start():
 	print(CurrentWeapon)
+	Health = 15
 	OrbitDirection = [-1, 1].pick_random()
 
 	# Orbit timer

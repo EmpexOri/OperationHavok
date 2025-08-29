@@ -6,7 +6,7 @@ var Colour = Color(0, 0.5, 0)
 func _ready():
 	super._ready()
 	Speed = 50
-	Health = 5
+	Health = 10
 	MaxHealth = Health
 	$Sprite2D.modulate = Colour
 	super()
