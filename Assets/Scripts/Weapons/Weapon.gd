@@ -159,8 +159,8 @@ func _create_fresh_effect_instances() -> Array[ProjectileEffect]:
 	var fresh_effects: Array[ProjectileEffect] = []
 	for effect in projectile_effects:
 		if effect:
-			var new_effect = effect.get_script().new()
-			fresh_effects.append(new_effect)
+			# Duplicate the instance so runtime changes persist
+			fresh_effects.append(effect.duplicate(true))
 	return fresh_effects
 
 var owning_entity_node: Node2D = null

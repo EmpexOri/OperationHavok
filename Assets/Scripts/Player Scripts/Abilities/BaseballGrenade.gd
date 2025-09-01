@@ -14,11 +14,15 @@ func activate(player, index = -1):
 	var weapon_scene = preload("res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn")
 	var baseball_grenade = weapon_scene.instantiate()
 	baseball_grenade.owning_entity = "Player"
+
+	# Fix the bounce effect runtime value
+	for effect in baseball_grenade.projectile_effects:
+		if effect is PhysProjectileBounces:
+			effect.max_bounces = 10  # Set the value you want here
+
 	get_tree().current_scene.add_child(baseball_grenade)
 
-	#var direction = (get_global_mouse_position() - player.global_position).normalized()
 	var direction = Vector2()
-	
 	if player.ControllerEnabled:
 		direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
 		direction.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")

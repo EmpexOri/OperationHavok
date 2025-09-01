@@ -10,7 +10,6 @@
 [sub_resource type="Resource" id="Resource_ymo87"]
 script = ExtResource("4_6mthh")
 max_bounces = 5
-bounce_random_degrees = 10.0
 effect_name = ""
 metadata/_custom_type_script = "uid://bj14y6fhvpd0"
 
