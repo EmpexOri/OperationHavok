@@ -13,5 +13,6 @@ const weapon_scenes = {
 	"RocketLauncher": preload("res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn"),
 	"RocketMinigun": preload("res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn"),
 	"TyphoonCannon": preload("res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn"),
-	"BaseballLauncher": preload("res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn")
+	"BaseballLauncher": preload("res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn"),
+	"Raygun": preload("res://Prefabs/CodePrefabs/Weapons/Raygun.tscn")
 }
