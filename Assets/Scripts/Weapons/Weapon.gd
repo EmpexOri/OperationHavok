@@ -38,6 +38,11 @@ func _physics_process(delta: float) -> void:
 	var current_world = get_world_2d()
 	space_state = current_world.direct_space_state
 
+	# Process any weapon effects that have a process method
+	for effect in weapon_effects:
+		if effect and effect.has_method("process_effect"):
+			effect.process_effect(delta)
+
 func _on_cooldown_timer_timeout() -> void:
 	can_fire = true
 

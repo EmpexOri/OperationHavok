@@ -25,3 +25,7 @@ res://Prefabs/CodePrefabs/Projectiles/ShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/RaygunProjectile.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd
+res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
+res://Assets/Scripts/Effects/Weapon Effects/burst_effect.gd
+res://Assets/Scripts/Effects/Weapon Effects/Instances/burst_effect.tres
+res://Assets/Scripts/Weapons/Weapon.gd

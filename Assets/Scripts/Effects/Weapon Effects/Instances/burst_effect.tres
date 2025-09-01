@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BurstEffect" load_steps=2 format=3 uid="uid://dyqousw1bk7tl"]
+
+[ext_resource type="Script" uid="uid://dou8hddjbq6eq" path="res://Assets/Scripts/Effects/Weapon Effects/burst_effect.gd" id="1_6fno6"]
+
+[resource]
+script = ExtResource("1_6fno6")
+burst_count = 3
+burst_interval = 0.1
+burst_cooldown = 1.5
+effect_name = ""
+metadata/_custom_type_script = "uid://hngk5be2sgte"
