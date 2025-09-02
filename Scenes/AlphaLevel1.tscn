@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="5_rqnm1"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="5_xngmm"]
 [ext_resource type="Texture2D" uid="uid://c44foldyjmmux" path="res://Assets/Art/Objects/Road_Block.png" id="6_ajhhu"]
-[ext_resource type="Texture2D" uid="uid://cx2v6y6jjrgq2" path="res://Assets/Art/PlaceHolders/SuspiciousStew.png" id="6_oiiaa"]
 [ext_resource type="Script" uid="uid://cm00xas1dwoyn" path="res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd" id="6_rqnm1"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_34rfs"]
 [ext_resource type="PackedScene" uid="uid://5yolel5ubyg1" path="res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn" id="8_oiiaa"]
@@ -35,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="21_kbd7x"]
 [ext_resource type="Script" uid="uid://6s1bqy0wr87w" path="res://Assets/Scripts/Player Scripts/AbilityIcon.gd" id="22_3e4vp"]
 [ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="22_udyv4"]
+[ext_resource type="Texture2D" uid="uid://c4d4ublcyedvu" path="res://Assets/Art/PlaceHolders/CharacterPFP.png" id="24_bksor"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="27_kbd7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
@@ -2590,6 +2590,11 @@ offset_right = 173.0
 offset_bottom = 88.0
 text = "Class: Technomancer"
 
+[node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
+position = Vector2(32, 26)
+scale = Vector2(0.25, 0.252)
+texture = ExtResource("24_bksor")
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 layout_mode = 0
 offset_left = 7.0
@@ -2616,11 +2621,6 @@ texture_under = ExtResource("13_spgp8")
 texture_progress = ExtResource("13_spgp8")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
-position = Vector2(32, 27)
-scale = Vector2(0.107353, 0.108088)
-texture = ExtResource("6_oiiaa")
 
 [node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
