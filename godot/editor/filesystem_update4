@@ -5,11 +5,6 @@ res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
-res://Assets/Scripts/Player Scripts/Weapons/NovaExplosion.gd
-res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
-res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
-res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
@@ -29,9 +24,15 @@ res://Prefabs/CodePrefabs/Projectiles/RaygunProjectile.tscn
 res://Scenes/Options/OptionsScene.tscn
 res://Prefabs/CodePrefabs/Abilities/BaseballGrenade.tscn
 res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn
-res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
-res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenadeThrow.gd
-res://Prefabs/CodePrefabs/Abilities/NovacasterGrenadeThrow.tscn
-res://Scenes/Options/CommandoSkillTree.tscn
+res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
+res://Assets/Scripts/Enemy/Needling.gd
+res://Assets/Scripts/Enemy/Spewling.gd
 res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Prefabs/CodePrefabs/Abilities/NovacasterGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn

@@ -31,6 +31,7 @@ func start():
 	add_child(firetimer)
 	
 func _ready():
+	WeaponScene = Weapon
 	super()
 	var player = resolve_target()
 	if player:
