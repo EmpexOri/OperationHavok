@@ -108,7 +108,7 @@ func update_skill_trees_shown():
 	var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
 	
 	# Displaying the respective skill tree/s
-	if Level == 1:
+	if Level <= 1:
 		WeaponTree.visible = true
 		GrenadeTree.visible = false
 		MinigunTree.visible = false

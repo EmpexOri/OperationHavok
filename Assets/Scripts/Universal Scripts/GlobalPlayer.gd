@@ -15,7 +15,7 @@ var ClassData = {
 		"Abilities": [], "UnlockedAbilities": []
 	},
 	"Commando": {
-		"Level": 2, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 150,
+		"Level": 0, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 150,
 		"Abilities": ["SwapWeapons", "GrenadeThrow", "RocketLauncher"], "UnlockedAbilities": []
 	},
 	"Fleshthing": {
