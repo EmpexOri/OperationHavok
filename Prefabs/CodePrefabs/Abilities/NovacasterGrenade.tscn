@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://co0l2gy48fnw5"]
+
+[ext_resource type="Script" uid="uid://d346e0twvf4u2" path="res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenade.gd" id="1_jb7ke"]
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource("1_jb7ke")
+cooldown_time = 5.0

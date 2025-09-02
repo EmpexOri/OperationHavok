@@ -1,13 +1,15 @@
-res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
-res://Assets/Scripts/Universal Scripts/WeaponData.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
+res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
+res://Assets/Scripts/Player Scripts/Weapons/NovaExplosion.gd
+res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
 res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
@@ -22,15 +24,14 @@ res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/DragonShotGunBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
 res://Prefabs/CodePrefabs/Projectiles/ShotgunProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
 res://Prefabs/CodePrefabs/Projectiles/RaygunProjectile.tscn
 res://Scenes/Options/OptionsScene.tscn
-res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd
-res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
-res://Assets/Scripts/Effects/Weapon Effects/burst_effect.gd
-res://Assets/Scripts/Effects/Weapon Effects/Instances/burst_effect.tres
-res://Assets/Scripts/Weapons/Weapon.gd
 res://Prefabs/CodePrefabs/Abilities/BaseballGrenade.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
-res://Assets/Scripts/Projectiles/physics_projectile.gd
 res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn
-res://Assets/Scripts/Player Scripts/Abilities/BaseballGrenade.gd
+res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
+res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenadeThrow.gd
+res://Prefabs/CodePrefabs/Abilities/NovacasterGrenadeThrow.tscn
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Prefabs/CodePrefabs/Abilities/NovacasterGrenade.tscn

@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://bhu1g357jvcl1"]
+
+[ext_resource type="Script" uid="uid://cx0g18i2qe4t6" path="res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd" id="1_qf5nf"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="2_jrmu4"]
+[ext_resource type="PackedScene" uid="uid://b1geocfdib605" path="res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn" id="2_qf5nf"]
+[ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="3_0h6is"]
+[ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="5_jrmu4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrmu4"]
+radius = 6.08276
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv0sj"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(0, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5jdg"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(384, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wf1x"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(768, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lyah"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(1152, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1n1d"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(1536, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn7es"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(0, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_770po"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(384, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq2tn"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(768, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia26e"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(1152, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs47w"]
+atlas = ExtResource("5_jrmu4")
+region = Rect2(1536, 393, 384, 393)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0h6is"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv0sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5jdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wf1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lyah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1n1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn7es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_770po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq2tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia26e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs47w")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}]
+
+[node name="NovaGrenade" type="Node2D"]
+script = ExtResource("1_qf5nf")
+nova_explosion_scene = ExtResource("2_qf5nf")
+nova_dot_damage = 10.0
+nova_instant_damage = 20.0
+debug_nova = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.561467, 0.756928, 0.928777, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jrmu4")
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jrmu4")
+
+[node name="ExplosionRadiusIndicator" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(0.25, 0.26)
+texture = ExtResource("3_0h6is")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -3)
+sprite_frames = SubResource("SpriteFrames_0h6is")
+animation = &"explode"

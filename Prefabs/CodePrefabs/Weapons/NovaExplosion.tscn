@@ -1,0 +1,116 @@
+[gd_scene load_steps=17 format=3 uid="uid://b1geocfdib605"]
+
+[ext_resource type="Script" uid="uid://cbko2bdxw24r" path="res://Assets/Scripts/Player Scripts/Weapons/NovaExplosion.gd" id="1_fx877"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="2_kv0sj"]
+[ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="3_c5jdg"]
+[ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="4_fx877"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv0sj"]
+atlas = ExtResource("4_fx877")
+region = Rect2(0, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5jdg"]
+atlas = ExtResource("4_fx877")
+region = Rect2(384, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wf1x"]
+atlas = ExtResource("4_fx877")
+region = Rect2(768, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lyah"]
+atlas = ExtResource("4_fx877")
+region = Rect2(1152, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1n1d"]
+atlas = ExtResource("4_fx877")
+region = Rect2(1536, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn7es"]
+atlas = ExtResource("4_fx877")
+region = Rect2(0, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_770po"]
+atlas = ExtResource("4_fx877")
+region = Rect2(384, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq2tn"]
+atlas = ExtResource("4_fx877")
+region = Rect2(768, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia26e"]
+atlas = ExtResource("4_fx877")
+region = Rect2(1152, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs47w"]
+atlas = ExtResource("4_fx877")
+region = Rect2(1536, 393, 384, 393)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thr73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv0sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5jdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wf1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lyah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1n1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn7es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_770po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq2tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia26e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs47w")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fx877"]
+radius = 134.015
+
+[node name="NovaGrenade" type="Area2D"]
+script = ExtResource("1_fx877")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.561467, 0.756928, 0.928777, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kv0sj")
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+
+[node name="ExplosionRadiusIndicator" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(0.25, 0.26)
+texture = ExtResource("3_c5jdg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -3)
+sprite_frames = SubResource("SpriteFrames_thr73")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fx877")
