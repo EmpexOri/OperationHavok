@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=51 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -2298,24 +2298,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-81.0121, -33.0486, 690
 sample_partition_type = 1
 agent_radius = 5.0
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m3m5o"]
-polygon = PackedVector2Array(178, 226, 337, 226, 337, 242, 178, 242)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kbd7x"]
-polygon = PackedVector2Array(-353, 732, -353, 751, -401, 750, -401, 862, -432, 862, -432, 732)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_udyv4"]
-polygon = PackedVector2Array(-304, 732, -304, 750, -255, 750, -255, 862, -224, 862, -224, 732)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bvftn"]
-polygon = PackedVector2Array(198, 230, 198, 266, 299, 266, 299, 230, 270, 229, 259, 218, 232, 218, 221, 230)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3i11d"]
-polygon = PackedVector2Array(469, 201, 469, 234, 570, 234, 570, 201, 546, 199, 536, 188, 508, 188, 497, 199)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_llolq"]
-polygon = PackedVector2Array(-60, 940, -60, 1095, -76, 1095, -76, 939)
-
 [node name="World" type="Node2D"]
 z_index = 10
 
@@ -2763,27 +2745,6 @@ vertices = PackedVector2Array(-34.5697, 14.0003, 73.4302, 12.0001, 72.4301, -23,
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 avoidance_layers = 15
-
-[node name="Lighting" type="Node" parent="."]
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Lighting"]
-position = Vector2(310, 363)
-occluder = SubResource("OccluderPolygon2D_m3m5o")
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="Lighting"]
-occluder = SubResource("OccluderPolygon2D_kbd7x")
-
-[node name="LightOccluder2D6" type="LightOccluder2D" parent="Lighting"]
-occluder = SubResource("OccluderPolygon2D_udyv4")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Lighting"]
-occluder = SubResource("OccluderPolygon2D_bvftn")
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Lighting"]
-occluder = SubResource("OccluderPolygon2D_3i11d")
-
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="Lighting"]
-occluder = SubResource("OccluderPolygon2D_llolq")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.629675, 0.629675, 0.629675, 1)
