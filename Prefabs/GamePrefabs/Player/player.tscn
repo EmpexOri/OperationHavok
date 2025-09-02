@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjkrpn6nhhs0c"]
+[gd_scene load_steps=12 format=3 uid="uid://cjkrpn6nhhs0c"]
 
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="1_5wdm8"]
-[ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="2_b8405"]
 [ext_resource type="Texture2D" uid="uid://dbi32xbkn2es3" path="res://Assets/Art/Sprites/PlaceholderSpriteSheet.png" id="3_dolgl"]
 [ext_resource type="Script" uid="uid://pfo7tvxnb3ab" path="res://Assets/Scripts/Player Scripts/Camera2D.gd" id="4_b8405"]
 
@@ -105,14 +104,6 @@ height = 22.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 10
 script = ExtResource("1_5wdm8")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(0.35, 0.35)
-color = Color(1, 0.987353, 0.258861, 1)
-energy = 0.6
-shadow_enabled = true
-texture = ExtResource("2_b8405")
-offset = Vector2(5, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
