@@ -1,3 +1,54 @@
+res://Assets/Scripts/Effects/Projectile Effects/projectile_chain_interval.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_damageovertime.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_knockback.gd
+res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
+res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres
+res://Assets/Scripts/Enemy/Biomancer.gd
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Enemy/FleshSpawn.gd
+res://Assets/Scripts/Enemy/Gatling.gd
+res://Assets/Scripts/Enemy/Goolum.gd
+res://Assets/Scripts/Enemy/Hordling.gd
+res://Assets/Scripts/Enemy/MalignantTumor.gd
+res://Assets/Scripts/Enemy/Needling.gd
+res://Assets/Scripts/Enemy/Network.gd
+res://Assets/Scripts/Enemy/Spewling.gd
+res://Assets/Scripts/Enemy/Tumor.gd
+res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd
+res://Assets/Scripts/LevelControllers/Level1/Test2Area.gd
+res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Menu Scripts/OptionsScene.gd
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Assets/Scripts/Misc/ChainLightningUtility.gd
+res://Assets/Scripts/Misc/SmearCanvas.gd
+res://Assets/Scripts/Pickups/base_pickup.gd
+res://Assets/Scripts/Pickups/xp_pickup.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Player Scripts/Abilities/LightningLauncher.gd
+res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
+res://Assets/Scripts/Projectiles/projectile.gd
+res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Assets/Scripts/Weapons/Weapon.gd
+res://Prefabs/CodePrefabs/Projectiles/bullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/projectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/TyphoonProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn
+res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
+res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn
+res://Prefabs/GamePrefabs/Enemy/Needling.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -6,9 +57,41 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
-res://Assets/Scripts/Effects/Misc Effects/GroundEffect.gd
-res://Scenes/AlphaLevel1.tscn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
+res://Scenes/GlobalAudioController.tscn
+res://Scenes/LevelSelectScene.tscn
 res://Scenes/MenuScene.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
-res://Prefabs/GamePrefabs/Player/player.tscn
+res://Scenes/AlphaLevel1.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
+res://Scenes/Options/PauseMenu.tscn
+res://Scenes/Options/OptionsScene.tscn
+res://Prefabs/GamePrefabs/Enemy/Goolum.tscn
+res://Prefabs/GamePrefabs/Enemy/Hordling.tscn
+res://Prefabs/GamePrefabs/Enemy/Tumor.tscn
+res://Prefabs/GamePrefabs/Enemy/Spewling.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
+res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotgunProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/AkimboBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/beamer.tscn
+res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
+res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
+res://Prefabs/CodePrefabs/Projectiles/beam_projectile.tscn
+res://Prefabs/GamePrefabs/Enemy/Network.tscn
+res://Scenes/Options/SkillButton.tscn
+res://Prefabs/CodePrefabs/Projectiles/BaseballProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/DragonShotGunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/RaygunProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn

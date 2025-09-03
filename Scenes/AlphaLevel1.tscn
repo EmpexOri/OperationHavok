@@ -1,42 +1,26 @@
-[gd_scene load_steps=53 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=37 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
 [ext_resource type="TileSet" uid="uid://ccxxedbsicdmw" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres" id="2_bkju3"]
-[ext_resource type="Script" uid="uid://dqo6ngpno4m87" path="res://Assets/Scripts/LevelControllers/Level1/TutorialTeleporter.gd" id="2_bksor"]
-[ext_resource type="Script" uid="uid://llbess6sf5c3" path="res://Assets/Scripts/LevelControllers/Level1/TutorialArea.gd" id="2_fd2nm"]
+[ext_resource type="Script" path="res://Assets/Scripts/LevelControllers/Level1/TutorialTeleporter.gd" id="2_bksor"]
+[ext_resource type="Script" path="res://Assets/Scripts/LevelControllers/Level1/TutorialArea.gd" id="2_fd2nm"]
 [ext_resource type="Texture2D" uid="uid://ch7l523dfrmlf" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Scaffolding_Tileset.png" id="2_llolq"]
 [ext_resource type="Texture2D" uid="uid://bxnon1d5djkcm" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Elevator_Tileset.png" id="3_m1ncj"]
-[ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="3_xngmm"]
-[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="4_ajhhu"]
 [ext_resource type="Texture2D" uid="uid://ci8rf7yw3v1jy" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/TempWalls.png" id="4_qd1f5"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="4_rqnm1"]
 [ext_resource type="Script" uid="uid://7b1jlrmdexi2" path="res://Assets/Scripts/LevelControllers/Level1/Test2Area.gd" id="4_t1xay"]
 [ext_resource type="Texture2D" uid="uid://bmlrdhrnwo2ck" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Helipad_Tileset.png" id="5_oiuhd"]
-[ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="5_rqnm1"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="5_xngmm"]
 [ext_resource type="Texture2D" uid="uid://c44foldyjmmux" path="res://Assets/Art/Objects/Road_Block.png" id="6_ajhhu"]
 [ext_resource type="Script" uid="uid://cm00xas1dwoyn" path="res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd" id="6_rqnm1"]
-[ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_34rfs"]
 [ext_resource type="PackedScene" uid="uid://5yolel5ubyg1" path="res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn" id="8_oiiaa"]
 [ext_resource type="Texture2D" uid="uid://bekdam1uh8my" path="res://Assets/Art/Objects/Car_Object_v3_maroon.png" id="10_8mwex"]
 [ext_resource type="Texture2D" uid="uid://cmbl6qr4dbyan" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Rooftop Objects/Box_1.png" id="11_m1ncj"]
 [ext_resource type="Texture2D" uid="uid://co8satb05d6rr" path="res://Assets/Art/Objects/Car_Object_v3_blue.png" id="11_m3m5o"]
 [ext_resource type="Texture2D" uid="uid://cpjoxdfpo50xc" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Rooftop Objects/Box_2.png" id="12_qd1f5"]
-[ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="13_8mwex"]
 [ext_resource type="Texture2D" uid="uid://jx4vw0vi3ukn" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Rooftop Objects/Box_3.png" id="13_oiuhd"]
-[ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
-[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="14_m3m5o"]
-[ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
-[ext_resource type="Texture2D" uid="uid://co12wru674270" path="res://Assets/Art/HUD/GrenadeIcon.png" id="18_t1xay"]
-[ext_resource type="Texture2D" uid="uid://bbsovscil4ukr" path="res://Assets/Art/HUD/Minigun.png" id="20_8mwex"]
-[ext_resource type="Texture2D" uid="uid://cmg5cqhw6xlbn" path="res://Assets/Art/HUD/LBBase.png" id="20_m3m5o"]
-[ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="21_kbd7x"]
-[ext_resource type="Script" uid="uid://6s1bqy0wr87w" path="res://Assets/Scripts/Player Scripts/AbilityIcon.gd" id="22_3e4vp"]
-[ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="22_udyv4"]
-[ext_resource type="Texture2D" uid="uid://c4d4ublcyedvu" path="res://Assets/Art/PlaceHolders/CharacterPFP.png" id="24_bksor"]
-[ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="27_kbd7x"]
-[ext_resource type="PackedScene" uid="uid://cmf1vldv34maj" path="res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn" id="37_vjyuu"]
+[ext_resource type="PackedScene" path="res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn" id="37_vjyuu"]
 [ext_resource type="PackedScene" uid="uid://bjv878cl7a7kp" path="res://Prefabs/GamePrefabs/Enemy/Needling.tscn" id="38_cova0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
@@ -2545,184 +2529,6 @@ texture = ExtResource("11_m3m5o")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortedObjects/CarObject2"]
 polygon = PackedVector2Array(70.43, -20, 46.43, -22, 34.43, -32, 8.42999, -32, -1.57001, -21, -24.57, -20, -32.57, -16, -32.57, 11, 71.43, 9)
-
-[node name="PlayerUI" type="CanvasLayer" parent="."]
-script = ExtResource("3_xngmm")
-
-[node name="UIContainer" type="Control" parent="PlayerUI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.1
-anchor_right = 1.1
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 215.0
-offset_bottom = 60.0
-value = 100.0
-texture_under = ExtResource("4_ajhhu")
-texture_progress = ExtResource("4_ajhhu")
-tint_under = Color(0, 0, 0, 1)
-tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
-
-[node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 58.0
-offset_top = 37.0
-offset_right = 89.0
-offset_bottom = 42.7292
-scale = Vector2(2.2, 2.2)
-theme_override_fonts/font = ExtResource("14_m3m5o")
-theme_override_font_sizes/font_size = 5
-text = "Level: 1"
-
-[node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
-visible = false
-layout_mode = 0
-offset_left = 9.0
-offset_top = 65.0
-offset_right = 173.0
-offset_bottom = 88.0
-text = "Class: Technomancer"
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
-position = Vector2(32, 26)
-scale = Vector2(0.25, 0.252)
-texture = ExtResource("24_bksor")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 4.0
-offset_right = 263.0
-offset_bottom = 260.0
-fill_mode = 4
-texture_under = ExtResource("5_rqnm1")
-texture_progress = ExtResource("5_rqnm1")
-tint_under = Color(0.481789, 0.481789, 0.481789, 1)
-tint_progress = Color(0.331582, 0.534591, 0.947811, 1)
-
-[node name="DodgeBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
-clip_contents = true
-layout_mode = 0
-offset_left = 59.0
-offset_top = 26.0
-offset_right = 109.0
-offset_bottom = 36.0
-max_value = 1.0
-step = 0.05
-value = 1.0
-texture_under = ExtResource("13_spgp8")
-texture_progress = ExtResource("13_spgp8")
-tint_under = Color(0, 0, 0, 1)
-tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
-
-[node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 533.0
-offset_top = 4.0
-offset_right = 610.0
-offset_bottom = 27.0
-scale = Vector2(2.2, 2.2)
-theme_override_fonts/font = ExtResource("13_8mwex")
-text = "FPS:01"
-script = ExtResource("7_34rfs")
-
-[node name="AbilitiesUI" type="CanvasLayer" parent="PlayerUI"]
-
-[node name="LBBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-texture_filter = 1
-position = Vector2(530, 324.5)
-texture = ExtResource("20_m3m5o")
-
-[node name="LTBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-texture_filter = 1
-position = Vector2(574, 324.5)
-texture = ExtResource("21_kbd7x")
-
-[node name="RBBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-texture_filter = 1
-position = Vector2(618, 324.5)
-texture = ExtResource("22_udyv4")
-
-[node name="Icon1" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-position = Vector2(530, 324.5)
-texture = ExtResource("16_spgp8")
-script = ExtResource("22_3e4vp")
-
-[node name="Label" type="Label" parent="PlayerUI/AbilitiesUI/Icon1"]
-offset_left = -20.0
-offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 25.0
-theme = ExtResource("27_kbd7x")
-theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Icon2" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-position = Vector2(574, 324.5)
-texture = ExtResource("18_t1xay")
-script = ExtResource("22_3e4vp")
-
-[node name="Label" type="Label" parent="PlayerUI/AbilitiesUI/Icon2"]
-offset_left = -20.0
-offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 25.0
-theme = ExtResource("27_kbd7x")
-theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Icon3" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
-position = Vector2(618, 324.5)
-texture = ExtResource("20_8mwex")
-script = ExtResource("22_3e4vp")
-
-[node name="Label" type="Label" parent="PlayerUI/AbilitiesUI/Icon3"]
-offset_left = -20.0
-offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 25.0
-theme = ExtResource("27_kbd7x")
-theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="DeathBG" type="ColorRect" parent="PlayerUI"]
-visible = false
-offset_left = 157.0
-offset_top = 137.0
-offset_right = 490.0
-offset_bottom = 222.0
-color = Color(0.0509804, 0.0509804, 0.0509804, 0.623529)
-
-[node name="YouDiedLabel" type="Label" parent="PlayerUI"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.588235, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("14_m3m5o")
-theme_override_font_sizes/font_size = 50
-text = "You died"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

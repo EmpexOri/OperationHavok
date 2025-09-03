@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://dptye62ocip5c" path="res://Assets/Scripts/Menu Scripts/particle_options.gd" id="4_ttvai"]
 [ext_resource type="Script" uid="uid://bgbmywtypvas4" path="res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd" id="5_byqjn"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="6_dbvyl"]
-[ext_resource type="Script" uid="uid://bshgqpmqwchbr" path="res://Assets/Scripts/Menu Scripts/ScreenOptions.gd" id="7_qhusp"]
-[ext_resource type="Script" uid="uid://c12y7w8j2cvx" path="res://Assets/Scripts/Menu Scripts/ResolutionSettings.gd" id="8_o3fs6"]
+[ext_resource type="Script" path="res://Assets/Scripts/Menu Scripts/ScreenOptions.gd" id="7_qhusp"]
+[ext_resource type="Script" path="res://Assets/Scripts/Menu Scripts/ResolutionSettings.gd" id="8_o3fs6"]
 
 [sub_resource type="Theme" id="Theme_qhusp"]
 default_font = ExtResource("2_vh6j5")
