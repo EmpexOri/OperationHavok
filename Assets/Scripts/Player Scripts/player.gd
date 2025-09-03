@@ -90,10 +90,10 @@ func _process(delta):
 
 	if IsFiring or (ControllerEnabled and InputEventJoypadMotion):
 		attempt_to_fire()
-	if GlobalPlayer.PlayerHP <= 0:
-		print("DEAD")
-		GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
-		kill()
+	#if GlobalPlayer.PlayerHP <= 0:
+	#	print("DEAD")
+	#	GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
+	#	kill()
 	
 func _physics_process(_delta):
 	var Motion = Input.get_vector("left", "right", "up", "down")
