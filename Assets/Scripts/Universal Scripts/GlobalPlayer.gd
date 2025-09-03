@@ -1,7 +1,7 @@
 extends Node
 
-var PlayerHP: int = 100000000000000
-var PlayerHPMax: int = 100000000000000
+var PlayerHP: int = 90000000000000000
+var PlayerHPMax: int = 90000000000000000
 var CurrentClass: String = "Commando"
 
 var weapon_upgrades = {

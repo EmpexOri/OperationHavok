@@ -45,9 +45,6 @@ var weapon_data := {
 	}
 }
 
-@onready var DeathLabel: Label = $"../../PlayerUI/YouDiedLabel"
-@onready var DeathBG: ColorRect = $"../../PlayerUI/DeathBG"
-
 func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -338,8 +335,6 @@ func kill():
 	
 	# Pausing gameplay, death screen and then reset player
 	get_tree().paused = true
-	DeathLabel.visible = true
-	DeathBG.visible = true
 	var TimeInSeconds = 1.8
 	await get_tree().create_timer(TimeInSeconds).timeout
 	get_tree().paused = false
