@@ -4,15 +4,15 @@ signal arena_complete
 
 # Enemy Scenes dictionary (child arenas can add/override entries)
 var ENEMY_SCENES := {
-	"Hordling": preload("res://Prefabs/GamePrefabs/Enemy/Hordling.tscn"),
-	"Spewling": preload("res://Prefabs/GamePrefabs/Enemy/Spewling.tscn"),
-	"Biomancer": preload("res://Prefabs/GamePrefabs/Enemy/Biomancer.tscn"),
-	"Needling": preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn"),
-	"Gatling": preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn"),
-	"Tumor": preload("res://Prefabs/GamePrefabs/Enemy/Tumor.tscn"),
-	"MalignantTumor": preload("res://Prefabs/GamePrefabs/Enemy/MalignantTumor.tscn"),
-	"Network": preload("res://Prefabs/GamePrefabs/Enemy/Network.tscn"),
-	"Goolum": preload("res://Prefabs/GamePrefabs/Enemy/Goolum.tscn"),
+	"Hordling": preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn"),
+	"Spewling": preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn"),
+	"Biomancer": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn"),
+	"Needling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn"),
+	"Gatling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn"),
+	"Tumor": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn"),
+	"MalignantTumor": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/MalignantTumor.tscn"),
+	"Network": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn"),
+	"Goolum": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn"),
 	"Warmachine": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn"),
 	"Bruiser": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Bruiser.tscn")
 }

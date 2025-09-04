@@ -1,10 +1,10 @@
 extends Enemy
 
-var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/FleshSpawn.tscn")
+var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn")
 #Special Enemies we can spawn
-var Gatling = preload("res://Prefabs/GamePrefabs/Enemy/Gatling.tscn")
-var Needling = preload("res://Prefabs/GamePrefabs/Enemy/Needling.tscn")
-var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/Goolum.tscn")
+var Gatling = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn")
+var Needling = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn")
+var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn")
 
 var SummonFX = preload("res://Prefabs/FX/SummonFX.tscn")
 

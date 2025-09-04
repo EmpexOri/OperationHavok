@@ -23,16 +23,16 @@ func _on_play_button_pressed() -> void:
 	GlobalAudioController.StopMainMenuMusic()
 	
 	# DEMO LOADING SCREEN
-	LoadingSprite.visible = true
-	LoadingSprite.play("Loading")
-	var TimeInSeconds = 3.0
-	await get_tree().create_timer(TimeInSeconds).timeout
-	LoadingSprite.queue_free()
+	#LoadingSprite.visible = true
+	#LoadingSprite.play("Loading")
+	#var TimeInSeconds = 3.0
+	#await get_tree().create_timer(TimeInSeconds).timeout
+	#LoadingSprite.queue_free()
 	
-	LoadingFinished.visible = true
-	var TimeInSeconds2 = 0.8
-	await get_tree().create_timer(TimeInSeconds2).timeout
-	LoadingFinished.queue_free()
+	#LoadingFinished.visible = true
+	#var TimeInSeconds2 = 0.8
+	#await get_tree().create_timer(TimeInSeconds2).timeout
+	#LoadingFinished.queue_free()
 	
 	get_tree().change_scene_to_file("res://Scenes/AlphaLevel1.tscn")
 

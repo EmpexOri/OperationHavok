@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://2sh5xioed2c3"]
 
-[ext_resource type="Script" uid="uid://c8igbhfs0cq7m" path="res://Assets/Scripts/Enemy/Gatling.gd" id="1_bsa2w"]
+[ext_resource type="Script" uid="uid://c8igbhfs0cq7m" path="res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd" id="1_bsa2w"]
 [ext_resource type="Texture2D" uid="uid://l3hvvyuxg3l" path="res://Assets/Art/PlaceHolders/Needling.png" id="2_rksro"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_lvrd1"]
 [ext_resource type="Texture2D" uid="uid://cyxf3u4j41v3e" path="res://Assets/Art/Sprites/Sniper_FRONT_FIRING_RED.png" id="4_bsa2w"]

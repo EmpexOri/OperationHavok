@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const HORDLING = preload("res://Prefabs/GamePrefabs/Enemy/Hordling.tscn")
+const HORDLING = preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn")
 
 @onready var particles := $Explosion/Particles
 @onready var spawn_point := $SpawnPoint

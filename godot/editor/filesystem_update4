@@ -7,6 +7,7 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
 res://Scenes/MenuScene.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
@@ -14,3 +15,8 @@ res://Prefabs/GamePrefabs/Player/player.tscn
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn
 res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn
 res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
+res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
+res://Scenes/LevelSelectScene.tscn
+res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd
