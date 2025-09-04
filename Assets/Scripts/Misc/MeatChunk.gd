@@ -14,10 +14,7 @@ extends RigidBody2D
 var fade_time_left: float = 0.0
 var is_fading: bool = false
 
-# Max allowed chunks at once
 const MAX_MEAT_CHUNKS = 500
-
-# Static array to track all meat chunks globally
 static var active_chunks := []
 
 var move_direction: Vector2
@@ -25,57 +22,56 @@ var move_speed: float
 var time_left: float
 var smear_timer: float
 
-# Disable collision temporarily after spawn
 var disable_collision_time: float = 0.2
-var collision_disabled: bool = false
 
 func _ready():
 	$FadeTimer.timeout.connect(_on_fade_timer_timeout)
 	$FadeTimer.start()
 
 	_register_chunk()
-
 	randomize()
-
 	randomize_sprite()
 	setup_movement()
 	setup_timer()
 
-	# Disable collision for a brief time after spawning
+	# Non-blocking collision disable
 	set_collision_disabled(true)
-	await get_tree().create_timer(disable_collision_time).timeout  # Use await instead of yield
+	var collision_timer = Timer.new()
+	collision_timer.one_shot = true
+	collision_timer.wait_time = disable_collision_time
+	collision_timer.connect("timeout", Callable(self, "_enable_collision"))
+	add_child(collision_timer)
+	collision_timer.start()
+
+func _enable_collision():
 	set_collision_disabled(false)
 
 func _physics_process(delta):
-	if time_left > 0.0:
+	if time_left > 0.0 and not is_fading:
 		time_left -= delta
 		linear_velocity = move_direction * move_speed
 
 	if is_fading:
 		fade_time_left -= delta
-		var alpha = clamp(fade_time_left / fade_duration, 0, 1)
-		$Sprite2D.modulate.a = alpha  # Set alpha of the sprite
+		$Sprite2D.modulate.a = clamp(fade_time_left / fade_duration, 0, 1)
 		if fade_time_left <= 0:
 			queue_free()
 
+	# Ensure smear ticks aren't skipped
 	smear_timer -= delta
-	if smear_timer <= 0.0:
+	while smear_timer <= 0.0:
 		smear_timer += smear_interval
 		spawn_blood_smear()
-
-	var screen_size = get_viewport_rect().size
-	#position.x = clamp(position.x, 0, screen_size.x)
-	#position.y = clamp(position.y, 0, screen_size.y)
 
 func _register_chunk():
 	active_chunks.append(self)
 	if active_chunks.size() > MAX_MEAT_CHUNKS:
-		var oldest = active_chunks.pop_front()
+		var oldest = active_chunks[0]
+		active_chunks.remove_at(0)
 		if oldest.is_inside_tree():
 			oldest.queue_free()
 
 func _exit_tree():
-	# Remove self from active list when freed
 	active_chunks.erase(self)
 
 func setup_movement():
@@ -89,7 +85,7 @@ func setup_movement():
 
 func setup_timer():
 	var timer = $Timer
-	timer.wait_time = randf_range(1, 1.5)  
+	timer.wait_time = randf_range(1, 1.5)
 	timer.one_shot = true
 	timer.timeout.connect(queue_free)
 	timer.start()
@@ -100,17 +96,14 @@ func spawn_blood_smear():
 
 func randomize_sprite():
 	if chunk_textures.size() > 0:
-		var sprite = $Sprite2D
-		sprite.texture = chunk_textures.pick_random()
+		$Sprite2D.texture = chunk_textures.pick_random()
 
 func _on_fade_timer_timeout():
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
-	freeze = true  # Disable further physics movement
+	freeze = true
 	fade_time_left = fade_duration
 	is_fading = true
 
-# Helper function to enable/disable collision
-func set_collision_disabled(disabled: bool) -> void:
-	collision_disabled = disabled
+func set_collision_disabled(disabled: bool):
 	$CollisionShape2D.disabled = disabled
