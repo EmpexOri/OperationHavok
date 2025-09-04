@@ -24,6 +24,7 @@ signal shot_fired(direction)
 var space_state: PhysicsDirectSpaceState2D # The space state, used to pass to weapon effects
 
 func _ready() -> void:
+	var current_world = get_world_2d()
 	# Initialize fire rate
 	current_fire_rate = base_fire_rate
 
@@ -35,8 +36,9 @@ func _ready() -> void:
 
 # Get the space state, needed due to multithreading
 func _physics_process(delta: float) -> void:
-	var current_world = get_world_2d()
-	space_state = current_world.direct_space_state
+	# Lazy init: only grab it once, when physics is ready
+	if space_state == null:
+		space_state = get_world_2d().direct_space_state
 
 	# Process any weapon effects that have a process method
 	for effect in weapon_effects:

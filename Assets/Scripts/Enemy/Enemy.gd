@@ -148,18 +148,15 @@ func get_flash_sprite() -> CanvasItem:
 
 func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 	var sprite = get_flash_sprite()
-	if not sprite or not sprite.material:
+	if not sprite or not (sprite.material is ShaderMaterial):
 		return
-
 	var mat := sprite.material as ShaderMaterial
 	mat.set_shader_parameter("flash_color", flash_color)
 
+	var tween := create_tween()
 	for i in range(times):
-		mat.set_shader_parameter("flash_strength", 0.5)
-		await get_tree().create_timer(interval).timeout
-		mat.set_shader_parameter("flash_strength", 0.0)
-		await get_tree().create_timer(interval).timeout
-
+		tween.tween_property(mat, "shader_parameter/flash_strength", 0.5, interval)
+		tween.tween_property(mat, "shader_parameter/flash_strength", 0.0, interval)
 
 # STIILL MY NEW BIT YIPPEEE
 func has_weapon() -> bool:

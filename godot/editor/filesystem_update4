@@ -23,3 +23,5 @@ res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd
 res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/FlameBullet.tscn
 res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 res://Assets/Scripts/Misc/SmearCanvas.gd
+res://Assets/Scripts/Weapons/Weapon.gd
+res://Assets/Scripts/Enemy/Enemy.gd
