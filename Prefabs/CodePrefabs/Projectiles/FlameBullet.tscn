@@ -10,10 +10,10 @@
 script = ExtResource("2_2u4w2")
 ground_effect_scene = ExtResource("3_8huwu")
 ground_effect_offset = Vector2(0, 0)
-min_lifetime = 0.25
-max_lifetime = 0.55
-base_speed = 600.0
-base_damage = 1.0
+min_lifetime = 0.15
+max_lifetime = 0.35
+base_speed = 400.0
+base_damage = 2.5
 base_lifetime = 0.5
 
 [node name="CollisionShape2D" parent="." index="0"]

@@ -1,7 +1,6 @@
-res://Assets/Art/Particles
+C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
 res://Assets/Art/Particles/Lightning
 res://Assets/Art/Sprites/FX
-C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
 res://Assets/Art/Sprites
 res://Assets/Scripts/Effects/Projectile Effects
 res://Assets/Scripts/Effects/Projectile Effects/Instances
@@ -20,3 +19,4 @@ res://Assets/Art/Particles/Explosion/Explosion64
 res://Prefabs/CodePrefabs/Particles
 res://Assets/Scripts/Effects/Weapon Effects/Instances
 res://Assets/Scripts/Effects/Weapon Effects
+res://Prefabs/CodePrefabs/Particles/Preloaded
