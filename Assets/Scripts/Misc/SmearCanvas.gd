@@ -3,7 +3,7 @@ class_name Smearcanvas
 
 var MAX_SMEARS := 5000
 const FADE_TIME := 30.0
-var CULL_THRESHOLD := MAX_SMEARS / 2
+var CULL_THRESHOLD := MAX_SMEARS / 2 
 const CULL_FADE_MULTIPLIER := 2.0
 
 var blood_censorship_enabled := false

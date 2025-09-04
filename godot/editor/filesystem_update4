@@ -20,3 +20,6 @@ res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
 res://Assets/Scripts/Menu Scripts/MenuScene.gd
 res://Scenes/LevelSelectScene.tscn
 res://Assets/Scripts/LevelControllers/Level1/RoadBlock.gd
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/FlameBullet.tscn
+res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
+res://Assets/Scripts/Misc/SmearCanvas.gd

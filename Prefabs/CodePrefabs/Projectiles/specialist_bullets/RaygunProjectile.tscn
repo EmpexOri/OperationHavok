@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7232phr78kxv"]
 
-[ext_resource type="PackedScene" uid="uid://uy66843n3v0h" path="res://Prefabs/CodePrefabs/Projectiles/physics_projectile.tscn" id="1_0mcth"]
+[ext_resource type="PackedScene" uid="uid://uy66843n3v0h" path="res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn" id="1_0mcth"]
 [ext_resource type="Texture2D" uid="uid://bhj65kybyl4di" path="res://Assets/Art/Sprites/FX/RaygunBall.png" id="2_0mcth"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1toi"]
