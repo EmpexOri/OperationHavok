@@ -29,7 +29,7 @@ func _ready():
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
-func update_navigation():
+func update_navigation(_delta):
 	var target_node = resolve_target()
 	if not target_node:
 		return

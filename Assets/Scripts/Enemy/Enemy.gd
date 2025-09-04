@@ -13,6 +13,9 @@ var Group = "Enemy"
 var SummonGroup = "EnemySummon"
 var Target = "Player"
 
+var path_update_interval := 0.25  # seconds between path recalculations
+var path_update_timer := 0.0
+
 var WeaponScene: PackedScene
 var CurrentWeapon: Weapon
 
@@ -32,14 +35,23 @@ func setup_weapon():
 		add_child(CurrentWeapon)
 
 func _physics_process(_delta):
-	update_navigation()
+	update_navigation(_delta)
 
-func update_navigation():
+func update_navigation(delta):
 	if not nav:
 		return
-	var player_node = resolve_target()
-	if player_node:
-		nav.target_position = player_node.global_position
+
+	path_update_timer -= delta
+	if path_update_timer <= 0.0:
+		var player_node = resolve_target()
+		if player_node:
+			nav.target_position = player_node.global_position
+		path_update_timer = path_update_interval  # reset timer
+
+	# Always move toward next point, even if we didn’t update the path
+	if nav.is_navigation_finished():
+		velocity = Vector2.ZERO
+	else:
 		var dir = (nav.get_next_path_position() - global_position).normalized()
 		velocity = dir * Speed
 		move_and_slide()
