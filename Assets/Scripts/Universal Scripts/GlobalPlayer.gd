@@ -6,7 +6,7 @@ var CurrentClass: String = "Commando"
 
 var weapon_upgrades = {
 	1: "Smg",
-	2: "Raygun"
+	2: "FlameThrower"
 }
 
 var ClassData = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmf1vldv34maj"]
+[gd_scene load_steps=13 format=3 uid="uid://ju0qh3it0mwh"]
 
 [ext_resource type="Script" uid="uid://beitqbwpohcd5" path="res://Assets/Scripts/Effects/Misc Effects/GroundEffect.gd" id="1_xr70k"]
 [ext_resource type="Texture2D" uid="uid://cia8dtoxy3x4o" path="res://Assets/Art/Particles/Group 6 - 3.png" id="2_xr70k"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=15 format=3 uid="uid://bt3lmmowt8u2v"]
+
+[ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_se3g8"]
+[ext_resource type="PackedScene" uid="uid://c7ccnhvjepfqu" path="res://Prefabs/CodePrefabs/Projectiles/FlameBullet.tscn" id="2_se3g8"]
+[ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_rghba"]
+[ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="3_wxjej"]
+[ext_resource type="Script" uid="uid://dcs88l8lr8rxw" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_damageovertime.gd" id="4_573kc"]
+[ext_resource type="Script" uid="uid://dou8hddjbq6eq" path="res://Assets/Scripts/Effects/Weapon Effects/burst_effect.gd" id="4_wvk2w"]
+[ext_resource type="Script" uid="uid://bxkwbwtmdvk8p" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd" id="5_573kc"]
+[ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="5_rghba"]
+[ext_resource type="Script" uid="uid://wwee4860hgms" path="res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd" id="6_573kc"]
+
+[sub_resource type="Resource" id="Resource_n1qfp"]
+script = ExtResource("5_573kc")
+max_hits = 9999
+effect_name = ""
+metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"
+
+[sub_resource type="Resource" id="Resource_573kc"]
+script = ExtResource("4_573kc")
+damage_per_second = 5.0
+duration = 5.0
+effect_name = ""
+metadata/_custom_type_script = "uid://dcs88l8lr8rxw"
+
+[sub_resource type="Resource" id="Resource_slm06"]
+script = ExtResource("4_wvk2w")
+burst_count = 3
+burst_cooldown = 1.5
+effect_name = ""
+metadata/_custom_type_script = "uid://dou8hddjbq6eq"
+
+[sub_resource type="Resource" id="Resource_dt1q8"]
+script = ExtResource("5_rghba")
+inaccuracy_angle = 5.0
+effect_name = ""
+metadata/_custom_type_script = "uid://cvwir6rctxwae"
+
+[sub_resource type="Resource" id="Resource_hc1us"]
+script = ExtResource("6_573kc")
+projectile_count = 3
+spread_angle = 10.0
+effect_name = ""
+metadata/_custom_type_script = "uid://wwee4860hgms"
+
+[node name="FlameThrower" type="Node2D"]
+script = ExtResource("1_se3g8")
+projectile_scene = ExtResource("2_se3g8")
+base_fire_rate = 0.1
+projectile_effects = Array[ExtResource("3_rghba")]([SubResource("Resource_n1qfp"), SubResource("Resource_573kc")])
+weapon_effects = Array[ExtResource("3_wxjej")]([SubResource("Resource_slm06"), SubResource("Resource_dt1q8"), SubResource("Resource_hc1us")])

@@ -16,4 +16,5 @@ func process_effect(projectile: Projectile, delta: float, space_state: PhysicsDi
 func on_hit(projectile: Projectile, body: Node2D, collision: KinematicCollision2D = null):
 	if body.has_method("apply_dot"):
 		body.apply_dot(damage_per_second, duration)
-	return true
+	# Don’t destroy projectile → let penetration decide
+	return false
