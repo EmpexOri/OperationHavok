@@ -16,15 +16,29 @@ var Target = "Player"
 var path_update_interval := 0.25  # seconds between path recalculations
 var path_update_timer := 0.0
 
+var flash_timer: Timer
+var flash_active := false
+
+var cached_player: Node2D = null
+
 var WeaponScene: PackedScene
 var CurrentWeapon: Weapon
 
 signal died(enemy)
 
 func _ready():
+	flash_timer = Timer.new()
+	flash_timer.wait_time = 0.15
+	flash_timer.one_shot = false
+	flash_timer.connect("timeout", Callable(self, "_on_flash_tick"))
+	add_child(flash_timer)
 	add_to_group(Group)
 	add_to_group(SummonGroup)
 	setup_weapon()
+	
+	# Cache player reference
+	cached_player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
+	
 	await get_tree().process_frame  # Give time for Player to exist in their pretty little eyes <3
 	start()
 
@@ -34,8 +48,12 @@ func setup_weapon():
 		CurrentWeapon.owning_entity = Group
 		add_child(CurrentWeapon)
 
-func _physics_process(_delta):
-	update_navigation(_delta)
+func _physics_process(delta):
+	if not cached_player or not is_instance_valid(cached_player):
+		var players = get_tree().get_nodes_in_group("Player")
+		cached_player = players[0] if players.size() > 0 else null
+	
+	update_navigation(delta)
 
 func update_navigation(delta):
 	if not nav:
@@ -57,8 +75,7 @@ func update_navigation(delta):
 		move_and_slide()
 
 func resolve_target() -> Node2D:
-	var players = get_tree().get_nodes_in_group("Player")
-	return players[0] if players.size() > 0 else null
+	return cached_player
 
 #func deal_damage(damage: int, _from_position = null):
 	#var new_health = max(0, Health - damage)

@@ -25,3 +25,4 @@ res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 res://Assets/Scripts/Misc/SmearCanvas.gd
 res://Assets/Scripts/Weapons/Weapon.gd
 res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
