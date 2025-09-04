@@ -5,6 +5,8 @@ var MAX_SMEARS := 5000
 const FADE_TIME := 30.0
 var CULL_THRESHOLD := MAX_SMEARS / 2 
 const CULL_FADE_MULTIPLIER := 2.0
+var spawns_this_frame := 0
+const MAX_SPAWNS_PER_FRAME := 50
 
 var blood_censorship_enabled := false
 var bloodcolor := '63070fd4'
@@ -13,45 +15,60 @@ var nullcolor := Color("ffffffd4")
 
 var smear_texture: Texture2D
 var smears: Array = []
+var smear_index: int = 0  # For circular buffer
 
 func _ready():
 	smear_texture = preload("res://Assets/Art/PlaceHolders/SmallSplatWhite.png")
 	z_index = 1
+	# Make this render on top of world if needed
+	if self.get_parent() == null:
+		var layer = CanvasLayer.new()
+		layer.layer = 0
+		layer.add_child(self)
+		get_tree().get_root().add_child(layer)
 	visible = true
 
 func _process(delta: float):
+	spawns_this_frame = 0
 	var fade_multiplier := CULL_FADE_MULTIPLIER if smears.size() > CULL_THRESHOLD else 1.0
-
+	var need_redraw := false
+	
 	for i in range(smears.size() - 1, -1, -1):
 		var smear = smears[i]
 		smear["time_left"] -= delta * fade_multiplier
 		if smear["time_left"] <= 0:
 			smears.remove_at(i)
-
-	queue_redraw()
+			need_redraw = true
+		else:
+			need_redraw = true
+	if need_redraw:
+		queue_redraw()
 
 func _draw():
 	for smear in smears:
 		var ratio = clamp(smear["time_left"] / FADE_TIME, 0.0, 1.0)
-		var mod_color = smear.get("color", Color(1, 1, 1, 1)) * Color(1, 1, 1, ratio)
-		draw_texture(smear_texture, smear["position"], mod_color)
+		var mod_color = smear.get("color", Color(1,1,1,1)) * Color(1,1,1,ratio)
+		draw_texture(smear_texture, smear["position"], mod_color)  
 
 func spawn_smear(global_position: Vector2, color := nullcolor) -> void:
-	if smears.size() >= MAX_SMEARS:
-		smears.pop_front()
-
+	if spawns_this_frame >= MAX_SPAWNS_PER_FRAME:
+		return
+	spawns_this_frame += 1
+	
 	if color == nullcolor:
 		color = get_active_blood_color()
 
-	# Convert global to local coordinates
-	var local_pos = to_local(global_position)
-	var varied_color = randomize_color(color, 0.06)
-
-	smears.append({
-		"position": local_pos,
+	var smear_data = {
+		"position": global_position,  # keep global, no conversion
 		"time_left": FADE_TIME,
-		"color": varied_color,
-	})
+		"color": randomize_color(color, 0.06)
+	}
+
+	if smears.size() < MAX_SMEARS:
+		smears.append(smear_data)
+	else:
+		smears[smear_index] = smear_data
+		smear_index = (smear_index + 1) % MAX_SMEARS
 
 # -- Settings logic --
 
