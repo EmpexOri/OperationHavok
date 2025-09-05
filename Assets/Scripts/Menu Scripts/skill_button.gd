@@ -6,7 +6,7 @@ signal perk_point_used
 @onready var panel = $Panel
 @onready var label = $MarginContainer/Label
 @onready var Line = $Line2D
-@onready var HoverImage1 = $Hover1
+@onready var HoverAnimation = $HoverAnimation
 
 var lockedCondition = "Locked":
 	set(value):
@@ -88,8 +88,9 @@ func update_visuals():
 
 
 func _on_mouse_entered() -> void:
-	HoverImage1.visible = true
+	HoverAnimation.visible = true
+	HoverAnimation.play("default")
 
 
 func _on_mouse_exited() -> void:
-	HoverImage1.visible = false
+	HoverAnimation.visible = false

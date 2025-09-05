@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh4kv8hmrue0o"]
+[gd_scene load_steps=7 format=3 uid="uid://dh4kv8hmrue0o"]
 
 [ext_resource type="Texture2D" uid="uid://cwv5csmk6r8ne" path="res://Assets/Art/PlaceHolders/TestSkillButton.png" id="1_v5jmr"]
 [ext_resource type="Script" uid="uid://bw54pd6kp40nr" path="res://Assets/Scripts/Menu Scripts/skill_button.gd" id="2_fhl0g"]
 [ext_resource type="Texture2D" uid="uid://biw7bulvlkual" path="res://Assets/Art/HUD/Lock.png" id="3_pwvhs"]
 [ext_resource type="Texture2D" uid="uid://c07uc5nh14orc" path="res://Assets/Art/SkillTree/selecticon1.png" id="4_lxxys"]
 [ext_resource type="Texture2D" uid="uid://b0pukh87b056s" path="res://Assets/Art/SkillTree/selecticon2.png" id="5_v6h2l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxxys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lxxys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v6h2l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="SkillButton" type="TextureButton"]
 z_index = 6
@@ -40,20 +54,13 @@ points = PackedVector2Array(712, 274)
 width = 3.0
 default_color = Color(0.136826, 0.136826, 0.136826, 1)
 
-[node name="Hover1" type="TextureRect" parent="."]
+[node name="HoverAnimation" type="AnimatedSprite2D" parent="."]
 visible = false
-layout_mode = 0
-offset_top = 1.11111
-offset_right = 40.0
-offset_bottom = 41.1111
-texture = ExtResource("4_lxxys")
-
-[node name="Hover2" type="TextureRect" parent="."]
-visible = false
-offset_top = 1.11111
-offset_right = 40.0
-offset_bottom = 41.1111
-texture = ExtResource("5_v6h2l")
+position = Vector2(20, 21.1111)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_lxxys")
+frame = 1
+frame_progress = 0.34334
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
