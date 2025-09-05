@@ -16,6 +16,10 @@ var lockedCondition = "Locked":
 var unlocked := false
 
 func _ready():
+	if name == "SMG":
+		set_unlocked_state(true)
+		lockedCondition = "Unlocked"
+	
 	draw_connection_line()
 	update_visuals()
 	
@@ -58,39 +62,52 @@ func _on_pressed() -> void:
 		
 		# Skill is unlocked
 		GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerkPoints"] -= 1
-		panel.show_behind_parent = true
 		lockedCondition = ""
 		unlocked = true
 		
 		Line.default_color = Color(0.71, 0.0, 0.107)
 		
-		# Enable second tier skills
+		# Update visuals for child skills (so they switch from locked → preview)
 		for skill in get_children():
 			if skill is SkillButton:
-				skill.disabled = false
+				skill.update_visuals()
 		
 		emit_signal("perk_point_used")
+		set_unlocked_state(true)
 
 func set_unlocked_state(state: bool):
 	unlocked = state
-	# Make the locked symbol disappear if the skill is unlocked
+	# Make the locked label disappear if the skill is unlocked
 	label.visible = not state
+	panel.visible = not state
 	update_visuals()
 
 func update_visuals():
 	if unlocked:
-		panel.show_behind_parent = true
+		# Fully unlocked
 		disabled = false
+		label.visible = false
 		Line.default_color = Color(0.71, 0.0, 0.107)
 	else:
-		panel.show_behind_parent = false
-		disabled = false
-
+		# Still locked, check parent status
+		var parent_skill = get_parent()
+		if parent_skill is SkillButton:
+			if parent_skill.unlocked:
+				# Parent unlocked → show preview, skill is clickable
+				label.visible = false
+				disabled = false
+			else:
+				# Parent locked → show locked label, disable skill
+				label.visible = true
+				disabled = true
+		else:
+			# No parent (root skill) → allow unlocking directly
+			label.visible = lockedCondition == "Locked"
+			disabled = false
 
 func _on_mouse_entered() -> void:
 	HoverAnimation.visible = true
 	HoverAnimation.play("default")
-
 
 func _on_mouse_exited() -> void:
 	HoverAnimation.visible = false
