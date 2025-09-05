@@ -381,6 +381,9 @@ func _on_weapon_shot_fired(direction: Vector2) -> void:
 	if weapon_path == "res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn" or weapon_path == "res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn":
 		var knockback_force = 200.0 
 		apply_weapon_knockback(direction, knockback_force)
+	if weapon_path == "res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn" or weapon_path == "res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn":
+		var knockback_force = 100.0 
+		apply_weapon_knockback(direction, knockback_force)
 
 func get_current_weapon_info():
 	if CurrentWeapon and weapon_data.has(CurrentWeapon.scene_file_path):

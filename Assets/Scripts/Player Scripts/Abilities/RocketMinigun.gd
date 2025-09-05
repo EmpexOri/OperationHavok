@@ -1,5 +1,5 @@
 extends Node2D
-class_name Minigun
+class_name RocketMinigun
 
 signal perk_finished(index: int)
 
@@ -32,7 +32,7 @@ func activate(player, index = -1):
 
 	await get_tree().process_frame
 	if is_instance_valid(player) and is_instance_valid(self):  # Safety guard
-		player.equip_weapon(LauncherScene, "RocketMinigun")
+		player.equip_weapon(LauncherScene, "RocketLauncher")
 		print("Swapped to rocket_launcher!")
 
 	# UI cooldown hookup for cooldown time starting NOW (even though actual cooldown starts after duration)
@@ -70,7 +70,7 @@ func _start_cooldown_early():
 
 	# Restore original weapon immediately (if still needed)
 	if owner_player and OriginalWeaponScene:
-		owner_player.equip_weapon(OriginalWeaponScene, "Minigun")
+		owner_player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
 		print("Restored original weapon due to early swap.")
 
 	# UI cooldown hookup starting NOW, if player has method
@@ -84,8 +84,8 @@ func _start_cooldown_early():
 	set_process(false)
 
 func _restore_weapon(player):
-	if player and OriginalWeaponScene and player.current_weapon_source == "Minigun":
-		player.equip_weapon(OriginalWeaponScene, "Minigun")
+	if player and OriginalWeaponScene and player.current_weapon_source == "RocketLauncher":
+		player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
 		print("Restored original weapon.")
 
 		if player.has_method("start_cooldown_on_slot"):

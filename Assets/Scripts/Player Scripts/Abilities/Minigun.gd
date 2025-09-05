@@ -70,7 +70,7 @@ func _start_cooldown_early():
 
 	# Restore original weapon immediately (if still needed)
 	if owner_player and OriginalWeaponScene:
-		owner_player.equip_weapon(OriginalWeaponScene, "Minigun")
+		owner_player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
 		print("Restored original weapon due to early swap.")
 
 	# UI cooldown hookup starting NOW, if player has method
@@ -84,8 +84,8 @@ func _start_cooldown_early():
 	set_process(false)
 
 func _restore_weapon(player):
-	if player and OriginalWeaponScene and player.current_weapon_source == "Minigun":
-		player.equip_weapon(OriginalWeaponScene, "Minigun")
+	if player and OriginalWeaponScene and player.current_weapon_source == "RocketLauncher":
+		player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
 		print("Restored original weapon.")
 
 		if player.has_method("start_cooldown_on_slot"):
