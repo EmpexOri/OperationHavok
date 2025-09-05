@@ -1,12 +1,12 @@
 extends Node2D
-class_name Rocketlauncher
+class_name Minigun
 
 signal perk_finished(index: int)
 
 @export var Duration: float = 10.0 # How long the LauncherScene is active for
 @export var CooldownTime: float = 10.0 # Cooldown *after* LauncherScene ends
 
-var LauncherScene := preload("res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn")
+var LauncherScene := preload("res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn")
 
 var PerkIndex: int
 var OriginalWeaponScene: PackedScene
@@ -32,7 +32,7 @@ func activate(player, index = -1):
 
 	await get_tree().process_frame
 	if is_instance_valid(player) and is_instance_valid(self):  # Safety guard
-		player.equip_weapon(LauncherScene, "RocketLauncher")
+		player.equip_weapon(LauncherScene, "RocketMinigun")
 		print("Swapped to rocket_launcher!")
 
 	# UI cooldown hookup for cooldown time starting NOW (even though actual cooldown starts after duration)
@@ -70,7 +70,7 @@ func _start_cooldown_early():
 
 	# Restore original weapon immediately (if still needed)
 	if owner_player and OriginalWeaponScene:
-		owner_player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
+		owner_player.equip_weapon(OriginalWeaponScene, "Minigun")
 		print("Restored original weapon due to early swap.")
 
 	# UI cooldown hookup starting NOW, if player has method
@@ -84,8 +84,8 @@ func _start_cooldown_early():
 	set_process(false)
 
 func _restore_weapon(player):
-	if player and OriginalWeaponScene and player.current_weapon_source == "RocketLauncher":
-		player.equip_weapon(OriginalWeaponScene, "RocketLauncher")
+	if player and OriginalWeaponScene and player.current_weapon_source == "Minigun":
+		player.equip_weapon(OriginalWeaponScene, "Minigun")
 		print("Restored original weapon.")
 
 		if player.has_method("start_cooldown_on_slot"):

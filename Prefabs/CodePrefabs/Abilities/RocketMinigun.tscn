@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck2fwvynb0c6x"]
+
+[ext_resource type="Script" uid="uid://dsn8fmdm3dn2m" path="res://Assets/Scripts/Player Scripts/Abilities/RocketMinigun.gd" id="1_0dn4u"]
+
+[node name="RocketMinigun" type="Node2D"]
+script = ExtResource("1_0dn4u")

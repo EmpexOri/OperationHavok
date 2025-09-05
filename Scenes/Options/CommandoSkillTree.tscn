@@ -203,7 +203,7 @@ offset_top = -109.0
 offset_right = 133.0
 offset_bottom = -69.0
 focus_neighbor_left = NodePath("../Novacaster")
-focus_neighbor_right = NodePath("../../MinigunTitle/RocketLauncher")
+focus_neighbor_right = NodePath("../../MinigunTitle/Minigun")
 focus_neighbor_bottom = NodePath("HomeRunGrenade")
 texture_normal = ExtResource("13_2p3y5")
 texture_hover = ExtResource("13_2p3y5")
@@ -234,7 +234,7 @@ theme_override_font_sizes/font_size = 14
 text = "Minigun"
 horizontal_alignment = 1
 
-[node name="RocketLauncher" parent="MinigunTitle" instance=ExtResource("1_cye56")]
+[node name="Minigun" parent="MinigunTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_left = 25.0
 offset_top = -109.0
@@ -247,7 +247,7 @@ texture_normal = ExtResource("15_wo6gr")
 texture_hover = ExtResource("15_wo6gr")
 texture_focused = ExtResource("15_wo6gr")
 
-[node name="RocketMinigun" parent="MinigunTitle/RocketLauncher" instance=ExtResource("1_cye56")]
+[node name="RocketMinigun" parent="MinigunTitle/Minigun" instance=ExtResource("1_cye56")]
 layout_mode = 0
 offset_top = -97.7778
 offset_right = 40.0005
@@ -266,7 +266,7 @@ offset_left = 96.0
 offset_top = -109.0
 offset_right = 136.0
 offset_bottom = -69.0
-focus_neighbor_left = NodePath("../RocketLauncher")
+focus_neighbor_left = NodePath("../Minigun")
 focus_neighbor_bottom = NodePath("TyphoonCannon")
 texture_normal = ExtResource("14_jp367")
 texture_hover = ExtResource("14_jp367")
