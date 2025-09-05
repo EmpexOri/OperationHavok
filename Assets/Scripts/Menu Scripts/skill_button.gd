@@ -6,6 +6,7 @@ signal perk_point_used
 @onready var panel = $Panel
 @onready var label = $MarginContainer/Label
 @onready var Line = $Line2D
+@onready var HoverImage1 = $Hover1
 
 var lockedCondition = "Locked":
 	set(value):
@@ -17,6 +18,10 @@ var unlocked := false
 func _ready():
 	draw_connection_line()
 	update_visuals()
+	
+	# Connect hover signals
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 func draw_connection_line():
 	# Drawing lines to the parent skill
@@ -31,7 +36,7 @@ func draw_connection_line():
 		local_start.x -= 2
 		local_end.x -= 2
 		
-		# Making sure line appears on top of everything else
+		# Making sure line appears on top of background
 		Line.z_index = 5
 		
 		Line.clear_points()
@@ -80,3 +85,11 @@ func update_visuals():
 	else:
 		panel.show_behind_parent = false
 		disabled = false
+
+
+func _on_mouse_entered() -> void:
+	HoverImage1.visible = true
+
+
+func _on_mouse_exited() -> void:
+	HoverImage1.visible = false
