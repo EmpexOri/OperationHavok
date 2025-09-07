@@ -1,4 +1,3 @@
-res://Scenes/MenuScene.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,17 +6,6 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Scenes/AlphaLevel1.tscn
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Prefabs/GamePrefabs/Player/player.tscn
-res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
-res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
-res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/rocket_projectile.tscn
-res://Prefabs/CodePrefabs/Abilities/RocketMinigun.tscn
-res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
-res://Prefabs/CodePrefabs/Weapons/Smg.tscn
-res://Prefabs/CodePrefabs/Abilities/Minigun.tscn
-res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
-res://Scenes/Options/SkillButton.tscn
-res://Assets/Scripts/Menu Scripts/skill_button.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
+res://Assets/Scripts/Player Scripts/Weapons/Misc/HomeRunExplosion.gd
+res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn

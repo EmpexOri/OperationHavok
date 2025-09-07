@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://hdehdkb7fyje"]
+
+[ext_resource type="PackedScene" uid="uid://uy66843n3v0h" path="res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn" id="1_6vkc2"]
+[ext_resource type="Texture2D" uid="uid://d2f37t4vqnaew" path="res://Assets/Art/PlaceHolders/BaseballSprite.png" id="2_rmgiv"]
+[ext_resource type="Script" uid="uid://cxfyoqn2p06ef" path="res://Assets/Scripts/Player Scripts/Weapons/Misc/HomeRunExplosion.gd" id="3_c1l86"]
+[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="3_rmgiv"]
+[ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="4_c1l86"]
+[ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="5_bn7kf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bn7kf"]
+radius = 4.24264
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjo3j"]
+radius = 63.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3syc"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(0, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb8ww"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(384, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdo6v"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(768, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byjoh"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(1152, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py2da"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(1536, 0, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22xr4"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(0, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hvgn"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(384, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne7t4"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(768, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ombhm"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(1152, 393, 384, 393)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l4lc"]
+atlas = ExtResource("5_bn7kf")
+region = Rect2(1536, 393, 384, 393)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w3cfm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3syc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb8ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdo6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byjoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py2da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22xr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hvgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne7t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ombhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l4lc")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="HomeRunProjectile" instance=ExtResource("1_6vkc2")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(7.27596e-12, -2.02656e-06)
+shape = SubResource("CircleShape2D_bn7kf")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rmgiv")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Explosion" type="Node2D" parent="." index="4"]
+script = ExtResource("3_c1l86")
+
+[node name="Sprite2D" type="Sprite2D" parent="Explosion" index="0"]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_rmgiv")
+
+[node name="ExplosionTimer" type="Timer" parent="Explosion" index="1"]
+
+[node name="Area2D" type="Area2D" parent="Explosion" index="2"]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion/Area2D" index="0"]
+shape = SubResource("CircleShape2D_sjo3j")
+
+[node name="ExplosionRadiusIndicator" type="Sprite2D" parent="Explosion" index="3"]
+visible = false
+z_index = -1
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(0.25, 0.26)
+texture = ExtResource("4_c1l86")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Explosion" index="4"]
+visible = false
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_w3cfm")
+animation = &"explode"
+autoplay = "explode"
