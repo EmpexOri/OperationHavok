@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=19 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://nbt57jqk3aep" path="res://Assets/Art/HUD/Flamethrower.png" id="6_1kq37"]
 [ext_resource type="Texture2D" uid="uid://cjkp44054rnub" path="res://Assets/Art/HUD/M60.png" id="7_0cs3v"]
 [ext_resource type="Texture2D" uid="uid://v7xyvs0ub8g4" path="res://Assets/Art/HUD/SMGs.png" id="7_k5h02"]
-[ext_resource type="Texture2D" uid="uid://bh2lxa26utvgi" path="res://Assets/Art/HUD/LaseSniper.png" id="8_ioi7u"]
 [ext_resource type="Texture2D" uid="uid://o2mbpfo6gegs" path="res://Assets/Art/HUD/RaygunRifleRetroStyle.png" id="9_kcvj1"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="10_ciio1"]
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="11_k5h02"]
@@ -85,6 +84,7 @@ text = "Weapons Tree"
 horizontal_alignment = 1
 
 [node name="SMG" parent="WeaponSwapTitle" instance=ExtResource("1_cye56")]
+layout_mode = 0
 offset_left = 60.0
 offset_top = -54.0
 offset_right = 100.0
@@ -94,38 +94,14 @@ texture_normal = ExtResource("5_ciio1")
 texture_hover = ExtResource("5_ciio1")
 texture_focused = ExtResource("5_ciio1")
 
-[node name="DragonsBreath" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
-layout_mode = 0
-offset_left = -56.6667
-offset_top = -82.2222
-offset_right = -16.6663
-offset_bottom = -42.2222
-scale = Vector2(1, 1)
-focus_neighbor_right = NodePath("../Akimbo")
-focus_neighbor_bottom = NodePath("Flamethrower")
-texture_normal = ExtResource("5_ciio1")
-texture_hover = ExtResource("5_ciio1")
-texture_focused = ExtResource("5_ciio1")
-
-[node name="Flamethrower" parent="WeaponSwapTitle/SMG/DragonsBreath" instance=ExtResource("1_cye56")]
-layout_mode = 0
-offset_top = -94.7782
-offset_bottom = -54.7782
-scale = Vector2(1, 1)
-focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
-disabled = true
-texture_normal = ExtResource("6_1kq37")
-texture_hover = ExtResource("6_1kq37")
-texture_focused = ExtResource("6_1kq37")
-
 [node name="Akimbo" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_top = -82.2222
-offset_bottom = -42.2222
+offset_left = -41.1111
+offset_top = -81.1111
+offset_right = -1.1111
+offset_bottom = -41.1111
 scale = Vector2(1, 1)
 focus_neighbor_left = NodePath("../DragonsBreath")
-focus_neighbor_right = NodePath("../LaserSniper")
 focus_neighbor_bottom = NodePath("M60")
 texture_normal = ExtResource("7_k5h02")
 texture_hover = ExtResource("7_k5h02")
@@ -133,8 +109,10 @@ texture_focused = ExtResource("7_k5h02")
 
 [node name="M60" parent="WeaponSwapTitle/SMG/Akimbo" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_top = -95.5556
-offset_bottom = -55.5556
+offset_left = -14.4444
+offset_top = -91.1112
+offset_right = 25.5556
+offset_bottom = -51.1112
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
@@ -143,31 +121,45 @@ texture_normal = ExtResource("7_0cs3v")
 texture_hover = ExtResource("7_0cs3v")
 texture_focused = ExtResource("7_0cs3v")
 
-[node name="LaserSniper" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
+[node name="DragonsBreath" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_left = 56.6667
-offset_top = -82.2222
-offset_right = 96.6667
-offset_bottom = -42.2222
+offset_left = 41.1111
+offset_top = -81.1111
+offset_right = 81.1115
+offset_bottom = -41.1111
 scale = Vector2(1, 1)
-focus_neighbor_left = NodePath("../Akimbo")
-focus_neighbor_right = NodePath("../../../GrenadeTitle/Novacaster")
-focus_neighbor_bottom = NodePath("RaygunRifle")
-texture_normal = ExtResource("8_ioi7u")
-texture_hover = ExtResource("8_ioi7u")
-texture_focused = ExtResource("8_ioi7u")
+focus_neighbor_right = NodePath("../Akimbo")
+focus_neighbor_bottom = NodePath("Flamethrower")
+texture_normal = ExtResource("5_ciio1")
+texture_hover = ExtResource("5_ciio1")
+texture_focused = ExtResource("5_ciio1")
 
-[node name="RaygunRifle" parent="WeaponSwapTitle/SMG/LaserSniper" instance=ExtResource("1_cye56")]
+[node name="RaygunRifle" parent="WeaponSwapTitle/SMG/DragonsBreath" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_top = -95.5556
-offset_bottom = -55.5556
+offset_left = -39.9999
+offset_top = -91.1112
+offset_right = 6.10352e-05
+offset_bottom = -51.1112
 scale = Vector2(1, 1)
-focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("9_kcvj1")
 texture_hover = ExtResource("9_kcvj1")
 texture_focused = ExtResource("9_kcvj1")
+
+[node name="Flamethrower" parent="WeaponSwapTitle/SMG/DragonsBreath" instance=ExtResource("1_cye56")]
+layout_mode = 0
+offset_left = 15.5556
+offset_top = -91.4449
+offset_right = 55.5556
+offset_bottom = -51.4449
+scale = Vector2(1, 1)
+focus_neighbor_top = NodePath("..")
+focus_neighbor_bottom = NodePath("../../../../BackButton")
+disabled = true
+texture_normal = ExtResource("6_1kq37")
+texture_hover = ExtResource("6_1kq37")
+texture_focused = ExtResource("6_1kq37")
 
 [node name="GrenadeTitle" type="Label" parent="."]
 offset_left = 164.0
@@ -187,7 +179,6 @@ offset_left = 26.0
 offset_top = -128.0
 offset_right = 66.0
 offset_bottom = -88.0
-focus_neighbor_left = NodePath("../../WeaponSwapTitle/SMG/LaserSniper")
 focus_neighbor_right = NodePath("../BaseballGrenade")
 focus_neighbor_bottom = NodePath("PlasmaCaster")
 texture_normal = ExtResource("10_ciio1")
