@@ -51,6 +51,9 @@ func _on_skill_button_used(button: SkillButton):
 
 	# Changes the ability being used
 	match button.name:
+		"SMG":
+			GlobalPlayer.upgrade_weapon("SMG", 1)
+			GlobalPlayer.upgrade_weapon("Shotgun", 2)
 		"Akimbo":
 			GlobalPlayer.upgrade_weapon("AkimboSmg", 1)
 		"M60":
@@ -63,7 +66,7 @@ func _on_skill_button_used(button: SkillButton):
 			GlobalPlayer.upgrade_weapon("Sniper", 2)
 		"LightningLauncher":
 			upgrade_minigun_ability("LightningLauncher")
-		"Minigun":
+		"Minigun1":
 			upgrade_minigun_ability("Minigun")
 		"RocketMinigun":
 			upgrade_minigun_ability("RocketMinigun")

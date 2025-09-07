@@ -16,7 +16,7 @@ var lockedCondition = "Locked":
 var unlocked := false
 
 func _ready():
-	if name == "SMG":
+	if name == "SMG" or name == "Grenade" or name == "Minigun":
 		set_unlocked_state(true)
 		lockedCondition = "Unlocked"
 	
