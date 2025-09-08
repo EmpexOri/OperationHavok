@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccby8d8w2spp8"]
+[gd_scene load_steps=9 format=3 uid="uid://ccby8d8w2spp8"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_b1rlo"]
-[ext_resource type="PackedScene" uid="uid://u0jv2osthn6k" path="res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/MiniRocket.tscn" id="2_tl2oh"]
+[ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/CodePrefabs/Projectiles/primary_bullets/bullet.tscn" id="2_tl2oh"]
+[ext_resource type="PackedScene" uid="uid://bl2fcrd3ixuug" path="res://Prefabs/CodePrefabs/Weapons/Grenade.tscn" id="5_gvhy6"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="5_r41jt"]
+[ext_resource type="Script" uid="uid://ecb3ng2frni6" path="res://Assets/Scripts/Effects/Weapon Effects/noob_tube_effect.gd" id="6_1lxoq"]
 [ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="6_gvhy6"]
 
 [sub_resource type="Resource" id="Resource_upth4"]
@@ -11,8 +13,18 @@ inaccuracy_angle = 5.0
 effect_name = ""
 metadata/_custom_type_script = "uid://cvwir6rctxwae"
 
+[sub_resource type="Resource" id="Resource_r41jt"]
+script = ExtResource("6_1lxoq")
+grenade_scene = ExtResource("5_gvhy6")
+grenade_interval = 30
+grenade_throw_force = 550.0
+spawn_offset = 5.0
+debug_noobtube = true
+effect_name = ""
+metadata/_custom_type_script = "uid://ecb3ng2frni6"
+
 [node name="M60" type="Node2D"]
 script = ExtResource("1_b1rlo")
 projectile_scene = ExtResource("2_tl2oh")
-base_fire_rate = 0.15
-weapon_effects = Array[ExtResource("5_r41jt")]([SubResource("Resource_upth4")])
+base_fire_rate = 0.05
+weapon_effects = Array[ExtResource("5_r41jt")]([SubResource("Resource_upth4"), SubResource("Resource_r41jt")])

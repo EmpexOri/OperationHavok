@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NoobTubeEffect" load_steps=3 format=3 uid="uid://dd7n8tebt2h4t"]
+
+[ext_resource type="PackedScene" uid="uid://bl2fcrd3ixuug" path="res://Prefabs/CodePrefabs/Weapons/Grenade.tscn" id="1_73knh"]
+[ext_resource type="Script" uid="uid://ecb3ng2frni6" path="res://Assets/Scripts/Effects/Weapon Effects/noob_tube_effect.gd" id="2_yn1ba"]
+
+[resource]
+script = ExtResource("2_yn1ba")
+grenade_scene = ExtResource("1_73knh")
+grenade_interval = 10
+debug_noobtube = true
+effect_name = ""
+metadata/_custom_type_script = "uid://wwee4860hgms"
