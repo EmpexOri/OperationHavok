@@ -3,7 +3,7 @@ extends Enemy
 @onready var sprite := $AnimatedSprite2D 
 
 func start():
-	if not Speed:
+	if not Speed or Speed == 100:
 		Speed = 150
 	Health = 20
 	MaxHealth = Health
