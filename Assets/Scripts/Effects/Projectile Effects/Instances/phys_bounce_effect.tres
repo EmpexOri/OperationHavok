@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="PhysProjectileBounce" load_steps=2 format=3 uid="uid://bmcvplnlntdc7"]
+[gd_resource type="Resource" script_class="PhysProjectileBounces" load_steps=2 format=3 uid="uid://bmcvplnlntdc7"]
 
 [ext_resource type="Script" uid="uid://bj14y6fhvpd0" path="res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd" id="1_7d4py"]
 
 [resource]
 script = ExtResource("1_7d4py")
-max_bounces = 10
-bounce_random_degrees = 10.0
+max_bounces = 15
 effect_name = ""
 metadata/_custom_type_script = "uid://tk8hk0gb0ywo"

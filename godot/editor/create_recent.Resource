@@ -1,3 +1,4 @@
+ExplodeOnMaxBounces
 ProjectileEffect
 Resource
 LightningChainEffect
