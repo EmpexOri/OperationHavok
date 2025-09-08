@@ -1,10 +1,15 @@
 extends Node2D
 
-# Load sounds into memory
+const MAX_CHANNELS := 15
+const MAX_SUSTAINED_CHANNELS := 1
+
+# ----------------------------
+# Sound banks
+# ----------------------------
 var HordlingDeathSounds: Array[AudioStream] = [
-	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath1.wav"),
-	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath2.wav"),
-	preload("res://Assets/Sound/SFX/DeathSFX/HordlingDeathSFX/HorldingDeath3.wav")
+	preload("res://Assets/Sound/SFX/DeathSFX/GoreSFX/BitcrushGib1.wav"),
+	preload("res://Assets/Sound/SFX/DeathSFX/GoreSFX/BitcrushGib2.wav"),
+	preload("res://Assets/Sound/SFX/DeathSFX/GoreSFX/BitcrushGib3.wav")
 ]
 
 var BiomancerDeathSounds: Array[AudioStream] = [
@@ -15,57 +20,73 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var lightning_sfx: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/LightningGunSustain.mp3")
+
 var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Silencetest1.wav")
 var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
-
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
-
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
 
-var paused: bool = false
-const MAX_CHANNELS := 5
-var DeathChannels: Array[AudioStreamPlayer2D] = []
+# ----------------------------
+# SFX Channels
+# ----------------------------
+var DeathChannels: Array[AudioStreamPlayer] = []
 var GeneralChannels: Array[AudioStreamPlayer2D] = []
 var PlayerSFXChannels: Array[AudioStreamPlayer] = []
-var xp_channel = null
+var WeaponSFXChannels: Array[AudioStreamPlayer] = []
+var SustainedWeaponChannels: Array[AudioStreamPlayer] = []
 
-var xp_pitch_timer := 0.0
+var xp_channel = null
+var paused: bool = false
+
+# XP pickup pitch scaling
 var xp_pitch_multiplier := 1.0
 const XP_PITCH_MAX := 2.0
 const XP_PITCH_RISE := 0.1
 const XP_PITCH_DECAY_RATE := 0.5 # per second
+
+# Round robin indexes
+var player_sfx_index := 0
+var weapon_sfx_index := 0
 #var DeathChannels: Array[AudioStreamPlayer2D] = []
 
 func _ready():
-	var xp_channel = $SFX/XPPickupChannel as AudioStreamPlayer
-
+	xp_channel = $SFX/XPPickupChannel as AudioStreamPlayer
 	randomize()
+
+	# Death channels
 	for i in range(MAX_CHANNELS):
-		var path = "SFX/DeathChannelsSFX/Channel%d" % i
-		var player = get_node_or_null(path) as AudioStreamPlayer2D
+		var player = get_node_or_null("SFX/DeathChannelsSFX/Channel%d" % i) as AudioStreamPlayer
 		if player:
 			DeathChannels.append(player)
-		else:
-			push_error("Missing Death channel player node at: %s" % path)
-			
-	# Setup General SFX Channels
+
+	# General channels
 	for i in range(MAX_CHANNELS):
-		var path = "SFX/GeneralSFX/Channel%d" % i
-		var player = get_node_or_null(path) as AudioStreamPlayer2D
+		var player = get_node_or_null("SFX/GeneralSFX/Channel%d" % i) as AudioStreamPlayer2D
 		if player:
 			GeneralChannels.append(player)
-		else:
-			push_error("Missing General SFX channel at: %s" % path)
-			
-	# Setup the Player SFX
+
+	# Player SFX channels
 	for i in range(MAX_CHANNELS):
-		var path = "SFX/PlayerSFX/Channel%d" % i
-		var player = get_node_or_null(path) as AudioStreamPlayer
+		var player = get_node_or_null("SFX/PlayerSFX/Channel%d" % i) as AudioStreamPlayer
 		if player:
 			PlayerSFXChannels.append(player)
-		else:
-			push_error("Missing Player SFX channel at: %s" % path)
+
+	# Weapon SFX channels
+	for i in range(MAX_CHANNELS):
+		var player = get_node_or_null("SFX/WeaponSFX/Channel%d" % i) as AudioStreamPlayer
+		if player:
+			WeaponSFXChannels.append(player)
+			
+	# Sustained weapon channels
+	for i in range(MAX_SUSTAINED_CHANNELS):
+		var player = get_node_or_null("SFX/SustainedWeaponSFX/Channel%d" % i) as AudioStreamPlayer
+		if player:
+			SustainedWeaponChannels.append(player)
+			
+	if WeaponSFXChannels.size() == 0:
+		push_warning("No WeaponSFX channels found! Add nodes under SFX/WeaponSFX")
 
 func _process(delta: float) -> void:
 	if xp_pitch_multiplier > 1.0:
@@ -109,6 +130,13 @@ func HordlingDeath():
 	for player in DeathChannels:
 		if not player.playing:
 			player.stream = HordlingDeathSounds[randi() % HordlingDeathSounds.size()]
+			
+			# Speed up by 20%
+			player.pitch_scale = 1.2 * randf_range(0.95, 1.05)  # Base speed up + small random variation
+			
+			# Add small random start offset (up to 0.1 seconds)
+			player.seek(randf_range(0.0, 0.1))
+			
 			player.play()
 			return
 	print("All Hordling channels are busy!")
@@ -188,14 +216,43 @@ func PlayXPPickupSound():
 	# Increase pitch for next pickup if called rapidly
 	xp_pitch_multiplier = min(XP_PITCH_MAX, xp_pitch_multiplier + XP_PITCH_RISE)
 
+# ----------------------------
+# Weapon fire helpers
+# ----------------------------
 func SmgFire():
-	PlayFromPlayerSFX(Smg_fire_sfx)
+	PlayFromWeaponSFX(Smg_fire_sfx)
 
 func ShotgunFire():
-	PlayFromPlayerSFX(Shotgun_fire_sfx)
-	ScreenShake.shake(randf_range(2.0,3.0), 0.2)
+	for player in WeaponSFXChannels:
+		if not player.playing:
+			player.stream = Shotgun_fire_sfx
+			player.pitch_scale = randf_range(0.95, 1.05)
+			player.volume_db = -10  # Lower the shotgun volume here
+			player.play()
+			break
 
-var player_sfx_index := 0
+	ScreenShake.shake(randf_range(2.0,3.0), 0.2)
+	
+func PlayLightningHitSFX():
+	PlayFromWeaponSFX(lightning_sfx)
+# ----------------------------
+# Weapon SFX
+# ----------------------------
+func PlayFromWeaponSFX(stream: AudioStream) -> void:
+	for player in WeaponSFXChannels:
+		if not player.playing:
+			player.stream = stream
+			player.pitch_scale = randf_range(0.95, 1.05)
+			player.play()
+			return
+
+	if WeaponSFXChannels.size() > 0:
+		weapon_sfx_index = (weapon_sfx_index + 1) % WeaponSFXChannels.size()
+		var player = WeaponSFXChannels[weapon_sfx_index]
+		player.stop()
+		player.stream = stream
+		player.pitch_scale = randf_range(0.95, 1.05)
+		player.play()
 
 func PlayFromPlayerSFX(stream: AudioStream) -> void:
 	# Try to find a free channel
@@ -214,3 +271,4 @@ func PlayFromPlayerSFX(stream: AudioStream) -> void:
 		player.stream = stream
 		player.pitch_scale = randf_range(0.95, 1.05)  # Random pitch modulation
 		player.play()
+		

@@ -1,3 +1,4 @@
+AudioStreamPlayer
 Sprite2D
 AnimatedSprite2D
 TextureRect
@@ -11,4 +12,3 @@ TileMapLayer
 Label
 OptionButton
 Button
-Control

@@ -27,4 +27,5 @@ metadata/_custom_type_script = "uid://ecb3ng2frni6"
 script = ExtResource("1_b1rlo")
 projectile_scene = ExtResource("2_tl2oh")
 base_fire_rate = 0.05
+fire_sound_method = &"SmgFire"
 weapon_effects = Array[ExtResource("5_r41jt")]([SubResource("Resource_upth4"), SubResource("Resource_r41jt")])

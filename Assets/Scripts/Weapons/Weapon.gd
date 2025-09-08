@@ -7,7 +7,8 @@ class_name Weapon
 @export var base_fire_rate: float = 0.5 # Shots per second
 @export var fire_offset: float = 5.0 # Offset from player to spawn projectile (weapon length)
 
-var damage_multiplier: float = 1.0 # Multipy damage by this amount, use for runtime adjustments to damage
+var damage_multiplier: float = 1.0 # Multiply damage by this amount, use for runtime adjustments
+var is_firing: bool = false
 
 @export var fire_sound_method: StringName = ""
 
@@ -22,10 +23,9 @@ signal shot_fired(direction)
 @onready var cooldown_timer: Timer = Timer.new()
 
 var space_state: PhysicsDirectSpaceState2D # The space state, used to pass to weapon effects
+var owning_entity_node: Node2D = null
 
 func _ready() -> void:
-	var current_world = get_world_2d()
-	# Initialize fire rate
 	current_fire_rate = base_fire_rate
 
 	# Setup cooldown timer
@@ -34,13 +34,25 @@ func _ready() -> void:
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
 	add_child(cooldown_timer)
 
-# Get the space state, needed due to multithreading
 func _physics_process(delta: float) -> void:
 	# Lazy init: only grab it once, when physics is ready
 	if space_state == null:
 		space_state = get_world_2d().direct_space_state
 
-	# Process any weapon effects that have a process method
+	# Handle input and firing
+	if Input.is_action_pressed("fire_up"):
+		if not is_firing:
+			is_firing = true
+		attempt_to_fire(global_position, Vector2.RIGHT) # Replace with aim vector if needed
+	else:
+		if is_firing:
+			is_firing = false
+			# Stop any sustained weapon effects
+			for effect in weapon_effects:
+				if effect and effect.has_method("stop_fire"):
+					effect.stop_fire()
+
+	# Process weapon effects that have a process method
 	for effect in weapon_effects:
 		if effect and effect.has_method("process_effect"):
 			effect.process_effect(delta)
@@ -55,14 +67,13 @@ func attempt_to_fire(spawn_position: Vector2, direction: Vector2) -> void:
 		can_fire = false
 		cooldown_timer.start()
 
-# Fire the weapon — this should NOT be called directly, always use attempt_to_fire().
 func fire(spawn_position: Vector2, direction: Vector2) -> void:
 	# Check if any weapon effect overrides the firing logic
 	for effect in weapon_effects:
 		if effect and effect.has_method("override_fire_logic"):
 			if effect.override_fire_logic(self, spawn_position, direction, projectile_effects.duplicate(true), space_state, damage_multiplier):
 				return
-	
+
 	# Default firing parameters
 	var fire_parameters = {
 		"projectile_count": 1,
@@ -75,15 +86,14 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 		if effect and effect.has_method("modify_parameters"):
 			fire_parameters = effect.modify_parameters(fire_parameters)
 
-	# Extract parameters
 	var projectile_count: int = fire_parameters["projectile_count"]
 	var spread_angle_deg: float = fire_parameters["spread_angle"]
 	var base_direction: Vector2 = fire_parameters["direction"]
 
 	var spread_radian: float = deg_to_rad(spread_angle_deg)
 	var base_angle: float = base_direction.angle()
-
 	var angle_step: float = 0.0
+
 	if projectile_count > 1:
 		angle_step = spread_radian / (projectile_count - 1)
 
@@ -93,7 +103,7 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 		var shot_angle: float = start_angle + angle_step * i
 		if projectile_count == 1:
 			shot_angle = base_angle
-		
+
 		var fire_direction: Vector2 = Vector2.RIGHT.rotated(shot_angle)
 
 		# Handle inaccuracy if set
@@ -101,14 +111,12 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 		if inaccuracy_angle != 0:
 			var random_angle: float = deg_to_rad(randf_range(-inaccuracy_angle, inaccuracy_angle))
 			fire_direction = fire_direction.rotated(random_angle)
-		
-		_spawn_projectile(spawn_position, fire_direction)
-		_play_fire_sound()
 
-# Internal method for spawning a projectile
+		_spawn_projectile(spawn_position, fire_direction)
+	_play_fire_sound()
+
 func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 	var projectile_instance = projectile_scene.instantiate()
-
 	var main_scene = get_tree().current_scene
 	if main_scene:
 		main_scene.add_child(projectile_instance)
@@ -116,26 +124,21 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 	var position = spawn_position + direction * fire_offset
 	projectile_instance.start(position, direction, owning_entity, _create_fresh_effect_instances(), space_state, damage_multiplier)
 
-# Set the initial damage multiplier for a projectile instance
 func set_initial_damage_multiplier(value: float) -> void:
 	damage_multiplier = value
 
-# Adds an effect to the weapon or projectiles
 func add_effect(new_effect: Resource) -> void:
 	var found: bool = false
 
-	# Check projectile effects
 	for existing_effect in projectile_effects:
 		if existing_effect != null and typeof(existing_effect) == typeof(new_effect) and existing_effect.effect_name == new_effect.effect_name:
 			found = true
 
-	# Check weapon effects
 	for existing_effect in weapon_effects:
 		if typeof(existing_effect) == typeof(new_effect) and existing_effect.effect_name == new_effect.effect_name:
 			found = true
 			break
 
-	# Apply if not found
 	if not found:
 		if new_effect is ProjectileEffect:
 			projectile_effects.append(new_effect)
@@ -146,7 +149,6 @@ func add_effect(new_effect: Resource) -> void:
 		else:
 			print("Attempted to add unknown effect type.")
 
-# Removes an effect from the weapon or projectiles
 func remove_effect(effect_to_remove: Resource) -> void:
 	if not effect_to_remove:
 		return
@@ -160,16 +162,12 @@ func remove_effect(effect_to_remove: Resource) -> void:
 	else:
 		print("Attempted to remove an effect that does not exist.")
 
-# Create a fresh instance of the effect for each projectile
 func _create_fresh_effect_instances() -> Array[ProjectileEffect]:
 	var fresh_effects: Array[ProjectileEffect] = []
 	for effect in projectile_effects:
 		if effect:
-			# Duplicate the instance so runtime changes persist
 			fresh_effects.append(effect.duplicate(true))
 	return fresh_effects
-
-var owning_entity_node: Node2D = null
 
 func set_owning_entity(node: Node2D) -> void:
 	owning_entity_node = node

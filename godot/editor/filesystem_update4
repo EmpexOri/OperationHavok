@@ -28,3 +28,11 @@ res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn
 res://Prefabs/CodePrefabs/Abilities/GrenadeThrow.tscn
+res://Scenes/GlobalAudioController.tscn
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Assets/Scripts/Weapons/Weapon.gd
+res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
+res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
+res://Assets/Scripts/Misc/ChainLightningUtility.gd

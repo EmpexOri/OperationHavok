@@ -92,12 +92,16 @@ static func execute_chain_lightning(
 
 # Static Helper Methods
 static func _apply_damage_and_effects(target: Node2D, damage: float,
-		effect_resources: Array[ProjectileEffect], source_node):
-	if not is_instance_valid(target): return
+	effect_resources: Array[ProjectileEffect], source_node):
+	if not is_instance_valid(target):
+		return
+	
+	var hit_occurred := false
 	
 	if target.has_method("deal_damage"):
 		target.deal_damage(damage)
-		
+		hit_occurred = true  # Damage actually applied
+	
 	if effect_resources:
 		for effect_res in effect_resources:
 			if effect_res:
@@ -105,6 +109,11 @@ static func _apply_damage_and_effects(target: Node2D, damage: float,
 				if effect_instance.has_method("on_hit"):
 					var projectile_source = source_node if source_node is Projectile else null
 					effect_instance.on_hit(projectile_source, target)
+					hit_occurred = true
+
+	# Play lightning sound only if we hit something
+	if hit_occurred:
+		GlobalAudioController.PlayFromWeaponSFX(GlobalAudioController.lightning_sfx)
 
 static func _find_target_in_cone(space_state: PhysicsDirectSpaceState2D, origin: Vector2,
 		aim_dir: Vector2, search_radius: float, cone_angle_deg: float, mask: int, 
