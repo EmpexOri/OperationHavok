@@ -95,6 +95,10 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 # Set the damage multiplier for a projectile instance
 func set_damage_multiplier(value: float) -> void:
 	current_damage_multiplier = value
+	
+# Get the damage multiplier for a projectile instance
+func get_damage_multiplier() -> float:
+	return current_damage_multiplier
 
 func _on_collision(collision: KinematicCollision2D):
 	var body: Node2D = collision.get_collider()

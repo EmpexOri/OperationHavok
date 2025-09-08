@@ -9,3 +9,4 @@ res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Assets/Scripts/Projectiles/physics_projectile.gd
 res://Assets/Scripts/Weapons/Weapon.gd
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
