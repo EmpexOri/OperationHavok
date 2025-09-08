@@ -5,7 +5,7 @@ var Damage_Timer = Timer.new()
 
 var RecoilEffectResource = preload("res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd")
 
-var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn") # Starting weapon
+var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/Smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
 
@@ -65,7 +65,7 @@ func _ready():
 	MoveSpeed = BaseSpeed
 	
 	var default_weapon = get_default_weapon_from_swap_upgrade()
-	equip_weapon(StartingWeapon, "SwapWeapons")
+	equip_weapon(default_weapon, "SwapWeapons")
 	#var penetrate_effect = preload("res://Assets/Scripts/Effects/Projectile Effects/Instances/penetrate_effect.tres")
 	#CurrentWeapon.add_effect(penetrate_effect)
 
