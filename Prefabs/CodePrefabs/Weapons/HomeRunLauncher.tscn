@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://317d0bdv65kj"]
+[gd_scene load_steps=7 format=3 uid="uid://317d0bdv65kj"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_ipnet"]
 [ext_resource type="PackedScene" uid="uid://hdehdkb7fyje" path="res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn" id="2_ipnet"]
 [ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_am4c0"]
 [ext_resource type="Script" uid="uid://bj14y6fhvpd0" path="res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd" id="4_fmh5c"]
+[ext_resource type="Resource" uid="uid://db6hho6mnu1ii" path="res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_damage_up_effect.tres" id="5_gtyc8"]
 
 [sub_resource type="Resource" id="Resource_q8a6o"]
 script = ExtResource("4_fmh5c")
@@ -15,4 +16,4 @@ metadata/_custom_type_script = "uid://bj14y6fhvpd0"
 script = ExtResource("1_ipnet")
 projectile_scene = ExtResource("2_ipnet")
 fire_sound_method = &"SmgFire"
-projectile_effects = Array[ExtResource("3_am4c0")]([SubResource("Resource_q8a6o")])
+projectile_effects = Array[ExtResource("3_am4c0")]([SubResource("Resource_q8a6o"), ExtResource("5_gtyc8")])

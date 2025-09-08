@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DamageUpOnBounceEffect" load_steps=2 format=3 uid="uid://db6hho6mnu1ii"]
+
+[ext_resource type="Script" uid="uid://cu57d33ktbtrb" path="res://Assets/Scripts/Effects/Projectile Effects/phys_damage_up_bounce.gd" id="1_t1ejb"]
+
+[resource]
+script = ExtResource("1_t1ejb")
+damage_multiplier_per_bounce = 0.5
+effect_name = ""
+metadata/_custom_type_script = "uid://tk8hk0gb0ywo"
