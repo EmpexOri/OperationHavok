@@ -20,6 +20,9 @@ res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
 res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
 res://Prefabs/CodePrefabs/Particles/GooChunks.tscn
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn
-res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
+res://Assets/Scripts/Effects/Projectile Effects/phys_damage_up_bounce.gd
+res://Assets/Scripts/Effects/Projectile Effects/phys_explode_max_bounces.gd
