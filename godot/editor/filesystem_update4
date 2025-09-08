@@ -15,3 +15,7 @@ res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
+res://Assets/Scripts/Effects/Misc Effects/GroundEffect.gd
+res://Scenes/Options/PauseMenu.tscn
+res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
+res://Assets/Scripts/Effects/Misc Effects/SlowGroundEffect.gd

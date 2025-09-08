@@ -1,7 +1,7 @@
+Sprite2D
 AnimatedSprite2D
 TextureRect
 Timer
-Sprite2D
 CollisionShape2D
 Area2D
 Node2D
