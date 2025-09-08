@@ -55,8 +55,8 @@ func start_timer():
 # --- Show FX before spawning ---
 func _begin_summon():
 	var fx = SummonFX.instantiate()
-	fx.position = self.global_position
-	add_child(fx)  
+	fx.global_position = global_position
+	get_parent().add_child(fx)
 
 	if fx.has_signal("finished"):
 		fx.connect("finished", Callable(self, "_on_summon_fx_finished").bind(fx))
