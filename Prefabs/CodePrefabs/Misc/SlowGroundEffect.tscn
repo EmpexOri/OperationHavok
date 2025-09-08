@@ -8,6 +8,7 @@ radius = 16.0
 
 [node name="SlowGroundEffect" type="Node2D"]
 script = ExtResource("1_x0wr4")
+slow_multiplier = 0.65
 damage_per_tick = 0.0
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -20,4 +21,6 @@ shape = SubResource("CircleShape2D_vwn8m")
 [node name="TickTimer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4
+z_as_relative = false
 texture = ExtResource("2_x0wr4")

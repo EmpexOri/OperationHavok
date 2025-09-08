@@ -19,6 +19,7 @@ var current_weapon_source := ""
 var Invincible = false
 
 var MoveSpeed = 0
+var BaseSpeed: float = 150
 var BulletSpeed = 0
 var frame_counter := 0
 
@@ -60,7 +61,8 @@ func _ready():
 	add_to_group("Player")
 	damage_timer()
 	
-	MoveSpeed = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["MoveSpeed"]
+	BaseSpeed = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["MoveSpeed"]
+	MoveSpeed = BaseSpeed
 	
 	var default_weapon = get_default_weapon_from_swap_upgrade()
 	equip_weapon(default_weapon, "SwapWeapons")
@@ -456,3 +458,6 @@ func is_knockback_weapon(weapon: Weapon) -> bool:
 	if weapon_path == "res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn":
 		return true
 	return false
+
+func set_move_speed(value: float):
+	MoveSpeed = value

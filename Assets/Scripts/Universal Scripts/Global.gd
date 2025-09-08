@@ -99,6 +99,16 @@ func spawn_meat_chunk(position: Vector2):
 		meat_chunk.global_position = position
 		meat_chunk.z_index = -1
 		get_tree().current_scene.call_deferred("add_child", meat_chunk)
+		
+func spawn_goo_chunks(position: Vector2):
+	var goo_scene = preload("res://Prefabs/CodePrefabs/Particles/GooChunks.tscn")
+	var num_chunks = randi_range(6, 20)  # adjust for density of goo splatter
+
+	for i in range(num_chunks):
+		var goo_chunk = goo_scene.instantiate()
+		goo_chunk.global_position = position
+		goo_chunk.z_index = -1
+		get_tree().current_scene.call_deferred("add_child", goo_chunk)
 
 # -- Blood Smear Tracking --
 

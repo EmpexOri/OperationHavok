@@ -21,3 +21,9 @@ res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
 res://Assets/Scripts/Effects/Misc Effects/SlowGroundEffect.gd
 res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_expode_max_bounces.tres
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
+res://Assets/Scripts/Misc/GooChunk.gd
+res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn
+res://Assets/Scripts/Universal Scripts/Global.gd
+res://Assets/Scripts/Enemy/elite_enemies/Goolum.gd
+res://Prefabs/CodePrefabs/Particles/GooChunks.tscn
+res://Assets/Scripts/Player Scripts/player.gd

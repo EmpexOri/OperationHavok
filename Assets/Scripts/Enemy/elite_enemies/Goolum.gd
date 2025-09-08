@@ -55,6 +55,15 @@ func _physics_process(delta):
 		sprite.play()
 	else:
 		sprite.stop()
+		
+func on_death():
+	# Spawn goo chunks at this enemy's position
+	if is_instance_valid(self):
+		Global.spawn_goo_chunks(global_position)
+	super()
+
+	# Original death logic (disable enemy, play animation, etc.)
+	queue_free()
 
 func find_strongest_target():
 	var candidates := get_tree().get_nodes_in_group("Enemy")
