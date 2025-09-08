@@ -1,29 +1,36 @@
 extends GroundEffect
 class_name SlowGroundEffect
 
-@export var slow_multiplier: float = 0.8   # 80% speed
-@export var affects_only_player: bool = true
+@export var slow_multiplier: float = 0.8	# 80% of normal speed
 
-var slowed_players: Dictionary = {}  # {player: original_speed}
+var slowed_players: Dictionary = {}			# {player: original_speed}
 
 func _on_body_entered(body: Node2D) -> void:
-	# Call parent so damage still works
+	# keep parent logic (tracking + damage)
 	super._on_body_entered(body)
 
-	if body.is_in_group("Player"):
-		if not slowed_players.has(body):
-			if body.has_variable("MoveSpeed"):
-				slowed_players[body] = body.MoveSpeed
-				body.MoveSpeed *= slow_multiplier
-				print("Player slowed to: ", body.MoveSpeed)
+	if not body.is_in_group("Player"):
+		return
+	if slowed_players.has(body):
+		return
+
+	# assume Player has MoveSpeed (per your Player.gd)
+	var original_speed: float = float(body.MoveSpeed)
+	slowed_players[body] = original_speed
+	body.MoveSpeed = original_speed * slow_multiplier
 
 func _on_body_exited(body: Node2D) -> void:
-	# Call parent so damage tracking still works
+	# keep parent logic (tracking)
 	super._on_body_exited(body)
 
-	if body.is_in_group("Player"):
-		if slowed_players.has(body):
-			if body.has_variable("MoveSpeed"):
-				body.MoveSpeed = slowed_players[body]
-				print("Player speed restored to: ", body.MoveSpeed)
-			slowed_players.erase(body)
+	if body.is_in_group("Player") and slowed_players.has(body):
+		if is_instance_valid(body):
+			body.MoveSpeed = float(slowed_players[body])
+		slowed_players.erase(body)
+
+func _exit_tree() -> void:
+	# restore anyone still slowed if the effect despawns
+	for player in slowed_players.keys():
+		if is_instance_valid(player):
+			player.MoveSpeed = float(slowed_players[player])
+	slowed_players.clear()

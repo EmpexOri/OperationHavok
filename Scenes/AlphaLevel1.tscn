@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=52 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="22_udyv4"]
 [ext_resource type="Texture2D" uid="uid://c4d4ublcyedvu" path="res://Assets/Art/PlaceHolders/CharacterPFP.png" id="24_bksor"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="27_kbd7x"]
+[ext_resource type="PackedScene" uid="uid://d0guewa0bd03w" path="res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn" id="37_vjyuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
 size = Vector2(204, 101)
@@ -2749,6 +2750,10 @@ avoidance_layers = 15
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.629675, 0.629675, 0.629675, 1)
+
+[node name="SlowGroundEffect" parent="." instance=ExtResource("37_vjyuu")]
+position = Vector2(1463, -82)
+slow_multiplier = 0.5
 
 [connection signal="body_entered" from="LevelManager/CarparkTrigger" to="LevelManager" method="_on_carpark_trigger_entered"]
 [connection signal="body_entered" from="LevelManager/TutorialTrigger" to="LevelManager" method="_on_tutorial_trigger_body_entered"]

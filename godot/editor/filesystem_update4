@@ -19,3 +19,5 @@ res://Assets/Scripts/Effects/Misc Effects/GroundEffect.gd
 res://Scenes/Options/PauseMenu.tscn
 res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
 res://Assets/Scripts/Effects/Misc Effects/SlowGroundEffect.gd
+res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_expode_max_bounces.tres
+res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
