@@ -23,6 +23,7 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 var lightning_sfx: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/LightningGunSustain.mp3")
 
 var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Silencetest1.wav")
+var Rocket_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/RocketLauncherShot.mp3")
 var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
@@ -221,6 +222,9 @@ func PlayXPPickupSound():
 # ----------------------------
 func SmgFire():
 	PlayFromWeaponSFX(Smg_fire_sfx)
+	
+func RocketFre():
+	PlayFromWeaponSFX(Rocket_fire_sfx)
 
 func ShotgunFire():
 	for player in WeaponSFXChannels:

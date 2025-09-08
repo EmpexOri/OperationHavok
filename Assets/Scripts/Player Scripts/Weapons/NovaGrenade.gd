@@ -8,9 +8,9 @@ class_name NovaGrenade
 @export var debug_nova: bool = true
 
 # Unique sounds
-@export var throw_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/GrenadeToss.mp3")
+@export var throw_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/PlasmaCasterWindUp.mp3")
 @export var land_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/GrenadeLanding.mp3")
-@export var explosion_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/TyphoonBoom.wav")
+@export var explosion_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/PlasmaCasterShot.mp3")
 
 var has_landed: bool = false
 var land_sound_played: bool = false
@@ -66,9 +66,17 @@ func _explode():
 	# Do Nova’s unique explosion effects
 	_do_explosion_effects()
 
-	# Play unique explosion sound
+	# Play unique explosion sound slightly louder
 	if explosion_sound:
-		GlobalAudioController.PlayFromPlayerSFX(explosion_sound)
+		ScreenShake.shake(randf_range(10.0,15.0), 0.2)
+		# Manually pick a free channel and increase volume
+		for player in GlobalAudioController.PlayerSFXChannels:
+			if not player.playing:
+				player.stream = explosion_sound
+				player.volume_db = -5  # default is usually -10 or -15 Icr; will be louder
+				player.pitch_scale = randf_range(0.95, 1.05)
+				player.play()
+				break
 
 func _do_explosion_effects():
 	if debug_nova:

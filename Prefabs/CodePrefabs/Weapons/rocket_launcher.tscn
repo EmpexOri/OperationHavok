@@ -16,4 +16,5 @@ script = ExtResource("1_nlw1r")
 projectile_scene = ExtResource("2_nlw1r")
 base_fire_rate = 1.0
 fire_offset = 7.0
+fire_sound_method = &"RocketFre"
 weapon_effects = Array[ExtResource("3_elf2t")]([SubResource("Resource_t2yw2")])

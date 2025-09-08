@@ -11,7 +11,7 @@ script = ExtResource("1_2ql4u")
 
 [node name="Level1Soundtrack" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_bq4xx")
-volume_db = -6.0
+volume_db = -10.0
 bus = &"Music"
 
 [node name="PauseMenuSoundtrack" type="AudioStreamPlayer" parent="Music"]

@@ -36,3 +36,6 @@ res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Assets/Scripts/Effects/Weapon Effects/lightning_chain_effect.gd
 res://Assets/Scripts/Misc/ChainLightningUtility.gd
+res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd
+res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
+res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
