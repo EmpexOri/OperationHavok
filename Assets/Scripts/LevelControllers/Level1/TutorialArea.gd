@@ -38,6 +38,8 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 			for i in range(count):
 				var enemy = scene.instantiate()
 				enemy.visible = true
+				enemy.Speed = 70
+				print(enemy.Speed)
 				enemy.position = spawn_node.global_position + Vector2(randf_range(-8, 8), randf_range(-8, 8))
 				enemy.name = "%s_%d" % [enemy_type, randi()]
 				enemies.append(enemy)
