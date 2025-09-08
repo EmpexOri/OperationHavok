@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cia8dtoxy3x4o"
-path="res://godot/imported/Group 6 - 3.png-343aff9b1e2bfceea1575969484c512d.ctex"
+uid="uid://bxhr6i2icfvf3"
+path="res://godot/imported/Fire3.png-c28fb5ee2843641b7c89f56784450030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Particles/Group 6 - 3.png"
-dest_files=["res://godot/imported/Group 6 - 3.png-343aff9b1e2bfceea1575969484c512d.ctex"]
+source_file="res://Assets/Art/Sprites/FX/Fire3.png"
+dest_files=["res://godot/imported/Fire3.png-c28fb5ee2843641b7c89f56784450030.ctex"]
 
 [params]
 

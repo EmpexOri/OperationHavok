@@ -1,10 +1,78 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7ccnhvjepfqu"]
+[gd_scene load_steps=17 format=3 uid="uid://c7ccnhvjepfqu"]
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_ql2lt"]
 [ext_resource type="Script" uid="uid://cih3gvo5m2f2g" path="res://Assets/Scripts/Projectiles/FlameProjectile.gd" id="2_5pqel"]
-[ext_resource type="PackedScene" uid="uid://ju0qh3it0mwh" path="res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn" id="3_bir2s"]
+[ext_resource type="PackedScene" uid="uid://cmf1vldv34maj" path="res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn" id="3_bir2s"]
 [ext_resource type="Material" uid="uid://eh4n4hehs0i4" path="res://Assets/Shaders/BulletShader.tres" id="4_620tr"]
 [ext_resource type="Texture2D" uid="uid://r47bswi8hcgf" path="res://Assets/Art/PlaceHolders/BulletPlayer.png" id="5_lhk0h"]
+[ext_resource type="Texture2D" uid="uid://bs8xogmwvklvw" path="res://Assets/Art/Sprites/FX/Fire2.png" id="6_5pqel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqel"]
+size = Vector2(14.6667, 29.3333)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bir2s"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_620tr"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhk0h"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv0wd"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7py7q"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je1nb"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d17vr"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1uj8"]
+atlas = ExtResource("6_5pqel")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l1uj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bir2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_620tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhk0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv0wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7py7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je1nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d17vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1uj8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Bullet" instance=ExtResource("1_ql2lt")]
 script = ExtResource("2_5pqel")
@@ -19,8 +87,15 @@ base_lifetime = 0.5
 [node name="CollisionShape2D" parent="." index="0"]
 rotation = 1.5708
 scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_5pqel")
 
 [node name="Sprite2D" parent="." index="1"]
+visible = false
 material = ExtResource("4_620tr")
 position = Vector2(0, 4)
 texture = ExtResource("5_lhk0h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_4l1uj")
+autoplay = "default"
