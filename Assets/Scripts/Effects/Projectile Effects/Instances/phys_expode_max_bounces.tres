@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ExplodeOnMaxBounces" load_steps=2 format=3 uid="uid://n4othal6ub1x"]
+
+[ext_resource type="Script" uid="uid://byii78m2eaa5j" path="res://Assets/Scripts/Effects/Projectile Effects/phys_explode_max_bounces.gd" id="1_4ynsu"]
+
+[resource]
+script = ExtResource("1_4ynsu")
+effect_name = ""
+metadata/_custom_type_script = "uid://byii78m2eaa5j"
