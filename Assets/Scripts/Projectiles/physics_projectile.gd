@@ -11,6 +11,9 @@ var speed: float
 var damage: float
 var lifetime: float
 
+# The current damage multiplier for this projectile
+var current_damage_multiplier: float = 1.0
+
 # Projectile effects are stored in this array
 var current_effects: Array[ProjectileEffect] = []
 
@@ -55,7 +58,8 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 	
 	# Initialize projectile stats
 	speed = base_speed
-	damage = base_damage * damage_multiplier
+	current_damage_multiplier = damage_multiplier
+	damage = base_damage
 	lifetime = base_lifetime
 	
 	# Setup any effects if they support initialization
@@ -87,7 +91,10 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 	lifetime_timer.wait_time = lifetime
 	lifetime_timer.timeout.connect(queue_free)
 	lifetime_timer.start()
-	
+
+# Set the damage multiplier for a projectile instance
+func set_damage_multiplier(value: float) -> void:
+	current_damage_multiplier = value
 
 func _on_collision(collision: KinematicCollision2D):
 	var body: Node2D = collision.get_collider()
@@ -97,7 +104,7 @@ func _on_collision(collision: KinematicCollision2D):
 	var destroy_projectile = true
 	
 	if body.has_method("deal_damage"):
-			body.deal_damage(damage, global_position)
+			body.deal_damage(damage*current_damage_multiplier, global_position)
 	
 	if current_effects:
 		for effect in current_effects:

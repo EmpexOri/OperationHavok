@@ -116,6 +116,10 @@ func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 	var position = spawn_position + direction * fire_offset
 	projectile_instance.start(position, direction, owning_entity, _create_fresh_effect_instances(), space_state, damage_multiplier)
 
+# Set the initial damage multiplier for a projectile instance
+func set_initial_damage_multiplier(value: float) -> void:
+	damage_multiplier = value
+
 # Adds an effect to the weapon or projectiles
 func add_effect(new_effect: Resource) -> void:
 	var found: bool = false
