@@ -94,6 +94,8 @@ animations = [{
 
 [node name="HomeRunProjectile" instance=ExtResource("1_6vkc2")]
 script = ExtResource("2_c1l86")
+base_speed = 400.0
+base_lifetime = 60.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(7.27596e-12, -2.02656e-06)
@@ -108,6 +110,8 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Explosion" type="Node2D" parent="." index="4"]
 script = ExtResource("3_c1l86")
+explosion_delay = 9999.0
+explode_on_walls = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Explosion" index="0"]
 visible = false
