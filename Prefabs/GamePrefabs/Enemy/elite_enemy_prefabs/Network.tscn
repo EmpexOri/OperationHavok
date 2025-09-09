@@ -104,6 +104,6 @@ debug_path_custom_color = Color(1.1, 1.1, 0, 1)
 modulate = Color(1, 1, 1, 0.25098)
 sprite_frames = SubResource("SpriteFrames_f20mf")
 autoplay = "default"
-frame_progress = 0.719275
+frame_progress = 0.81371
 
 [connection signal="body_entered" from="BuffArea" to="." method="_on_buff_area_body_entered"]

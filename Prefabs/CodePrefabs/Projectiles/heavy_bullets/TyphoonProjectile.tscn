@@ -1,46 +1,22 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3uuptwia5uyv"]
+[gd_scene load_steps=24 format=3 uid="uid://b3uuptwia5uyv"]
 
 [ext_resource type="PackedScene" uid="uid://clc7orxvf6iws" path="res://Prefabs/CodePrefabs/Projectiles/primary_bullets/bullet.tscn" id="1_p3drv"]
 [ext_resource type="Script" uid="uid://dwypxyhdx7spp" path="res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd" id="2_x2tpg"]
-[ext_resource type="Texture2D" uid="uid://lmpndhtatx7j" path="res://Assets/Art/Particles/Lightning/BallLightning.png" id="2_xju45"]
+[ext_resource type="Texture2D" uid="uid://bvc2se4bsw32o" path="res://Assets/Art/Sprites/FX/ProjectileFX/TyphoonBall.png" id="3_65k0m"]
 [ext_resource type="Script" uid="uid://4hwqgdvwuhbk" path="res://Assets/Scripts/Player Scripts/Weapons/Misc/TyphoonExplosion.gd" id="4_t3syc"]
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="5_bb8ww"]
 [ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="6_qdo6v"]
-[ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="7_t3syc"]
+[ext_resource type="Texture2D" uid="uid://cxcf1qnt1owcy" path="res://Assets/Art/Sprites/FX/BluePoof.png" id="7_c3b5m"]
+[ext_resource type="Texture2D" uid="uid://l3pcu7cm7xjj" path="res://Assets/Art/Sprites/FX/Temp/3.png" id="8_yrpkl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3syc"]
-radius = 24.037
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2tpg"]
-atlas = ExtResource("2_xju45")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snppk"]
-atlas = ExtResource("2_xju45")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0noi4"]
-atlas = ExtResource("2_xju45")
-region = Rect2(0, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qo6d7"]
-atlas = ExtResource("2_xju45")
-region = Rect2(512, 512, 512, 512)
+radius = 14.6818
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3syc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x2tpg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_snppk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0noi4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qo6d7")
+"texture": ExtResource("3_65k0m")
 }],
 "loop": true,
 "name": &"BallLightning",
@@ -48,91 +24,101 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_alx3n"]
-radius = 63.0
+radius = 95.0053
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3syc"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(0, 0, 384, 393)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg657"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(0, 0, 48, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bb8ww"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(384, 0, 384, 393)
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5yv3"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(48, 0, 48, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdo6v"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(768, 0, 384, 393)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ughsh"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(96, 0, 48, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_byjoh"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(1152, 0, 384, 393)
+[sub_resource type="AtlasTexture" id="AtlasTexture_usw6j"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(144, 0, 48, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_py2da"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(1536, 0, 384, 393)
+[sub_resource type="AtlasTexture" id="AtlasTexture_imuo3"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(192, 0, 48, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_22xr4"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(0, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hvgn"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(384, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne7t4"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(768, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ombhm"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(1152, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l4lc"]
-atlas = ExtResource("7_t3syc")
-region = Rect2(1536, 393, 384, 393)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe3lh"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(240, 0, 48, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umuyd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3syc")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bb8ww")
+"texture": SubResource("AtlasTexture_bg657")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qdo6v")
+"texture": SubResource("AtlasTexture_l5yv3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_byjoh")
+"texture": SubResource("AtlasTexture_ughsh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_py2da")
+"texture": SubResource("AtlasTexture_usw6j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_22xr4")
+"texture": SubResource("AtlasTexture_imuo3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5hvgn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ne7t4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ombhm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1l4lc")
+"texture": SubResource("AtlasTexture_qe3lh")
 }],
 "loop": true,
 "name": &"explode",
 "speed": 10.0
 }]
 
+[sub_resource type="Curve" id="Curve_c3b5m"]
+_data = [Vector2(0.0215054, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yrpkl"]
+curve = SubResource("Curve_c3b5m")
+
+[sub_resource type="Gradient" id="Gradient_c3b5m"]
+colors = PackedColorArray(0.0727416, 0.410091, 0.80949, 1, 0, 0.950512, 0.96463, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yrpkl"]
+gradient = SubResource("Gradient_c3b5m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bg657"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 24.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = -0.328
+orbit_velocity_max = 0.0880001
+radial_velocity_min = -6.31002
+radial_velocity_max = 6.30998
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_yrpkl")
+alpha_curve = SubResource("CurveTexture_yrpkl")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
+
 [node name="TyphoonProjectile" instance=ExtResource("1_p3drv")]
 monitorable = false
 script = ExtResource("2_x2tpg")
-base_speed = 100.0
-base_damage = 20.0
+base_speed = 150.0
+base_damage = 30.0
 base_lifetime = 10.0
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -143,11 +129,9 @@ shape = SubResource("CircleShape2D_t3syc")
 visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
-scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_t3syc")
 animation = &"BallLightning"
 frame_progress = 0.608334
-offset = Vector2(0, -20)
 
 [node name="Explosion" type="Node2D" parent="." index="5"]
 script = ExtResource("4_t3syc")
@@ -174,12 +158,22 @@ scale = Vector2(0.25, 0.26)
 texture = ExtResource("6_qdo6v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Explosion" index="4"]
-visible = false
-scale = Vector2(0.45, 0.45)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_umuyd")
 animation = &"explode"
-autoplay = "explode"
-frame_progress = 0.354062
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="6"]
+visible = false
+texture = ExtResource("8_yrpkl")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="7"]
+emitting = false
+amount = 64
+fixed_fps = 24
+trail_lifetime = 2.55
+trail_sections = 64
+trail_section_subdivisions = 8
+process_material = SubResource("ParticleProcessMaterial_bg657")
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
 [connection signal="timeout" from="Explosion/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

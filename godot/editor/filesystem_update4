@@ -34,3 +34,6 @@ res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn
 res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Network.gd
+res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/TyphoonProjectile.tscn
+res://Prefabs/CodePrefabs/Abilities/TyphoonCannon.tscn
+res://Assets/Scripts/Projectiles/lightning_ball_projectile.gd

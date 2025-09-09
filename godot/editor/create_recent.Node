@@ -1,5 +1,6 @@
-AnimatedSprite2D
+GPUParticles2D
 Sprite2D
+AnimatedSprite2D
 AudioStreamPlayer
 TextureRect
 Timer

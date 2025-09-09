@@ -3,12 +3,14 @@ class_name LightningBallProjectile
 
 @onready var ball_anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var explosion_ref = $Explosion
+@onready var particles: GPUParticles2D = $GPUParticles2D
 
 var exploded: bool = false
 
 func _ready() -> void:
 	super._ready()
 	ball_anim.play()
+	particles.emitting = true
 	if visible_on_screen_notifier_2d.screen_exited.is_connected(queue_free):
 		visible_on_screen_notifier_2d.screen_exited.disconnect(queue_free) #Don't free this projectile off screen <3
 	explosion_ref.start(global_position, Vector2.ZERO)
@@ -47,6 +49,7 @@ func _trigger_explosion() -> void:
 	if exploded:
 		return
 	exploded = true
+	particles.emitting = false
 	ball_anim.visible = false
 
 	if explosion_ref and explosion_ref.has_method("explode"):
