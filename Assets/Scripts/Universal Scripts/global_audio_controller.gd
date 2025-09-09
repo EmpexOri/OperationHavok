@@ -25,6 +25,7 @@ var lightning_sfx: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Light
 var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Silencetest1.wav")
 var Rocket_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/RocketLauncherShot.mp3")
 var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
+var M60_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
@@ -223,8 +224,11 @@ func PlayXPPickupSound():
 func SmgFire():
 	PlayFromWeaponSFX(Smg_fire_sfx)
 	
-func RocketFre():
+func RocketFire():
 	PlayFromWeaponSFX(Rocket_fire_sfx)
+	
+func M60Fire():
+	PlayFromWeaponSFX(M60_fire_sfx)
 
 func ShotgunFire():
 	for player in WeaponSFXChannels:

@@ -1,6 +1,6 @@
-AudioStreamPlayer
-Sprite2D
 AnimatedSprite2D
+Sprite2D
+AudioStreamPlayer
 TextureRect
 Timer
 CollisionShape2D

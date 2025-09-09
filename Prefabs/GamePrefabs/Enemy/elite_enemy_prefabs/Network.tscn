@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bysb2a6j6qupu"]
+[gd_scene load_steps=16 format=3 uid="uid://bysb2a6j6qupu"]
 
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="1_3vp1g"]
 [ext_resource type="Script" uid="uid://bckgmu7e066hv" path="res://Assets/Scripts/Enemy/elite_enemies/Network.gd" id="1_rgwg0"]
 [ext_resource type="Texture2D" uid="uid://d2fco4rl5dhyx" path="res://Assets/Art/Sprites/Network.png" id="3_rgwg0"]
+[ext_resource type="Texture2D" uid="uid://ca8i7axjxmmgd" path="res://Assets/Art/Sprites/FX/Temp/1.png" id="4_jofxj"]
+[ext_resource type="Texture2D" uid="uid://dbi8ymuv4adsg" path="res://Assets/Art/Sprites/FX/Temp/2.png" id="5_ave3u"]
+[ext_resource type="Texture2D" uid="uid://l3pcu7cm7xjj" path="res://Assets/Art/Sprites/FX/Temp/3.png" id="6_m8l7w"]
+[ext_resource type="Texture2D" uid="uid://bmc0yrvtcab72" path="res://Assets/Art/Sprites/FX/Temp/4.png" id="7_5oxd5"]
+[ext_resource type="Texture2D" uid="uid://bheoj4ygl60nx" path="res://Assets/Art/Sprites/FX/Temp/5.png" id="8_ar3vf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e62s6"]
 atlas = ExtResource("3_rgwg0")
@@ -37,7 +42,33 @@ animations = [{
 size = Vector2(18, 30.9091)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0mnb"]
-radius = 71.007
+radius = 159.003
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f20mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jofxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ave3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m8l7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5oxd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ar3vf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -68,5 +99,11 @@ shape = SubResource("CircleShape2D_f0mnb")
 avoidance_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1.1, 1.1, 0, 1)
+
+[node name="RadiusSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+sprite_frames = SubResource("SpriteFrames_f20mf")
+autoplay = "default"
+frame_progress = 0.719275
 
 [connection signal="body_entered" from="BuffArea" to="." method="_on_buff_area_body_entered"]

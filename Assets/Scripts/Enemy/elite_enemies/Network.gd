@@ -125,7 +125,7 @@ func check_and_buff(target):
 
 	# Refresh buff duration each frame
 	if target.has_method("apply_buff"):
-		print("Refreshing buff on:", target.name)
+		#print("Refreshing buff on:", target.name)
 		target.apply_buff()
 
 func deal_damage(damage, from_position = null):
