@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=53 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://c4d4ublcyedvu" path="res://Assets/Art/PlaceHolders/CharacterPFP.png" id="24_bksor"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="27_kbd7x"]
 [ext_resource type="PackedScene" uid="uid://dtra84e58gsn7" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn" id="37_vjyuu"]
+[ext_resource type="PackedScene" uid="uid://bysb2a6j6qupu" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn" id="38_cova0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
 size = Vector2(204, 101)
@@ -2753,6 +2754,9 @@ color = Color(0.629675, 0.629675, 0.629675, 1)
 
 [node name="Biomancer" parent="." instance=ExtResource("37_vjyuu")]
 position = Vector2(1332, -242)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("38_cova0")]
+position = Vector2(1583, -53)
 
 [connection signal="body_entered" from="LevelManager/CarparkTrigger" to="LevelManager" method="_on_carpark_trigger_entered"]
 [connection signal="body_entered" from="LevelManager/TutorialTrigger" to="LevelManager" method="_on_tutorial_trigger_body_entered"]
