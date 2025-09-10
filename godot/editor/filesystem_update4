@@ -25,3 +25,6 @@ res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/rocket_projectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/primary_bullets/AkimboBullet.tscn
 res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
 res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
+res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd

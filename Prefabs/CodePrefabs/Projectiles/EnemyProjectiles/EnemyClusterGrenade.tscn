@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://ialp0k65e2to"]
 
 [ext_resource type="Script" uid="uid://daghp6cupiqci" path="res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.gd" id="1_dnb0m"]
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="2_75ff0"]
+[ext_resource type="Texture2D" uid="uid://qtkgx1e5mfer" path="res://Assets/Art/Sprites/Grenade_Enemy.png" id="2_dnb0m"]
 [ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="3_coydi"]
 [ext_resource type="Texture2D" uid="uid://dm72vrnncic6q" path="res://Assets/Art/Particles/Explosion/Explosion64/Explosion.png" id="4_xjlen"]
 
@@ -112,8 +112,7 @@ script = ExtResource("1_dnb0m")
 damage = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_75ff0")
+texture = ExtResource("2_dnb0m")
 
 [node name="ExplosionTimer" type="Timer" parent="."]
 

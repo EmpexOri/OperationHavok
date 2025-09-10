@@ -15,7 +15,7 @@ func start():
 	Health = 50
 	MaxHealth = Health
 	WeaponScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyShotgun.tscn")
-	setup_weapon()
+	#setup_weapon()
 	start_timer()
 	
 	firetimer = Timer.new()
