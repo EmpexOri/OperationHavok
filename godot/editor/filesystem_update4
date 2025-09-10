@@ -16,3 +16,8 @@ res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
 res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
 res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
 res://Scenes/Options/CommandoSkillTree.tscn
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
+res://Assets/Scripts/Effects/Projectile Effects/projectile_spawn_on_kill_effect.gd
+res://Assets/Scripts/Effects/Projectile Effects/Instances/projectile_spawn_on_kill_effect.tres
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd

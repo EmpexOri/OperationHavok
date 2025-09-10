@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ProjectileSpawnOnKillEffect" load_steps=3 format=3 uid="uid://yxxe8sqat3df"]
+
+[ext_resource type="Script" uid="uid://cop4hxx2kw6ig" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_spawn_on_kill_effect.gd" id="1_ps7u1"]
+[ext_resource type="PackedScene" uid="uid://b7232phr78kxv" path="res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn" id="2_741ov"]
+
+[resource]
+script = ExtResource("1_ps7u1")
+max_spawns = 3
+spawn_scene = ExtResource("2_741ov")
+spawn_speed = 400.0
+spawn_angle_variation = 15.0
+effect_name = ""
