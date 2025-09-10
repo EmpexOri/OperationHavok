@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://betbekipw6fkq" path="res://Prefabs/CodePrefabs/Projectiles/projectile.tscn" id="1_v1jec"]
 [ext_resource type="Material" uid="uid://eh4n4hehs0i4" path="res://Assets/Shaders/BulletShader.tres" id="2_eqem3"]
-[ext_resource type="Texture2D" uid="uid://r47bswi8hcgf" path="res://Assets/Art/PlaceHolders/BulletPlayer.png" id="3_hnoa4"]
+[ext_resource type="Texture2D" uid="uid://cgx4gfya00r6w" path="res://Assets/Art/Sprites/FX/ProjectileFX/BulletPlayer.png" id="3_j4lvi"]
 
 [node name="Bullet" instance=ExtResource("1_v1jec")]
 base_speed = 800.0
@@ -15,5 +15,4 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" parent="." index="1"]
 material = ExtResource("2_eqem3")
-position = Vector2(0, 4)
-texture = ExtResource("3_hnoa4")
+texture = ExtResource("3_j4lvi")
