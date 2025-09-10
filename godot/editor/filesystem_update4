@@ -28,3 +28,7 @@ res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Enemy/elite_enemies/Network.gd
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunProjectile.tscn

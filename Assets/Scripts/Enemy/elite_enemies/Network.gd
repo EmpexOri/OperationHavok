@@ -167,6 +167,7 @@ func check_and_buff(target):
 		target.apply_buff()
 
 func deal_damage(damage, from_position = null):
+	super.deal_damage(damage, from_position)
 	flash_white()
 	Health -= damage
 	if Health <= 0:

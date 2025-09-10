@@ -125,3 +125,14 @@ func upgrade_weapon(weapon_name: String, slot: int) -> void:
 	
 	weapon_upgrades[slot] = weapon_name
 	print("GlobalPlayer upgraded weapon slot ", slot, " to ", weapon_name)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("DebugInput"):
+		GiveDebugLevels(5)
+
+# Grants the player N levels immediately (for debugging)
+func GiveDebugLevels(amount: int):
+	for i in range(amount):
+		LevelUp()
+	print("Debug: Gave ", amount, " levels to ", CurrentClass, 
+		". New level: ", ClassData[CurrentClass]["Level"])
