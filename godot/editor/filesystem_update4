@@ -12,3 +12,7 @@ res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
 res://Prefabs/CodePrefabs/Abilities/TyphoonCannon.tscn
 res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/TyphoonProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
+res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
+res://Scenes/Options/CommandoSkillTree.tscn

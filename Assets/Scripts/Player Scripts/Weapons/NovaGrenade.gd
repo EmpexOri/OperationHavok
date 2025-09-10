@@ -25,31 +25,36 @@ func _ready():
 
 func _handle_movement(delta: float):
 	var new_position = position + velocity * delta
-	var query = PhysicsRayQueryParameters2D.create(position, new_position)
-	query.exclude = [self]
-	query.collision_mask = 1 << 2
-
 	var space_state = get_world_2d().direct_space_state
-	if space_state == null:
-		return
+	var hit_something = false
 
-	var result = space_state.intersect_ray(query)
-	if result:
-		# Play land sound once
-		if not has_landed:
-			has_landed = true
-			if land_sound and not land_sound_played:
-				GlobalAudioController.PlayFromPlayerSFX(land_sound)
-				land_sound_played = true
-
+	# --- Check walls ---
+	var wall_query = PhysicsRayQueryParameters2D.create(position, new_position)
+	wall_query.exclude = [self]
+	wall_query.collision_mask = 1 << 2 # wall layer
+	var wall_result = space_state.intersect_ray(wall_query)
+	if wall_result:
+		hit_something = true
+		position = wall_result.position
 		velocity = Vector2.ZERO
-		position = result.position
 		if explode_on_walls:
 			_explode()
-	else:
+
+	# --- Check enemies ---
+	var enemy_query = PhysicsRayQueryParameters2D.create(position, new_position)
+	enemy_query.exclude = [self]
+	enemy_query.collision_mask = 1 << 3 # enemy layer, adjust to your setup
+	var enemy_result = space_state.intersect_ray(enemy_query)
+	if enemy_result:
+		hit_something = true
+		position = enemy_result.position
+		velocity = Vector2.ZERO
+		_explode()
+
+	if not hit_something:
 		position = new_position
 
-	# Slow grenade movement
+	# Slow movement
 	velocity = velocity.move_toward(Vector2.ZERO, 1000 * delta)
 
 func _explode():

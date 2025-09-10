@@ -198,9 +198,9 @@ offset_bottom = -41.3333
 scale = Vector2(1, 1)
 focus_neighbor_right = NodePath("../BaseballGrenade")
 focus_neighbor_bottom = NodePath("PlasmaCaster")
-texture_normal = ExtResource("10_ciio1")
-texture_hover = ExtResource("10_ciio1")
-texture_focused = ExtResource("10_ciio1")
+texture_normal = ExtResource("11_k5h02")
+texture_hover = ExtResource("11_k5h02")
+texture_focused = ExtResource("11_k5h02")
 
 [node name="PlasmaCaster" parent="GrenadeTitle/Grenade/Novacaster" instance=ExtResource("1_cye56")]
 layout_mode = 0
@@ -211,9 +211,9 @@ scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
-texture_normal = ExtResource("11_k5h02")
-texture_hover = ExtResource("11_k5h02")
-texture_focused = ExtResource("11_k5h02")
+texture_normal = ExtResource("10_ciio1")
+texture_hover = ExtResource("10_ciio1")
+texture_focused = ExtResource("10_ciio1")
 
 [node name="BaseballGrenade" parent="GrenadeTitle/Grenade" instance=ExtResource("1_cye56")]
 layout_mode = 0

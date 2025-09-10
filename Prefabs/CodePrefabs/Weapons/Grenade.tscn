@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bl2fcrd3ixuug"]
 
 [ext_resource type="Script" uid="uid://c5gbemw26wuq" path="res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd" id="1_alx3n"]
-[ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="1_e8byg"]
+[ext_resource type="Texture2D" uid="uid://bx08mwgkwxqrt" path="res://Assets/Art/Sprites/Grenade.png" id="2_wykpb"]
 [ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="3_s0yo5"]
 [ext_resource type="Texture2D" uid="uid://dm72vrnncic6q" path="res://Assets/Art/Particles/Explosion/Explosion64/Explosion.png" id="4_wykpb"]
 
@@ -112,8 +112,7 @@ script = ExtResource("1_alx3n")
 explode_on_walls = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_e8byg")
+texture = ExtResource("2_wykpb")
 
 [node name="ExplosionTimer" type="Timer" parent="."]
 
