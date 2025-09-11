@@ -36,10 +36,21 @@ func _physics_process(_delta):
 			velocity = dir.normalized() * Speed
 			move_and_slide()
 
-			# Play crawl animation and flip
-			if abs(dir.x) > 0.1:
-				sprite.play("crawl")  # Use your walk/crawl anim name
-				sprite.flip_h = dir.x > 0  # Flip if going right
+			# -------------------------
+			# Animation + Flip handling
+			# -------------------------
+			if abs(dir.x) > 0.1 or abs(dir.y) > 0.1:
+				if dir.y > 0:  
+					# Moving downward
+					sprite.play("right_down")
+				else:  
+					# Moving upward
+					sprite.play("right_up")
+
+				# Flip horizontally if moving left
+				sprite.flip_h = dir.x < 0
+			else:
+				sprite.stop()
 		else:
 			velocity = Vector2.ZERO
 			sprite.stop()

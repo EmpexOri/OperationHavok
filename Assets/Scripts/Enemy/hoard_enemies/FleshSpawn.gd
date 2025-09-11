@@ -1,22 +1,51 @@
 extends Enemy
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 var Colour = Color(0, 0.5, 0)
 
 func _ready():
 	super._ready()
-	Speed = 50
+	Speed = 15
 	Health = 10
 	MaxHealth = Health
-	$Sprite2D.modulate = Colour
+	$AnimatedSprite2D.modulate = Colour
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
 func deal_damage(damage, from_position = null):
 	Health -= damage
 
-func _process(delta):
-	super._process(delta)
+func _physics_process(delta):
+	super._physics_process(delta)
+
+	# Enemy movement + animations
+	if not nav:
+		return
+
+	var player_node = resolve_target()
+	if player_node:
+		nav.target_position = player_node.global_position
+		var dir = nav.get_next_path_position() - global_position
+
+		if dir.length() > 1:
+			velocity = dir.normalized() * Speed
+			move_and_slide()
+
+			# -------------------------
+			# Animation + Flip handling
+			# -------------------------
+			if dir.y > 0:
+				sprite.play("right_down")
+			else:
+				sprite.play("right_up")
+
+			# Flip horizontally if moving left
+			sprite.flip_h = dir.x < 0
+		else:
+			velocity = Vector2.ZERO
+			sprite.stop()
+
+	# Death handling
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()

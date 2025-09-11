@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpfbnlphsagev"]
+[gd_scene load_steps=18 format=3 uid="uid://cpfbnlphsagev"]
 
 [ext_resource type="Script" uid="uid://dspo3pwd2b07v" path="res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd" id="1_okkq5"]
 [ext_resource type="Texture2D" uid="uid://ddnef3vqy6sav" path="res://Assets/Art/Sprites/Hordling_WALK_FRONT.png" id="2_dajsh"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_bvkv2"]
+[ext_resource type="Texture2D" uid="uid://dmn25e0pnj263" path="res://Assets/Art/Sprites/Hordling_Animation_temp.png" id="4_1b008"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvkv2"]
 radius = 7.0
@@ -10,39 +11,86 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flyuw"]
 size = Vector2(16, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvkv2"]
-atlas = ExtResource("2_dajsh")
-region = Rect2(0, 0, 30, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1pag"]
+atlas = ExtResource("4_1b008")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bx80v"]
-atlas = ExtResource("2_dajsh")
-region = Rect2(30, 0, 30, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8w0l"]
+atlas = ExtResource("4_1b008")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjo0p"]
-atlas = ExtResource("2_dajsh")
-region = Rect2(60, 0, 30, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbf8g"]
+atlas = ExtResource("4_1b008")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4l2p6"]
-atlas = ExtResource("2_dajsh")
-region = Rect2(90, 0, 30, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_whn71"]
+atlas = ExtResource("4_1b008")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c6hf"]
+atlas = ExtResource("4_1b008")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b008"]
+atlas = ExtResource("4_1b008")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0wx1"]
+atlas = ExtResource("4_1b008")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxwx8"]
+atlas = ExtResource("4_1b008")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4fwt"]
+atlas = ExtResource("4_1b008")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ss1h"]
+atlas = ExtResource("4_1b008")
+region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cthu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bvkv2")
+"texture": SubResource("AtlasTexture_r1pag")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bx80v")
+"texture": SubResource("AtlasTexture_v8w0l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pjo0p")
+"texture": SubResource("AtlasTexture_hbf8g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4l2p6")
+"texture": SubResource("AtlasTexture_whn71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c6hf")
 }],
 "loop": true,
-"name": &"crawl",
+"name": &"right_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b008")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0wx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxwx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4fwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ss1h")
+}],
+"loop": true,
+"name": &"right_up",
 "speed": 5.0
 }]
 
@@ -87,7 +135,10 @@ avoidance_layers = 15
 texture_filter = 1
 material = ExtResource("3_bvkv2")
 sprite_frames = SubResource("SpriteFrames_8cthu")
-animation = &"crawl"
+animation = &"right_up"
+autoplay = "right_up"
+frame = 1
+frame_progress = 0.371486
 speed_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
