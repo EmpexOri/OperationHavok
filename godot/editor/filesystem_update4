@@ -33,3 +33,4 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
 res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunProjectile.tscn
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn
 res://Assets/Scripts/Enemy/hoard_enemies/FleshSpawn.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
