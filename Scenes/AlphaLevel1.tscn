@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://jfurihqywf0h"]
+[gd_scene load_steps=47 format=4 uid="uid://jfurihqywf0h"]
 
 [ext_resource type="Script" uid="uid://bxk863vd0tmhg" path="res://Assets/Scripts/LevelControllers/Level1/CarparkArena.gd" id="1_pfke8"]
 [ext_resource type="Script" uid="uid://dsmblvmdvs8vy" path="res://Assets/Scripts/LevelControllers/Level1/Level1Manager.gd" id="1_xngmm"]
@@ -20,11 +20,8 @@
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="7_34rfs"]
 [ext_resource type="PackedScene" uid="uid://5yolel5ubyg1" path="res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn" id="8_oiiaa"]
 [ext_resource type="Texture2D" uid="uid://bekdam1uh8my" path="res://Assets/Art/Objects/Car_Object_v3_maroon.png" id="10_8mwex"]
-[ext_resource type="Texture2D" uid="uid://cmbl6qr4dbyan" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Rooftop Objects/Box_1.png" id="11_m1ncj"]
 [ext_resource type="Texture2D" uid="uid://co8satb05d6rr" path="res://Assets/Art/Objects/Car_Object_v3_blue.png" id="11_m3m5o"]
-[ext_resource type="Texture2D" uid="uid://cpjoxdfpo50xc" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Rooftop Objects/Box_2.png" id="12_qd1f5"]
 [ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="13_8mwex"]
-[ext_resource type="Texture2D" uid="uid://jx4vw0vi3ukn" path="res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Rooftop Objects/Box_3.png" id="13_oiuhd"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="13_spgp8"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="14_m3m5o"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="16_spgp8"]
@@ -36,8 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="22_udyv4"]
 [ext_resource type="Texture2D" uid="uid://c4d4ublcyedvu" path="res://Assets/Art/PlaceHolders/CharacterPFP.png" id="24_bksor"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="27_kbd7x"]
-[ext_resource type="PackedScene" uid="uid://dtra84e58gsn7" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn" id="37_vjyuu"]
-[ext_resource type="PackedScene" uid="uid://bysb2a6j6qupu" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn" id="38_cova0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xngmm"]
 size = Vector2(204, 101)
@@ -2290,9 +2285,6 @@ sources/2 = SubResource("TileSetAtlasSource_erm2m")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqnm1"]
 size = Vector2(216, 48)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_m1ncj"]
-points = PackedVector2Array(-40, 33, -40, -4, -20, -4, -20, -45, 20, -45, 20, -4, 41, -4, 41, 33)
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w5l6p"]
 vertices = PackedVector2Array(2102.48, 316.461, 2103.13, 334.5, 2054.31, 334.5, 2054.31, 316.461, 1975.3, 316.539, 1975.3, 334.406, 1926.29, 333.578, 1926.29, 317.367, 1811.32, 221.289, 1987.3, 220.344, 1987.3, 237.391, 1833.32, 238.391, 1812.32, 316.438, 1832.32, 333.5, 1517.23, 333.5, 1517.23, 317.438, 2421.36, 176.281, 2054.4, 177.25, 2057.21, 23.0625, 2276.34, 25.0781, 2421.36, 22.0234, 2322.35, 22.0234, 2276.34, -12.0234, 2322.35, -12.0234, 1489.22, -181.273, 1588.23, -181.273, 1318.2, -110.172, 1302.2, 119.156, 1669.26, 244.367, 1236.18, 244.367, 1670.24, -314.469, 1588.23, -236.344, 1302.2, 64.1016, 1203.18, 119.156, 1318.2, -166.227, 1218.18, -110.172, 1188.18, 245.297, 1111.15, 246.297, 1110.17, -314.469, 1281.19, 64.1016, 1281.19, 23.0391, 1223.18, 23.0391, 1223.18, 64.1016, 1203.18, 64.1016, 1236.18, 317.461, 1444.22, 317.461, 1444.22, 332.5, 1188.18, 333.477, 1218.18, -165.227, 1567.23, -236.344, 1567.23, -277.883, 1513.7, -273.008, 1509.74, -236.344, 1489.22, -236.344, 1296.2, -166.227, 1296.2, -206.297, 1238.19, -206.297, 1238.19, -165.227, 414.063, 198.289, 512.078, 199.297, 241.039, 230.336, 403.063, 198.289, -277.961, 692.023, -230.031, 707.047, -246.039, 707.047, 685.07, -28.0469, 682.133, 426.633, 511.078, 164.242, 104.023, -28.0469, 474.07, 152.227, 447.07, 152.227, 405.063, 163.242, 577.094, 426.633, -230.031, 589.859, -551.094, 589.859, -374.047, 692.023, 241.039, 198.289, -278.039, 707.047, -278.188, 707.047, 576.102, 1166.72, 63.0078, 1167.72, 63.0078, 995.469, 577.094, 805.18, 63.0078, 979.43, 63.0078, 809.18, 435.063, 809.898, -535.109, 707.047, -551.094, 707.047, -374.047, 756.102, -406.063, 756.102, -406.063, 692.023, -501.07, 692.023, -501.07, 712.023, -534.109, 899.328, -502.102, 868.273, -453.07, 899.328, -453.07, 868.273, -453.07, 756.102, -326.047, 756.102, -326.047, 867.273, -278.039, 867.273, -246.039, 899.328, -326.047, 899.328, 29, -28.0469, 29, -123.188, 104.023, -123.188, -77.0078, 426.633, -76.0313, -28.0469, 404.063, 176.258, 232.031, 190.281, 206.031, 183.273, 170.023, 182.266, 152.023, 186.273, 134.023, 193.281, 133.023, 228.336, 435.063, 426.633, -453.07, 995.469, -326.047, 979.43)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(4, 6, 7), PackedInt32Array(8, 9, 10), PackedInt32Array(8, 10, 11), PackedInt32Array(12, 8, 11), PackedInt32Array(12, 11, 13), PackedInt32Array(12, 13, 14), PackedInt32Array(12, 14, 15), PackedInt32Array(16, 17, 18), PackedInt32Array(16, 18, 19), PackedInt32Array(20, 16, 19), PackedInt32Array(21, 20, 19), PackedInt32Array(21, 19, 22), PackedInt32Array(23, 21, 22), PackedInt32Array(24, 25, 26), PackedInt32Array(27, 28, 29), PackedInt32Array(25, 30, 28), PackedInt32Array(30, 25, 31), PackedInt32Array(25, 28, 27), PackedInt32Array(26, 25, 27), PackedInt32Array(26, 27, 32), PackedInt32Array(33, 27, 29), PackedInt32Array(24, 26, 34), PackedInt32Array(35, 26, 32), PackedInt32Array(36, 37, 38), PackedInt32Array(32, 39, 40), PackedInt32Array(35, 32, 40), PackedInt32Array(35, 40, 41), PackedInt32Array(41, 42, 43), PackedInt32Array(44, 45, 46), PackedInt32Array(44, 46, 47), PackedInt32Array(44, 47, 36), PackedInt32Array(29, 44, 36), PackedInt32Array(33, 29, 36), PackedInt32Array(33, 36, 38), PackedInt32Array(43, 33, 38), PackedInt32Array(41, 43, 38), PackedInt32Array(35, 41, 38), PackedInt32Array(48, 35, 38), PackedInt32Array(31, 49, 50), PackedInt32Array(30, 31, 50), PackedInt32Array(38, 30, 50), PackedInt32Array(38, 50, 51), PackedInt32Array(38, 51, 52), PackedInt32Array(38, 52, 53), PackedInt32Array(34, 54, 55), PackedInt32Array(56, 57, 48), PackedInt32Array(56, 48, 38), PackedInt32Array(56, 38, 53), PackedInt32Array(55, 56, 53), PackedInt32Array(34, 55, 53), PackedInt32Array(34, 53, 24), PackedInt32Array(58, 59, 60), PackedInt32Array(61, 58, 60), PackedInt32Array(62, 63, 64), PackedInt32Array(59, 65, 66), PackedInt32Array(65, 59, 67), PackedInt32Array(68, 65, 67), PackedInt32Array(68, 67, 69), PackedInt32Array(68, 69, 70), PackedInt32Array(68, 70, 71), PackedInt32Array(59, 66, 72), PackedInt32Array(73, 63, 62), PackedInt32Array(74, 73, 62), PackedInt32Array(74, 62, 75), PackedInt32Array(61, 60, 76), PackedInt32Array(77, 78, 62), PackedInt32Array(77, 62, 64), PackedInt32Array(79, 80, 81), PackedInt32Array(82, 79, 81), PackedInt32Array(83, 84, 85), PackedInt32Array(86, 87, 74), PackedInt32Array(75, 88, 89), PackedInt32Array(75, 89, 90), PackedInt32Array(74, 75, 90), PackedInt32Array(74, 90, 91), PackedInt32Array(86, 74, 91), PackedInt32Array(86, 91, 92), PackedInt32Array(93, 86, 92), PackedInt32Array(93, 92, 94), PackedInt32Array(95, 93, 94), PackedInt32Array(95, 94, 96), PackedInt32Array(96, 97, 89), PackedInt32Array(88, 98, 99), PackedInt32Array(100, 77, 64), PackedInt32Array(100, 64, 101), PackedInt32Array(100, 101, 102), PackedInt32Array(99, 100, 102), PackedInt32Array(103, 104, 105), PackedInt32Array(103, 105, 68), PackedInt32Array(106, 107, 103), PackedInt32Array(108, 61, 76), PackedInt32Array(60, 59, 72), PackedInt32Array(71, 108, 76), PackedInt32Array(68, 71, 76), PackedInt32Array(68, 76, 109), PackedInt32Array(68, 109, 110), PackedInt32Array(68, 110, 111), PackedInt32Array(68, 111, 112), PackedInt32Array(68, 112, 113), PackedInt32Array(103, 68, 113), PackedInt32Array(106, 103, 113), PackedInt32Array(106, 113, 114), PackedInt32Array(115, 106, 114), PackedInt32Array(115, 114, 60), PackedInt32Array(115, 60, 72), PackedInt32Array(115, 72, 82), PackedInt32Array(85, 115, 82), PackedInt32Array(85, 82, 81), PackedInt32Array(83, 85, 81), PackedInt32Array(83, 81, 116), PackedInt32Array(117, 83, 116), PackedInt32Array(117, 116, 95), PackedInt32Array(102, 117, 95), PackedInt32Array(102, 95, 96), PackedInt32Array(99, 102, 96), PackedInt32Array(99, 96, 89), PackedInt32Array(99, 89, 88)])
@@ -2454,39 +2446,6 @@ y_sort_enabled = true
 [node name="Player" parent="YSortedObjects" instance=ExtResource("4_rqnm1")]
 position = Vector2(1500, -112)
 up_direction = Vector2(1, -0.000666666)
-
-[node name="Box1" type="Sprite2D" parent="YSortedObjects"]
-position = Vector2(1333, -118)
-texture = ExtResource("11_m1ncj")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSortedObjects/Box1"]
-collision_layer = 15
-collision_mask = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortedObjects/Box1/StaticBody2D"]
-shape = SubResource("ConvexPolygonShape2D_m1ncj")
-
-[node name="Box2" type="Sprite2D" parent="YSortedObjects"]
-position = Vector2(1604, -189)
-texture = ExtResource("12_qd1f5")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSortedObjects/Box2"]
-collision_layer = 15
-collision_mask = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortedObjects/Box2/StaticBody2D"]
-shape = SubResource("ConvexPolygonShape2D_m1ncj")
-
-[node name="Box3" type="Sprite2D" parent="YSortedObjects"]
-position = Vector2(1318, 111)
-texture = ExtResource("13_oiuhd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSortedObjects/Box3"]
-collision_layer = 15
-collision_mask = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortedObjects/Box3/StaticBody2D"]
-shape = SubResource("ConvexPolygonShape2D_m1ncj")
 
 [node name="LampPost" parent="YSortedObjects" instance=ExtResource("5_xngmm")]
 position = Vector2(3, 218)
@@ -2727,6 +2686,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(66, 34)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")
@@ -2751,12 +2711,6 @@ avoidance_layers = 15
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.629675, 0.629675, 0.629675, 1)
-
-[node name="Biomancer" parent="." instance=ExtResource("37_vjyuu")]
-position = Vector2(1332, -242)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("38_cova0")]
-position = Vector2(1583, -53)
 
 [connection signal="body_entered" from="LevelManager/CarparkTrigger" to="LevelManager" method="_on_carpark_trigger_entered"]
 [connection signal="body_entered" from="LevelManager/TutorialTrigger" to="LevelManager" method="_on_tutorial_trigger_body_entered"]
