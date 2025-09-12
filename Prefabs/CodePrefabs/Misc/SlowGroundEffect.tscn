@@ -9,7 +9,7 @@ radius = 16.0
 [node name="SlowGroundEffect" type="Node2D"]
 z_index = -3
 script = ExtResource("1_x0wr4")
-slow_multiplier = 0.65
+slow_multiplier = 0.5
 damage_per_tick = 0.0
 
 [node name="DamageArea" type="Area2D" parent="."]

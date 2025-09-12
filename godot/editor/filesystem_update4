@@ -7,3 +7,7 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/Options/PauseMenu.tscn
+res://Scenes/AlphaLevel1.tscn
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
+res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
