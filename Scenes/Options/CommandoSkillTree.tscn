@@ -6,14 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://f587roho125o" path="res://Assets/Art/SkillTree/PerkBack.png" id="2_k5h02"]
 [ext_resource type="Texture2D" uid="uid://c3avalga102rd" path="res://Assets/Art/HUD/Shotgun.png" id="5_ciio1"]
 [ext_resource type="Texture2D" uid="uid://nbt57jqk3aep" path="res://Assets/Art/HUD/Flamethrower.png" id="6_1kq37"]
-[ext_resource type="Texture2D" uid="uid://ctyqdgto6g64" path="res://Assets/Art/HUD/SkillTreeSwapIcon.png" id="6_k5h02"]
+[ext_resource type="Texture2D" uid="uid://brgqkg3neiydo" path="res://Assets/Art/HUD/SwapIconWithBorder.png" id="6_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://cjkp44054rnub" path="res://Assets/Art/HUD/M60.png" id="7_0cs3v"]
 [ext_resource type="Texture2D" uid="uid://v7xyvs0ub8g4" path="res://Assets/Art/HUD/SMGs.png" id="7_k5h02"]
 [ext_resource type="Texture2D" uid="uid://o2mbpfo6gegs" path="res://Assets/Art/HUD/RaygunRifleRetroStyle.png" id="9_kcvj1"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="10_ciio1"]
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="11_k5h02"]
 [ext_resource type="Texture2D" uid="uid://cwcdqy5jts8as" path="res://Assets/Art/HUD/HomerunGrenade.png" id="12_2p3y5"]
-[ext_resource type="Texture2D" uid="uid://c6glpj504i2qu" path="res://Assets/Art/HUD/SkillTreeGrenadeIcon.png" id="12_wo6gr"]
+[ext_resource type="Texture2D" uid="uid://hmqh78ebn3js" path="res://Assets/Art/HUD/GrenadeIconWithBorder.png" id="12_jp367"]
 [ext_resource type="Texture2D" uid="uid://c0fornnjemo8r" path="res://Assets/Art/HUD/BaseballGrenade.png" id="13_2p3y5"]
 [ext_resource type="Texture2D" uid="uid://br1566g7sr3av" path="res://Assets/Art/HUD/RocketMingun.png" id="13_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://gs6orj5fv1ob" path="res://Assets/Art/HUD/LightningGun.png" id="14_jp367"]
@@ -97,9 +97,9 @@ offset_top = -54.0
 offset_right = 100.0
 offset_bottom = -14.0
 focus_neighbor_right = NodePath("Akimbo")
-texture_normal = ExtResource("6_k5h02")
-texture_hover = ExtResource("6_k5h02")
-texture_focused = ExtResource("6_k5h02")
+texture_normal = ExtResource("6_wo6gr")
+texture_hover = ExtResource("6_wo6gr")
+texture_focused = ExtResource("6_wo6gr")
 
 [node name="Akimbo" parent="WeaponSwapTitle/SMG" instance=ExtResource("1_cye56")]
 layout_mode = 0
@@ -189,9 +189,9 @@ offset_bottom = -14.5556
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
-texture_normal = ExtResource("12_wo6gr")
-texture_hover = ExtResource("12_wo6gr")
-texture_focused = ExtResource("12_wo6gr")
+texture_normal = ExtResource("12_jp367")
+texture_hover = ExtResource("12_jp367")
+texture_focused = ExtResource("12_jp367")
 
 [node name="Novacaster" parent="GrenadeTitle/Grenade" instance=ExtResource("1_cye56")]
 layout_mode = 0
