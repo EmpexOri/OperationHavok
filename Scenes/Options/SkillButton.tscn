@@ -43,7 +43,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(20, 20.7778)
+position = Vector2(20, 19.6667)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_pwvhs")
 
@@ -56,7 +56,7 @@ default_color = Color(0.136826, 0.136826, 0.136826, 1)
 
 [node name="HoverAnimation" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(20, 21.1111)
+position = Vector2(20, 20)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_lxxys")
 frame = 1
