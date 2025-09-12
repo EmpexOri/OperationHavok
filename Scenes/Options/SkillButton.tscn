@@ -43,6 +43,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Sprite2D" parent="MarginContainer"]
+visible = false
 position = Vector2(20, 19.6667)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_pwvhs")

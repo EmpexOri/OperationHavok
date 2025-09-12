@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://br1566g7sr3av" path="res://Assets/Art/HUD/RocketMingun.png" id="13_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://gs6orj5fv1ob" path="res://Assets/Art/HUD/LightningGun.png" id="14_jp367"]
 [ext_resource type="Texture2D" uid="uid://2dpwtocu5gxt" path="res://Assets/Art/HUD/TyphoonCannon.png" id="15_scflt"]
-[ext_resource type="Texture2D" uid="uid://drhcw6hpaceow" path="res://Assets/Art/HUD/RocketLauncher.png" id="15_wo6gr"]
-[ext_resource type="Texture2D" uid="uid://bkhdk4jehuont" path="res://Assets/Art/HUD/SkillTreeMinigunIcon.png" id="17_wo6gr"]
+[ext_resource type="Texture2D" uid="uid://dgdvqv3tyewlk" path="res://Assets/Art/HUD/Minigun1.png" id="17_jp367"]
+[ext_resource type="Texture2D" uid="uid://rohtq6wv16lb" path="res://Assets/Art/HUD/MinigunWithBorder.png" id="18_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://j140hxqss6ei" path="res://Assets/Art/SkillTree/BoxBack.png" id="19_k5h02"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
@@ -248,28 +248,29 @@ texture_focused = ExtResource("12_2p3y5")
 
 [node name="MinigunTitle" type="Label" parent="."]
 offset_left = 318.0
-offset_top = 330.0
+offset_top = 314.0
 offset_right = 472.0
-offset_bottom = 364.0
+offset_bottom = 349.083
 theme_override_colors/font_color = Color(0.541176, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_74uq5")
 theme_override_font_sizes/font_size = 14
-text = "Minigun"
+text = "Havok
+Wreakers"
 horizontal_alignment = 1
 
 [node name="Minigun" parent="MinigunTitle" instance=ExtResource("1_cye56")]
 layout_mode = 0
-offset_left = 60.0
-offset_top = -54.5556
-offset_right = 100.001
-offset_bottom = -14.5555
+offset_left = 59.0
+offset_top = -38.5556
+offset_right = 99.001
+offset_bottom = 1.4445
 focus_neighbor_top = NodePath("..")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 disabled = true
-texture_normal = ExtResource("17_wo6gr")
-texture_hover = ExtResource("17_wo6gr")
-texture_focused = ExtResource("17_wo6gr")
+texture_normal = ExtResource("17_jp367")
+texture_hover = ExtResource("17_jp367")
+texture_focused = ExtResource("17_jp367")
 
 [node name="Minigun1" parent="MinigunTitle/Minigun" instance=ExtResource("1_cye56")]
 layout_mode = 0
@@ -281,9 +282,9 @@ scale = Vector2(1, 1)
 focus_neighbor_left = NodePath("../../../GrenadeTitle/Grenade/BaseballGrenade")
 focus_neighbor_right = NodePath("../LightningLauncher")
 focus_neighbor_bottom = NodePath("RocketMinigun")
-texture_normal = ExtResource("15_wo6gr")
-texture_hover = ExtResource("15_wo6gr")
-texture_focused = ExtResource("15_wo6gr")
+texture_normal = ExtResource("18_wo6gr")
+texture_hover = ExtResource("18_wo6gr")
+texture_focused = ExtResource("18_wo6gr")
 
 [node name="RocketMinigun" parent="MinigunTitle/Minigun/Minigun1" instance=ExtResource("1_cye56")]
 layout_mode = 0
