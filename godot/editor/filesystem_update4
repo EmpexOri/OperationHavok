@@ -6,3 +6,4 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Scenes/Options/CommandoSkillTree.tscn
+res://Scenes/Options/PauseMenu.tscn
