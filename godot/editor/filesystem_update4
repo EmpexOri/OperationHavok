@@ -1,4 +1,4 @@
-res://Scenes/Options/CommandoSkillTree.tscn
+res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -7,8 +7,9 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Weapons/Weapon.gd
+res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/AlphaLevel1.tscn
-res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
-res://Assets/Scripts/Weapons/Weapon.gd
