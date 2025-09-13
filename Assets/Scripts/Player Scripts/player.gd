@@ -5,7 +5,7 @@ var Damage_Timer = Timer.new()
 
 var RecoilEffectResource = preload("res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd")
 
-var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/smg.tscn") # Starting weapon
+var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/Smg.tscn") # Starting weapon
 var CurrentWeapon: Weapon = null # Currently equipped weapon
 var ControllerEnabled = false
 

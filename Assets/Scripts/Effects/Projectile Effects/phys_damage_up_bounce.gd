@@ -14,7 +14,6 @@ func on_hit(projectile, body: Node2D, collision: KinematicCollision2D = null):
 	
 	# Get the current multiplier for the projectile instance and increase by damage_multiplier_per_bounce
 	if is_instance_valid(bounce_effect) and bounce_effect.current_bounces < bounce_effect.max_bounces:
-		print(bounce_effect.current_bounces)
 		var current_multi: float = projectile.get_damage_multiplier()
 		var new_multi: float = current_multi + damage_multiplier_per_bounce
 		projectile.set_damage_multiplier(new_multi)

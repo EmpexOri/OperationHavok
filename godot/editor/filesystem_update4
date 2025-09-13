@@ -1,4 +1,4 @@
-res://Scenes/Options/CommandoSkillTree.tscn
+res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.tres
@@ -8,8 +8,9 @@ res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Effects/Projectile Effects/phys_damage_up_bounce.gd
+res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
-res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
