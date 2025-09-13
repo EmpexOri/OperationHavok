@@ -43,11 +43,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("fire_up"):
 		if not is_firing:
 			is_firing = true
-		attempt_to_fire(global_position, Vector2.RIGHT) # Replace with aim vector if needed
 	else:
 		if is_firing:
 			is_firing = false
-			# Stop any sustained weapon effects
 			for effect in weapon_effects:
 				if effect and effect.has_method("stop_fire"):
 					effect.stop_fire()
