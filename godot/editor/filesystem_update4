@@ -7,11 +7,9 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/Player Scripts/player.gd
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
-res://Assets/Scripts/Projectiles/home_run_projectile.gd
-res://Assets/Scripts/Player Scripts/player.gd
 res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
