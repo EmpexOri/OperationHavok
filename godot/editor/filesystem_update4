@@ -13,3 +13,9 @@ res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/Options/SkillButton.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/AlphaLevel1.tscn
+res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/BaseballProjectile.tscn
+res://Assets/Shaders/BulletShader.gdshader
+res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn

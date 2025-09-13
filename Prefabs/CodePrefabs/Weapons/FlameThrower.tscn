@@ -46,6 +46,6 @@ metadata/_custom_type_script = "uid://wwee4860hgms"
 [node name="FlameThrower" type="Node2D"]
 script = ExtResource("1_se3g8")
 projectile_scene = ExtResource("2_se3g8")
-base_fire_rate = 0.1
+base_fire_rate = 0.125
 projectile_effects = Array[ExtResource("3_rghba")]([SubResource("Resource_n1qfp"), SubResource("Resource_573kc")])
 weapon_effects = Array[ExtResource("3_wxjej")]([SubResource("Resource_slm06"), SubResource("Resource_dt1q8"), SubResource("Resource_hc1us")])
