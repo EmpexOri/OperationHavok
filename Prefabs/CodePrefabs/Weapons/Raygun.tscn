@@ -24,6 +24,6 @@ metadata/_custom_type_script = "uid://cop4hxx2kw6ig"
 [node name="Raygun" type="Node2D"]
 script = ExtResource("1_ym48u")
 projectile_scene = ExtResource("2_hextn")
-base_fire_rate = 0.125
+base_fire_rate = 0.15
 fire_sound_method = &"SmgFire"
 projectile_effects = Array[ExtResource("3_hextn")]([SubResource("Resource_ymo87"), SubResource("Resource_7e4pb")])
