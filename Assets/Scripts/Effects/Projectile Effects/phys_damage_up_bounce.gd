@@ -1,7 +1,7 @@
 extends ProjectileEffect
 class_name DamageUpOnBounceEffect
 
-@export var damage_multiplier_per_bounce: float = 0.5
+@export var damage_multiplier_per_bounce: float = 0.2
 
 func _init():
 	effect_name = "Damage Up On Bounce"
