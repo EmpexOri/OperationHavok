@@ -15,3 +15,6 @@ res://Scenes/Options/PauseMenu.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
 res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Assets/Scripts/Player Scripts/Abilities/HomeRunGrenade.gd
+res://Prefabs/CodePrefabs/Abilities/HomeRunGrenade.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
