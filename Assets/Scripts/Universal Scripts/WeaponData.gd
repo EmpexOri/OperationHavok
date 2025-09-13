@@ -17,4 +17,5 @@ const weapon_scenes = {
 	"BaseballLauncher": preload("res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn"),
 	"Raygun": preload("res://Prefabs/CodePrefabs/Weapons/Raygun.tscn"),
 	"FlameThrower": preload("res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn"),
+	"HomeRunGrenade": preload("res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn"),
 }

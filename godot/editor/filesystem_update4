@@ -14,3 +14,4 @@ res://Scenes/Options/SkillButton.tscn
 res://Scenes/Options/PauseMenu.tscn
 res://Scenes/AlphaLevel1.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
