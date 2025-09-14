@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd").new()
 var Damage_Timer = Timer.new()
+@onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 
 var RecoilEffectResource = preload("res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd")
 
@@ -100,35 +101,71 @@ func _process(delta):
 		GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
 		kill()
 	
-func _physics_process(_delta):
-	var Motion = Input.get_vector("left", "right", "up", "down")
+func _physics_process(delta: float) -> void:
+	var motion := Input.get_vector("left", "right", "up", "down")
 
+	# Handle dodge
 	if not IsDodging:
-		if Motion.length() > 0:
-			if abs(Motion.x) > abs(Motion.y):
-				$PlayerSprite.flip_h = Motion.x < 0
-				$PlayerSprite/SpriteAnimation.play("WalkRight" if Motion.x > 0 else "WalkLeft")
-			else:
-				$PlayerSprite/SpriteAnimation.play("WalkDown" if Motion.y > 0 else "WalkUp")
-		else:
-			#$PlayerSprite/SpriteAnimation.play("Idle")
-			pass
-			
-
 		if Input.is_action_just_pressed("space") and CanDodge:
-			dodge(Motion.normalized())
+			dodge(motion.normalized())
 
-		velocity = Motion.normalized() * MoveSpeed + velocityknock
+		if motion.length() > 0:
+			velocity = motion.normalized() * MoveSpeed + velocityknock
+			_update_movement_animation(motion, _get_fire_direction() if IsFiring else Vector2.ZERO)
+		else:
+			PlayerSprite.stop()
+			velocity = velocityknock
 	else:
 		velocity += velocityknock
 
 	move_and_slide()
-
-	velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * _delta)
+	velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * delta)
 	
 	#var screen_size = get_viewport_rect().size
 	#position.x = clamp(position.x, 0, screen_size.x)
 	#position.y = clamp(position.y, 0, screen_size.y)
+	
+func _update_movement_animation(motion: Vector2, fire_direction: Vector2 = Vector2.ZERO) -> void:
+	if motion.length() == 0:
+		PlayerSprite.stop()
+		return
+
+	var move_dir := motion.normalized()
+	var is_backwards := false
+
+	if fire_direction != Vector2.ZERO:
+		var dot := move_dir.dot(fire_direction.normalized())
+		if dot < -0.5:  # only invert if clearly opposite
+			is_backwards = true
+			move_dir = -move_dir
+
+	var angle := move_dir.angle()
+
+	# eight-direction movement
+	if angle > -PI/8 and angle <= PI/8:
+		PlayerSprite.flip_h = false
+		PlayerSprite.play("Walk_Right" if not is_backwards else "Walk_Left")
+	elif angle > PI/8 and angle <= 3*PI/8:
+		PlayerSprite.flip_h = false
+		PlayerSprite.play("Walk_DownRight" if not is_backwards else "Walk_UpLeft")
+	elif angle > 3*PI/8 and angle <= 5*PI/8:
+		PlayerSprite.flip_h = false
+		PlayerSprite.play("Walk_Down" if not is_backwards else "Walk_Up")
+	elif angle > 5*PI/8 and angle <= 7*PI/8:
+		PlayerSprite.flip_h = true
+		PlayerSprite.play("Walk_DownRight" if not is_backwards else "Walk_UpLeft")
+	elif angle > 7*PI/8 or angle <= -7*PI/8:
+		PlayerSprite.flip_h = true
+		PlayerSprite.play("Walk_Left" if not is_backwards else "Walk_Right")
+	elif angle > -7*PI/8 and angle <= -5*PI/8:
+		PlayerSprite.flip_h = true
+		PlayerSprite.play("Walk_UpRight" if not is_backwards else "Walk_DownLeft")
+	elif angle > -5*PI/8 and angle <= -3*PI/8:
+		PlayerSprite.flip_h = false
+		PlayerSprite.play("Walk_Up" if not is_backwards else "Walk_Down")
+	else:
+		PlayerSprite.flip_h = false
+		PlayerSprite.play("Walk_UpRight" if not is_backwards else "Walk_DownLeft")
 	
 func dodge(direction: Vector2):
 	if direction == Vector2.ZERO:
@@ -138,7 +175,7 @@ func dodge(direction: Vector2):
 	CanDodge = false
 	Invincible = true
 
-	var dodge_distance = MoveSpeed * 0.4
+	var dodge_distance = MoveSpeed * 0.5
 	var start_position = global_position
 	var dodge_vector = direction.normalized() * dodge_distance
 	var end_position = start_position + dodge_vector
@@ -159,7 +196,15 @@ func dodge(direction: Vector2):
 	# Tween movement
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	# Tween spin: continuously rotate 360° over dodge duration
+	var spin_tween = get_tree().create_tween()
+	spin_tween.tween_property(PlayerSprite, "rotation_degrees", PlayerSprite.rotation_degrees + 360, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
 	await tween.finished
+
+	# Reset sprite rotation
+	PlayerSprite.rotation_degrees = 0
 
 	# Re-enable collisions
 	collision_shape.disabled = false
@@ -274,39 +319,76 @@ func equip_weapon(WeaponScene: PackedScene, source: String = ""):
 
 		if CurrentWeapon.has_signal("shot_fired"):
 			CurrentWeapon.connect("shot_fired", Callable(self, "_on_weapon_shot_fired"))
+			
+func _get_fire_direction() -> Vector2:
+	# Return the direction the player is firing in
+	if not CurrentWeapon:
+		return Vector2.ZERO
+
+	if ControllerEnabled:
+		var dir := Vector2.ZERO
+		dir.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
+		dir.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
+		if dir.length() <= 0.1:
+			return Vector2.ZERO
+		return dir.normalized()
+	else:
+		var mouse_dir = (get_global_mouse_position() - global_position)
+		if mouse_dir.length() <= 0.1:
+			return Vector2.ZERO
+		return mouse_dir.normalized()
+
 		
 func attempt_to_fire():
-	if CurrentWeapon:
-		var direction = Vector2()
-		
-		if ControllerEnabled:
-			direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
-			direction.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
-			if direction.length() > 0.1:
-				direction = direction.normalized()
-			else:
-				return
+	if not CurrentWeapon:
+		return
+	
+	var direction = _get_fire_direction()
+	if direction == Vector2.ZERO:
+		return
+	
+	# Play "fake walk" animation based on firing direction
+	_play_fire_direction_animation(direction)
+	
+	# Fire the weapon
+	CurrentWeapon.attempt_to_fire(global_position, direction)
+
+func _play_fire_direction_animation(direction: Vector2) -> void:
+	if direction.length() == 0:
+		return
+
+	var x = direction.x
+	var y = direction.y
+
+	# Cardinal directions take priority
+	if abs(x) > 0.7 and abs(y) <= 0.3:  # Mostly horizontal
+		if x > 0:
+			PlayerSprite.flip_h = false
+			PlayerSprite.play("Walk_Right")
 		else:
-			direction = (get_global_mouse_position() - global_position).normalized()
-
-		if direction.length() > 0:
-			var is_horizontal = abs(direction.x) > abs(direction.y)
-
-			if is_horizontal:
-				if direction.x > 0:
-					$PlayerSprite.flip_h = false
-					$PlayerSprite/SpriteAnimation.play("WalkRight")
-				if direction.x < 0:
-					$PlayerSprite.flip_h = true
-					$PlayerSprite/SpriteAnimation.play("WalkLeft")
-			else:
-				if direction.y > 0:
-					$PlayerSprite/SpriteAnimation.play("WalkDown")
-				if direction.y < 0:
-					$PlayerSprite/SpriteAnimation.play("WalkUp")
-			
-		# Fire the weapon
-		CurrentWeapon.attempt_to_fire(global_position, direction)
+			PlayerSprite.flip_h = true
+			PlayerSprite.play("Walk_Right")  # Left sprite is flipped
+	elif abs(y) > 0.7 and abs(x) <= 0.3:  # Mostly vertical
+		if y > 0:
+			PlayerSprite.flip_h = false
+			PlayerSprite.play("Walk_Down")
+		else:
+			PlayerSprite.flip_h = false
+			PlayerSprite.play("Walk_Up")
+	else:
+		# Diagonals
+		if x > 0 and y > 0:
+			PlayerSprite.flip_h = false
+			PlayerSprite.play("Walk_DownRight")
+		elif x < 0 and y > 0:
+			PlayerSprite.flip_h = true
+			PlayerSprite.play("Walk_DownRight")  # flipped
+		elif x < 0 and y < 0:
+			PlayerSprite.flip_h = true
+			PlayerSprite.play("Walk_UpRight")  # flipped
+		elif x > 0 and y < 0:
+			PlayerSprite.flip_h = false
+			PlayerSprite.play("Walk_UpRight")
 	
 #func eight_directions_snap(direction: Vector2):
 	#if direction.length() == 0:
