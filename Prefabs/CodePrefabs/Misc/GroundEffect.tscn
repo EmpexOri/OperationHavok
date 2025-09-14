@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://beitqbwpohcd5" path="res://Assets/Scripts/Effects/Misc Effects/GroundEffect.gd" id="1_xr70k"]
 [ext_resource type="Texture2D" uid="uid://bxhr6i2icfvf3" path="res://Assets/Art/Sprites/FX/Fire3.png" id="2_xr70k"]
-[ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="3_mkg7o"]
+[ext_resource type="Texture2D" uid="uid://nqh0l50edxkt" path="res://Assets/Art/PlaceHolders/FadeoutCircle.png" id="3_mkg7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkg7o"]
 size = Vector2(24, 26)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xr70k"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5k6qt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkg7o"]
 atlas = ExtResource("2_xr70k")
@@ -75,6 +75,7 @@ animations = [{
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mkg7o"]
 blend_mode = 1
+light_mode = 1
 
 [node name="GroundEffect" type="Node2D"]
 script = ExtResource("1_xr70k")
@@ -92,15 +93,18 @@ shape = SubResource("RectangleShape2D_mkg7o")
 [node name="TickTimer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.934)
 z_index = 1
-material = SubResource("CanvasItemMaterial_xr70k")
+material = SubResource("CanvasItemMaterial_5k6qt")
+position = Vector2(1.13687e-13, -9.53674e-07)
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8lny5")
 autoplay = "default"
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
-modulate = Color(0.811, 0.616, 0.148, 0.337)
+self_modulate = Color(0.741, 0.481, 0.109, 0.276)
 z_index = -1
 material = SubResource("CanvasItemMaterial_mkg7o")
-position = Vector2(0, 12)
-scale = Vector2(0.120313, 0.0701172)
+position = Vector2(-9.53674e-07, 14)
+scale = Vector2(0.0529974, 0.0248464)
 texture = ExtResource("3_mkg7o")
