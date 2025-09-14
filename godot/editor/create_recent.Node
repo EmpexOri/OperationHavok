@@ -1,6 +1,7 @@
+Sprite2D
+PointLight2D
 AnimatedSprite2D
 GPUParticles2D
-Sprite2D
 AudioStreamPlayer
 TextureRect
 Timer
@@ -11,4 +12,3 @@ StaticBody2D
 Node
 TileMapLayer
 Label
-OptionButton
