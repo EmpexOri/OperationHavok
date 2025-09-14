@@ -19,3 +19,7 @@ res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
 res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
 res://Prefabs/CodePrefabs/Projectiles/misc_bullets/BaseballProjectile.tscn
 res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn

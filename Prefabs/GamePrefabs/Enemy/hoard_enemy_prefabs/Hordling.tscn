@@ -129,6 +129,7 @@ debug_path_custom_color = Color(0.9, 0, 0, 1)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationAgent2D"]
 radius = 7.0
+avoidance_enabled = false
 avoidance_layers = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
