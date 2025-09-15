@@ -176,7 +176,7 @@ func SetLevel1Music(song_path: String, play_immediately: bool = true):
 	
 func PauseMenuMusic():
 	var player = $Music/PauseMenuSoundtrack
-	player.stream = load("res://Assets/Sound/Music/draft 1 M.mp3")
+	player.stream = load("res://Assets/Sound/Music/MenuMusic.mp3")
 	player.play()
 
 func PlayMetalCreak():
