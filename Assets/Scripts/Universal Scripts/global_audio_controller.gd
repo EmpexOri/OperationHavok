@@ -161,6 +161,19 @@ func PlayGrenadeExplosion():
 			return
 	print("All General SFX channels are busy!")
 	
+func SetLevel1Music(song_path: String, play_immediately: bool = true):
+	var stream: AudioStream = load(song_path)
+	if not stream:
+		push_warning("Failed to load Level 1 music: " + song_path)
+		return
+	
+	var player = $Music/Level1Soundtrack
+	player.stream = stream
+	
+	if play_immediately:
+		player.play()
+		paused = false
+	
 func PauseMenuMusic():
 	var player = $Music/PauseMenuSoundtrack
 	player.stream = load("res://Assets/Sound/Music/draft 1 M.mp3")
