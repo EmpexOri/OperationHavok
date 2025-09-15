@@ -4,7 +4,7 @@ var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Fl
 #Special Enemies we can spawn
 #var Gatling = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn")
 #var Needling = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn")
-#var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn")
+var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn")
 
 var SummonFX = preload("res://Prefabs/FX/SummonFX.tscn")
 
@@ -91,7 +91,8 @@ func spawn():
 		query.collide_with_areas = false
 		query.collision_mask = 1 << 2  # Assumes environment layer is 2
 		if space_state.intersect_point(query).is_empty():
-			var instance = FleshSpawn.instantiate()
+			var enemy_scene = _pick_enemy()
+			var instance = enemy_scene.instantiate()
 			instance.name = "Enemy_" + str(randi())
 			instance.Group = Group
 			instance.SummonGroup = SummonGroup
@@ -102,11 +103,11 @@ func spawn():
 	start_timer()
 
 ## --- NEW FUNCTION: 10% chance to summon special enemy ---
-#func _pick_enemy() -> PackedScene:
-	#if randf() <= 0.1: # 10% chance
-		#var specials = [Gatling, Needling, Goolum]
-		#return specials.pick_random()
-	#return FleshSpawn
+func _pick_enemy() -> PackedScene:
+	if randf() <= 0.1: # 10% chance
+		var specials = [Goolum]
+		return specials.pick_random()
+	return FleshSpawn
 
 func fire():
 	var target = resolve_target()
