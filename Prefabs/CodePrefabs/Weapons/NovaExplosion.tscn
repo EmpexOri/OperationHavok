@@ -87,7 +87,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fx877"]
-radius = 134.015
+radius = 98.0459
 
 [node name="NovaGrenade" type="Area2D"]
 script = ExtResource("1_fx877")
@@ -107,7 +107,8 @@ scale = Vector2(0.25, 0.26)
 texture = ExtResource("3_c5jdg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4, -3)
+position = Vector2(1, -6)
+scale = Vector2(0.697266, 0.697266)
 sprite_frames = SubResource("SpriteFrames_thr73")
 animation = &"explode"
 autoplay = "explode"
