@@ -19,7 +19,7 @@ var ram_direction = Vector2.ZERO
 const RAM_TRIGGER_DISTANCE = 100
 const RAM_SPEED_MULTIPLIER = 1.75
 const RAM_DURATION = 0.6
-const RAM_DAMAGE = 15
+const RAM_DAMAGE = 20
 @onready var ram_timer := Timer.new()
 
 func start():

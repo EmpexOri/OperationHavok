@@ -225,7 +225,7 @@ func _perform_explode():
 
 		print("Explosion hits: ", body)
 		
-		body.deal_damage(35, global_position)
+		body.deal_damage(40, global_position)
 	
 	# Play a randomised death sound
 	GlobalAudioController.PlayGrenadeExplosion()

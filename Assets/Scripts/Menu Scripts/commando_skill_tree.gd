@@ -64,8 +64,6 @@ func _on_skill_button_used(button: SkillButton):
 			GlobalPlayer.upgrade_weapon("FlameThrower", 2)
 		"RaygunRifle":
 			GlobalPlayer.upgrade_weapon("Raygun", 2)
-		"SniperRifle":
-			GlobalPlayer.upgrade_weapon("Sniper", 2)
 		"LightningLauncher":
 			upgrade_minigun_ability("LightningLauncher")
 		"Minigun1":

@@ -75,7 +75,7 @@ func drop_xp():
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):
-		body.deal_damage(2)
+		body.deal_damage(5)
 		
 		var direction = (global_position - body.global_position).normalized()
 		var dodge_distance = Speed * 0.6
