@@ -111,7 +111,7 @@ func deal_damage(damage: int, from_position = null):
 	if damage > 0:
 		Health = max(0, Health - damage)
 		flash_white()
-		print("Dealt ", damage, " damage to ", name, " (", original_health, " → ", Health, ")")
+		#print("Dealt ", damage, " damage to ", name, " (", original_health, " → ", Health, ")")
 		if Health <= 0:
 			on_death()
 
