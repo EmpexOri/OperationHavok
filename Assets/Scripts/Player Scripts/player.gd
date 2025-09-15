@@ -103,6 +103,7 @@ func _process(delta):
 	
 func _physics_process(delta: float) -> void:
 	var motion := Input.get_vector("left", "right", "up", "down")
+	var fire_dir := _get_fire_direction()
 
 	# Handle dodge
 	if not IsDodging:
@@ -111,9 +112,10 @@ func _physics_process(delta: float) -> void:
 
 		if motion.length() > 0:
 			velocity = motion.normalized() * MoveSpeed + velocityknock
-			_update_movement_animation(motion, _get_fire_direction() if IsFiring else Vector2.ZERO)
+			_update_movement_and_fire_animation(motion, fire_dir)
 		else:
-			PlayerSprite.stop()
+			# Standing still: face fire direction if any
+			_update_movement_and_fire_animation(Vector2.ZERO, fire_dir)
 			velocity = velocityknock
 	else:
 		velocity += velocityknock
@@ -144,28 +146,28 @@ func _update_movement_animation(motion: Vector2, fire_direction: Vector2 = Vecto
 	# eight-direction movement
 	if angle > -PI/8 and angle <= PI/8:
 		PlayerSprite.flip_h = false
-		PlayerSprite.play("Walk_Right" if not is_backwards else "Walk_Left")
+		PlayerSprite.play("Walk_Right")
 	elif angle > PI/8 and angle <= 3*PI/8:
 		PlayerSprite.flip_h = false
-		PlayerSprite.play("Walk_DownRight" if not is_backwards else "Walk_UpLeft")
+		PlayerSprite.play("Walk_DownRight")
 	elif angle > 3*PI/8 and angle <= 5*PI/8:
 		PlayerSprite.flip_h = false
-		PlayerSprite.play("Walk_Down" if not is_backwards else "Walk_Up")
+		PlayerSprite.play("Walk_Down")
 	elif angle > 5*PI/8 and angle <= 7*PI/8:
 		PlayerSprite.flip_h = true
-		PlayerSprite.play("Walk_DownRight" if not is_backwards else "Walk_UpLeft")
+		PlayerSprite.play("Walk_DownRight")  # flipped for left
 	elif angle > 7*PI/8 or angle <= -7*PI/8:
 		PlayerSprite.flip_h = true
-		PlayerSprite.play("Walk_Left" if not is_backwards else "Walk_Right")
+		PlayerSprite.play("Walk_Right")       # flipped for left
 	elif angle > -7*PI/8 and angle <= -5*PI/8:
 		PlayerSprite.flip_h = true
-		PlayerSprite.play("Walk_UpRight" if not is_backwards else "Walk_DownLeft")
+		PlayerSprite.play("Walk_UpRight")     # flipped for left
 	elif angle > -5*PI/8 and angle <= -3*PI/8:
 		PlayerSprite.flip_h = false
-		PlayerSprite.play("Walk_Up" if not is_backwards else "Walk_Down")
+		PlayerSprite.play("Walk_Up")
 	else:
 		PlayerSprite.flip_h = false
-		PlayerSprite.play("Walk_UpRight" if not is_backwards else "Walk_DownLeft")
+		PlayerSprite.play("Walk_UpRight")
 	
 func dodge(direction: Vector2):
 	if direction == Vector2.ZERO:
@@ -339,78 +341,122 @@ func _get_fire_direction() -> Vector2:
 		return mouse_dir.normalized()
 
 		
-func attempt_to_fire():
+func attempt_to_fire() -> void:
 	if not CurrentWeapon:
 		return
-	
-	var direction = _get_fire_direction()
+
+	var direction := _get_fire_direction()
 	if direction == Vector2.ZERO:
 		return
-	
-	# Play "fake walk" animation based on firing direction
-	_play_fire_direction_animation(direction)
-	
-	# Fire the weapon
-	CurrentWeapon.attempt_to_fire(global_position, direction)
 
-func _play_fire_direction_animation(direction: Vector2) -> void:
-	if direction.length() == 0:
+	# Only shoot—animation handled in _physics_process
+	CurrentWeapon.attempt_to_fire(global_position, direction)
+	
+func _update_movement_and_fire_animation(motion: Vector2, fire: Vector2) -> void:
+	var has_motion := motion.length() > 0
+	var has_fire := fire.length() > 0
+
+	# Decide facing direction
+	var face_dir := fire if has_fire else motion
+	if face_dir.length() == 0:
+		# Nothing to face—stay on the last frame and don’t play anything
+		PlayerSprite.stop()
 		return
 
-	var x = direction.x
-	var y = direction.y
-
-	# Cardinal directions take priority
-	if abs(x) > 0.7 and abs(y) <= 0.3:  # Mostly horizontal
-		if x > 0:
-			PlayerSprite.flip_h = false
-			PlayerSprite.play("Walk_Right")
-		else:
-			PlayerSprite.flip_h = true
-			PlayerSprite.play("Walk_Right")  # Left sprite is flipped
-	elif abs(y) > 0.7 and abs(x) <= 0.3:  # Mostly vertical
-		if y > 0:
-			PlayerSprite.flip_h = false
-			PlayerSprite.play("Walk_Down")
-		else:
-			PlayerSprite.flip_h = false
-			PlayerSprite.play("Walk_Up")
+	# If moving, play walk; if not moving, play idle
+	if has_motion:
+		var move_dir := motion
+		var is_backwards := false
+		if has_fire:
+			var dot := move_dir.normalized().dot(face_dir.normalized())
+			if dot < -0.5:
+				is_backwards = true
+				move_dir = -move_dir
+		_set_facing_by_vector(face_dir)
+		_play_walk_8dir(move_dir, is_backwards)
 	else:
-		# Diagonals
-		if x > 0 and y > 0:
-			PlayerSprite.flip_h = false
-			PlayerSprite.play("Walk_DownRight")
-		elif x < 0 and y > 0:
-			PlayerSprite.flip_h = true
-			PlayerSprite.play("Walk_DownRight")  # flipped
-		elif x < 0 and y < 0:
-			PlayerSprite.flip_h = true
-			PlayerSprite.play("Walk_UpRight")  # flipped
-		elif x > 0 and y < 0:
-			PlayerSprite.flip_h = false
-			PlayerSprite.play("Walk_UpRight")
+		_set_facing_by_vector(face_dir)
+		_play_idle_8dir(face_dir)
+		
+func _set_facing_by_vector(dir: Vector2) -> void:
+	if dir.length() == 0:
+		return
+	PlayerSprite.flip_h = dir.x < 0
+
+func _play_walk_8dir(dir: Vector2, is_backwards: bool) -> void:
+	var angle := dir.angle()
+	var anim: String = ""
+	var flip: bool = false
+
+	if angle > -PI/8 and angle <= PI/8:
+		anim = "Walk_Right"
+		flip = false
+	elif angle > PI/8 and angle <= 3*PI/8:
+		anim = "Walk_DownRight"
+		flip = false
+	elif angle > 3*PI/8 and angle <= 5*PI/8:
+		anim = "Walk_Down"
+		flip = false
+	elif angle > 5*PI/8 and angle <= 7*PI/8:
+		anim = "Walk_DownRight"
+		flip = true    # mirrored for left
+	elif angle > 7*PI/8 or angle <= -7*PI/8:
+		anim = "Walk_Right"
+		flip = true    # mirrored for left
+	elif angle > -7*PI/8 and angle <= -5*PI/8:
+		anim = "Walk_UpRight"
+		flip = true    # mirrored for left
+	elif angle > -5*PI/8 and angle <= -3*PI/8:
+		anim = "Walk_Up"
+		flip = false
+	else:
+		anim = "Walk_UpRight"
+		flip = false
+
+	# invert if moving backwards
+	if is_backwards:
+		flip = not flip
+
+	PlayerSprite.flip_h = flip
+	PlayerSprite.play(anim)
 	
-#func eight_directions_snap(direction: Vector2):
-	#if direction.length() == 0:
-		#return Vector2.ZERO
-	#
-	#var angle = direction.angle()
-	#
-	#if angle < 0:
-		#angle += 2 * PI # turn negatoves to positives (so the north area works!)
-	#
-	#var octant_slice = int(round(8 * angle / (2 * PI))) % 8
-#
-	#match octant_slice:
-		#0: return Vector2(1, 0) # Right
-		#1: return Vector2(1, 1).normalized() # Bottom Right
-		#2: return Vector2(0, 1) # Down
-		#3: return Vector2(-1, 1).normalized() # Bottom Left
-		#4: return Vector2(-1, 0) # Left
-		#5: return Vector2(-1, -1).normalized() # Top Left
-		#6: return Vector2(0, -1) # Up
-		#7: return Vector2(1, -1).normalized() # Top Right
-		#_: return direction.normalized() # Nothing
+func _play_idle_8dir(dir: Vector2) -> void:
+	if dir.length() == 0:
+		return
+
+	var angle := dir.angle()
+	var anim: String = ""
+
+	# Pick a walk animation just to use its frame
+	if angle > -PI/8 and angle <= PI/8:
+		anim = "Walk_Right"
+		PlayerSprite.flip_h = false
+	elif angle > PI/8 and angle <= 3*PI/8:
+		anim = "Walk_DownRight"
+		PlayerSprite.flip_h = false
+	elif angle > 3*PI/8 and angle <= 5*PI/8:
+		anim = "Walk_Down"
+		PlayerSprite.flip_h = false
+	elif angle > 5*PI/8 and angle <= 7*PI/8:
+		anim = "Walk_DownRight"
+		PlayerSprite.flip_h = true
+	elif angle > 7*PI/8 or angle <= -7*PI/8:
+		anim = "Walk_Right"
+		PlayerSprite.flip_h = true
+	elif angle > -7*PI/8 and angle <= -5*PI/8:
+		anim = "Walk_UpRight"
+		PlayerSprite.flip_h = true
+	elif angle > -5*PI/8 and angle <= -3*PI/8:
+		anim = "Walk_Up"
+		PlayerSprite.flip_h = false
+	else:
+		anim = "Walk_UpRight"
+		PlayerSprite.flip_h = false
+
+	# Freeze the sprite on the first frame of that walk animation
+	PlayerSprite.play(anim)
+	PlayerSprite.frame = 0
+	PlayerSprite.stop()
 	
 func deal_damage(damage, from_position = null):
 	ScreenShake.shake(damage, 0.1)
