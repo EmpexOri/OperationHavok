@@ -48,7 +48,6 @@ func AddXP(Amount: int):
 func LevelUp():
 	ClassData[CurrentClass]["Level"] += 1
 	ClassData[CurrentClass]["PerkPoints"] += 1
-	#UnlockAbilities()
 	UpdateHP()
 	UpdatePerkPointUI()
 
@@ -61,18 +60,23 @@ func AddHp(Amount: int):
 
 func UpdateHP():
 	var Level = ClassData[CurrentClass]["Level"]
-	var hp = 100  # Base HP
+	var base_hp = 100
+	var hp = base_hp
 
 	for i in range(1, Level + 1):
-		if hp < 200:
+		if i <= 5:
+			hp += 20  # Big boost for early levels
+		elif i <= 10:
+			hp += 15
+		elif i <= 15:
 			hp += 10
-		elif i < 20:
+		elif i <= 20:
 			hp += 5
 		else:
-			hp += 0  # No HP gain at level 20+
+			hp += 2  # Very small boost for ultra-high levels
 
 	PlayerHPMax = hp
-	PlayerHP += 100  # Optional: only heal up to new max
+	PlayerHP = min(PlayerHP + int(hp * 0.2), PlayerHPMax) 
 	UpdateHealthBar()
 
 #func UnlockAbilities():

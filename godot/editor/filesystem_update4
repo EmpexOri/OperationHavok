@@ -37,3 +37,4 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
