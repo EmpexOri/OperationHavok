@@ -399,17 +399,17 @@ func _play_walk_8dir(dir: Vector2, is_backwards: bool) -> void:
 		flip = false
 	elif angle > 5*PI/8 and angle <= 7*PI/8:
 		anim = "Walk_DownRight"
-		flip = true    # mirrored for left
+		flip = true   # mirrored for left
 	elif angle > 7*PI/8 or angle <= -7*PI/8:
 		anim = "Walk_Right"
-		flip = true    # mirrored for left
+		flip = true   # mirrored for left
 	elif angle > -7*PI/8 and angle <= -5*PI/8:
 		anim = "Walk_UpRight"
-		flip = true    # mirrored for left
+		flip = true   # mirrored for left
 	elif angle > -5*PI/8 and angle <= -3*PI/8:
 		anim = "Walk_Up"
 		flip = false
-	else:
+	else: # -3*PI/8 to -PI/8
 		anim = "Walk_UpRight"
 		flip = false
 
@@ -421,39 +421,31 @@ func _play_walk_8dir(dir: Vector2, is_backwards: bool) -> void:
 	PlayerSprite.play(anim)
 	
 func _play_idle_8dir(dir: Vector2) -> void:
-	if dir.length() == 0:
-		return
-
 	var angle := dir.angle()
 	var anim: String = ""
+	var flip: bool = false
 
-	# Pick a walk animation just to use its frame
 	if angle > -PI/8 and angle <= PI/8:
 		anim = "Walk_Right"
-		PlayerSprite.flip_h = false
 	elif angle > PI/8 and angle <= 3*PI/8:
 		anim = "Walk_DownRight"
-		PlayerSprite.flip_h = false
 	elif angle > 3*PI/8 and angle <= 5*PI/8:
 		anim = "Walk_Down"
-		PlayerSprite.flip_h = false
 	elif angle > 5*PI/8 and angle <= 7*PI/8:
 		anim = "Walk_DownRight"
-		PlayerSprite.flip_h = true
+		flip = true
 	elif angle > 7*PI/8 or angle <= -7*PI/8:
 		anim = "Walk_Right"
-		PlayerSprite.flip_h = true
+		flip = true
 	elif angle > -7*PI/8 and angle <= -5*PI/8:
 		anim = "Walk_UpRight"
-		PlayerSprite.flip_h = true
+		flip = true
 	elif angle > -5*PI/8 and angle <= -3*PI/8:
 		anim = "Walk_Up"
-		PlayerSprite.flip_h = false
 	else:
 		anim = "Walk_UpRight"
-		PlayerSprite.flip_h = false
 
-	# Freeze the sprite on the first frame of that walk animation
+	PlayerSprite.flip_h = flip
 	PlayerSprite.play(anim)
 	PlayerSprite.frame = 0
 	PlayerSprite.stop()
