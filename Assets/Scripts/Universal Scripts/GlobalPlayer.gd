@@ -73,7 +73,7 @@ func UpdateHP():
 		elif i <= 20:
 			hp += 5
 		else:
-			hp += 2  # Very small boost for ultra-high levels
+			hp += 2  # HPmax​(L)=HPbase​+A⋅(1−e−k⋅L) < Formula
 
 	PlayerHPMax = hp
 	PlayerHP = min(PlayerHP + int(hp * 0.2), PlayerHPMax) 
