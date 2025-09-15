@@ -15,7 +15,7 @@ res://Scenes/Options/OptionsScene.tscn::395e20d524562fb96c8c31113a31f28f::175679
 res://Scenes/Options/PauseMenu.tscn::fd728f9b8e7de00aeba9ec30accb28da::1757909731::res://godot/exported/133200997/export-160b170cfd0d52b71df079fc0d9f398c-PauseMenu.scn
 res://Scenes/Options/SkillButton.tscn::f0731ed43201d0b694efb96a98742c0b::1757909731::res://godot/exported/133200997/export-0637e98af7127dedcdaa51de7fc8657d-SkillButton.scn
 res://Scenes/AlphaLevel1.tscn::c84c524c00eb87e566c7d10f38656126::1757909731::res://godot/exported/133200997/export-584ac8825b179d858c21bc7f315397f5-AlphaLevel1.scn
-res://Scenes/GlobalAudioController.tscn::fa48029b242ee8ea6943a09fd250f463::1757910026::res://godot/exported/133200997/export-e9da480b9e8d980faa90c5005ef88967-GlobalAudioController.scn
+res://Scenes/GlobalAudioController.tscn::7d9045e487fca05cbc42d702c4812d4d::1757910679::res://godot/exported/133200997/export-e9da480b9e8d980faa90c5005ef88967-GlobalAudioController.scn
 res://Scenes/LevelSelectScene.tscn::57d4a82ed0f8b629e2a8ae716f8bd7ce::1756975091::res://godot/exported/133200997/export-42bef879e1f73c4734ecd2d6f9327bae-LevelSelectScene.scn
 res://Scenes/MenuScene.tscn::7ee5eb99e8dfa1fbe14a69808c6be4fc::1757398717::res://godot/exported/133200997/export-716ac41b21035b24bd7267cbf66bdb61-MenuScene.scn
 res://Scenes/PlaygroundScene.tscn::5b06f175cee1d029251d43a93b356ddf::1756970472::res://godot/exported/133200997/export-7795f463a0fa607eca964d735fcf4dc4-PlaygroundScene.scn

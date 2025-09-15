@@ -43,3 +43,4 @@ res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyClusterGrenade.tscn
+res://Assets/Scripts/Enemy/Enemy.gd

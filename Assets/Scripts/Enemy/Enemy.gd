@@ -15,6 +15,7 @@ var Target = "Player"
 
 var path_update_interval := 0.25  # seconds between path recalculations
 var path_update_timer := 0.0
+var dead := false
 
 var flash_timer: Timer
 var flash_active := false
@@ -94,32 +95,31 @@ func resolve_target() -> Node2D:
 		#on_death()
 
 func deal_damage(damage: int, from_position = null):
+	if dead:          # already dying
+		return
 	var original_health = Health
 
 	if Armor > 0:
 		var absorbed = min(damage, Armor)
 		Armor -= absorbed
 		damage -= absorbed
-		print("Armor absorbed:", absorbed, " | Remaining armor:", Armor)
-
-		# Shrink the enemy based on new armor value
 		update_scale()
-
 		if Armor <= 0:
 			remove_from_group("Armored")
-			#modulate = Color(1, 1, 1)  # Reset tint
-			print(name, " has lost all armor!")
+			print(name, " lost all armor!")
 
 	if damage > 0:
 		Health = max(0, Health - damage)
 		flash_white()
 		print("Dealt ", damage, " damage to ", name, " (", original_health, " → ", Health, ")")
-
-		if Health == 0:
+		if Health <= 0:
 			on_death()
 
 func on_death():
-	emit_signal("died", self)  # Notify the level before removing the enemy
+	if dead:
+		return
+	dead = true
+	emit_signal("died", self)
 	drop_xp()
 	Global.spawn_meat_chunk(global_position)
 	Global.spawn_blood_splatter(global_position)
