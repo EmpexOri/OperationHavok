@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ct47xp74ehl30"]
 
 [ext_resource type="Script" uid="uid://cfh31cdyrncnm" path="res://Assets/Scripts/Universal Scripts/global_audio_controller.gd" id="1_2ql4u"]
-[ext_resource type="AudioStream" uid="uid://c84jtwjrq5xno" path="res://Assets/Sound/Music/untitled_doom_style_video_game_music.mp3" id="2_bq4xx"]
+[ext_resource type="AudioStream" uid="uid://c84jtwjrq5xno" path="res://Assets/Sound/Music/DoomWaterParking.mp3" id="2_bq4xx"]
 [ext_resource type="AudioStream" uid="uid://bjeqt08vvx4aa" path="res://Assets/Sound/SFX/ClickSound.wav" id="5_e30su"]
 
 [node name="GlobalAudioController" type="Node2D"]
@@ -51,23 +51,23 @@ bus = &"SFX"
 [node name="Channel4" type="AudioStreamPlayer" parent="SFX/DeathChannelsSFX"]
 bus = &"SFX"
 
-[node name="GeneralSFX" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="GeneralSFX" type="AudioStreamPlayer" parent="SFX"]
 volume_db = 5.0
 bus = &"SFX"
 
-[node name="Channel0" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+[node name="Channel0" type="AudioStreamPlayer" parent="SFX/GeneralSFX"]
 bus = &"SFX"
 
-[node name="Channel1" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+[node name="Channel1" type="AudioStreamPlayer" parent="SFX/GeneralSFX"]
 bus = &"SFX"
 
-[node name="Channel2" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+[node name="Channel2" type="AudioStreamPlayer" parent="SFX/GeneralSFX"]
 bus = &"SFX"
 
-[node name="Channel3" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+[node name="Channel3" type="AudioStreamPlayer" parent="SFX/GeneralSFX"]
 bus = &"SFX"
 
-[node name="Channel4" type="AudioStreamPlayer2D" parent="SFX/GeneralSFX"]
+[node name="Channel4" type="AudioStreamPlayer" parent="SFX/GeneralSFX"]
 bus = &"SFX"
 
 [node name="PlayerSFX" type="AudioStreamPlayer" parent="SFX"]

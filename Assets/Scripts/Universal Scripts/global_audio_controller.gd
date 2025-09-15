@@ -34,7 +34,7 @@ var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode
 # SFX Channels
 # ----------------------------
 var DeathChannels: Array[AudioStreamPlayer] = []
-var GeneralChannels: Array[AudioStreamPlayer2D] = []
+var GeneralChannels: Array[AudioStreamPlayer] = []
 var PlayerSFXChannels: Array[AudioStreamPlayer] = []
 var WeaponSFXChannels: Array[AudioStreamPlayer] = []
 var SustainedWeaponChannels: Array[AudioStreamPlayer] = []
@@ -65,7 +65,7 @@ func _ready():
 
 	# General channels
 	for i in range(MAX_CHANNELS):
-		var player = get_node_or_null("SFX/GeneralSFX/Channel%d" % i) as AudioStreamPlayer2D
+		var player = get_node_or_null("SFX/GeneralSFX/Channel%d" % i) as AudioStreamPlayer
 		if player:
 			GeneralChannels.append(player)
 
