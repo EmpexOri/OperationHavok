@@ -451,9 +451,23 @@ func _play_idle_8dir(dir: Vector2) -> void:
 	PlayerSprite.stop()
 	
 func deal_damage(damage, from_position = null):
+	if Invincible:
+		return  # Skip if already invincible
+
+	# Apply damage
 	ScreenShake.shake(damage, 0.1)
 	GlobalPlayer.PlayerHP -= damage
-	
+
+	# Flash when taking damage
+	flash_white()  
+	GlobalAudioController.PlayPlayerDamageSFX()
+
+	# Temporary invincibility
+	Invincible = true
+	var inv_timer = get_tree().create_timer(0.2)
+	await inv_timer.timeout
+	Invincible = false
+
 func kill():
 	SmearCanvas.reset()
 	GlobalAudioController.StopAllMusic()
@@ -581,3 +595,15 @@ func is_knockback_weapon(weapon: Weapon) -> bool:
 
 func set_move_speed(value: float):
 	MoveSpeed = value
+
+func flash_white(flash_color := Color(1, 0.3, 0.3), times := 2, interval := 0.1):
+	if not PlayerSprite or not (PlayerSprite.material is ShaderMaterial):
+		return
+	
+	var mat := PlayerSprite.material as ShaderMaterial
+	mat.set_shader_parameter("flash_color", flash_color)
+
+	var tween = create_tween()
+	for i in range(times):
+		tween.tween_property(mat, "shader_parameter/flash_strength", 0.5, interval)
+		tween.tween_property(mat, "shader_parameter/flash_strength", 0.0, interval)

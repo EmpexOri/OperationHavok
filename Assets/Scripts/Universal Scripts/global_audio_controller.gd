@@ -20,6 +20,8 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var PlayerDamageSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/MoanSFX.mp3")
+
 var lightning_sfx: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/LightningGunSustain.mp3")
 
 var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Silencetest1.wav")
@@ -293,3 +295,18 @@ func PlayFromPlayerSFX(stream: AudioStream) -> void:
 		player.pitch_scale = randf_range(0.95, 1.05)  # Random pitch modulation
 		player.play()
 		
+func PlayPlayerDamageSFX():
+	for player in PlayerSFXChannels:
+		if not player.playing:
+			player.stream = PlayerDamageSound
+			player.pitch_scale = randf_range(0.95, 1.05)
+			player.play()
+			return
+	# If all channels are busy, just overwrite one in round-robin
+	if PlayerSFXChannels.size() > 0:
+		player_sfx_index = (player_sfx_index + 1) % PlayerSFXChannels.size()
+		var player = PlayerSFXChannels[player_sfx_index]
+		player.stop()
+		player.stream = PlayerDamageSound
+		player.pitch_scale = randf_range(0.95, 1.05)
+		player.play()
