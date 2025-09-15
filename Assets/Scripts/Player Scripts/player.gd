@@ -596,14 +596,20 @@ func is_knockback_weapon(weapon: Weapon) -> bool:
 func set_move_speed(value: float):
 	MoveSpeed = value
 
-func flash_white(flash_color := Color(1, 0.3, 0.3), times := 2, interval := 0.1):
-	if not PlayerSprite or not (PlayerSprite.material is ShaderMaterial):
+func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
+	if not PlayerSprite:
 		return
-	
+
+	# Duplicate material to make it unique
+	if PlayerSprite.material:
+		PlayerSprite.material = PlayerSprite.material.duplicate()
+	else:
+		print("PlayerSprite has no material!")
+
 	var mat := PlayerSprite.material as ShaderMaterial
 	mat.set_shader_parameter("flash_color", flash_color)
 
-	var tween = create_tween()
+	var tween := create_tween()
 	for i in range(times):
 		tween.tween_property(mat, "shader_parameter/flash_strength", 0.5, interval)
 		tween.tween_property(mat, "shader_parameter/flash_strength", 0.0, interval)
