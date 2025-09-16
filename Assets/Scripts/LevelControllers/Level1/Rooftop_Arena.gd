@@ -20,6 +20,9 @@ var spawn_points: Array[Marker2D] = []
 var wave_in_progress := false
 var wave_ending := false
 
+# Track which sub-arenas have been started
+var sub_arena_started: Array = []
+
 # Sub-arenas setup
 var sub_arenas: Array = []
 
@@ -49,9 +52,16 @@ func _ready():
 		}
 	]
 
+	# Initialize tracking to prevent double triggers
+	sub_arena_started.clear()
+	for i in range(sub_arenas.size()):
+		sub_arena_started.append(false)
+
 	# Connect triggers 2 & 3 locally
 	$RooftopTrigger_2.body_entered.connect(_on_RooftopTrigger_2_body_entered)
 	$RooftopTrigger_3.body_entered.connect(_on_RooftopTrigger_3_body_entered)
+	$RooftopTrigger_2.monitoring = false
+	$RooftopTrigger_3.monitoring = false
 
 # -------------------
 # Arena control
@@ -64,10 +74,10 @@ func activate_arena():
 	start_sub_arena(0)  # Sub-Arena 1 starts automatically
 
 func start_sub_arena(index: int):
-	if index >= sub_arenas.size():
-		arena_completed()
+	if index >= sub_arenas.size() or sub_arena_started[index]:
 		return
 
+	sub_arena_started[index] = true
 	current_sub_arena = index
 	var sub = sub_arenas[index]
 
@@ -89,19 +99,17 @@ func start_next_wave():
 	var waves = sub.get("wave_data", [])
 
 	if current_wave >= waves.size():
-		print("Sub-Arena %d complete" % (current_sub_arena + 1))
 		wave_in_progress = false
-
-		# Handle sub-arena progression
+		print("Sub-Arena %d complete" % (current_sub_arena + 1))
+		
+		# Enable the next trigger only after this sub-arena is complete
 		if current_sub_arena == 0:
-			# Wait for RooftopTrigger_2 to start Sub-Arena 2
-			return
+			$RooftopTrigger_2.monitoring = true
 		elif current_sub_arena == 1:
-			# Wait for RooftopTrigger_3 to start Sub-Arena 3
-			return
+			$RooftopTrigger_3.monitoring = true
 		else:
-			# Last sub-arena completed
 			arena_completed()
+			
 		return
 
 	wave_in_progress = true
@@ -144,6 +152,7 @@ func _on_enemy_died(enemy):
 
 func arena_completed():
 	arena_active = false
+	GlobalEffects.activate_xp_buff(5000, 5.0)
 	print("Rooftop Arena complete!")
 	emit_signal("arena_complete")
 

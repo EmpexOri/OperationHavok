@@ -18,6 +18,12 @@ var arenas := {}
 var current_checkpoint : String = ""
 
 func _ready() -> void:
+	# Instantiate and add menu immediately
+	pause_menu = PAUSE_MENU_SCENE.instantiate()
+	add_child(pause_menu)
+	pause_menu.visible = false
+
+	# Now it's safe to use pause_menu
 	await get_tree().physics_frame
 
 	var player := get_node_or_null("Player")
@@ -59,10 +65,16 @@ func _input(event:InputEvent) -> void:
 		_toggle_pause()
 
 func _toggle_pause() -> void:
-	pause_menu.visible = !pause_menu.visible
-	get_tree().paused = pause_menu.visible
-	if pause_menu.visible and pause_menu.has_method("show_pause_menu"):
-		pause_menu.show_pause_menu()
+	if pause_menu.visible:
+		# Closing pause menu
+		pause_menu.visible = false
+		get_tree().paused = false
+	else:
+		# Opening pause menu
+		pause_menu.visible = true
+		get_tree().paused = true
+		if pause_menu.has_method("show_pause_menu"):
+			pause_menu.show_pause_menu()
 
 func _start_arena(name:String) -> void:
 	var a = arenas.get(name, null)
