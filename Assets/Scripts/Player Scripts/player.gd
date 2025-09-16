@@ -4,6 +4,9 @@ var Class = preload("res://Assets/Scripts/Player Scripts/Classes/Technomancer.gd
 var Damage_Timer = Timer.new()
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 
+@onready var level_controller := get_tree().get_first_node_in_group("LevelController")
+var spawn_points := {}   # e.g. { "carpark": Vector2(100,200) }
+
 var RecoilEffectResource = preload("res://Assets/Scripts/Effects/Weapon Effects/recoil_effect.gd")
 
 var StartingWeapon = preload("res://Prefabs/CodePrefabs/Weapons/Smg.tscn") # Starting weapon
@@ -471,16 +474,22 @@ func deal_damage(damage, from_position = null):
 func kill():
 	SmearCanvas.reset()
 	GlobalAudioController.StopAllMusic()
-	
-	# Pausing gameplay, death screen and then reset player
 	get_tree().paused = true
 	DeathLabel.visible = true
 	DeathBG.visible = true
-	var TimeInSeconds = 1.8
-	await get_tree().create_timer(TimeInSeconds).timeout
+	await get_tree().create_timer(1.8).timeout
 	get_tree().paused = false
-	
-	get_tree().reload_current_scene()
+
+	if level_controller and level_controller.get_checkpoint() != "" \
+	and spawn_points.has(level_controller.get_checkpoint()):
+		var p = spawn_points[level_controller.get_checkpoint()]
+		global_position = p
+		GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
+		# hide death UI
+		DeathLabel.visible = false
+		DeathBG.visible = false
+	else:
+		get_tree().reload_current_scene()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if Invincible:
@@ -613,3 +622,6 @@ func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 	for i in range(times):
 		tween.tween_property(mat, "shader_parameter/flash_strength", 0.5, interval)
 		tween.tween_property(mat, "shader_parameter/flash_strength", 0.0, interval)
+
+func register_spawn(flag:String, position:Vector2) -> void:
+	spawn_points[flag] = position

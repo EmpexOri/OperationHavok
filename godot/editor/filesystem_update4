@@ -9,3 +9,11 @@ res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Scenes/MenuScene.tscn
+res://Scenes/AlphaLevel1.tscn
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
+res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
+res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/Rooftop_Elevator.gd

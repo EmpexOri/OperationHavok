@@ -1,3 +1,4 @@
+Marker2D
 Node2D
 Node
 TileMapLayer
@@ -11,4 +12,3 @@ Timer
 CollisionShape2D
 Area2D
 StaticBody2D
-Label
