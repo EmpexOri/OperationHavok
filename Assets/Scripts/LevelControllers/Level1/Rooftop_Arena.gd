@@ -164,8 +164,10 @@ func arena_completed():
 			if elevator:
 				elevator.monitoring = true
 				print("Rooftop Elevator enabled!")
-		# Optionally mark checkpoint
-		controller._set_checkpoint("Rooftop_Area")
+
+		# Map arena name to actual respawn key
+		var checkpoint_flag := "parkinglot"  # the marker you actually registered in Player
+		controller._set_checkpoint(checkpoint_flag)
 	else:
 		push_error("BetaLevelController not found at path: %s" % beta_level_controller_path)
 

@@ -18,32 +18,30 @@ var arenas := {}
 var current_checkpoint : String = ""
 
 func _ready() -> void:
-	# Instantiate and add menu immediately
+	# Instantiate and add pause menu
 	pause_menu = PAUSE_MENU_SCENE.instantiate()
 	add_child(pause_menu)
 	pause_menu.visible = false
 
-	# Now it's safe to use pause_menu
-	await get_tree().physics_frame
+	# Wait until Player exists in the scene tree
+	var player: Node = null
+	while not player:
+		await get_tree().process_frame  # wait 1 frame
+		var players = get_tree().get_nodes_in_group("Player")
+		if players.size() > 0:
+			player = players[0]
 
-	var player := get_node_or_null("Player")
-	if not player:
-		push_error("Player node not found at path 'Player'")
-		return
+	print("Player found:", player)
 
+	# Register spawn points
 	var checkpoints := get_node_or_null("LevelManager/Checkpoints")
 	if not checkpoints:
 		push_error("Checkpoints node not found at LevelManager/Checkpoints")
 	else:
 		for marker in checkpoints.get_children():
-			# accept Marker2D / Node2D, or members of the RespawnMarkers group,
-			# and support names that start with "Respawn_"
 			if marker is Node2D or marker.is_in_group("RespawnMarkers") or marker.name.begins_with("Respawn_"):
 				var key = marker.name.replace("Respawn_", "").to_lower()
 				player.register_spawn(key, marker.global_position)
-
-	add_child(pause_menu)
-	pause_menu.visible = false
 
 func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 	"""
@@ -84,11 +82,29 @@ func _start_arena(name:String) -> void:
 
 func _on_arena_complete(name:String) -> void:
 	print("Arena complete:", name)
-	_set_checkpoint(name)    # set checkpoint to arena name (or any key you like)
+	
+	# Map the arena to its respawn marker
+	var respawn_checkpoint := ""
+	match name:
+		"Rooftop_Arena":
+			respawn_checkpoint = "parkinglot"  # the last checkpoint you want
+		"Parkinglot_Arena":
+			respawn_checkpoint = "parkinglot"  # maybe same here
+		_:
+			respawn_checkpoint = name.to_lower()
+	
+	_set_checkpoint(respawn_checkpoint)
 
 func _set_checkpoint(flag:String) -> void:
 	current_checkpoint = flag
 	print("Checkpoint set:", flag)
+
+	# Only update GlobalPlayer if Player has this spawn registered
+	var players = get_tree().get_nodes_in_group("Player")
+	if players.size() > 0:
+		var player = players[0]
+		if player.spawn_points.has(flag):
+			GlobalPlayer.current_respawn_position = player.spawn_points[flag]
 
 func get_checkpoint() -> String:
 	return current_checkpoint
@@ -105,3 +121,18 @@ func _on_RooftopTrigger_1_body_entered(body):
 				push_error("RooftopTrigger_1 not found in Rooftop_Arena")
 		else:
 			push_error("Rooftop_Arena node not found")
+
+
+func _on_ParkinglotTrigger_body_entered(body):
+	if body.is_in_group("Player"):
+		var arena = $Parkinglot_Arena
+		if arena:
+			arena.activate_arena()
+			# Disable trigger so it doesn’t retrigger
+			var trigger = arena.get_node_or_null("Parkinglot_Trigger")
+			if trigger:
+				trigger.monitoring = false
+			else:
+				push_error("Parkinglot_Trigger not found in Parkinglot_Arena")
+		else:
+			push_error("Parkinglot_Arena node not found")

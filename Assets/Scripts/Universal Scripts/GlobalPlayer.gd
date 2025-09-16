@@ -28,6 +28,8 @@ var AbilityListTechnomancer = ["Technomatic Aura", "Aegis Protocol", "Judgement"
 var AbilityListCommando = ["SwapWeapons", "GrenadeThrow", "TyphoonCannon"]
 var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
+var current_respawn_position: Vector2 = Vector2.ZERO
+
 func XPRequiredForLevel(Level: int) -> int:
 	return 50 * pow(1.2, Level - 1)
 

@@ -480,16 +480,18 @@ func kill():
 	await get_tree().create_timer(1.8).timeout
 	get_tree().paused = false
 
-	if level_controller and level_controller.get_checkpoint() != "" \
-	and spawn_points.has(level_controller.get_checkpoint()):
-		var p = spawn_points[level_controller.get_checkpoint()]
-		global_position = p
+	if GlobalPlayer.current_respawn_position != Vector2.ZERO:
+		global_position = GlobalPlayer.current_respawn_position
 		GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
-		# hide death UI
 		DeathLabel.visible = false
 		DeathBG.visible = false
 	else:
 		get_tree().reload_current_scene()
+		
+func get_spawn_position(flag:String) -> Vector2:
+	if spawn_points.has(flag):
+		return spawn_points[flag]
+	return Vector2.ZERO  # fallback default
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if Invincible:
