@@ -183,3 +183,20 @@ func _on_RooftopTrigger_3_body_entered(body):
 	if body.is_in_group("Player"):
 		start_sub_arena(2)  # Sub-Arena 3
 		$RooftopTrigger_3.monitoring = false
+
+func reset_arena():
+	wave_in_progress = false
+	wave_ending = false
+	current_wave = 0
+	arena_active = false
+
+	for e in enemies:
+		if e.is_inside_tree():
+			e.queue_free()
+	enemies.clear()
+
+	# Refresh spawn points if necessary
+	spawn_points.clear()
+	for child in get_children():
+		if child is Marker2D:
+			spawn_points.append(child)

@@ -22,3 +22,4 @@ res://Assets/Scripts/Player Scripts/Camera2D.gd
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
 res://Assets/Scripts/Player Scripts/player.gd
 res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd

@@ -9,6 +9,11 @@ Central hub for:
 
 const PAUSE_MENU_SCENE := preload("res://Scenes/Options/PauseMenu.tscn")
 
+var checkpoint_to_arena := {
+	"rooftop": $Rooftop_Arena,
+	"parkinglot": $Parkinglot_Arena
+}
+
 @onready var pause_menu := PAUSE_MENU_SCENE.instantiate()
 
 # Stores arenas you register at runtime:  { name:String : { trigger:Area2D, arena:Node } }
@@ -99,12 +104,16 @@ func _set_checkpoint(flag:String) -> void:
 	current_checkpoint = flag
 	print("Checkpoint set:", flag)
 
-	# Only update GlobalPlayer if Player has this spawn registered
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		var player = players[0]
 		if player.spawn_points.has(flag):
 			GlobalPlayer.current_respawn_position = player.spawn_points[flag]
+
+	# Reset the arena if it exists
+	var arena = checkpoint_to_arena.get(flag, null)
+	if arena and arena.has_method("reset_arena"):
+		arena.reset_arena()
 
 func get_checkpoint() -> String:
 	return current_checkpoint
@@ -136,3 +145,16 @@ func _on_ParkinglotTrigger_body_entered(body):
 				push_error("Parkinglot_Trigger not found in Parkinglot_Arena")
 		else:
 			push_error("Parkinglot_Arena node not found")
+
+func respawn_player(player):
+	# Teleport player to checkpoint
+	player.global_position = GlobalPlayer.current_respawn_position
+	GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
+
+	# Reset arena tied to this checkpoint
+	var arena = checkpoint_to_arena.get(current_checkpoint, null)
+	if arena and arena.has_method("reset_arena"):
+		arena.reset_arena()
+		# Optionally, re-activate the arena automatically
+		if arena.has_method("activate_arena"):
+			arena.activate_arena()

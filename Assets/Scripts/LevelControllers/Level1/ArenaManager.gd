@@ -116,3 +116,36 @@ func activate_arena():
 	if not arena_active:
 		arena_active = true
 		start_next_wave()
+
+func reset_arena():
+	print("Resetting arena: %s" % self.name)
+	
+	# Stop ongoing waves
+	wave_in_progress = false
+	wave_ending = false
+	current_wave = 0
+	arena_active = false
+
+	# Delete all alive enemies
+	for e in enemies:
+		if e.is_inside_tree():
+			e.queue_free()
+	enemies.clear()
+
+	# Optionally reset spawn points if dynamic
+	# (mostly for child arenas that override spawn_points)
+	for i in range(spawn_points.size()):
+		spawn_points[i] = spawn_points[i]  # keep same references; could refresh if needed
+
+var checkpoint_to_arena := {
+	"Rooftop_Area": $Rooftop_Arena,
+	"Parkinglot_Area": $Parkinglot_Arena
+}
+
+func respawn_player(player):
+	player.global_position = GlobalPlayer.current_respawn_position
+	GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
+
+	var arena = checkpoint_to_arena.get(GlobalPlayer.current_checkpoint, null)
+	if arena and arena.has_method("reset_arena"):
+		arena.reset_arena()

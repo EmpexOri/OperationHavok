@@ -256,7 +256,7 @@ text = "You died"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Rooftop_Arena" type="Node2D" parent="."]
+[node name="Rooftop_Arena" type="Node2D" parent="." groups=["Arena"]]
 z_index = -6
 script = ExtResource("19_c70pc")
 beta_level_controller_path = NodePath("..")
@@ -478,7 +478,7 @@ position = Vector2(713, -320)
 [node name="Rooftop_Elevator_Target" type="Marker2D" parent="Rooftop_Arena"]
 position = Vector2(-151, 879)
 
-[node name="Parkinglot_Arena" type="Node2D" parent="."]
+[node name="Parkinglot_Arena" type="Node2D" parent="." groups=["Arena"]]
 z_index = -6
 script = ExtResource("28_ebm85")
 
