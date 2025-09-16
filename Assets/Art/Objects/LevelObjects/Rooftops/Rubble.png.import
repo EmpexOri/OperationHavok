@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bekdam1uh8my"
-path="res://godot/imported/Car_Object_v3_maroon.png-ba846bcf3bcb73695eeeda0627922112.ctex"
+uid="uid://dga84ocwyytxl"
+path="res://godot/imported/Rubble.png-0dea39908eab0d5fdb30ad5e4f2d7cc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/Car_Object_v3_maroon.png"
-dest_files=["res://godot/imported/Car_Object_v3_maroon.png-ba846bcf3bcb73695eeeda0627922112.ctex"]
+source_file="res://Assets/Art/Objects/LevelObjects/Rooftops/Rubble.png"
+dest_files=["res://godot/imported/Rubble.png-0dea39908eab0d5fdb30ad5e4f2d7cc3.ctex"]
 
 [params]
 

@@ -1,3 +1,6 @@
+res://Assets/Art/Tilesets
+res://Assets/Art/Tilesets/Tilesets_Final/Rooftops
+res://Assets/Art/Tilesets/Tilesets_Final
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok - Linux
 res://Assets/Art/Sprites/PlayerTilesheets
@@ -17,6 +20,3 @@ res://Assets/Art/PlaceHolders
 res://Assets/Art/Effects
 res://Assets/Art/Sprites/Minibosses
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap
-res://Assets/Scripts/Enemy
-res://Prefabs/GamePrefabs/Enemy
-res://Assets/Scripts/Misc

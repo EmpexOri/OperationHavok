@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co8satb05d6rr"
-path="res://godot/imported/Car_Object_v3_blue.png-e05ea6baa2ef59086b7ca1abc7f9ff04.ctex"
+uid="uid://c5iony8whygot"
+path="res://godot/imported/Carpark_Inner_Wall.png-e25349a918a3d0fa3ac0554085c770d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/Car_Object_v3_blue.png"
-dest_files=["res://godot/imported/Car_Object_v3_blue.png-e05ea6baa2ef59086b7ca1abc7f9ff04.ctex"]
+source_file="res://Assets/Art/Tilesets/Tilesets_Final/Carpark/Carpark_Inner_Wall.png"
+dest_files=["res://godot/imported/Carpark_Inner_Wall.png-e25349a918a3d0fa3ac0554085c770d5.ctex"]
 
 [params]
 

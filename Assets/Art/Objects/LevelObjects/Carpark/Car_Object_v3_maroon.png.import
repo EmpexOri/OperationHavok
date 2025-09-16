@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2f2wijkl2jqx"
-path="res://godot/imported/VendingGreen.png-51515d9b293a559a37228e8f213a23a9.ctex"
+uid="uid://bekdam1uh8my"
+path="res://godot/imported/Car_Object_v3_maroon.png-0c18a092e52875b64e2d7017968d2785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LevelObjects/VendingGreen.png"
-dest_files=["res://godot/imported/VendingGreen.png-51515d9b293a559a37228e8f213a23a9.ctex"]
+source_file="res://Assets/Art/Objects/LevelObjects/Carpark/Car_Object_v3_maroon.png"
+dest_files=["res://godot/imported/Car_Object_v3_maroon.png-0c18a092e52875b64e2d7017968d2785.ctex"]
 
 [params]
 

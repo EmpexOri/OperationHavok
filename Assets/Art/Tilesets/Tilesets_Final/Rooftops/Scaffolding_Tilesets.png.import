@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dgmoyw25a50"
-path="res://godot/imported/VendingBlue.png-e9f8981bc578f2e3292421791cc5aa2b.ctex"
+uid="uid://4v1x71gelykc"
+path="res://godot/imported/Scaffolding_Tilesets.png-294bc9ede3016d337dcc6a1769349765.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LevelObjects/VendingBlue.png"
-dest_files=["res://godot/imported/VendingBlue.png-e9f8981bc578f2e3292421791cc5aa2b.ctex"]
+source_file="res://Assets/Art/Tilesets/Tilesets_Final/Rooftops/Scaffolding_Tilesets.png"
+dest_files=["res://godot/imported/Scaffolding_Tilesets.png-294bc9ede3016d337dcc6a1769349765.ctex"]
 
 [params]
 

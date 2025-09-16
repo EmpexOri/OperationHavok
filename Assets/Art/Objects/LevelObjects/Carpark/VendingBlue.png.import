@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6ifsypnvf5ot"
-path="res://godot/imported/VendingRed.png-2694a1b15de37c055aaf56611311a147.ctex"
+uid="uid://6dgmoyw25a50"
+path="res://godot/imported/VendingBlue.png-4a1000b5a3b0c371197ae913f83bafb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LevelObjects/VendingRed.png"
-dest_files=["res://godot/imported/VendingRed.png-2694a1b15de37c055aaf56611311a147.ctex"]
+source_file="res://Assets/Art/Objects/LevelObjects/Carpark/VendingBlue.png"
+dest_files=["res://godot/imported/VendingBlue.png-4a1000b5a3b0c371197ae913f83bafb5.ctex"]
 
 [params]
 

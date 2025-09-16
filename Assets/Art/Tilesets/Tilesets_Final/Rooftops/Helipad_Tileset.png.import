@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnd8tgnkeku0s"
-path="res://godot/imported/Dumpster.png-7e859d4df6edf5e616b713943b7197cf.ctex"
+uid="uid://dwekp0b6xjvkj"
+path="res://godot/imported/Helipad_Tileset.png-d17f4f29084bbfb3c5d4335c4695c92d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LevelObjects/Dumpster.png"
-dest_files=["res://godot/imported/Dumpster.png-7e859d4df6edf5e616b713943b7197cf.ctex"]
+source_file="res://Assets/Art/Tilesets/Tilesets_Final/Rooftops/Helipad_Tileset.png"
+dest_files=["res://godot/imported/Helipad_Tileset.png-d17f4f29084bbfb3c5d4335c4695c92d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djlaj5fpeqin1"
-path="res://godot/imported/BinFull.png-1fa96fba0833e726e8b5eaad9803cfc5.ctex"
+uid="uid://7cuddnlv4o8k"
+path="res://godot/imported/LampPost.png-b20d88c5124fa8fdaf49451eee1ee8c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LevelObjects/BinFull.png"
-dest_files=["res://godot/imported/BinFull.png-1fa96fba0833e726e8b5eaad9803cfc5.ctex"]
+source_file="res://Assets/Art/Objects/LevelObjects/Carpark/LampPost.png"
+dest_files=["res://godot/imported/LampPost.png-b20d88c5124fa8fdaf49451eee1ee8c2.ctex"]
 
 [params]
 

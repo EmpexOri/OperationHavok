@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckc42malavsuo"
-path="res://godot/imported/BinDestroyed.png-d324e165072494fba2b39f14be8f74c0.ctex"
+uid="uid://clnixbls4c8ya"
+path="res://godot/imported/Box_1.png-d57d625bdd1dfc31769f1b6f28f349b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LevelObjects/BinDestroyed.png"
-dest_files=["res://godot/imported/BinDestroyed.png-d324e165072494fba2b39f14be8f74c0.ctex"]
+source_file="res://Assets/Art/Objects/LevelObjects/Rooftops/Box_1.png"
+dest_files=["res://godot/imported/Box_1.png-d57d625bdd1dfc31769f1b6f28f349b0.ctex"]
 
 [params]
 

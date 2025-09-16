@@ -1,3 +1,6 @@
+TileMapLayer
+Node2D
+Node
 Sprite2D
 AudioStreamPlayer
 AnimatedSprite2D
@@ -7,8 +10,5 @@ TextureRect
 Timer
 CollisionShape2D
 Area2D
-Node2D
 StaticBody2D
-Node
-TileMapLayer
 Label

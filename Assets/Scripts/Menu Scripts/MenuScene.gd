@@ -34,7 +34,7 @@ func _on_play_button_pressed() -> void:
 	#await get_tree().create_timer(TimeInSeconds2).timeout
 	#LoadingFinished.queue_free()
 	
-	get_tree().change_scene_to_file("res://Scenes/AlphaLevel1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/BetaLevel.tscn")
 
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ClickSound()

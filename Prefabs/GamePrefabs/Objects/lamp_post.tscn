@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdul7stkl75pv"]
 
-[ext_resource type="Texture2D" uid="uid://7cuddnlv4o8k" path="res://Assets/Art/Objects/LampPost.png" id="1_74njj"]
+[ext_resource type="Texture2D" uid="uid://7cuddnlv4o8k" path="res://Assets/Art/Objects/LevelObjects/Carpark/LampPost.png" id="1_74njj"]
 [ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="2_ft8dy"]
 
 [node name="LampPost" type="Sprite2D"]

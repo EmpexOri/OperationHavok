@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7cuddnlv4o8k"
-path="res://godot/imported/LampPost.png-2f76976ece23242b699ee791acdf9e3a.ctex"
+uid="uid://6ifsypnvf5ot"
+path="res://godot/imported/VendingRed.png-4fe65d7f1619c503cc2500f2030c5e47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/LampPost.png"
-dest_files=["res://godot/imported/LampPost.png-2f76976ece23242b699ee791acdf9e3a.ctex"]
+source_file="res://Assets/Art/Objects/LevelObjects/Carpark/VendingRed.png"
+dest_files=["res://godot/imported/VendingRed.png-4fe65d7f1619c503cc2500f2030c5e47.ctex"]
 
 [params]
 
