@@ -13,3 +13,6 @@ res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Scenes/MenuScene.tscn
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
 res://Scenes/AlphaLevel1.tscn
+res://Assets/Scripts/Effects/Object Effects/Destructible.gd
+res://Assets/Scripts/Effects/Object Effects/Boulder.gd
+res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn

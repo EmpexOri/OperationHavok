@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsrf42pjfca35"]
+
+[ext_resource type="Script" uid="uid://07nhsfdv3qw4" path="res://Assets/Scripts/Effects/Object Effects/Boulder.gd" id="1_dlxjq"]
+[ext_resource type="Texture2D" uid="uid://dga84ocwyytxl" path="res://Assets/Art/Objects/LevelObjects/Rooftops/Rubble.png" id="1_njglx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxjq"]
+size = Vector2(134, 68)
+
+[node name="Boulder" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_dlxjq")
+health = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_njglx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dlxjq")
