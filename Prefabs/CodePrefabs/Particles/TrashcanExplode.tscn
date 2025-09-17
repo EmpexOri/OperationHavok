@@ -1,0 +1,123 @@
+[gd_scene load_steps=25 format=3 uid="uid://sgnpewn1ymvy"]
+
+[ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_87e7p"]
+[ext_resource type="Texture2D" uid="uid://b2g6nkefjp74q" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/1.png" id="2_agid5"]
+[ext_resource type="Texture2D" uid="uid://c6q1h0le5xmau" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/2.png" id="3_lkg7o"]
+[ext_resource type="Texture2D" uid="uid://ck6uv1kixsv8o" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/11.png" id="4_lhfbw"]
+[ext_resource type="Texture2D" uid="uid://bnyqjei7veqlp" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/12.png" id="5_108dq"]
+[ext_resource type="Texture2D" uid="uid://bbbte3ddc6uhp" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/13.png" id="6_2rmr7"]
+[ext_resource type="Texture2D" uid="uid://cprabaqy2h7c" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/14.png" id="7_aq0id"]
+[ext_resource type="Texture2D" uid="uid://c74285enai4p1" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/15.png" id="8_o3wiu"]
+[ext_resource type="Texture2D" uid="uid://cmsd0aouw04yg" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/3.png" id="9_cxs3j"]
+[ext_resource type="Texture2D" uid="uid://3dl5l1gmdvcv" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/4.png" id="10_advuu"]
+[ext_resource type="Texture2D" uid="uid://bsli1tqs7mmvb" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/5.png" id="11_ithy1"]
+[ext_resource type="Texture2D" uid="uid://crdyafsvgwuqa" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/6.png" id="12_wyc0l"]
+[ext_resource type="Texture2D" uid="uid://cm2kppmjtmf5d" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/7.png" id="13_tq60c"]
+[ext_resource type="Texture2D" uid="uid://br3v708cdkaoh" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/8.png" id="14_pyi7b"]
+[ext_resource type="Texture2D" uid="uid://decsv8nj5dkls" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/9.png" id="15_55doo"]
+[ext_resource type="Texture2D" uid="uid://daql4hjgiiwtj" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/10.png" id="16_wckgn"]
+
+[sub_resource type="Gradient" id="Gradient_cq8d6"]
+colors = PackedColorArray(0.609467, 0.622561, 0.603015, 1, 0.154236, 0.154874, 0.156617, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0jslu"]
+gradient = SubResource("Gradient_cq8d6")
+
+[sub_resource type="CurveTexture" id="CurveTexture_kvl7w"]
+
+[sub_resource type="Curve" id="Curve_267qd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483146), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6l3pw"]
+curve = SubResource("Curve_267qd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kvl7w"]
+lifetime_randomness = 0.29
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 180.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 75.24
+initial_velocity_max = 370.35
+gravity = Vector3(0, 980, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 5.0
+linear_accel_curve = SubResource("CurveTexture_kvl7w")
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_6l3pw")
+color_initial_ramp = SubResource("GradientTexture1D_0jslu")
+turbulence_noise_scale = 3.0
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.1
+collision_use_scale = true
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0w1lc"]
+frames = 15
+speed_scale = 5.0
+frame_0/texture = ExtResource("2_agid5")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_lkg7o")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("9_cxs3j")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("10_advuu")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("11_ithy1")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("12_wyc0l")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("13_tq60c")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("14_pyi7b")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("15_55doo")
+frame_8/duration = 0.1
+frame_9/texture = ExtResource("16_wckgn")
+frame_9/duration = 0.1
+frame_10/texture = ExtResource("4_lhfbw")
+frame_10/duration = 0.1
+frame_11/texture = ExtResource("5_108dq")
+frame_11/duration = 0.1
+frame_12/texture = ExtResource("6_2rmr7")
+frame_12/duration = 0.1
+frame_13/texture = ExtResource("7_aq0id")
+frame_13/duration = 0.1
+frame_14/texture = ExtResource("8_o3wiu")
+frame_14/duration = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lpqbo"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 145.65
+initial_velocity_max = 343.61
+gravity = Vector3(0, 980, 0)
+
+[node name="Explosion" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 128
+texture = ExtResource("1_87e7p")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.85
+randomness = 0.2
+trail_sections = 24
+trail_section_subdivisions = 6
+process_material = SubResource("ParticleProcessMaterial_kvl7w")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = SubResource("AnimatedTexture_0w1lc")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+randomness = 0.75
+fixed_fps = 24
+trail_sections = 24
+trail_section_subdivisions = 6
+process_material = SubResource("ParticleProcessMaterial_lpqbo")

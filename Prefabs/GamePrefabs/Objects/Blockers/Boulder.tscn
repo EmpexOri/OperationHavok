@@ -10,7 +10,6 @@ size = Vector2(134, 68)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_dlxjq")
-health = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_njglx")

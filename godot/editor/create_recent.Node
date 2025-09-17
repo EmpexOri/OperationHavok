@@ -1,6 +1,7 @@
+CollisionShape2D
+Area2D
 Marker2D
 CharacterBody2D
-CollisionShape2D
 Sprite2D
 TileMapLayer
 Node2D
@@ -11,4 +12,3 @@ PointLight2D
 GPUParticles2D
 TextureRect
 Timer
-Area2D

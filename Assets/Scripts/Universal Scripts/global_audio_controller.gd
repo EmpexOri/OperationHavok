@@ -310,3 +310,28 @@ func PlayPlayerDamageSFX():
 		player.stream = PlayerDamageSound
 		player.pitch_scale = randf_range(0.95, 1.05)
 		player.play()
+
+func play_general_sfx(sound_path: String) -> void:
+	var audio_controller = get_node("/root/GlobalAudioController")  # adjust path if needed
+	if not audio_controller:
+		push_warning("GlobalAudioController not found")
+		return
+
+	var stream: AudioStream = load(sound_path)  # <-- use load() instead of preload()
+	if not stream:
+		push_warning("Failed to load sound: " + sound_path)
+		return
+
+	for player in audio_controller.GeneralChannels:
+		if not player.playing:
+			player.stream = stream
+			player.play()
+			return
+
+	# All channels busy, just overwrite a random one
+	if audio_controller.GeneralChannels.size() > 0:
+		var index = randi() % audio_controller.GeneralChannels.size()
+		var player = audio_controller.GeneralChannels[index]
+		player.stop()
+		player.stream = stream
+		player.play()

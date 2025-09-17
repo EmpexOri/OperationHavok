@@ -96,12 +96,12 @@ func _explode():
 	_do_explosion_effects()
 
 func _do_explosion_effects():
-	# Damage enemies
+	# Damage anything that has a deal_damage() method
 	for body in $Area2D.get_overlapping_bodies():
-		if body.has_method("deal_damage") and body.is_in_group("Enemy"):
+		if body.has_method("deal_damage"):
 			body.deal_damage(damage, global_position)
 
-	# Disable monitoring
+	# Disable monitoring so grenade doesn’t trigger again
 	$Area2D.monitoring = false
 	$Area2D.set_deferred("monitorable", false)
 

@@ -131,16 +131,14 @@ func _on_RooftopTrigger_1_body_entered(body):
 		else:
 			push_error("Rooftop_Arena node not found")
 
-
 func _on_ParkinglotTrigger_body_entered(body):
 	if body.is_in_group("Player"):
 		var arena = $Parkinglot_Arena
 		if arena:
 			arena.activate_arena()
-			# Disable trigger so it doesn’t retrigger
 			var trigger = arena.get_node_or_null("Parkinglot_Trigger")
 			if trigger:
-				trigger.monitoring = false
+				trigger.queue_free()
 			else:
 				push_error("Parkinglot_Trigger not found in Parkinglot_Arena")
 		else:
