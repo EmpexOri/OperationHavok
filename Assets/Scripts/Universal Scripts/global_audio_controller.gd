@@ -112,6 +112,17 @@ func PausingLevelOneMusic():
 func STOPPauseMenuMusic():
 	$Music/PauseMenuSoundtrack.stop()
 	
+func MusicFadeOut(player: AudioStreamPlayer, duration: float = 2.0) -> void:
+	if not player or not player.playing:
+		return
+
+	var start_volume = player.volume_db
+	var target_volume = -80.0  # silence
+
+	var tween = create_tween()
+	tween.tween_property(player, "volume_db", target_volume, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.connect("finished", Callable(player, "stop"))
+	
 func STOPAllMusic(): #Kinda Legacy, see new below
 	var player1 = $Music/Level1Soundtrack
 	var player2 = $Music/PauseMenuSoundtrack
@@ -172,6 +183,9 @@ func SetLevel1Music(song_path: String, play_immediately: bool = true):
 	var player = $Music/Level1Soundtrack
 	player.stream = stream
 	
+	# Reset volume in case it was faded out previously
+	player.volume_db = 0
+
 	if play_immediately:
 		player.play()
 		paused = false

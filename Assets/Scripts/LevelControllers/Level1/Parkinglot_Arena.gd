@@ -43,6 +43,10 @@ func activate_arena():
 	arena_active = true
 	current_wave = 0
 	print("Parkinglot Arena activated!")
+	
+	# Play arena music
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/DoomWaterParking.mp3", true)
+	
 	start_next_wave()
 
 # Spawns the next wave sequentially
@@ -143,20 +147,21 @@ func arena_completed() -> void:
 	arena_active = false
 	GlobalEffects.activate_xp_buff(5000, 5.0)
 	print("Parkinglot Arena complete!")
-
+	
+	# Smooth fade out music over 2.5 seconds
+	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
 	# Give a short pause to let the player breathe; then run the scripted event
 	await get_tree().create_timer(0.25).timeout
 	await _run_breakdown_event()
-
-	# Set checkpoint to Respawn_Park marker (the controller registers spawn keys lowercase
-	# using the marker name after "Respawn_" so "Respawn_Park" -> "park")
+	
+	# Set checkpoint
 	var controller = get_node_or_null(beta_level_controller_path)
 	if controller:
 		controller._set_checkpoint("park")
 	else:
 		push_error("BetaLevelController not found at path: %s" % beta_level_controller_path)
-
-	# Emit the usual signal for other systems (LevelController also listens)
+		
 	emit_signal("arena_complete")
 
 # The cinematic scripted event: spawn many hordlings and remove the blocker

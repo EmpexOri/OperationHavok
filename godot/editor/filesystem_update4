@@ -23,3 +23,5 @@ res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/GamePrefabs/Objects/Tree.tscn
 res://Assets/Scripts/Misc/YSorted.gd
+res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd

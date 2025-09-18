@@ -71,7 +71,11 @@ func activate_arena():
 		return
 	arena_active = true
 	current_sub_arena = 0
-	start_sub_arena(0)  # Sub-Arena 1 starts automatically
+	
+	# --- Play arena music ---
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/Temp/Peril.mp3", true)
+	
+	start_sub_arena(0)  
 
 func start_sub_arena(index: int):
 	if index >= sub_arenas.size() or sub_arena_started[index]:
@@ -156,6 +160,10 @@ func arena_completed():
 	print("Rooftop Arena complete!")
 	emit_signal("arena_complete")
 
+	# Stop arena music
+	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
+
 	# Enable Rooftop Elevator
 	var controller = get_node_or_null(beta_level_controller_path)
 	if controller:
@@ -165,9 +173,7 @@ func arena_completed():
 				elevator.monitoring = true
 				print("Rooftop Elevator enabled!")
 
-		# Map arena name to actual respawn key
-		var checkpoint_flag := "parkinglot"  # the marker you actually registered in Player
-		controller._set_checkpoint(checkpoint_flag)
+		controller._set_checkpoint("parkinglot")
 	else:
 		push_error("BetaLevelController not found at path: %s" % beta_level_controller_path)
 
