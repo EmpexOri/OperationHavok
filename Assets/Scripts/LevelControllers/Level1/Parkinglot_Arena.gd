@@ -32,9 +32,9 @@ func _ready():
 				spawn_points.append(child)
 
 	waves = [
-		{ "Hordling": 5, "Spewling": 2, "Tumor": 1 },
-		{ "Hordling": 6, "Needling": 1 },
-		{ "Hordling": 10, "Spewling": 3, "Needling": 2, "Tumor": 2 }
+		{ "Hordling": 12, "Spewling": 5, "Tumor": 1 },
+		{ "Hordling": 12, "Spewling": 5, "Needling": 2 },
+		{ "Hordling": 15, "Spewling": 3, "Needling": 2, "Tumor": 2 }
 	]
 
 func activate_arena():
