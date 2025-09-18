@@ -30,3 +30,5 @@ res://Assets/Scripts/Player Scripts/Weapons/HomerunExplosion.gd
 res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
 res://Assets/Scripts/Player Scripts/Weapons/Misc/HomeRunExplosion.gd
 res://Assets/Scripts/Projectiles/home_run_projectile.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Scenes/Options/CommandoSkillTree.tscn

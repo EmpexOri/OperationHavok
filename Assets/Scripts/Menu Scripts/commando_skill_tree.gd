@@ -74,6 +74,8 @@ func _on_skill_button_used(button: SkillButton):
 			upgrade_minigun_ability("TyphoonCannon")
 		"BaseballGrenade":
 			upgrade_grenade_ability("BaseballGrenade")
+		"HomeRunGrenade":
+			upgrade_grenade_ability("HomerunGrenade")
 		"Novacaster":
 			upgrade_grenade_ability("NovacasterGrenade")
 
