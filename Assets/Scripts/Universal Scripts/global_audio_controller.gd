@@ -184,7 +184,7 @@ func SetLevel1Music(song_path: String, play_immediately: bool = true):
 	player.stream = stream
 	
 	# Reset volume in case it was faded out previously
-	player.volume_db = 0
+	player.volume_db = -10
 
 	if play_immediately:
 		player.play()
