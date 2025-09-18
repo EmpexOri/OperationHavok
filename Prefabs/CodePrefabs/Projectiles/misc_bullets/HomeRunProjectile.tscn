@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="5_bn7kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bn7kf"]
-radius = 4.24264
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjo3j"]
 radius = 63.0
@@ -94,7 +94,7 @@ animations = [{
 
 [node name="HomeRunProjectile" instance=ExtResource("1_6vkc2")]
 script = ExtResource("2_c1l86")
-base_speed = 400.0
+base_speed = 500.0
 base_lifetime = 60.0
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -102,7 +102,7 @@ position = Vector2(7.27596e-12, -2.02656e-06)
 shape = SubResource("CircleShape2D_bn7kf")
 
 [node name="Sprite2D" parent="." index="1"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_rmgiv")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="3"]
