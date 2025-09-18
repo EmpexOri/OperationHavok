@@ -2,7 +2,7 @@ extends PhysicsProjectile
 class_name HomeRunProjectile
 
 @onready var projectile_sprite: Sprite2D = $Sprite2D
-@onready var explosion_ref: HomeRunExplosion = $Explosion
+@onready var explosion_ref: HomeRunExplosion2 = $Explosion
 
 func _ready() -> void:
 	super._ready()

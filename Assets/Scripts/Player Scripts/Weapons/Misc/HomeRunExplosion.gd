@@ -1,5 +1,5 @@
 extends SuperGrenade
-class_name HomeRunExplosion
+class_name HomeRunExplosion2
 
 # Assign audio streams in inspector or preload them here
 @export var explosion_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/TyphoonBoom.wav")

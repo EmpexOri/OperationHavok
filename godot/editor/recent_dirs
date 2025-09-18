@@ -1,5 +1,7 @@
-res://Assets/Art/Tilesets/Tilesets_Final/Park
+res://Assets/Art/Particles/Explosion/Explosion64
+res://Assets/Art/Effects
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
+res://Assets/Art/Tilesets/Tilesets_Final/Park
 res://Assets/Art/Tilesets
 res://Assets/Art/Tilesets/Tilesets_Final/Rooftops
 res://Assets/Art/Tilesets/Tilesets_Final
@@ -18,5 +20,3 @@ res://Assets/Scripts/Universal Scripts
 res://Assets
 res://Prefabs/GamePrefabs/Enemy/Minibosses
 res://Assets/Art/PlaceHolders
-res://Assets/Art/Effects
-res://Assets/Art/Sprites/Minibosses

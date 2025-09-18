@@ -2,6 +2,7 @@ extends ProjectileEffect
 class_name PhysProjectileBounces
 
 @export var max_bounces: int = 5
+@export var explosion_scene: PackedScene
 
 # Per-projectile state (reset on setup)
 var current_bounces: int = 0
@@ -28,36 +29,32 @@ func process_effect(projectile, delta: float, space_state: PhysicsDirectSpaceSta
 
 func on_hit(projectile, body: Node2D, collision: KinematicCollision2D = null):
 	if collision == null:
-		print("PhysBounce: Projectile destroy due to collision being null")
-		return true  # Allow destruction if no physics collision info
+		return true   # let the projectile be destroyed if no collision data
 
-	if not "velocity" in projectile:
-		print("PhysBounce: Projectile destroy due to not being physics projectile")
-		return true  # Allow destruction if not a CharacterBody2D
-
-	# Prevent multiple bounces on the same target too quickly
+	# Prevent rapid repeat on same body
 	if last_bounced_body == body and bounce_cooldown_timer > 0:
-		return false  # Ignore this collision
+		return false
 
 	if current_bounces < max_bounces:
 		current_bounces += 1
-
-		print("PhysBounce: Projectile bounced off {0}! {1}/{2}".format([body.name, current_bounces, max_bounces]))
-
-		# Store last hit body and start cooldown
 		last_bounced_body = body
 		bounce_cooldown_timer = bounce_cooldown_ms
 
-		# Reflect the velocity
+		# --- spawn an explosion without destroying the projectile ---
+		if explosion_scene:
+			var explosion_instance = explosion_scene.instantiate()
+			projectile.get_parent().add_child(explosion_instance)
+			explosion_instance.global_position = collision.get_position()
+			# if your explosion script has a start() method:
+			if explosion_instance.has_method("start"):
+				explosion_instance.start()
+
+		# Reflect velocity to bounce
 		var reflect_velocity = projectile.velocity.bounce(collision.get_normal())
-
-		# Add small randomization to bounce
 		var random_angle = deg_to_rad(randf_range(-5, 5))
-		reflect_velocity = reflect_velocity.rotated(random_angle)
-
-		projectile.velocity = reflect_velocity
+		projectile.velocity = reflect_velocity.rotated(random_angle)
 		projectile.rotation = projectile.velocity.angle()
 
-		return false  # Keep bouncing
+		return false  # <- projectile keeps going
 	else:
-		return true  # Allow destruction
+		return true   # normal destruction when max bounces reached

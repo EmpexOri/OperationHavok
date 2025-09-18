@@ -9,7 +9,7 @@ res://Assets/Shaders/FlashShader.tres
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
-res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
 res://Scenes/MenuScene.tscn
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
 res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn
@@ -17,11 +17,16 @@ res://Prefabs/GamePrefabs/Objects/Trashcan.tscn
 res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn
 res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn
 res://Scenes/GlobalAudioController.tscn
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
 res://Prefabs/GamePrefabs/Objects/Blockers/CarBlocker.tscn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
-res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/GamePrefabs/Objects/Tree.tscn
-res://Assets/Scripts/Misc/YSorted.gd
-res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
+res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
+res://Prefabs/CodePrefabs/Abilities/HomeRunGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
+res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
+res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn
+res://Assets/Scripts/Player Scripts/Weapons/HomerunExplosion.gd
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Assets/Scripts/Player Scripts/Weapons/Misc/HomeRunExplosion.gd
+res://Assets/Scripts/Projectiles/home_run_projectile.gd
