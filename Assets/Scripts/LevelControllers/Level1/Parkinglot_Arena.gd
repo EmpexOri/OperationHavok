@@ -2,7 +2,7 @@ extends Node2D
 signal arena_complete
 
 @export var beta_level_controller_path: NodePath = "/root/World/BetaLevelController"
-@export var rooftop_elevator: NodePath  # optional for next level access
+@export var area_blocker_name: String = "Area_Blocker" # child name of the blocker under this arena
 
 # Enemy Scenes dictionary
 var ENEMY_SCENES := {
@@ -21,14 +21,14 @@ var spawn_points: Array[Marker2D] = []
 var wave_in_progress := false
 var wave_ending := false
 
-# Waves data
+# Waves data (tweak numbers if desired)
 var waves: Array = []
 
 func _ready():
-	# Auto-detect Marker2Ds as spawns
-	if spawn_points.size() == 0:
+	# Auto-detect Marker2Ds as spawns, but skip the special cinematic marker
+	if spawn_points.is_empty():
 		for child in get_children():
-			if child is Marker2D:
+			if child is Marker2D and child.name != "Spawn5":
 				spawn_points.append(child)
 
 	waves = [
@@ -47,13 +47,16 @@ func activate_arena():
 
 # Spawns the next wave sequentially
 func start_next_wave() -> void:
+	if not arena_active:
+		return
+
 	if current_wave >= waves.size():
-		print("Parkinglot Arena complete!")
-		arena_active = false
-		emit_signal("arena_complete")
-		var controller = get_node_or_null(beta_level_controller_path)
-		if controller:
-			controller._set_checkpoint("Parkinglot_Area")
+		# Arena finished — run completion flow
+		arena_completed()
+		return
+
+	# Prevent re-entry while in-progress
+	if wave_in_progress:
 		return
 
 	wave_in_progress = true
@@ -61,17 +64,18 @@ func start_next_wave() -> void:
 	current_wave += 1
 	print("Spawning wave %d..." % current_wave)
 
-	# Spawn all enemies in this wave
+	# Spawn all enemies in this wave (await ensures the whole wave finishes spawning before we wait for kills)
 	await spawn_wave_enemies(wave_data)
 
-	# Now wait until all enemies die
+	# Now wait until all enemies are dead
 	while enemies.size() > 0:
+		# small sleep to avoid busy loop
 		await get_tree().create_timer(0.1).timeout
 
 	print("Wave %d cleared!" % current_wave)
 	wave_in_progress = false
 
-	# Short delay before starting next wave
+	# Short delay before starting next wave (gives breathing room)
 	await get_tree().create_timer(0.5).timeout
 	start_next_wave()
 
@@ -97,7 +101,8 @@ func get_random_spawn_outside_camera(camera: Camera2D) -> Marker2D:
 	for sp in spawn_points:
 		if is_position_behind_camera(camera, sp.global_position):
 			candidates.append(sp)
-	return candidates[randi() % candidates.size()] if candidates.size() > 0 else null
+	# return null if none found
+	return candidates[randi() % candidates.size()] if not candidates.is_empty() else null
 
 # Instantiate enemy
 func spawn_enemy(scene: PackedScene, spawn: Marker2D) -> void:
@@ -106,7 +111,11 @@ func spawn_enemy(scene: PackedScene, spawn: Marker2D) -> void:
 	enemy.name = "Enemy_%d" % randi()
 	enemies.append(enemy)
 	add_child(enemy)
-	enemy.connect("died", Callable(self, "_on_enemy_died"))
+	if enemy.has_signal("died"):
+		enemy.connect("died", Callable(self, "_on_enemy_died"))
+	else:
+		# Fallback: if enemy uses queue_free without signaling, keep it simple
+		pass
 
 func _on_enemy_died(enemy):
 	enemies.erase(enemy)
@@ -126,14 +135,94 @@ func is_position_behind_camera(camera: Camera2D, position: Vector2) -> bool:
 	return not (position.x >= rect_top_left.x and position.x <= rect_bottom_right.x
 				and position.y >= rect_top_left.y and position.y <= rect_bottom_right.y)
 
-func reset_arena():
+# -------------------------
+# Completion script + checkpoint update
+# -------------------------
+func arena_completed() -> void:
+	# mark not active so other systems know
+	arena_active = false
+	GlobalEffects.activate_xp_buff(5000, 5.0)
+	print("Parkinglot Arena complete!")
+
+	# Give a short pause to let the player breathe; then run the scripted event
+	await get_tree().create_timer(0.25).timeout
+	await _run_breakdown_event()
+
+	# Set checkpoint to Respawn_Park marker (the controller registers spawn keys lowercase
+	# using the marker name after "Respawn_" so "Respawn_Park" -> "park")
+	var controller = get_node_or_null(beta_level_controller_path)
+	if controller:
+		controller._set_checkpoint("park")
+	else:
+		push_error("BetaLevelController not found at path: %s" % beta_level_controller_path)
+
+	# Emit the usual signal for other systems (LevelController also listens)
+	emit_signal("arena_complete")
+
+# The cinematic scripted event: spawn many hordlings and remove the blocker
+func _run_breakdown_event() -> void:
+	# Find the Spawn5 marker where the cinematic horde should appear
+	var spawn_marker: Marker2D = get_node_or_null("Spawn5") as Marker2D
+	if spawn_marker == null:
+		push_error("Spawn5 marker not found under %s" % name)
+		return
+	var spawn_center: Vector2 = spawn_marker.global_position
+
+	# Optional: find the blocker so we can remove it after the horde spawns
+	var blocker: Node2D = get_node_or_null(area_blocker_name) as Node2D
+
+	# Load the Hordling scene
+	var hordling_scene: PackedScene = ENEMY_SCENES.get("Hordling", null) as PackedScene
+	if hordling_scene == null:
+		push_error("Hordling scene not found in ENEMY_SCENES")
+		return
+
+	# Spawn a cinematic swarm of hordlings at Spawn5
+	var count: int = 30
+	for i in range(count):
+		var inst: CharacterBody2D = hordling_scene.instantiate() as CharacterBody2D
+		add_child(inst)
+		var jitter: Vector2 = Vector2(randf_range(-48, 48), randf_range(-48, 48))
+		inst.global_position = spawn_center + jitter
+		inst.name = "EventHordling_%d" % i
+
+		# Track and connect signals so arena logic can clean them up if needed
+		enemies.append(inst)
+		if inst.has_signal("died"):
+			inst.connect("died", Callable(self, "_on_enemy_died"))
+
+		# Small stagger for visual effect
+		await get_tree().create_timer(0.05).timeout
+
+	# After all Hordlings are spawned, remove the blocker with a short delay
+	await get_tree().create_timer(0.25).timeout
+	# After all Hordlings are spawned, remove the blocker with a short delay
+	await get_tree().create_timer(0.25).timeout
+	if blocker:
+		# Spawn the explosion effect at the blocker's position
+		var explosion_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn")
+		var explosion_instance: Node2D = explosion_scene.instantiate() as Node2D
+		explosion_instance.global_position = blocker.global_position
+		get_parent().add_child(explosion_instance)  # or add to self if you prefer
+		
+		# Remove the blocker safely
+		blocker.call_deferred("queue_free")
+
+# -------------------------
+# Resetting the arena
+# -------------------------
+func reset_arena() -> void:
+	print("Resetting Parkinglot arena: %s" % self.name)
+
+	# Stop any active logic
 	wave_in_progress = false
 	wave_ending = false
 	current_wave = 0
 	arena_active = false
 
+	# Delete all alive enemies spawned by this arena
 	for e in enemies:
-		if e.is_inside_tree():
+		if is_instance_valid(e) and e.is_inside_tree():
 			e.queue_free()
 	enemies.clear()
 

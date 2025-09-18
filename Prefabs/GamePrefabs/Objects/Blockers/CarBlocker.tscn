@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4xsbjca4ck1k"]
+
+[ext_resource type="Texture2D" uid="uid://co8satb05d6rr" path="res://Assets/Art/Objects/LevelObjects/Carpark/Car_Object_v3_blue.png" id="2_jpk3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxjq"]
+size = Vector2(108, 54)
+
+[node name="CarBlocker" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jpk3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dlxjq")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(0, 27, -54, 27, -54, -27, 54, -27, 54, 27)

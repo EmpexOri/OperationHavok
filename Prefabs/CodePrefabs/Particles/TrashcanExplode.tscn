@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://sgnpewn1ymvy"]
+[gd_scene load_steps=26 format=3 uid="uid://sgnpewn1ymvy"]
 
 [ext_resource type="Texture2D" uid="uid://boidif4r0s2uj" path="res://Assets/Art/Particles/Chunk.png" id="1_87e7p"]
 [ext_resource type="Texture2D" uid="uid://b2g6nkefjp74q" path="res://Assets/Art/Sprites/FX/SmallFX/Can_Red/1.png" id="2_agid5"]
@@ -23,7 +23,13 @@ colors = PackedColorArray(0.609467, 0.622561, 0.603015, 1, 0.154236, 0.154874, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0jslu"]
 gradient = SubResource("Gradient_cq8d6")
 
+[sub_resource type="Curve" id="Curve_agid5"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_kvl7w"]
+curve = SubResource("Curve_agid5")
 
 [sub_resource type="Curve" id="Curve_267qd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483146), 0.0, 0.0, 0, 0]
