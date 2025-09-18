@@ -1,15 +1,14 @@
-NavigationObstacle2D
+Sprite2D
 TileMapLayer
+NavigationObstacle2D
 TileMap
 Node2D
 CollisionShape2D
 Area2D
 Marker2D
 CharacterBody2D
-Sprite2D
 Node
 AudioStreamPlayer
 AnimatedSprite2D
 PointLight2D
 GPUParticles2D
-TextureRect

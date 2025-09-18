@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://becfupmvjvwdr"]
+
+[ext_resource type="Texture2D" uid="uid://c20x63f1p8sk1" path="res://Assets/Art/Objects/LevelObjects/Park/Big_Tree.png" id="1_bdpar"]
+[ext_resource type="Script" uid="uid://bbjpy761bnxdj" path="res://Assets/Scripts/Misc/YSorted.gd" id="2_atr5i"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(0, 32)
+texture = ExtResource("1_bdpar")
+offset = Vector2(0, -32)
+script = ExtResource("2_atr5i")

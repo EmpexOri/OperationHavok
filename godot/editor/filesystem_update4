@@ -20,3 +20,6 @@ res://Scenes/GlobalAudioController.tscn
 res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
 res://Prefabs/GamePrefabs/Objects/Blockers/CarBlocker.tscn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
+res://Prefabs/GamePrefabs/Objects/Tree.tscn
+res://Assets/Scripts/Misc/YSorted.gd
