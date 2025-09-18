@@ -21,3 +21,4 @@ res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Prefabs/CodePrefabs/Particles/MetallicGore.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Particles/Rain.tscn

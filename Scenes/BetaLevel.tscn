@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=42 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="3_bbpmv"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="27_3xqoa"]
 [ext_resource type="Script" uid="uid://b1bq8xbc7p1c6" path="res://Assets/Scripts/LevelControllers/Level1/Rooftop_Elevator.gd" id="27_pn8ld"]
 [ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="28_7u0io"]
+[ext_resource type="PackedScene" uid="uid://b2fjvq7yw64hc" path="res://Prefabs/CodePrefabs/Particles/Rain.tscn" id="28_33vec"]
 [ext_resource type="Script" uid="uid://d14w2mm6vk5h2" path="res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd" id="28_ebm85"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="29_4un8s"]
 [ext_resource type="PackedScene" uid="uid://bsrf42pjfca35" path="res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn" id="29_gnene"]
@@ -545,6 +546,9 @@ y_sort_enabled = true
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
 position = Vector2(0, -200)
 up_direction = Vector2(1, -0.000666666)
+
+[node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]
+position = Vector2(-169, -123)
 
 [node name="Boulder" parent="YSortedObjects" instance=ExtResource("29_gnene")]
 position = Vector2(-85, 1143)
