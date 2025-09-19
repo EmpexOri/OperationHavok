@@ -520,7 +520,7 @@ position = Vector2(-311, 1432)
 position = Vector2(-133, 917)
 
 [node name="Spawn5" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(311, 1652)
+position = Vector2(451, 1688)
 
 [node name="Area_Blocker" parent="Parkinglot_Arena" instance=ExtResource("34_pkkfu")]
 position = Vector2(312, 1445)
@@ -541,14 +541,14 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
-position = Vector2(1181, 1704)
+position = Vector2(0, -200)
 up_direction = Vector2(1, -0.000666666)
 
 [node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]
 position = Vector2(-169, -123)
 
 [node name="Fence" parent="YSortedObjects" instance=ExtResource("32_vmca8")]
-position = Vector2(572, 1723)
+position = Vector2(563, 1728)
 
 [node name="Boulder" parent="YSortedObjects" instance=ExtResource("29_gnene")]
 position = Vector2(-85, 1143)

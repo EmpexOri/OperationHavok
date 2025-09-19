@@ -36,3 +36,4 @@ res://Assets/Scripts/Misc/YSorted.gd
 res://Assets/Scripts/Enemy/Enemy.gd
 res://Prefabs/GamePrefabs/Player/player.tscn
 res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
+res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd

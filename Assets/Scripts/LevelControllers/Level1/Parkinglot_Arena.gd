@@ -10,6 +10,7 @@ var ENEMY_SCENES := {
 	"Spewling": preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn"),
 	"Biomancer": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn"),
 	"Needling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn"),
+	"Gatling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn"),
 	"Tumor": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn"),
 }
 
@@ -33,8 +34,8 @@ func _ready():
 
 	waves = [
 		{ "Hordling": 12, "Spewling": 5, "Tumor": 1 },
-		{ "Hordling": 12, "Spewling": 5, "Needling": 2 },
-		{ "Hordling": 15, "Spewling": 3, "Needling": 2, "Tumor": 2 }
+		{ "Hordling": 12, "Spewling": 5, "Needling": 2, "Biomancer": 1 },
+		{ "Hordling": 15, "Spewling": 3, "Needling": 2, "Tumor": 2, "Biomancer": 1 }
 	]
 
 func activate_arena():
@@ -154,6 +155,13 @@ func arena_completed() -> void:
 	# Give a short pause to let the player breathe; then run the scripted event
 	await get_tree().create_timer(0.25).timeout
 	await _run_breakdown_event()
+	
+	var gatling_scene: PackedScene = ENEMY_SCENES.get("Gatling", null)
+	if gatling_scene and not spawn_points.is_empty():
+		for i in range(2):
+			# pick a random existing spawn marker
+			var spawn: Marker2D = spawn_points[randi() % spawn_points.size()]
+			spawn_enemy(gatling_scene, spawn)
 	
 	# Set checkpoint
 	var controller = get_node_or_null(beta_level_controller_path)
