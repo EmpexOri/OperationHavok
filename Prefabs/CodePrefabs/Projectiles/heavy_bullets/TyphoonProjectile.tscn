@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://4hwqgdvwuhbk" path="res://Assets/Scripts/Player Scripts/Weapons/Misc/TyphoonExplosion.gd" id="4_t3syc"]
 [ext_resource type="Texture2D" uid="uid://bs0bfjn56fwlt" path="res://Assets/Art/PlaceHolders/Player.png" id="5_bb8ww"]
 [ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="6_qdo6v"]
-[ext_resource type="Texture2D" uid="uid://cxcf1qnt1owcy" path="res://Assets/Art/Sprites/FX/BluePoof.png" id="7_c3b5m"]
+[ext_resource type="Texture2D" uid="uid://cnxlkcbnjd87q" path="res://Assets/Art/Sprites/FX/Nova_Caster_Explosion.png" id="7_c3b5m"]
 [ext_resource type="Texture2D" uid="uid://l3pcu7cm7xjj" path="res://Assets/Art/Sprites/FX/Temp/3.png" id="8_yrpkl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3syc"]
@@ -26,35 +26,38 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_alx3n"]
 radius = 95.0053
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrpkl"]
+atlas = ExtResource("7_c3b5m")
+region = Rect2(0, 0, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bg657"]
 atlas = ExtResource("7_c3b5m")
-region = Rect2(0, 0, 48, 36)
+region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5yv3"]
 atlas = ExtResource("7_c3b5m")
-region = Rect2(48, 0, 48, 36)
+region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ughsh"]
 atlas = ExtResource("7_c3b5m")
-region = Rect2(96, 0, 48, 36)
+region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usw6j"]
 atlas = ExtResource("7_c3b5m")
-region = Rect2(144, 0, 48, 36)
+region = Rect2(1024, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imuo3"]
 atlas = ExtResource("7_c3b5m")
-region = Rect2(192, 0, 48, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qe3lh"]
-atlas = ExtResource("7_c3b5m")
-region = Rect2(240, 0, 48, 36)
+region = Rect2(1280, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umuyd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrpkl")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bg657")
@@ -70,9 +73,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_imuo3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qe3lh")
 }],
 "loop": true,
 "name": &"explode",
@@ -158,7 +158,6 @@ scale = Vector2(0.25, 0.26)
 texture = ExtResource("6_qdo6v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Explosion" index="4"]
-scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_umuyd")
 animation = &"explode"
 

@@ -1,53 +1,37 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhu1g357jvcl1"]
+[gd_scene load_steps=14 format=3 uid="uid://bhu1g357jvcl1"]
 
 [ext_resource type="Script" uid="uid://cx0g18i2qe4t6" path="res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd" id="1_qf5nf"]
 [ext_resource type="PackedScene" uid="uid://b1geocfdib605" path="res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn" id="2_qf5nf"]
 [ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="3_0h6is"]
 [ext_resource type="Texture2D" uid="uid://bxveynn36d251" path="res://Assets/Art/Sprites/NovaGrenade.png" id="3_jrmu4"]
-[ext_resource type="Texture2D" uid="uid://dw0yc2j3jsnv2" path="res://Assets/Art/Particles/Lightning/BallLightningExplosion.png" id="5_jrmu4"]
+[ext_resource type="Texture2D" uid="uid://cnxlkcbnjd87q" path="res://Assets/Art/Sprites/FX/Nova_Caster_Explosion.png" id="5_jrmu4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jrmu4"]
 radius = 6.08276
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kv0sj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h6is"]
 atlas = ExtResource("5_jrmu4")
-region = Rect2(0, 0, 384, 393)
+region = Rect2(0, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5jdg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3irue"]
 atlas = ExtResource("5_jrmu4")
-region = Rect2(384, 0, 384, 393)
+region = Rect2(256, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wf1x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nm1u"]
 atlas = ExtResource("5_jrmu4")
-region = Rect2(768, 0, 384, 393)
+region = Rect2(512, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6lyah"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5e0j"]
 atlas = ExtResource("5_jrmu4")
-region = Rect2(1152, 0, 384, 393)
+region = Rect2(768, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1n1d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgxbk"]
 atlas = ExtResource("5_jrmu4")
-region = Rect2(1536, 0, 384, 393)
+region = Rect2(1024, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yn7es"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou0dq"]
 atlas = ExtResource("5_jrmu4")
-region = Rect2(0, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_770po"]
-atlas = ExtResource("5_jrmu4")
-region = Rect2(384, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gq2tn"]
-atlas = ExtResource("5_jrmu4")
-region = Rect2(768, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ia26e"]
-atlas = ExtResource("5_jrmu4")
-region = Rect2(1152, 393, 384, 393)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vs47w"]
-atlas = ExtResource("5_jrmu4")
-region = Rect2(1536, 393, 384, 393)
+region = Rect2(1280, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0h6is"]
 animations = [{
@@ -56,38 +40,26 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kv0sj")
+"texture": SubResource("AtlasTexture_0h6is")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c5jdg")
+"texture": SubResource("AtlasTexture_3irue")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3wf1x")
+"texture": SubResource("AtlasTexture_5nm1u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6lyah")
+"texture": SubResource("AtlasTexture_w5e0j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m1n1d")
+"texture": SubResource("AtlasTexture_bgxbk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yn7es")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_770po")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gq2tn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ia26e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vs47w")
+"texture": SubResource("AtlasTexture_ou0dq")
 }],
 "loop": false,
 "name": &"explode",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [node name="NovaGrenade" type="Node2D"]
@@ -118,6 +90,5 @@ scale = Vector2(0.25, 0.26)
 texture = ExtResource("3_0h6is")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4, -3)
 sprite_frames = SubResource("SpriteFrames_0h6is")
 animation = &"explode"
