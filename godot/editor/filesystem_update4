@@ -29,3 +29,10 @@ res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
 res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Prefabs/CodePrefabs/Abilities/NovacasterGrenade.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn
+res://Assets/Scripts/Misc/YSorted.gd
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Prefabs/GamePrefabs/Player/player.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
