@@ -19,3 +19,6 @@ res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
 res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn
 res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
 res://Assets/Scripts/LevelControllers/Level1/Park_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
+res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn

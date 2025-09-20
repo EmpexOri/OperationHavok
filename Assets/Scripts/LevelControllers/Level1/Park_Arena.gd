@@ -3,8 +3,8 @@ signal arena_complete
 
 @export var beta_level_controller_path: NodePath = "/root/World/BetaLevelController"
 @export var area_blocker_name: String = "Area_Blocker"
+const ArenaUtils = preload("res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd")
 
-# Enemy Scenes dictionary
 var ENEMY_SCENES := {
 	"Hordling": preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn"),
 	"Spewling": preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn"),
@@ -12,6 +12,8 @@ var ENEMY_SCENES := {
 	"Needling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn"),
 	"Gatling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn"),
 	"Tumor": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn"),
+	"Goolum": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn"),
+	"Network": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn"),
 }
 
 var arena_active := false
@@ -30,9 +32,9 @@ func _ready():
 				spawn_points.append(child)
 
 	waves = [
-		{ "Hordling": 10, "Spewling": 4 },
-		{ "Hordling": 12, "Spewling": 6, "Needling": 2 },
-		{ "Hordling": 14, "Spewling": 6, "Biomancer": 1, "Gatling": 1 }
+		{ "Hordling": [2,6,6], "Spewling": [1,6,3], "Goolum": 2, "Needling": 3 },
+		{ "Hordling": [2,6,6], "Spewling": [1,6,3], "Goolum": [1,3,1], "Needling": [1,6,2], "Biomancer": [1,3,0], "Network": 1 },
+		{ "Hordling": [2,6,6], "Spewling": [1,6,3], "Goolum": [1,3,1], "Needling": [1,6,2], "Biomancer": [1,3,1], "Network": [1,3,1], "Gatling": 4 },
 	]
 
 func activate_arena():
@@ -40,7 +42,7 @@ func activate_arena():
 	arena_active = true
 	current_wave = 0
 	print("Park Arena activated!")
-	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/DoomWaterPark.mp3", true)
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/ConcreteHills.mp3", true)
 	start_next_wave()
 
 func start_next_wave() -> void:
@@ -66,7 +68,12 @@ func start_next_wave() -> void:
 func spawn_wave_enemies(data: Dictionary) -> void:
 	var camera = get_viewport().get_camera_2d()
 	for enemy_type in data.keys():
-		var count = data[enemy_type]
+		var roll_data = data[enemy_type]
+		var count: int
+		if typeof(roll_data) == TYPE_ARRAY and roll_data.size() == 3:
+			count = roll(roll_data[0], roll_data[1]) + roll_data[2]
+		else:
+			count = int(roll_data)  # fallback if old style number
 		var scene = ENEMY_SCENES.get(enemy_type, null)
 		if scene == null: continue
 		for i in range(count):
@@ -90,6 +97,12 @@ func spawn_enemy(scene: PackedScene, spawn: Marker2D) -> void:
 	add_child(enemy)
 	if enemy.has_signal("died"):
 		enemy.connect("died", Callable(self, "_on_enemy_died"))
+		
+func roll(dice: int, sides: int) -> int:
+	var total = 0
+	for i in range(dice):
+		total += randi_range(1, sides)
+	return total
 
 func _on_enemy_died(enemy):
 	enemies.erase(enemy)
