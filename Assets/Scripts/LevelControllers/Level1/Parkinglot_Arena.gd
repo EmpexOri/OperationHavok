@@ -144,26 +144,30 @@ func is_position_behind_camera(camera: Camera2D, position: Vector2) -> bool:
 # Completion script + checkpoint update
 # -------------------------
 func arena_completed() -> void:
-	# mark not active so other systems know
 	arena_active = false
 	GlobalEffects.activate_xp_buff(5000, 5.0)
 	print("Parkinglot Arena complete!")
-	
-	# Smooth fade out music over 2.5 seconds
+
+	# Fade out the arena music
 	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
 	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
-	# Give a short pause to let the player breathe; then run the scripted event
+
+	# Wait a moment, then run the breakdown event
 	await get_tree().create_timer(0.25).timeout
 	await _run_breakdown_event()
 	
-	var gatling_scene: PackedScene = ENEMY_SCENES.get("Gatling", null)
-	if gatling_scene and not spawn_points.is_empty():
-		for i in range(2):
-			# pick a random existing spawn marker
-			var spawn: Marker2D = spawn_points[randi() % spawn_points.size()]
-			spawn_enemy(gatling_scene, spawn)
+	var spawn_marker: Marker2D = get_node_or_null("Spawn5") as Marker2D
+	if spawn_marker:
+		var gatling_scene: PackedScene = ENEMY_SCENES.get("Gatling", null)
+		if gatling_scene:
+			for i in range(2):
+				spawn_enemy(gatling_scene, spawn_marker)
+		else:
+			push_error("Gatling scene not found in ENEMY_SCENES")
+	else:
+		push_error("Spawn5 marker not found under %s" % name)
 	
-	# Set checkpoint
+	# Set checkpoint after the event
 	var controller = get_node_or_null(beta_level_controller_path)
 	if controller:
 		controller._set_checkpoint("park")
@@ -172,7 +176,6 @@ func arena_completed() -> void:
 		
 	emit_signal("arena_complete")
 
-# The cinematic scripted event: spawn many hordlings and remove the blocker
 func _run_breakdown_event() -> void:
 	# Find the Spawn5 marker where the cinematic horde should appear
 	var spawn_marker: Marker2D = get_node_or_null("Spawn5") as Marker2D

@@ -8,10 +8,12 @@ Central hub for:
 """
 
 const PAUSE_MENU_SCENE := preload("res://Scenes/Options/PauseMenu.tscn")
+const BOULDER_BLOCKER_SCENE := preload("res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn")
 
 var checkpoint_to_arena := {
 	"rooftop": $Rooftop_Arena,
-	"parkinglot": $Parkinglot_Arena
+	"parkinglot": $Parkinglot_Arena,
+	"park": $Park_Arena
 }
 
 @onready var pause_menu := PAUSE_MENU_SCENE.instantiate()
@@ -87,17 +89,18 @@ func _start_arena(name:String) -> void:
 
 func _on_arena_complete(name:String) -> void:
 	print("Arena complete:", name)
-	
-	# Map the arena to its respawn marker
+
 	var respawn_checkpoint := ""
 	match name:
 		"Rooftop_Arena":
-			respawn_checkpoint = "parkinglot"  # the last checkpoint you want
+			respawn_checkpoint = "parkinglot"   # after Rooftop -> respawn at Parkinglot
 		"Parkinglot_Arena":
-			respawn_checkpoint = "parkinglot"  # maybe same here
+			respawn_checkpoint = "park"         # after Parkinglot -> respawn at Park
+		"Park_Arena":
+			respawn_checkpoint = "park"         # Park completed -> keep park (or change if you want another)
 		_:
 			respawn_checkpoint = name.to_lower()
-	
+
 	_set_checkpoint(respawn_checkpoint)
 
 func _set_checkpoint(flag:String) -> void:
@@ -156,3 +159,25 @@ func respawn_player(player):
 		# Optionally, re-activate the arena automatically
 		if arena.has_method("activate_arena"):
 			arena.activate_arena()
+
+func _on_ParkTrigger_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("Player"):
+		return
+
+	var arena = $Park_Arena
+	if arena:
+		arena.activate_arena()
+		print("Park Arena activated!")
+
+		# Spawn Boulder_Blocker to prevent returning
+		var boulder := BOULDER_BLOCKER_SCENE.instantiate()
+		boulder.global_position = Vector2(310, 1674)
+		get_parent().add_child(boulder)
+		print("Boulder blocker spawned at (310,1674)")
+		
+		# Remove or disable the trigger so it doesn’t fire again
+		var trigger = get_node_or_null("ParkTrigger")
+		if trigger:
+			trigger.queue_free()
+	else:
+		push_error("Park_Arena node not found")
