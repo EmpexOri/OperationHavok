@@ -1,13 +1,17 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://c2f3pqadjj0sw"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://c2f3pqadjj0sw"]
 
 [ext_resource type="Texture2D" uid="uid://4v1x71gelykc" path="res://Assets/Art/Tilesets/Tilesets_Final/Rooftops/Scaffolding_Tilesets.png" id="1_1m56m"]
 [ext_resource type="Texture2D" uid="uid://dwekp0b6xjvkj" path="res://Assets/Art/Tilesets/Tilesets_Final/Rooftops/Helipad_Tileset.png" id="2_deofs"]
 [ext_resource type="Texture2D" uid="uid://h5doqbwr5q3d" path="res://Assets/Art/Tilesets/Tilesets_Final/Carpark/Carpark_Tileset.png" id="3_nhhep"]
 [ext_resource type="Texture2D" uid="uid://ckujjaw1y2q83" path="res://Assets/Art/Tilesets/Tilesets_Final/Rooftops/Elevator_Tileset.png" id="4_deofs"]
 [ext_resource type="Texture2D" uid="uid://6gfj51lxv0my" path="res://Assets/Art/Tilesets/Tilesets_Final/Park/Park_Tileset.png" id="5_nhhep"]
+[ext_resource type="Texture2D" uid="uid://e6t2kdks5grr" path="res://Assets/Art/Tilesets/Tilesets_Final/Mall/MallPads.png" id="6_xugpg"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nhhep"]
 tile_data = PackedInt32Array(0, 65538, 0, 65536, 65538, 1, 131072, 524290, 1610612745, 196608, 65538, 1, 262144, 65538, 2, 1, 65538, 0, 65537, 65538, 1, 131073, 65538, 1, 196609, 65538, 1, 262145, 65538, 2, 2, 65538, 0, 65538, 65538, 1, 131074, 524290, 1610612745, 196610, 65538, 1, 262146, 65538, 2, 3, 65538, 0, 65539, 65538, 1, 131075, 65538, 1, 196611, 65538, 1, 262147, 65538, 2, 4, 65538, 0, 65540, 65538, 1, 131076, 524290, 1610612745, 196612, 65538, 1, 262148, 65538, 2, 5, 65538, 0, 65541, 65538, 1, 131077, 65538, 1, 196613, 65538, 1, 262149, 65538, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4h82l"]
+tile_data = PackedInt32Array(0, 65541, 268435456, 65536, 65541, 268435457, 131072, 5, 0, 196608, 5, 1, 1, 65541, 0, 65537, 65541, 1, 131073, 5, 268435456, 196609, 5, 268435457, 2, 5, 0, 65538, 5, 1, 131074, 65541, 268435456, 196610, 65541, 268435457, 3, 5, 268435456, 65539, 5, 268435457, 131075, 65541, 0, 196611, 65541, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xugpg"]
 texture = ExtResource("1_1m56m")
@@ -4182,10 +4186,23 @@ texture = ExtResource("5_nhhep")
 5:13/0 = 0
 5:13/0/z_index = -6
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca1ny"]
+texture = ExtResource("6_xugpg")
+0:0/0 = 0
+0:0/0/z_index = -6
+1:0/0 = 0
+1:0/0/z_index = -6
+0:1/0 = 0
+0:1/0/z_index = -6
+1:1/0 = 0
+1:1/0/z_index = -6
+
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_xugpg")
 sources/1 = SubResource("TileSetAtlasSource_4h82l")
 sources/2 = SubResource("TileSetAtlasSource_lxr0m")
 sources/3 = SubResource("TileSetAtlasSource_nhhep")
 sources/4 = SubResource("TileSetAtlasSource_0v6as")
+sources/5 = SubResource("TileSetAtlasSource_ca1ny")
 pattern_0 = SubResource("TileMapPattern_nhhep")
+pattern_1 = SubResource("TileMapPattern_4h82l")

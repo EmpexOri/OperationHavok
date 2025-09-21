@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cognvmtrlkiaf"]
+
+[ext_resource type="Script" uid="uid://bbjpy761bnxdj" path="res://Assets/Scripts/Misc/YSorted.gd" id="1_yfa8w"]
+[ext_resource type="Texture2D" uid="uid://coy22n764u3lv" path="res://Assets/Art/Objects/LevelObjects/Stripmall/WindowWall_Left.png" id="2_yfa8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxjq"]
+size = Vector2(80, 13)
+
+[node name="WindowWall" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_yfa8w")
+sprite_width = 848.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yfa8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25.5)
+shape = SubResource("RectangleShape2D_dlxjq")

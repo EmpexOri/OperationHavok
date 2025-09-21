@@ -6,9 +6,11 @@ extends Node2D
 @export var search_delay: float = 0.1
 @export var max_distance: float = 100.0
 @export var fade_speed: float = 20.0
+@export var sprite_width: float = 100.0
+@export var sprite_height: float = 200.0  
 
 var player: CharacterBody2D
-var canvas_item: CanvasItem    # Sprite2D, Node2D, etc.
+var canvas_item: CanvasItem    
 
 func _ready() -> void:
 	# Store a reference to whatever CanvasItem we are (Sprite2D, Node2D…)
@@ -36,13 +38,29 @@ func _process(delta: float) -> void:
 	if player == null or canvas_item == null:
 		return
 
-	var distance := player.global_position.distance_to(global_position)
 	var target_alpha := alpha_normal
+	var distance := 0.0
 
-	if distance <= max_distance and player.global_position.y < global_position.y:
+	if canvas_item is Sprite2D:
+		var sprite: Sprite2D = canvas_item
+		var scale = sprite.scale
+		var pivot_offset = sprite.offset
+		var sprite_size = Vector2(sprite_width, sprite_height)
+
+		var global_top_left = sprite.global_position - pivot_offset * scale
+		var global_bottom_right = global_top_left + sprite_size * scale
+
+		var closest_x = clamp(player.global_position.x, global_top_left.x, global_bottom_right.x)
+		var closest_y = clamp(player.global_position.y, global_top_left.y, global_bottom_right.y)
+		var closest_point = Vector2(closest_x, closest_y)
+
+		distance = player.global_position.distance_to(closest_point)
+	else:
+		distance = player.global_position.distance_to(canvas_item.global_position)
+
+	if distance <= max_distance and player.global_position.y < canvas_item.global_position.y:
 		target_alpha = lerp(alpha_normal, alpha_behind, 1.0 - distance / max_distance)
 
-	# Smooth fade toward target alpha
 	var current := canvas_item.modulate
 	current.a = lerp(current.a, target_alpha, fade_speed * delta)
 	canvas_item.modulate = current

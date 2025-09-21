@@ -1,12 +1,12 @@
+Marker2D
+TileMapLayer
+Node2D
 CollisionShape2D
 NavigationObstacle2D
 CollisionPolygon2D
 Area2D
-Node2D
 Sprite2D
-TileMapLayer
 TileMap
-Marker2D
 CharacterBody2D
 Node
 AudioStreamPlayer
