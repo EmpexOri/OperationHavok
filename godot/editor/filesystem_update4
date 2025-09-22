@@ -24,3 +24,6 @@ res://Prefabs/GamePrefabs/Objects/StripMall/MallWall.tscn
 res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
 res://Assets/Scripts/Misc/YSorted.gd
 res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
+res://Assets/Scripts/LevelControllers/Level1/Park_Arena.gd

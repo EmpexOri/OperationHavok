@@ -13,7 +13,8 @@ const BOULDER_BLOCKER_SCENE := preload("res://Prefabs/GamePrefabs/Objects/Blocke
 var checkpoint_to_arena := {
 	"rooftop": $Rooftop_Arena,
 	"parkinglot": $Parkinglot_Arena,
-	"park": $Park_Arena
+	"park": $Park_Arena,
+	"stripmall": $Respawn_Stripmall
 }
 
 @onready var pause_menu := PAUSE_MENU_SCENE.instantiate()
@@ -164,20 +165,43 @@ func _on_ParkTrigger_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
 
+	# Check if arena is already active
 	var arena = $Park_Arena
+	if not arena or arena.arena_active:
+		return  # Don't activate again if already active
+
+	arena.activate_arena()
+	print("Park Arena activated!")
+
+	# Spawn Boulder_Blocker to prevent returning
+	var boulder := BOULDER_BLOCKER_SCENE.instantiate()
+	boulder.global_position = Vector2(310, 1674)
+	get_parent().add_child(boulder)
+	print("Boulder blocker spawned at (310,1674)")
+
+	# Disable or remove the trigger so it doesn’t fire again
+	var trigger = get_node_or_null("ParkTrigger")
+	if trigger:
+		trigger.queue_free()
+
+func _on_StripmallTrigger_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("Player"):
+		return
+
+	var arena = $Stripmall_Arena
 	if arena:
 		arena.activate_arena()
-		print("Park Arena activated!")
+		print("Stripmall Arena activated!")
 
-		# Spawn Boulder_Blocker to prevent returning
-		var boulder := BOULDER_BLOCKER_SCENE.instantiate()
-		boulder.global_position = Vector2(310, 1674)
-		get_parent().add_child(boulder)
-		print("Boulder blocker spawned at (310,1674)")
-		
-		# Remove or disable the trigger so it doesn’t fire again
-		var trigger = get_node_or_null("ParkTrigger")
+		# Spawn a Boulder_Blocker to prevent leaving
+		var blocker := BOULDER_BLOCKER_SCENE.instantiate()
+		blocker.global_position = Vector2(1445, 1764)  # updated to match intended position
+		get_parent().add_child(blocker)
+		print("Stripmall blocker spawned at (1445,1764)")
+
+		# Disable or remove the trigger so it doesn’t fire again
+		var trigger = get_node_or_null("StripmallTrigger")
 		if trigger:
 			trigger.queue_free()
 	else:
-		push_error("Park_Arena node not found")
+		push_error("Stripmall_Arena node not found")
