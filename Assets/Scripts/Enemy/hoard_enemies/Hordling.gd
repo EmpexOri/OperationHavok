@@ -13,47 +13,80 @@ func start():
 
 func _ready():
 	super()
-	
+	add_to_group("Hordling")
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
 	else:
-		# Assign a new ShaderMaterial or CanvasItemMaterial here if needed
-		# so you always have a unique material per sprite
 		var new_mat = ShaderMaterial.new()
-		# Optionally load or assign a shader here
 		sprite.material = new_mat
+	
+	# Initialize animation direction
+	if is_instance_valid(cached_player):
+		var initial_dir = (cached_player.global_position - global_position).normalized()
+		smooth_dir = initial_dir
+		last_anim_dir = initial_dir
 
 func _physics_process(_delta):
-	if not nav:
+	if not nav or not is_instance_valid(cached_player):
 		return
 
-	var player_node = resolve_target()
-	if player_node:
-		nav.target_position = player_node.global_position
-		var dir = nav.get_next_path_position() - global_position
+	# --- Base navigation toward player ---
+	nav.target_position = cached_player.global_position
+	var dir = (nav.get_next_path_position() - global_position).normalized()
 
-		if dir.length() > 1:
-			velocity = dir.normalized() * Speed
-			move_and_slide()
+	# --- Avoidance: prevent overlapping other enemies (best for our nav system) ---
+	var avoidance_offset := Vector2.ZERO
+	var nearby_allies := get_tree().get_nodes_in_group("Enemy")
+	for enemy in nearby_allies:
+		if enemy == self:
+			continue
+		var dist = global_position.distance_to(enemy.global_position)
+		if dist < 24:
+			avoidance_offset += (global_position - enemy.global_position).normalized() * (1.0 - dist / 24)
 
-			# -------------------------
-			# Animation + Flip handling
-			# -------------------------
-			if abs(dir.x) > 0.1 or abs(dir.y) > 0.1:
-				if dir.y > 0:  
-					# Moving downward
+	# --- Grouping: move slightly toward center of nearby allies ---
+	var group_offset := Vector2.ZERO
+	var count := 0
+	for other_enemy in nearby_allies:
+		if other_enemy == self:
+			continue
+		# Only consider same kind ("Hordling") or same class group
+		for hordling in get_tree().get_nodes_in_group("Hordling"):
+			if hordling == self:
+				continue
+			var dist = global_position.distance_to(hordling.global_position)
+			if dist < 100:  # perception radius
+				group_offset += hordling.global_position
+				count += 1
+
+	if count > 0:
+		group_offset = (group_offset / count - global_position).normalized()
+		dir = (dir + group_offset * 0.3).normalized()  # weight toward group center (Yay AI for Games)
+
+	if avoidance_offset != Vector2.ZERO:
+		dir = (dir + avoidance_offset.normalized() * 0.5).normalized()
+
+	# --- Smooth velocity ---
+	velocity = velocity.lerp(dir * Speed, 0.2)
+	move_and_slide()
+	
+	# --- Smooth direction for animation/flip ---
+	smooth_dir = smooth_dir.lerp(velocity, 0.1)
+	
+	if smooth_dir.length() > 0.1:
+		if last_anim_dir == Vector2.ZERO or abs(last_anim_dir.angle_to(smooth_dir)) > FLIP_THRESHOLD:
+			last_anim_dir = smooth_dir.normalized()
+			
+			if abs(smooth_dir.y) > abs(smooth_dir.x):
+				if smooth_dir.y > 0:
 					sprite.play("right_down")
-				else:  
-					# Moving upward
+				else:
 					sprite.play("right_up")
-
-				# Flip horizontally if moving left
-				sprite.flip_h = dir.x < 0
 			else:
-				sprite.stop()
-		else:
-			velocity = Vector2.ZERO
-			sprite.stop()
+				sprite.play("right_down")
+			sprite.flip_h = smooth_dir.x < 0
+	else:
+		sprite.stop()
 
 func _on_area_2d_body_entered(body: Node2D):
 	if is_in_group("Enemy") and body.is_in_group("Player"):

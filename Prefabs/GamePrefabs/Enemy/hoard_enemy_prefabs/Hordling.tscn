@@ -8,8 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvkv2"]
 radius = 7.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_flyuw"]
-size = Vector2(16, 14)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b008"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1pag"]
 atlas = ExtResource("4_1b008")
@@ -113,23 +112,20 @@ shape = SubResource("CircleShape2D_bvkv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_flyuw")
+shape = SubResource("CircleShape2D_1b008")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
 simplify_path = true
 simplify_epsilon = 10.0
 avoidance_enabled = true
-radius = 40.0
+radius = 12.0
 time_horizon_obstacles = 1.0
 max_speed = 150.0
 avoidance_mask = 16
+debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.9, 0, 0, 1)
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationAgent2D"]
-radius = 7.0
-avoidance_layers = 16
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

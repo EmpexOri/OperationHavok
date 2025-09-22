@@ -6,6 +6,11 @@ class_name Enemy
 
 var dot_timers: Array = []
 
+### Animations
+var smooth_dir := Vector2.ZERO
+var last_anim_dir := Vector2.ZERO
+const FLIP_THRESHOLD := 0.2  
+
 var Speed = 100
 var MaxHealth: int = 10
 var Health: int = 10
@@ -60,6 +65,7 @@ func update_navigation(delta):
 	if not nav:
 		return
 
+	# Update path periodically
 	path_update_timer -= delta
 	if path_update_timer <= 0.0:
 		var player_node = resolve_target()
@@ -67,11 +73,25 @@ func update_navigation(delta):
 			nav.target_position = player_node.global_position
 		path_update_timer = path_update_interval  # reset timer
 
-	# Always move toward next point, even if we didn’t update the path
 	if nav.is_navigation_finished():
 		velocity = Vector2.ZERO
 	else:
 		var dir = (nav.get_next_path_position() - global_position).normalized()
+
+		# --- Manual avoidance: if too close to another enemy, adjust direction slightly ---
+		var avoidance_offset := Vector2.ZERO
+		var nearby_enemies := get_tree().get_nodes_in_group("Enemy")
+		for enemy in nearby_enemies:
+			if enemy == self:
+				continue
+			if global_position.distance_to(enemy.global_position) < 24: # distance threshold
+				# Push away from nearby enemy
+				avoidance_offset += (global_position - enemy.global_position).normalized()
+
+		if avoidance_offset != Vector2.ZERO:
+			# Blend original direction with avoidance vector
+			dir = (dir + avoidance_offset.normalized()).normalized()
+
 		velocity = dir * Speed
 		move_and_slide()
 

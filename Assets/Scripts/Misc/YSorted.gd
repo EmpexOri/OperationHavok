@@ -34,6 +34,32 @@ func _ready() -> void:
 	if player == null:
 		push_warning("Player not found under %s" % parent_node.name)
 
+	# --- NEW: Auto-register NavObstacle if present (optional) ---
+	# If this scene has a NavigationObstacle2D child, assign it the correct navigation_map.
+	var obstacle_node := get_node_or_null("NavigationObstacle2D")
+	if obstacle_node and obstacle_node is NavigationObstacle2D:
+		# find a NavigationRegion2D anywhere in the tree (recursively)
+		var nav_region := _find_navigation_region(get_tree().get_root()) as NavigationRegion2D
+		if nav_region:
+			obstacle_node.navigation_map = nav_region.get_navigation_map()
+			# optional debug
+			# print("Assigned navigation_map for obstacle on ", name, " -> ", nav_region.name)
+		else:
+			push_warning("No NavigationRegion2D found to assign obstacle for %s" % name)
+
+
+func _find_navigation_region(root: Node) -> Node:
+	# Recursively search for the first NavigationRegion2D in the scene tree.
+	# Return as Node so caller can cast it cleanly (avoids type-inference errors).
+	for child in root.get_children():
+		if child is NavigationRegion2D:
+			return child
+		var found := _find_navigation_region(child)
+		if found:
+			return found
+	return null
+
+
 func _process(delta: float) -> void:
 	if player == null or canvas_item == null:
 		return
