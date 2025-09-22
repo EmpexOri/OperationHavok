@@ -104,7 +104,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
 	elif IsMovingRandomly or is_fleeing:
-		Speed = 60
+		Speed = 120
 		sprite.modulate.a = 0.65
 		velocity = Direction * Speed
 	else:
@@ -167,14 +167,17 @@ func random_move():
 	ShotsFired = 0
 	ShotsBeforeMoving = randi_range(1, 3)
 
-	var offset = Vector2(randf_range(-200, 200), randf_range(-200, 200))
+	# Pick a random offset within 100–150 pixels
+	var offset = Vector2(randf_range(-150, 150), randf_range(-150, 150))
 	var target_pos = global_position + offset
 
+	# Clamp within viewport
 	var screen_size = get_viewport_rect().size
 	target_pos.x = clamp(target_pos.x, 0, screen_size.x)
 	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
 
 	nav.target_position = target_pos
+
 
 func shoot_now():
 	var Player = get_tree().get_nodes_in_group(Target).front()

@@ -23,3 +23,4 @@ res://Prefabs/GamePrefabs/Objects/StripMall/Window_WallLeft.tscn
 res://Prefabs/GamePrefabs/Objects/StripMall/MallWall.tscn
 res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
 res://Assets/Scripts/Misc/YSorted.gd
+res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
