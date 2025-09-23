@@ -4,6 +4,8 @@ class_name HomeRunExplosion
 @export var damage: float = 20.0
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
+var explosion_sound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Grenade/GrenadeExplosion.mp3")
+
 func _ready() -> void:
 	await get_tree().process_frame  # wait one frame to ensure children are ready
 	var area := $Area2D
@@ -12,7 +14,11 @@ func _ready() -> void:
 		return
 	_apply_damage(area)
 	anim.connect("animation_finished", Callable(self, "_on_animation_finished"))
-	GlobalAudioController.PlayGrenadeExplosion()
+	
+	if explosion_sound:
+		ScreenShake.shake(4, 0.5)
+		GlobalAudioController.PlayFromPlayerSFX(explosion_sound)
+		
 	anim.play()
 
 func _apply_damage(area: Area2D) -> void:

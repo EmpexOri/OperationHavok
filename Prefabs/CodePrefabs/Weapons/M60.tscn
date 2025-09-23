@@ -1,11 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccby8d8w2spp8"]
+[gd_scene load_steps=12 format=3 uid="uid://ccby8d8w2spp8"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_b1rlo"]
 [ext_resource type="PackedScene" uid="uid://bxdda8l7fahlj" path="res://Prefabs/CodePrefabs/Projectiles/primary_bullets/M60Bullet.tscn" id="2_gvhy6"]
+[ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_r41jt"]
+[ext_resource type="Script" uid="uid://bxkwbwtmdvk8p" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd" id="4_7mdsm"]
 [ext_resource type="PackedScene" uid="uid://bl2fcrd3ixuug" path="res://Prefabs/CodePrefabs/Weapons/Grenade.tscn" id="5_gvhy6"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="5_r41jt"]
 [ext_resource type="Script" uid="uid://ecb3ng2frni6" path="res://Assets/Scripts/Effects/Weapon Effects/noob_tube_effect.gd" id="6_1lxoq"]
 [ext_resource type="Script" uid="uid://cvwir6rctxwae" path="res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd" id="6_gvhy6"]
+
+[sub_resource type="Resource" id="Resource_s3fd3"]
+script = ExtResource("4_7mdsm")
+max_hits = 1
+effect_name = ""
+metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"
 
 [sub_resource type="Resource" id="Resource_upth4"]
 script = ExtResource("6_gvhy6")
@@ -28,4 +36,5 @@ script = ExtResource("1_b1rlo")
 projectile_scene = ExtResource("2_gvhy6")
 base_fire_rate = 0.1
 fire_sound_method = &"M60Fire"
+projectile_effects = Array[ExtResource("3_r41jt")]([SubResource("Resource_s3fd3")])
 weapon_effects = Array[ExtResource("5_r41jt")]([SubResource("Resource_upth4"), SubResource("Resource_r41jt")])

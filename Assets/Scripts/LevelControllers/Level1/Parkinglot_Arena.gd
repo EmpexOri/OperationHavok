@@ -207,11 +207,14 @@ func _run_breakdown_event() -> void:
 		if inst.has_signal("died"):
 			inst.connect("died", Callable(self, "_on_enemy_died"))
 
+		# Stagger spawn slightly to reduce lag and make them appear more natural
+		await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
+
 		# Small stagger for visual effect
 		await get_tree().create_timer(0.05).timeout
 
 	# After all Hordlings are spawned, remove the blocker with a short delay
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(5.5).timeout
 	# After all Hordlings are spawned, remove the blocker with a short delay
 	await get_tree().create_timer(0.25).timeout
 	if blocker:

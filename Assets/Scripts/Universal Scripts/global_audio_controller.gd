@@ -169,6 +169,7 @@ func PlayGrenadeExplosion():
 	for player in GeneralChannels:
 		if not player.playing:
 			player.stream = GrenadeExplosionSound
+			player.volume_db = 5
 			player.play()
 			ScreenShake.shake(randf_range(8.0, 10.0), randf_range(0.1, 0.4))
 			return
@@ -251,7 +252,23 @@ func PlayXPPickupSound():
 # Weapon fire helpers
 # ----------------------------
 func SmgFire():
-	PlayFromWeaponSFX(Smg_fire_sfx)
+	for player in WeaponSFXChannels:
+		if not player.playing:
+			player.stream = Smg_fire_sfx
+			player.pitch_scale = randf_range(0.95, 1.05)
+			player.volume_db = -8
+			player.play()
+			return
+
+	# Round-robin if all channels busy
+	if WeaponSFXChannels.size() > 0:
+		weapon_sfx_index = (weapon_sfx_index + 1) % WeaponSFXChannels.size()
+		var player = WeaponSFXChannels[weapon_sfx_index]
+		player.stop()
+		player.stream = Smg_fire_sfx
+		player.pitch_scale = randf_range(0.95, 1.05)
+		player.volume_db = -8
+		player.play()
 	
 func RocketFire():
 	PlayFromWeaponSFX(Rocket_fire_sfx)
@@ -280,15 +297,27 @@ func PlayFromWeaponSFX(stream: AudioStream) -> void:
 		if not player.playing:
 			player.stream = stream
 			player.pitch_scale = randf_range(0.95, 1.05)
+
+			# If it's the lightning SFX, make it slightly louder
+			if stream == GlobalAudioController.lightning_sfx:
+				player.volume_db = 2.5
+			else:
+				player.volume_db = -15  # normal volume
+
 			player.play()
 			return
 
+	# Round-robin overwrite if all channels busy
 	if WeaponSFXChannels.size() > 0:
 		weapon_sfx_index = (weapon_sfx_index + 1) % WeaponSFXChannels.size()
 		var player = WeaponSFXChannels[weapon_sfx_index]
 		player.stop()
 		player.stream = stream
 		player.pitch_scale = randf_range(0.95, 1.05)
+		if stream == GlobalAudioController.lightning_sfx:
+			player.volume_db = 3.5
+		else:
+			player.volume_db = 0
 		player.play()
 
 func PlayFromPlayerSFX(stream: AudioStream) -> void:

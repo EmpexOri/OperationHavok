@@ -22,3 +22,20 @@ res://Prefabs/GamePrefabs/Objects/StripMall/WindowWall.tscn
 res://Prefabs/GamePrefabs/Objects/StripMall/Window_WallLeft.tscn
 res://Prefabs/GamePrefabs/Objects/StripMall/MallWall.tscn
 res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
+res://Prefabs/CodePrefabs/Weapons/Grenade.tscn
+res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
+res://Assets/Scripts/Player Scripts/Weapons/NovaExplosion.gd
+res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
+res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd
+res://Scenes/GlobalAudioController.tscn
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Abilities/HomeRunGrenade.tscn
+res://Assets/Scripts/Player Scripts/Weapons/HomerunExplosion.gd
+res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn
+res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
+res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Projectiles/primary_bullets/M60Bullet.tscn

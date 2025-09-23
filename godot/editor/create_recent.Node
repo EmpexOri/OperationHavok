@@ -1,10 +1,10 @@
+Area2D
+Node2D
 NavigationObstacle2D
 Marker2D
 TileMapLayer
-Node2D
 CollisionShape2D
 CollisionPolygon2D
-Area2D
 Sprite2D
 TileMap
 CharacterBody2D

@@ -33,7 +33,6 @@ stream = ExtResource("5_e30su")
 bus = &"SFX"
 
 [node name="DeathChannelsSFX" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -10.0
 bus = &"SFX"
 
 [node name="Channel0" type="AudioStreamPlayer" parent="SFX/DeathChannelsSFX"]
@@ -71,67 +70,67 @@ bus = &"SFX"
 bus = &"SFX"
 
 [node name="PlayerSFX" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel0" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel1" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel2" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel3" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel4" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel5" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel6" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel7" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel8" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel9" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel10" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel11" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel12" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel13" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="Channel14" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]
-volume_db = -15.0
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="WeaponSFX" type="AudioStreamPlayer" parent="SFX"]

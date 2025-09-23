@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_7d4py")
-max_bounces = 15
+max_bounces = 10
 explosion_scene = ExtResource("1_k16ck")
 effect_name = ""
 metadata/_custom_type_script = "uid://tk8hk0gb0ywo"

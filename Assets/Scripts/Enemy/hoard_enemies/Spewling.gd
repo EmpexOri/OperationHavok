@@ -46,7 +46,7 @@ func _ready():
 
 func orbit_direction_change():
 	OrbitDirection *= -1
-	print("ORBIT DIRECTION CHANGE")
+	#print("ORBIT DIRECTION CHANGE")
 
 func _physics_process(delta):
 	var player = resolve_target()
@@ -67,7 +67,7 @@ func _physics_process(delta):
 	#clamp_position_to_screen()
 
 func fire():
-	print("Trying to fire...")
+	#print("Trying to fire...")
 	var player = resolve_target()
 	if player and CurrentWeapon:
 		var dir = (player.global_position - global_position).normalized()

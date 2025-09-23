@@ -10,10 +10,7 @@ var has_landed: bool = false
 var land_sound_played: bool = false
 
 func _ready():
-	# Call parent _ready so all explosion logic still works
 	super._ready()
-
-	# Play throw sound immediately
 	if throw_sound:
 		GlobalAudioController.PlayFromPlayerSFX(throw_sound)
 
@@ -30,7 +27,6 @@ func _handle_movement(delta: float):
 
 	var result = space_state.intersect_ray(query)
 	if result:
-		# Play land sound once on first collision
 		if not has_landed:
 			has_landed = true
 			if land_sound and not land_sound_played:
@@ -46,14 +42,12 @@ func _handle_movement(delta: float):
 
 	velocity = velocity.move_toward(Vector2.ZERO, 1000 * delta)
 
-# Ensure land sound plays if timer-triggered explosion occurs before hitting anything
 func _explode():
 	if exploding:
 		return
 	exploding = true
 	velocity = Vector2.ZERO
 
-	# Play land sound if not already played
 	if land_sound and not land_sound_played:
 		GlobalAudioController.PlayFromPlayerSFX(land_sound)
 		land_sound_played = true
@@ -62,5 +56,27 @@ func _explode():
 	_do_explosion_effects()
 
 	# Play unique explosion sound
+	if explosion_sound:
+		ScreenShake.shake(4, 0.5)
+		GlobalAudioController.PlayFromPlayerSFX(explosion_sound)
+
+func _do_explosion_effects():
+	for body in $Area2D.get_overlapping_bodies():
+		if body.is_in_group("Player"):
+			continue  # Skip damaging the player
+		if body.has_method("deal_damage"):
+			body.deal_damage(damage, global_position)
+
+	# Disable monitoring so grenade doesn’t trigger again
+	$Area2D.monitoring = false
+	$Area2D.set_deferred("monitorable", false)
+
+	# Explosion visuals
+	$Sprite2D.visible = false
+	explosion_anim.visible = true
+	explosion_anim.frame = 0
+	explosion_anim.play("explode")
+
+	# Play unique explosion sound for this grenade
 	if explosion_sound:
 		GlobalAudioController.PlayFromPlayerSFX(explosion_sound)
