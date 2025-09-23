@@ -2,6 +2,14 @@ extends Enemy
 
 @onready var sprite := $AnimatedSprite2D 
 
+# AI throttling, because Inshallah they lag the game
+var _ai_timer := 0.0
+const AI_INTERVAL := 0.05  
+
+# Cached groups
+var cached_enemies: Array = []
+var cached_hordlings: Array = []
+
 func start():
 	if not Speed or Speed == 100:
 		Speed = 150
@@ -10,80 +18,90 @@ func start():
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
 	Target = "Player"
-
+	
 func _ready():
 	super()
 	add_to_group("Hordling")
+	
+	# Duplicate material for independent tinting
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
 	else:
-		var new_mat = ShaderMaterial.new()
-		sprite.material = new_mat
-	
+		sprite.material = ShaderMaterial.new()
+		
 	# Initialize animation direction
 	if is_instance_valid(cached_player):
 		var initial_dir = (cached_player.global_position - global_position).normalized()
 		smooth_dir = initial_dir
 		last_anim_dir = initial_dir
-
-func _physics_process(_delta):
-	if not nav or not is_instance_valid(cached_player):
+		
+	# Cache references to enemy groups
+	cached_enemies = get_tree().get_nodes_in_group("Enemy")
+	cached_hordlings = get_tree().get_nodes_in_group("Hordling")
+	
+func _physics_process(delta):
+	_ai_timer += delta
+	if _ai_timer < AI_INTERVAL:
+		move_and_slide()
 		return
-
-	# --- Base navigation toward player ---
+	_ai_timer = 0.0
+	
+	if not nav or not is_instance_valid(cached_player):
+		move_and_slide()
+		return
+		
+	# Refreshing Caches here
+	cached_enemies = cached_enemies.filter(is_instance_valid)
+	cached_hordlings = cached_hordlings.filter(is_instance_valid)
+	
+	# Our old simple like go get em
 	nav.target_position = cached_player.global_position
 	var dir = (nav.get_next_path_position() - global_position).normalized()
-
-	# --- Avoidance: prevent overlapping other enemies (best for our nav system) ---
+	
+	# Avoidance, makes Hordlings feel smarter
 	var avoidance_offset := Vector2.ZERO
-	var nearby_allies := get_tree().get_nodes_in_group("Enemy")
-	for enemy in nearby_allies:
-		if enemy == self:
+	for enemy in cached_enemies:
+		if enemy == self: 
 			continue
 		var dist = global_position.distance_to(enemy.global_position)
 		if dist < 24:
 			avoidance_offset += (global_position - enemy.global_position).normalized() * (1.0 - dist / 24)
-
-	# --- Grouping: move slightly toward center of nearby allies ---
+			
+	# Will Group Hordlings
 	var group_offset := Vector2.ZERO
 	var count := 0
-	for other_enemy in nearby_allies:
-		if other_enemy == self:
+	for hordling in cached_hordlings:
+		if hordling == self: 
 			continue
-		# Only consider same kind ("Hordling") or same class group
-		for hordling in get_tree().get_nodes_in_group("Hordling"):
-			if hordling == self:
-				continue
-			var dist = global_position.distance_to(hordling.global_position)
-			if dist < 100:  # perception radius
-				group_offset += hordling.global_position
-				count += 1
-
+		var dist = global_position.distance_to(hordling.global_position)
+		if dist < 100:
+			group_offset += hordling.global_position
+			count += 1
+			
 	if count > 0:
 		group_offset = (group_offset / count - global_position).normalized()
-		dir = (dir + group_offset * 0.3).normalized()  # weight toward group center (Yay AI for Games)
-
+		dir = (dir + group_offset * 0.3).normalized()  # group weighting
+		
 	if avoidance_offset != Vector2.ZERO:
 		dir = (dir + avoidance_offset.normalized() * 0.5).normalized()
-
-	# --- Smooth velocity ---
+		
+	# Smoothing Movement, feels more natural
 	velocity = velocity.lerp(dir * Speed, 0.2)
 	move_and_slide()
 	
-	# --- Smooth direction for animation/flip ---
+	# Smoothed Animations
 	smooth_dir = smooth_dir.lerp(velocity, 0.1)
-	
 	if smooth_dir.length() > 0.1:
 		if last_anim_dir == Vector2.ZERO or abs(last_anim_dir.angle_to(smooth_dir)) > FLIP_THRESHOLD:
 			last_anim_dir = smooth_dir.normalized()
-			
+			var anim_name = ""
 			if abs(smooth_dir.y) > abs(smooth_dir.x):
-				if smooth_dir.y > 0:
-					sprite.play("right_down")
-				else:
-					sprite.play("right_up")
+				anim_name = "right_down" if smooth_dir.y > 0 else "right_up"
 			else:
-				sprite.play("right_down")
+				anim_name = "right_down"
+				
+			if sprite.animation != anim_name:
+				sprite.play(anim_name)
 			sprite.flip_h = smooth_dir.x < 0
 	else:
 		sprite.stop()

@@ -36,6 +36,7 @@ func start():
 	Target = "Player"
 
 func _ready():
+	add_to_group("Boss")
 	var firetimer = Timer.new()
 	fire_duration_timer.one_shot = true
 	fire_duration_timer.connect("timeout", Callable(self, "_on_fire_duration_timeout"))

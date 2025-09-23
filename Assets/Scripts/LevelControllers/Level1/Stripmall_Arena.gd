@@ -25,6 +25,8 @@ var wave_in_progress := false
 
 var waves: Array = []
 
+const BOSS_MINION_CAP := 40
+
 func _ready() -> void:
 	if spawn_points.is_empty():
 		for child in get_children():
@@ -33,8 +35,8 @@ func _ready() -> void:
 
 	# Wave 1 and 2 normal waves, Wave 3 is boss wave handled separately
 	waves = [
-		{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
-		{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
+		#{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
+		#{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
 		{ "Warmachine": 1 } # Wave 3 boss wave
 	]
 
@@ -62,8 +64,13 @@ func start_next_wave() -> void:
 
 	# Boss wave special logic
 	if wave_data.has("Warmachine"):
-		var boss = enemies[-1] # assume last spawned is boss
-		call_deferred("_spawn_minions_during_boss", boss)
+		# Find the boss by group instead of relying on enemies[-1]
+		var bosses = get_tree().get_nodes_in_group("Boss")
+		if bosses.size() > 0:
+			var boss = bosses[0]
+			call_deferred("_spawn_minions_during_boss", boss)
+		else:
+			push_error("No boss found in group 'Boss' after spawn.")
 		return
 
 	# Wait until all enemies die before starting next wave
@@ -91,13 +98,56 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 			await get_tree().create_timer(randf_range(0.05, 0.25)).timeout
 
 func _spawn_minions_during_boss(boss: Node2D) -> void:
-	while is_instance_valid(boss) and boss.is_inside_tree():
-		var minion_type = ["Hordling", "Spewling", "Needling", "Goolum"][randi() % 4]
-		var scene = ENEMY_SCENES[minion_type]
-		var spawn = spawn_points[randi() % spawn_points.size()]
-		spawn_enemy(scene, spawn)
-		await get_tree().create_timer(randf_range(1.0, 2.0)).timeout
+	var start_time := Time.get_ticks_msec() / 1000.0
+	var base_delay := 2.0
+	var min_delay := 0.5
+	var base_batch := 1
+	var max_batch := 5
 
+	# build weighted list of non-boss enemies
+	var weighted_pool: Array[String] = []
+	for i in range(70): weighted_pool.append("Hordling")
+	for i in range(15): weighted_pool.append("Spewling")
+	var others := []
+	for k in ENEMY_SCENES.keys():
+		if k != "Warmachine" and k not in ["Hordling","Spewling"]:
+			others.append(k)
+	for i in range(15):
+		weighted_pool.append(others[randi() % others.size()])
+
+	var camera := get_viewport().get_camera_2d()
+
+	while is_instance_valid(boss) and boss.is_inside_tree():
+		var elapsed := (Time.get_ticks_msec() / 1000.0) - start_time
+		var current_batch: int = clamp(base_batch + int(elapsed / 20.0), base_batch, max_batch)
+		var current_delay: float = max(base_delay - elapsed * 0.02, min_delay)
+
+		if enemies.size() < BOSS_MINION_CAP:
+			for i in range(current_batch):
+				if enemies.size() >= BOSS_MINION_CAP:
+					break
+
+				var pick := weighted_pool[randi() % weighted_pool.size()]
+				var count := 1
+				# Hordlings & Spewlings come in packs of 3–5
+				if pick == "Hordling" or pick == "Spewling":
+					count = randi_range(3,5)
+
+				var scene: PackedScene = ENEMY_SCENES[pick]
+				for j in range(count):
+					if enemies.size() >= BOSS_MINION_CAP:
+						break
+					var spawn := get_random_spawn_outside_camera(camera)
+					if spawn:
+						spawn_enemy(scene, spawn)
+						# tiny stagger to avoid all at once
+						await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
+
+		await get_tree().create_timer(current_delay).timeout
+
+	# clean-up after boss death
+	while enemies.size() > 0:
+		await get_tree().create_timer(0.1).timeout
 	arena_completed()
 
 func spawn_enemy(scene: PackedScene, spawn: Marker2D) -> void:
