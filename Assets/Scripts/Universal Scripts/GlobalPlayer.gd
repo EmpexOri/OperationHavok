@@ -3,6 +3,7 @@ extends Node
 var PlayerHP: int = 100
 var PlayerHPMax: int = 100
 var CurrentClass: String = "Commando"
+var HelpXP: int = 0
 
 var weapon_upgrades = {
 	1: "Smg",
@@ -15,7 +16,7 @@ var ClassData = {
 		"Abilities": [], "UnlockedAbilities": []
 	},
 	"Commando": {
-		"Level": 1, "XP": 0, "PerkPoints": 5, "PerPointsSpent": 0, "MoveSpeed": 150,
+		"Level": 0, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150,
 		"Abilities": ["SwapWeapons", "GrenadeThrow", "RocketLauncher"], "UnlockedAbilities": ["SMG", "Grenade", "Minigun"]
 	},
 	"Fleshthing": {
@@ -45,7 +46,15 @@ func AddXP(Amount: int):
 		XPNecessary = XPRequiredForLevel(ClassData[CurrentClass]["Level"])
 
 	ClassData[CurrentClass]["XP"] = CurrentXP
+	AddHelpXP(Amount*100)
 	UpdateXPBar()
+	
+func AddHelpXP(amount: int):
+	HelpXP += amount
+	print("Added HelpXP, new total:", HelpXP)
+	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if UIHandler:
+		UIHandler.UpdateScore()
 
 func LevelUp():
 	ClassData[CurrentClass]["Level"] += 1

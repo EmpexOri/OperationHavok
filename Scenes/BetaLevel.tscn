@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=52 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="3_bbpmv"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://b0vxxiu23f7pp" path="res://Assets/Art/Objects/LevelObjects/Rooftops/BlueSky.png" id="23_ie34p"]
 [ext_resource type="Texture2D" uid="uid://5dh8x5lnnuid" path="res://Assets/Art/Objects/LevelObjects/Rooftops/3.png" id="23_j0vfw"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="23_s6ron"]
-[ext_resource type="FontFile" uid="uid://iots4x468k38" path="res://Assets/Art/Fonts/c64esque.ttf" id="24_6ca5c"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="25_fodhj"]
 [ext_resource type="Texture2D" uid="uid://cmg5cqhw6xlbn" path="res://Assets/Art/HUD/LBBase.png" id="26_b8kco"]
 [ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="27_3xqoa"]
@@ -129,14 +128,26 @@ tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 58.0
-offset_top = 37.0
-offset_right = 89.0
-offset_bottom = 42.7292
+offset_left = 12.0
+offset_top = 53.0
+offset_right = 43.0
+offset_bottom = 58.7292
 scale = Vector2(2.2, 2.2)
 theme_override_fonts/font = ExtResource("20_xy3j2")
 theme_override_font_sizes/font_size = 5
 text = "Level: 1"
+
+[node name="ScoreLabel" type="Label" parent="PlayerUI/UIContainer"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 65.0
+offset_right = 43.0
+offset_bottom = 70.7292
+scale = Vector2(2.2, 2.2)
+theme_override_fonts/font = ExtResource("20_xy3j2")
+theme_override_font_sizes/font_size = 3
+text = "Score: 0"
 
 [node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
 visible = false
@@ -153,6 +164,7 @@ scale = Vector2(0.25, 0.252)
 texture = ExtResource("21_1qer8")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 7.0
 offset_top = 4.0
@@ -182,12 +194,13 @@ tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
 [node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 533.0
+offset_left = 559.0
 offset_top = 4.0
-offset_right = 610.0
+offset_right = 636.0
 offset_bottom = 27.0
 scale = Vector2(2.2, 2.2)
-theme_override_fonts/font = ExtResource("24_6ca5c")
+theme_override_fonts/font = ExtResource("20_xy3j2")
+theme_override_font_sizes/font_size = 6
 text = "FPS:01"
 script = ExtResource("25_fodhj")
 
