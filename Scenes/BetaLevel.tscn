@@ -1,23 +1,24 @@
-[gd_scene load_steps=52 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=53 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
+[ext_resource type="Texture2D" uid="uid://drb5ccbyy3vja" path="res://Assets/Art/HUD/PlayerHUD/HB_BG.png" id="3_6wlsl"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="3_bbpmv"]
+[ext_resource type="Texture2D" uid="uid://bs430g7njarlj" path="res://Assets/Art/HUD/PlayerHUD/HB_HP.png" id="4_3nr67"]
+[ext_resource type="Texture2D" uid="uid://qlkbjxtxw4yy" path="res://Assets/Art/HUD/PlayerHUD/HB_XP.png" id="7_6wlsl"]
+[ext_resource type="Texture2D" uid="uid://x6rf6vjqj33f" path="res://Assets/Art/HUD/PlayerHUD/HB_XP_BAR.png" id="8_3nr67"]
+[ext_resource type="Texture2D" uid="uid://dddveco2tbtku" path="res://Assets/Art/HUD/PlayerHUD/HB_STAMINA.png" id="8_sd37h"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="12_sd37h"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="18_lbk0n"]
 [ext_resource type="Script" uid="uid://dmjg0pc7bmlo8" path="res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd" id="19_c70pc"]
-[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="19_s1mwy"]
 [ext_resource type="TileSet" uid="uid://c2f3pqadjj0sw" path="res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres" id="20_7013g"]
 [ext_resource type="TileSet" uid="uid://hejhpn2cg0nc" path="res://Assets/Art/Tilesets/WallsTilesets.tres" id="20_qfsbe"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="20_xy3j2"]
-[ext_resource type="Texture2D" uid="uid://c4d4ublcyedvu" path="res://Assets/Art/PlaceHolders/CharacterPFP.png" id="21_1qer8"]
 [ext_resource type="Texture2D" uid="uid://pa7jfobmuluq" path="res://Assets/Art/Objects/LevelObjects/Rooftops/Helipad_Sirens.png" id="21_g7ryl"]
 [ext_resource type="Texture2D" uid="uid://ceh826wbusha2" path="res://Assets/Art/Objects/LevelObjects/Rooftops/RooftopShadow.png" id="21_qfsbe"]
-[ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="22_18udo"]
 [ext_resource type="Texture2D" uid="uid://dc1ie20ft3j0l" path="res://Assets/Art/Objects/LevelObjects/Rooftops/graffiti_tutorial_dash.png" id="22_g7ryl"]
 [ext_resource type="Texture2D" uid="uid://ncehuqqe7sxe" path="res://Assets/Art/Tilesets/Tilesets_Final/MiscCollision.png" id="22_qspjj"]
 [ext_resource type="Texture2D" uid="uid://b0vxxiu23f7pp" path="res://Assets/Art/Objects/LevelObjects/Rooftops/BlueSky.png" id="23_ie34p"]
 [ext_resource type="Texture2D" uid="uid://5dh8x5lnnuid" path="res://Assets/Art/Objects/LevelObjects/Rooftops/3.png" id="23_j0vfw"]
-[ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="23_s6ron"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="25_fodhj"]
 [ext_resource type="Texture2D" uid="uid://cmg5cqhw6xlbn" path="res://Assets/Art/HUD/LBBase.png" id="26_b8kco"]
 [ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="27_3xqoa"]
@@ -112,38 +113,40 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.1
-anchor_right = 1.1
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 215.0
-offset_bottom = 60.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 2.0
+offset_right = 250.0
+offset_bottom = 66.0
+grow_vertical = 2
 value = 100.0
-texture_under = ExtResource("19_s1mwy")
-texture_progress = ExtResource("19_s1mwy")
+texture_progress = ExtResource("4_3nr67")
 tint_under = Color(0, 0, 0, 1)
-tint_progress = Color(0.690002, 0.0584759, 9.62615e-08, 1)
 
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
 layout_mode = 0
-offset_left = 12.0
-offset_top = 53.0
-offset_right = 43.0
-offset_bottom = 58.7292
+offset_left = 45.0
+offset_top = 312.0
+offset_right = 76.0
+offset_bottom = 317.729
 scale = Vector2(2.2, 2.2)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("20_xy3j2")
 theme_override_font_sizes/font_size = 5
 text = "Level: 1"
 
 [node name="ScoreLabel" type="Label" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
 layout_mode = 0
-offset_left = 12.0
-offset_top = 65.0
-offset_right = 43.0
-offset_bottom = 70.7292
+offset_left = 46.0
+offset_top = 306.0
+offset_right = 77.0
+offset_bottom = 311.729
 scale = Vector2(2.2, 2.2)
 theme_override_fonts/font = ExtResource("20_xy3j2")
 theme_override_font_sizes/font_size = 3
@@ -158,38 +161,40 @@ offset_right = 173.0
 offset_bottom = 88.0
 text = "Class: Technomancer"
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
-position = Vector2(32, 26)
-scale = Vector2(0.25, 0.252)
-texture = ExtResource("21_1qer8")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 7.0
-offset_top = 4.0
-offset_right = 263.0
-offset_bottom = 260.0
-fill_mode = 4
-texture_under = ExtResource("22_18udo")
-texture_progress = ExtResource("22_18udo")
-tint_under = Color(0.481789, 0.481789, 0.481789, 1)
-tint_progress = Color(0.331582, 0.534591, 0.947811, 1)
-
 [node name="DodgeBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 clip_contents = true
 layout_mode = 0
-offset_left = 59.0
-offset_top = 26.0
-offset_right = 109.0
-offset_bottom = 36.0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 178.0
+offset_bottom = 102.0
 max_value = 1.0
-step = 0.05
+step = 0.25
 value = 1.0
-texture_under = ExtResource("23_s6ron")
-texture_progress = ExtResource("23_s6ron")
-tint_under = Color(0, 0, 0, 1)
+texture_progress = ExtResource("8_sd37h")
 tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
+z_index = -2
+position = Vector2(66, 34)
+texture = ExtResource("3_6wlsl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
+z_index = -2
+position = Vector2(66, 326)
+texture = ExtResource("7_6wlsl")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
+texture_filter = 1
+layout_mode = 0
+offset_left = 50.0
+offset_top = 327.0
+offset_right = 306.0
+offset_bottom = 583.0
+value = 100.0
+texture_progress = ExtResource("8_3nr67")
 
 [node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1

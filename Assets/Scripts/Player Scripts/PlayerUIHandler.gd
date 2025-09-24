@@ -56,3 +56,12 @@ func UpdateScore():
 	if ScoreLabel:
 		var score = GlobalPlayer.HelpXP  
 		ScoreLabel.text = "Score: " + str(score)
+
+func PlayLevelUpEffect():
+	var tween := create_tween()
+	var original_color := HealthBar.self_modulate
+	# vivid gold with less red so it pops against the default red
+	var gold_color := Color(1.0, 0.85, 0.0, 1.0)
+
+	tween.tween_property(HealthBar, "self_modulate", gold_color, 0.25)
+	tween.tween_property(HealthBar, "self_modulate", original_color, 0.25).set_delay(0.75)

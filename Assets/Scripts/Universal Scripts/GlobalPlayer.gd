@@ -62,6 +62,14 @@ func LevelUp():
 	UpdateHP()
 	UpdatePerkPointUI()
 
+	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if UIHandler and UIHandler.has_method("PlayLevelUpEffect"):
+		UIHandler.PlayLevelUpEffect()
+
+	var audio = get_node_or_null("/root/GlobalAudioController")
+	if audio and audio.has_method("PlayLevelUpSound"):
+		audio.PlayLevelUpSound()
+
 func AddHp(Amount: int):
 	var Level = ClassData[CurrentClass]["Level"]
 	var HpGainMultiplier = 1 + ((Level) * 1.15)
@@ -72,19 +80,8 @@ func AddHp(Amount: int):
 func UpdateHP():
 	var Level = ClassData[CurrentClass]["Level"]
 	var base_hp = 100
-	var hp = base_hp
 
-	for i in range(1, Level + 1):
-		if i <= 5:
-			hp += 20  # Big boost for early levels
-		elif i <= 10:
-			hp += 15
-		elif i <= 15:
-			hp += 10
-		elif i <= 20:
-			hp += 5
-		else:
-			hp += 2  # HPmax​(L)=HPbase​+A⋅(1−e−k⋅L) < Formula
+	var hp = base_hp + min(Level, 10) * 5
 
 	PlayerHPMax = hp
 	PlayerHP = min(PlayerHP + int(hp * 0.2), PlayerHPMax) 

@@ -20,6 +20,8 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
+var LevelUpSound: AudioStream = preload("res://Assets/Sound/SFX/LevelUp.wav")
+
 var PlayerDamageSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/MoanSFX.mp3")
 
 var lightning_sfx: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/LightningGunSustain.mp3")
@@ -378,3 +380,16 @@ func play_general_sfx(sound_path: String) -> void:
 		player.stop()
 		player.stream = stream
 		player.play()
+
+func PlayLevelUpSound():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = LevelUpSound
+			player.play()
+			return
+	# fall-back overwrite if all busy
+	if GeneralChannels.size() > 0:
+		var p = GeneralChannels[randi() % GeneralChannels.size()]
+		p.stop()
+		p.stream = LevelUpSound
+		p.play()
