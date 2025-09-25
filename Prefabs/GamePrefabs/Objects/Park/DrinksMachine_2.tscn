@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1e51yet5dqtx"]
+
+[ext_resource type="Script" uid="uid://c8op35dt0kl1s" path="res://Assets/Scripts/Effects/Object Effects/Trashcan.gd" id="1_ncmry"]
+[ext_resource type="PackedScene" uid="uid://sgnpewn1ymvy" path="res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn" id="2_a77dw"]
+[ext_resource type="Texture2D" uid="uid://6ifsypnvf5ot" path="res://Assets/Art/Objects/LevelObjects/Carpark/VendingRed.png" id="3_ncmry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6g3p"]
+size = Vector2(26, 25)
+
+[node name="Arcade_1" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_ncmry")
+destruction_particles_scene = ExtResource("2_a77dw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_ncmry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_m6g3p")

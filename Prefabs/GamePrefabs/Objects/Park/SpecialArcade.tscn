@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://caowbrfqwvj1d"]
+
+[ext_resource type="Script" uid="uid://cxuguov4i7aox" path="res://Assets/Scripts/Effects/Misc Effects/SpecialArcade.gd" id="1_3rcw4"]
+[ext_resource type="Texture2D" uid="uid://pkcmjrjpiamc" path="res://Assets/Art/Objects/LevelObjects/Stripmall/arcade_machine_sheet_special.png" id="1_ggwtm"]
+[ext_resource type="Texture2D" uid="uid://b4nif4svrhgqh" path="res://Assets/Art/Objects/LevelObjects/Stripmall/PixelTeto.png" id="2_3rcw4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cta1"]
+atlas = ExtResource("1_ggwtm")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_absbu"]
+atlas = ExtResource("1_ggwtm")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4sot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cta1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_absbu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6g3p"]
+size = Vector2(26, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lctsp"]
+atlas = ExtResource("2_3rcw4")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwgrp"]
+atlas = ExtResource("2_3rcw4")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akoaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lctsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwgrp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggwtm"]
+size = Vector2(34, 22)
+
+[node name="Arcade_Special" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_3rcw4")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x4sot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_m6g3p")
+
+[node name="SecretSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-5.96046e-08, -1)
+scale = Vector2(0.863636, 0.772727)
+sprite_frames = SubResource("SpriteFrames_akoaf")
+autoplay = "default"
+frame = 1
+frame_progress = 0.499242
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_ggwtm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.0
+max_distance = 500.0
+bus = &"SFX"

@@ -21,3 +21,10 @@ res://Prefabs/GamePrefabs/Objects/Park/Bench.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
 res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
+res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine.tscn
+res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_2.tscn
+res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine_1.tscn
+res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine_2.tscn
+res://Prefabs/GamePrefabs/Objects/Park/SpecialArcade.tscn
+res://Assets/Scripts/Effects/Misc Effects/SpecialArcade.gd
+res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_1.tscn
