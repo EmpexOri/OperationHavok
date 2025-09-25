@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://u4yb717cax7i"]
+
+[ext_resource type="Texture2D" uid="uid://dedmp7ef814ds" path="res://Assets/Art/Objects/LevelObjects/Park/Small_Bush_2.png" id="1_73ky5"]
+[ext_resource type="Script" uid="uid://bbjpy761bnxdj" path="res://Assets/Scripts/Misc/YSorted.gd" id="2_47duh"]
+
+[node name="SmallBush" type="Node2D"]
+script = ExtResource("2_47duh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_73ky5")

@@ -1,0 +1,23 @@
+res://Scenes/BetaLevel.tscn
+res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
+res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
+res://Assets/Shaders/BulletShader.gdshader
+res://Assets/Shaders/BulletShader.tres
+res://Assets/Art/Effects/ExplodedAnim.tres
+res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
+res://Assets/Shaders/FlashShader.gdshader
+res://Assets/Shaders/FlashShader.tres
+res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
+res://Assets/Art/Tilesets/WallsTilesets.tres
+res://Scenes/GlobalAudioController.tscn
+res://Prefabs/CodePrefabs/Projectiles/primary_bullets/M60Bullet.tscn
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Abilities/HomerunGrenade.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Bush_1.tscn
+res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Bush_2.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Bench.tscn
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
+res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn
+res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn

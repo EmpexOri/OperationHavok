@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvjvjalddy7k"]
+
+[ext_resource type="Script" uid="uid://bbjpy761bnxdj" path="res://Assets/Scripts/Misc/YSorted.gd" id="1_m6g3p"]
+[ext_resource type="Texture2D" uid="uid://t11uvbwrww8a" path="res://Assets/Art/Objects/LevelObjects/Park/Park_Bench.png" id="2_m6g3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6g3p"]
+size = Vector2(44, 13)
+
+[node name="Bench" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_m6g3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m6g3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_m6g3p")

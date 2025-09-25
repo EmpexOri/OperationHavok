@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dga84ocwyytxl" path="res://Assets/Art/Objects/LevelObjects/Rooftops/Rubble.png" id="2_hgp5s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxjq"]
-size = Vector2(134, 68)
+size = Vector2(134, 91)
 
 [node name="Boulder" type="CharacterBody2D"]
 collision_layer = 2
@@ -13,4 +13,5 @@ collision_mask = 7
 texture = ExtResource("2_hgp5s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_dlxjq")
