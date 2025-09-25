@@ -1,16 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://f3xdwcukdxs4"]
+[gd_scene load_steps=3 format=3 uid="uid://duy7j1d0mlu2u"]
 
-[ext_resource type="Texture2D" uid="uid://dga84ocwyytxl" path="res://Assets/Art/Objects/LevelObjects/Rooftops/Rubble.png" id="2_hgp5s"]
+[ext_resource type="Texture2D" uid="uid://dga84ocwyytxl" path="res://Assets/Art/Objects/LevelObjects/Rooftops/Rubble.png" id="1_n7ht5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxjq"]
 size = Vector2(134, 91)
 
 [node name="Boulder" type="CharacterBody2D"]
-collision_layer = 6
+collision_layer = 2
 collision_mask = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hgp5s")
+visible = false
+texture = ExtResource("1_n7ht5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)

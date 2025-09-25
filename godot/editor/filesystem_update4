@@ -28,3 +28,17 @@ res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine_2.tscn
 res://Prefabs/GamePrefabs/Objects/Park/SpecialArcade.tscn
 res://Assets/Scripts/Effects/Misc Effects/SpecialArcade.gd
 res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_1.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
+res://Prefabs/GamePrefabs/Objects/Blockers/CarBlocker.tscn
+res://Prefabs/GamePrefabs/Objects/lamp_post.tscn
+res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn
+res://Prefabs/GamePrefabs/Objects/Blockers/DodgeThroughBlocker.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
+res://Assets/Scripts/LevelControllers/Level1/Rooftop_Elevator.gd
+res://Prefabs/GamePrefabs/Player/player.tscn
+res://Assets/Scripts/Effects/Object Effects/Boulder.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd

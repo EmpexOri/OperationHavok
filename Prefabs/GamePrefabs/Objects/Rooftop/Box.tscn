@@ -7,7 +7,7 @@
 size = Vector2(81, 40)
 
 [node name="Box" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_hsphj")
 

@@ -7,7 +7,7 @@
 size = Vector2(44, 13)
 
 [node name="Bench" type="CharacterBody2D"]
-collision_layer = 3
+collision_layer = 7
 collision_mask = 3
 script = ExtResource("1_m6g3p")
 

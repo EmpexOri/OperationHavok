@@ -1,17 +1,16 @@
 extends CharacterBody2D
 
 @export var max_health: int = 40
-var health: int = max_health
+var Health: int = max_health
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	add_to_group("Damageable")
 
 func deal_damage(amount: int, from_pos: Vector2 = Vector2.ZERO) -> void:
-	health -= amount
+	Health -= amount
 	flash_hit()
-	print(health)
-	if health <= 0:
+	if Health <= 0:
 		break_apart()
 
 func flash_hit() -> void:

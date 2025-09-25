@@ -51,7 +51,7 @@ func AddXP(Amount: int):
 	
 func AddHelpXP(amount: int):
 	HelpXP += amount
-	print("Added HelpXP, new total:", HelpXP)
+	#print("Added HelpXP, new total:", HelpXP)
 	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
 	if UIHandler:
 		UIHandler.UpdateScore()

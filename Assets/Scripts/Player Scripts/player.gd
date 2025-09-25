@@ -35,6 +35,13 @@ var icon3: Node = null
 
 var owning_entity: Node = null
 
+#Control Locks & Keys
+var LockAllControls := false
+var LockMovement := false
+var LockShooting := false
+var LockAbilities := false
+var LockDodging := false
+
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
 		"name": "SMG",
@@ -89,8 +96,12 @@ func damage_timer():
 	add_child(Damage_Timer)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("DebugInput"):
-		GlobalPlayer.upgrade_weapon("Sniper", 1)
+	if LockAllControls or LockShooting:
+		IsFiring = false
+	else:
+		if IsFiring or (ControllerEnabled and InputEventJoypadMotion):
+			attempt_to_fire()
+
 	frame_counter += 1
 	update_weapon_rotation()
 	if frame_counter >= 30:
@@ -105,23 +116,26 @@ func _process(delta):
 		kill()
 	
 func _physics_process(delta: float) -> void:
+	if LockAllControls or LockMovement:
+		velocity = velocityknock
+		move_and_slide()
+		velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * delta)
+		return
+	
 	var motion := Input.get_vector("left", "right", "up", "down")
 	var fire_dir := _get_fire_direction()
-
-	# Handle dodge
+	
+	# Dodge
 	if not IsDodging:
-		if Input.is_action_just_pressed("space") and CanDodge:
+		if not LockDodging and Input.is_action_just_pressed("space") and CanDodge:
 			dodge(motion.normalized())
-
-		if motion.length() > 0:
-			velocity = motion.normalized() * MoveSpeed + velocityknock
-			_update_movement_and_fire_animation(motion, fire_dir)
-		else:
-			# Standing still: face fire direction if any
-			_update_movement_and_fire_animation(Vector2.ZERO, fire_dir)
-			velocity = velocityknock
+	
+	if motion.length() > 0:
+		velocity = motion.normalized() * MoveSpeed + velocityknock
+		_update_movement_and_fire_animation(motion, fire_dir)
 	else:
-		velocity += velocityknock
+		_update_movement_and_fire_animation(Vector2.ZERO, fire_dir)
+		velocity = velocityknock
 
 	move_and_slide()
 	velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * delta)
@@ -185,15 +199,15 @@ func dodge(direction: Vector2):
 	var dodge_vector = direction.normalized() * dodge_distance
 	var end_position = start_position + dodge_vector
 
-	# Temporarily disable collisions
+	# Temporarily disable collisions with enemies
 	var collision_shape = $CollisionShape2D
 	collision_shape.disabled = true
 
-	# Raycast to prevent clipping into walls
+	# Raycast to prevent clipping into walls only (exclude enemies)
 	var space_state = get_world_2d().direct_space_state
 	var ray_params = PhysicsRayQueryParameters2D.create(start_position, end_position)
-	ray_params.exclude = [self]
-	ray_params.collision_mask = 1 << 2  # Environment only
+	ray_params.exclude = [self]  # exclude player
+	ray_params.collision_mask = 1 << 2  # only walls layer
 	var ray_result = space_state.intersect_ray(ray_params)
 	if ray_result:
 		end_position = ray_result.position - direction.normalized() * 4.0
@@ -201,8 +215,8 @@ func dodge(direction: Vector2):
 	# Tween movement
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", end_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
-	# Tween spin: continuously rotate 360° over dodge duration
+
+	# Tween spin
 	var spin_tween = get_tree().create_tween()
 	spin_tween.tween_property(PlayerSprite, "rotation_degrees", PlayerSprite.rotation_degrees + 360, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
@@ -216,7 +230,6 @@ func dodge(direction: Vector2):
 	IsDodging = false
 	Invincible = false
 
-	# Begin cooldown and update UI
 	start_dodge_cooldown(0.5)
 	
 func start_dodge_cooldown(duration: float):
@@ -236,6 +249,9 @@ func start_dodge_cooldown(duration: float):
 	CanDodge = true
 
 func _input(event):
+	if LockAllControls or LockAbilities:
+		return
+	
 	if IsUsingAbility:
 		return
 		
@@ -627,3 +643,23 @@ func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 
 func register_spawn(flag:String, position:Vector2) -> void:
 	spawn_points[flag] = position
+
+func set_master_lock(enabled: bool):
+	LockAllControls = enabled
+	# Optionally force-stop actions immediately
+	if enabled:
+		IsFiring = false
+		IsDodging = false
+
+func lock_movement(enabled: bool):
+	LockMovement = enabled
+
+func lock_shooting(enabled: bool):
+	LockShooting = enabled
+	IsFiring = false
+
+func lock_abilities(enabled: bool):
+	LockAbilities = enabled
+
+func lock_dodging(enabled: bool):
+	LockDodging = enabled
