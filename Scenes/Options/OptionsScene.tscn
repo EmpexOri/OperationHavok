@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bli4fnfa7mnar"]
+[gd_scene load_steps=15 format=3 uid="uid://bli4fnfa7mnar"]
 
 [ext_resource type="Script" uid="uid://bjja86ke8qrmn" path="res://Assets/Scripts/Menu Scripts/OptionsScene.gd" id="1_ax0sw"]
 [ext_resource type="Script" uid="uid://b83rsxcl721n7" path="res://Assets/Scripts/Menu Scripts/brightness_slider.gd" id="2_1hmx5"]
 [ext_resource type="Script" uid="uid://ba1r4kddlu76f" path="res://Assets/Scripts/Menu Scripts/volume_control_slider.gd" id="2_4k2k5"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_vh6j5"]
+[ext_resource type="Texture2D" uid="uid://bknt3qafescxd" path="res://Assets/Art/Menu/exit.png" id="3_7e2oe"]
+[ext_resource type="Texture2D" uid="uid://d20dv4x5f3bi" path="res://Assets/Art/Menu/exitpressed.png" id="4_eb3eg"]
 [ext_resource type="Script" uid="uid://dptye62ocip5c" path="res://Assets/Scripts/Menu Scripts/particle_options.gd" id="4_ttvai"]
 [ext_resource type="Script" uid="uid://bgbmywtypvas4" path="res://Assets/Scripts/Menu Scripts/CensorshipOptions.gd" id="5_byqjn"]
 [ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="6_dbvyl"]
@@ -34,15 +36,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 242.0
-offset_top = 293.0
-offset_right = 404.0
-offset_bottom = 324.0
-focus_neighbor_top = NodePath("../ScrollContainer/VBoxContainer/ParticleOptions")
-theme_override_fonts/font = ExtResource("2_vh6j5")
-text = "Back"
-metadata/_edit_use_anchors_ = true
+[node name="BackButton" type="TextureButton" parent="."]
+process_mode = 3
+offset_left = 270.0
+offset_top = 301.0
+offset_right = 375.0
+offset_bottom = 331.0
+focus_neighbor_top = NodePath("../ResumeButton")
+texture_normal = ExtResource("3_7e2oe")
+texture_pressed = ExtResource("4_eb3eg")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 offset_left = 162.0
@@ -125,7 +127,6 @@ text = "Particle effects"
 
 [node name="ParticleOptions" type="OptionButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../../../BackButton")
 theme = SubResource("Theme_o3fs6")
 selected = 1
 item_count = 3

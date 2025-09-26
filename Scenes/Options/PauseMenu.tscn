@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=23 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
 [ext_resource type="Texture2D" uid="uid://decrs525hjtxo" path="res://Assets/Art/Menu/resume.png" id="3_f70tf"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://velkc7chqrtb" path="res://Scenes/Options/CommandoSkillTree.tscn" id="6_sqgqt"]
 [ext_resource type="Texture2D" uid="uid://dotqgxlcpe4ng" path="res://Assets/Art/Menu/mainmenu.png" id="7_sohqo"]
 [ext_resource type="Texture2D" uid="uid://bbbx3r4vuw3lr" path="res://Assets/Art/Menu/mainmenupressed.png" id="8_3ke0u"]
+[ext_resource type="Texture2D" uid="uid://bknt3qafescxd" path="res://Assets/Art/Menu/exit.png" id="13_tp3vf"]
+[ext_resource type="Texture2D" uid="uid://d20dv4x5f3bi" path="res://Assets/Art/Menu/exitpressed.png" id="14_oc1jd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
 
@@ -389,14 +391,16 @@ offset_bottom = 312.0
 texture_normal = ExtResource("7_sohqo")
 texture_pressed = ExtResource("8_3ke0u")
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 process_mode = 3
 visible = false
-offset_left = 242.0
-offset_top = 292.0
-offset_right = 404.0
-offset_bottom = 323.0
-text = "Back"
+offset_left = 270.0
+offset_top = 301.0
+offset_right = 375.0
+offset_bottom = 331.0
+focus_neighbor_top = NodePath("../ResumeButton")
+texture_normal = ExtResource("13_tp3vf")
+texture_pressed = ExtResource("14_oc1jd")
 
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2
