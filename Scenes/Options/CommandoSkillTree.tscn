@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=24 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://dgdvqv3tyewlk" path="res://Assets/Art/HUD/Minigun1.png" id="17_jp367"]
 [ext_resource type="Texture2D" uid="uid://rohtq6wv16lb" path="res://Assets/Art/HUD/MinigunWithBorder.png" id="18_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://j140hxqss6ei" path="res://Assets/Art/SkillTree/BoxBack.png" id="19_k5h02"]
+[ext_resource type="Texture2D" uid="uid://bknt3qafescxd" path="res://Assets/Art/Menu/exit.png" id="22_scflt"]
+[ext_resource type="Texture2D" uid="uid://d20dv4x5f3bi" path="res://Assets/Art/Menu/exitpressed.png" id="23_evsyq"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
 script = ExtResource("1_qqy41")
@@ -122,7 +124,6 @@ offset_right = 25.5556
 offset_bottom = -51.1112
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("7_0cs3v")
 texture_hover = ExtResource("7_0cs3v")
@@ -148,7 +149,6 @@ offset_top = -91.1112
 offset_right = 6.10352e-05
 offset_bottom = -51.1112
 scale = Vector2(1, 1)
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("9_kcvj1")
 texture_hover = ExtResource("9_kcvj1")
@@ -162,7 +162,6 @@ offset_right = 55.5556
 offset_bottom = -51.4449
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("6_1kq37")
 texture_hover = ExtResource("6_1kq37")
@@ -213,7 +212,6 @@ offset_right = 40.0004
 offset_bottom = -51.1112
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("10_ciio1")
 texture_hover = ExtResource("10_ciio1")
@@ -240,7 +238,6 @@ offset_right = 40.0005
 offset_bottom = -51.1112
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("12_2p3y5")
 texture_hover = ExtResource("12_2p3y5")
@@ -293,7 +290,6 @@ offset_right = 40.0005
 offset_bottom = -51.1111
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("13_wo6gr")
 texture_hover = ExtResource("13_wo6gr")
@@ -320,21 +316,19 @@ offset_right = 40.0005
 offset_bottom = -51.1112
 scale = Vector2(1, 1)
 focus_neighbor_top = NodePath("..")
-focus_neighbor_bottom = NodePath("../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("15_scflt")
 texture_hover = ExtResource("15_scflt")
 texture_focused = ExtResource("15_scflt")
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 process_mode = 3
-z_index = 10
-offset_left = 477.0
-offset_top = 321.0
-offset_right = 626.0
-offset_bottom = 348.0
-focus_neighbor_top = NodePath("../WeaponSwapTitle/SMG/DragonsBreath")
-theme_override_fonts/font = ExtResource("2_74uq5")
-text = "Back"
+offset_left = 504.0
+offset_top = 315.0
+offset_right = 609.0
+offset_bottom = 345.0
+focus_neighbor_top = NodePath("../../ResumeButton")
+texture_normal = ExtResource("22_scflt")
+texture_pressed = ExtResource("23_evsyq")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

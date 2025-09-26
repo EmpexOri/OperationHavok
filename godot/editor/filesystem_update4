@@ -49,3 +49,4 @@ res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres
 res://Assets/Scripts/Menu Scripts/OptionsScene.gd
 res://Scenes/Options/OptionsScene.tscn
+res://Scenes/Options/CommandoSkillTree.tscn

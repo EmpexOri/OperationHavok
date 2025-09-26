@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=22 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
 [ext_resource type="Texture2D" uid="uid://decrs525hjtxo" path="res://Assets/Art/Menu/resume.png" id="3_f70tf"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://d36cl676qxni7" path="res://Assets/Art/Menu/controlspressed.png" id="4_dvb8c"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
 [ext_resource type="Texture2D" uid="uid://dew0ayisawhrj" path="res://Assets/Art/Menu/resumepressed.png" id="4_jbtp0"]
-[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="5_fx1m6"]
 [ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/Options/OptionsScene.tscn" id="5_fxfs8"]
 [ext_resource type="Texture2D" uid="uid://o2n1424owwal" path="res://Assets/Art/Menu/perkmenu.png" id="5_g05m0"]
 [ext_resource type="Texture2D" uid="uid://c64y1hoqjbarg" path="res://Assets/Art/Menu/options.png" id="5_prp31"]
@@ -414,17 +413,15 @@ process_mode = 3
 layer = 5
 visible = false
 
-[node name="BackButton2" type="Button" parent="CommandoSkillTree"]
+[node name="BackButton2" type="TextureButton" parent="CommandoSkillTree"]
 process_mode = 3
-visible = false
-z_index = 20
-offset_left = 473.0
-offset_top = 319.0
-offset_right = 635.0
-offset_bottom = 350.0
-focus_neighbor_top = NodePath("../WeaponSwapTitle/Shotgun/DragonsBreath")
-theme_override_fonts/font = ExtResource("5_fx1m6")
-text = "Back"
+offset_left = 504.0
+offset_top = 315.0
+offset_right = 609.0
+offset_bottom = 345.0
+focus_neighbor_top = NodePath("../../ResumeButton")
+texture_normal = ExtResource("13_tp3vf")
+texture_pressed = ExtResource("14_oc1jd")
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
