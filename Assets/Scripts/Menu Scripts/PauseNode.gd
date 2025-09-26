@@ -1,14 +1,14 @@
 extends Node
 
 # Main pause menu
-@onready var ResumeButton: Button = $"ResumeButton"
-@onready var ControlsButton: Button = $"ControlsButton"
+@onready var ResumeButton: TextureButton = $"ResumeButton"
+@onready var ControlsButton: TextureButton = $"ControlsButton"
 @onready var OptionsButton: TextureButton = $"OptionsButton"
 @onready var BackButton: Button = $"BackButton"
 @onready var BackButton2: Button = $CommandoSkillTree/BackButton2
-@onready var SkillTreeButton: Button = $SkillTreeButton
+@onready var SkillTreeButton: TextureButton = $SkillTreeButton
 @onready var Title: Label = $"Title"
-@onready var MainButton: Button = $MenuButton
+@onready var MainButton: TextureButton = $MenuButton
 @onready var BackPanel: ColorRect = $Background
 @onready var BackPanel2: ColorRect = $Background2
 

@@ -1,44 +1,49 @@
-res://Scenes/BetaLevel.tscn
+res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
+res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
+res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
+res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
+res://Assets/Scripts/Enemy/elite_enemies/Tumor.gd
+res://Assets/Scripts/Enemy/hoard_enemies/FleshSpawn.gd
+res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
+res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd
+res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
+res://Assets/Scripts/LevelControllers/Level1/ArenaManager.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd
+res://Assets/Scripts/Player Scripts/Weapons/Grenade.gd
+res://Assets/Scripts/Player Scripts/Weapons/NovaExplosion.gd
+res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd
+res://Assets/Scripts/Player Scripts/Weapons/SuperGrenade.gd
+res://Assets/Scripts/Player Scripts/Weapons/Misc/HomeRunExplosion.gd
+res://Assets/Scripts/Projectiles/home_run_projectile.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Universal Scripts/WeaponData.gd
+res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
+res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyMinigunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/WarmachineBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/TyphoonProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaGrenade.tscn
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
+res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/Options/PauseMenu.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
-res://Assets/Shaders/BulletShader.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
-res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
 res://Assets/Shaders/FlashShader.gdshader
-res://Assets/Shaders/FlashShader.tres
-res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
-res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Scenes/GlobalAudioController.tscn
-res://Prefabs/CodePrefabs/Projectiles/primary_bullets/M60Bullet.tscn
-res://Prefabs/CodePrefabs/Weapons/M60.tscn
-res://Prefabs/CodePrefabs/Abilities/HomerunGrenade.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn
-res://Prefabs/GamePrefabs/Objects/Park/Bush_1.tscn
-res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn
-res://Prefabs/GamePrefabs/Objects/Park/Bush_2.tscn
-res://Prefabs/GamePrefabs/Objects/Park/Bench.tscn
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/enemy_sniper.tscn
-res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn
-res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
-res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine.tscn
-res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_2.tscn
-res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine_1.tscn
-res://Prefabs/GamePrefabs/Objects/Park/ArcadeMachine_2.tscn
-res://Prefabs/GamePrefabs/Objects/Park/SpecialArcade.tscn
-res://Assets/Scripts/Effects/Misc Effects/SpecialArcade.gd
-res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_1.tscn
-res://Assets/Scripts/Player Scripts/player.gd
-res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
-res://Prefabs/GamePrefabs/Objects/Blockers/CarBlocker.tscn
-res://Prefabs/GamePrefabs/Objects/lamp_post.tscn
-res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn
-res://Prefabs/GamePrefabs/Objects/Blockers/DodgeThroughBlocker.tscn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn
-res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
-res://Assets/Scripts/LevelControllers/Level1/Rooftop_Elevator.gd
-res://Prefabs/GamePrefabs/Player/player.tscn
-res://Assets/Scripts/Effects/Object Effects/Boulder.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres
+res://Prefabs/CodePrefabs/Particles/Preloaded/MetallicGore.tres

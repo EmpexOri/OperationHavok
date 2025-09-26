@@ -1,12 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=21 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
-[ext_resource type="Texture2D" uid="uid://bewl45qdirp8w" path="res://Assets/Art/Menu/OptionsOff.png" id="3_fxfs8"]
+[ext_resource type="Texture2D" uid="uid://decrs525hjtxo" path="res://Assets/Art/Menu/resume.png" id="3_f70tf"]
+[ext_resource type="Texture2D" uid="uid://5f4xfq1satf5" path="res://Assets/Art/Menu/controls.png" id="3_prp31"]
+[ext_resource type="Texture2D" uid="uid://d36cl676qxni7" path="res://Assets/Art/Menu/controlspressed.png" id="4_dvb8c"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
-[ext_resource type="Texture2D" uid="uid://crcon2xwm5xj6" path="res://Assets/Art/Menu/OptionsOn.png" id="4_sqgqt"]
+[ext_resource type="Texture2D" uid="uid://dew0ayisawhrj" path="res://Assets/Art/Menu/resumepressed.png" id="4_jbtp0"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="5_fx1m6"]
 [ext_resource type="PackedScene" uid="uid://bli4fnfa7mnar" path="res://Scenes/Options/OptionsScene.tscn" id="5_fxfs8"]
+[ext_resource type="Texture2D" uid="uid://o2n1424owwal" path="res://Assets/Art/Menu/perkmenu.png" id="5_g05m0"]
+[ext_resource type="Texture2D" uid="uid://c64y1hoqjbarg" path="res://Assets/Art/Menu/options.png" id="5_prp31"]
+[ext_resource type="Texture2D" uid="uid://c2l7m60ku6yae" path="res://Assets/Art/Menu/optionspressed.png" id="6_dvb8c"]
+[ext_resource type="Texture2D" uid="uid://b56qtpq4a34bn" path="res://Assets/Art/Menu/perkmenupressed.png" id="6_gctdb"]
 [ext_resource type="PackedScene" uid="uid://velkc7chqrtb" path="res://Scenes/Options/CommandoSkillTree.tscn" id="6_sqgqt"]
+[ext_resource type="Texture2D" uid="uid://dotqgxlcpe4ng" path="res://Assets/Art/Menu/mainmenu.png" id="7_sohqo"]
+[ext_resource type="Texture2D" uid="uid://bbbx3r4vuw3lr" path="res://Assets/Art/Menu/mainmenupressed.png" id="8_3ke0u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
 
@@ -336,50 +344,50 @@ text = "Pause Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="."]
+[node name="ResumeButton" type="TextureButton" parent="."]
 process_mode = 2
-offset_left = 241.0
-offset_top = 76.0
-offset_right = 403.0
+offset_left = 270.0
+offset_top = 77.0
+offset_right = 375.0
 offset_bottom = 107.0
-focus_neighbor_bottom = NodePath("../ControlsButton")
-text = "Resume"
+texture_normal = ExtResource("3_f70tf")
+texture_pressed = ExtResource("4_jbtp0")
 
-[node name="ControlsButton" type="Button" parent="."]
+[node name="ControlsButton" type="TextureButton" parent="."]
 process_mode = 2
-offset_left = 241.0
+offset_left = 270.0
 offset_top = 121.0
-offset_right = 403.0
-offset_bottom = 152.0
-focus_neighbor_top = NodePath("../ResumeButton")
-text = "Controls"
+offset_right = 375.0
+offset_bottom = 151.0
+texture_normal = ExtResource("3_prp31")
+texture_pressed = ExtResource("4_dvb8c")
 
-[node name="SkillTreeButton" type="Button" parent="."]
+[node name="SkillTreeButton" type="TextureButton" parent="."]
 process_mode = 2
-offset_left = 241.0
+offset_left = 270.0
 offset_top = 166.0
-offset_right = 403.0
-offset_bottom = 197.0
-focus_neighbor_top = NodePath("../ResumeButton")
-text = "Skill tree"
+offset_right = 375.0
+offset_bottom = 196.0
+texture_normal = ExtResource("5_g05m0")
+texture_pressed = ExtResource("6_gctdb")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 process_mode = 2
 offset_left = 270.0
 offset_top = 211.0
-offset_right = 376.0
-offset_bottom = 253.0
-focus_neighbor_top = NodePath("../ResumeButton")
-texture_normal = ExtResource("3_fxfs8")
-texture_pressed = ExtResource("4_sqgqt")
+offset_right = 375.0
+offset_bottom = 241.0
+texture_normal = ExtResource("5_prp31")
+texture_pressed = ExtResource("6_dvb8c")
 
-[node name="MenuButton" type="Button" parent="."]
-process_mode = 3
-offset_left = 242.0
-offset_top = 263.0
-offset_right = 404.0
-offset_bottom = 294.0
-text = "Main menu"
+[node name="MenuButton" type="TextureButton" parent="."]
+process_mode = 2
+offset_left = 270.0
+offset_top = 282.0
+offset_right = 375.0
+offset_bottom = 312.0
+texture_normal = ExtResource("7_sohqo")
+texture_pressed = ExtResource("8_3ke0u")
 
 [node name="BackButton" type="Button" parent="."]
 process_mode = 3
@@ -395,10 +403,12 @@ process_mode = 2
 
 [node name="OptionsScene" parent="." instance=ExtResource("5_fxfs8")]
 layer = 4
+visible = false
 
 [node name="CommandoSkillTree" parent="." instance=ExtResource("6_sqgqt")]
 process_mode = 3
 layer = 5
+visible = false
 
 [node name="BackButton2" type="Button" parent="CommandoSkillTree"]
 process_mode = 3
