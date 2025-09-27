@@ -45,16 +45,39 @@ var LockDodging := false
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
 		"name": "SMG",
-		"sprite": preload("res://Assets/Art/Sprites/SMG.png"),
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/SMG.png"),
+		"offset": Vector2(5, 0)
 	},
 	"res://Prefabs/CodePrefabs/Weapons/akimbo_smg.tscn": {
 		"name": "SMG",
-		"sprite": preload("res://Assets/Art/Sprites/SMGAkimbo.png"),
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/SMGAkimbo.png"),
+		"offset": Vector2(5, 0)
 	},
 	"res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn": {
 		"name": "Shotgun",
-		"sprite": preload("res://Assets/Art/Sprites/Shotgun.png"),
-	}
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/Shotgun.png"),
+		"offset": Vector2(8, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/DragonShotgun.tscn": {
+		"name": "DragonShotgun",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/DragonShotgun.png"),
+		"offset": Vector2(8, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/Raygun.tscn": {
+		"name": "Raygun",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/Raygun.png"),
+		"offset": Vector2(8, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn": {
+		"name": "FlameThrower",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/Flamethrower.png"),
+		"offset": Vector2(6, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/M60.tscn": {
+		"name": "M60",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/M60.png"),
+		"offset": Vector2(6, 0)
+	},
 }
 
 @onready var DeathLabel: Label = $"../../PlayerUI/YouDiedLabel"
@@ -554,13 +577,12 @@ func get_current_weapon_info():
 	return null
 
 func update_weapon_sprite():
-	if not CurrentWeapon:
-		return
-	
-	var weapon_path = CurrentWeapon.scene_file_path
-	if weapon_data.has(weapon_path):
-		var sprite = weapon_data[weapon_path]["sprite"]
-		$Weapon/WeaponSprite.texture = sprite
+	if not CurrentWeapon: return
+	var info = weapon_data.get(CurrentWeapon.scene_file_path)
+	if info:
+		var ws = $Weapon/WeaponSprite
+		ws.texture = info.sprite
+		ws.offset  = info.offset   
 
 func update_weapon_rotation():
 	if not CurrentWeapon:

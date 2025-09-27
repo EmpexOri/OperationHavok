@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp4pu6283u3sl"
-path="res://godot/imported/Shotgun.png-36a9222a35ed91c9ad6e12b41e22693e.ctex"
+uid="uid://h1hx2tc47cn4"
+path="res://godot/imported/Flamethrower.png-110e030535b95548521c2d10bf497fe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Sprites/Shotgun.png"
-dest_files=["res://godot/imported/Shotgun.png-36a9222a35ed91c9ad6e12b41e22693e.ctex"]
+source_file="res://Assets/Art/Sprites/Weapons/Flamethrower.png"
+dest_files=["res://godot/imported/Flamethrower.png-110e030535b95548521c2d10bf497fe7.ctex"]
 
 [params]
 

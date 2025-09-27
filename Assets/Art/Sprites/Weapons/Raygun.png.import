@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp4pu6283u3sl"
-path="res://godot/imported/Shotgun.png-36a9222a35ed91c9ad6e12b41e22693e.ctex"
+uid="uid://biduiphbdov06"
+path="res://godot/imported/Raygun.png-0a629c2e411adbdb48d4e7257e926dca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Sprites/Shotgun.png"
-dest_files=["res://godot/imported/Shotgun.png-36a9222a35ed91c9ad6e12b41e22693e.ctex"]
+source_file="res://Assets/Art/Sprites/Weapons/Raygun.png"
+dest_files=["res://godot/imported/Raygun.png-0a629c2e411adbdb48d4e7257e926dca.ctex"]
 
 [params]
 
