@@ -78,6 +78,21 @@ var weapon_data := {
 		"sprite": preload("res://Assets/Art/Sprites/Weapons/M60.png"),
 		"offset": Vector2(6, 0)
 	},
+	"res://Prefabs/CodePrefabs/Weapons/Minigun.tscn": {
+		"name": "Minigun",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/Minigun.png"),
+		"offset": Vector2(10, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn": {
+		"name": "RocketLauncher",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketLauncher.png"),
+		"offset": Vector2(5, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn": {
+		"name": "RocketMinigun",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketMinigun.png"),
+		"offset": Vector2(5, 0)
+	},
 }
 
 @onready var DeathLabel: Label = $"../../PlayerUI/YouDiedLabel"
@@ -352,12 +367,22 @@ func _check_for_stuck_cooldowns():
 func equip_weapon(WeaponScene: PackedScene, source: String = ""):
 	if CurrentWeapon:
 		CurrentWeapon.queue_free()
-	
+		CurrentWeapon = null
+
 	if WeaponScene:
 		CurrentWeapon = WeaponScene.instantiate()
 		CurrentWeapon.owning_entity = "Player"
-		add_child(CurrentWeapon)
-		CurrentWeapon.position = Vector2(0, 0)
+
+		var info = weapon_data.get(CurrentWeapon.scene_file_path)
+
+		if info and info.has("shoulder_weapon") and info.shoulder_weapon:
+			# Attach to ShoulderWeapon node
+			$ShoulderWeapon.add_child(CurrentWeapon)
+			CurrentWeapon.position = info.offset
+		else:
+			# Attach to normal Weapon node
+			$Weapon.add_child(CurrentWeapon)
+			CurrentWeapon.position = info.offset
 
 		current_weapon_source = source
 

@@ -291,5 +291,11 @@ texture = ExtResource("5_dolgl")
 [node name="WeaponSprite" type="Sprite2D" parent="Weapon"]
 offset = Vector2(5, 0)
 
+[node name="ShoulderWeapon" type="Node2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="WeaponSprite" type="Sprite2D" parent="ShoulderWeapon"]
+offset = Vector2(5, 0)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
