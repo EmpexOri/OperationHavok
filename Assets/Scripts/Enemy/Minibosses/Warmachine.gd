@@ -27,6 +27,16 @@ const RAM_DURATION = 0.6
 const RAM_DAMAGE = 30
 @onready var ram_timer := Timer.new()
 
+# --- Shield variables ---
+@onready var shield_sprite: Sprite2D = $ShieldBubble/Sprite
+var ShieldMax := 300
+var Shield := ShieldMax
+var shield_regen_rate := 150.0      # HP per second when regenerating
+var shield_regen_delay := 5.0      # seconds of no damage before regen starts
+var shield_regen_timer := 0.0
+var regen_multiplier := 1.0
+var shield_taking_damage := false
+
 func start():
 	Speed = 80
 	Health = 750
@@ -50,6 +60,7 @@ func _ready():
 	grenade_salvo_timer.one_shot = true
 	grenade_salvo_timer.connect("timeout", Callable(self, "_fire_grenade_salvo"))
 	add_child(grenade_salvo_timer)
+	update_shield_visual()
 	
 	WeaponScene = Weapon
 	super()
@@ -67,7 +78,16 @@ func _ready():
 	add_child(ram_timer)
 
 func _process(delta):
-	super._process(delta)  
+	super._process(delta)
+	
+	if Shield < ShieldMax:
+		shield_regen_timer += delta
+		if shield_regen_timer >= shield_regen_delay:
+			# Regen faster if shield is lower
+			regen_multiplier = 2.0 if Shield < ShieldMax * 0.3 else 1.0
+			Shield = min(Shield + shield_regen_rate * regen_multiplier * delta, ShieldMax)
+			update_shield_visual()
+
 	if Health <= 0:
 		for i in range(1):
 			drop_xp()  # Custom drop_xp in Needling.gd
@@ -198,6 +218,7 @@ func _fire_grenade_salvo():
 	var right = Vector2(-base_dir.y, base_dir.x)  # Perpendicular to direction
 
 	for i in range(2):
+		var grenade_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn")
 		var grenade = grenade_scene.instantiate()
 		get_parent().add_child(grenade)
 
@@ -291,3 +312,27 @@ func start_ramming(player):
 func _on_ram_timeout():
 	is_ramming = false
 	velocity = Vector2.ZERO
+
+func deal_damage(damage: int, from_position = null):
+	if Shield > 0:
+		Shield -= damage
+		shield_regen_timer = 0.0  # reset timer on damage
+		update_shield_visual()
+		if Shield < 0:
+			var leftover = -Shield
+			Shield = 0
+			super.deal_damage(leftover, from_position)
+		return
+
+	super.deal_damage(damage, from_position)
+
+func update_shield_visual():
+	var ratio := Shield / float(ShieldMax)
+	if ratio <= 0:
+		shield_sprite.visible = false
+		return
+	shield_sprite.visible = true
+	var color_blue = Color(0.2, 0.6, 1.0, 0.4)
+	var color_red  = Color(1.0, 0.2, 0.2, 0.4)
+	shield_sprite.modulate = color_blue.lerp(color_red, 1.0 - ratio)
+	shield_sprite.scale = Vector2.ONE * (0.75 + 0.2 * (1.0 - ratio))
