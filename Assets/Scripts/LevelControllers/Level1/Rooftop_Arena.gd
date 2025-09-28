@@ -73,7 +73,7 @@ func activate_arena():
 	current_sub_arena = 0
 	
 	# --- Play arena music ---
-	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/Temp/Peril.mp3", true)
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/Temp/DoomWaterParking.mp3", true)
 	
 	start_sub_arena(0)  
 
@@ -161,8 +161,8 @@ func arena_completed():
 	emit_signal("arena_complete")
 
 	# Stop arena music
-	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
-	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
+	#var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	#GlobalAudioController.MusicFadeOut(level1_player, 2.5)
 
 	# Enable Rooftop Elevator
 	var controller = get_node_or_null(beta_level_controller_path)

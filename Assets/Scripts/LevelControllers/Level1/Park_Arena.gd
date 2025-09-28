@@ -42,7 +42,7 @@ func activate_arena():
 	arena_active = true
 	current_wave = 0
 	print("Park Arena activated!")
-	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/ConcreteHills.mp3", true)
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/Target_Aquired.mp3", true)
 	start_next_wave()
 
 func start_next_wave() -> void:

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7a4c7os1saht" path="res://Assets/Art/Sprites/FX/White128.png" id="7_vp07h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb7kr"]
-radius = 32.01562
+radius = 34.0147
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujov0"]
 atlas = ExtResource("6_cb7kr")
@@ -89,6 +89,16 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_bcpsg")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 120.0
+simplify_path = true
+path_search_max_polygons = 16
+avoidance_enabled = true
+radius = 80.0
+avoidance_mask = 17
+debug_use_custom = true
+debug_path_custom_color = Color(1.1, 1.1, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cb7kr")
 
@@ -109,10 +119,6 @@ frame_progress = 0.56762
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_vp07h")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_use_custom = true
-debug_path_custom_color = Color(1.1, 1.1, 0, 1)
 
 [node name="ShieldBubble" type="Node2D" parent="."]
 

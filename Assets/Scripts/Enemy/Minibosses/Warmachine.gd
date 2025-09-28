@@ -37,6 +37,16 @@ var shield_regen_timer := 0.0
 var regen_multiplier := 1.0
 var shield_taking_damage := false
 
+var aggressive_mode := false
+var normal_speed := 80
+var aggressive_speed := 100       
+var aggressive_fire_delay := 0.05   
+var aggressive_grenade_chance := 80 
+
+var last_position: Vector2
+var move_timer := 0.0       
+var move_timeout := 5.0    
+
 func start():
 	Speed = 80
 	Health = 750
@@ -46,6 +56,7 @@ func start():
 	Target = "Player"
 
 func _ready():
+	randomize()
 	add_to_group("Boss")
 	var firetimer = Timer.new()
 	fire_duration_timer.one_shot = true
@@ -80,13 +91,16 @@ func _ready():
 func _process(delta):
 	super._process(delta)
 	
+	# Shield regen
 	if Shield < ShieldMax:
 		shield_regen_timer += delta
 		if shield_regen_timer >= shield_regen_delay:
-			# Regen faster if shield is lower
 			regen_multiplier = 2.0 if Shield < ShieldMax * 0.3 else 1.0
 			Shield = min(Shield + shield_regen_rate * regen_multiplier * delta, ShieldMax)
 			update_shield_visual()
+	
+	if Shield > 0 and not aggressive_mode:
+		enter_aggressive_mode()
 
 	if Health <= 0:
 		for i in range(1):
@@ -99,66 +113,51 @@ func _process(delta):
 		Global.spawn_death_particles(global_position) 
 		queue_free()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if is_ramming:
 		velocity = ram_direction * Speed * RAM_SPEED_MULTIPLIER
-		sprite.modulate.a = 1.0
-		sprite.speed_scale = 1.0
 		if sprite.animation != "move":
 			sprite.play("move")
 		move_and_slide()
+		last_position = global_position
 		return
 
-	var target_pos: Vector2
+	var player = resolve_target()
+	var stop_threshold = 10  # Distance considered "reached"
 
 	if IsMovingRandomly:
-		var player = resolve_target()
-		target_pos = nav.target_position
-		if global_position.distance_to(player.global_position) <= 100:
-			IsMovingRandomly = false
-		elif nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
+		var next_pos = nav.get_next_path_position()
+		var to_next = next_pos - global_position
+
+		# Track movement time
+		move_timer += delta
+
+		if to_next.length() < stop_threshold or move_timer >= move_timeout:
+			# Stop moving if close enough OR timed out
 			IsMovingRandomly = false
 			velocity = Vector2.ZERO
 			sprite.stop()
-	else:
-		var Player = resolve_target()
-		if not is_ramming and Player and global_position.distance_to(Player.global_position) <= RAM_TRIGGER_DISTANCE:
-			start_ramming(Player)
-			return  # Stop all normal logic during ramming
-		target_pos = Player.position
-		nav.target_position = target_pos
+			move_timer = 0.0  # reset timer
+			fire()
+		else:
+			# Move at Speed per second
+			velocity = to_next.normalized() * Speed
+			if sprite.animation != "move":
+				sprite.play("move")
+			move_and_slide()  # only once
 
-	var Direction = nav.get_next_path_position() - global_position
-	Direction = Direction.normalized()
+	elif player and not is_firing and not is_ramming:
+		var distance = global_position.distance_to(player.global_position)
+		if distance > 400:
+			velocity = (player.global_position - global_position).normalized() * Speed
+			if sprite.animation != "move":
+				sprite.play("move")
+			move_and_slide()  # only once
+		else:
+			velocity = Vector2.ZERO
+			sprite.stop()
 
-	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100) or is_firing:
-		velocity = Vector2.ZERO
-		sprite.modulate.a = 0.2
-	elif IsMovingRandomly:
-		Speed = 80
-		sprite.modulate.a = 0.65
-		velocity = Direction * Speed
-	else:
-		Speed = 120
-		sprite.modulate.a = 1
-		velocity = Direction * Speed
-			
-	# ANIMATION HANDLING
-	if is_firing:
-		# Keep firing animation playing slowly
-		sprite.speed_scale = 1 #0.35
-		# Moving animation stays the same
-	elif IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
-		if sprite.animation != "move":
-			sprite.speed_scale = 1
-			sprite.play("move")
-		if abs(velocity.x) > 0.1:
-			sprite.flip_h = velocity.x > 0
-	else:
-		# Stop the animation (just don't PAUSE it)
-		sprite.speed_scale = 0
-
-	move_and_slide()
+	last_position = global_position
 
 func fire():
 	if IsMovingRandomly or velocity.length() > 1 or is_firing or is_ramming:
@@ -166,7 +165,8 @@ func fire():
 
 	var player = resolve_target()
 	if player and global_position.distance_to(player.global_position) <= 400:
-		if randi_range(0, 100) < 50:  # 40% chance to grenade
+		var grenade_chance = aggressive_grenade_chance if aggressive_mode else 50
+		if randi_range(0, 100) < grenade_chance:
 			grenade_mode = true
 			grenade_shots_remaining = randi_range(2, 4)  # 2-4 grenade salvos
 			is_firing = true
@@ -192,7 +192,9 @@ func _fire_burst():
 		ShotsFired += 1
 
 	# Fire again in 0.1–0.2 seconds (simulate burst fire)
-	fire_delay_timer.start(randf_range(0.1, 0.2))
+	var min_delay = aggressive_fire_delay if aggressive_mode else 0.1
+	var max_delay = (aggressive_fire_delay + 0.05) if aggressive_mode else 0.2
+	fire_delay_timer.start(randf_range(min_delay, max_delay))
 
 func _fire_grenade_salvo():
 	if not grenade_mode or grenade_shots_remaining <= 0 or is_ramming:
@@ -233,18 +235,21 @@ func _fire_grenade_salvo():
 	grenade_salvo_timer.start(randf_range(0.4, 0.8))
 
 func random_move():
-	IsMovingRandomly = true
-	ShotsFired = 0
-	ShotsBeforeMoving = randi_range(1, 1)
+	# Pick a random target near the player
+	var player = resolve_target()
+	if not player:
+		return
+	
+	var max_offset = 200
+	var raw_target = player.global_position + Vector2(randf_range(-max_offset, max_offset), randf_range(-max_offset, max_offset))
 
-	var offset = Vector2(randf_range(-200, 200), randf_range(-200, 200))
-	var target_pos = global_position + offset
-
-	var screen_size = get_viewport_rect().size
-	target_pos.x = clamp(target_pos.x, 0, screen_size.x)
-	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
-
-	nav.target_position = target_pos
+	# Snap to closest valid point on navmesh
+	var nav_map_rid = nav.get_navigation_map()
+	if nav_map_rid != RID():
+		var closest_point = NavigationServer2D.map_get_closest_point(nav_map_rid, raw_target)
+		nav.target_position = closest_point
+		IsMovingRandomly = true
+		last_position = global_position
 
 func _on_fire_delay_timeout():
 	_fire_burst()
@@ -316,11 +321,25 @@ func _on_ram_timeout():
 func deal_damage(damage: int, from_position = null):
 	if Shield > 0:
 		Shield -= damage
-		shield_regen_timer = 0.0  # reset timer on damage
+		shield_regen_timer = 0.0
 		update_shield_visual()
-		if Shield < 0:
+
+		# --- NEW: enable aggressive mode while shield is up
+		if not aggressive_mode:
+			enter_aggressive_mode()
+
+		GlobalAudioController.PlayShieldPing()
+
+		if Shield <= 0:
 			var leftover = -Shield
 			Shield = 0
+			update_shield_visual()
+
+			GlobalAudioController.PlayShieldBreak()
+
+			# --- NEW: disable aggressive mode when shield breaks
+			exit_aggressive_mode()
+
 			super.deal_damage(leftover, from_position)
 		return
 
@@ -336,3 +355,12 @@ func update_shield_visual():
 	var color_red  = Color(1.0, 0.2, 0.2, 0.4)
 	shield_sprite.modulate = color_blue.lerp(color_red, 1.0 - ratio)
 	shield_sprite.scale = Vector2.ONE * (0.75 + 0.2 * (1.0 - ratio))
+
+func enter_aggressive_mode():
+	aggressive_mode = true
+	normal_speed = Speed
+	Speed = aggressive_speed
+
+func exit_aggressive_mode():
+	aggressive_mode = false
+	Speed = normal_speed

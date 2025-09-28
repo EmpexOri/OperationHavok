@@ -46,7 +46,7 @@ func activate_arena():
 	print("Parkinglot Arena activated!")
 	
 	# Play arena music
-	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/DoomWaterParking.mp3", true)
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/ConcreteHills.mp3", true)
 	
 	start_next_wave()
 

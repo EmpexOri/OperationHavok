@@ -34,6 +34,9 @@ var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
 
+var ShieldPingSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/EnemyReaction/ShieldPing.wav")
+var ShieldBreakSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/EnemyReaction/ShieldBreak.wav")
+
 # ----------------------------
 # SFX Channels
 # ----------------------------
@@ -392,4 +395,34 @@ func PlayLevelUpSound():
 		var p = GeneralChannels[randi() % GeneralChannels.size()]
 		p.stop()
 		p.stream = LevelUpSound
+		p.play()
+
+func PlayShieldPing():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = ShieldPingSound
+			player.pitch_scale = randf_range(0.8, 1.2)  
+			player.volume_db = -6.0 
+			player.play()
+			return
+	if GeneralChannels.size() > 0:
+		var p = GeneralChannels[randi() % GeneralChannels.size()]
+		p.stop()
+		p.stream = ShieldPingSound
+		p.pitch_scale = randf_range(0.8, 1.2)
+		p.volume_db = -6.0       
+		p.play()
+
+func PlayShieldBreak():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = ShieldBreakSound
+			player.pitch_scale = 1.0
+			player.play()
+			return
+	if GeneralChannels.size() > 0:
+		var p = GeneralChannels[randi() % GeneralChannels.size()]
+		p.stop()
+		p.stream = ShieldBreakSound
+		p.pitch_scale = 1.0
 		p.play()

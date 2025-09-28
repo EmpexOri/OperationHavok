@@ -93,6 +93,16 @@ var weapon_data := {
 		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketMinigun.png"),
 		"offset": Vector2(5, 0)
 	},
+	"res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn": {
+		"name": "lightning_launcher",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketLauncher.png"),
+		"offset": Vector2(5, 0)
+	},
+	"res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn": {
+		"name": "TyphoonCannon",
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketMinigun.png"),
+		"offset": Vector2(5, 0)
+	},
 }
 
 @onready var DeathLabel: Label = $"../../PlayerUI/YouDiedLabel"

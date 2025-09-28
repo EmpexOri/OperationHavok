@@ -21,6 +21,7 @@ var arena_active := false
 var current_wave := 0
 var enemies: Array = []
 var spawn_points: Array[Marker2D] = []
+var boss_spawn: Marker2D
 var wave_in_progress := false
 
 var waves: Array = []
@@ -31,13 +32,16 @@ func _ready() -> void:
 	if spawn_points.is_empty():
 		for child in get_children():
 			if child is Marker2D:
-				spawn_points.append(child)
+				if child.name == "SpawnBoss":
+					boss_spawn = child
+				else:
+					spawn_points.append(child)
 
 	# Wave 1 and 2 normal waves, Wave 3 is boss wave handled separately
 	waves = [
 		#{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
 		#{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
-		{ "Warmachine": 1 } # Wave 3 boss wave
+		{ "Warmachine": 1 } 
 	]
 
 func activate_arena() -> void:
@@ -45,7 +49,7 @@ func activate_arena() -> void:
 	arena_active = true
 	current_wave = 0
 	print("Stripmall Arena activated!")
-	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/ConcreteHills.mp3", true)
+	#GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/ConcreteHills.mp3", true)
 	start_next_wave()
 
 func start_next_wave() -> void:
@@ -68,6 +72,9 @@ func start_next_wave() -> void:
 		var bosses = get_tree().get_nodes_in_group("Boss")
 		if bosses.size() > 0:
 			var boss = bosses[0]
+			GlobalAudioController.SetLevel1Music(
+				"res://Assets/Sound/Music/Lux_Target_Loops.mp3", true
+			)
 			call_deferred("_spawn_minions_during_boss", boss)
 		else:
 			push_error("No boss found in group 'Boss' after spawn.")
@@ -89,13 +96,24 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 			count = roll(roll_data[0], roll_data[1]) + roll_data[2]
 		else:
 			count = int(roll_data)
+
 		var scene = ENEMY_SCENES.get(enemy_type, null)
-		if scene == null: continue
+		if scene == null:
+			continue
+
 		for i in range(count):
-			var spawn = get_random_spawn_outside_camera(camera)
+			var spawn: Marker2D
+			if enemy_type == "Warmachine" and boss_spawn:
+				# use the special boss spawn
+				spawn = boss_spawn
+			else:
+				spawn = get_random_spawn_outside_camera(camera)
+
 			if spawn:
 				spawn_enemy(scene, spawn)
-			await get_tree().create_timer(randf_range(0.05, 0.25)).timeout
+
+			if enemy_type != "Warmachine":
+				await get_tree().create_timer(randf_range(0.05, 0.25)).timeout
 
 func _spawn_minions_during_boss(boss: Node2D) -> void:
 	var start_time := Time.get_ticks_msec() / 1000.0
