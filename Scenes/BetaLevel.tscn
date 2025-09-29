@@ -1,12 +1,12 @@
 [gd_scene load_steps=70 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
+[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
 [ext_resource type="Texture2D" uid="uid://drb5ccbyy3vja" path="res://Assets/Art/HUD/PlayerHUD/HB_BG.png" id="3_6wlsl"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="3_bbpmv"]
-[ext_resource type="Texture2D" uid="uid://bs430g7njarlj" path="res://Assets/Art/HUD/PlayerHUD/HB_HP.png" id="4_3nr67"]
+[ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="5_7u0io"]
 [ext_resource type="Texture2D" uid="uid://qlkbjxtxw4yy" path="res://Assets/Art/HUD/PlayerHUD/HB_XP.png" id="7_6wlsl"]
-[ext_resource type="Texture2D" uid="uid://x6rf6vjqj33f" path="res://Assets/Art/HUD/PlayerHUD/HB_XP_BAR.png" id="8_3nr67"]
-[ext_resource type="Texture2D" uid="uid://dddveco2tbtku" path="res://Assets/Art/HUD/PlayerHUD/HB_STAMINA.png" id="8_sd37h"]
+[ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="8_4un8s"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="12_sd37h"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="18_lbk0n"]
 [ext_resource type="Script" uid="uid://dmjg0pc7bmlo8" path="res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd" id="19_c70pc"]
@@ -139,17 +139,19 @@ offset_right = 250.0
 offset_bottom = 66.0
 grow_vertical = 2
 value = 100.0
-texture_progress = ExtResource("4_3nr67")
+texture_under = ExtResource("3_3xqoa")
+texture_progress = ExtResource("3_3xqoa")
 tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.7759101, 0.14974195, 0.19603047, 1)
 
 [node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
 modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
 layout_mode = 0
-offset_left = 45.0
-offset_top = 312.0
-offset_right = 76.0
-offset_bottom = 317.729
+offset_left = 5.0
+offset_top = 344.0
+offset_right = 36.0
+offset_bottom = 349.72916
 scale = Vector2(2.2, 2.2)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("20_xy3j2")
@@ -160,10 +162,10 @@ text = "Level: 1"
 modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
 layout_mode = 0
-offset_left = 46.0
-offset_top = 306.0
-offset_right = 77.0
-offset_bottom = 311.729
+offset_left = 6.0
+offset_top = 338.0
+offset_right = 37.0
+offset_bottom = 343.729
 scale = Vector2(2.2, 2.2)
 theme_override_fonts/font = ExtResource("20_xy3j2")
 theme_override_font_sizes/font_size = 3
@@ -188,15 +190,18 @@ offset_bottom = 102.0
 max_value = 1.0
 step = 0.25
 value = 1.0
-texture_progress = ExtResource("8_sd37h")
+texture_under = ExtResource("5_7u0io")
+texture_progress = ExtResource("5_7u0io")
 tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
+visible = false
 z_index = -2
 position = Vector2(66, 34)
 texture = ExtResource("3_6wlsl")
 
 [node name="Sprite2D2" type="Sprite2D" parent="PlayerUI/UIContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0.75)
 z_index = -2
 position = Vector2(66, 326)
@@ -206,12 +211,16 @@ texture = ExtResource("7_6wlsl")
 modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
 layout_mode = 0
-offset_left = 50.0
-offset_top = 327.0
-offset_right = 306.0
-offset_bottom = 583.0
+offset_left = 1.0
+offset_top = 12.0
+offset_right = 257.0
+offset_bottom = 268.0
 value = 100.0
-texture_progress = ExtResource("8_3nr67")
+fill_mode = 4
+texture_under = ExtResource("8_4un8s")
+texture_progress = ExtResource("8_4un8s")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.3059584, 0.568307, 0.91368586, 1)
 
 [node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
 texture_filter = 1
