@@ -2,6 +2,7 @@ extends Enemy  # Inherit from Enemy.gd
 
 @onready var sprite = $AnimatedSprite2D  # was $Sprite2D
 @onready var fire_duration_timer = Timer.new()
+@onready var move_timeout_timer := Timer.new()
 
 var BulletSpeed = 900
 var ShotsFired = 0
@@ -40,6 +41,10 @@ func _ready():
 	firetimer.connect("timeout", Callable(self, "fire"))
 	firetimer.autostart = true
 	add_child(firetimer)
+	move_timeout_timer.one_shot = true
+	move_timeout_timer.wait_time = 5.0  
+	move_timeout_timer.connect("timeout", Callable(self, "_on_move_timeout"))
+	add_child(move_timeout_timer)
 	
 	WeaponScene = Weapon
 	super()
@@ -84,17 +89,16 @@ func _physics_process(_delta):
 	if IsMovingRandomly:
 		var player = resolve_target()
 		target_pos = nav.target_position
-		if global_position.distance_to(player.global_position) <= 100:
-			IsMovingRandomly = false
-		elif nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
-			IsMovingRandomly = false
-			velocity = Vector2.ZERO
-			sprite.stop()
+
+		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
+			_cancel_random_move()
+		if player and global_position.distance_to(player.global_position) <= 100:
+			_cancel_random_move()
 	else:
 		var Player = resolve_target()
 		if not is_ramming and Player and global_position.distance_to(Player.global_position) <= RAM_TRIGGER_DISTANCE:
 			start_ramming(Player)
-			return  # Stop all normal logic during ramming
+			return
 		target_pos = Player.position
 		nav.target_position = target_pos
 
@@ -112,20 +116,17 @@ func _physics_process(_delta):
 		Speed = 120
 		sprite.modulate.a = 1
 		velocity = Direction * Speed
-			
-	# ANIMATION HANDLING
+
+	# Animation handling
 	if is_firing:
-		# Keep firing animation playing slowly
-		sprite.speed_scale = 1 #0.35
-		# Moving animation stays the same
-	elif IsMovingRandomly or (not IsMovingRandomly and velocity.length() > 0):
+		sprite.speed_scale = 1
+	elif IsMovingRandomly or velocity.length() > 0:
 		if sprite.animation != "move":
 			sprite.speed_scale = 1
 			sprite.play("move")
 		if abs(velocity.x) > 0.1:
 			sprite.flip_h = velocity.x > 0
 	else:
-		# Stop the animation (just don't PAUSE it)
 		sprite.speed_scale = 0
 
 	move_and_slide()
@@ -169,6 +170,7 @@ func random_move():
 	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
 
 	nav.target_position = target_pos
+	move_timeout_timer.start()
 
 func _on_fire_delay_timeout():
 	_fire_burst()
@@ -236,3 +238,10 @@ func start_ramming(player):
 func _on_ram_timeout():
 	is_ramming = false
 	velocity = Vector2.ZERO
+
+func _cancel_random_move():
+	IsMovingRandomly = false
+	velocity = Vector2.ZERO
+	sprite.stop()
+	if not move_timeout_timer.is_stopped():
+		move_timeout_timer.stop()

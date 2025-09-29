@@ -703,7 +703,6 @@ func register_spawn(flag:String, position:Vector2) -> void:
 
 func set_master_lock(enabled: bool):
 	LockAllControls = enabled
-	# Optionally force-stop actions immediately
 	if enabled:
 		IsFiring = false
 		IsDodging = false

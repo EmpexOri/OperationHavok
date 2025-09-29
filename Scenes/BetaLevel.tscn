@@ -573,7 +573,7 @@ position = Vector2(-311, 1432)
 position = Vector2(-133, 917)
 
 [node name="Spawn5" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(315, 1670)
+position = Vector2(290, 1685)
 
 [node name="Area_Blocker" parent="Parkinglot_Arena" instance=ExtResource("34_pkkfu")]
 position = Vector2(312, 1445)

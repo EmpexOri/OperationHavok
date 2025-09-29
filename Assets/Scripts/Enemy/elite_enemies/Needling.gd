@@ -22,6 +22,8 @@ var is_fleeing: bool = false
 const FLEE_DISTANCE: float = 120.0
 const FLEE_RECALCULATE_INTERVAL: float = 0.5
 
+var move_timeout_timer: Timer
+
 func start():
 	Speed = 150
 	Health = 40
@@ -31,7 +33,8 @@ func start():
 	Target = "Player"
 
 func _ready():
-	await get_tree().physics_frame  # Ensures physics state is initialized
+	await get_tree().physics_frame  
+	randomize()
 	sprite.connect("frame_changed", Callable(self, "_on_sprite_frame_changed"))
 	laser_flash_tween = get_tree().create_tween()
 	los_check = get_world_2d().direct_space_state
@@ -47,6 +50,12 @@ func _ready():
 	WeaponScene = Weapon
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
+	
+	move_timeout_timer = Timer.new()
+	move_timeout_timer.one_shot = true
+	move_timeout_timer.wait_time = 5.0
+	move_timeout_timer.connect("timeout", Callable(self, "_on_move_timeout"))
+	add_child(move_timeout_timer)
 
 	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
@@ -54,7 +63,7 @@ func _process(delta):
 	super._process(delta)  
 	if Health <= 0:
 		for i in range(1):
-			drop_xp()  # Custom drop_xp in Needling.gd
+			drop_xp() 
 		
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 		
@@ -80,16 +89,16 @@ func _physics_process(delta):
 		else:
 			is_fleeing = false
 
-	# Only use random movement if fleeing or patrolling
+	if IsMovingRandomly:
+		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
+			_cancel_random_move()  
+
 	if IsMovingRandomly or is_fleeing:
 		target_pos = nav.target_position
 
-		if not is_fleeing:
-			# If not fleeing, stop random move if we’re near target
+		if not is_fleeing and not IsMovingRandomly:
 			if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
-				IsMovingRandomly = false
-				velocity = Vector2.ZERO
-				sprite.stop()
+				_cancel_random_move()
 	else:
 		if player:
 			target_pos = player.global_position
@@ -125,7 +134,6 @@ func _physics_process(delta):
 		sprite.speed_scale = 0
 
 	update_aim_laser()
-
 	move_and_slide()
 
 func fire():
@@ -167,17 +175,15 @@ func random_move():
 	ShotsFired = 0
 	ShotsBeforeMoving = randi_range(1, 3)
 
-	# Pick a random offset within 100–150 pixels
 	var offset = Vector2(randf_range(-150, 150), randf_range(-150, 150))
 	var target_pos = global_position + offset
 
-	# Clamp within viewport
 	var screen_size = get_viewport_rect().size
 	target_pos.x = clamp(target_pos.x, 0, screen_size.x)
 	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
 
 	nav.target_position = target_pos
-
+	move_timeout_timer.start()
 
 func shoot_now():
 	var Player = get_tree().get_nodes_in_group(Target).front()
@@ -317,3 +323,10 @@ func move_away_from_player():
 	
 	IsMovingRandomly = true
 	nav.target_position = safe_position
+
+func _cancel_random_move():
+	IsMovingRandomly = false
+	velocity = Vector2.ZERO
+	sprite.stop()
+	if move_timeout_timer and move_timeout_timer.is_stopped() == false:
+		move_timeout_timer.stop()
