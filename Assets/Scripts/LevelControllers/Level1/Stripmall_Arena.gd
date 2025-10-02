@@ -15,6 +15,7 @@ var ENEMY_SCENES := {
 	"Network": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn"),
 	"Goolum": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn"),
 	"Warmachine": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn"),
+	"WarmachineRocket": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine_Rocket.tscn"),
 }
 
 var arena_active := false
@@ -41,15 +42,16 @@ func _ready() -> void:
 	waves = [
 		#{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
 		#{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
-		{ "Warmachine": 1 } 
+		{ "Warmachine": 1, "WarmachineRocket": 1 } 
 	]
 
 func activate_arena() -> void:
-	if arena_active: return
+	if arena_active:
+		return
 	arena_active = true
 	current_wave = 0
+	enemies.clear()
 	print("Stripmall Arena activated!")
-	#GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/ConcreteHills.mp3", true)
 	start_next_wave()
 
 func start_next_wave() -> void:
@@ -67,20 +69,26 @@ func start_next_wave() -> void:
 	await spawn_wave_enemies(wave_data)
 
 	# Boss wave special logic
-	if wave_data.has("Warmachine"):
-		# Find the boss by group instead of relying on enemies[-1]
-		var bosses = get_tree().get_nodes_in_group("Boss")
-		if bosses.size() > 0:
-			var boss = bosses[0]
+	if wave_data.has("Warmachine") and wave_data.has("WarmachineRocket"):
+		var warmachine_gun = get_tree().get_first_node_in_group("WarmachineGun")
+		var warmachine_rocket = get_tree().get_first_node_in_group("WarmachineRocket")
+
+		if warmachine_gun and warmachine_rocket:
 			GlobalAudioController.SetLevel1Music(
 				"res://Assets/Sound/Music/Lux_Target_Loops.mp3", true
 			)
-			call_deferred("_spawn_minions_during_boss", boss)
+
+			# Track duo deaths
+			if warmachine_gun.has_signal("died"):
+				warmachine_gun.connect("died", Callable(self, "_on_boss_died"))
+			if warmachine_rocket.has_signal("died"):
+				warmachine_rocket.connect("died", Callable(self, "_on_boss_died"))
+
+			call_deferred("_spawn_minions_during_boss_duo", [warmachine_gun, warmachine_rocket])
 		else:
-			push_error("No boss found in group 'Boss' after spawn.")
+			push_error("Warmachine duo not found correctly after spawn.")
 		return
 
-	# Wait until all enemies die before starting next wave
 	while enemies.size() > 0:
 		await get_tree().create_timer(0.1).timeout
 
@@ -91,11 +99,7 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 	var camera = get_viewport().get_camera_2d()
 	for enemy_type in data.keys():
 		var roll_data = data[enemy_type]
-		var count: int
-		if typeof(roll_data) == TYPE_ARRAY and roll_data.size() == 3:
-			count = roll(roll_data[0], roll_data[1]) + roll_data[2]
-		else:
-			count = int(roll_data)
+		var count: int = int(roll_data)
 
 		var scene = ENEMY_SCENES.get(enemy_type, null)
 		if scene == null:
@@ -103,8 +107,7 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 
 		for i in range(count):
 			var spawn: Marker2D
-			if enemy_type == "Warmachine" and boss_spawn:
-				# use the special boss spawn
+			if (enemy_type == "Warmachine" or enemy_type == "WarmachineRocket") and boss_spawn:
 				spawn = boss_spawn
 			else:
 				spawn = get_random_spawn_outside_camera(camera)
@@ -112,30 +115,33 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 			if spawn:
 				spawn_enemy(scene, spawn)
 
-			if enemy_type != "Warmachine":
+			if enemy_type not in ["Warmachine", "WarmachineRocket"]:
 				await get_tree().create_timer(randf_range(0.05, 0.25)).timeout
 
-func _spawn_minions_during_boss(boss: Node2D) -> void:
+func _spawn_minions_during_boss_duo(bosses: Array) -> void:
 	var start_time := Time.get_ticks_msec() / 1000.0
 	var base_delay := 2.0
 	var min_delay := 0.5
 	var base_batch := 1
 	var max_batch := 5
-
-	# build weighted list of non-boss enemies
+ 
 	var weighted_pool: Array[String] = []
 	for i in range(70): weighted_pool.append("Hordling")
 	for i in range(15): weighted_pool.append("Spewling")
 	var others := []
 	for k in ENEMY_SCENES.keys():
-		if k != "Warmachine" and k not in ["Hordling","Spewling"]:
+		if k not in ["Warmachine","WarmachineRocket","Hordling","Spewling"]:
 			others.append(k)
 	for i in range(15):
 		weighted_pool.append(others[randi() % others.size()])
 
 	var camera := get_viewport().get_camera_2d()
 
-	while is_instance_valid(boss) and boss.is_inside_tree():
+	while true:
+		bosses = bosses.filter(func(b): return is_instance_valid(b) and b.is_inside_tree())
+		if bosses.is_empty():
+			break
+
 		var elapsed := (Time.get_ticks_msec() / 1000.0) - start_time
 		var current_batch: int = clamp(base_batch + int(elapsed / 20.0), base_batch, max_batch)
 		var current_delay: float = max(base_delay - elapsed * 0.02, min_delay)
@@ -144,13 +150,10 @@ func _spawn_minions_during_boss(boss: Node2D) -> void:
 			for i in range(current_batch):
 				if enemies.size() >= BOSS_MINION_CAP:
 					break
-
 				var pick := weighted_pool[randi() % weighted_pool.size()]
 				var count := 1
-				# Hordlings & Spewlings come in packs of 3–5
-				if pick == "Hordling" or pick == "Spewling":
+				if pick in ["Hordling","Spewling"]:
 					count = randi_range(3,5)
-
 				var scene: PackedScene = ENEMY_SCENES[pick]
 				for j in range(count):
 					if enemies.size() >= BOSS_MINION_CAP:
@@ -158,14 +161,18 @@ func _spawn_minions_during_boss(boss: Node2D) -> void:
 					var spawn := get_random_spawn_outside_camera(camera)
 					if spawn:
 						spawn_enemy(scene, spawn)
-						# tiny stagger to avoid all at once
 						await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
 
 		await get_tree().create_timer(current_delay).timeout
 
-	# clean-up after boss death
+	# cleanup after duo death
 	while enemies.size() > 0:
+		for e in enemies:
+			if is_instance_valid(e) and e.is_inside_tree():
+				e.queue_free()
+		enemies.clear()
 		await get_tree().create_timer(0.1).timeout
+
 	arena_completed()
 
 func spawn_enemy(scene: PackedScene, spawn: Marker2D) -> void:
@@ -227,3 +234,24 @@ func reset_arena() -> void:
 	for child in get_children():
 		if child is Marker2D:
 			spawn_points.append(child)
+
+func _on_boss_died(boss: Node) -> void:
+	# Remove boss if tracked
+	enemies.erase(boss)
+
+	# Check both groups
+	var gun_alive = get_tree().get_first_node_in_group("WarmachineGun")
+	var rocket_alive = get_tree().get_first_node_in_group("WarmachineRocket")
+
+	if not gun_alive and not rocket_alive:
+		# Both bosses are dead → cleanup + complete
+		print("Warmachine duo defeated!")
+		_cleanup_after_boss_duo()
+		arena_completed()
+		
+func _cleanup_after_boss_duo() -> void:
+	# Despawn leftover enemies
+	for e in enemies:
+		if is_instance_valid(e) and e.is_inside_tree():
+			e.queue_free()
+	enemies.clear()

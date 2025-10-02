@@ -29,7 +29,7 @@ const RAM_DAMAGE = 30
 
 # --- Shield variables ---
 @onready var shield_sprite: Sprite2D = $ShieldBubble/Sprite
-var ShieldMax := 300
+var ShieldMax := 500
 var Shield := ShieldMax
 var shield_regen_rate := 75.0      # HP per second when regenerating
 var shield_regen_delay := 5.0      # seconds of no damage before regen starts
@@ -49,7 +49,7 @@ var move_timeout := 5.0
 
 func start():
 	Speed = 80
-	Health = 750
+	Health = 1000
 	MaxHealth = Health
 	Group = "Enemy"
 	SummonGroup = "EnemySummon"
@@ -58,6 +58,7 @@ func start():
 func _ready():
 	randomize()
 	add_to_group("Boss")
+	add_to_group("WarmachineGun")
 	var firetimer = Timer.new()
 	fire_duration_timer.one_shot = true
 	fire_duration_timer.connect("timeout", Callable(self, "_on_fire_duration_timeout"))

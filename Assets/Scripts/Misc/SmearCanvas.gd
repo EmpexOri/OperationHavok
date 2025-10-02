@@ -10,7 +10,7 @@ const MAX_SPAWNS_PER_FRAME := 50
 
 var blood_censorship_enabled := false
 var bloodcolor := '63070fd4'
-var censoredbloodcolor := '4a0642cc'
+var censoredbloodcolor := '#3b0e6b'
 var nullcolor := Color("ffffffd4")
 
 var smear_texture: Texture2D

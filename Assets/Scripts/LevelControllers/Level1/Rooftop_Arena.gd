@@ -73,7 +73,7 @@ func activate_arena():
 	current_sub_arena = 0
 	
 	# --- Play arena music ---
-	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/Temp/DoomWaterParking.mp3", true)
+	GlobalAudioController.SetLevel1Music("res://Assets/Sound/Music/DoomWaterParking.mp3", true)
 	
 	start_sub_arena(0)  
 

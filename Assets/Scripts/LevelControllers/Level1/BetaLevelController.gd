@@ -193,13 +193,10 @@ func _on_StripmallTrigger_body_entered(body: Node2D) -> void:
 		arena.activate_arena()
 		print("Stripmall Arena activated!")
 
-		# Spawn a Boulder_Blocker to prevent leaving
 		var blocker := BOULDER_BLOCKER_SCENE.instantiate()
-		blocker.global_position = Vector2(1445, 1764)  # updated to match intended position
+		blocker.global_position = Vector2(1445, 1764) 
 		get_parent().add_child(blocker)
 		print("Stripmall blocker spawned at (1445,1764)")
-
-		# Disable or remove the trigger so it doesn’t fire again
 		var trigger = get_node_or_null("StripmallTrigger")
 		if trigger:
 			trigger.queue_free()

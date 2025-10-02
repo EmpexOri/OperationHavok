@@ -214,7 +214,7 @@ func _run_breakdown_event() -> void:
 		await get_tree().create_timer(0.05).timeout
 
 	# After all Hordlings are spawned, remove the blocker with a short delay
-	await get_tree().create_timer(5.5).timeout
+	await get_tree().create_timer(3.5).timeout
 	# After all Hordlings are spawned, remove the blocker with a short delay
 	await get_tree().create_timer(0.25).timeout
 	if blocker:

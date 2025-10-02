@@ -8,3 +8,4 @@ position = Vector2(0, 32)
 texture = ExtResource("1_bdpar")
 offset = Vector2(0, -32)
 script = ExtResource("2_atr5i")
+sprite_height = 300.0

@@ -20,7 +20,7 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 	preload("res://Assets/Sound/SFX/DeathSFX/BiomancerDeathSFX/Crunch5.mp3")
 ]
 
-var LevelUpSound: AudioStream = preload("res://Assets/Sound/SFX/LevelUp.wav")
+var LevelUpSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/LevelUpDiveBomb.wav")
 
 var PlayerDamageSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/MoanSFX.mp3")
 
