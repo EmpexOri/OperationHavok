@@ -388,6 +388,7 @@ func PlayLevelUpSound():
 	for player in GeneralChannels:
 		if not player.playing:
 			player.stream = LevelUpSound
+			player.volume_db = -10
 			player.play()
 			return
 	# fall-back overwrite if all busy
@@ -395,6 +396,7 @@ func PlayLevelUpSound():
 		var p = GeneralChannels[randi() % GeneralChannels.size()]
 		p.stop()
 		p.stream = LevelUpSound
+		p.volume_db = -10
 		p.play()
 
 func PlayShieldPing():

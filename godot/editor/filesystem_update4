@@ -22,3 +22,4 @@ res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
 res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd
 res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
