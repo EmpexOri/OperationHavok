@@ -7,3 +7,5 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Scenes/Options/PauseMenu.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Scenes/Options/CommandoSkillTree.tscn

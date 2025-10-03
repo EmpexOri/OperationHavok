@@ -9,8 +9,7 @@ extends Node
 @onready var SkillTreeButton: TextureButton = $SkillTreeButton
 @onready var Title: Label = $"Title"
 @onready var MainButton: TextureButton = $MenuButton
-@onready var BackPanel: ColorRect = $Background
-@onready var BackPanel2: ColorRect = $Background2
+@onready var BackPanel = $PauseMenuBg
 
 # Controls Menu
 @onready var ControlsMenu: CanvasLayer = $ControlsMenu
@@ -35,7 +34,6 @@ func show_pause_menu() -> void:
 	Title.visible = true
 	MainButton.visible = true
 	BackPanel.visible = true
-	BackPanel2.visible = true
 	ControlsMenu.visible = false
 	BackButton.visible = false
 	BackButton2.visible = false
@@ -55,7 +53,6 @@ func _on_resume_button_pressed() -> void:
 	Title.visible = false
 	MainButton.visible = false
 	BackPanel.visible = false
-	BackPanel2.visible = false
 	ControlsMenu.visible = false
 	BackButton.visible = false
 	BackButton2.visible = false

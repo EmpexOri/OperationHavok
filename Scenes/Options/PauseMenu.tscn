@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=23 format=3 uid="uid://cdfpkcvyx66sx"]
 
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
+[ext_resource type="Texture2D" uid="uid://d18diqxn1x00q" path="res://Assets/Art/Menu/PauseMenuBG.png" id="2_tp3vf"]
 [ext_resource type="Texture2D" uid="uid://decrs525hjtxo" path="res://Assets/Art/Menu/resume.png" id="3_f70tf"]
 [ext_resource type="Texture2D" uid="uid://5f4xfq1satf5" path="res://Assets/Art/Menu/controls.png" id="3_prp31"]
 [ext_resource type="Texture2D" uid="uid://d36cl676qxni7" path="res://Assets/Art/Menu/controlspressed.png" id="4_dvb8c"]
@@ -36,35 +37,9 @@ process_mode = 2
 layer = 3
 script = ExtResource("4_fx1m6")
 
-[node name="Background2" type="ColorRect" parent="."]
-z_index = -2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.5
-offset_top = -172.5
-offset_right = 184.5
-offset_bottom = 172.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.619608)
-
-[node name="Background" type="ColorRect" parent="."]
-z_index = -2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -177.5
-offset_top = -165.5
-offset_right = 177.5
-offset_bottom = 165.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.313726, 0, 0.00784314, 0.713726)
+[node name="PauseMenuBg" type="Sprite2D" parent="."]
+position = Vector2(322, 181)
+texture = ExtResource("2_tp3vf")
 
 [node name="ControlsMenu" type="CanvasLayer" parent="."]
 layer = 4
