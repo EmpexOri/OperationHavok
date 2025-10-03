@@ -3,6 +3,10 @@ extends Enemy
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var latch_area: Area2D = $Area2D
 
+@export var DropScene: PackedScene = preload("res://Prefabs/CodePrefabs/Misc/SlowGroundEffect_Small.tscn")
+@export var DropInterval: float = 0.25
+var drop_timer: float = 0.0
+
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
 
 @onready var attach_timer: Timer = Timer.new()
@@ -55,6 +59,14 @@ func _physics_process(delta):
 		sprite.play()
 	else:
 		sprite.stop()
+		
+	if velocity.length() > 0.1 and DropScene:
+		drop_timer -= delta
+		if drop_timer <= 0.0:
+			drop_timer = DropInterval
+			var drop_instance = DropScene.instantiate()
+			drop_instance.global_position = global_position
+			get_parent().add_child(drop_instance)  
 		
 func on_death():
 	# Spawn goo chunks at this enemy's position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=77 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cinikat670uwd" path="res://Assets/Art/HUD/PlayerHUD/CharacterPFP.png" id="3_fodhj"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="5_7u0io"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="8_4un8s"]
+[ext_resource type="PackedScene" uid="uid://dqtolfw0vt2vw" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn" id="9_s5lui"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="12_sd37h"]
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="16_chyi3"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="17_s5lui"]
@@ -983,6 +984,9 @@ position = Vector2(898, 1626)
 
 [node name="Red_Vending" parent="YSortedObjects" instance=ExtResource("55_s6ron")]
 position = Vector2(478, 1626)
+
+[node name="Goolum" parent="YSortedObjects" instance=ExtResource("9_s5lui")]
+position = Vector2(223, 47)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

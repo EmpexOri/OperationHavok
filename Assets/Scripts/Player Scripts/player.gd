@@ -43,6 +43,8 @@ var LockAbilities := false
 var LockDodging := false
 
 #Look Direction Stuff
+@onready var AimIndicator: Sprite2D = $AimIndicator
+var AimDistance: float = 120.0
 
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
@@ -164,6 +166,7 @@ func _process(delta):
 		print("DEAD")
 		GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
 		kill()
+	update_aim_indicator()
 	
 func _physics_process(delta: float) -> void:
 	if LockAllControls or LockMovement:
@@ -717,3 +720,17 @@ func lock_abilities(enabled: bool):
 
 func lock_dodging(enabled: bool):
 	LockDodging = enabled
+
+func update_aim_indicator():
+	if not ControllerEnabled or not AimIndicator:
+		AimIndicator.visible = false
+		return
+		
+	var dir = _get_fire_direction()
+	if dir == Vector2.ZERO:
+		AimIndicator.visible = false
+		return
+		
+	AimIndicator.visible = true
+	AimIndicator.global_position = AimIndicator.global_position.lerp(global_position + dir * AimDistance, 0.2)
+	AimIndicator.rotation = dir.angle()
