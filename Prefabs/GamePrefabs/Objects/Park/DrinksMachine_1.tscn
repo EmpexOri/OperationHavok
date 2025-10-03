@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx5fgcco5rhvl"]
+[gd_scene load_steps=6 format=3 uid="uid://cx5fgcco5rhvl"]
 
 [ext_resource type="Script" uid="uid://c8op35dt0kl1s" path="res://Assets/Scripts/Effects/Object Effects/Trashcan.gd" id="1_hdtak"]
 [ext_resource type="PackedScene" uid="uid://sgnpewn1ymvy" path="res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn" id="2_83iaf"]
+[ext_resource type="Texture2D" uid="uid://draap8di11a2t" path="res://Assets/Art/Objects/LevelObjects/Carpark/Broken/BrokenVendingMachineBlue.png" id="2_h2aaw"]
 [ext_resource type="Texture2D" uid="uid://6dgmoyw25a50" path="res://Assets/Art/Objects/LevelObjects/Carpark/VendingBlue.png" id="2_to2j7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6g3p"]
 size = Vector2(26, 25)
 
-[node name="DrinkMachine_1" type="CharacterBody2D"]
+[node name="Blue_Vending" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_hdtak")
+destroyed_texture = ExtResource("2_h2aaw")
 destruction_particles_scene = ExtResource("2_83iaf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
