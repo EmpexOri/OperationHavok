@@ -1,11 +1,10 @@
-[gd_scene load_steps=69 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=68 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
-[ext_resource type="Texture2D" uid="uid://drb5ccbyy3vja" path="res://Assets/Art/HUD/PlayerHUD/HB_BG.png" id="3_6wlsl"]
 [ext_resource type="PackedScene" uid="uid://bdul7stkl75pv" path="res://Prefabs/GamePrefabs/Objects/lamp_post.tscn" id="3_bbpmv"]
+[ext_resource type="Texture2D" uid="uid://cinikat670uwd" path="res://Assets/Art/HUD/PlayerHUD/CharacterPFP.png" id="3_fodhj"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="5_7u0io"]
-[ext_resource type="Texture2D" uid="uid://qlkbjxtxw4yy" path="res://Assets/Art/HUD/PlayerHUD/HB_XP.png" id="7_6wlsl"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="8_4un8s"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="12_sd37h"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="18_lbk0n"]
@@ -127,6 +126,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
+[node name="CharacterPfp" type="Sprite2D" parent="PlayerUI/UIContainer"]
+position = Vector2(26, 38)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_fodhj")
+
 [node name="HealthBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 layout_mode = 1
 anchors_preset = 4
@@ -192,19 +196,6 @@ value = 1.0
 texture_under = ExtResource("5_7u0io")
 texture_progress = ExtResource("5_7u0io")
 tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerUI/UIContainer"]
-visible = false
-z_index = -2
-position = Vector2(66, 34)
-texture = ExtResource("3_6wlsl")
-
-[node name="Sprite2D2" type="Sprite2D" parent="PlayerUI/UIContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0.75)
-z_index = -2
-position = Vector2(66, 326)
-texture = ExtResource("7_6wlsl")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 modulate = Color(1, 1, 1, 0.75)

@@ -6,5 +6,3 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_1.tscn
-res://Prefabs/GamePrefabs/Objects/Park/DrinksMachine_2.tscn
