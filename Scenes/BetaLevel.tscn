@@ -205,6 +205,11 @@ texture_under = ExtResource("5_7u0io")
 texture_progress = ExtResource("5_7u0io")
 tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
 
+[node name="XpCircle" type="Sprite2D" parent="PlayerUI/UIContainer"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(26, 36)
+texture = ExtResource("8_4un8s")
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
 modulate = Color(1, 1, 1, 0.75)
 texture_filter = 1
@@ -529,7 +534,7 @@ texture = ExtResource("23_ie34p")
 [node name="RooftopShadow" type="Sprite2D" parent="Rooftop_Arena/CloudHolder"]
 z_index = -25
 z_as_relative = false
-position = Vector2(238, -52.5)
+position = Vector2(241, -73)
 scale = Vector2(10.1875, 8.21528)
 texture = ExtResource("21_qfsbe")
 
