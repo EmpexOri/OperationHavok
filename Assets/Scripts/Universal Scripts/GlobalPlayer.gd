@@ -61,11 +61,12 @@ func LevelUp():
 	ClassData[CurrentClass]["PerkPoints"] += 1
 	UpdateHP()
 	UpdatePerkPointUI()
-
-	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
-	if UIHandler and UIHandler.has_method("PlayLevelUpEffect"):
+	
+	var UIHandler = get_node_or_null("/root/World/PlayerUI")
+	if UIHandler:
+		UIHandler.FlashScreen(Color(1.0, 0.85, 0.0), 0.3, 1)
 		UIHandler.PlayLevelUpEffect()
-
+		
 	var audio = get_node_or_null("/root/GlobalAudioController")
 	if audio and audio.has_method("PlayLevelUpSound"):
 		audio.PlayLevelUpSound()

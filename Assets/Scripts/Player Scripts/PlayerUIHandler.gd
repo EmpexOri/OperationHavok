@@ -7,6 +7,8 @@ extends Node
 @onready var DodgeBar: TextureProgressBar = $UIContainer/DodgeBar 
 @onready var ScoreLabel: Label = $UIContainer/ScoreLabel
 
+var flash_tween: Tween = null
+
 func _ready():
 	add_to_group("PlayerUI")
 	await get_tree().process_frame
@@ -58,10 +60,30 @@ func UpdateScore():
 		ScoreLabel.text = "Score: " + str(score)
 
 func PlayLevelUpEffect():
-	var tween := create_tween()
-	var original_color := HealthBar.self_modulate
-	# vivid gold with less red so it pops against the default red
-	var gold_color := Color(1.0, 0.85, 0.0, 1.0)
+	if HealthBar:
+		var tween := create_tween()
+		var original_color := HealthBar.self_modulate
+		var gold_color := Color(1.0, 0.85, 0.0, 1.0)
+		tween.tween_property(HealthBar, "self_modulate", gold_color, 0.25)
+		tween.tween_property(HealthBar, "self_modulate", original_color, 0.25).set_delay(0.75)
 
-	tween.tween_property(HealthBar, "self_modulate", gold_color, 0.25)
-	tween.tween_property(HealthBar, "self_modulate", original_color, 0.25).set_delay(0.75)
+func FlashScreen(color: Color, duration: float = 0.2, times: int = 1):
+	var flash_path = "UIContainer/ScreenFlash"
+	if not has_node(flash_path):
+		print("ScreenFlash node missing at path: ", flash_path)
+		return
+	
+	var flash_rect: ColorRect = get_node(flash_path)
+	flash_rect.color = color
+	flash_rect.visible = true
+	flash_rect.modulate.a = 0.0 
+
+	if flash_tween:
+		flash_tween.kill()
+	flash_tween = create_tween()
+
+	for i in range(times):
+		flash_tween.tween_property(flash_rect, "modulate:a", 0.2, duration/2)
+		flash_tween.tween_property(flash_rect, "modulate:a", 0.0, duration/2)
+
+	flash_tween.tween_callback(Callable(flash_rect, "hide"))

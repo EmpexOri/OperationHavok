@@ -535,15 +535,24 @@ func _play_idle_8dir(dir: Vector2) -> void:
 func deal_damage(damage, from_position = null):
 	if Invincible:
 		return  # Skip if already invincible
-
+		
 	# Apply damage
 	ScreenShake.shake(damage, 0.1)
 	GlobalPlayer.PlayerHP -= damage
-
-	# Flash when taking damage
+	
+	# Flash screen red if no perk points, gold if perk points available
+	var color = Color.RED
+	if PlayerUIHandler:
+		PlayerUIHandler.FlashScreen(color)
+		
+	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if UIHandler:
+		UIHandler.FlashScreen(color)
+		
+	# Flash player sprite
 	flash_white()  
 	GlobalAudioController.PlayPlayerDamageSFX()
-
+	
 	# Temporary invincibility
 	Invincible = true
 	var inv_timer = get_tree().create_timer(0.2)
