@@ -8,6 +8,7 @@ func _ready():
 	Speed = 15
 	Health = 10
 	MaxHealth = Health
+	add_to_group('Lesser_Enemy')
 	$AnimatedSprite2D.modulate = Colour
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()

@@ -17,3 +17,6 @@ res://Assets/Scripts/Enemy/elite_enemies/Goolum.gd
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect_Small.tscn
 res://Prefabs/CodePrefabs/Misc/SlowGroundEffect.tscn
 res://Assets/Scripts/Effects/Misc Effects/SlowGroundEffect.gd
+res://Assets/Scripts/Enemy/hoard_enemies/FleshSpawn.gd
+res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
+res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd

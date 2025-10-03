@@ -22,6 +22,7 @@ func start():
 func _ready():
 	super()
 	add_to_group("Hordling")
+	add_to_group('Lesser_Enemy')
 	
 	# Duplicate material for independent tinting
 	if sprite.material:

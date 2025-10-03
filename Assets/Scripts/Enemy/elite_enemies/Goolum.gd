@@ -45,9 +45,14 @@ func _physics_process(delta):
 		find_strongest_target()
 
 	if Target:
-		nav.target_position = Target.global_position
-		var direction = (nav.get_next_path_position() - global_position).normalized()
-		velocity = direction * Speed
+		# Predictive target position
+		var target_pos = Target.global_position
+		if "velocity" in Target:
+			target_pos += Target.velocity * 0.5 #He's trying his hardest to path 0.5s ahead
+		nav.target_position = target_pos  
+		var next_point = nav.get_next_path_position()
+		var desired_dir = (next_point - global_position).normalized()
+		velocity = velocity.lerp(desired_dir * Speed, 0.15)
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
@@ -79,8 +84,9 @@ func on_death():
 
 func find_strongest_target():
 	var candidates := get_tree().get_nodes_in_group("Enemy")
-
 	var valid_candidates := []
+	var lesser_candidates := []
+	
 	for enemy in candidates:
 		if enemy == self:
 			continue
@@ -88,38 +94,46 @@ func find_strongest_target():
 			continue
 		if enemy.Health <= 0:
 			continue
-		valid_candidates.append(enemy)
-
-	if valid_candidates.is_empty():
+			
+		if enemy.is_in_group("Lesser_Enemy"):
+			lesser_candidates.append(enemy)
+		else:
+			valid_candidates.append(enemy)
+			
+	# Prefer non-Lesser_Enemy targets
+	if valid_candidates.size() > 0:
+		Target = _get_strongest_from_list(valid_candidates)
+	elif lesser_candidates.size() > 0:
+		Target = _get_strongest_from_list(lesser_candidates)
+	else:
 		Target = null
-		return
-
-	var strongest = valid_candidates[0]
-	for enemy in valid_candidates:
+		
+func _get_strongest_from_list(enemy_list: Array) -> Node2D:
+	var strongest: Node2D = enemy_list[0]
+	for enemy in enemy_list:
 		if enemy.Health > strongest.Health:
 			strongest = enemy
-
-	Target = strongest
-
+	return strongest
+	
 @warning_ignore("unused_parameter")
 func attempt_transfer_health_async(target: Node2D) -> void:
 	await get_tree().physics_frame
-
+	
 	if not is_instance_valid(target) or target.is_in_group("Armored"):
 		return
-
+		
 	var space_state = get_world_2d().direct_space_state
 	if space_state == null:
 		return
-
+		
 	var ray_params = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
 	ray_params.exclude = [self]
 	ray_params.collision_mask = WALL_COLLISION_MASK
-
+	
 	var result = space_state.intersect_ray(ray_params)
 	if result and result.collider != target:
 		return # Blocked
-
+		
 	if target.has_method("apply_armor_buff"):
 		print("Goolum grants armor to:", target.name)
 		target.apply_armor_buff(Health)

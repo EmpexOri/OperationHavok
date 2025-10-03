@@ -32,6 +32,7 @@ func start():
 	
 func _ready():
 	WeaponScene = Weapon
+	add_to_group('Lesser_Enemy')
 	super()
 	var player = resolve_target()
 	if player:
