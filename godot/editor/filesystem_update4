@@ -6,20 +6,3 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Misc/SmearCanvas.gd
-res://Prefabs/GamePrefabs/Objects/Park/Tree.tscn
-res://Scenes/BetaLevel.tscn
-res://Prefabs/GamePrefabs/Objects/lamp_post.tscn
-res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd
-res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
-res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineRocketLauncher.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/Enemy_Rocket.tscn
-res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine_Rocket.tscn
-res://Assets/Scripts/Enemy/Minibosses/Warmachine_Rocket.gd
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
-res://Assets/Scripts/Projectiles/enemy_rocket_projectile.gd
-res://Scenes/GlobalAudioController.tscn
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
