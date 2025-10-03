@@ -42,6 +42,8 @@ var LockShooting := false
 var LockAbilities := false
 var LockDodging := false
 
+#Look Direction Stuff
+
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
 		"name": "SMG",
@@ -622,25 +624,21 @@ func update_weapon_sprite():
 func update_weapon_rotation():
 	if not CurrentWeapon:
 		return
-
-	var weapon_path = CurrentWeapon.scene_file_path
-	if weapon_data.has(weapon_path):
-		var weapon_info = weapon_data[weapon_path]
-		var weapon_sprite = $Weapon/WeaponSprite
-
-		if weapon_sprite:
-			var direction = (get_global_mouse_position() - global_position).normalized()
-			var angle = direction.angle()
-			# Check if the mouse is on the left side of the character
-			if angle > PI / 2 or angle < -PI / 2:
-				# Flip the weapon horizontally when aiming to the left
-				weapon_sprite.flip_v = true
-			else:
-				# Keep the weapon as it is when aiming to the right
-				weapon_sprite.flip_v = false
-			# Apply the rotation without clamping
-			weapon_sprite.rotation = angle
-			#print("Setting weapon rotation to:", angle)
+	var direction: Vector2
+	if ControllerEnabled:
+		direction = _get_fire_direction()
+	else:
+		direction = (get_global_mouse_position() - global_position)
+	if direction == Vector2.ZERO:
+		return
+	var angle = direction.angle()
+	var weapon_sprite = $Weapon/WeaponSprite
+	if weapon_sprite:
+		if angle > PI / 2 or angle < -PI / 2:
+			weapon_sprite.flip_v = true
+		else:
+			weapon_sprite.flip_v = false
+		weapon_sprite.rotation = angle
 
 func start_cooldown_on_slot(slot_index: int, duration: float) -> void:
 	print("start_cooldown_on_slot called for slot:", slot_index, "duration:", duration)

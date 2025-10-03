@@ -5,6 +5,8 @@ signal perk_finished(index: int)
 @export var cooldown_time: float = 4.0
 var perk_index: int
 
+var last_direction: Vector2 = Vector2.RIGHT 
+
 func activate(player, index = -1):
 	perk_index = index
 	self.owner = player
@@ -13,18 +15,22 @@ func activate(player, index = -1):
 	var grenade = grenade_scene.instantiate()
 	get_tree().current_scene.add_child(grenade)
 
-	#var direction = (get_global_mouse_position() - player.global_position).normalized()
-	var direction = Vector2()
+	var direction = Vector2.ZERO
 	
 	if player.ControllerEnabled:
 		direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
 		direction.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
 		if direction.length() > 0.1:
 			direction = direction.normalized()
+			last_direction = direction  
 		else:
-			return
+			direction = last_direction 
 	else:
-		direction = (get_global_mouse_position() - global_position).normalized()
+		direction = (get_global_mouse_position() - player.global_position).normalized()
+		if direction.length() > 0.1:
+			last_direction = direction
+		else:
+			direction = last_direction
 			
 	grenade.start(player.global_position, direction)
 
@@ -32,7 +38,7 @@ func activate(player, index = -1):
 
 func _start_cooldown():
 	if owner and owner.has_method("start_cooldown_on_slot"):
-		owner.start_cooldown_on_slot(2, cooldown_time)  # slot 2 is grenade
+		owner.start_cooldown_on_slot(2, cooldown_time)  
 	
 	var timer = Timer.new()
 	timer.one_shot = true

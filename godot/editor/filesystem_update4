@@ -6,6 +6,9 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Scenes/Options/PauseMenu.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Scenes/Options/CommandoSkillTree.tscn
+res://Scenes/Options/OptionsScene.tscn
+res://Scenes/Options/PauseMenu.tscn
