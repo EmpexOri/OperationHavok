@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bbjpy761bnxdj" path="res://Assets/Scripts/Misc/YSorted.gd" id="2_atr5i"]
 
 [node name="Sprite2D" type="Sprite2D"]
-position = Vector2(0, 32)
+position = Vector2(0, 45)
 texture = ExtResource("1_bdpar")
-offset = Vector2(0, -32)
+offset = Vector2(0, -45)
 script = ExtResource("2_atr5i")
 sprite_height = 300.0

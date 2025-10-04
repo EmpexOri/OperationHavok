@@ -7,3 +7,13 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Player Scripts/player.gd
+res://Prefabs/GamePrefabs/Objects/Carpark_Objects/Car_Horizontal_1.tscn
+res://Prefabs/GamePrefabs/Objects/Carpark_Objects/Car_Horizontal_2.tscn
+res://Scenes/BetaLevel.tscn
+res://Prefabs/GamePrefabs/Objects/lamp_post_down.tscn
+res://Prefabs/GamePrefabs/Objects/lamp_post_up.tscn
+res://Prefabs/GamePrefabs/Objects/Lamp_Post_Up_Flicker.tscn
+res://Assets/Scripts/Misc/LightFlicker.gd
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Prefabs/GamePrefabs/Objects/Park/Tree.tscn

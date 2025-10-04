@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca6vanvrqtcfl"]
+
+[ext_resource type="Texture2D" uid="uid://bekdam1uh8my" path="res://Assets/Art/Objects/LevelObjects/Carpark/Car_Object_v3_maroon.png" id="1_xfwpu"]
+
+[node name="CarBlocker" type="StaticBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 1)
+texture = ExtResource("1_xfwpu")
+offset = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -24)
+polygon = PackedVector2Array(-54, 9, -54, -9, -44, -16, -23, -16, -12, -27, 16, -27, 28, -16, 46, -16, 53, -9, 53, 9)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpfbnlphsagev"]
+[gd_scene load_steps=17 format=3 uid="uid://cpfbnlphsagev"]
 
 [ext_resource type="Script" uid="uid://dspo3pwd2b07v" path="res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd" id="1_okkq5"]
-[ext_resource type="Texture2D" uid="uid://ddnef3vqy6sav" path="res://Assets/Art/Sprites/Hordling_WALK_FRONT.png" id="2_dajsh"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_bvkv2"]
 [ext_resource type="Texture2D" uid="uid://dmn25e0pnj263" path="res://Assets/Art/Sprites/Hordling_Animation_temp.png" id="4_1b008"]
 
@@ -94,15 +93,10 @@ animations = [{
 }]
 
 [node name="Hordling" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_okkq5")
-
-[node name="Body" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-texture = ExtResource("2_dajsh")
-hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -127,6 +121,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.9, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("3_bvkv2")
 sprite_frames = SubResource("SpriteFrames_8cthu")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://drtoox2rnfm6p"]
+
+[ext_resource type="Texture2D" uid="uid://co8satb05d6rr" path="res://Assets/Art/Objects/LevelObjects/Carpark/Car_Object_v3_blue.png" id="1_ykljs"]
+
+[node name="CarBlocker" type="StaticBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_ykljs")
+offset = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -24)
+polygon = PackedVector2Array(-54, 9, -54, -9, -44, -16, -23, -16, -12, -27, 16, -27, 28, -16, 46, -16, 53, -9, 53, 9)
