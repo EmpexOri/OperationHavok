@@ -1,9 +1,9 @@
+Line2D
 StaticBody2D
 NavigationObstacle2D
 Node2D
 CollisionPolygon2D
 RayCast2D
-Line2D
 ColorRect
 TextureRect
 Sprite2D

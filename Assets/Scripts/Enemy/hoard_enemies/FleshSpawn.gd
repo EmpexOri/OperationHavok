@@ -3,21 +3,30 @@ extends Enemy
 @onready var sprite = $AnimatedSprite2D
 var Colour = Color(0, 0.5, 0)
 
+# trail config
+@export var max_trail_points := 75
+@export var point_spacing := 4.0 
+@export var trail_fade_speed := 0.5  
+var last_trail_pos: Vector2
+var trail_blobs: Array[Sprite2D] = []
+
 func _ready():
 	super._ready()
 	Speed = 15
 	Health = 10
 	MaxHealth = Health
-	add_to_group('Lesser_Enemy')
-	$AnimatedSprite2D.modulate = Colour
-	super()
-	get_flash_sprite().material = get_flash_sprite().material.duplicate()
+	add_to_group("Lesser_Enemy")
+
+	sprite.modulate = Colour
+
+	last_trail_pos = global_position
 
 func deal_damage(damage, from_position = null):
 	Health -= damage
 
 func _physics_process(delta):
 	super._physics_process(delta)
+	update_trail(delta)
 
 	# Enemy movement + animations
 	if not nav:
@@ -130,3 +139,27 @@ func _on_area_2d_body_entered(body: Node2D):
 
 func get_flash_sprite() -> CanvasItem:
 	return sprite 
+
+func update_trail(delta):
+	if global_position.distance_to(last_trail_pos) > point_spacing:
+		var blob = Sprite2D.new()
+		blob.texture = preload("res://Assets/Art/PlaceHolders/SmallGreenSplat.png")
+		blob.z_index = -1
+		blob.global_position = global_position
+		blob.modulate = Colour
+		
+		var random_angle_deg = 15 * randi_range(1, 24)
+		blob.rotation = deg_to_rad(random_angle_deg)
+		
+		get_parent().add_child(blob)
+		trail_blobs.append(blob)
+		last_trail_pos = global_position
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(blob, "modulate:a", 0.0, 7.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_callback(Callable(blob, "queue_free"))
+		
+	while trail_blobs.size() > max_trail_points:
+		var old_blob = trail_blobs.pop_front()
+		if is_instance_valid(old_blob):
+			old_blob.queue_free()

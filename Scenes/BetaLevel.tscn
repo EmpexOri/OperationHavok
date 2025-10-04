@@ -800,7 +800,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
-position = Vector2(842, 1704)
+position = Vector2(-31, -230)
 up_direction = Vector2(0.9999998, -0.0006666659)
 
 [node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]
@@ -1013,6 +1013,7 @@ position = Vector2(-121, 1358)
 scale = Vector2(-1, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(66, 34)
 scale = Vector2(0.999851, 0.998529)
 navigation_polygon = SubResource("NavigationPolygon_w5l6p")

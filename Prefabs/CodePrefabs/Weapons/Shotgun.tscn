@@ -10,7 +10,6 @@
 [sub_resource type="Resource" id="Resource_atkl6"]
 script = ExtResource("4_56wy7")
 max_hits = 99999
-effect_name = ""
 metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"
 
 [node name="Shotgun" type="Node2D"]
