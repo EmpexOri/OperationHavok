@@ -43,8 +43,14 @@ var LockAbilities := false
 var LockDodging := false
 
 #Look Direction Stuff
-@onready var AimIndicator: Sprite2D = $AimIndicator
-var AimDistance: float = 120.0
+@onready var AimLine: Line2D = $AimLine
+@onready var AimRay: RayCast2D = $AimRay
+var AimDistance: float = 600.0 
+var AimOffset: float = 10.0
+
+#Smoother Shooting
+var last_fire_direction := Vector2.RIGHT
+var aim_input_strength := 0.0
 
 var weapon_data := {
 	"res://Prefabs/CodePrefabs/Weapons/Smg.tscn": {
@@ -408,19 +414,27 @@ func _get_fire_direction() -> Vector2:
 	# Return the direction the player is firing in
 	if not CurrentWeapon:
 		return Vector2.ZERO
-
+		
 	if ControllerEnabled:
-		var dir := Vector2.ZERO
-		dir.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
-		dir.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
-		if dir.length() <= 0.1:
-			return Vector2.ZERO
-		return dir.normalized()
+		var raw_dir := Vector2(
+			Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left"),
+			Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
+		)
+		
+		aim_input_strength = raw_dir.length()
+		
+		if aim_input_strength < 0.15: #some dead zone stuff cause Godot's one is shoddy
+			return Vector2.ZERO 
+			
+		var smoothed = last_fire_direction.lerp(raw_dir.normalized(), 0.25)
+		last_fire_direction = smoothed
+		return smoothed.normalized()
 	else:
-		var mouse_dir = (get_global_mouse_position() - global_position)
+		var mouse_dir = get_global_mouse_position() - global_position
 		if mouse_dir.length() <= 0.1:
 			return Vector2.ZERO
-		return mouse_dir.normalized()
+		last_fire_direction = mouse_dir.normalized()
+		return last_fire_direction
 
 		
 func attempt_to_fire() -> void:
@@ -731,15 +745,34 @@ func lock_dodging(enabled: bool):
 	LockDodging = enabled
 
 func update_aim_indicator():
-	if not ControllerEnabled or not AimIndicator:
-		AimIndicator.visible = false
+	if not ControllerEnabled or not AimLine:
+		AimLine.visible = false
 		return
 		
 	var dir = _get_fire_direction()
 	if dir == Vector2.ZERO:
-		AimIndicator.visible = false
+		AimLine.visible = false
 		return
 		
-	AimIndicator.visible = true
-	AimIndicator.global_position = AimIndicator.global_position.lerp(global_position + dir * AimDistance, 0.2)
-	AimIndicator.rotation = dir.angle()
+	AimLine.visible = true
+	
+	var offset_position = dir.normalized() * AimOffset
+	
+	AimRay.position = offset_position
+	AimRay.target_position = dir.normalized() * AimDistance
+	
+	AimRay.force_raycast_update()
+	
+	var hit_position: Vector2
+	if AimRay.is_colliding():
+		hit_position = AimRay.get_collision_point() - global_position
+	else:
+		hit_position = dir.normalized() * AimDistance
+		
+	hit_position -= offset_position
+	
+	AimLine.points = [Vector2.ZERO, hit_position]
+	AimLine.position = offset_position  
+	
+	var alpha = clamp(dir.length() * 2.0, 0.0, 1.0)
+	AimLine.modulate.a = alpha

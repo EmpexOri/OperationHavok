@@ -1,3 +1,5 @@
+RayCast2D
+Line2D
 ColorRect
 TextureRect
 Sprite2D
@@ -11,5 +13,3 @@ Area2D
 AnimatedSprite2D
 NavigationObstacle2D
 TextureProgressBar
-Marker2D
-TileMapLayer

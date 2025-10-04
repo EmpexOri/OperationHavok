@@ -1,11 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://cjkrpn6nhhs0c"]
+[gd_scene load_steps=39 format=3 uid="uid://cjkrpn6nhhs0c"]
 
 [ext_resource type="Script" uid="uid://dh8o41wpv6qq2" path="res://Assets/Scripts/Player Scripts/player.gd" id="1_5wdm8"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_b8405"]
 [ext_resource type="Texture2D" uid="uid://c7yxxmeinjdr4" path="res://Assets/Art/Sprites/PlayerTilesheets/Player_Move_Animations.png" id="3_5wdm8"]
 [ext_resource type="Script" uid="uid://pfo7tvxnb3ab" path="res://Assets/Scripts/Player Scripts/Camera2D.gd" id="4_b8405"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="5_dolgl"]
-[ext_resource type="Texture2D" uid="uid://c5ne4k2eqj2af" path="res://Assets/Art/PlaceHolders/Crosshair.png" id="6_8pdfo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pfke8"]
 radius = 6.0
@@ -284,7 +283,8 @@ script = ExtResource("4_b8405")
 [node name="BlackoutSprite" type="Sprite2D" parent="Camera2D"]
 modulate = Color(0, 0, 0, 0)
 z_index = 999
-scale = Vector2(6.5, 24.6667)
+position = Vector2(-1.5000343, 1.4999962)
+scale = Vector2(6.93, 27.133333)
 texture = ExtResource("5_dolgl")
 
 [node name="Weapon" type="Node2D" parent="."]
@@ -298,10 +298,11 @@ position = Vector2(0, -8)
 [node name="WeaponSprite" type="Sprite2D" parent="ShoulderWeapon"]
 offset = Vector2(5, 0)
 
-[node name="AimIndicator" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("6_8pdfo")
+[node name="AimLine" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0.3574912, 0.56108564, 0.25524214, 0.4)
+
+[node name="AimRay" type="RayCast2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
