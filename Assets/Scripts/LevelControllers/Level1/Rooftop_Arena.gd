@@ -40,7 +40,7 @@ func _ready():
 	sub_arenas = [
 		{
 			"spawn_points": [$Spawn0, $Spawn1],
-			"wave_data": [{ "Hordling": 12, "Spewling": 2 }]
+			"wave_data": [{ "Needling": 240, "Spewling": 2 }]
 		},
 		{
 			"spawn_points": [$Spawn2, $Spawn3],

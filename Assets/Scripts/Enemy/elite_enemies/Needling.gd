@@ -24,6 +24,11 @@ const FLEE_RECALCULATE_INTERVAL: float = 0.5
 
 var move_timeout_timer: Timer
 
+var los_update_counter: int = 0
+@export var los_update_interval_frames: int = 10  # do raycast every 10 frames
+var cached_hit_pos: Vector2 = Vector2.ZERO
+var cached_has_los: bool = false
+
 func start():
 	Speed = 150
 	Health = 40
@@ -244,55 +249,65 @@ func get_flash_sprite() -> CanvasItem:
 	return sprite 
 
 func update_aim_laser():
-	if not los_check_ready:
-		aim_line.visible = false
-		return
-
-###
 	# Hide aim line when moving or fleeing
 	if velocity.length() > 0.5 or IsMovingRandomly or is_fleeing:
 		aim_line.visible = false
 		return
-###
-
+		
+	# Skip raycast this frame if counter not reached
+	los_update_counter += 1
+	if los_update_counter < los_update_interval_frames:
+		# Use cached positions
+		if cached_hit_pos != Vector2.ZERO:
+			_update_line(cached_hit_pos, cached_has_los)
+		return
+	los_update_counter = 0
+	
 	var player = resolve_target()
 	if not player:
 		aim_line.visible = false
 		return
-
+		
 	var player_pos = player.global_position
+	
+	# Perform raycast
 	var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
 	query.exclude = [self]
 	query.collision_mask = 1 << 2  # Only collide with walls
-
 	var result = los_check.intersect_ray(query)
-
+	
 	var hit_pos = player_pos
 	var has_los = true
-
-	if result and not result.collider.is_in_group("Player"):
+	if result != null and result.has("collider") and not result.collider.is_in_group("Player"):
 		hit_pos = result.position
 		has_los = false
+		
+	cached_hit_pos = hit_pos
+	cached_has_los = has_los
+	
+	_update_line(hit_pos, has_los)
+	
+func _update_line(hit_pos: Vector2, has_los: bool):
+	if aim_line.points.size() < 2 or aim_line.points[1] != to_local(hit_pos) or not aim_line.visible:
+		aim_line.clear_points()
+		aim_line.add_point(Vector2.ZERO)
+		aim_line.add_point(to_local(hit_pos))
+		aim_line.visible = true
 
-	aim_line.clear_points()
-	aim_line.add_point(Vector2.ZERO)
-	aim_line.add_point(to_local(hit_pos))
-	aim_line.visible = true
-
-	# Laser color while firing
+	# Set color
 	if is_firing:
-		aim_line.default_color = Color(0.0, 0.8, 0.0, 0.8)  # Bright Green
+		aim_line.default_color = Color(0.0, 0.8, 0.0, 0.8)
 	elif has_los:
-		aim_line.default_color = Color(0.9, 0.1, 0.0, 0.8)  # Dim Red
+		aim_line.default_color = Color(0.9, 0.1, 0.0, 0.8)
 	else:
-		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.4)  # Dim red 
+		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.4)
 
 func _on_sprite_frame_changed():
-	if sprite.animation == "fire" and sprite.frame == 2 and is_firing:  # adjust frame index as needed
+	if sprite.animation == "fire" and sprite.frame == 2 and is_firing: 
 		shoot_now()
 
 func _begin_fire_animation():
-	aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)  # Bright red
+	aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0) 
 	aim_line.modulate.a = 1.0
 	is_firing = true
 	sprite.play("fire")
