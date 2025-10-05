@@ -283,8 +283,8 @@ script = ExtResource("4_b8405")
 [node name="BlackoutSprite" type="Sprite2D" parent="Camera2D"]
 modulate = Color(0, 0, 0, 0)
 z_index = 999
-position = Vector2(-1.5000343, 1.4999962)
-scale = Vector2(6.93, 27.133333)
+position = Vector2(-3.0517578e-05, 0.49995422)
+scale = Vector2(12.692, 48)
 texture = ExtResource("5_dolgl")
 
 [node name="Weapon" type="Node2D" parent="."]

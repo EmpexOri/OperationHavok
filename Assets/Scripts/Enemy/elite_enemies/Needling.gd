@@ -25,7 +25,7 @@ const FLEE_RECALCULATE_INTERVAL: float = 0.5
 var move_timeout_timer: Timer
 
 var los_update_counter: int = 0
-@export var los_update_interval_frames: int = 10  # do raycast every 10 frames
+@export var los_update_interval_frames: int = 5
 var cached_hit_pos: Vector2 = Vector2.ZERO
 var cached_has_los: bool = false
 
@@ -254,15 +254,6 @@ func update_aim_laser():
 		aim_line.visible = false
 		return
 		
-	# Skip raycast this frame if counter not reached
-	los_update_counter += 1
-	if los_update_counter < los_update_interval_frames:
-		# Use cached positions
-		if cached_hit_pos != Vector2.ZERO:
-			_update_line(cached_hit_pos, cached_has_los)
-		return
-	los_update_counter = 0
-	
 	var player = resolve_target()
 	if not player:
 		aim_line.visible = false
@@ -270,22 +261,28 @@ func update_aim_laser():
 		
 	var player_pos = player.global_position
 	
-	# Perform raycast
-	var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
-	query.exclude = [self]
-	query.collision_mask = 1 << 2  # Only collide with walls
-	var result = los_check.intersect_ray(query)
-	
-	var hit_pos = player_pos
-	var has_los = true
-	if result != null and result.has("collider") and not result.collider.is_in_group("Player"):
-		hit_pos = result.position
-		has_los = false
+	los_update_counter += 1
+	if los_update_counter >= los_update_interval_frames:
+		# Perform expensive LOS raycast less frequently
+		los_update_counter = 0
+		var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
+		query.exclude = [self]
+		query.collision_mask = 1 << 2  # Only collide with walls
+		var result = los_check.intersect_ray(query)
 		
-	cached_hit_pos = hit_pos
-	cached_has_los = has_los
+		var hit_pos = player_pos
+		var has_los = true
+		if result != null and result.has("collider") and not result.collider.is_in_group("Player"):
+			hit_pos = result.position
+			has_los = false
+			
+		cached_hit_pos = hit_pos
+		cached_has_los = has_los
+		
+	_update_line(_interpolated_laser_end(player_pos), cached_has_los)
 	
-	_update_line(hit_pos, has_los)
+func _interpolated_laser_end(player_pos: Vector2) -> Vector2:
+	return cached_hit_pos.lerp(player_pos, 0.7)
 	
 func _update_line(hit_pos: Vector2, has_los: bool):
 	if aim_line.points.size() < 2 or aim_line.points[1] != to_local(hit_pos) or not aim_line.visible:
