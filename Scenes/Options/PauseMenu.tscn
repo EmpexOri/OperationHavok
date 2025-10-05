@@ -409,20 +409,9 @@ process_mode = 3
 layer = 5
 visible = false
 
-[node name="BackButton2" type="TextureButton" parent="CommandoSkillTree"]
-process_mode = 3
-offset_left = 504.0
-offset_top = 315.0
-offset_right = 609.0
-offset_bottom = 345.0
-focus_neighbor_top = NodePath("../../ResumeButton")
-texture_normal = ExtResource("13_tp3vf")
-texture_pressed = ExtResource("14_oc1jd")
-
 [connection signal="pressed" from="ControlsMenu/BackButton" to="." method="_on_controls_back_button_pressed"]
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="CommandoSkillTree/BackButton2" to="." method="_on_back_button_2_pressed"]

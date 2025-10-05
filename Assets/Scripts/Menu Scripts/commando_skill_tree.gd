@@ -2,11 +2,16 @@ extends CanvasLayer
 
 var Options = true
 
+signal SkillTreeClosed
+
 @onready var WeaponTree = $WeaponSwapTitle
 @onready var GrenadeTree = $GrenadeTitle
 @onready var MinigunTree = $MinigunTitle
 
 @onready var BackButton = $BackButton
+
+# Focus for controller
+@onready var SMGFocus = $WeaponSwapTitle/SMG
 
 func _ready():
 	$BackButton.grab_focus()
@@ -88,15 +93,12 @@ func restore_unlocked_skills(node):
 			child.set_unlocked_state(is_unlocked)
 		restore_unlocked_skills(child)
 
-func _check_back_button() -> void:
-	if Options == true:
-		BackButton.visible = false
-	else:
-		BackButton.visible = true
-
 func _on_back_button_pressed() -> void:
-	GlobalAudioController.ClickSound()
-	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+	if Options == false:
+		GlobalAudioController.ClickSound()
+		get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+	else:
+		SkillTreeClosed.emit()
 
 func upgrade_minigun_ability(NewAbility):
 	# Find the current abilities, get the minigun index and then swap in the new skill

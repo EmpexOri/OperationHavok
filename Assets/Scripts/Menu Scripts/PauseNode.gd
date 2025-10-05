@@ -4,7 +4,6 @@ extends Node
 @onready var ResumeButton: TextureButton = $"ResumeButton"
 @onready var ControlsButton: TextureButton = $"ControlsButton"
 @onready var OptionsButton: TextureButton = $"OptionsButton"
-@onready var BackButton2: TextureButton = $CommandoSkillTree/BackButton2
 @onready var SkillTreeButton: TextureButton = $SkillTreeButton
 @onready var Title: Label = $"Title"
 @onready var MainButton: TextureButton = $MenuButton
@@ -23,8 +22,10 @@ extends Node
 func _ready():
 	ResumeButton.grab_focus()
 	
-	# Connecting options menu signal
+	# Connecting options menu and skill tree signal
 	OptionsScene.OptionsClosed.connect(_on_options_closed)
+	SkillTree.SkillTreeClosed.connect(_on_skill_tree_closed)
+	
 	
 	OptionsScene.visible = false
 	SkillTree.visible = false
@@ -40,7 +41,6 @@ func show_pause_menu() -> void:
 	MainButton.visible = true
 	BackPanel.visible = true
 	ControlsMenu.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	ResumeButton.grab_focus()
@@ -59,7 +59,6 @@ func _on_resume_button_pressed() -> void:
 	MainButton.visible = false
 	BackPanel.visible = false
 	ControlsMenu.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	if get_tree().paused:
@@ -78,7 +77,6 @@ func _on_controls_button_pressed() -> void:
 	Title.visible = false
 	MainButton.visible = false
 	ControlsMenu.visible = true
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	ControlsBackButton.grab_focus()
@@ -96,7 +94,6 @@ func _on_options_button_pressed() -> void:
 	SkillTreeButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	OptionsScene.MasterSlider.grab_focus()
@@ -115,7 +112,6 @@ func _on_back_button_pressed() -> void:
 	Title.visible = true
 	MainButton.visible = true
 	ControlsMenu.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	ResumeButton.grab_focus()
@@ -136,7 +132,6 @@ func _on_menu_button_pressed() -> void:
 	Title.visible = false
 	MainButton.visible = false
 	ControlsMenu.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	if get_tree().paused:
@@ -146,8 +141,8 @@ func _on_menu_button_pressed() -> void:
 
 
 func _on_skill_tree_button_pressed() -> void:
-	SkillTree._check_back_button()
-	BackButton2.visible = true
+	GlobalAudioController.ClickSound()
+
 	SkillTree.visible = true
 	ResumeButton.visible = false
 	ControlsButton.visible = false
@@ -155,10 +150,10 @@ func _on_skill_tree_button_pressed() -> void:
 	SkillTreeButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
-	BackButton2.visible = true
 	SkillTree.update_skill_trees_shown()
 	SkillTree.restore_unlocked_skills(self)   
-	GlobalAudioController.ClickSound()
+	
+	SkillTree.SMGFocus.grab_focus()
 
 func _on_options_closed():
 	# Play sound on button press
@@ -173,7 +168,6 @@ func _on_options_closed():
 	Title.visible = true
 	MainButton.visible = true
 	ControlsMenu.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	OptionsButton.grab_focus()
@@ -190,7 +184,20 @@ func _on_controls_back_button_pressed() -> void:
 	Title.visible = true
 	MainButton.visible = true
 	ControlsMenu.visible = false
-	BackButton2.visible = false
 	SkillTree.visible = false
 	
 	ControlsButton.grab_focus()
+
+func _on_skill_tree_closed():
+	# Play sound on button press
+	GlobalAudioController.ClickSound()
+
+	SkillTree.visible = false
+	ResumeButton.visible = true
+	ControlsButton.visible = true
+	OptionsButton.visible = true
+	SkillTreeButton.visible = true
+	Title.visible = true
+	MainButton.visible = true
+
+	SkillTreeButton.grab_focus()

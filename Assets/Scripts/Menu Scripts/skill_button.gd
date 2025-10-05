@@ -111,3 +111,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	HoverAnimation.visible = false
+
+func _on_focus_entered() -> void:
+	HoverAnimation.visible = true
+	HoverAnimation.play("default")
+
+func _on_focus_exited() -> void:
+	HoverAnimation.visible = false
