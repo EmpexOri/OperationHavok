@@ -1,15 +1,9 @@
-res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
+res://Scenes/BetaLevel.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
-res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunBullet.tscn
-res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn
-res://Assets/Scripts/Enemy/hoard_enemies/FleshSpawn.gd
-res://Scenes/BetaLevel.tscn
 res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
-res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
