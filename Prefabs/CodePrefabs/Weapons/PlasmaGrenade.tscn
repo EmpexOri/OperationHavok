@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccdyagjkt81xh"]
+
+[ext_resource type="Script" uid="uid://dn1ra55rosonr" path="res://Assets/Scripts/Player Scripts/Weapons/PlasmaGrenade.gd" id="1_33vsh"]
+[ext_resource type="PackedScene" uid="uid://bq3imxsyp4a7b" path="res://Prefabs/CodePrefabs/Projectiles/misc_bullets/FireTornadoProjectile.tscn" id="2_mfyba"]
+[ext_resource type="Texture2D" uid="uid://bx08mwgkwxqrt" path="res://Assets/Art/Sprites/Grenade.png" id="3_faggs"]
+[ext_resource type="Texture2D" uid="uid://b0luyempr3mkh" path="res://Assets/Art/PlaceHolders/Circle.png" id="4_7hvwm"]
+[ext_resource type="Texture2D" uid="uid://dnsusvcx5oef6" path="res://Assets/Art/Sprites/FX/Plasma_Caster_Explosion.png" id="5_7hvwm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77lbw"]
+radius = 63.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77lbw"]
+atlas = ExtResource("5_7hvwm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws77j"]
+atlas = ExtResource("5_7hvwm")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l67qk"]
+atlas = ExtResource("5_7hvwm")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7ocm"]
+atlas = ExtResource("5_7hvwm")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1123o"]
+atlas = ExtResource("5_7hvwm")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm3aj"]
+atlas = ExtResource("5_7hvwm")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ws77j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77lbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws77j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l67qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7ocm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1123o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm3aj")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 30.0
+}]
+
+[node name="PlasmaGrenade" type="Node2D"]
+script = ExtResource("1_33vsh")
+fire_tornado_scene = ExtResource("2_mfyba")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_faggs")
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_77lbw")
+
+[node name="ExplosionRadiusIndicator" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(0.25, 0.26)
+texture = ExtResource("4_7hvwm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ws77j")
+animation = &"explode"

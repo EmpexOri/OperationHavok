@@ -1,9 +1,10 @@
+res://Assets/Art/Sprites/FX
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok - Linux
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
 res://Assets/Art/Objects/LevelObjects/Stripmall
 res://Assets/Art/Tilesets/Tilesets_Final/Mall
 res://Assets/Art/Tilesets/Tilesets_Final/Carpark
-res://Assets/Art/Sprites/FX
 res://Assets/Art/Particles/Explosion/Explosion64
 res://Assets/Art/Effects
 res://Assets/Art/Tilesets/Tilesets_Final/Park
@@ -15,7 +16,6 @@ res://Assets/Art/Sprites
 res://Assets/Art/Sprites/EnemyTilesheets
 res://Assets/Art/Sprites/FX/ProjectileFX
 res://Assets/Scripts/Effects/Projectile Effects/Instances
-res://Prefabs/CodePrefabs/Projectiles/misc_bullets
 res://Assets/Art/Particles/Lightning
 res://Assets/Scripts/Effects/Projectile Effects
 res://Prefabs/CodePrefabs/Projectiles

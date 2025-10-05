@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhnyeiujipyon"]
+
+[ext_resource type="Script" uid="uid://lxirwvie82sd" path="res://Assets/Scripts/Player Scripts/Abilities/PlasmaCaster.gd" id="1_c618u"]
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource("1_c618u")
+cooldown_time = 5.0

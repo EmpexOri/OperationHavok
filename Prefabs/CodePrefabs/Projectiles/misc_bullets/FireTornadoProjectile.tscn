@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq3imxsyp4a7b"]
+
+[ext_resource type="PackedScene" uid="uid://uy66843n3v0h" path="res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn" id="1_lvrf7"]
+[ext_resource type="Texture2D" uid="uid://dnsusvcx5oef6" path="res://Assets/Art/Sprites/FX/Plasma_Caster_Explosion.png" id="2_0kl7m"]
+[ext_resource type="Script" uid="uid://c5oy2h04evr23" path="res://Assets/Scripts/Projectiles/FireTornado.gd" id="2_vpx6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kl7m"]
+size = Vector2(44.00001, 9.999996)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpx6d"]
+atlas = ExtResource("2_0kl7m")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmvj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpx6d")
+}],
+"loop": false,
+"name": &"Tornado",
+"speed": 5.0
+}]
+
+[node name="FireTornado" instance=ExtResource("1_lvrf7")]
+script = ExtResource("2_vpx6d")
+direction_change_interval = 0.75
+max_direction_change_angle = 45.0
+base_speed = 80.0
+base_lifetime = 5.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1.66893e-06, -3.0000315)
+shape = SubResource("RectangleShape2D_0kl7m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+position = Vector2(0.50000024, 0.9999943)
+scale = Vector2(0.10546875, 0.6171875)
+sprite_frames = SubResource("SpriteFrames_pmvj4")
+animation = &"Tornado"
