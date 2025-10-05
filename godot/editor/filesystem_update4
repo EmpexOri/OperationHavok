@@ -12,3 +12,5 @@ res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Scenes/MenuScene.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Menu Scripts/volume_control_slider.gd
+res://Assets/Scripts/Menu Scripts/brightness_slider.gd

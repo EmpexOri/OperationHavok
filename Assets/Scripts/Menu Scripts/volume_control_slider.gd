@@ -23,7 +23,7 @@ func _process(delta):
 		return
 
 	# Making the slider steps faster for controller
-	var move_speed = 1.5
+	var move_speed = 0.5
 	var input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	# Only update it if there's actual input
