@@ -12,6 +12,7 @@ extends Node
 
 # Controls Menu
 @onready var ControlsMenu: CanvasLayer = $ControlsMenu
+@onready var ControlsBackButton = $ControlsMenu/BackButton
 
 # Options Menu
 @onready var OptionsScene = $OptionsScene
@@ -20,7 +21,7 @@ extends Node
 @onready var SkillTree = $CommandoSkillTree
 
 func _ready():
-	$ResumeButton.grab_focus()
+	ResumeButton.grab_focus()
 	
 	# Connecting options menu signal
 	OptionsScene.OptionsClosed.connect(_on_options_closed)
@@ -42,7 +43,7 @@ func show_pause_menu() -> void:
 	BackButton2.visible = false
 	SkillTree.visible = false
 	
-	$ResumeButton.grab_focus()
+	ResumeButton.grab_focus()
 
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
@@ -79,6 +80,8 @@ func _on_controls_button_pressed() -> void:
 	ControlsMenu.visible = true
 	BackButton2.visible = false
 	SkillTree.visible = false
+	
+	ControlsBackButton.grab_focus()
 
 
 func _on_options_button_pressed() -> void:
@@ -173,4 +176,21 @@ func _on_options_closed():
 	BackButton2.visible = false
 	SkillTree.visible = false
 	
-	$ResumeButton.grab_focus()
+	OptionsButton.grab_focus()
+
+func _on_controls_back_button_pressed() -> void:
+	# Play sound on button press
+	GlobalAudioController.ClickSound()
+	
+	# Removing the controls menu and displaying pause menu
+	ResumeButton.visible = true
+	ControlsButton.visible = true
+	OptionsButton.visible = true
+	SkillTreeButton.visible = true
+	Title.visible = true
+	MainButton.visible = true
+	ControlsMenu.visible = false
+	BackButton2.visible = false
+	SkillTree.visible = false
+	
+	ControlsButton.grab_focus()
