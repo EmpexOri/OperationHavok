@@ -52,6 +52,7 @@ content_margin_bottom = 4.0
 texture = ExtResource("6_xey72")
 
 [node name="OptionsScene" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ax0sw")
 
 [node name="Title" type="Label" parent="."]
@@ -72,6 +73,8 @@ offset_left = 270.0
 offset_top = 301.0
 offset_right = 375.0
 offset_bottom = 331.0
+focus_neighbor_top = NodePath("../ScrollContainer/VBoxContainer/FullscreenToggle")
+focus_neighbor_bottom = NodePath("../ScrollContainer/VBoxContainer/MasterSlider")
 texture_normal = ExtResource("3_7e2oe")
 texture_pressed = ExtResource("4_eb3eg")
 texture_hover = ExtResource("4_eb3eg")
@@ -97,6 +100,7 @@ text = "Volume - Master"
 
 [node name="MasterSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../BackButton")
 theme = SubResource("Theme_o3fs6")
 theme_override_icons/grabber = ExtResource("5_xf7sb")
 theme_override_icons/grabber_highlight = ExtResource("5_xf7sb")
@@ -205,6 +209,7 @@ script = ExtResource("5_byqjn")
 
 [node name="FullscreenToggle" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../BackButton")
 theme_override_fonts/font = ExtResource("2_vh6j5")
 text = "Toggle Fullscreen"
 script = ExtResource("7_qhusp")

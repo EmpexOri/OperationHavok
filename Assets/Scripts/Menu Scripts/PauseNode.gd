@@ -95,6 +95,8 @@ func _on_options_button_pressed() -> void:
 	MainButton.visible = false
 	BackButton2.visible = false
 	SkillTree.visible = false
+	
+	OptionsScene.MasterSlider.grab_focus()
 
 
 func _on_back_button_pressed() -> void:
@@ -170,3 +172,5 @@ func _on_options_closed():
 	ControlsMenu.visible = false
 	BackButton2.visible = false
 	SkillTree.visible = false
+	
+	$ResumeButton.grab_focus()

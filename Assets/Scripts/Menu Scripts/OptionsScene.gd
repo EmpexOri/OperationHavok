@@ -5,12 +5,12 @@ var Options = true
 signal OptionsClosed
 
 @onready var BackButton = $BackButton
+@onready var MasterSlider = $ScrollContainer/VBoxContainer/MasterSlider
 
 @onready var OptionsScene = $OptionsScene
-@onready var PauseMenu = $PauseMenu
 
 func _ready():
-	$BackButton.grab_focus()
+	MasterSlider.grab_focus()
 
 func _on_back_button_pressed() -> void:
 	if Options == false:
