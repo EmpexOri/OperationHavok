@@ -6,6 +6,15 @@ var is_on_cooldown := false
 
 @onready var countdown_label := $Label 
 
+# All HUD ability icons
+@onready var NovacasterIcon = $"../Icon2/Novacaster"
+@onready var BaseballIcon = $"../Icon2/BaseballGrenade"
+@onready var HomerunIcon = $"../Icon2/HomerunGrenade"
+@onready var MinigunIcon = $"../Icon3/Minigun"
+@onready var RocketMinigunIcon = $"../Icon3/RocketMingun"
+@onready var LightningIcon = $"../Icon3/LightningGun"
+@onready var TyphoonIcon = $"../Icon3/TyphoonCannon"
+
 func start_cooldown(duration: float):
 	cooldown_duration = duration
 	cooldown_remaining = duration
@@ -28,6 +37,46 @@ func _process(delta):
 			var color_val = lerp(0.5, 1.0, t)
 			modulate = Color(color_val, color_val, color_val, 1)
 			countdown_label.text = _format_time(cooldown_remaining)  # Update countdown text
+	
+	var Abilities = GlobalPlayer.ClassData["Commando"]["Abilities"]
+	
+	# Grenade ability icons
+	match Abilities[1]:
+		"NovacasterGrenade":
+			NovacasterIcon.visible = true
+			BaseballIcon.visible = false
+			HomerunIcon.visible = false
+		"BaseballGrenade":
+			BaseballIcon.visible = true
+			NovacasterIcon.visible = false
+			HomerunIcon.visible = false
+		"HomerunGrenade":
+			HomerunIcon.visible = true
+			NovacasterIcon.visible = false
+			BaseballIcon.visible = false
+	
+	# Minigun ability icons
+	match Abilities[2]:
+		"Minigun":
+			MinigunIcon.visible = true
+			RocketMinigunIcon.visible = false
+			TyphoonIcon.visible = false
+			LightningIcon.visible = false
+		"RocketMinigun":
+			RocketMinigunIcon.visible = true
+			MinigunIcon.visible = false
+			TyphoonIcon.visible = false
+			LightningIcon.visible = false
+		"LightningLauncher":
+			LightningIcon.visible = true
+			MinigunIcon.visible = false
+			RocketMinigunIcon.visible = false
+			TyphoonIcon.visible = false
+		"TyphoonCannon":
+			TyphoonIcon.visible = true
+			MinigunIcon.visible = false
+			RocketMinigunIcon.visible = false
+			LightningIcon.visible = false
 
 func _play_finish_animation():
 	# Create a tween to do a quick pop scale-up and back

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=75 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="16_chyi3"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="17_s5lui"]
 [ext_resource type="Texture2D" uid="uid://c0fornnjemo8r" path="res://Assets/Art/HUD/BaseballGrenade.png" id="18_83ghv"]
-[ext_resource type="Texture2D" uid="uid://bkhdk4jehuont" path="res://Assets/Art/HUD/SkillTreeMinigunIcon.png" id="18_chyi3"]
 [ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="18_lbk0n"]
 [ext_resource type="Script" uid="uid://dmjg0pc7bmlo8" path="res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd" id="19_c70pc"]
 [ext_resource type="Texture2D" uid="uid://cwcdqy5jts8as" path="res://Assets/Art/HUD/HomerunGrenade.png" id="19_t3s3n"]
@@ -279,7 +278,6 @@ position = Vector2(0, 13.5)
 texture = ExtResource("16_chyi3")
 
 [node name="Novacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
-visible = false
 position = Vector2(0, 13.5)
 texture = ExtResource("17_s5lui")
 
@@ -308,11 +306,6 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(618, 324.5)
 texture = ExtResource("11_v1rlk")
 script = ExtResource("30_7kl2t")
-
-[node name="Minigun" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
-visible = false
-position = Vector2(0, 13.5)
-texture = ExtResource("18_chyi3")
 
 [node name="RocketMingun" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
 visible = false
