@@ -325,10 +325,12 @@ offset_left = 270.0
 offset_top = 77.0
 offset_right = 375.0
 offset_bottom = 107.0
-focus_next = NodePath("../ControlsButton")
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../ControlsButton")
 texture_normal = ExtResource("3_f70tf")
 texture_pressed = ExtResource("4_jbtp0")
 texture_hover = ExtResource("4_jbtp0")
+texture_focused = ExtResource("4_jbtp0")
 
 [node name="ControlsButton" type="TextureButton" parent="."]
 visible = false
@@ -336,10 +338,12 @@ offset_left = 270.0
 offset_top = 121.0
 offset_right = 375.0
 offset_bottom = 151.0
-focus_next = NodePath("../SkillTreeButton")
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../SkillTreeButton")
 texture_normal = ExtResource("3_prp31")
 texture_pressed = ExtResource("4_dvb8c")
 texture_hover = ExtResource("4_dvb8c")
+texture_focused = ExtResource("4_dvb8c")
 
 [node name="SkillTreeButton" type="TextureButton" parent="."]
 visible = false
@@ -347,9 +351,12 @@ offset_left = 270.0
 offset_top = 166.0
 offset_right = 375.0
 offset_bottom = 196.0
+focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
 texture_normal = ExtResource("5_g05m0")
 texture_pressed = ExtResource("6_gctdb")
 texture_hover = ExtResource("6_gctdb")
+texture_focused = ExtResource("6_gctdb")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 visible = false
@@ -357,9 +364,12 @@ offset_left = 270.0
 offset_top = 211.0
 offset_right = 375.0
 offset_bottom = 241.0
+focus_neighbor_top = NodePath("../SkillTreeButton")
+focus_neighbor_bottom = NodePath("../MenuButton")
 texture_normal = ExtResource("5_prp31")
 texture_pressed = ExtResource("6_dvb8c")
 texture_hover = ExtResource("6_dvb8c")
+texture_focused = ExtResource("6_dvb8c")
 
 [node name="MenuButton" type="TextureButton" parent="."]
 visible = false
@@ -367,9 +377,12 @@ offset_left = 270.0
 offset_top = 282.0
 offset_right = 375.0
 offset_bottom = 312.0
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../BackButton")
 texture_normal = ExtResource("7_sohqo")
 texture_pressed = ExtResource("8_3ke0u")
 texture_hover = ExtResource("8_3ke0u")
+texture_focused = ExtResource("8_3ke0u")
 
 [node name="BackButton" type="TextureButton" parent="."]
 process_mode = 3
@@ -378,9 +391,12 @@ offset_left = 270.0
 offset_top = 301.0
 offset_right = 375.0
 offset_bottom = 331.0
-focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_top = NodePath("../MenuButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
 texture_normal = ExtResource("13_tp3vf")
 texture_pressed = ExtResource("14_oc1jd")
+texture_hover = ExtResource("14_oc1jd")
+texture_focused = ExtResource("14_oc1jd")
 
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2

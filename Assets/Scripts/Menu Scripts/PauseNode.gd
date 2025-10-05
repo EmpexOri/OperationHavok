@@ -42,7 +42,6 @@ func show_pause_menu() -> void:
 	SkillTree.visible = false
 	
 	$ResumeButton.grab_focus()
-	
 
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
