@@ -6,6 +6,8 @@ extends Node2D
 var SkipLoading = false
 
 func _ready():	
+	$PlayButton.grab_focus()
+	
 	if not GlobalAudioController.is_main_menu_music_playing():
 		GlobalAudioController.StopAllMusic()
 		GlobalAudioController.PlayMainMenuMusic()

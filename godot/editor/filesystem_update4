@@ -1,9 +1,9 @@
-res://Scenes/BetaLevel.tscn
+res://Scenes/Options/OptionsScene.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
 res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
-res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
-res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
+res://Assets/Scripts/Menu Scripts/volume_control_slider.gd
+res://Assets/Scripts/Menu Scripts/brightness_slider.gd
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
