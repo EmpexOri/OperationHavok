@@ -7,3 +7,6 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Scripts/Menu Scripts/volume_control_slider.gd
 res://Assets/Scripts/Menu Scripts/brightness_slider.gd
 res://Assets/Scripts/Menu Scripts/MenuScene.gd
+res://Scenes/BetaLevel.tscn
+res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
+res://Assets/Art/Tilesets/WallsTilesets.tres

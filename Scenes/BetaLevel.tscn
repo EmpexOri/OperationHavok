@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=78 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cinikat670uwd" path="res://Assets/Art/HUD/PlayerHUD/CharacterPFP.png" id="3_fodhj"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="5_7u0io"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="8_4un8s"]
+[ext_resource type="Texture2D" uid="uid://dmorr0akrlxyf" path="res://Assets/Art/HUD/LB.png" id="9_t3s3n"]
+[ext_resource type="Texture2D" uid="uid://cfpq1yb142ygp" path="res://Assets/Art/HUD/RT.png" id="10_fanmj"]
+[ext_resource type="Texture2D" uid="uid://im3d8ti43f2g" path="res://Assets/Art/HUD/RB.png" id="11_v1rlk"]
 [ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="12_sd37h"]
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="16_chyi3"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="17_s5lui"]
@@ -16,7 +19,6 @@
 [ext_resource type="TileSet" uid="uid://c2f3pqadjj0sw" path="res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres" id="20_7013g"]
 [ext_resource type="TileSet" uid="uid://hejhpn2cg0nc" path="res://Assets/Art/Tilesets/WallsTilesets.tres" id="20_qfsbe"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="20_xy3j2"]
-[ext_resource type="Texture2D" uid="uid://dgdvqv3tyewlk" path="res://Assets/Art/HUD/Minigun1.png" id="21_fanmj"]
 [ext_resource type="Texture2D" uid="uid://pa7jfobmuluq" path="res://Assets/Art/Objects/LevelObjects/Rooftops/Helipad_Sirens.png" id="21_g7ryl"]
 [ext_resource type="Texture2D" uid="uid://ceh826wbusha2" path="res://Assets/Art/Objects/LevelObjects/Rooftops/RooftopShadow.png" id="21_qfsbe"]
 [ext_resource type="Texture2D" uid="uid://dc1ie20ft3j0l" path="res://Assets/Art/Objects/LevelObjects/Rooftops/graffiti_tutorial_dash.png" id="22_g7ryl"]
@@ -27,10 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://5dh8x5lnnuid" path="res://Assets/Art/Objects/LevelObjects/Rooftops/3.png" id="23_j0vfw"]
 [ext_resource type="Texture2D" uid="uid://2dpwtocu5gxt" path="res://Assets/Art/HUD/TyphoonCannon.png" id="24_mynkp"]
 [ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="25_fodhj"]
-[ext_resource type="Texture2D" uid="uid://cmg5cqhw6xlbn" path="res://Assets/Art/HUD/LBBase.png" id="26_b8kco"]
-[ext_resource type="Texture2D" uid="uid://6bfyxhk4mea3" path="res://Assets/Art/HUD/LTBase.png" id="27_3xqoa"]
 [ext_resource type="Script" uid="uid://b1bq8xbc7p1c6" path="res://Assets/Scripts/LevelControllers/Level1/Rooftop_Elevator.gd" id="27_pn8ld"]
-[ext_resource type="Texture2D" uid="uid://b68tpal8b4fbn" path="res://Assets/Art/HUD/RBBase.png" id="28_7u0io"]
 [ext_resource type="PackedScene" uid="uid://b2fjvq7yw64hc" path="res://Prefabs/CodePrefabs/Particles/Rain.tscn" id="28_33vec"]
 [ext_resource type="Script" uid="uid://d14w2mm6vk5h2" path="res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd" id="28_ebm85"]
 [ext_resource type="Texture2D" uid="uid://bykd2uxbk8qtq" path="res://Assets/Art/HUD/SwapIcon.png" id="29_4un8s"]
@@ -258,17 +257,17 @@ color = Color(0.7373294, 0.13335153, 0.22091639, 0.2)
 [node name="LBBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(530, 324.5)
-texture = ExtResource("26_b8kco")
+texture = ExtResource("9_t3s3n")
 
-[node name="LTBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+[node name="RTBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(574, 324.5)
-texture = ExtResource("27_3xqoa")
+texture = ExtResource("10_fanmj")
 
 [node name="RBBase" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 texture_filter = 1
 position = Vector2(618, 324.5)
-texture = ExtResource("28_7u0io")
+texture = ExtResource("11_v1rlk")
 
 [node name="Icon1" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
 position = Vector2(530, 324.5)
@@ -321,6 +320,7 @@ position = Vector2(0, 13.5)
 texture = ExtResource("19_t3s3n")
 
 [node name="Icon3" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+visible = false
 position = Vector2(618, 324.5)
 texture = ExtResource("33_chyi3")
 script = ExtResource("30_7kl2t")
@@ -334,10 +334,6 @@ theme = ExtResource("31_wtiv0")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Minigun1" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
-position = Vector2(0, 13.5)
-texture = ExtResource("21_fanmj")
 
 [node name="RocketMingun" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
 visible = false
