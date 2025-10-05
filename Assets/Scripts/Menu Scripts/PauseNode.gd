@@ -1,6 +1,7 @@
 extends Node
 
 # Main pause menu
+@onready var PauseMenu = $"."
 @onready var ResumeButton: TextureButton = $"ResumeButton"
 @onready var ControlsButton: TextureButton = $"ControlsButton"
 @onready var OptionsButton: TextureButton = $"OptionsButton"
@@ -63,6 +64,8 @@ func _on_resume_button_pressed() -> void:
 	
 	if get_tree().paused:
 		get_tree().paused = false
+	
+	PauseMenu.visible = false
 
 
 func _on_controls_button_pressed() -> void:
