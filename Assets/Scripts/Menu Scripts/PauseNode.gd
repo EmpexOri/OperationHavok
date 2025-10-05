@@ -21,11 +21,13 @@ extends Node
 @onready var SkillTree = $CommandoSkillTree
 
 func _ready():
+	$ResumeButton.grab_focus()
+	
 	OptionsScene.visible = false
 	SkillTree.visible = false
 
 
-func show_pause_menu() -> void:
+func show_pause_menu() -> void:	
 	# Bringing up the pause menu 
 	ResumeButton.visible = true
 	ControlsButton.visible = true
@@ -38,6 +40,8 @@ func show_pause_menu() -> void:
 	BackButton.visible = false
 	BackButton2.visible = false
 	SkillTree.visible = false
+	
+	$ResumeButton.grab_focus()
 	
 
 func _on_resume_button_pressed() -> void:

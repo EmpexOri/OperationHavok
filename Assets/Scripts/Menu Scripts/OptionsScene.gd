@@ -5,7 +5,7 @@ var Options = true
 @onready var BackButton = $BackButton
 
 func _ready():
-	$BackButton.grab_focus()
+	BackButton.grab_focus()
 
 func _check_back_button() -> void:
 	if Options == true:
