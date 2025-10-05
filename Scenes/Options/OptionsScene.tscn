@@ -72,9 +72,10 @@ offset_left = 270.0
 offset_top = 301.0
 offset_right = 375.0
 offset_bottom = 331.0
-focus_neighbor_top = NodePath("../ResumeButton")
 texture_normal = ExtResource("3_7e2oe")
 texture_pressed = ExtResource("4_eb3eg")
+texture_hover = ExtResource("4_eb3eg")
+texture_focused = ExtResource("4_eb3eg")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 offset_left = 162.0
