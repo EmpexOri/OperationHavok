@@ -34,7 +34,7 @@ res://Prefabs/CodePrefabs/Particles/DeathGore.tscn::c3aa104c5e2e876f361170296dd7
 res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn::3746270f3fbb1d50c8b56e7cb3c43a86::1757398719::res://godot/exported/133200997/export-273bf899fd49548738cb71448eafcbfb-MeatChunks.scn
 res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn::e7089ad04acf0a8a7e2e51650b4f4396::1758263594::res://godot/exported/133200997/export-704609dec18b672fc1930176ab8ac134-RocketExplosion.scn
 res://Prefabs/CodePrefabs/Particles/TumourExplosionGore.tscn::f53ca1356626dc08cd283f4a0cf45514::1747635727::res://godot/exported/133200997/export-cb2a9fec999f8190bf925d21b0ae8c16-TumourExplosionGore.scn
-res://Prefabs/CodePrefabs/Pickups/pickup.tscn::cdb86e935a6e2fce56aea6025c1e8dee::1745985613::res://godot/exported/133200997/export-0656c49e8509a81b2d35f26303d462a5-pickup.scn
+res://Prefabs/CodePrefabs/Pickups/pickup.tscn::eccca4e1500564822a16d5c6157e5aeb::1759725347::res://godot/exported/133200997/export-0656c49e8509a81b2d35f26303d462a5-pickup.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn::b22a16b9b36a45ea25dcf5b2dccbc95a::1755690776::res://godot/exported/133200997/export-28e70bd5462bc416e9756ab61c40b1c8-EnemyShotgunBullet.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemySniperBullet.tscn::9061a3d7bfab098ad82ec6ce5495e5f0::1758776483::res://godot/exported/133200997/export-be16c152ab3c0acc53b94d6dc2ed9f5a-EnemySniperBullet.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/enemy_bullet.tscn::4243f1cb6e5551ac99ab547fe197ef96::1757914811::res://godot/exported/133200997/export-7c982ddb2a62ec8faa49215d3affdb96-enemy_bullet.scn
@@ -51,7 +51,7 @@ res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn::7c7077cc1f572f1dcb2237b0
 res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn::1843e39c15927725733fb64467d600f0::1759719754::res://godot/exported/133200997/export-cc8d6fa8feaf66bab3ad07f64deca6df-Shotgun.scn
 res://Prefabs/CodePrefabs/Weapons/Smg.tscn::fb49faf49bedae65117b148028e1a0e1::1757398720::res://godot/exported/133200997/export-a5ce0482df6f95359dab71e26d0ac915-Smg.scn
 res://Prefabs/GamePrefabs/Objects/lamp_post.tscn::479df3725f471476ec5aea8ef66ef8a7::1759378248::res://godot/exported/133200997/export-be70e6ee0dc538dc9cd12258a3049abf-lamp_post.scn
-res://Prefabs/GamePrefabs/Player/player.tscn::2711a96fd103d8a340d745f717ce7bcb::1759635827::res://godot/exported/133200997/export-8ee673113faa1e3116f837fd76377de5-player.scn
+res://Prefabs/GamePrefabs/Player/player.tscn::596c44e9b54c0fc0425e8a1b43d79297::1759725905::res://godot/exported/133200997/export-8ee673113faa1e3116f837fd76377de5-player.scn
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/CarParkTiles.tres::45685f23803fd261c9ef898eebeb3059::1758986363::res://godot/exported/133200997/export-bb69537ca0cc7aee628c91470d9bd3a3-CarParkTiles.res
 res://Assets/Art/Tilesets/Carpark_Area_Tilemap/Carpark_Tilemap.tscn::1dbde8901bea5c276ab8991e20f7c191::1747909952::res://godot/exported/133200997/export-223a4a565712c275c1c203c73a0ed017-Carpark_Tilemap.scn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/lightning_chain_effect.tres::c3333b35ef1368787d7fb5fef4813574::1756031017::res://godot/exported/133200997/export-07d696846e0114661b6ec49b62762ef0-lightning_chain_effect.res
@@ -169,3 +169,4 @@ res://Prefabs/GamePrefabs/Objects/Carpark_Objects/Car_Horizontal_2.tscn::cdeb6a7
 res://Prefabs/GamePrefabs/Objects/lamp_post_down.tscn::2a2e8d609498d2c458317f0126082413::1759563872::res://godot/exported/133200997/export-8310f097da1f9fffe6e709dad90a54ce-lamp_post_down.scn
 res://Prefabs/GamePrefabs/Objects/lamp_post_up.tscn::9efd09a92c9d54ee2de3ddc6bd771fe0::1759563939::res://godot/exported/133200997/export-e2dde9dc7530bbee3ae336e2f13e5fd1-lamp_post_up.scn
 res://Prefabs/GamePrefabs/Objects/Lamp_Post_Up_Flicker.tscn::588da9d43cba17b600e82f53ae30b186::1759564421::res://godot/exported/133200997/export-a198967bad51906215db5aa55db7b9ee-Lamp_Post_Up_Flicker.scn
+res://Assets/Art/Effects/XP.tres::3425009b60c7caa13cf81cba53d13097::1759725237::res://godot/exported/133200997/export-9db9e83dbce6cfb2f30e5ac894a632a8-XP.res
