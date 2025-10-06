@@ -191,6 +191,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("space") and CanDodge and not LockDodging:
+		var dir := Input.get_vector("left", "right", "up", "down")
+		if dir != Vector2.ZERO:
+			dodge(dir)
+	
 	var fire_dir = _get_fire_direction()
 	if fire_dir != Vector2.ZERO:
 		AimRay.position = Vector2.ZERO
