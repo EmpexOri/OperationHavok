@@ -8,6 +8,7 @@ var is_on_cooldown := false
 
 # All HUD ability icons
 @onready var NovacasterIcon = $"../Icon2/Novacaster"
+@onready var PlasmacasterIcon = $"../Icon2/Plasmacaster"
 @onready var BaseballIcon = $"../Icon2/BaseballGrenade"
 @onready var HomerunIcon = $"../Icon2/HomerunGrenade"
 @onready var MinigunIcon = $"../Icon3/Minigun"
@@ -46,14 +47,22 @@ func _process(delta):
 			NovacasterIcon.visible = true
 			BaseballIcon.visible = false
 			HomerunIcon.visible = false
+			PlasmacasterIcon.visible = false
+		"PlasmaCaster":
+			PlasmacasterIcon.visible = true
+			NovacasterIcon.visible = false
+			BaseballIcon.visible = false
+			HomerunIcon.visible = false
 		"BaseballGrenade":
 			BaseballIcon.visible = true
 			NovacasterIcon.visible = false
 			HomerunIcon.visible = false
+			PlasmacasterIcon.visible = false
 		"HomerunGrenade":
 			HomerunIcon.visible = true
 			NovacasterIcon.visible = false
 			BaseballIcon.visible = false
+			PlasmacasterIcon.visible = false
 	
 	# Minigun ability icons
 	match Abilities[2]:

@@ -277,12 +277,12 @@ position = Vector2(574, 324.5)
 texture = ExtResource("10_fanmj")
 script = ExtResource("30_7kl2t")
 
-[node name="Plasmacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
+[node name="Novacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
 visible = false
 position = Vector2(0, 13.5)
 texture = ExtResource("16_chyi3")
 
-[node name="Novacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
+[node name="Plasmacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
 visible = false
 position = Vector2(0, 13.5)
 texture = ExtResource("17_s5lui")
