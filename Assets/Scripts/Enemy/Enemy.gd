@@ -139,6 +139,9 @@ func on_death():
 	if dead:
 		return
 	dead = true
+	
+	Global.total_enemies_killed += 1
+	
 	emit_signal("died", self)
 	drop_xp()
 	Global.spawn_meat_chunk(global_position)

@@ -4,6 +4,7 @@ var PlayerHP: int = 100
 var PlayerHPMax: int = 100
 var CurrentClass: String = "Commando"
 var HelpXP: int = 0
+var total_enemies_killed: int = 0
 
 var weapon_upgrades = {
 	1: "Smg",
@@ -143,9 +144,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("DebugInput"):
 		GiveDebugLevels(5)
 
-# Grants the player N levels immediately (for debugging)
+# Grants the player levels immediately (for debugging)
 func GiveDebugLevels(amount: int):
 	for i in range(amount):
 		LevelUp()
 	print("Debug: Gave ", amount, " levels to ", CurrentClass, 
 		". New level: ", ClassData[CurrentClass]["Level"])
+
+func reset_match_counters():
+	total_enemies_killed = 0

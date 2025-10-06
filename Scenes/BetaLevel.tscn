@@ -672,11 +672,9 @@ position = Vector2(1480, 2479)
 [node name="Spawn5" type="Marker2D" parent="Park_Arena"]
 position = Vector2(566, 1820)
 
-[node name="Area_Blocker" parent="Park_Arena" instance=ExtResource("35_83ghv")]
-position = Vector2(1397, 2064)
-
-[node name="CarBlocker2" parent="Park_Arena/Area_Blocker" instance=ExtResource("35_83ghv")]
-position = Vector2(27, -76)
+[node name="Area_Blocker" parent="Park_Arena" instance=ExtResource("66_s5lui")]
+position = Vector2(1410, 2090)
+rotation = -0.1253003
 
 [node name="DecoHolder" type="Node2D" parent="Park_Arena"]
 
@@ -822,7 +820,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
-position = Vector2(1564, 1697)
+position = Vector2(-30, -230)
 up_direction = Vector2(0.9999998, -0.0006666659)
 
 [node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]
@@ -1060,15 +1058,6 @@ position = Vector2(250, 1103)
 [node name="FlickerLight" parent="YSortedObjects" instance=ExtResource("68_t3s3n")]
 position = Vector2(208, 1382)
 
-[node name="CarBlocker4" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
-position = Vector2(1344, 1363)
-
-[node name="CarBlocker5" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
-position = Vector2(1775, 1363)
-
-[node name="CarBlocker6" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
-position = Vector2(2032, 1363)
-
 [node name="LampPost2" parent="YSortedObjects" instance=ExtResource("65_s5lui")]
 y_sort_enabled = true
 position = Vector2(1368, 2041)
@@ -1091,6 +1080,19 @@ position = Vector2(1656, 1266)
 [node name="CarBlocker2" parent="YSortedObjects" instance=ExtResource("67_83ghv")]
 position = Vector2(-121, 1358)
 scale = Vector2(-1, 1)
+
+[node name="CarBlocker4" parent="YSortedObjects" instance=ExtResource("67_83ghv")]
+position = Vector2(-121, 1358)
+scale = Vector2(-1, 1)
+
+[node name="CarBlocker5" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
+position = Vector2(1348, 1362)
+
+[node name="CarBlocker6" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
+position = Vector2(1779, 1362)
+
+[node name="CarBlocker7" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
+position = Vector2(2035, 1362)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
