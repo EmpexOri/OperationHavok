@@ -28,3 +28,8 @@ res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
 res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunBullet.tscn
 res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn
+res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
+res://Prefabs/CodePrefabs/Projectiles/primary_bullets/M60Bullet.tscn
+res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd
+res://Prefabs/FX/SummonFX.tscn
