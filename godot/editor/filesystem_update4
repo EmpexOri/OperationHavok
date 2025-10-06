@@ -1,30 +1,16 @@
-res://Prefabs/CodePrefabs/Projectiles/misc_bullets/FireTornadoProjectile.tscn
-res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
-res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
-res://Assets/Shaders/BulletShader.gdshader
-res://Assets/Art/Effects/ExplodedAnim.tres
-res://Assets/Shaders/FlashShader.gdshader
-res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
-res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Projectiles/FireTornado.gd
-res://Prefabs/CodePrefabs/Abilities/PlasmaCaster.tscn
-res://Prefabs/CodePrefabs/Abilities/HomerunGrenade.tscn
-res://Assets/Scripts/Player Scripts/player.gd
-res://Scenes/BetaLevel.tscn
-res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
-res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres
-res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/MinigunBullet.tscn
-res://Prefabs/CodePrefabs/Abilities/RocketLauncher.tscn
-res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/Enemy_Rocket.tscn
-res://Scenes/GlobalAudioController.tscn
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn
-res://Assets/Scripts/Enemy/hoard_enemies/FleshSpawn.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
-res://Assets/Scripts/LevelControllers/Level1/Park_Arena.gd
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
-res://Prefabs/CodePrefabs/Weapons/Shotgun.tscn
 res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
-res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunBullet.tscn
+res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
 res://Assets/Scripts/LevelControllers/Level1/Parkinglot_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/Park_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Projectiles/FireTornado.gd
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/Enemy_Rocket.tscn
+res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/MinigunBullet.tscn
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/FireTornadoProjectile.tscn
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunBullet.tscn
+res://Prefabs/CodePrefabs/Weapons/Minigun.tscn
+res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
