@@ -151,3 +151,22 @@ func _on_area_2d_body_entered(body: Node2D):
 
 func get_flash_sprite() -> CanvasItem:
 	return $Sprite2D
+
+func on_death():
+	if dead:
+		return
+	dead = true
+	
+	# Kill all summons spawned by this enemy
+	for summon in get_tree().get_nodes_in_group(SummonGroup):
+		if is_instance_valid(summon):
+			if summon.has_method("on_death"):
+				summon.on_death()
+	
+	emit_signal("died", self)
+	drop_xp()
+	Global.spawn_meat_chunk(global_position)
+	Global.spawn_blood_splatter(global_position)
+	Global.spawn_death_particles(global_position)
+	GlobalAudioController.HordlingDeath()
+	queue_free()
