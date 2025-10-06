@@ -263,7 +263,7 @@ shape = SubResource("CapsuleShape2D_pfke8")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_b8405")
 sprite_frames = SubResource("SpriteFrames_iqut7")
-animation = &"Walk_Up"
+animation = &"Walk_Down"
 
 [node name="Area2D" type="Area2D" parent="."]
 
