@@ -52,11 +52,6 @@ func _ready() -> void:
 				player.register_spawn(key, marker.global_position)
 
 func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
-	"""
-	Call this from the scene tree once each arena & its trigger exist.
-	The trigger must be an Area2D that fires body_entered.
-	The arena must emit `arena_complete`.
-	"""
 	arenas[name] = { "trigger": trigger, "arena": arena }
 	trigger.body_entered.connect(func(body):
 		if body.is_in_group("Player"):
@@ -180,7 +175,7 @@ func _on_ParkTrigger_body_entered(body: Node2D) -> void:
 	print("Boulder blocker spawned at (310,1674)")
 
 	# Disable or remove the trigger so it doesn’t fire again
-	var trigger = get_node_or_null("ParkTrigger")
+	var trigger = arena.get_node_or_null("ParkTrigger")
 	if trigger:
 		trigger.queue_free()
 

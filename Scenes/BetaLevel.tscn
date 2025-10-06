@@ -623,7 +623,7 @@ position = Vector2(440, 1432)
 position = Vector2(-311, 1432)
 
 [node name="Spawn4" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(-133, 917)
+position = Vector2(57, 974)
 
 [node name="Spawn5" type="Marker2D" parent="Parkinglot_Arena"]
 position = Vector2(290, 1685)
@@ -651,7 +651,7 @@ position = Vector2(727, 1705)
 shape = SubResource("RectangleShape2D_nnjsy")
 
 [node name="Spawn0" type="Marker2D" parent="Park_Arena"]
-position = Vector2(1327, 1738)
+position = Vector2(1244, 1716)
 
 [node name="Spawn1" type="Marker2D" parent="Park_Arena"]
 position = Vector2(530, 2512)
@@ -788,7 +788,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
-position = Vector2(-31, -230)
+position = Vector2(-81, 991)
 up_direction = Vector2(0.9999998, -0.0006666659)
 
 [node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]

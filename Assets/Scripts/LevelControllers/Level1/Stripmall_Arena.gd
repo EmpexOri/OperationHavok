@@ -120,8 +120,8 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 
 func _spawn_minions_during_boss_duo(bosses: Array) -> void:
 	var start_time := Time.get_ticks_msec() / 1000.0
-	var base_delay := 2.0
-	var min_delay := 0.5
+	var base_delay := 1.0
+	var min_delay := 0.25
 	var base_batch := 1
 	var max_batch := 5
  

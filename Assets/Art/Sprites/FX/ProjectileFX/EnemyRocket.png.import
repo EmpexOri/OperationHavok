@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4jffy67wwlxk"
-path="res://godot/imported/Fleshspawn_Animation_Temp.png-dd270458b1386bc195a7217f7ebe89ea.ctex"
+uid="uid://5blppurjpeaa"
+path="res://godot/imported/EnemyRocket.png-9ae9ad26e16a661b4725b8dda7e719c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Sprites/Fleshspawn_Animation_Temp.png"
-dest_files=["res://godot/imported/Fleshspawn_Animation_Temp.png-dd270458b1386bc195a7217f7ebe89ea.ctex"]
+source_file="res://Assets/Art/Sprites/FX/ProjectileFX/EnemyRocket.png"
+dest_files=["res://godot/imported/EnemyRocket.png-9ae9ad26e16a661b4725b8dda7e719c3.ctex"]
 
 [params]
 

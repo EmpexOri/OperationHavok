@@ -4,4 +4,4 @@
 
 [node name="Minigun" type="Node2D"]
 script = ExtResource("1_kp1v0")
-CooldownTime = 15.0
+CooldownTime = 12.5

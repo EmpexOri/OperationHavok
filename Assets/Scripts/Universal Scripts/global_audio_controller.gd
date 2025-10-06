@@ -176,7 +176,7 @@ func PlayGrenadeExplosion():
 			player.stream = GrenadeExplosionSound
 			player.volume_db = 5
 			player.play()
-			ScreenShake.shake(randf_range(8.0, 10.0), randf_range(0.1, 0.4))
+			ScreenShake.shake(randf_range(5.0, 7.0), randf_range(0.1, 0.4))
 			return
 	print("All General SFX channels are busy!")
 	

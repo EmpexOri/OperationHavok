@@ -143,7 +143,7 @@ direction_change_interval = 0.75
 max_direction_change_angle = 45.0
 fireout_transition_time = 1.0
 base_speed = 80.0
-base_lifetime = 5.0
+base_lifetime = 5.5
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1.66893e-06, -3.0000315)

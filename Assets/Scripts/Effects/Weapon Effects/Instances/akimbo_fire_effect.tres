@@ -4,8 +4,5 @@
 
 [resource]
 script = ExtResource("1_0a2f8")
-shot_offset = 7.5
-barrel_count = 2
-barrel_fire_delay = 0.25
-effect_name = ""
+shot_offset = 2.0
 metadata/_custom_type_script = "uid://hngk5be2sgte"
