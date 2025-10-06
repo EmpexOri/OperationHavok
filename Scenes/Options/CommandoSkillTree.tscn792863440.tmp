@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=25 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cjkp44054rnub" path="res://Assets/Art/HUD/M60.png" id="7_0cs3v"]
 [ext_resource type="Texture2D" uid="uid://v7xyvs0ub8g4" path="res://Assets/Art/HUD/SMGs.png" id="7_k5h02"]
 [ext_resource type="Texture2D" uid="uid://o2mbpfo6gegs" path="res://Assets/Art/HUD/RaygunRifleRetroStyle.png" id="9_kcvj1"]
-[ext_resource type="Texture2D" uid="uid://bh2lxa26utvgi" path="res://Assets/Art/HUD/LaseSniper.png" id="9_qqek5"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="10_ciio1"]
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="11_k5h02"]
 [ext_resource type="Texture2D" uid="uid://cwcdqy5jts8as" path="res://Assets/Art/HUD/HomerunGrenade.png" id="12_2p3y5"]
@@ -59,35 +58,6 @@ position = Vector2(552, 143)
 texture = ExtResource("19_k5h02")
 
 [node name="AbilityInfoBox" type="CanvasLayer" parent="."]
-
-[node name="SMG" type="Sprite2D" parent="AbilityInfoBox"]
-position = Vector2(554, 141)
-scale = Vector2(2, 2)
-texture = ExtResource("6_wo6gr")
-
-[node name="Akimbo" type="Sprite2D" parent="AbilityInfoBox"]
-visible = false
-position = Vector2(554, 141)
-scale = Vector2(2, 2)
-texture = ExtResource("7_k5h02")
-
-[node name="Shotgun" type="Sprite2D" parent="AbilityInfoBox"]
-visible = false
-position = Vector2(554, 141)
-scale = Vector2(2, 2)
-texture = ExtResource("5_ciio1")
-
-[node name="M60" type="Sprite2D" parent="AbilityInfoBox"]
-visible = false
-position = Vector2(554, 141)
-scale = Vector2(2, 2)
-texture = ExtResource("7_0cs3v")
-
-[node name="LaseSniper" type="Sprite2D" parent="AbilityInfoBox"]
-visible = false
-position = Vector2(554, 141)
-scale = Vector2(2, 2)
-texture = ExtResource("9_qqek5")
 
 [node name="PickAPerk" type="Label" parent="."]
 anchors_preset = 5

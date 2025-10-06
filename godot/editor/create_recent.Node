@@ -1,3 +1,4 @@
+CanvasLayer
 CollisionShape2D
 NavigationObstacle2D
 Node2D

@@ -6,3 +6,4 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
+res://Assets/Scripts/Menu Scripts/skill_button.gd
