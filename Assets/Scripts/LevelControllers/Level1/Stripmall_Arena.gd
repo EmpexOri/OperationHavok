@@ -27,21 +27,28 @@ var wave_in_progress := false
 
 var waves: Array = []
 
-const BOSS_MINION_CAP := 40
+const BOSS_MINION_CAP := 80
+
+var extra_spawn_points_enabled := false
+@onready var arena_blockers: Node2D = $Arena_Blockers
+@export var explosion_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn")
 
 func _ready() -> void:
 	if spawn_points.is_empty():
+		var index := 0
 		for child in get_children():
 			if child is Marker2D:
 				if child.name == "SpawnBoss":
 					boss_spawn = child
 				else:
+					index += 1
+					child.set_meta("index", index)
 					spawn_points.append(child)
 
 	# Wave 1 and 2 normal waves, Wave 3 is boss wave handled separately
 	waves = [
-		#{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
-		#{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
+		{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
+		{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
 		{ "Warmachine": 1, "WarmachineRocket": 1 } 
 	]
 
@@ -66,7 +73,7 @@ func start_next_wave() -> void:
 	var wave_data = waves[current_wave]
 	current_wave += 1
 	print("Spawning Stripmall wave %d..." % current_wave)
-	await spawn_wave_enemies(wave_data)
+	spawn_wave_enemies(wave_data)
 
 	# Boss wave special logic
 	if wave_data.has("Warmachine") and wave_data.has("WarmachineRocket"):
@@ -77,13 +84,15 @@ func start_next_wave() -> void:
 			GlobalAudioController.SetLevel1Music(
 				"res://Assets/Sound/Music/Lux_Target_Loops.mp3", true
 			)
-
-			# Track duo deaths
+			
+			_remove_arena_blockers()
+			extra_spawn_points_enabled = true
+			
 			if warmachine_gun.has_signal("died"):
 				warmachine_gun.connect("died", Callable(self, "_on_boss_died"))
 			if warmachine_rocket.has_signal("died"):
 				warmachine_rocket.connect("died", Callable(self, "_on_boss_died"))
-
+				
 			call_deferred("_spawn_minions_during_boss_duo", [warmachine_gun, warmachine_rocket])
 		else:
 			push_error("Warmachine duo not found correctly after spawn.")
@@ -94,12 +103,38 @@ func start_next_wave() -> void:
 
 	wave_in_progress = false
 	start_next_wave()
+	
+func _remove_arena_blockers() -> void:
+	if arena_blockers and is_instance_valid(arena_blockers):
+		for blocker in arena_blockers.get_children():
+			if is_instance_valid(blocker):
+				# Spawn explosion at the blocker position
+				if explosion_scene:
+					var explosion = explosion_scene.instantiate()
+					explosion.position = blocker.global_position
+					get_parent().add_child(explosion)
+					
+				blocker.queue_free()
+				
+		arena_blockers.queue_free()
+		arena_blockers = null
+		print("Arena blockers fully cleared with explosions!")
+	else:
+		pass
 
 func spawn_wave_enemies(data: Dictionary) -> void:
 	var camera = get_viewport().get_camera_2d()
 	for enemy_type in data.keys():
 		var roll_data = data[enemy_type]
-		var count: int = int(roll_data)
+		var count: int
+
+		if typeof(roll_data) == TYPE_ARRAY:
+			var min_val = roll_data[0]
+			var max_val = roll_data[1]
+			var mult = roll_data[2]
+			count = randi_range(min_val, max_val) * mult
+		else:
+			count = int(roll_data)
 
 		var scene = ENEMY_SCENES.get(enemy_type, null)
 		if scene == null:
@@ -190,6 +225,9 @@ func _on_enemy_died(enemy):
 func get_random_spawn_outside_camera(camera: Camera2D) -> Marker2D:
 	var candidates := []
 	for sp in spawn_points:
+		var index: int = int(sp.get_meta("index", 1))
+		if not extra_spawn_points_enabled and index > 2:
+			continue
 		if is_position_behind_camera(camera, sp.global_position):
 			candidates.append(sp)
 	return candidates[randi() % candidates.size()] if not candidates.is_empty() else null
