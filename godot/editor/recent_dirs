@@ -1,4 +1,5 @@
 C:/Users/Empex/Desktop/Uni/Yr3/Project A/Operation Havok [PreAlpha]
+res://Assets/Art/Sprites
 res://Assets/Art/Sprites/FX/ProjectileFX
 res://Assets/Art/Sprites/FX
 res://Prefabs/CodePrefabs/Projectiles/misc_bullets
@@ -13,7 +14,6 @@ res://Assets/Art/Tilesets
 res://Assets/Art/Tilesets/Tilesets_Final/Rooftops
 res://Assets/Art/Tilesets/Tilesets_Final
 res://Assets/Art/Sprites/PlayerTilesheets
-res://Assets/Art/Sprites
 res://Assets/Art/Sprites/EnemyTilesheets
 res://Assets/Scripts/Effects/Projectile Effects/Instances
 res://Assets/Art/Particles/Lightning

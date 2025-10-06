@@ -1,13 +1,93 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtra84e58gsn7"]
+[gd_scene load_steps=18 format=3 uid="uid://dtra84e58gsn7"]
 
 [ext_resource type="Script" uid="uid://g04nhdfw0ljv" path="res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd" id="1_seddk"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_bj3rp"]
 [ext_resource type="Texture2D" uid="uid://lvgy0v7pooxo" path="res://Assets/Art/PlaceHolders/Biomancer.png" id="2_seddk"]
+[ext_resource type="Texture2D" uid="uid://dxqjhpwru6ctd" path="res://Assets/Art/Sprites/Biomancer_Animations.png" id="4_iqvlo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj3rp"]
-radius = 9.0
+radius = 18.110771
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seddk"]
+radius = 22.022715
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svopn"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aaum"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hreq"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04an1"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bmqp"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ke3c"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwlff"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3on22"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pqn8"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_objwc"]
+atlas = ExtResource("4_iqvlo")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17m8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svopn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aaum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hreq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04an1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bmqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ke3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwlff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3on22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pqn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_objwc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
 
 [node name="Biomancer" type="CharacterBody2D"]
 collision_layer = 2
@@ -15,6 +95,7 @@ collision_mask = 7
 script = ExtResource("1_seddk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(0.92224, 1, 0.91857, 1)
 texture_filter = 1
 material = ExtResource("2_bj3rp")
@@ -32,5 +113,10 @@ shape = SubResource("CircleShape2D_seddk")
 avoidance_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_bj3rp")
+sprite_frames = SubResource("SpriteFrames_17m8u")
+animation = &"Idle"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

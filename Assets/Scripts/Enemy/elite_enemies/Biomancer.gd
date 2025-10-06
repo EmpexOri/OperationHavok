@@ -1,5 +1,6 @@
 extends Enemy
 
+@onready var sprite = $AnimatedSprite2D
 var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn")
 #Special Enemies we can spawn
 #var Gatling = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn")
@@ -7,6 +8,7 @@ var FleshSpawn = preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Fl
 var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn")
 
 var SummonFX = preload("res://Prefabs/FX/SummonFX.tscn")
+var active_fx: Array = []
 
 var firetimer: Timer
 
@@ -27,21 +29,32 @@ func start():
 
 func _ready():
 	super()
-	get_flash_sprite().material = get_flash_sprite().material.duplicate()
+	sprite = get_flash_sprite() 
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
+		
+	if sprite is AnimatedSprite2D:
+		sprite.play("Idle")
+		_start_dynamic_animation_speed()
 
 func update_navigation(_delta):
 	var target_node = resolve_target()
 	if not target_node:
+		$AnimatedSprite2D.play("Idle")
+		velocity = Vector2.ZERO
+		move_and_slide()
 		return
-	
+		
 	var distance = global_position.distance_to(target_node.global_position)
 	var dir = (nav.get_next_path_position() - global_position).normalized()
 	
 	if distance < 150:
 		velocity = -dir * Speed
+		$AnimatedSprite2D.play("Idle")
 	else:
 		velocity = Vector2.ZERO
-	
+		$AnimatedSprite2D.play("Idle")
+		
 	move_and_slide()
 
 func start_timer():
@@ -57,6 +70,7 @@ func _begin_summon():
 	var fx = SummonFX.instantiate()
 	fx.global_position = global_position
 	get_parent().add_child(fx)
+	active_fx.append(fx)
 
 	if fx.has_signal("finished"):
 		fx.connect("finished", Callable(self, "_on_summon_fx_finished").bind(fx))
@@ -149,5 +163,33 @@ func _on_area_2d_body_entered(body: Node2D):
 		body.queue_free()
 		deal_damage(10)
 
+func _start_dynamic_animation_speed():
+	var timer = Timer.new()
+	timer.wait_time = 0.2 
+	timer.one_shot = false
+	timer.autostart = true
+	timer.connect("timeout", Callable(self, "_randomize_animation_speed"))
+	add_child(timer)
+
+func _randomize_animation_speed():
+	if $AnimatedSprite2D is AnimatedSprite2D:
+		$AnimatedSprite2D.speed_scale = randf_range(0.8, 1.4)
+
 func get_flash_sprite() -> CanvasItem:
-	return $Sprite2D
+	return sprite
+
+func on_death():
+	if dead:
+		return
+	dead = true
+	emit_signal("died", self)
+	drop_xp()
+	Global.spawn_meat_chunk(global_position)
+	Global.spawn_blood_splatter(global_position)
+	Global.spawn_death_particles(global_position)
+	GlobalAudioController.HordlingDeath()
+	for fx in active_fx:
+		if is_instance_valid(fx):
+			fx.queue_free()
+	active_fx.clear()
+	queue_free()
