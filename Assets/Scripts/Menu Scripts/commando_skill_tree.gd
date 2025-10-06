@@ -83,6 +83,8 @@ func _on_skill_button_used(button: SkillButton):
 			upgrade_grenade_ability("HomerunGrenade")
 		"Novacaster":
 			upgrade_grenade_ability("NovacasterGrenade")
+		"PlasmaCaster":
+			upgrade_grenade_ability("PlasmaCaster")
 
 func restore_unlocked_skills(node):
 	# Restores the unlocked state of skills from saved data
