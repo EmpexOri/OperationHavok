@@ -7,3 +7,5 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Projectiles/FireTornado.gd
+res://Prefabs/CodePrefabs/Abilities/PlasmaCaster.tscn
+res://Prefabs/CodePrefabs/Abilities/HomerunGrenade.tscn
