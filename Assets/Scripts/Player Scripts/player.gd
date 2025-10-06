@@ -47,6 +47,7 @@ var LockDodging := false
 @onready var AimRay: RayCast2D = $AimRay
 var AimDistance: float = 600.0 
 var AimOffset: float = 10.0
+var aim_hit_position: Vector2 = Vector2.ZERO
 
 #Smoother Shooting
 var last_fire_direction := Vector2.RIGHT
@@ -176,28 +177,39 @@ func _process(delta):
 	
 func _physics_process(delta: float) -> void:
 	if LockAllControls or LockMovement:
+		# Only allow knockback to move the player
 		velocity = velocityknock
 		move_and_slide()
 		velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * delta)
 		return
-	
+		
 	var motion := Input.get_vector("left", "right", "up", "down")
-	var fire_dir := _get_fire_direction()
+	var motion_normalized := motion.normalized()
 	
-	# Dodge
-	if not IsDodging:
-		if not LockDodging and Input.is_action_just_pressed("space") and CanDodge:
-			dodge(motion.normalized())
+	velocity = motion_normalized * MoveSpeed + velocityknock
+	velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * delta)  # decay knockback
 	
-	if motion.length() > 0:
-		velocity = motion.normalized() * MoveSpeed + velocityknock
-		_update_movement_and_fire_animation(motion, fire_dir)
-	else:
-		_update_movement_and_fire_animation(Vector2.ZERO, fire_dir)
-		velocity = velocityknock
-
 	move_and_slide()
-	velocityknock = velocityknock.move_toward(Vector2.ZERO, 1000 * delta)
+	
+	if Input.is_action_just_pressed("space") and CanDodge and not LockDodging:
+		var dir := Input.get_vector("left", "right", "up", "down")
+		if dir != Vector2.ZERO:
+			dodge(dir)
+	
+	var fire_dir = _get_fire_direction()
+	if fire_dir != Vector2.ZERO:
+		AimRay.position = Vector2.ZERO
+		AimRay.target_position = fire_dir.normalized() * AimDistance
+		AimRay.force_raycast_update()
+		
+		if AimRay.is_colliding():
+			aim_hit_position = AimRay.get_collision_point() - global_position
+		else:
+			aim_hit_position = fire_dir.normalized() * AimDistance
+	else:
+		aim_hit_position = Vector2.ZERO
+	
+	_update_movement_and_fire_animation(motion, fire_dir)
 	
 	#var screen_size = get_viewport_rect().size
 	#position.x = clamp(position.x, 0, screen_size.x)
@@ -748,31 +760,19 @@ func update_aim_indicator():
 	if not ControllerEnabled or not AimLine:
 		AimLine.visible = false
 		return
-		
+
 	var dir = _get_fire_direction()
 	if dir == Vector2.ZERO:
 		AimLine.visible = false
 		return
-		
+
 	AimLine.visible = true
-	
+
 	var offset_position = dir.normalized() * AimOffset
-	
-	AimRay.position = offset_position
-	AimRay.target_position = dir.normalized() * AimDistance
-	
-	AimRay.force_raycast_update()
-	
-	var hit_position: Vector2
-	if AimRay.is_colliding():
-		hit_position = AimRay.get_collision_point() - global_position
-	else:
-		hit_position = dir.normalized() * AimDistance
-		
-	hit_position -= offset_position
-	
+	var hit_position = aim_hit_position - offset_position
+
 	AimLine.points = [Vector2.ZERO, hit_position]
-	AimLine.position = offset_position  
-	
+	AimLine.position = offset_position
+
 	var alpha = clamp(dir.length() * 2.0, 0.0, 1.0)
 	AimLine.modulate.a = alpha

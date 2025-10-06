@@ -32,9 +32,9 @@ func _ready():
 				spawn_points.append(child)
 
 	waves = [
-		{ "Hordling": [2,6,6], "Spewling": [1,6,3], "Goolum": 2, "Needling": 3 },
-		{ "Hordling": [2,6,6], "Spewling": [1,6,3], "Goolum": [1,3,1], "Needling": [1,6,2], "Biomancer": [1,3,0], "Network": 1 },
-		{ "Hordling": [2,6,6], "Spewling": [1,6,3], "Goolum": [1,3,1], "Needling": [1,6,2], "Biomancer": [1,3,1], "Network": [1,3,1], "Gatling": 4 },
+		{ "Hordling": [6,6,6], "Spewling": [1,6,3], "Goolum": 2, "Needling": 3, "Gatling": [1,6,1], "Tumor": [1,6,3] },
+		{ "Hordling": [7,6,6], "Spewling": [2,6,3], "Goolum": [1,3,1], "Needling": [1,6,2], "Biomancer": [1,3,0], "Network": 1, "Tumor": [2,6,2] },
+		{ "Hordling": [8,6,6], "Spewling": [2,6,3], "Goolum": [1,3,1], "Needling": [2,6,2], "Biomancer": [1,3,1], "Network": [1,3,1], "Gatling": [2,6,2], "Tumor": [3,6,1] },
 	]
 
 func activate_arena():
@@ -124,25 +124,37 @@ func is_position_behind_camera(camera: Camera2D, position: Vector2) -> bool:
 	return not (position.x >= tl.x and position.x <= br.x and position.y >= tl.y and position.y <= br.y)
 
 func arena_completed() -> void:
+	
+	var trigger := get_node_or_null("Park_Trigger") as Area2D
+	if trigger:
+		trigger.monitoring = false
+		trigger.monitorable = false
+		
+		# Use a Callable to reference the method
+		var cb = Callable(self, "_on_ParkTrigger_body_entered")
+		if trigger.is_connected("body_entered", cb):
+			trigger.disconnect("body_entered", cb)
+			
+		trigger.queue_free()
+		
 	arena_active = false
 	GlobalEffects.activate_xp_buff(6000, 6.0)
 	print("Park Arena complete!")
-
+	
 	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
 	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
-
+	
 	await get_tree().create_timer(0.25).timeout
 	await _run_breakdown_event()
-
-	# Set respawn to Stripmall after Park arena completes
+	
 	var controller = get_node_or_null(beta_level_controller_path)
 	if controller:
 		controller._set_checkpoint("stripmall")
 	else:
 		push_error("BetaLevelController not found at path: %s" % beta_level_controller_path)
-
+		
 	emit_signal("arena_complete")
-
+	
 func _run_breakdown_event() -> void:
 	var blocker: Node2D = get_node_or_null(area_blocker_name) as Node2D
 	if blocker:

@@ -9,7 +9,7 @@ size = Vector2(9.99995, 14)
 
 [node name="Bullet" instance=ExtResource("1_ebkul")]
 base_speed = 600.0
-base_damage = 8.0
+base_damage = 7.0
 base_lifetime = 0.25
 
 [node name="CollisionShape2D" parent="." index="0"]

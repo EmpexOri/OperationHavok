@@ -4,7 +4,7 @@ func _ready() -> void:
 	pickup_range = 75
 	pickup_type = "Xp"
 	pickup_value = 1
-	sprite_path = "res://Assets/Art/Pickups/xp.png"
+	sprite_frames_path = "res://Assets/Art/Effects/XP.tres"
 	super._ready()
 
 func apply_effect():

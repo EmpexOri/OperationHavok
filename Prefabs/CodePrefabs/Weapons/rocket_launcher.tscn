@@ -6,6 +6,6 @@
 [node name="RocketLauncher" type="Node2D"]
 script = ExtResource("1_nlw1r")
 projectile_scene = ExtResource("2_nlw1r")
-base_fire_rate = 1.0
+base_fire_rate = 0.8
 fire_offset = 7.0
 fire_sound_method = &"RocketFre"

@@ -179,4 +179,4 @@ func drop_xp():
 		get_parent().add_child(xp_pickup)
 
 func get_flash_sprite() -> CanvasItem:
-	return sprite  # or $AnimatedSprite2D depending on the node used
+	return sprite 

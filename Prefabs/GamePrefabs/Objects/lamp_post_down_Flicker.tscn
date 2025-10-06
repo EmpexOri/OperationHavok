@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dinql5215152r"]
+
+[ext_resource type="Texture2D" uid="uid://d26nys4jm8ch" path="res://Assets/Art/Objects/LevelObjects/Carpark/Lamp_Post_Down.png" id="1_cgxeb"]
+[ext_resource type="Texture2D" uid="uid://hgn16cdw4g8d" path="res://Assets/Art/Sprites/LightAura.png" id="2_aeccv"]
+[ext_resource type="Script" uid="uid://3v72tm4eechc" path="res://Assets/Scripts/Misc/LightFlicker.gd" id="2_vkyya"]
+
+[node name="FlickerPostDown" type="Node2D"]
+script = ExtResource("2_vkyya")
+
+[node name="LampPost" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-19, -55.475)
+texture = ExtResource("1_cgxeb")
+centered = false
+offset = Vector2(-21, -59)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.9073486e-06, 22.524998)
+scale = Vector2(0.35, 0.35)
+color = Color(1, 0.987353, 0.258861, 1)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("2_aeccv")
+offset = Vector2(5, 40)

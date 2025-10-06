@@ -27,10 +27,12 @@ func _ready():
 	OptionsScene.OptionsClosed.connect(_on_options_closed)
 	SkillTree.SkillTreeClosed.connect(_on_skill_tree_closed)
 	
-	
 	OptionsScene.visible = false
 	SkillTree.visible = false
 
+func _input(event:InputEvent) -> void:
+	if Input.is_action_just_pressed("InGameOptions"):
+		_on_resume_button_pressed()
 
 func show_pause_menu() -> void:	
 	# Bringing up the pause menu 
@@ -63,6 +65,8 @@ func _on_resume_button_pressed() -> void:
 	SkillTree.visible = false
 	
 	if get_tree().paused:
+		# A timer to ensure the pause menu doesn't open up again immediately
+		await get_tree().create_timer(0.2).timeout
 		get_tree().paused = false
 	
 	PauseMenu.visible = false

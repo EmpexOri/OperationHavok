@@ -3,6 +3,8 @@ extends CharacterBody2D
 # Base pickup class, override values/apply effect in derived class
 class_name BasePickup
 
+@export var sprite_frames_path: String = ""
+
 var pickup_range: int
 var pickup_type: String
 var pickup_value: int
@@ -28,11 +30,14 @@ func _ready() -> void:
 	# Store the original pickup range
 	default_pickup_range = pickup_range
 	
-	var texture = load(sprite_path)
-	if texture:
-		$Sprite2D.texture = texture
+	var anim_sprite = $AnimatedSprite2D as AnimatedSprite2D
+	if anim_sprite and sprite_frames_path != "":
+		var frames = load(sprite_frames_path) as SpriteFrames
+		anim_sprite.frames = frames
+		anim_sprite.animation = "default"
+		anim_sprite.play()
 	else:
-		print("Failed to load texture for: " + pickup_type)
+		print("AnimatedSprite2D or SpriteFrames missing for pickup: ", pickup_type)
 
 	# Listen for XP pickup buff
 	if pickup_type == "Xp":
