@@ -37,3 +37,5 @@ res://Prefabs/CodePrefabs/Pickups/pickup.tscn
 res://Assets/Scripts/Pickups/base_pickup.gd
 res://Assets/Scripts/Pickups/xp_pickup.gd
 res://Prefabs/GamePrefabs/Player/player.tscn
+res://Prefabs/GamePrefabs/Objects/lamp_post_down_Flicker.tscn
+res://Prefabs/GamePrefabs/Objects/Carpark_Objects/Car_Vertical_1.tscn

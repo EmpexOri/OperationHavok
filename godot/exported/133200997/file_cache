@@ -130,8 +130,8 @@ res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn::f1cd0
 res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn::9b769e88510d9c76ecb75ab05abfa24a::1758609330::res://godot/exported/133200997/export-c039aac4dc4dc7a181b0aa782e8c2c44-HomeRunLauncher.scn
 res://Assets/Scripts/Effects/Projectile Effects/Instances/projectile_spawn_on_kill_effect.tres::632f635273640984eb2c1c1718493002::1757566982::res://godot/exported/133200997/export-8e64b1310359aa11f161b5e9a97cb345-projectile_spawn_on_kill_effect.res
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres::73a4d9d9bdac3e4160e57d0529487e23::1759718324::res://godot/exported/133200997/export-f97e7e05ea6d389c09d69b908fbb941d-FloorsTilesets.res
-res://Assets/Art/Tilesets/WallsTilesets.tres::869844b86dece4094dbfea99f43b8060::1759718324::res://godot/exported/133200997/export-6edede9bbc8f4f9a5d7fd7b3ca517a74-WallsTilesets.res
-res://Scenes/BetaLevel.tscn::51c0e1d5f5db9f4d18d001750edc8122::1759724002::res://godot/exported/133200997/export-a5de500adee9af5e69cae3c5c83d0ce9-BetaLevel.scn
+res://Assets/Art/Tilesets/WallsTilesets.tres::ae6414200e54a6f3e1c2e99149ae52bc::1759726193::res://godot/exported/133200997/export-6edede9bbc8f4f9a5d7fd7b3ca517a74-WallsTilesets.res
+res://Scenes/BetaLevel.tscn::51c0e1d5f5db9f4d18d001750edc8122::1759726193::res://godot/exported/133200997/export-a5de500adee9af5e69cae3c5c83d0ce9-BetaLevel.scn
 res://Prefabs/CodePrefabs/Particles/Rain.tscn::e63f50c2615dfaf3811ab1fb72daa668::1758166629::res://godot/exported/133200997/export-f58605441cbdbce2719ce73b93897b71-Rain.scn
 res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn::0ed605af55a0cfb17e800bc7ece5e702::1758776483::res://godot/exported/133200997/export-20f32aca5f846f77470c681a4fa42038-TrashcanExplode.scn
 res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn::f85aa935f011e467f47f0cb35ef29667::1758783750::res://godot/exported/133200997/export-a8b4b1cc20eef35c783ff388a2655dc0-Boulder.scn

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsjetxfhcvc27"]
+
+[ext_resource type="Texture2D" uid="uid://cw4u6ehfii6o1" path="res://Assets/Art/Objects/LevelObjects/Carpark/Car_Object_Vertical_Red_V2.png" id="1_g64mg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_geil7"]
+size = Vector2(38, 75)
+
+[node name="CarBlocker" type="StaticBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(4, 0)
+texture = ExtResource("1_g64mg")
+offset = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27.5)
+shape = SubResource("RectangleShape2D_geil7")
