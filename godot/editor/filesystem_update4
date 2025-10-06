@@ -9,3 +9,5 @@ res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Projectiles/FireTornado.gd
 res://Prefabs/CodePrefabs/Abilities/PlasmaCaster.tscn
 res://Prefabs/CodePrefabs/Abilities/HomerunGrenade.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Scenes/BetaLevel.tscn

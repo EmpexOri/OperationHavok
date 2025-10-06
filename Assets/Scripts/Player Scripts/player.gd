@@ -105,12 +105,12 @@ var weapon_data := {
 	},
 	"res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn": {
 		"name": "lightning_launcher",
-		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketLauncher.png"),
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/LightningGun.png"),
 		"offset": Vector2(5, 0)
 	},
 	"res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn": {
 		"name": "TyphoonCannon",
-		"sprite": preload("res://Assets/Art/Sprites/Weapons/RocketMinigun.png"),
+		"sprite": preload("res://Assets/Art/Sprites/Weapons/TyphoonCannon.png"),
 		"offset": Vector2(5, 0)
 	},
 }
