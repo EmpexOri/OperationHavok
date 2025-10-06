@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_74uq5"]
+[ext_resource type="Texture2D" uid="uid://bknxe4amx0d2o" path="res://Assets/Art/PlaceHolders/DamonHorror.png" id="2_evsyq"]
 [ext_resource type="Texture2D" uid="uid://f587roho125o" path="res://Assets/Art/SkillTree/PerkBack.png" id="2_k5h02"]
 [ext_resource type="Texture2D" uid="uid://c3avalga102rd" path="res://Assets/Art/HUD/Shotgun.png" id="5_ciio1"]
 [ext_resource type="Texture2D" uid="uid://nbt57jqk3aep" path="res://Assets/Art/HUD/Flamethrower.png" id="6_1kq37"]
@@ -23,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://j140hxqss6ei" path="res://Assets/Art/SkillTree/BoxBack.png" id="19_k5h02"]
 [ext_resource type="Texture2D" uid="uid://bknt3qafescxd" path="res://Assets/Art/Menu/exit.png" id="22_scflt"]
 [ext_resource type="Texture2D" uid="uid://d20dv4x5f3bi" path="res://Assets/Art/Menu/exitpressed.png" id="23_evsyq"]
-[ext_resource type="Texture2D" uid="uid://ccckihdgm6m1d" path="res://Assets/Art/PlaceHolders/Damon.png" id="24_evsyq"]
 
 [node name="CommandoSkillTree" type="CanvasLayer"]
 script = ExtResource("1_qqy41")
@@ -43,6 +43,11 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DamonHorror" type="Sprite2D" parent="."]
+position = Vector2(69.00001, 50)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_evsyq")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(241, 224)
@@ -344,10 +349,5 @@ texture_normal = ExtResource("22_scflt")
 texture_pressed = ExtResource("23_evsyq")
 texture_hover = ExtResource("23_evsyq")
 texture_focused = ExtResource("23_evsyq")
-
-[node name="Damon" type="Sprite2D" parent="."]
-position = Vector2(60, 49)
-scale = Vector2(0.35000002, 0.31124994)
-texture = ExtResource("24_evsyq")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
