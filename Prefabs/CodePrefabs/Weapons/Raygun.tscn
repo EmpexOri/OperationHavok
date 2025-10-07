@@ -30,6 +30,6 @@ metadata/_custom_type_script = "uid://wwee4860hgms"
 script = ExtResource("1_ym48u")
 projectile_scene = ExtResource("2_hextn")
 base_fire_rate = 0.9
-fire_sound_method = &"ShotgunFire"
+fire_sound_method = &"FissionFire"
 projectile_effects = Array[ExtResource("3_hextn")]([SubResource("Resource_ymo87"), SubResource("Resource_7e4pb")])
 weapon_effects = Array[ExtResource("6_k1ijk")]([SubResource("Resource_4aja5")])

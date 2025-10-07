@@ -829,7 +829,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
-position = Vector2(353, 1674)
+position = Vector2(-36, -226)
 up_direction = Vector2(0.9999998, -0.0006666659)
 
 [node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]
@@ -1103,6 +1103,30 @@ position = Vector2(1779, 1362)
 [node name="CarBlocker7" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
 position = Vector2(2035, 1362)
 
+[node name="Blue_Vending2" parent="YSortedObjects" instance=ExtResource("54_18udo")]
+position = Vector2(1871, 934)
+
+[node name="Blue_Vending3" parent="YSortedObjects" instance=ExtResource("54_18udo")]
+position = Vector2(1899, 934)
+
+[node name="Blue_Vending4" parent="YSortedObjects" instance=ExtResource("54_18udo")]
+position = Vector2(1927, 934)
+
+[node name="Red_Vending2" parent="YSortedObjects" instance=ExtResource("55_s6ron")]
+position = Vector2(1955, 934)
+
+[node name="Red_Vending3" parent="YSortedObjects" instance=ExtResource("55_s6ron")]
+position = Vector2(1983, 934)
+
+[node name="Red_Vending4" parent="YSortedObjects" instance=ExtResource("55_s6ron")]
+position = Vector2(2011, 934)
+
+[node name="Red_Vending5" parent="YSortedObjects" instance=ExtResource("55_s6ron")]
+position = Vector2(2039, 934)
+
+[node name="Red_Vending6" parent="YSortedObjects" instance=ExtResource("55_s6ron")]
+position = Vector2(2067, 934)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 position = Vector2(66, 34)
@@ -1177,30 +1201,6 @@ affect_navigation_mesh = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.629675, 0.629675, 0.629675, 1)
-
-[node name="Blue_Vending" parent="." instance=ExtResource("54_18udo")]
-position = Vector2(1871, 934)
-
-[node name="Blue_Vending2" parent="." instance=ExtResource("54_18udo")]
-position = Vector2(1899, 934)
-
-[node name="Blue_Vending3" parent="." instance=ExtResource("54_18udo")]
-position = Vector2(1927, 934)
-
-[node name="Red_Vending" parent="." instance=ExtResource("55_s6ron")]
-position = Vector2(1955, 934)
-
-[node name="Red_Vending2" parent="." instance=ExtResource("55_s6ron")]
-position = Vector2(1983, 934)
-
-[node name="Red_Vending3" parent="." instance=ExtResource("55_s6ron")]
-position = Vector2(2011, 934)
-
-[node name="Red_Vending4" parent="." instance=ExtResource("55_s6ron")]
-position = Vector2(2039, 934)
-
-[node name="Red_Vending5" parent="." instance=ExtResource("55_s6ron")]
-position = Vector2(2067, 934)
 
 [connection signal="body_entered" from="Rooftop_Arena/RooftopTrigger_1" to="." method="_on_RooftopTrigger_1_body_entered"]
 [connection signal="body_entered" from="Parkinglot_Arena/Parkinglot_Trigger" to="." method="_on_ParkinglotTrigger_body_entered"]

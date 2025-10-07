@@ -141,8 +141,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_na2k3"]
-size = Vector2(22, 29)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f32xw"]
+radius = 11.0
+height = 35.0
 
 [node name="Gatling" type="CharacterBody2D"]
 collision_layer = 2
@@ -167,8 +168,8 @@ animation = &"fire"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 1.5)
-shape = SubResource("RectangleShape2D_na2k3")
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_f32xw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_search_max_polygons = 16

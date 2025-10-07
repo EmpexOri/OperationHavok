@@ -37,6 +37,7 @@ var Smg_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Silencetest1.wav")
 var Rocket_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/RocketLauncherShot.mp3")
 var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
 var M60_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
+var Fission_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
@@ -287,6 +288,9 @@ func RocketFire():
 	
 func M60Fire():
 	PlayFromWeaponSFX(M60_fire_sfx)
+	
+func FissionFire():
+	PlayFromWeaponSFX(Fission_fire_sfx)
 
 func ShotgunFire():
 	for player in WeaponSFXChannels:
@@ -313,6 +317,8 @@ func PlayFromWeaponSFX(stream: AudioStream) -> void:
 			# If it's the lightning SFX, make it slightly louder
 			if stream == GlobalAudioController.lightning_sfx:
 				player.volume_db = 2.5
+			elif stream == GlobalAudioController.Fission_fire_sfx:
+				player.volume_db = 5
 			else:
 				player.volume_db = -15  # normal volume
 
