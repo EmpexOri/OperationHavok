@@ -12,13 +12,11 @@
 [sub_resource type="Resource" id="Resource_s3fd3"]
 script = ExtResource("4_7mdsm")
 max_hits = 1
-effect_name = ""
 metadata/_custom_type_script = "uid://bxkwbwtmdvk8p"
 
 [sub_resource type="Resource" id="Resource_upth4"]
 script = ExtResource("6_gvhy6")
 inaccuracy_angle = 2.0
-effect_name = ""
 metadata/_custom_type_script = "uid://cvwir6rctxwae"
 
 [sub_resource type="Resource" id="Resource_r41jt"]
@@ -27,14 +25,12 @@ grenade_scene = ExtResource("5_gvhy6")
 grenade_interval = 30
 grenade_throw_force = 550.0
 spawn_offset = 5.0
-debug_noobtube = true
-effect_name = ""
 metadata/_custom_type_script = "uid://ecb3ng2frni6"
 
 [node name="M60" type="Node2D"]
 script = ExtResource("1_b1rlo")
 projectile_scene = ExtResource("2_gvhy6")
-base_fire_rate = 0.1
+base_fire_rate = 0.08
 fire_sound_method = &"M60Fire"
 projectile_effects = Array[ExtResource("3_r41jt")]([SubResource("Resource_s3fd3")])
 weapon_effects = Array[ExtResource("5_r41jt")]([SubResource("Resource_upth4"), SubResource("Resource_r41jt")])

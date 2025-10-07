@@ -140,7 +140,7 @@ func on_death():
 		return
 	dead = true
 	
-	Global.total_enemies_killed += 1
+	GlobalPlayer.total_enemies_killed += 1
 	
 	emit_signal("died", self)
 	drop_xp()

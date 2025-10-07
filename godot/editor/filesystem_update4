@@ -1,4 +1,4 @@
-res://Scenes/Options/CommandoSkillTree.tscn
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -6,4 +6,14 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Menu Scripts/skill_button.gd
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
+res://Scenes/BetaLevel.tscn
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
+res://Assets/Scripts/Projectiles/physics_projectile.gd
+res://Assets/Scripts/Projectiles/MiscScripts/ProjectileSprite.gd
+res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
+res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn
+res://Assets/Scripts/Player Scripts/player.gd
