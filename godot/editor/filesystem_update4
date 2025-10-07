@@ -1,4 +1,4 @@
-res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Scenes/BetaLevel.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -6,35 +6,5 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
-res://Scenes/BetaLevel.tscn
-res://Assets/Scripts/Enemy/Enemy.gd
-res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn
-res://Assets/Scripts/Projectiles/physics_projectile.gd
-res://Assets/Scripts/Projectiles/MiscScripts/ProjectileSprite.gd
-res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
-res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn
-res://Prefabs/CodePrefabs/Weapons/M60.tscn
-res://Prefabs/CodePrefabs/Weapons/Smg.tscn
-res://Assets/Scripts/Player Scripts/player.gd
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Player Scripts/Abilities/HomerunGrenade.gd
-res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
-res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn
-res://Assets/Scripts/Player Scripts/Weapons/HomerunExplosion.gd
-res://Assets/Scripts/Player Scripts/Weapons/Misc/HomeRunExplosion.gd
-res://Prefabs/GamePrefabs/Objects/Trashcan.tscn
-res://Assets/Scripts/Effects/Object Effects/Trashcan.gd
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Scenes/GlobalAudioController.tscn
-res://Scenes/Options/PauseMenu.tscn
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Scenes/MenuScene.tscn
-res://Assets/Scripts/Menu Scripts/MenuScene.gd
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
-res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn
-res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
+res://Prefabs/GamePrefabs/Objects/Carpark_Objects/Car_Vertical_1.tscn
