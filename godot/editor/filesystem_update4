@@ -12,3 +12,17 @@ res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyMinigun.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn
 res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
+res://Assets/Scripts/LevelControllers/Level1/CutsceneHandler_BetaLevel.gd
+res://Prefabs/Cutscenes/BossDeath_LevelBeta.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
+res://Assets/Scripts/Enemy/Minibosses/Warmachine_Rocket.gd
+res://Prefabs/CodePrefabs/Weapons/PlasmaExplosion.tscn
+res://Prefabs/CodePrefabs/Weapons/NovaExplosion.tscn
+res://Scenes/Beta/LevelFinished.tscn
+res://Assets/Scripts/LevelControllers/End_Level.gd
+res://Scenes/GlobalAudioController.tscn
+res://Scenes/Options/PauseMenu.tscn
+res://Scenes/MenuScene.tscn
+res://Assets/Scripts/Menu Scripts/PauseNode.gd

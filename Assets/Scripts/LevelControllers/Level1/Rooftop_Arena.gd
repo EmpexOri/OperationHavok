@@ -162,8 +162,8 @@ func arena_completed():
 	emit_signal("arena_complete")
 
 	# Stop arena music
-	#var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
-	#GlobalAudioController.MusicFadeOut(level1_player, 2.5)
+	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
 
 	# Enable Rooftop Elevator
 	var controller = get_node_or_null(beta_level_controller_path)

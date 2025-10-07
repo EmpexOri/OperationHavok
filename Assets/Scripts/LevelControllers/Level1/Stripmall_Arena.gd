@@ -47,8 +47,8 @@ func _ready() -> void:
 
 	# Wave 1 and 2 normal waves, Wave 3 is boss wave handled separately
 	waves = [
-		{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
-		{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
+		#{ "Hordling": [2,6,3], "Spewling": [2,6,1], "Needling": [2,6,1], "Biomancer": [1,6,1], "Gatling": [2,6,2], "Tumor": [1,6,2], "Network": [1,3,1] },
+		#{ "Hordling": [3,6,3], "Spewling": [2,6,3], "Needling": [2,6,2], "Biomancer": [2,6,1], "Gatling": [2,6,4], "Tumor": [2,6,2], "Network": [1,3,1] },
 		{ "Warmachine": 1, "WarmachineRocket": 1 } 
 	]
 
@@ -155,8 +155,8 @@ func spawn_wave_enemies(data: Dictionary) -> void:
 
 func _spawn_minions_during_boss_duo(bosses: Array) -> void:
 	var start_time := Time.get_ticks_msec() / 1000.0
-	var base_delay := 1.0
-	var min_delay := 0.25
+	var base_delay := 2.0
+	var min_delay := 0.5
 	var base_batch := 1
 	var max_batch := 5
  
@@ -259,6 +259,7 @@ func arena_completed() -> void:
 		push_error("BetaLevelController not found at path: %s" % beta_level_controller_path)
 
 	emit_signal("arena_complete")
+	_on_cutscene_start()
 
 func reset_arena() -> void:
 	wave_in_progress = false
@@ -288,8 +289,118 @@ func _on_boss_died(boss: Node) -> void:
 		arena_completed()
 		
 func _cleanup_after_boss_duo() -> void:
-	# Despawn leftover enemies
+	# Trigger proper death logic for all remaining enemies
 	for e in enemies:
 		if is_instance_valid(e) and e.is_inside_tree():
-			e.queue_free()
+			if e.has_method("on_death"):
+				e.on_death()  # Let the enemy handle its death logic
+			else:
+				e.queue_free()  # Fallback if no death handler exists, or I cant find it
+
 	enemies.clear()
+
+# CUTSCENE STUFF
+func _on_cutscene_start() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if not player:
+		push_error("Player not found for cutscene sequence!")
+		return
+		
+	# Lock all player controls
+	player.LockAllControls = true
+	player.LockMovement = true
+	player.LockShooting = true
+	player.LockAbilities = true
+	player.LockDodging = true
+	
+	var camera: Camera2D = player.get_node_or_null("Camera2D")
+	if not camera:
+		push_error("Camera not found on Player!")
+		return
+		
+	# Get the blackout sprite on the camera
+	var blackout_sprite: Sprite2D = camera.get_node_or_null("BlackoutSprite")
+	if not blackout_sprite:
+		push_error("BlackoutSprite not found on Camera2D!")
+		return
+		
+	blackout_sprite.visible = true
+	blackout_sprite.modulate.a = 0.0
+	
+	var fade_in = get_tree().create_tween()
+	fade_in.tween_property(blackout_sprite, "modulate:a", 1.0, 0.25)
+	await fade_in.finished
+	
+	var target_pos = Vector2(1656, 1417)
+	var cam_tween = get_tree().create_tween()
+	cam_tween.tween_property(camera, "global_position", target_pos, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	await cam_tween.finished
+	
+	await get_tree().create_timer(0.25).timeout
+	
+	# pawn the cutscene scene while still blacked out
+	_spawn_cutscene_scene()
+	
+	# Fade out blackout after cutscene spawns
+	var fade_out = get_tree().create_tween()
+	fade_out.tween_property(blackout_sprite, "modulate:a", 0.0, 0.25)
+	await fade_out.finished
+
+func _spawn_cutscene_scene() -> void:
+	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
+	var cutscene_scene: PackedScene = preload("res://Prefabs/Cutscenes/BossDeath_LevelBeta.tscn")
+	if not cutscene_scene:
+		push_error("Cutscene scene not found!")
+		_transition_to_level_finish()
+		return
+		
+	var cutscene_instance = cutscene_scene.instantiate()
+	get_tree().current_scene.add_child(cutscene_instance)
+	
+	# Position cutscene at camera target
+	var target_pos = Vector2(1656, 1417)
+	cutscene_instance.global_position = target_pos
+	print("Cutscene started at position:", target_pos)
+	
+	# Await the cutscene_finished signal
+	if cutscene_instance.has_signal("cutscene_finished"):
+		await cutscene_instance.cutscene_finished
+		print("Cutscene finished signal received.")
+	else:
+		print("Couldnt Get Signal")
+		#await get_tree().create_timer(6.0).timeout
+		
+	_transition_to_level_finish()
+
+func _transition_to_level_finish() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		player.LockAllControls = true
+		
+	print("Transitioning to LevelFinish scene...")
+	
+	var camera: Camera2D = player.get_node_or_null("Camera2D")
+	if not camera:
+		push_error("Camera not found for level finish fade!")
+		get_tree().change_scene_to_file("res://Scenes/Beta/LevelFinished.tscn")
+		return
+		
+	var blackout_sprite: Sprite2D = camera.get_node_or_null("BlackoutSprite")
+	if not blackout_sprite:
+		push_error("BlackoutSprite not found on Camera2D!")
+		get_tree().change_scene_to_file("res://Scenes/Beta/LevelFinished.tscn")
+		return
+	blackout_sprite.visible = true
+	blackout_sprite.modulate.a = 0.0
+	
+	# Fade in the blackout
+	var fade_tween = get_tree().create_tween()
+	fade_tween.tween_property(blackout_sprite, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await fade_tween.finished
+	
+	var level_music: AudioStreamPlayer = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	if level_music:
+		GlobalAudioController.MusicFadeOut(level_music, 2.5)
+		
+	get_tree().change_scene_to_file("res://Scenes/Beta/LevelFinished.tscn")

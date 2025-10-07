@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj428kc0uw5f5"]
+
+[ext_resource type="Script" uid="uid://me4q275l1ydv" path="res://Assets/Scripts/LevelControllers/End_Level.gd" id="1_18gom"]
+[ext_resource type="Texture2D" uid="uid://cg4in14ej6p2c" path="res://Assets/Art/HUD/Poster.png" id="1_doqmx"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_y30sl"]
+[ext_resource type="Texture2D" uid="uid://dotqgxlcpe4ng" path="res://Assets/Art/Menu/mainmenu.png" id="4_5wpdf"]
+[ext_resource type="AudioStream" uid="uid://xye855dwtq2m" path="res://Assets/Sound/Music/Luxopolis_Funky.mp3" id="4_a5moj"]
+[ext_resource type="Texture2D" uid="uid://bbbx3r4vuw3lr" path="res://Assets/Art/Menu/mainmenupressed.png" id="5_8jvrt"]
+
+[node name="LevelFinished" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_18gom")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_doqmx")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -20.0
+offset_right = 132.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemiesKilledLabel" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5969267, 0.13740674, 0.20438191, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y30sl")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="PlayerLevelLabel" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5969267, 0.13740674, 0.20438191, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y30sl")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="TotalScoreLabel" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5969267, 0.13740674, 0.20438191, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y30sl")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="TextureButton" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 312.0
+offset_right = 375.0
+offset_bottom = 342.0
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+texture_normal = ExtResource("4_5wpdf")
+texture_pressed = ExtResource("5_8jvrt")
+texture_hover = ExtResource("5_8jvrt")
+texture_focused = ExtResource("5_8jvrt")
+
+[node name="MusicAudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control"]
+stream = ExtResource("4_a5moj")
+autoplay = true
+bus = &"Music"
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

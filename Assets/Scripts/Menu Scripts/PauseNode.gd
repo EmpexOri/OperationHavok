@@ -71,7 +71,6 @@ func _on_resume_button_pressed() -> void:
 	
 	PauseMenu.visible = false
 
-
 func _on_controls_button_pressed() -> void:
 	# Play sound on button press
 	GlobalAudioController.ClickSound()
@@ -88,7 +87,6 @@ func _on_controls_button_pressed() -> void:
 	
 	ControlsBackButton.grab_focus()
 
-
 func _on_options_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	
@@ -104,7 +102,6 @@ func _on_options_button_pressed() -> void:
 	SkillTree.visible = false
 	
 	OptionsScene.MasterSlider.grab_focus()
-
 
 func _on_back_button_pressed() -> void:
 	# Play sound on button press
@@ -123,28 +120,28 @@ func _on_back_button_pressed() -> void:
 	
 	ResumeButton.grab_focus()
 
-
 func _on_menu_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
-
+	
 	GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
-
+	
 	if get_tree().paused:
 		get_tree().paused = false
-
+		
 	# Clear any runtime objects if the current scene has the method
 	var level_root = get_tree().current_scene
 	if level_root and level_root.has_method("clear_runtime_objects"):
 		level_root.clear_runtime_objects()
 		print("Cleared runtime objects.")
-
+		
 	# Free the current level scene
 	if level_root:
 		level_root.queue_free()
-
+		
 	# Load Main Menu scene
+	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 
 func _on_skill_tree_button_pressed() -> void:

@@ -182,7 +182,7 @@ func PlayGrenadeExplosion():
 	for player in GeneralChannels:
 		if not player.playing:
 			player.stream = GrenadeExplosionSound
-			player.volume_db = 5
+			player.volume_db = -5
 			player.play()
 			ScreenShake.shake(randf_range(5.0, 7.0), randf_range(0.1, 0.4))
 			return
@@ -198,7 +198,7 @@ func SetLevel1Music(song_path: String, play_immediately: bool = true):
 	player.stream = stream
 	
 	# Reset volume in case it was faded out previously
-	player.volume_db = -10
+	player.volume_db = -15
 
 	if play_immediately:
 		player.play()
