@@ -81,10 +81,9 @@ func _physics_process(delta):
 	var player = resolve_target()
 	var target_pos: Vector2
 
-	# Handle fleeing logic
+	# --- Fleeing logic ---
 	if player:
 		var dist = global_position.distance_to(player.global_position)
-		
 		if dist < FLEE_DISTANCE:
 			is_fleeing = true
 			flee_timer -= delta
@@ -94,49 +93,58 @@ func _physics_process(delta):
 		else:
 			is_fleeing = false
 
+	# --- Random movement check ---
 	if IsMovingRandomly:
 		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
-			_cancel_random_move()  
+			_cancel_random_move()
 
+	# --- Determine target position ---
 	if IsMovingRandomly or is_fleeing:
 		target_pos = nav.target_position
+	elif player:
+		target_pos = player.global_position
+		nav.target_position = target_pos
 
-		if not is_fleeing and not IsMovingRandomly:
-			if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
-				_cancel_random_move()
-	else:
-		if player:
-			target_pos = player.global_position
-			nav.target_position = target_pos
-
-	# Movement direction
+	# --- Movement direction ---
 	var Direction = nav.get_next_path_position() - global_position
 	Direction = Direction.normalized()
 
-	# Movement control
+	# --- Movement control ---
 	if not IsMovingRandomly and not is_fleeing and (position.distance_to(target_pos) >= 100 or is_firing):
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
-	elif IsMovingRandomly or is_fleeing:
-		Speed = 120
-		sprite.modulate.a = 0.65
-		velocity = Direction * Speed
 	else:
-		Speed = 120
-		sprite.modulate.a = 1
+		if IsMovingRandomly or is_fleeing:
+			Speed = 120
+			sprite.modulate.a = 0.65
+		else:
+			Speed = 120
+			sprite.modulate.a = 1
 		velocity = Direction * Speed
 
-	# Animation control
-	if is_firing:
-		sprite.speed_scale = 1
-	elif IsMovingRandomly or is_fleeing or velocity.length() > 0.1:
-		if sprite.animation != "move":
+	# --- Animation logic ---
+	if not is_firing:
+		if velocity.length() > 0.1:
+			# Moving: play movement animation
+			if velocity.y < 0:
+				sprite.animation = "move_up_right"
+			else:
+				sprite.animation = "move_down_right"
 			sprite.speed_scale = 1
-			sprite.play("move")
-		if abs(velocity.x) > 0.1:
-			sprite.flip_h = velocity.x > 0
-	else:
-		sprite.speed_scale = 0
+			sprite.flip_h = velocity.x < 0
+			if not sprite.is_playing():
+				sprite.play()
+		else:
+			# Not moving: face player using first frame of movement animation
+			if player:
+				var look_dir = (player.global_position - global_position).normalized()
+				if look_dir.y < 0:
+					sprite.animation = "move_up_right"
+				else:
+					sprite.animation = "move_down_right"
+				sprite.flip_h = look_dir.x < 0
+				sprite.frame = 0
+				sprite.stop()
 
 	update_aim_laser()
 	move_and_slide()
@@ -249,67 +257,87 @@ func get_flash_sprite() -> CanvasItem:
 	return sprite 
 
 func update_aim_laser():
-	# Hide aim line when moving or fleeing
 	if velocity.length() > 0.5 or IsMovingRandomly or is_fleeing:
 		aim_line.visible = false
 		return
-		
+	
 	var player = resolve_target()
 	if not player:
 		aim_line.visible = false
 		return
-		
+	
 	var player_pos = player.global_position
 	
+	# Update cached LOS occasionally
 	los_update_counter += 1
 	if los_update_counter >= los_update_interval_frames:
-		# Perform expensive LOS raycast less frequently
 		los_update_counter = 0
 		var query = PhysicsRayQueryParameters2D.create(global_position, player_pos)
 		query.exclude = [self]
-		query.collision_mask = 1 << 2  # Only collide with walls
+		query.collision_mask = 1 << 2
 		var result = los_check.intersect_ray(query)
 		
-		var hit_pos = player_pos
-		var has_los = true
 		if result != null and result.has("collider") and not result.collider.is_in_group("Player"):
-			hit_pos = result.position
-			has_los = false
-			
-		cached_hit_pos = hit_pos
-		cached_has_los = has_los
-		
-	_update_line(_interpolated_laser_end(player_pos), cached_has_los)
+			cached_hit_pos = result.position
+			cached_has_los = false
+		else:
+			cached_hit_pos = player_pos
+			cached_has_los = true
 	
-func _interpolated_laser_end(player_pos: Vector2) -> Vector2:
-	return cached_hit_pos.lerp(player_pos, 0.7)
+	# Smoothly move the laser endpoint toward the target
+	var laser_end = cached_hit_pos.lerp(player_pos, 0.15)  # smaller factor = smoother
+	cached_hit_pos = laser_end
 	
+	_update_line(laser_end, cached_has_los)
+
 func _update_line(hit_pos: Vector2, has_los: bool):
-	if aim_line.points.size() < 2 or aim_line.points[1] != to_local(hit_pos) or not aim_line.visible:
+	if aim_line.points.size() < 2:
 		aim_line.clear_points()
 		aim_line.add_point(Vector2.ZERO)
 		aim_line.add_point(to_local(hit_pos))
-		aim_line.visible = true
-
-	# Set color
+	else:
+		aim_line.set_point_position(1, to_local(hit_pos))
+	
+	aim_line.visible = true
+	
 	if is_firing:
 		aim_line.default_color = Color(0.0, 0.8, 0.0, 0.8)
 	elif has_los:
 		aim_line.default_color = Color(0.9, 0.1, 0.0, 0.8)
 	else:
 		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.4)
-
+	
+func _interpolated_laser_end(player_pos: Vector2) -> Vector2:
+	return cached_hit_pos.lerp(player_pos, 0.7)
+	
 func _on_sprite_frame_changed():
-	if sprite.animation == "fire" and sprite.frame == 2 and is_firing: 
+	if sprite.animation.begins_with("fire") and sprite.frame == 2 and is_firing:
 		shoot_now()
 
 func _begin_fire_animation():
-	aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0) 
-	aim_line.modulate.a = 1.0
+	var player = resolve_target()
+	if not player:
+		return
+
 	is_firing = true
-	sprite.play("fire")
-	
-	# Fallback: force stop after 1s if animation doesn't finish
+
+	# Determine direction and animation
+	var direction = (player.global_position - global_position).normalized()
+	if direction.y < 0:
+		sprite.animation = "fire_up_right"
+	else:
+		sprite.animation = "fire_down_right"
+	sprite.flip_h = direction.x < 0
+
+	# Play animation correctly
+	sprite.speed_scale = 1
+	sprite.play(sprite.animation)
+
+	# Make the laser visible and bright
+	aim_line.modulate.a = 1.0
+	aim_line.default_color = Color(1.0, 0.1, 0.1, 1.0)
+
+	# Safety fallback: stop fire after 1 second
 	var stop_timer = get_tree().create_timer(1.0)
 	stop_timer.timeout.connect(Callable(self, "_force_stop_fire"))
 	

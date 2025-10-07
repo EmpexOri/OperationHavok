@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=81 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://b8v1kqi7pr3a4" path="res://Prefabs/GamePrefabs/Objects/lamp_post_down.tscn" id="67_t3s3n"]
 [ext_resource type="PackedScene" uid="uid://cgemhbqin7k32" path="res://Prefabs/GamePrefabs/Objects/Lamp_Post_Up_Flicker.tscn" id="68_t3s3n"]
 [ext_resource type="PackedScene" uid="uid://dtra84e58gsn7" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn" id="69_fanmj"]
+[ext_resource type="PackedScene" uid="uid://bjv878cl7a7kp" path="res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn" id="69_v1rlk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bbpmv"]
 texture = ExtResource("22_qspjj")
@@ -1094,6 +1095,9 @@ position = Vector2(1779, 1362)
 
 [node name="CarBlocker7" parent="YSortedObjects" instance=ExtResource("35_83ghv")]
 position = Vector2(2035, 1362)
+
+[node name="Needling" parent="YSortedObjects" instance=ExtResource("69_v1rlk")]
+position = Vector2(142, -16)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
