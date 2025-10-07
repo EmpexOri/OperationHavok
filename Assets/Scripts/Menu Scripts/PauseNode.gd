@@ -128,24 +128,24 @@ func _on_menu_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
-	
+
 	GlobalPlayer.PlayerHP = GlobalPlayer.PlayerHPMax
-	
-	# Removing all objects
-	ResumeButton.visible = false
-	ControlsButton.visible = false
-	OptionsButton.visible = false
-	SkillTreeButton.visible = false
-	Title.visible = false
-	MainButton.visible = false
-	ControlsMenu.visible = false
-	SkillTree.visible = false
-	
+
 	if get_tree().paused:
 		get_tree().paused = false
-	
-	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 
+	# Clear any runtime objects if the current scene has the method
+	var level_root = get_tree().current_scene
+	if level_root and level_root.has_method("clear_runtime_objects"):
+		level_root.clear_runtime_objects()
+		print("Cleared runtime objects.")
+
+	# Free the current level scene
+	if level_root:
+		level_root.queue_free()
+
+	# Load Main Menu scene
+	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 
 func _on_skill_tree_button_pressed() -> void:
 	GlobalAudioController.ClickSound()

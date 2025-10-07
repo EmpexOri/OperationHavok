@@ -18,6 +18,7 @@ var checkpoint_to_arena := {
 }
 
 @onready var pause_menu := PAUSE_MENU_SCENE.instantiate()
+@onready var runtime_objects: Node = Node.new() 
 
 # Stores arenas you register at runtime:  { name:String : { trigger:Area2D, arena:Node } }
 var arenas := {}
@@ -40,6 +41,8 @@ func _ready() -> void:
 			player = players[0]
 
 	print("Player found:", player)
+	runtime_objects.name = "RuntimeObjects"
+	add_child(runtime_objects)
 
 	# Register spawn points
 	var checkpoints := get_node_or_null("LevelManager/Checkpoints")
@@ -160,21 +163,17 @@ func _on_ParkTrigger_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
 
-	# Check if arena is already active
 	var arena = $Park_Arena
 	if not arena or arena.arena_active:
-		return  # Don't activate again if already active
+		return
 
 	arena.activate_arena()
 	print("Park Arena activated!")
 
-	# Spawn Boulder_Blocker to prevent returning
-	var boulder := BOULDER_BLOCKER_SCENE.instantiate()
-	boulder.global_position = Vector2(310, 1674)
-	get_parent().add_child(boulder)
-	print("Boulder blocker spawned at (310,1674)")
+	# Spawn Boulder_Blocker using runtime container
+	spawn_runtime_object(BOULDER_BLOCKER_SCENE, Vector2(310, 1674))
 
-	# Disable or remove the trigger so it doesn’t fire again
+	# Disable or remove the trigger
 	var trigger = arena.get_node_or_null("ParkTrigger")
 	if trigger:
 		trigger.queue_free()
@@ -188,12 +187,21 @@ func _on_StripmallTrigger_body_entered(body: Node2D) -> void:
 		arena.activate_arena()
 		print("Stripmall Arena activated!")
 
-		var blocker := BOULDER_BLOCKER_SCENE.instantiate()
-		blocker.global_position = Vector2(1445, 1764) 
-		get_parent().add_child(blocker)
-		print("Stripmall blocker spawned at (1445,1764)")
+		# Spawn Boulder_Blocker using runtime container
+		spawn_runtime_object(BOULDER_BLOCKER_SCENE, Vector2(1445, 1764))
+
 		var trigger = get_node_or_null("StripmallTrigger")
 		if trigger:
 			trigger.queue_free()
 	else:
 		push_error("Stripmall_Arena node not found")
+
+func spawn_runtime_object(scene: PackedScene, position: Vector2) -> Node:
+	var obj = scene.instantiate()
+	obj.global_position = position
+	runtime_objects.add_child(obj)
+	return obj
+
+func clear_runtime_objects() -> void:
+	for child in runtime_objects.get_children():
+		child.queue_free()

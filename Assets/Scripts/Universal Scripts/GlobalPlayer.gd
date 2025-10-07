@@ -6,6 +6,8 @@ var CurrentClass: String = "Commando"
 var HelpXP: int = 0
 var total_enemies_killed: int = 0
 
+var current_level_scene_path: String = ""
+
 var weapon_upgrades = {
 	1: "Smg",
 	2: "Shotgun"
@@ -153,3 +155,29 @@ func GiveDebugLevels(amount: int):
 
 func reset_match_counters():
 	total_enemies_killed = 0
+
+func set_current_level_scene(scene_path: String) -> void:
+	current_level_scene_path = scene_path
+
+func get_current_level_scene() -> String:
+	return current_level_scene_path
+
+func restart_level():
+	GlobalAudioController.ClickSound()
+	GlobalAudioController.STOPPauseMenuMusic()
+	SmearCanvas.reset()
+
+	PlayerHP = PlayerHPMax
+
+	if get_tree().paused:
+		get_tree().paused = false
+
+	# Try to clear runtime objects
+	var level_root = get_tree().get_root().get_child(0)  # usually your level scene is the first child under SceneTree root
+	if level_root and level_root.has_method("clear_runtime_objects"):
+		level_root.clear_runtime_objects()
+		print("Cleared runtime objects.")
+
+	# Reload the current scene
+	if current_level_scene_path != "":
+		get_tree().change_scene_to_file(current_level_scene_path)

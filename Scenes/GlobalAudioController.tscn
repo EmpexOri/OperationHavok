@@ -70,7 +70,7 @@ bus = &"SFX"
 bus = &"SFX"
 
 [node name="PlayerSFX" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -7.5
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Channel0" type="AudioStreamPlayer" parent="SFX/PlayerSFX"]

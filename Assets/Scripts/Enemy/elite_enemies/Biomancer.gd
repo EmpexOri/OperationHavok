@@ -9,6 +9,7 @@ var Goolum = preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum
 var SummonFX = preload("res://Prefabs/FX/SummonFX.tscn")
 
 var firetimer: Timer
+var summons: Array = []
 
 func start():
 	Speed = 110
@@ -96,6 +97,7 @@ func spawn():
 			instance.name = "Enemy_" + str(randi())
 			instance.Group = Group
 			instance.SummonGroup = SummonGroup
+			summons.append(instance)
 			instance.position = spawn_pos
 			get_parent().add_child(instance)
 			spawned += 1
@@ -150,7 +152,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		deal_damage(10)
 
 func get_flash_sprite() -> CanvasItem:
-	return $Sprite2D
+	return $AnimatedSprite2D
 
 func on_death():
 	if dead:
@@ -158,10 +160,11 @@ func on_death():
 	dead = true
 	
 	# Kill all summons spawned by this enemy
-	for summon in get_tree().get_nodes_in_group(SummonGroup):
+	for summon in summons:
 		if is_instance_valid(summon):
 			if summon.has_method("on_death"):
 				summon.on_death()
+	summons.clear()
 	
 	emit_signal("died", self)
 	drop_xp()

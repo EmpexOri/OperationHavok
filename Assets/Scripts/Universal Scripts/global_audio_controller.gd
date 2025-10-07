@@ -22,7 +22,14 @@ var BiomancerDeathSounds: Array[AudioStream] = [
 
 var LevelUpSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/LevelUpDiveBomb.wav")
 
-var PlayerDamageSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/MoanSFX.mp3")
+var PlayerDamageSounds: Array[AudioStream] = [
+	preload("res://Assets/Sound/SFX/ReactionSFX/Pain_Light1.wav"),
+	preload("res://Assets/Sound/SFX/ReactionSFX/Pain_Light2.wav"),
+	preload("res://Assets/Sound/SFX/ReactionSFX/Pain_Light3.wav"),
+	preload("res://Assets/Sound/SFX/ReactionSFX/Pain_Light4.wav"),
+	preload("res://Assets/Sound/SFX/ReactionSFX/Pain_Light5.wav"),
+	preload("res://Assets/Sound/SFX/ReactionSFX/Pain_Light6.wav")
+]
 
 var lightning_sfx: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/LightningGunSustain.mp3")
 
@@ -344,18 +351,20 @@ func PlayFromPlayerSFX(stream: AudioStream) -> void:
 		player.play()
 		
 func PlayPlayerDamageSFX():
+	var sound_to_play = PlayerDamageSounds[randi() % PlayerDamageSounds.size()]
+	
 	for player in PlayerSFXChannels:
 		if not player.playing:
-			player.stream = PlayerDamageSound
+			player.stream = sound_to_play
 			player.pitch_scale = randf_range(0.95, 1.05)
 			player.play()
 			return
-	# If all channels are busy, just overwrite one in round-robin
+	# Round-robin overwrite if all channels are busy
 	if PlayerSFXChannels.size() > 0:
 		player_sfx_index = (player_sfx_index + 1) % PlayerSFXChannels.size()
 		var player = PlayerSFXChannels[player_sfx_index]
 		player.stop()
-		player.stream = PlayerDamageSound
+		player.stream = sound_to_play
 		player.pitch_scale = randf_range(0.95, 1.05)
 		player.play()
 
