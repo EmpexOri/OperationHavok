@@ -61,6 +61,7 @@ texture = ExtResource("19_k5h02")
 [node name="AbilityInfoBox" type="CanvasLayer" parent="."]
 
 [node name="SMG" type="Sprite2D" parent="AbilityInfoBox"]
+visible = false
 position = Vector2(554, 141)
 scale = Vector2(2, 2)
 texture = ExtResource("6_wo6gr")
