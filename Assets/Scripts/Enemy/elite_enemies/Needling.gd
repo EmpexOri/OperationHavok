@@ -316,6 +316,7 @@ func _on_sprite_frame_changed():
 
 func _begin_fire_animation():
 	var player = resolve_target()
+	_play_fire_sfx()
 	if not player:
 		return
 
@@ -370,3 +371,21 @@ func _cancel_random_move():
 	sprite.stop()
 	if move_timeout_timer and move_timeout_timer.is_stopped() == false:
 		move_timeout_timer.stop()
+		
+func _play_fire_sfx():
+	var sfx_player := AudioStreamPlayer2D.new()
+	sfx_player.stream = preload("res://Assets/Sound/SFX/WeaponSFX/Enemy/Enemy_Shot.wav")
+	sfx_player.bus = "SFX"               
+	sfx_player.volume_db = -1.0      
+	sfx_player.global_position = global_position
+	add_child(sfx_player)
+
+	sfx_player.play()
+
+	# Auto-free the node after the sound finishes
+	var t := Timer.new()
+	t.wait_time = sfx_player.stream.get_length()
+	t.one_shot = true
+	t.autostart = true
+	sfx_player.add_child(t)
+	t.timeout.connect(Callable(sfx_player, "queue_free"))

@@ -357,6 +357,7 @@ func PlayPlayerDamageSFX():
 		if not player.playing:
 			player.stream = sound_to_play
 			player.pitch_scale = randf_range(0.95, 1.05)
+			player.volume_db = 5.0 
 			player.play()
 			return
 	# Round-robin overwrite if all channels are busy
@@ -366,6 +367,7 @@ func PlayPlayerDamageSFX():
 		player.stop()
 		player.stream = sound_to_play
 		player.pitch_scale = randf_range(0.95, 1.05)
+		player.volume_db = 5.0
 		player.play()
 
 func play_general_sfx(sound_path: String) -> void:
