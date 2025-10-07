@@ -105,18 +105,37 @@ func _on_collision(collision: KinematicCollision2D):
 	var body: Node2D = collision.get_collider()
 	if not is_instance_valid(body):
 		return
-	
+
 	var destroy_projectile = true
-	
-	if body.has_method("deal_damage"):
-			body.deal_damage(damage*current_damage_multiplier, global_position)
-	
+	var apply_damage = true
+
 	if current_effects:
 		for effect in current_effects:
 			if effect.has_method("on_hit"):
-				if not effect.on_hit(self, body, collision):
-					destroy_projectile = false
-	
+				var result = effect.on_hit(self, body, collision)
+				# Make sure it’s a dictionary before accessing keys
+				if typeof(result) == TYPE_DICTIONARY:
+					if result.has("destroy_projectile"):
+						destroy_projectile = destroy_projectile and result["destroy_projectile"]
+					if result.has("apply_damage"):
+						apply_damage = apply_damage and result["apply_damage"]
+
+	if apply_damage and body.has_method("deal_damage"):
+		body.deal_damage(damage * current_damage_multiplier, global_position)
+
 	if destroy_projectile:
-		print("Destroying projectile")
 		queue_free()
+
+func _deferred_stuck_check(push_distance: float):
+	# small test move to see if embedded in a wall
+	if velocity.length() <= 1.0:
+		return
+		
+	var test_collision = move_and_collide(velocity.normalized() * 0.1, true)
+	if test_collision:
+		# Nudge out along the normal
+		global_position += test_collision.get_normal() * push_distance
+		
+		var verify_collision = move_and_collide(velocity.normalized() * 0.1, true)
+		if verify_collision:
+			queue_free()

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name TrashCan
 
 @export var max_health: int = 20
-var health: int = max_health
+var Health: int = max_health
 @onready var sprite: Sprite2D = $Sprite2D
 @export var destroyed_texture: Texture2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -12,9 +12,9 @@ func _ready() -> void:
 	add_to_group("Damageable")
 
 func deal_damage(amount: int, from_pos: Vector2 = Vector2.ZERO) -> void:
-	health -= amount
+	Health -= amount
 	flash_hit()
-	if health <= 0:
+	if Health <= 0:
 		break_apart()
 
 func flash_hit() -> void:

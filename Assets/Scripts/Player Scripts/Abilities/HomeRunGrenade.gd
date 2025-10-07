@@ -1,5 +1,5 @@
 extends Node2D
-class_name HomeRunGrenade
+class_name HomeRungrenade
 
 signal perk_finished(index: int)
 
