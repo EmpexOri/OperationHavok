@@ -28,6 +28,7 @@ var _space_state: PhysicsDirectSpaceState2D
 
 func _ready() -> void:
 	add_to_group("Bullet")
+	collision_shape_2d.one_way_collision = true
 	# Connect signals
 	#visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 

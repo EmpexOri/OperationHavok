@@ -6,3 +6,11 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
+res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Projectiles/physics_projectile.gd
+res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
+res://Prefabs/CodePrefabs/Weapons/M60.tscn
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Prefabs/CodePrefabs/Weapons/Smg.tscn

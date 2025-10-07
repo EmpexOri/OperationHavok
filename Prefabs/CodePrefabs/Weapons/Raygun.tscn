@@ -1,29 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvwfnh6e3sy1g"]
+[gd_scene load_steps=11 format=3 uid="uid://cvwfnh6e3sy1g"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_ym48u"]
 [ext_resource type="PackedScene" uid="uid://b7232phr78kxv" path="res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn" id="2_hextn"]
 [ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_hextn"]
 [ext_resource type="Script" uid="uid://bj14y6fhvpd0" path="res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd" id="4_6mthh"]
 [ext_resource type="Script" uid="uid://cop4hxx2kw6ig" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_spawn_on_kill_effect.gd" id="5_k1ijk"]
+[ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="6_k1ijk"]
+[ext_resource type="Script" uid="uid://wwee4860hgms" path="res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd" id="7_7e4pb"]
 
 [sub_resource type="Resource" id="Resource_ymo87"]
 script = ExtResource("4_6mthh")
-max_bounces = 5
-effect_name = ""
 metadata/_custom_type_script = "uid://bj14y6fhvpd0"
 
 [sub_resource type="Resource" id="Resource_7e4pb"]
 script = ExtResource("5_k1ijk")
-max_spawns = 3
+max_spawns = 2
 spawn_scene = ExtResource("2_hextn")
-spawn_speed = 400.0
-spawn_angle_variation = 15.0
-effect_name = ""
+spawn_speed = 200.0
 metadata/_custom_type_script = "uid://cop4hxx2kw6ig"
+
+[sub_resource type="Resource" id="Resource_4aja5"]
+script = ExtResource("7_7e4pb")
+spread_angle = 45.0
+metadata/_custom_type_script = "uid://wwee4860hgms"
 
 [node name="Raygun" type="Node2D"]
 script = ExtResource("1_ym48u")
 projectile_scene = ExtResource("2_hextn")
-base_fire_rate = 0.15
-fire_sound_method = &"SmgFire"
+base_fire_rate = 0.9
+fire_sound_method = &"ShotgunFire"
 projectile_effects = Array[ExtResource("3_hextn")]([SubResource("Resource_ymo87"), SubResource("Resource_7e4pb")])
+weapon_effects = Array[ExtResource("6_k1ijk")]([SubResource("Resource_4aja5")])

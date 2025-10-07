@@ -29,9 +29,8 @@ func process_effect(projectile, delta: float, space_state: PhysicsDirectSpaceSta
 
 func on_hit(projectile, body: Node2D, collision: KinematicCollision2D = null):
 	if collision == null:
-		return true   # let the projectile be destroyed if no collision data
+		return true
 
-	# Prevent rapid repeat on same body
 	if last_bounced_body == body and bounce_cooldown_timer > 0:
 		return false
 
@@ -40,21 +39,22 @@ func on_hit(projectile, body: Node2D, collision: KinematicCollision2D = null):
 		last_bounced_body = body
 		bounce_cooldown_timer = bounce_cooldown_ms
 
-		# --- spawn an explosion without destroying the projectile ---
+		# Optional small explosion visual
 		if explosion_scene:
 			var explosion_instance = explosion_scene.instantiate()
 			projectile.get_parent().add_child(explosion_instance)
 			explosion_instance.global_position = collision.get_position()
-			# if your explosion script has a start() method:
 			if explosion_instance.has_method("start"):
 				explosion_instance.start()
 
-		# Reflect velocity to bounce
 		var reflect_velocity = projectile.velocity.bounce(collision.get_normal())
 		var random_angle = deg_to_rad(randf_range(-5, 5))
 		projectile.velocity = reflect_velocity.rotated(random_angle)
 		projectile.rotation = projectile.velocity.angle()
 
-		return false  # <- projectile keeps going
+		var separation_offset = collision.get_normal() * 3.5 
+		projectile.global_position += separation_offset
+
+		return false
 	else:
-		return true   # normal destruction when max bounces reached
+		return true
