@@ -45,14 +45,14 @@ func on_hit(projectile, body: Node2D, collision: KinematicCollision2D = null):
 			if explosion_instance.has_method("start"):
 				explosion_instance.start()
 
-		# Play bounce SFX without await
 		if bounce_sfx and is_instance_valid(projectile):
 			var sfx_player := AudioStreamPlayer2D.new()
 			sfx_player.stream = bounce_sfx
+			sfx_player.bus = "SFX"  # <-- Attach to the SFX bus
 			sfx_player.global_position = projectile.global_position
 			projectile.get_parent().add_child(sfx_player)
 			sfx_player.play()
-			
+
 			# Auto-free the SFX player using a one-shot timer
 			var t := Timer.new()
 			t.wait_time = bounce_sfx.get_length()

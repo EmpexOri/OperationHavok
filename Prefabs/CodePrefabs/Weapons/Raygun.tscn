@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7232phr78kxv" path="res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn" id="2_hextn"]
 [ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_hextn"]
 [ext_resource type="Script" uid="uid://bj14y6fhvpd0" path="res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd" id="4_6mthh"]
-[ext_resource type="AudioStream" uid="uid://bjist7rskyje1" path="res://Assets/Sound/SFX/ReactionSFX/MoanSFX.mp3" id="4_7e4pb"]
+[ext_resource type="AudioStream" uid="uid://ceof8gmk55auj" path="res://Assets/Sound/SFX/WeaponSFX/Fission_Bounce.wav" id="4_7e4pb"]
 [ext_resource type="Script" uid="uid://cop4hxx2kw6ig" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_spawn_on_kill_effect.gd" id="5_k1ijk"]
 [ext_resource type="Script" uid="uid://odcgl16aolxp" path="res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd" id="6_k1ijk"]
 [ext_resource type="Script" uid="uid://wwee4860hgms" path="res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd" id="7_7e4pb"]
