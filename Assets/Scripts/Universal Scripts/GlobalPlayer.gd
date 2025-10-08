@@ -76,8 +76,9 @@ func LevelUp():
 
 func AddHp(Amount: int):
 	var Level = ClassData[CurrentClass]["Level"]
-	var HpGainMultiplier = 1.5
+	var HpGainMultiplier = 1 
 	var AdjustedAmount = int(Amount * HpGainMultiplier)
+	print (AdjustedAmount)
 	PlayerHP = min(PlayerHP + AdjustedAmount, PlayerHPMax)
 	UpdateHealthBar()
 

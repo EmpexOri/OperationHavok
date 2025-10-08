@@ -35,6 +35,7 @@ func start():
 	Target = "Player"
 
 func _ready():
+	randomize()
 	fire_sfx.stream = load(FIRE_SOUND_PATH)
 	fire_sfx.bus = "SFX" 
 	fire_sfx.volume_db = -1.0
@@ -81,78 +82,55 @@ func _process(delta):
 		Global.spawn_death_particles(global_position) 
 		queue_free()
 
-func _physics_process(_delta):
-	if is_ramming:
-		velocity = ram_direction * Speed * RAM_SPEED_MULTIPLIER
-		sprite.modulate.a = 1.0
-		sprite.speed_scale = 1.0
-		
-		var anim_name = "move_down_right"
-		if ram_direction.y < 0:
-			anim_name = "move_up_right"
-		if sprite.animation != anim_name:
-			sprite.play(anim_name)
-		sprite.flip_h = ram_direction.x < 0
-		
-		move_and_slide()
+func _physics_process(delta):
+	super._physics_process(delta)
+	if Health <= 0:
 		return
 		
 	var Player = resolve_target()
-	var target_pos: Vector2
 	
-	# Handle random movement
+	# RAMMING
+	if is_ramming:
+		velocity = ram_direction * Speed * RAM_SPEED_MULTIPLIER
+		move_and_slide()
+		return
+		
+# --- RAM TRIGGER ---
+	if not is_ramming and Player and global_position.distance_to(Player.global_position) <= RAM_TRIGGER_DISTANCE:
+		start_ramming(Player)
+		return
+		
+# --- Movement & Firing Logic ---
 	if IsMovingRandomly:
-		target_pos = nav.target_position
-		
-		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
-			_cancel_random_move()
-		elif Player and global_position.distance_to(Player.global_position) <= 100:
-			_cancel_random_move()
-			
-	else:
-		# Handle ramming trigger
-		if not is_ramming and Player and global_position.distance_to(Player.global_position) <= RAM_TRIGGER_DISTANCE:
-			start_ramming(Player)
+		# Move toward chosen target point
+		var next_point = nav.get_next_path_position()
+
+		# If no valid path, bail out to prevent walking into walls
+		if next_point == Vector2.ZERO or next_point == global_position:
 			return
-			
-		if Player:
-			target_pos = Player.global_position
-			nav.target_position = target_pos
-			
-	var next_path = nav.get_next_path_position()
-	var Direction = (next_path - global_position).normalized()
-	if Direction == Vector2.ZERO:
-		# Keep last direction to prevent animation flicker
-		Direction = velocity.normalized()
-		
-	if is_firing:
+
+		var Direction = (next_point - global_position)
+		if Direction.length() < 10:
+			# Arrived → stop and start firing
+			_cancel_random_move()
+			fire()
+			return
+		velocity = Direction.normalized() * Speed
+		sprite.modulate.a = 0.65
+		_update_animation()
+	elif is_firing:
+		# Stop completely while firing
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
-		
-	elif IsMovingRandomly:
-		Speed = 60
-		sprite.modulate.a = 0.65
-		velocity = Direction * Speed
-		
+		_update_animation()
 	else:
-		Speed = 80
-		sprite.modulate.a = 1.0
-		
-		if Player and position.distance_to(Player.global_position) > 100:
-			velocity = Direction * Speed
-		else:
-			velocity = Vector2.ZERO
-			sprite.modulate.a = 0.4
-			
-	if not is_firing and not is_ramming:
-		# Update facing only (do not play animation here)
-		var to_player = Vector2.ZERO
+		# Idle / facing only
+		velocity = Vector2.ZERO
 		if Player:
-			to_player = (Player.global_position - global_position).normalized()
-			fire_direction = to_player
-			sprite.flip_h = to_player.x < 0
+			fire_direction = (Player.global_position - global_position).normalized()
+			sprite.flip_h = fire_direction.x < 0
+			_update_animation()
 			
-	_update_animation()
 	move_and_slide()
 	
 func _update_animation():
@@ -219,17 +197,38 @@ func _fire_burst():
 	fire_delay_timer.start(randf_range(0.1, 0.2))
 
 func random_move():
+	if is_firing:
+		return
+
 	IsMovingRandomly = true
 	ShotsFired = 0
 	ShotsBeforeMoving = randi_range(1, 3)
 
-	var offset = Vector2(randf_range(-200, 200), randf_range(-200, 200))
-	var target_pos = global_position + offset
+	# Try a few times to find a reachable point
+	var found = false
+	var target_pos = global_position
+	for i in range(6):
+		var offset = Vector2(randf_range(-300, 300), randf_range(-300, 300))
+		var test_pos = global_position + offset
 
-	var screen_size = get_viewport_rect().size
-	target_pos.x = clamp(target_pos.x, 0, screen_size.x)
-	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
+		# Clamp to viewport bounds
+		var screen_size = get_viewport_rect().size
+		test_pos.x = clamp(test_pos.x, 0, screen_size.x)
+		test_pos.y = clamp(test_pos.y, 0, screen_size.y)
 
+		# Test path validity
+		nav.target_position = test_pos
+		await get_tree().process_frame
+		if not nav.is_navigation_finished():
+			target_pos = test_pos
+			found = true
+			break
+
+	if not found:
+		IsMovingRandomly = false
+		return
+
+	# Move toward the found position
 	nav.target_position = target_pos
 	move_timeout_timer.start()
 
@@ -306,3 +305,12 @@ func _cancel_random_move():
 	sprite.stop()
 	if not move_timeout_timer.is_stopped():
 		move_timeout_timer.stop()
+
+func update_navigation(delta):
+	pass
+	
+func _on_move_timeout():
+	# Stop moving if the enemy has been walking too long
+	if IsMovingRandomly:
+		_cancel_random_move()
+		fire()  # try firing after giving up on moving

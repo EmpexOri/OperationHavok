@@ -184,19 +184,38 @@ func fire():
 		laser_flash_tween.tween_callback(Callable(self, "_begin_fire_animation"))
 
 func random_move():
+	if is_firing or is_fleeing:
+		return
+		
 	IsMovingRandomly = true
 	ShotsFired = 0
 	ShotsBeforeMoving = randi_range(1, 3)
+	
+	# Pick a random reachable point within 300px
+	var found = false
+	var target_pos = global_position
+	for i in range(5):
+		var offset = Vector2(randf_range(-300, 300), randf_range(-300, 300))
+		var test_pos = global_position + offset
+		
+		# Clamp to viewport bounds
+		var screen_size = get_viewport_rect().size
+		test_pos.x = clamp(test_pos.x, 0, screen_size.x)
+		test_pos.y = clamp(test_pos.y, 0, screen_size.y)
+		
+		nav.target_position = test_pos
+		await get_tree().process_frame
+		if not nav.is_navigation_finished():
+			target_pos = test_pos
+			found = true
+			break
 
-	var offset = Vector2(randf_range(-150, 150), randf_range(-150, 150))
-	var target_pos = global_position + offset
-
-	var screen_size = get_viewport_rect().size
-	target_pos.x = clamp(target_pos.x, 0, screen_size.x)
-	target_pos.y = clamp(target_pos.y, 0, screen_size.y)
-
+	if not found:
+		IsMovingRandomly = false
+		return
+		
 	nav.target_position = target_pos
-	move_timeout_timer.start()
+	move_timeout_timer.start() 
 
 func shoot_now():
 	var Player = get_tree().get_nodes_in_group(Target).front()
@@ -389,3 +408,7 @@ func _play_fire_sfx():
 	t.autostart = true
 	sfx_player.add_child(t)
 	t.timeout.connect(Callable(sfx_player, "queue_free"))
+
+func _on_move_timeout():
+	if IsMovingRandomly:
+		_cancel_random_move()

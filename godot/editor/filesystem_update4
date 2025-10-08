@@ -28,3 +28,7 @@ res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn
 res://Assets/Scripts/Weapons/Weapon.gd
 res://Prefabs/CodePrefabs/Projectiles/misc_bullets/FireTornadoProjectile.tscn
 res://Assets/Scripts/Projectiles/FireTornado.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Pickups/xp_pickup.gd
+res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
+res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
