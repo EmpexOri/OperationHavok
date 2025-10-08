@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmf1vldv34maj"]
+[gd_scene load_steps=17 format=3 uid="uid://cmf1vldv34maj"]
 
 [ext_resource type="Script" uid="uid://beitqbwpohcd5" path="res://Assets/Scripts/Effects/Misc Effects/GroundEffect.gd" id="1_xr70k"]
 [ext_resource type="Texture2D" uid="uid://bxhr6i2icfvf3" path="res://Assets/Art/Sprites/FX/Fire3.png" id="2_xr70k"]
 [ext_resource type="Texture2D" uid="uid://nqh0l50edxkt" path="res://Assets/Art/PlaceHolders/FadeoutCircle.png" id="3_mkg7o"]
+[ext_resource type="AudioStream" uid="uid://bv6p6o5rkvlon" path="res://Assets/Sound/SFX/WeaponSFX/Fire_SFX.wav" id="4_5k6qt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkg7o"]
 size = Vector2(24, 26)
@@ -79,7 +80,6 @@ light_mode = 1
 
 [node name="GroundEffect" type="Node2D"]
 script = ExtResource("1_xr70k")
-affects_players = true
 duration = 2.0
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -107,3 +107,9 @@ material = SubResource("CanvasItemMaterial_mkg7o")
 position = Vector2(-9.53674e-07, 14)
 scale = Vector2(0.0529974, 0.0248464)
 texture = ExtResource("3_mkg7o")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5k6qt")
+autoplay = true
+max_distance = 1000.0
+bus = &"SFX"

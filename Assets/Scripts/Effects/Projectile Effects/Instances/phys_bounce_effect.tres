@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="PhysProjectileBounces" load_steps=3 format=3 uid="uid://bmcvplnlntdc7"]
+[gd_resource type="Resource" script_class="PhysProjectileBounces" load_steps=4 format=3 uid="uid://bmcvplnlntdc7"]
 
 [ext_resource type="Script" uid="uid://bj14y6fhvpd0" path="res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd" id="1_7d4py"]
+[ext_resource type="AudioStream" uid="uid://c085ljj0e07gd" path="res://Assets/Sound/SFX/WeaponSFX/Ball_Bounce.wav" id="1_k2dsy"]
 [ext_resource type="PackedScene" uid="uid://bhwb1wkt5cswl" path="res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn" id="1_k16ck"]
 
 [resource]
 script = ExtResource("1_7d4py")
 max_bounces = 10
 explosion_scene = ExtResource("1_k16ck")
+bounce_sfx = ExtResource("1_k2dsy")
 metadata/_custom_type_script = "uid://tk8hk0gb0ywo"

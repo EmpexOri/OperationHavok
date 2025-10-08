@@ -18,6 +18,9 @@ var retarget_timer: float = 0.0
 var wander_direction: Vector2 = Vector2.ZERO
 var wander_timer: float = 0.0
 
+@onready var sfx_timer: Timer = Timer.new()
+var network_sfx = preload("res://Assets/Sound/SFX/ReactionSFX/EnemyReaction/NetworkSFX.wav")
+
 func _ready():
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
@@ -28,6 +31,12 @@ func _ready():
 	Group = "Enemy"
 	add_to_group("Support")
 	Target = null
+	
+	sfx_timer.wait_time = randf_range(3.0, 5.0)
+	sfx_timer.one_shot = false
+	sfx_timer.connect("timeout", Callable(self, "_play_network_sfx"))
+	add_child(sfx_timer)
+	sfx_timer.start()
 
 func start():
 	pass
@@ -196,3 +205,14 @@ func update_animation(direction: Vector2) -> void:
 		# If mostly horizontal, just pick one
 		sprite.play("move_down_left")
 		sprite.flip_h = direction.x > 0
+
+func _play_network_sfx():
+	var sfx_player = AudioStreamPlayer2D.new()
+	sfx_player.volume_db = -5.0
+	sfx_player.bus = "SFX"
+	sfx_player.stream = network_sfx
+	sfx_player.position = global_position
+	get_parent().add_child(sfx_player)
+	sfx_player.play()
+	
+	sfx_player.connect("finished", Callable(sfx_player, "queue_free"))

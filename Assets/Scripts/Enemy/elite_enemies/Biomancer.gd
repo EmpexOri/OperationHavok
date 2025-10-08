@@ -68,6 +68,20 @@ func _begin_summon():
 func _on_summon_fx_finished(fx):
 	if is_instance_valid(fx):
 		fx.queue_free()
+		
+	var sfx_player = AudioStreamPlayer2D.new()
+	sfx_player.stream = preload("res://Assets/Sound/SFX/ReactionSFX/EnemyReaction/Biomancer_Summon.wav")
+	sfx_player.position = global_position
+	add_child(sfx_player)
+	sfx_player.play()
+	
+	var duration = sfx_player.stream.get_length()
+	var timer = Timer.new()
+	timer.wait_time = duration
+	timer.one_shot = true
+	timer.autostart = true
+	timer.connect("timeout", Callable(sfx_player, "queue_free"))
+	sfx_player.add_child(timer) 
 	spawn() # Actually summon enemies after FX ends <3
 
 # --- Actual New summoning logic ---

@@ -88,6 +88,10 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 	var spread_angle_deg: float = fire_parameters["spread_angle"]
 	var base_direction: Vector2 = fire_parameters["direction"]
 
+	if projectile_count <= 0:
+		# Don't spawn projectiles or play sound if blocked by an effect
+		return
+
 	var spread_radian: float = deg_to_rad(spread_angle_deg)
 	var base_angle: float = base_direction.angle()
 	var angle_step: float = 0.0
@@ -111,7 +115,8 @@ func fire(spawn_position: Vector2, direction: Vector2) -> void:
 			fire_direction = fire_direction.rotated(random_angle)
 
 		_spawn_projectile(spawn_position, fire_direction)
-	_play_fire_sound()
+
+	_play_fire_sound() 
 
 func _spawn_projectile(spawn_position: Vector2, direction: Vector2) -> void:
 	var projectile_instance = projectile_scene.instantiate()

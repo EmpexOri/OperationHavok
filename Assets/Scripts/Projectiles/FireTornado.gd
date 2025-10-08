@@ -13,20 +13,31 @@ var _has_begun_burning_out: bool = false
 @onready var damage_area: Area2D = $Area2D 
 @onready var damage_shape: CollisionShape2D = $Area2D/CollisionShape2D
 
+@onready var audio_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+
+
 func _ready():
 	super._ready()
+	
+	# Setup audio player
+	var fire_sound = preload("res://Assets/Sound/SFX/WeaponSFX/FireTornado.wav")
+	audio_player.bus = 'SFX'
+	audio_player.stream = fire_sound
+	audio_player.autoplay = true
+	audio_player.connect("finished", Callable(self, "_on_audio_finished"))
+	add_child(audio_player)
+	
 	_direction_change_timer = direction_change_interval
 	
 	add_child(fireout_timer)
 	fireout_timer.one_shot = true
 	fireout_timer.timeout.connect(_on_fireout_trigger)
 	
-	damage_area.collision_layer = 1 << 2  # Player projectile layer
-	damage_area.collision_mask = 1 << 1   # Enemy layer layer, cause us being a kid makes problems
+	damage_area.collision_layer = 1 << 2
+	damage_area.collision_mask = 1 << 1
 	damage_area.connect("body_entered", Callable(self, "_on_damage_area_body_entered"))
 	
 	damage_shape.disabled = false
-
 
 func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 		p_effects: Array[ProjectileEffect], space_state: PhysicsDirectSpaceState2D,
@@ -38,7 +49,6 @@ func start(start_position: Vector2, direction: Vector2, entity_owner: String,
 	
 	if lifetime > fireout_transition_time:
 		fireout_timer.start(lifetime - fireout_transition_time)
-
 
 func _handle_movement(delta: float):
 	_direction_change_timer -= delta
@@ -52,13 +62,11 @@ func _handle_movement(delta: float):
 		var reflect_velocity = velocity.bounce(collision_info.get_normal())
 		self.velocity = reflect_velocity.rotated(deg_to_rad(randf_range(-15, 15)))
 
-
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if not is_instance_valid(body):
 		return
 	if body.has_method("deal_damage"):
 		body.deal_damage(damage * current_damage_multiplier, global_position)
-
 
 # Called when the fireout happens
 func _on_fireout_trigger() -> void:
@@ -77,7 +85,12 @@ func _on_fireout_trigger() -> void:
 	else:
 		pass
 
-
 func _on_fireout_animation_finished() -> void:
 	if anim_sprite.animation == "fireout":
+		if is_instance_valid(audio_player):
+			audio_player.stop() 
 		queue_free()
+
+func _on_audio_finished():
+	if is_instance_valid(audio_player):
+		audio_player.play()  

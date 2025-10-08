@@ -38,6 +38,7 @@ var Rocket_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/RocketLauncherSh
 var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.mp3")
 var M60_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
 var Fission_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
+var Flamethrower_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Flamethrower.wav")
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
@@ -292,13 +293,16 @@ func M60Fire():
 	
 func FissionFire():
 	PlayFromWeaponSFX(Fission_fire_sfx)
+	
+func FlamethrowerFire():
+	PlayFromWeaponSFX(Flamethrower_fire_sfx)
 
 func ShotgunFire():
 	for player in WeaponSFXChannels:
 		if not player.playing:
 			player.stream = Shotgun_fire_sfx
 			player.pitch_scale = randf_range(0.95, 1.05)
-			player.volume_db = -10  # Lower the shotgun volume here
+			player.volume_db = -14.0  
 			player.play()
 			break
 

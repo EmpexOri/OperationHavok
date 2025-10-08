@@ -79,6 +79,8 @@ func start_next_wave() -> void:
 	if wave_data.has("Warmachine") and wave_data.has("WarmachineRocket"):
 		var warmachine_gun = get_tree().get_first_node_in_group("WarmachineGun")
 		var warmachine_rocket = get_tree().get_first_node_in_group("WarmachineRocket")
+		var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+		GlobalAudioController.MusicFadeOut(level1_player, 2.5)
 
 		if warmachine_gun and warmachine_rocket:
 			GlobalAudioController.SetLevel1Music(

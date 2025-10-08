@@ -141,8 +141,8 @@ func arena_completed() -> void:
 	GlobalEffects.activate_xp_buff(6000, 6.0)
 	print("Park Arena complete!")
 	
-	var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
-	GlobalAudioController.MusicFadeOut(level1_player, 2.5)
+	#var level1_player = GlobalAudioController.get_node("Music/Level1Soundtrack") as AudioStreamPlayer
+	#GlobalAudioController.MusicFadeOut(level1_player, 2.5)
 	
 	await get_tree().create_timer(0.25).timeout
 	await _run_breakdown_event()

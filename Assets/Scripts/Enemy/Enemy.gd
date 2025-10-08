@@ -65,35 +65,42 @@ func update_navigation(delta):
 	if not nav:
 		return
 
-	# Update path periodically
+	# Recalculate path periodically
 	path_update_timer -= delta
 	if path_update_timer <= 0.0:
 		var player_node = resolve_target()
 		if player_node:
 			nav.target_position = player_node.global_position
-		path_update_timer = path_update_interval  # reset timer
+		path_update_timer = path_update_interval
 
-	if nav.is_navigation_finished():
+	var player_node = resolve_target()
+	if not player_node:
+		return
+
+	# Direction toward player (always)
+	var dir_to_player = (player_node.global_position - global_position)
+	if dir_to_player.length() < 2:
 		velocity = Vector2.ZERO
 	else:
 		var dir = (nav.get_next_path_position() - global_position).normalized()
-
-		# --- Manual avoidance: if too close to another enemy, adjust direction slightly ---
+		
+		# Avoidance from other enemies
 		var avoidance_offset := Vector2.ZERO
-		var nearby_enemies := get_tree().get_nodes_in_group("Enemy")
-		for enemy in nearby_enemies:
+		for enemy in get_tree().get_nodes_in_group("Enemy"):
 			if enemy == self:
 				continue
-			if global_position.distance_to(enemy.global_position) < 24: # distance threshold
-				# Push away from nearby enemy
+			var dist = global_position.distance_to(enemy.global_position)
+			if dist < 24:
 				avoidance_offset += (global_position - enemy.global_position).normalized()
-
+				
 		if avoidance_offset != Vector2.ZERO:
-			# Blend original direction with avoidance vector
 			dir = (dir + avoidance_offset.normalized()).normalized()
 
+		# Blend agent direction with direct line to player for smoother chasing
+		dir = (dir + dir_to_player.normalized()).normalized()
 		velocity = dir * Speed
-		move_and_slide()
+
+	move_and_slide()
 
 func resolve_target() -> Node2D:
 	return cached_player

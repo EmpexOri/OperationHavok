@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2ro3qiaurtnc"]
+[gd_scene load_steps=7 format=3 uid="uid://c2ro3qiaurtnc"]
 
 [ext_resource type="Script" uid="uid://ctsysx2en81hg" path="res://Assets/Scripts/Weapons/Weapon.gd" id="1_on5c3"]
 [ext_resource type="PackedScene" uid="uid://nfqjhf1l51te" path="res://Prefabs/CodePrefabs/Projectiles/misc_bullets/BaseballProjectile.tscn" id="2_on5c3"]
 [ext_resource type="Script" uid="uid://tk8hk0gb0ywo" path="res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd" id="3_uq5k0"]
+[ext_resource type="AudioStream" uid="uid://c085ljj0e07gd" path="res://Assets/Sound/SFX/WeaponSFX/Ball_Bounce.wav" id="4_q8a6o"]
 [ext_resource type="Script" uid="uid://bj14y6fhvpd0" path="res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd" id="4_uq5k0"]
 
 [sub_resource type="Resource" id="Resource_q8a6o"]
 script = ExtResource("4_uq5k0")
 max_bounces = 10
-effect_name = ""
+bounce_sfx = ExtResource("4_q8a6o")
 metadata/_custom_type_script = "uid://bj14y6fhvpd0"
 
 [node name="BaseBallLauncher" type="Node2D"]

@@ -11,6 +11,7 @@ var Weapon: PackedScene = preload("res://Prefabs/CodePrefabs/Weapons/EnemyWeapon
 @onready var fire_delay_timer = Timer.new()
 
 @export var grenade_scene: PackedScene = preload("res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn")
+var rocket_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/RocketLauncherShot.mp3")
 var grenade_mode = false
 var grenade_shots_remaining = 0
 var grenade_salvo_timer: Timer
@@ -185,13 +186,22 @@ func fire():
 func _fire_burst():
 	if not is_firing or not CurrentWeapon:
 		return
-
+		
 	var Player = get_tree().get_nodes_in_group(Target).front()
 	if Player:
 		fire_direction = (Player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, fire_direction)
 		ShotsFired += 1
-
+		
+		var sfx_player = AudioStreamPlayer2D.new()
+		sfx_player.volume_db = -6.0
+		sfx_player.stream = rocket_fire_sfx
+		sfx_player.position = global_position
+		sfx_player.bus = "SFX" 
+		get_parent().add_child(sfx_player)
+		sfx_player.play()
+		sfx_player.connect("finished", Callable(sfx_player, "queue_free"))
+		
 	# Fire again in 0.1–0.2 seconds (simulate burst fire)
 	var min_delay = aggressive_fire_delay if aggressive_mode else 0.1
 	var max_delay = (aggressive_fire_delay + 0.05) if aggressive_mode else 0.2

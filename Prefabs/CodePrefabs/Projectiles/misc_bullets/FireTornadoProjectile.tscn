@@ -150,6 +150,8 @@ position = Vector2(1.66893e-06, -3.0000315)
 shape = SubResource("CircleShape2D_vpx6d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+modulate = Color(1, 1, 1, 0.8)
+z_index = 5
 position = Vector2(0.50000024, 0.9999943)
 sprite_frames = SubResource("SpriteFrames_pmvj4")
 animation = &"Tornado"
