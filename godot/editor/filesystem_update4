@@ -6,29 +6,4 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/LevelControllers/Level1/Park_Arena.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn
-res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd
-res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn
-res://Assets/Scripts/Enemy/Enemy.gd
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn
-res://Assets/Scripts/Enemy/elite_enemies/Network.gd
-res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
-res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd
-res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine_Rocket.tscn
-res://Assets/Scripts/Enemy/Minibosses/Warmachine_Rocket.gd
-res://Scenes/GlobalAudioController.tscn
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Prefabs/CodePrefabs/Weapons/BaseBallLauncher.tscn
-res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn
-res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_bounce_effect.tres
-res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
-res://Prefabs/CodePrefabs/Weapons/FlameThrower.tscn
-res://Assets/Scripts/Weapons/Weapon.gd
-res://Prefabs/CodePrefabs/Projectiles/misc_bullets/FireTornadoProjectile.tscn
-res://Assets/Scripts/Projectiles/FireTornado.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Pickups/xp_pickup.gd
-res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
-res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
+res://Prefabs/GamePrefabs/Player/player.tscn

@@ -1052,6 +1052,8 @@ position = Vector2(1590, 934)
 [node name="Boulder9" parent="YSortedObjects" instance=ExtResource("59_3xqoa")]
 position = Vector2(319, 382)
 scale = Vector2(0.32051602, 0.806368)
+collision_layer = 16
+collision_mask = 3
 
 [node name="Blue_Vending" parent="YSortedObjects" instance=ExtResource("54_18udo")]
 position = Vector2(898, 1626)

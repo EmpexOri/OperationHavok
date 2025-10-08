@@ -167,6 +167,7 @@ Input_Activation={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="player_projectile"
 2d_physics/layer_4="enemy_projectile"
+2d_physics/layer_5="physics_block"
 
 [physics]
 
