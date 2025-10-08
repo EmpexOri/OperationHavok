@@ -41,6 +41,7 @@ var Fission_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
+var WeaponSwapSound: AudioStream = preload("res://Assets/Sound/SFX/WeaponSFX/Weapon_Swap.wav")
 
 var ShieldPingSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/EnemyReaction/ShieldPing.wav")
 var ShieldBreakSound: AudioStream = preload("res://Assets/Sound/SFX/ReactionSFX/EnemyReaction/ShieldBreak.wav")
@@ -444,4 +445,22 @@ func PlayShieldBreak():
 		p.stop()
 		p.stream = ShieldBreakSound
 		p.pitch_scale = 1.0
+		p.play()
+
+func PlayWeaponSwapSound():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = WeaponSwapSound
+			player.pitch_scale = randf_range(0.95, 1.05)
+			player.volume_db = -8
+			player.play()
+			return
+			
+	# fallback overwrite if all busy
+	if GeneralChannels.size() > 0:
+		var p = GeneralChannels[randi() % GeneralChannels.size()]
+		p.stop()
+		p.stream = WeaponSwapSound
+		p.pitch_scale = randf_range(0.95, 1.05)
+		p.volume_db = -8
 		p.play()

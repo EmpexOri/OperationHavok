@@ -8,4 +8,4 @@ script = ExtResource("1_nlw1r")
 projectile_scene = ExtResource("2_nlw1r")
 base_fire_rate = 0.8
 fire_offset = 7.0
-fire_sound_method = &"RocketFre"
+fire_sound_method = &"RocketFire"

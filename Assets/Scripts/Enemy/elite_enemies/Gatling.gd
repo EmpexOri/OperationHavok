@@ -23,8 +23,11 @@ const RAM_DURATION = 0.6
 const RAM_DAMAGE = 20
 @onready var ram_timer := Timer.new()
 
+@onready var fire_sfx: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+const FIRE_SOUND_PATH := "res://Assets/Sound/SFX/WeaponSFX/Enemy/Gatling_Minigun.wav"
+
 func start():
-	Speed = 80
+	Speed = 60
 	Health = 75
 	MaxHealth = Health
 	Group = "Enemy"
@@ -32,6 +35,11 @@ func start():
 	Target = "Player"
 
 func _ready():
+	fire_sfx.stream = load(FIRE_SOUND_PATH)
+	fire_sfx.bus = "SFX" 
+	fire_sfx.volume_db = -1.0
+	add_child(fire_sfx)
+	
 	var firetimer = Timer.new()
 	fire_duration_timer.one_shot = true
 	fire_duration_timer.connect("timeout", Callable(self, "_on_fire_duration_timeout"))
@@ -50,7 +58,6 @@ func _ready():
 	super()
 	get_flash_sprite().material = get_flash_sprite().material.duplicate()
 
-	# Fire animation delay timer
 	fire_delay_timer.one_shot = true
 	fire_delay_timer.connect("timeout", Callable(self, "_on_fire_delay_timeout"))
 	add_child(fire_delay_timer)
@@ -79,57 +86,109 @@ func _physics_process(_delta):
 		velocity = ram_direction * Speed * RAM_SPEED_MULTIPLIER
 		sprite.modulate.a = 1.0
 		sprite.speed_scale = 1.0
-		if sprite.animation != "move":
-			sprite.play("move")
+		
+		var anim_name = "move_down_right"
+		if ram_direction.y < 0:
+			anim_name = "move_up_right"
+		if sprite.animation != anim_name:
+			sprite.play(anim_name)
+		sprite.flip_h = ram_direction.x < 0
+		
 		move_and_slide()
 		return
-
+		
+	var Player = resolve_target()
 	var target_pos: Vector2
-
+	
+	# Handle random movement
 	if IsMovingRandomly:
-		var player = resolve_target()
 		target_pos = nav.target_position
-
+		
 		if nav.is_navigation_finished() or position.distance_to(nav.get_next_path_position()) < 10:
 			_cancel_random_move()
-		if player and global_position.distance_to(player.global_position) <= 100:
+		elif Player and global_position.distance_to(Player.global_position) <= 100:
 			_cancel_random_move()
+			
 	else:
-		var Player = resolve_target()
+		# Handle ramming trigger
 		if not is_ramming and Player and global_position.distance_to(Player.global_position) <= RAM_TRIGGER_DISTANCE:
 			start_ramming(Player)
 			return
-		target_pos = Player.position
-		nav.target_position = target_pos
-
-	var Direction = nav.get_next_path_position() - global_position
-	Direction = Direction.normalized()
-
-	if not IsMovingRandomly and (position.distance_to(target_pos) >= 100) or is_firing:
+			
+		if Player:
+			target_pos = Player.global_position
+			nav.target_position = target_pos
+			
+	var next_path = nav.get_next_path_position()
+	var Direction = (next_path - global_position).normalized()
+	if Direction == Vector2.ZERO:
+		# Keep last direction to prevent animation flicker
+		Direction = velocity.normalized()
+		
+	if is_firing:
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
+		
 	elif IsMovingRandomly:
 		Speed = 60
 		sprite.modulate.a = 0.65
 		velocity = Direction * Speed
+		
 	else:
-		Speed = 120
-		sprite.modulate.a = 1
-		velocity = Direction * Speed
-
-	# Animation handling
-	if is_firing:
-		sprite.speed_scale = 1
-	elif IsMovingRandomly or velocity.length() > 0:
-		if sprite.animation != "move":
-			sprite.speed_scale = 1
-			sprite.play("move")
-		if abs(velocity.x) > 0.1:
-			sprite.flip_h = velocity.x > 0
-	else:
-		sprite.speed_scale = 0
-
+		Speed = 80
+		sprite.modulate.a = 1.0
+		
+		if Player and position.distance_to(Player.global_position) > 100:
+			velocity = Direction * Speed
+		else:
+			velocity = Vector2.ZERO
+			sprite.modulate.a = 0.4
+			
+	if not is_firing and not is_ramming:
+		# Update facing only (do not play animation here)
+		var to_player = Vector2.ZERO
+		if Player:
+			to_player = (Player.global_position - global_position).normalized()
+			fire_direction = to_player
+			sprite.flip_h = to_player.x < 0
+			
+	_update_animation()
 	move_and_slide()
+	
+func _update_animation():
+	if is_firing:
+		# Choose the correct firing animation based on aim direction
+		var anim_name = "fire_down_right"
+		if fire_direction.y < 0:
+			anim_name = "fire_up_right"
+		sprite.play(anim_name)
+		sprite.flip_h = fire_direction.x < 0
+
+	elif IsMovingRandomly or velocity.length() > 0:
+		# Choose the correct movement animation based on vertical direction
+		var anim_name = "move_down_right"
+		if velocity.y < 0:
+			anim_name = "move_up_right"
+		if sprite.animation != anim_name:
+			sprite.play(anim_name)
+		sprite.flip_h = velocity.x < 0
+
+	else:
+		sprite.stop()
+		
+func _update_facing_to_player():
+	var Player = get_tree().get_nodes_in_group(Target).front()
+	if Player:
+		var to_player = (Player.global_position - global_position).normalized()
+		fire_direction = to_player  # keep direction consistent for animation
+
+		# Update facing based on where the player is
+		var anim_name = "move_down_right"
+		if to_player.y < 0:
+			anim_name = "move_up_right"
+		if sprite.animation != anim_name and not is_firing:
+			sprite.play(anim_name)
+		sprite.flip_h = to_player.x < 0
 
 func fire():
 	if IsMovingRandomly or velocity.length() > 1 or is_firing:
@@ -137,7 +196,6 @@ func fire():
 
 	if CurrentWeapon:
 		is_firing = true
-		sprite.play("fire")
 		
 		var fire_duration = randf_range(2.0, 5.0)
 		fire_duration_timer.start(fire_duration)
@@ -147,14 +205,17 @@ func fire():
 func _fire_burst():
 	if not is_firing or not CurrentWeapon:
 		return
-
+		
 	var Player = get_tree().get_nodes_in_group(Target).front()
 	if Player:
 		fire_direction = (Player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, fire_direction)
 		ShotsFired += 1
+		
+		if fire_sfx.playing:
+			fire_sfx.stop() 
+		fire_sfx.play()
 
-	# Fire again in 0.1–0.2 seconds (simulate burst fire)
 	fire_delay_timer.start(randf_range(0.1, 0.2))
 
 func random_move():

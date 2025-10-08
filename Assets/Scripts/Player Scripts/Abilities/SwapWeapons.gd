@@ -45,6 +45,8 @@ func activate(player, index = -1):
 		print("Swapped to weapon 1!")
 		_update_icon_sprite(weapon1_scene)
 
+	GlobalAudioController.PlayWeaponSwapSound()
+
 	# Start cooldown UI on Icon1 via player helper
 	if player.has_method("start_cooldown_on_slot"):
 		player.start_cooldown_on_slot(1, cooldown_time)
