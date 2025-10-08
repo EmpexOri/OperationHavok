@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cdfpkcvyx66sx"]
+[gd_scene load_steps=18 format=3 uid="uid://cdfpkcvyx66sx"]
 
-[ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="1_4tvo1"]
 [ext_resource type="Texture2D" uid="uid://d18diqxn1x00q" path="res://Assets/Art/Menu/PauseMenuBG.png" id="2_tp3vf"]
 [ext_resource type="Texture2D" uid="uid://decrs525hjtxo" path="res://Assets/Art/Menu/resume.png" id="3_f70tf"]
 [ext_resource type="Texture2D" uid="uid://5f4xfq1satf5" path="res://Assets/Art/Menu/controls.png" id="3_prp31"]
+[ext_resource type="Texture2D" uid="uid://b0vv6o05hfh85" path="res://Assets/Art/Menu/ControllerMenu.png" id="3_tp3vf"]
 [ext_resource type="Texture2D" uid="uid://d36cl676qxni7" path="res://Assets/Art/Menu/controlspressed.png" id="4_dvb8c"]
 [ext_resource type="Script" uid="uid://bq1smq7025jr3" path="res://Assets/Scripts/Menu Scripts/PauseNode.gd" id="4_fx1m6"]
 [ext_resource type="Texture2D" uid="uid://dew0ayisawhrj" path="res://Assets/Art/Menu/resumepressed.png" id="4_jbtp0"]
@@ -17,20 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://bbbx3r4vuw3lr" path="res://Assets/Art/Menu/mainmenupressed.png" id="8_3ke0u"]
 [ext_resource type="Texture2D" uid="uid://bknt3qafescxd" path="res://Assets/Art/Menu/exit.png" id="13_tp3vf"]
 [ext_resource type="Texture2D" uid="uid://d20dv4x5f3bi" path="res://Assets/Art/Menu/exitpressed.png" id="14_oc1jd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjg6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayg5y"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffkdq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2c132"]
-
-[sub_resource type="Theme" id="Theme_xpkpk"]
-VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_twjg6")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ayg5y")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ffkdq")
-VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_2c132")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -57,6 +43,11 @@ text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ControllerMenu" type="Sprite2D" parent="ControlsMenu"]
+position = Vector2(322, 191.00003)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("3_tp3vf")
+
 [node name="BackButton" type="TextureButton" parent="ControlsMenu"]
 process_mode = 3
 offset_left = 270.0
@@ -69,258 +60,6 @@ texture_normal = ExtResource("13_tp3vf")
 texture_pressed = ExtResource("14_oc1jd")
 texture_hover = ExtResource("14_oc1jd")
 texture_focused = ExtResource("14_oc1jd")
-
-[node name="ControlsContainer" type="ScrollContainer" parent="ControlsMenu"]
-process_mode = 2
-z_index = 1
-offset_left = 182.0
-offset_top = 82.0
-offset_right = 462.0
-offset_bottom = 280.0
-theme = SubResource("Theme_xpkpk")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ControlsMenu/ControlsContainer"]
-z_index = 1
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Slot1" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-z_index = 1
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot1"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move up"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot1"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "W"
-horizontal_alignment = 1
-
-[node name="Slot2" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-z_index = 1
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot2"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move down"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot2"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "S"
-horizontal_alignment = 1
-
-[node name="Slot3" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot3"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move left       "
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot3"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "A"
-horizontal_alignment = 1
-
-[node name="Slot4" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot4"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Move right"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot4"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "D"
-horizontal_alignment = 1
-
-[node name="Slot5" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot5"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ability 1"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot5"]
-layout_mode = 0
-offset_left = 215.0
-offset_top = 6.0
-offset_right = 275.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "A / 1"
-horizontal_alignment = 1
-
-[node name="Slot6" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot6"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ability 2"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot6"]
-layout_mode = 0
-offset_left = 215.0
-offset_top = 6.0
-offset_right = 275.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "B / 2"
-horizontal_alignment = 1
-
-[node name="Slot7" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ability 3"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot7"]
-layout_mode = 0
-offset_left = 207.0
-offset_top = 6.0
-offset_right = 283.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Y / 3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Slot8" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot8"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Pause Menu"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot8"]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 6.0
-offset_right = 274.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ESC"
-horizontal_alignment = 1
-
-[node name="Slot9" type="TextureRect" parent="ControlsMenu/ControlsContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_4tvo1")
-expand_mode = 5
-
-[node name="Label" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot9"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 125.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Dash"
-
-[node name="Label2" type="Label" parent="ControlsMenu/ControlsContainer/VBoxContainer/Slot9"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 6.0
-offset_right = 320.0
-offset_bottom = 45.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "LSB / Space"
-horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="."]
 offset_left = 1.0
