@@ -16,3 +16,4 @@ res://Assets/Scripts/Player Scripts/Abilities/SwapWeapons.gd
 res://Prefabs/CodePrefabs/Weapons/rocket_launcher.tscn
 res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
 res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn
+res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd

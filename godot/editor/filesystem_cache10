@@ -248,8 +248,9 @@ Sniper_WALK_FRONT_RED.png::CompressedTexture2D/CompressedTexture2D::702103193942
 spewling_eye.png::CompressedTexture2D/CompressedTexture2D::5357845026717717466::1745832847::1747048382::1::::<><><>0<>0<>812bab66caa5b424eadf3bf3a01bc0c4<>res://godot/imported/spewling_eye.png-9d8a9d2433c35c32b4da575d83b7f63a.ctex::
 spewling_walk.png::CompressedTexture2D/CompressedTexture2D::2728877879248150656::1745832847::1747048382::1::::<><><>0<>0<>1cf03f929220df6e4e9f9d14070c671f<>res://godot/imported/spewling_walk.png-87663383832f48e37f081cf371066a0a.ctex::
 Spewling_WALK_FRONT.png::CompressedTexture2D/CompressedTexture2D::2579802608036008433::1747051243::1747051243::1::::<><><>0<>0<>ca54ba1cd321c462372c2ee08b6e6c3e<>res://godot/imported/Spewling_WALK_FRONT.png-876d51183607864c2e519b777e3a71fe.ctex::
-::res://Assets/Art/Sprites/EnemyTilesheets/::1759916489
+::res://Assets/Art/Sprites/EnemyTilesheets/::1759918726
 Gatling_Animations.png::CompressedTexture2D::3017018987950413517::1759916488::1759916489::1::::<><><>0<>0<>4d1668f125da6bb14907947787455bf2<>res://godot/imported/Gatling_Animations.png-6ba29595b13148b22bfc54e3f8cf10a1.ctex::
+Hordling_Animation.png::CompressedTexture2D::5905922708111143314::1759918726::1759918727::1::::<><><>0<>0<>764f3dcdd751349f725bc0eb3286c98e<>res://godot/imported/Hordling_Animation.png-0db8711992965ca9ef5cf1cbb873bcc5.ctex::
 Needling_Animations.png::CompressedTexture2D::8868332647941399539::1759817994::1759817995::1::::<><><>0<>0<>aa0999bb2f47030694322153910ffaa5<>res://godot/imported/Needling_Animations.png-0d46e6ccffd4c48833651de87e512077.ctex::
 Network_Animations.png::CompressedTexture2D/CompressedTexture2D::3077452575155250809::1757566982::1757566982::1::::<><><>0<>0<>b5b787e36da02ca00f2a71563da1c0b2<>res://godot/imported/Network_Animations.png-19d34f53aee7edf16388e67c0ccc0eb4.ctex::
 ::res://Assets/Art/Sprites/FX/::1759810976
@@ -426,13 +427,13 @@ Warmachine.gd::GDScript::1129217977885735470::1759849699::0::1::::<>Enemy<><>0<>
 Warmachine_Rocket.gd::GDScript::2574087056726404145::1759849699::0::1::::<>Enemy<><>0<>0<><>::
 ::res://Assets/Scripts/LevelControllers/::1759852083
 End_Level.gd::GDScript::852314469108340891::1759852083::0::1::::<>Control<><>0<>0<><>::
-::res://Assets/Scripts/LevelControllers/Level1/::1759917119
+::res://Assets/Scripts/LevelControllers/Level1/::1759918696
 ArenaManager.gd::GDScript::4653629974145760443::1758346619::0::1::::<>Node2D<><>0<>0<><>::
 BetaLevelController.gd::GDScript::225127377476895832::1759817507::0::1::::<>Node<><>0<>0<><>::
 CutsceneHandler_BetaLevel.gd::GDScript::3948927254443583403::1759849631::0::1::::<>Node2D<><>0<>0<><>::
 Parkinglot_Arena.gd::GDScript::9045423581067016961::1759761303::0::1::::<>Node2D<><>0<>0<><>::
 Park_Arena.gd::GDScript::2677623753508608190::1759761303::0::1::::<>Node2D<><>0<>0<><>::
-Rooftop_Arena.gd::GDScript::8020517313722066713::1759917119::0::1::::<>Node2D<><>0<>0<><>::
+Rooftop_Arena.gd::GDScript::8020517313722066713::1759918696::0::1::::<>Node2D<><>0<>0<><>::
 Rooftop_Elevator.gd::GDScript::4214426608835238851::1758779859::0::1::::<>Area2D<><>0<>0<><>::
 Stripmall_Arena.gd::GDScript::4509914473960159838::1759852333::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Assets/Scripts/LevelControllers/Level1/AlphaLevel/::1758005509
@@ -482,7 +483,7 @@ AbilityIcon.gd::GDScript::2214594258572813538::1759761300::0::1::::<>Sprite2D<><
 Camera2D.gd::GDScript::1064062758091476073::1758029577::0::1::::<>Camera2D<><>0<>0<><>::
 player.gd::GDScript::7719611648655107747::1759813229::0::1::::<>CharacterBody2D<><>0<>0<><>::
 PlayerUIHandler.gd::GDScript::7296556773058450987::1759761303::0::1::::<>Node<><>0<>0<><>::
-::res://Assets/Scripts/Player Scripts/Abilities/::1759813368
+::res://Assets/Scripts/Player Scripts/Abilities/::1759918487
 BaseballGrenade.gd::GDScript::6396281579855996560::1756789706::0::1::::BaseballGrenade<>Node2D<><>0<>0<><>::
 GrenadeThrow.gd::GDScript::3230060622994617185::1759761302::0::1::::GrenadeThrow<>Node2D<><>0<>0<><>::
 HomerunGrenade.gd::GDScript::1289088844987949981::1759813368::0::1::::HomeRungrenade<>Node2D<><>0<>0<><>::
@@ -493,7 +494,7 @@ PlasmaCaster.gd::GDScript::820075251124999515::1759761303::0::1::::PlasmaCasterA
 RocketLauncher.gd::GDScript::1462967443930819962::1757051915::0::1::::Rocketlauncher<>Node2D<><>0<>0<><>::
 RocketMinigun.gd::GDScript::8451511372594872302::1757052324::0::1::::RocketMinigun<>Node2D<><>0<>0<><>::
 SniperBeam.gd::GDScript::5937917952278015073::1747636007::0::1::::SniperBeam<>Node2D<><>0<>0<><>::
-SwapWeapons.gd::GDScript::941762909242541448::1752132971::0::1::::WeaponSwap<>Node2D<><>0<>0<><>::
+SwapWeapons.gd::GDScript::941762909242541448::1759918487::0::1::::WeaponSwap<>Node2D<><>0<>0<><>::
 TyphoonCannon.gd::GDScript::6750216830030840242::1755690366::0::1::::TyphoonCannon<>Node2D<><>0<>0<><>::
 WeaponOverCharge.gd::GDScript::1551232914016972047::1744473604::0::1::::WeaponOverCharge<>Node2D<><>0<>0<><>::
 ::res://Assets/Scripts/Player Scripts/Abilities/UpgradedAbilities/::1750386511
@@ -525,12 +526,12 @@ projectile.gd::GDScript::5644551493803340454::1759761304::0::1::::Projectile<>Ar
 rocket_projectile.gd::GDScript::987680165264031082::1759761304::0::1::::RocketProjectile<>Projectile<><>0<>0<><>::
 ::res://Assets/Scripts/Projectiles/MiscScripts/::1759811473
 ProjectileSprite.gd::GDScript::9034933399052932464::1759811473::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
-::res://Assets/Scripts/Universal Scripts/::1759848701
+::res://Assets/Scripts/Universal Scripts/::1759918430
 background.gd::GDScript::6285951252017984310::1742189923::0::1::::<>Sprite2D<><>0<>0<><>::
 Global.gd::GDScript::8455348589679911694::1757328138::0::1::::<>Node<><>0<>0<><>::
 GlobalEffects.gd::GDScript::7503273336935588901::1755474386::0::1::::<>Node<><>0<>0<><>::
 GlobalPlayer.gd::GDScript::496252369288005919::1759846973::0::1::::<>Node<><>0<>0<><>::
-global_audio_controller.gd::GDScript::5139982847088565894::1759848701::0::1::::<>Node2D<><>0<>0<><>::
+global_audio_controller.gd::GDScript::5139982847088565894::1759918430::0::1::::<>Node2D<><>0<>0<><>::
 ScreenShake.gd::GDScript::2781977608168240156::1755502685::0::1::::<>Node<><>0<>0<><>::
 WeaponData.gd::GDScript::5031710630583027062::1759761305::0::1::::WeaponData<>Node<><>0<>0<><>::
 ::res://Assets/Scripts/Weapons/::1759761305
@@ -685,15 +686,15 @@ physics_projectile.tscn::PackedScene::1455261304605467165::1759811948::0::1::::<
 AkimboBullet.tscn::PackedScene::7382172066488188745::1757578735::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://r47bswi8hcgf::::res://Assets/Art/PlaceHolders/BulletPlayer.png
 bullet.tscn::PackedScene::5551016277185381318::1757578735::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://cgx4gfya00r6w::::res://Assets/Art/Sprites/FX/ProjectileFX/BulletPlayer.png
 M60Bullet.tscn::PackedScene::4007141123332351659::1759722471::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://cgx4gfya00r6w::::res://Assets/Art/Sprites/FX/ProjectileFX/BulletPlayer.png
-::res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/::1759814171
+::res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/::1759918696
 DragonShotGunBullet.tscn::PackedScene::8878634031989647645::1757578735::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://dhlfv2jnug8ld::::res://Assets/Art/Sprites/FX/ProjectileFX/FireBullet.png
 DragonShotgunProjectile.tscn::PackedScene::8210424716054258191::1756791486::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
 FlameBullet.tscn::PackedScene::7023158169136858336::1757398718::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://cih3gvo5m2f2g::::res://Assets/Scripts/Projectiles/FlameProjectile.gd<>uid://cmf1vldv34maj::::res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://r47bswi8hcgf::::res://Assets/Art/PlaceHolders/BulletPlayer.png<>uid://bs8xogmwvklvw::::res://Assets/Art/Sprites/FX/Fire2.png
-RaygunProjectile.tscn::PackedScene::4689950971183001907::1759814171::0::1::::<><><>0<>0<><>::uid://uy66843n3v0h::::res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://c2ejgpjqvigv8::::res://Assets/Art/Sprites/FX/green_ball_SPRITE.png<>uid://d1yubehqdc3hs::::res://Assets/Scripts/Projectiles/MiscScripts/ProjectileSprite.gd
+RaygunProjectile.tscn::PackedScene::4689950971183001907::1759918696::0::1::::<><><>0<>0<><>::uid://uy66843n3v0h::::res://Prefabs/CodePrefabs/Projectiles/misc_bullets/physics_projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://c2ejgpjqvigv8::::res://Assets/Art/Sprites/FX/green_ball_SPRITE.png<>uid://d1yubehqdc3hs::::res://Assets/Scripts/Projectiles/MiscScripts/ProjectileSprite.gd
 ShotgunBullet.tscn::PackedScene::4895641409828282138::1759719815::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://cgx4gfya00r6w::::res://Assets/Art/Sprites/FX/ProjectileFX/BulletPlayer.png
 ShotgunProjectile.tscn::PackedScene::8489562088671086142::1757578736::0::1::::<><><>0<>0<><>::uid://cmoi6522kj26u::::res://Assets/Scripts/Projectiles/projectile.gd<>uid://chs4bvgl6bsti::::res://Assets/Art/PlaceHolders/Bullet.png
 SniperBullet.tscn::PackedScene::5643280024637441997::1752136867::0::1::::<><><>0<>0<><>::uid://betbekipw6fkq::::res://Prefabs/CodePrefabs/Projectiles/projectile.tscn<>uid://eh4n4hehs0i4::::res://Assets/Shaders/BulletShader.tres<>uid://r47bswi8hcgf::::res://Assets/Art/PlaceHolders/BulletPlayer.png
-::res://Prefabs/CodePrefabs/Weapons/::1759850663
+::res://Prefabs/CodePrefabs/Weapons/::1759918555
 akimbo_smg.tscn::PackedScene::5333987692817734539::1757398720::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://clc7orxvf6iws::::res://Prefabs/CodePrefabs/Projectiles/primary_bullets/bullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://dk0b0g2aim660::::res://Assets/Scripts/Effects/Weapon Effects/Instances/akimbo_fire_effect.tres<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
 BaseBallLauncher.tscn::PackedScene::6703935460319615184::1756971159::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://nfqjhf1l51te::::res://Prefabs/CodePrefabs/Projectiles/misc_bullets/BaseballProjectile.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://bj14y6fhvpd0::::res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd
 beamer.tscn::PackedScene::1482958320978565296::1756971162::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://blfxsqho34haf::::res://Prefabs/CodePrefabs/Projectiles/misc_bullets/beam_projectile.tscn
@@ -710,9 +711,9 @@ NovaExplosion.tscn::PackedScene::4223984866809831444::1759849620::0::1::::<><><>
 NovaGrenade.tscn::PackedScene::2920621019280605904::1758609297::0::1::::<><><>0<>0<><>::uid://cx0g18i2qe4t6::::res://Assets/Scripts/Player Scripts/Weapons/NovaGrenade.gd<>uid://ellyilbs1s3s::::res://Assets/Sound/SFX/WeaponSFX/Grenade/GrenadeToss.mp3<>uid://b0luyempr3mkh::::res://Assets/Art/PlaceHolders/Circle.png<>uid://cercs72vduthv::::res://Assets/Sound/SFX/WeaponSFX/Grenade/GrenadeLanding.mp3<>uid://bxveynn36d251::::res://Assets/Art/Sprites/NovaGrenade.png<>uid://cclhcqiea2sjm::::res://Assets/Sound/SFX/WeaponSFX/Grenade/PlasmaCasterShot.mp3<>uid://cnxlkcbnjd87q::::res://Assets/Art/Sprites/FX/Nova_Caster_Explosion.png
 PlasmaExplosion.tscn::PackedScene::2465197509406926105::1759850663::0::1::::<><><>0<>0<><>::uid://cbko2bdxw24r::::res://Assets/Scripts/Player Scripts/Weapons/NovaExplosion.gd<>uid://bs0bfjn56fwlt::::res://Assets/Art/PlaceHolders/Player.png<>uid://b0luyempr3mkh::::res://Assets/Art/PlaceHolders/Circle.png<>uid://dnsusvcx5oef6::::res://Assets/Art/Sprites/FX/Plasma_Caster_Explosion.png<>uid://bqj656dqo15sk::::res://Assets/Sound/SFX/WeaponSFX/Grenade/GrenadeExplosion.mp3
 PlasmaGrenade.tscn::PackedScene::4920869725275254453::1759708062::0::1::::<><><>0<>0<><>::uid://dn1ra55rosonr::::res://Assets/Scripts/Player Scripts/Weapons/PlasmaGrenade.gd<>uid://bq3imxsyp4a7b::::res://Prefabs/CodePrefabs/Projectiles/misc_bullets/FireTornadoProjectile.tscn<>uid://bx08mwgkwxqrt::::res://Assets/Art/Sprites/Grenade.png<>uid://b0luyempr3mkh::::res://Assets/Art/PlaceHolders/Circle.png<>uid://dnsusvcx5oef6::::res://Assets/Art/Sprites/FX/Plasma_Caster_Explosion.png
-Raygun.tscn::PackedScene::6292550610431076330::1759833460::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://b7232phr78kxv::::res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://bj14y6fhvpd0::::res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd<>uid://ceof8gmk55auj::::res://Assets/Sound/SFX/WeaponSFX/Fission_Bounce.wav<>uid://cop4hxx2kw6ig::::res://Assets/Scripts/Effects/Projectile Effects/projectile_spawn_on_kill_effect.gd<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://wwee4860hgms::::res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd
+Raygun.tscn::PackedScene::6292550610431076330::1759918555::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://b7232phr78kxv::::res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/RaygunProjectile.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://bj14y6fhvpd0::::res://Assets/Scripts/Effects/Projectile Effects/phys_projectile_bounce.gd<>uid://ceof8gmk55auj::::res://Assets/Sound/SFX/WeaponSFX/Fission_Bounce.wav<>uid://cop4hxx2kw6ig::::res://Assets/Scripts/Effects/Projectile Effects/projectile_spawn_on_kill_effect.gd<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://wwee4860hgms::::res://Assets/Scripts/Effects/Weapon Effects/shotgun_effect.gd
 RocketMinigun.tscn::PackedScene::4948279925155907690::1758953895::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://u0jv2osthn6k::::res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/MiniRocket.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
-rocket_launcher.tscn::PackedScene::3858792854796454015::1759717556::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://b0ut6hr1btnda::::res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/rocket_projectile.tscn
+rocket_launcher.tscn::PackedScene::3858792854796454015::1759918539::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://b0ut6hr1btnda::::res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/rocket_projectile.tscn
 Shotgun.tscn::PackedScene::7594246334897073441::1759719754::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cb0qq7tf5boik::::res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/ShotgunBullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://bxkwbwtmdvk8p::::res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd<>uid://dsgjo7ac13qew::::res://Assets/Scripts/Effects/Weapon Effects/Instances/shotgun_effect.tres
 Smg.tscn::PackedScene::7192793212490370606::1759813229::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://clc7orxvf6iws::::res://Prefabs/CodePrefabs/Projectiles/primary_bullets/bullet.tscn<>uid://odcgl16aolxp::::res://Assets/Scripts/Effects/Weapon Effects/weapon_effect.gd<>uid://cvwir6rctxwae::::res://Assets/Scripts/Effects/Weapon Effects/InaccuracyEffect.gd
 Sniper.tscn::PackedScene::3495222184785183499::1756971112::0::1::::<><><>0<>0<><>::uid://ctsysx2en81hg::::res://Assets/Scripts/Weapons/Weapon.gd<>uid://cmnv86ehr7spx::::res://Prefabs/CodePrefabs/Projectiles/specialist_bullets/SniperBullet.tscn<>uid://tk8hk0gb0ywo::::res://Assets/Scripts/Effects/Projectile Effects/projectile_effect.gd<>uid://bxkwbwtmdvk8p::::res://Assets/Scripts/Effects/Projectile Effects/projectile_penetrate.gd
@@ -730,14 +731,14 @@ BossDeath_LevelBeta.tscn::PackedScene::3011684396370099794::1759849666::0::1::::
 SummonFX.tscn::PackedScene::2981191449138298115::1759723448::0::1::::<><><>0<>0<><>::uid://cxcf1qnt1owcy::::res://Assets/Art/Sprites/FX/BluePoof.png
 ::res://Prefabs/GamePrefabs/::1756970472
 ::res://Prefabs/GamePrefabs/Enemy/::1756970472
-::res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/::1759918310
+::res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/::1759918487
 1.png::CompressedTexture2D/CompressedTexture2D::156735967146063246::1757400840::1757400830::1::::<><><>0<>0<>6c71454db198a260aaad8741fcf72efc<>res://godot/imported/1.png-ce5f2c26e262047cb85f979d41461578.ctex::
 2.png::CompressedTexture2D/CompressedTexture2D::2192234671833954695::1757400830::1757400830::1::::<><><>0<>0<>1d0f0ce5b10895dc7a26de2ffc10ca0b<>res://godot/imported/2.png-3a5887668419950f60c1b10d23db27cd.ctex::
 3.png::CompressedTexture2D/CompressedTexture2D::3045360643279890808::1757400830::1757400830::1::::<><><>0<>0<>a46b6237450e400639cf1de32a9d34c5<>res://godot/imported/3.png-9ded8d995bf77709e0cfad3f43267b66.ctex::
 4.png::CompressedTexture2D/CompressedTexture2D::4741872953100355572::1757400830::1757400830::1::::<><><>0<>0<>b90047c87beeebe3c0a0d157b70cf411<>res://godot/imported/4.png-e8e591c2dc6421e2c7e07bfc2cd32964.ctex::
 5.png::CompressedTexture2D/CompressedTexture2D::7949387914185820930::1757400830::1757400830::1::::<><><>0<>0<>a10a99cb17a9197c313193ab2d72c1cd<>res://godot/imported/5.png-b39cf95b73e74ceed1095b453449e71f.ctex::
 Biomancer.tscn::PackedScene::8528004963983586978::1759817937::0::1::::<><><>0<>0<><>::uid://g04nhdfw0ljv::::res://Assets/Scripts/Enemy/elite_enemies/Biomancer.gd<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://lvgy0v7pooxo::::res://Assets/Art/PlaceHolders/Biomancer.png<>uid://dxqjhpwru6ctd::::res://Assets/Art/Sprites/Biomancer_Animations.png
-Gatling.tscn::PackedScene::1932737391603541604::1759918310::0::1::::<><><>0<>0<><>::uid://c8igbhfs0cq7m::::res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd<>uid://l3hvvyuxg3l::::res://Assets/Art/PlaceHolders/Needling.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://bi8p4knw4bjgf::::res://Assets/Art/Sprites/EnemyTilesheets/Gatling_Animations.png
+Gatling.tscn::PackedScene::1932737391603541604::1759918487::0::1::::<><><>0<>0<><>::uid://c8igbhfs0cq7m::::res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd<>uid://l3hvvyuxg3l::::res://Assets/Art/PlaceHolders/Needling.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://bi8p4knw4bjgf::::res://Assets/Art/Sprites/EnemyTilesheets/Gatling_Animations.png
 Goolum.tscn::PackedScene::8322376706013816660::1756970289::0::1::::<><><>0<>0<><>::uid://bsvgw2kwqlsdx::::res://Assets/Art/PlaceHolders/Hordling.png<>uid://d3co4wq6bwrd7::::res://Assets/Scripts/Enemy/elite_enemies/Goolum.gd<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://brv63cvhwl8hg::::res://Assets/Art/Sprites/Goolem_WALK_FRONT.png<>uid://dhqbrgpsngv5o::::res://Assets/Art/Sprites/Goolem_WALK_BACK.png
 MalignantTumor.tscn::PackedScene::5352559477511382286::1756970289::0::1::::<><><>0<>0<><>::uid://bcyeesswvybvb::::res://Assets/Scripts/Enemy/elite_enemies/MalignantTumor.gd<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://0c2xaen5yoev::::res://Assets/Art/PlaceHolders/Tumor2.png<>uid://oa2hk4gs8yud::::res://Assets/Art/Effects/ExplodedAnim.tres
 Needling.tscn::PackedScene::3063534752339651139::1759819031::0::1::::<><><>0<>0<><>::uid://dwkfdvkgdh6gf::::res://Assets/Scripts/Enemy/elite_enemies/Needling.gd<>uid://l3hvvyuxg3l::::res://Assets/Art/PlaceHolders/Needling.png<>uid://djo7rxo7icdd5::::res://Assets/Shaders/FlashShader.tres<>uid://dyl5e4ly1vvxj::::res://Assets/Art/Sprites/EnemyTilesheets/Needling_Animations.png

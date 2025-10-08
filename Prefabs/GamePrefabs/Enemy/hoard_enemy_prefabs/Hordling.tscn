@@ -2,56 +2,59 @@
 
 [ext_resource type="Script" uid="uid://dspo3pwd2b07v" path="res://Assets/Scripts/Enemy/hoard_enemies/Hordling.gd" id="1_okkq5"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_bvkv2"]
-[ext_resource type="Texture2D" uid="uid://dmn25e0pnj263" path="res://Assets/Art/Sprites/Hordling_Animation_temp.png" id="4_1b008"]
+[ext_resource type="Texture2D" uid="uid://cqe4xi4khh11o" path="res://Assets/Art/Sprites/EnemyTilesheets/Hordling_Animation.png" id="3_xp758"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvkv2"]
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1b008"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1pag"]
-atlas = ExtResource("4_1b008")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b008"]
+atlas = ExtResource("3_xp758")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v8w0l"]
-atlas = ExtResource("4_1b008")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1pag"]
+atlas = ExtResource("3_xp758")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hbf8g"]
-atlas = ExtResource("4_1b008")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8w0l"]
+atlas = ExtResource("3_xp758")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_whn71"]
-atlas = ExtResource("4_1b008")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbf8g"]
+atlas = ExtResource("3_xp758")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0c6hf"]
-atlas = ExtResource("4_1b008")
+[sub_resource type="AtlasTexture" id="AtlasTexture_whn71"]
+atlas = ExtResource("3_xp758")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1b008"]
-atlas = ExtResource("4_1b008")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c6hf"]
+atlas = ExtResource("3_xp758")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0wx1"]
-atlas = ExtResource("4_1b008")
+atlas = ExtResource("3_xp758")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxwx8"]
-atlas = ExtResource("4_1b008")
+atlas = ExtResource("3_xp758")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4fwt"]
-atlas = ExtResource("4_1b008")
+atlas = ExtResource("3_xp758")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ss1h"]
-atlas = ExtResource("4_1b008")
+atlas = ExtResource("3_xp758")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cthu"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b008")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r1pag")
 }, {
@@ -63,9 +66,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_whn71")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0c6hf")
 }],
 "loop": true,
 "name": &"right_down",
@@ -73,7 +73,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1b008")
+"texture": SubResource("AtlasTexture_0c6hf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a0wx1")
@@ -110,8 +110,6 @@ shape = SubResource("CircleShape2D_1b008")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
-simplify_path = true
-simplify_epsilon = 10.0
 avoidance_enabled = true
 radius = 12.0
 time_horizon_obstacles = 1.0
@@ -125,10 +123,8 @@ y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("3_bvkv2")
 sprite_frames = SubResource("SpriteFrames_8cthu")
-animation = &"right_up"
-autoplay = "right_up"
-frame = 1
-frame_progress = 0.371486
+animation = &"right_down"
+autoplay = "right_down"
 speed_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

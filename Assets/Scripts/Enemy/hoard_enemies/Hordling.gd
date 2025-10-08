@@ -36,6 +36,10 @@ func _ready():
 		smooth_dir = initial_dir
 		last_anim_dir = initial_dir
 		
+		# Force initial animation
+		_update_animation(initial_dir)
+		
+		
 	# Cache references to enemy groups
 	cached_enemies = get_tree().get_nodes_in_group("Enemy")
 	cached_hordlings = get_tree().get_nodes_in_group("Hordling")
@@ -51,59 +55,61 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 		
-	# Refreshing Caches here
+	# Refresh cached enemies and hordlings
 	cached_enemies = cached_enemies.filter(is_instance_valid)
 	cached_hordlings = cached_hordlings.filter(is_instance_valid)
 	
-	# Our old simple like go get em
+	# Set the navigation target
 	nav.target_position = cached_player.global_position
-	var dir = (nav.get_next_path_position() - global_position).normalized()
+	var next_pos = nav.get_next_path_position()
+	var dir = Vector2.ZERO
+	if next_pos:
+		dir = (next_pos - global_position).normalized()
 	
-	# Avoidance, makes Hordlings feel smarter
+	# Avoidance from other enemies
 	var avoidance_offset := Vector2.ZERO
 	for enemy in cached_enemies:
-		if enemy == self: 
+		if enemy == self:
 			continue
 		var dist = global_position.distance_to(enemy.global_position)
 		if dist < 24:
 			avoidance_offset += (global_position - enemy.global_position).normalized() * (1.0 - dist / 24)
-			
-	# Will Group Hordlings
+	
+	# Grouping with other hordlings
 	var group_offset := Vector2.ZERO
 	var count := 0
 	for hordling in cached_hordlings:
-		if hordling == self: 
+		if hordling == self:
 			continue
 		var dist = global_position.distance_to(hordling.global_position)
 		if dist < 100:
 			group_offset += hordling.global_position
 			count += 1
-			
 	if count > 0:
 		group_offset = (group_offset / count - global_position).normalized()
-		dir = (dir + group_offset * 0.3).normalized()  # group weighting
-		
+	
+	# Combine forces, projecting onto nav direction
+	var combined_dir = dir
 	if avoidance_offset != Vector2.ZERO:
-		dir = (dir + avoidance_offset.normalized() * 0.5).normalized()
-		
-	# Smoothing Movement, feels more natural
-	velocity = velocity.lerp(dir * Speed, 0.2)
+		combined_dir += avoidance_offset.normalized() * 0.5
+	if group_offset != Vector2.ZERO:
+		combined_dir += group_offset * 0.3
+	if dir.length() > 0:
+		combined_dir = combined_dir.project(dir).normalized() * dir.length()
+	
+	# Smooth movement
+	velocity = velocity.lerp(combined_dir * Speed, 0.2)
 	move_and_slide()
 	
-	# Smoothed Animations
+	# Smooth animation update
 	smooth_dir = smooth_dir.lerp(velocity, 0.1)
 	if smooth_dir.length() > 0.1:
-		if last_anim_dir == Vector2.ZERO or abs(last_anim_dir.angle_to(smooth_dir)) > FLIP_THRESHOLD:
-			last_anim_dir = smooth_dir.normalized()
-			var anim_name = ""
-			if abs(smooth_dir.y) > abs(smooth_dir.x):
-				anim_name = "right_down" if smooth_dir.y > 0 else "right_up"
-			else:
-				anim_name = "right_down"
-				
-			if sprite.animation != anim_name:
-				sprite.play(anim_name)
-			sprite.flip_h = smooth_dir.x < 0
+		var normalized_dir = smooth_dir.normalized()
+		
+		# Force animation if first frame or direction changed
+		if last_anim_dir == Vector2.ZERO or abs(last_anim_dir.angle_to(normalized_dir)) > FLIP_THRESHOLD or sprite.animation == "":
+			last_anim_dir = normalized_dir
+			_update_animation(normalized_dir)
 	else:
 		sprite.stop()
 
@@ -180,3 +186,14 @@ func drop_xp():
 
 func get_flash_sprite() -> CanvasItem:
 	return sprite 
+
+func _update_animation(direction: Vector2) -> void:
+	var anim_name = ""
+	if abs(direction.y) > abs(direction.x):
+		anim_name = "right_down" if direction.y > 0 else "right_up"
+	else:
+		anim_name = "right_down"
+		
+	if sprite.animation != anim_name:
+		sprite.play(anim_name)
+	sprite.flip_h = direction.x < 0
