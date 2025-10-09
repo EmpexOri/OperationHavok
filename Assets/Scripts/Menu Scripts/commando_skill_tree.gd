@@ -12,6 +12,8 @@ signal SkillTreeClosed
 
 # Focus for controller
 @onready var SMGFocus = $WeaponSwapTitle/SMG
+@onready var GrenadeFocus = $GrenadeTitle/Grenade
+@onready var MinigunFocus = $MinigunTitle/Minigun
 
 # Abilitiy Info boxes
 @onready var WeaponSwapBox = $BoxBack/WeaponSwap
@@ -19,6 +21,9 @@ signal SkillTreeClosed
 @onready var DragonShotgunBox = $BoxBack/DragonShotgun
 @onready var M60Box = $BoxBack/M60
 @onready var RaygunBox = $BoxBack/Raygun
+@onready var FlamethrowerBox = $BoxBack/Flamethrower
+@onready var GrenadeBox = $BoxBack/Grenade
+@onready var BaseballBox = $BoxBack/BaseballGrenade
 
 @onready var LockedBox = $BoxBack/Locked
 
@@ -140,14 +145,17 @@ func update_skill_trees_shown():
 		WeaponTree.visible = true
 		GrenadeTree.visible = false
 		MinigunTree.visible = false
+		SMGFocus.grab_focus()
 	elif points_spent == 1:
 		WeaponTree.visible = false
 		GrenadeTree.visible = true
 		MinigunTree.visible = false
+		GrenadeFocus.grab_focus()
 	elif points_spent == 2:
 		WeaponTree.visible = false
 		GrenadeTree.visible = false
 		MinigunTree.visible = true
+		MinigunFocus.grab_focus()
 	else:
 		WeaponTree.visible = true
 		GrenadeTree.visible = true
@@ -164,6 +172,9 @@ func _on_focus_entered(button: SkillButton) -> void:
 	DragonShotgunBox.visible = false
 	M60Box.visible = false
 	RaygunBox.visible = false
+	FlamethrowerBox.visible = false
+	GrenadeBox.visible = false
+	BaseballBox.visible = false
 	LockedBox.visible = false
 	
 	if unlocked.has(button.name) or parent_skill is SkillButton and parent_skill.unlocked:
@@ -176,8 +187,14 @@ func _on_focus_entered(button: SkillButton) -> void:
 				DragonShotgunBox.visible = true
 			"M60":
 				M60Box.visible = true
-			"Raygun":
+			"RaygunRifle":
 				RaygunBox.visible = true
+			"Flamethrower":
+				FlamethrowerBox.visible = true
+			"Grenade":
+				GrenadeBox.visible = true
+			"BaseballGrenade":
+				BaseballBox.visible = true
+				
 	else:
 		LockedBox.visible = true
-			

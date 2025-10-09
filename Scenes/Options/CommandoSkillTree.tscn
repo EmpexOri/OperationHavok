@@ -325,6 +325,166 @@ theme_override_font_sizes/font_size = 17
 text = "👽"
 horizontal_alignment = 1
 
+[node name="Flamethrower" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.0
+offset_top = -114.0
+offset_bottom = -88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Flamethrower"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/Flamethrower"]
+position = Vector2(80, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("6_1kq37")
+
+[node name="Desc" type="Label" parent="BoxBack/Flamethrower"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 106.0
+offset_right = 79.0
+offset_bottom = 129.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "Shoots burning
+gasoline. Burns
+baddies."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/Flamethrower"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 212.0
+offset_right = 79.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "It's game over man,
+game over!"
+horizontal_alignment = 1
+
+[node name="Grenade" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.0
+offset_top = -114.0
+offset_bottom = -88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Grenade"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/Grenade"]
+position = Vector2(80, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("12_jp367")
+
+[node name="Desc" type="Label" parent="BoxBack/Grenade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 106.0
+offset_right = 79.0
+offset_bottom = 129.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A frag grenade that
+explodes after being
+thrown."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/Grenade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 212.0
+offset_right = 79.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "The classic problem
+solver."
+horizontal_alignment = 1
+
+[node name="BaseballGrenade" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = -129.0
+offset_right = 2.0
+offset_bottom = -80.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 25
+text = "Baseball
+Grenade"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/BaseballGrenade"]
+position = Vector2(78, 83)
+scale = Vector2(2, 2)
+texture = ExtResource("13_2p3y5")
+
+[node name="Desc" type="Label" parent="BoxBack/BaseballGrenade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 121.0
+offset_right = 77.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A highly tuned and
+weaponised baseball,
+replaces your 
+grenade. Extremely 
+bouncy."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/BaseballGrenade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 235.0
+offset_right = 77.0
+offset_bottom = 272.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "Ay batta batta swing!"
+horizontal_alignment = 1
+
 [node name="Locked" type="Label" parent="BoxBack"]
 visible = false
 anchors_preset = 5
