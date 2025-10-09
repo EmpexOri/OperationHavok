@@ -22,3 +22,4 @@ res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
 res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
 res://Scenes/Options/CommandoSkillTree.tscn
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd

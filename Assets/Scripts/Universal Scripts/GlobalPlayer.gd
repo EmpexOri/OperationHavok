@@ -23,7 +23,7 @@ var ClassData = {
 		"Abilities": [], "UnlockedAbilities": []
 	},
 	"Commando": {
-		"Level": 10, "XP": 0, "PerkPoints": 10, "PerPointsSpent": 0, "MoveSpeed": 150,
+		"Level": 0, "XP": 0, "PerkPoints": 0, "PerPointsSpent": 0, "MoveSpeed": 150,
 		"Abilities": ["SwapWeapons", "GrenadeThrow", "RocketLauncher"], "UnlockedAbilities": ["SMG", "Grenade", "Minigun"]
 	},
 	"Fleshthing": {
@@ -174,6 +174,7 @@ func get_current_level_scene() -> String:
 	return current_level_scene_path
 
 func restart_level():
+	reset_player_to_defaults()  
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
@@ -241,3 +242,50 @@ func _restart_game():
 	get_tree().paused = false
 	OS.execute(OS.get_executable_path(), [])
 	get_tree().quit()
+
+func reset_player_to_defaults():
+	# Reset core stats
+	PlayerHPMax = 100
+	PlayerHP = PlayerHPMax
+	Level_Time = 0.0
+	total_enemies_killed = 0
+	current_respawn_position = Vector2.ZERO
+	
+	# Reset CurrentClass to default
+	CurrentClass = "Commando"
+	
+	# Reset class-level data
+	for cls_name in ClassData.keys():
+		if cls_name == "Commando":
+			ClassData[cls_name]["Level"] = 0
+			ClassData[cls_name]["XP"] = 0
+			ClassData[cls_name]["PerkPoints"] = 0
+			ClassData[cls_name]["PerPointsSpent"] = 0
+			ClassData[cls_name]["Abilities"] = ["SwapWeapons", "GrenadeThrow", "RocketLauncher"]
+			ClassData[cls_name]["UnlockedAbilities"] = ["SMG", "Grenade", "Minigun"]
+		elif cls_name == "Technomancer":
+			ClassData[cls_name]["Level"] = 1
+			ClassData[cls_name]["XP"] = 0
+			ClassData[cls_name]["PerkPoints"] = 0
+			ClassData[cls_name]["PerPointsSpent"] = 0
+			ClassData[cls_name]["Abilities"] = []
+			ClassData[cls_name]["UnlockedAbilities"] = []
+		elif cls_name == "Fleshthing":
+			ClassData[cls_name]["Level"] = 1
+			ClassData[cls_name]["XP"] = 0
+			ClassData[cls_name]["PerkPoints"] = 0
+			ClassData[cls_name]["PerPointsSpent"] = 0
+			ClassData[cls_name]["Abilities"] = []
+			ClassData[cls_name]["UnlockedAbilities"] = []
+
+	# Reset weapon upgrades
+	weapon_upgrades = {
+		1: "Smg",
+		2: "Shotgun"
+	}
+	
+	# Update UI
+	UpdateHP()
+	UpdateXPBar()
+	UpdatePerkPointUI()
+	UpdateAbilityList()

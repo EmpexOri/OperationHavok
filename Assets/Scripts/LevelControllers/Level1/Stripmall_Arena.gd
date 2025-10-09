@@ -47,8 +47,8 @@ func _ready() -> void:
 
 	# Wave 1 and 2 normal waves, Wave 3 is boss wave handled separately
 	waves = [
-		{ "Hordling": [8,6,3], "Spewling": [2,6,1], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [1,6,2], "Network": [1,1,1] },
-		{ "Hordling": [8,6,3], "Spewling": [2,6,3], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [2,6,2], "Network": [1,2,1] },
+		#{ "Hordling": [8,6,3], "Spewling": [2,6,1], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [1,6,2], "Network": [1,1,1] },
+		#{ "Hordling": [8,6,3], "Spewling": [2,6,3], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [2,6,2], "Network": [1,2,1] },
 		{ "Warmachine": 1, "WarmachineRocket": 1 } 
 	]
 
@@ -291,15 +291,30 @@ func _on_boss_died(boss: Node) -> void:
 		arena_completed()
 		
 func _cleanup_after_boss_duo() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	var original_hp := 0  # declare here so it's in scope
+
+	if player:
+		# Save current HP
+		original_hp = player.PlayerHP
+		# Give effectively infinite health
+		player.PlayerHP = 999999
+		player.PlayerHPMax = 999999
+
 	# Trigger proper death logic for all remaining enemies
 	for e in enemies:
 		if is_instance_valid(e) and e.is_inside_tree():
-			if e.has_method("on_death"):
-				e.on_death()  # Let the enemy handle its death logic
+			if e.get_script() and e.get_script().has_method("on_death"):
+				e.call("on_death")
 			else:
-				e.queue_free()  # Fallback if no death handler exists, or I cant find it
-
+				e.queue_free()
+				
 	enemies.clear()
+	
+	# Restore player's original health
+	if player:
+		player.PlayerHP = original_hp
+		player.PlayerHPMax = max(original_hp, 100)  # or whatever default max
 
 # CUTSCENE STUFF
 func _on_cutscene_start() -> void:
