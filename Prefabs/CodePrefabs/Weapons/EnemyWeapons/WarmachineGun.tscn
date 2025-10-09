@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_so24f"]
 script = ExtResource("4_as4vd")
-shot_offset = 40.0
+shot_offset = 15.0
 metadata/_custom_type_script = "uid://hngk5be2sgte"
 
 [sub_resource type="Resource" id="Resource_rprhp"]
@@ -20,4 +20,5 @@ metadata/_custom_type_script = "uid://cvwir6rctxwae"
 script = ExtResource("1_as4vd")
 projectile_scene = ExtResource("2_as4vd")
 base_fire_rate = 0.05
+fire_offset = 0.0
 weapon_effects = Array[ExtResource("3_rprhp")]([SubResource("Resource_so24f"), SubResource("Resource_rprhp")])

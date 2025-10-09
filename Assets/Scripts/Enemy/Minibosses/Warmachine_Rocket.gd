@@ -183,6 +183,7 @@ func fire():
 		fire_duration_timer.start(randf_range(3.0, 9.0))
 		_fire_burst()
 		
+
 func _fire_burst():
 	if not is_firing or not CurrentWeapon:
 		return
@@ -190,6 +191,9 @@ func _fire_burst():
 	var Player = get_tree().get_nodes_in_group(Target).front()
 	if Player:
 		fire_direction = (Player.global_position - global_position).normalized()
+		
+		update_sprite_facing(fire_direction)
+		
 		CurrentWeapon.attempt_to_fire(global_position, fire_direction)
 		ShotsFired += 1
 		
@@ -365,7 +369,7 @@ func update_shield_visual():
 	var color_blue = Color(0.2, 0.6, 1.0, 0.4)
 	var color_red  = Color(1.0, 0.2, 0.2, 0.4)
 	shield_sprite.modulate = color_blue.lerp(color_red, 1.0 - ratio)
-	shield_sprite.scale = Vector2.ONE * (0.75 + 0.2 * (1.0 - ratio))
+	shield_sprite.scale = Vector2.ONE * (0.5 + 0.2 * (1.0 - ratio))
 
 func enter_aggressive_mode():
 	aggressive_mode = true
@@ -375,3 +379,9 @@ func enter_aggressive_mode():
 func exit_aggressive_mode():
 	aggressive_mode = false
 	Speed = normal_speed
+
+func update_sprite_facing(direction: Vector2) -> void:
+	if direction.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
