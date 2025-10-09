@@ -1,5 +1,9 @@
 extends Node
 
+# All menus
+var AllowFocusSound = false
+var FocusDelay := 0.05
+
 # Main pause menu
 @onready var PauseMenu = $"."
 @onready var ResumeButton: TextureButton = $"ResumeButton"
@@ -21,14 +25,25 @@ extends Node
 @onready var SkillTree = $CommandoSkillTree
 
 func _ready():
-	ResumeButton.grab_focus()
+	# Temporarily disable sound during initial setup
+	AllowFocusSound = false
 	
-	# Connecting options menu and skill tree signal
+	await safe_grab_focus(ResumeButton)
+	
+	# Connect button focus_entered signals
+	for button in [ResumeButton, ControlsButton, OptionsButton, SkillTreeButton, MainButton, ControlsBackButton]:
+		button.focus_entered.connect(_on_button_focus_entered)
+	
+	# Connect signals
 	OptionsScene.OptionsClosed.connect(_on_options_closed)
 	SkillTree.SkillTreeClosed.connect(_on_skill_tree_closed)
 	
 	OptionsScene.visible = false
 	SkillTree.visible = false
+	
+	# Re-enable sound after a small delay
+	await get_tree().create_timer(0.1).timeout
+	AllowFocusSound = true
 
 func _input(event:InputEvent) -> void:
 	if Input.is_action_just_pressed("InGameOptions"):
@@ -46,7 +61,7 @@ func show_pause_menu() -> void:
 	ControlsMenu.visible = false
 	SkillTree.visible = false
 	
-	ResumeButton.grab_focus()
+	await safe_grab_focus(ResumeButton)
 
 func _on_resume_button_pressed() -> void:
 	# Play sound on button press
@@ -85,7 +100,7 @@ func _on_controls_button_pressed() -> void:
 	ControlsMenu.visible = true
 	SkillTree.visible = false
 	
-	ControlsBackButton.grab_focus()
+	await safe_grab_focus(ControlsBackButton)
 
 func _on_options_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
@@ -118,7 +133,7 @@ func _on_back_button_pressed() -> void:
 	ControlsMenu.visible = false
 	SkillTree.visible = false
 	
-	ResumeButton.grab_focus()
+	await safe_grab_focus(ResumeButton)
 
 func _on_menu_button_pressed() -> void:
 	GlobalAudioController.ButtonBackSound()
@@ -175,7 +190,7 @@ func _on_options_closed():
 	ControlsMenu.visible = false
 	SkillTree.visible = false
 	
-	OptionsButton.grab_focus()
+	await safe_grab_focus(OptionsButton)
 
 func _on_controls_back_button_pressed() -> void:
 	# Play sound on button press
@@ -191,7 +206,7 @@ func _on_controls_back_button_pressed() -> void:
 	ControlsMenu.visible = false
 	SkillTree.visible = false
 	
-	ControlsButton.grab_focus()
+	await safe_grab_focus(ControlsButton)
 
 func _on_skill_tree_closed():
 	# Play sound on button press
@@ -205,4 +220,15 @@ func _on_skill_tree_closed():
 	Title.visible = true
 	MainButton.visible = true
 
-	SkillTreeButton.grab_focus()
+	await safe_grab_focus(SkillTreeButton)
+
+func _on_button_focus_entered() -> void:
+	if AllowFocusSound:
+		GlobalAudioController.ButtonCycleSound()
+
+func safe_grab_focus(button: Control) -> void:
+	# Temporarily disable focus sound before grabbing focus manually
+	AllowFocusSound = false
+	button.grab_focus()
+	await get_tree().create_timer(FocusDelay).timeout
+	AllowFocusSound = true
