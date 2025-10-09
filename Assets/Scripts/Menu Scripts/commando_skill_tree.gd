@@ -71,7 +71,6 @@ func connect_skill_buttons(node):
 				child.connect("mouse_entered", Callable(self, "_on_mouse_entered").bind(child))
 		connect_skill_buttons(child)
 
-
 func _on_skill_button_used(button: SkillButton):
 	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
 	var unlocked = class_data["UnlockedAbilities"]
@@ -151,31 +150,28 @@ func upgrade_grenade_ability(NewAbility):
 	print("Skills updated to ", Abilities)
 
 func update_skill_trees_shown():
-	# Fetch how many perk points the player has spent
 	var points_spent = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerPointsSpent"]
 	
-	# Display the respective skill tree/s based on points spent
+	# Hide all by default
+	WeaponTree.visible = false
+	GrenadeTree.visible = false
+	MinigunTree.visible = false
+	
+	# Show trees based on points spent
 	if points_spent <= 0:
 		WeaponTree.visible = true
-		GrenadeTree.visible = false
-		MinigunTree.visible = false
-		SMGFocus.grab_focus()
+		$WeaponSwapTitle/SMG.grab_focus()
 	elif points_spent == 1:
-		WeaponTree.visible = false
 		GrenadeTree.visible = true
-		MinigunTree.visible = false
-		GrenadeFocus.grab_focus()
+		$GrenadeTitle/Grenade.grab_focus()
 	elif points_spent == 2:
-		WeaponTree.visible = false
-		GrenadeTree.visible = false
 		MinigunTree.visible = true
-		MinigunFocus.grab_focus()
+		$MinigunTitle/Minigun.grab_focus()
 	else:
 		WeaponTree.visible = true
 		GrenadeTree.visible = true
 		MinigunTree.visible = true
-		SMGFocus.grab_focus()
-
+		$GrenadeTitle/Grenade.grab_focus()
 
 func _on_focus_entered(button: SkillButton) -> void:
 	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
@@ -238,7 +234,34 @@ func _on_focus_entered(button: SkillButton) -> void:
 	else:
 		LockedBox.visible = true
 
-
 func _on_mouse_entered(button: SkillButton) -> void:
 	_on_focus_entered(button)
 	
+func set_skill_tree_focus():
+	var points_spent = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerPointsSpent"]
+	
+	if points_spent <= 0:
+		if SMGFocus.is_visible_in_tree():
+			SMGFocus.grab_focus()
+	elif points_spent == 1:
+		if GrenadeFocus.is_visible_in_tree():
+			GrenadeFocus.grab_focus()
+	elif points_spent == 2:
+		if MinigunFocus.is_visible_in_tree():
+			MinigunFocus.grab_focus()
+	else:
+		if SMGFocus.is_visible_in_tree():
+			SMGFocus.grab_focus()
+
+func show_perk_menu():
+	# Show the whole menu
+	visible = true
+	update_perk_points_label()
+	update_skill_trees_shown()
+	restore_unlocked_skills(WeaponTree)
+	restore_unlocked_skills(GrenadeTree)
+	restore_unlocked_skills(MinigunTree)
+	connect_skill_buttons(self)
+	
+	# Set focus based on points spent
+	set_skill_tree_focus()

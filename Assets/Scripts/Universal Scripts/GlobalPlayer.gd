@@ -38,6 +38,9 @@ var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 var current_respawn_position: Vector2 = Vector2.ZERO
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func XPRequiredForLevel(Level: int) -> int:
 	return 50 * pow(1.2, Level - 1)
 
@@ -156,6 +159,14 @@ func _process(delta: float) -> void:
 		OpenOptions()
 	if Input.is_action_just_pressed("DebugInput_3"):
 		_restart_game()
+		
+	if Input.is_action_just_pressed("DebugInput_5"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			print("Mouse hidden")
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			print("Mouse visible")
 
 # Grants the player levels immediately (for debugging)
 func GiveDebugLevels(amount: int):

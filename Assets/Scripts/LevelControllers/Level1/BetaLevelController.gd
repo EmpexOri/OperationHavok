@@ -80,12 +80,8 @@ func _input(event: InputEvent) -> void:
 		_debug_teleport_to_checkpoint()
 		
 func _show_perk_menu() -> void:
-	# Ensure tree is paused
 	get_tree().paused = true
-	
-	# Access the PauseMenu node (already instantiated)
-	if pause_menu.has_method("_on_skill_tree_button_pressed"):
-		pause_menu._on_skill_tree_button_pressed()
+	pause_menu._on_skill_tree_button_pressed()
 
 func _toggle_pause() -> void:
 	if pause_menu.visible:

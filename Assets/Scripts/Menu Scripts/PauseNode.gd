@@ -164,7 +164,7 @@ func _on_menu_button_pressed() -> void:
 
 func _on_skill_tree_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
-
+	
 	SkillTree.visible = true
 	ResumeButton.visible = false
 	ControlsButton.visible = false
@@ -172,10 +172,12 @@ func _on_skill_tree_button_pressed() -> void:
 	SkillTreeButton.visible = false
 	Title.visible = false
 	MainButton.visible = false
+	
 	SkillTree.update_skill_trees_shown()
 	SkillTree.restore_unlocked_skills(self)   
 	
-	SkillTree.SMGFocus.grab_focus()
+	# Proper focus based on points spent
+	SkillTree.set_skill_tree_focus()
 
 func _on_options_closed():
 	# Play sound on button press

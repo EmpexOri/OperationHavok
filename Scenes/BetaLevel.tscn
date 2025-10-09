@@ -642,22 +642,22 @@ position = Vector2(-85, 1158)
 shape = SubResource("RectangleShape2D_gnene")
 
 [node name="Spawn0" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(441, 904)
+position = Vector2(428, 924)
 
 [node name="Spawn1" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(183, 903)
+position = Vector2(204, 930)
 
 [node name="Spawn2" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(440, 1432)
+position = Vector2(393, 1384)
 
 [node name="Spawn3" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(-311, 1432)
+position = Vector2(-238, 1382)
 
 [node name="Spawn4" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(57, 974)
+position = Vector2(-7, 988)
 
 [node name="Spawn5" type="Marker2D" parent="Parkinglot_Arena"]
-position = Vector2(290, 1685)
+position = Vector2(297, 1681)
 
 [node name="Area_Blocker" parent="Parkinglot_Arena" instance=ExtResource("34_pkkfu")]
 position = Vector2(312, 1445)
