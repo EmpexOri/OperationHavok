@@ -1,49 +1,89 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1iyl4cf3ye30"]
+[gd_scene load_steps=27 format=3 uid="uid://b1iyl4cf3ye30"]
 
 [ext_resource type="Script" uid="uid://qdab4yid5bh3" path="res://Assets/Scripts/Enemy/Minibosses/Warmachine.gd" id="1_bcpsg"]
 [ext_resource type="Texture2D" uid="uid://l3hvvyuxg3l" path="res://Assets/Art/PlaceHolders/Needling.png" id="2_uvi8y"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="3_87uh0"]
-[ext_resource type="Texture2D" uid="uid://das1rkagkmgj8" path="res://Assets/Art/Sprites/Minibosses/WMIdle.png" id="4_bcpsg"]
-[ext_resource type="Texture2D" uid="uid://d3tdwjieufly2" path="res://Assets/Art/Sprites/Minibosses/WMWalk.png" id="5_vp07h"]
-[ext_resource type="Texture2D" uid="uid://br25cd645vdv" path="res://Assets/Art/Sprites/Minibosses/WMFire.png" id="6_cb7kr"]
+[ext_resource type="Texture2D" uid="uid://b0xbhgxmfr8mx" path="res://Assets/Art/Sprites/EnemyTilesheets/ArmegonPrime_Blue.png" id="4_vp07h"]
+[ext_resource type="Texture2D" uid="uid://cl3hss57ya2f" path="res://Assets/Art/Sprites/EnemyTilesheets/ArmegonPrime_Blue_MuzzleFlash.png" id="5_bcpsg"]
 [ext_resource type="Texture2D" uid="uid://c7a4c7os1saht" path="res://Assets/Art/Sprites/FX/White128.png" id="7_vp07h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cb7kr"]
-radius = 34.0147
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bcpsg"]
+radius = 12.0
+height = 56.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb7kr"]
+atlas = ExtResource("4_vp07h")
+region = Rect2(0, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujov0"]
-atlas = ExtResource("6_cb7kr")
-region = Rect2(0, 0, 87, 65)
+atlas = ExtResource("5_bcpsg")
+region = Rect2(0, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgb6f"]
-atlas = ExtResource("6_cb7kr")
-region = Rect2(0, 100, 87, 65)
+atlas = ExtResource("5_bcpsg")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xguv"]
+atlas = ExtResource("5_bcpsg")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x6jb"]
+atlas = ExtResource("5_bcpsg")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdniw"]
+atlas = ExtResource("5_bcpsg")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqosa"]
+atlas = ExtResource("5_bcpsg")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ghj5"]
+atlas = ExtResource("5_bcpsg")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qs8d"]
+atlas = ExtResource("5_bcpsg")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcpsg"]
+atlas = ExtResource("4_vp07h")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp07h"]
+atlas = ExtResource("4_vp07h")
+region = Rect2(48, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lji4q"]
-atlas = ExtResource("5_vp07h")
-region = Rect2(0, 0, 88, 70)
+atlas = ExtResource("4_vp07h")
+region = Rect2(96, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p17jy"]
-atlas = ExtResource("5_vp07h")
-region = Rect2(0, 102, 88, 70)
+atlas = ExtResource("4_vp07h")
+region = Rect2(144, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_blc5l"]
-atlas = ExtResource("5_vp07h")
-region = Rect2(0, 204, 88, 70)
+atlas = ExtResource("4_vp07h")
+region = Rect2(192, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vke3f"]
-atlas = ExtResource("5_vp07h")
-region = Rect2(0, 306, 88, 70)
+atlas = ExtResource("4_vp07h")
+region = Rect2(240, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7vkb"]
-atlas = ExtResource("5_vp07h")
-region = Rect2(0, 408, 88, 70)
+atlas = ExtResource("4_vp07h")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vqps"]
+atlas = ExtResource("4_vp07h")
+region = Rect2(336, 0, 48, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4vqps"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_bcpsg")
+"texture": SubResource("AtlasTexture_cb7kr")
 }],
 "loop": true,
 "name": &"default",
@@ -55,12 +95,36 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cgb6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xguv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x6jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdniw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqosa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ghj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qs8d")
 }],
 "loop": true,
 "name": &"fire",
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcpsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp07h")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lji4q")
 }, {
@@ -75,6 +139,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d7vkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vqps")
 }],
 "loop": true,
 "name": &"move",
@@ -82,7 +149,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vp07h"]
-radius = 35.00357
+radius = 22.022715
 
 [node name="Warmachine" type="CharacterBody2D"]
 collision_layer = 2
@@ -100,7 +167,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(1.1, 1.1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cb7kr")
+shape = SubResource("CapsuleShape2D_bcpsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -111,9 +178,7 @@ texture = ExtResource("2_uvi8y")
 texture_filter = 1
 material = ExtResource("3_87uh0")
 sprite_frames = SubResource("SpriteFrames_4vqps")
-animation = &"fire"
-frame = 1
-frame_progress = 0.56762
+animation = &"move"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -124,7 +189,7 @@ shape = SubResource("CircleShape2D_vp07h")
 
 [node name="Sprite" type="Sprite2D" parent="ShieldBubble"]
 modulate = Color(1, 1, 1, 0.5)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_vp07h")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -185,7 +185,7 @@ func restart_level():
 	Level_Time = 0.0
 	
 	# Reset checkpoint
-	var level_controller = get_tree().get_current_scene().get_node_or_null("LevelController")
+	var level_controller = get_tree().get_current_scene().get_node_or_null("LevelManager")
 	if level_controller:
 		level_controller.current_checkpoint = ""
 		GlobalPlayer.current_respawn_position = Vector2.ZERO
