@@ -186,7 +186,7 @@ func play_fire_sound():
 	var sfx_player := AudioStreamPlayer2D.new()
 	sfx_player.stream = preload("res://Assets/Sound/SFX/WeaponSFX/Enemy/Enemy_Shot.wav")
 	sfx_player.bus = "SFX"
-	sfx_player.volume_db = -2.5
+	sfx_player.volume_db = -5.0
 	sfx_player.pitch_scale = 1.5
 	add_child(sfx_player)
 	sfx_player.play()

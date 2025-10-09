@@ -16,3 +16,5 @@ res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Network.gd
 res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
+res://Assets/Scripts/Pickups/xp_pickup.gd
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
