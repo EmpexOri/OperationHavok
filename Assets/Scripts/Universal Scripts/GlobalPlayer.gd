@@ -176,7 +176,7 @@ func restart_level():
 	if get_tree().paused:
 		get_tree().paused = false
 		
-	# Try to clear runtime objects
+	# Try to clear runtime objects in the level root
 	var level_root = get_tree().get_root().get_child(0)
 	if level_root and level_root.has_method("clear_runtime_objects"):
 		level_root.clear_runtime_objects()
@@ -184,13 +184,15 @@ func restart_level():
 		
 	Level_Time = 0.0
 	
-	# Reset checkpoint
-	var level_controller = get_tree().get_current_scene().get_node_or_null("LevelManager")
-	if level_controller:
-		print("Level Manager Found & Cleared")
-		level_controller.current_checkpoint = ""
-		GlobalPlayer.current_respawn_position = Vector2.ZERO
-		
+	# Reset checkpoint by checking for a LevelManager under the level root
+	if level_root:
+		var level_controller = level_root.get_node_or_null("LevelManager")
+		if level_controller:
+			print("Level Manager Found & Cleared")
+			level_controller.current_checkpoint = ""
+			GlobalPlayer.current_respawn_position = Vector2.ZERO
+		else:
+			print("Level Manager not found in current root")
 	# Reload the current scene
 	if current_level_scene_path != "":
 		get_tree().change_scene_to_file(current_level_scene_path)

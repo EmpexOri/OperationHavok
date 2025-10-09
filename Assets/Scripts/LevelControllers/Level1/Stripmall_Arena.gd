@@ -47,8 +47,8 @@ func _ready() -> void:
 
 	# Wave 1 and 2 normal waves, Wave 3 is boss wave handled separately
 	waves = [
-		{ "Hordling": [8,6,3], "Spewling": [2,6,1], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [1,6,2], "Network": [1,1,1] },
-		{ "Hordling": [8,6,3], "Spewling": [2,6,3], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [2,6,2], "Network": [1,2,1] },
+		#{ "Hordling": [8,6,3], "Spewling": [2,6,1], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [1,6,2], "Network": [1,1,1] },
+		#{ "Hordling": [8,6,3], "Spewling": [2,6,3], "Needling": [1,6,1], "Biomancer": [1,3,1], "Gatling": [1,3,2], "Tumor": [2,6,2], "Network": [1,2,1] },
 		{ "Warmachine": 1, "WarmachineRocket": 1 } 
 	]
 

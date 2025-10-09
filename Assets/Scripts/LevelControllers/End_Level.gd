@@ -118,6 +118,7 @@ func _return_to_menu() -> void:
 	if has_returned:
 		return
 	has_returned = true
+	GlobalPlayer.restart_level()
 	
 	# Fade out music if it exists
 	if music_player:
@@ -142,9 +143,8 @@ func _return_to_menu() -> void:
 	if level_root:
 		level_root.queue_free()
 	# Load Main Menu scene
-	GlobalPlayer.restart_level()
-	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 
 func skip_typewriter() -> void:
 	typewriter_skipped = true
