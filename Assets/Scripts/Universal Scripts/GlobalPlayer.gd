@@ -154,6 +154,8 @@ func _process(delta: float) -> void:
 		GiveDebugLevels(5)
 	if Input.is_action_just_pressed("DebugInput_2"):
 		OpenOptions()
+	if Input.is_action_just_pressed("DebugInput_3"):
+		_restart_game()
 
 # Grants the player levels immediately (for debugging)
 func GiveDebugLevels(amount: int):
@@ -217,7 +219,6 @@ func OpenOptions():
 	if not world:
 		print("World node not found — cannot open Options Menu.")
 		return
-
 	# Try to find an existing PauseMenu in the scene tree
 	var pause_menu = world.get_node_or_null("PauseMenu")
 	
@@ -235,3 +236,8 @@ func OpenOptions():
 		pause_menu.show_pause_menu()
 		if pause_menu.has_method("_on_options_button_pressed"):
 			pause_menu._on_options_button_pressed()
+
+func _restart_game():
+	get_tree().paused = false
+	OS.execute(OS.get_executable_path(), [])
+	get_tree().quit()
