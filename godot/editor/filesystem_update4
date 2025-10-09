@@ -18,3 +18,4 @@ res://Assets/Scripts/Enemy/elite_enemies/Network.gd
 res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 res://Assets/Scripts/Pickups/xp_pickup.gd
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
