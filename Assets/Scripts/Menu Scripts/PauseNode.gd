@@ -143,6 +143,7 @@ func _on_menu_button_pressed() -> void:
 	# Load Main Menu scene
 	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+	GlobalPlayer.allow_restart()
 
 func _on_skill_tree_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
