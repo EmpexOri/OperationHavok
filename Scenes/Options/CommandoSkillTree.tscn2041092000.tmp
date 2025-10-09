@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=26 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://v7xyvs0ub8g4" path="res://Assets/Art/HUD/SMGs.png" id="7_k5h02"]
 [ext_resource type="Texture2D" uid="uid://o2mbpfo6gegs" path="res://Assets/Art/HUD/RaygunRifleRetroStyle.png" id="9_kcvj1"]
 [ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="10_ciio1"]
-[ext_resource type="Texture2D" uid="uid://biw7bulvlkual" path="res://Assets/Art/HUD/Lock.png" id="10_w0x7p"]
 [ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="11_k5h02"]
 [ext_resource type="Texture2D" uid="uid://cwcdqy5jts8as" path="res://Assets/Art/HUD/HomerunGrenade.png" id="12_2p3y5"]
 [ext_resource type="Texture2D" uid="uid://hmqh78ebn3js" path="res://Assets/Art/HUD/GrenadeIconWithBorder.png" id="12_jp367"]
@@ -219,7 +218,6 @@ dragon."
 horizontal_alignment = 1
 
 [node name="M60" type="Label" parent="BoxBack"]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -269,110 +267,6 @@ theme_override_fonts/font = ExtResource("5_qqek5")
 theme_override_font_sizes/font_size = 17
 text = "Say hello to my little
 friend."
-horizontal_alignment = 1
-
-[node name="Raygun" type="Label" parent="BoxBack"]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -158.0
-offset_top = -114.0
-offset_bottom = -88.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_qqek5")
-theme_override_font_sizes/font_size = 28
-text = "Raygun"
-horizontal_alignment = 1
-
-[node name="Icon" type="Sprite2D" parent="BoxBack/Raygun"]
-position = Vector2(80, 68)
-scale = Vector2(2, 2)
-texture = ExtResource("9_kcvj1")
-
-[node name="Desc" type="Label" parent="BoxBack/Raygun"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -79.0
-offset_top = 106.0
-offset_right = 79.0
-offset_bottom = 129.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_qqek5")
-theme_override_font_sizes/font_size = 18
-text = "A recovered Armegon
-firearm. Fires balls of
-radiation that bounce
-around and shred
-enemies from the
-inside"
-horizontal_alignment = 1
-
-[node name="Quote" type="Label" parent="BoxBack/Raygun"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -79.0
-offset_top = 230.0
-offset_right = 79.0
-offset_bottom = 249.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_qqek5")
-theme_override_font_sizes/font_size = 17
-text = "👽"
-horizontal_alignment = 1
-
-[node name="Locked" type="Label" parent="BoxBack"]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -158.0
-offset_top = -114.0
-offset_bottom = -88.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_qqek5")
-theme_override_font_sizes/font_size = 28
-text = "Locked"
-horizontal_alignment = 1
-
-[node name="Icon" type="Sprite2D" parent="BoxBack/Locked"]
-position = Vector2(80, 68)
-scale = Vector2(2, 2)
-texture = ExtResource("10_w0x7p")
-
-[node name="Desc" type="Label" parent="BoxBack/Locked"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -79.0
-offset_top = 114.0
-offset_right = 79.0
-offset_bottom = 151.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_qqek5")
-theme_override_font_sizes/font_size = 18
-text = "You can't view this
-yet."
-horizontal_alignment = 1
-
-[node name="Quote" type="Label" parent="BoxBack/Locked"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -79.0
-offset_top = 212.0
-offset_right = 79.0
-offset_bottom = 249.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_qqek5")
-theme_override_font_sizes/font_size = 17
-text = "Idiot."
 horizontal_alignment = 1
 
 [node name="PickAPerk" type="Label" parent="."]
