@@ -65,6 +65,10 @@ func connect_skill_buttons(node):
 			# Connect focus_entered
 			if not child.is_connected("focus_entered", Callable(self, "_on_focus_entered")):
 				child.connect("focus_entered", Callable(self, "_on_focus_entered").bind(child))
+			
+			# Connect mouse_entered
+			if not child.is_connected("mouse_entered", Callable(self, "_on_mouse_entered")):
+				child.connect("mouse_entered", Callable(self, "_on_mouse_entered").bind(child))
 		connect_skill_buttons(child)
 
 
@@ -230,3 +234,8 @@ func _on_focus_entered(button: SkillButton) -> void:
 				
 	else:
 		LockedBox.visible = true
+
+
+func _on_mouse_entered(button: SkillButton) -> void:
+	_on_focus_entered(button)
+	
