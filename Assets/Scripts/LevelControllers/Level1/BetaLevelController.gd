@@ -4,7 +4,7 @@ const PAUSE_MENU_SCENE := preload("res://Scenes/Options/PauseMenu.tscn")
 const BOULDER_BLOCKER_SCENE := preload("res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn")
 
 var checkpoint_to_arena := {
-	"rooftop": $Rooftop_Arena,
+	"rooftop": $ChecRooftop_Arena,
 	"parkinglot": $Parkinglot_Arena,
 	"park": $Park_Arena,
 	"stripmall": $Respawn_Stripmall
@@ -66,10 +66,12 @@ func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 	if arena.has_signal("arena_complete"):
 		arena.connect("arena_complete", Callable(self, "_on_arena_complete").bind(name))
 
-func _input(event:InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("InGameOptions"):
 		GlobalAudioController.PauseMenuMusic()
 		_toggle_pause()
+	if Input.is_action_just_pressed("DebugInput_4"):
+		_debug_teleport_to_checkpoint()
 
 func _toggle_pause() -> void:
 	if pause_menu.visible:
@@ -88,6 +90,22 @@ func _start_arena(name:String) -> void:
 	if a and a["arena"].has_method("activate_arena"):
 		a["arena"].activate_arena()
 		print("Arena started:", name)
+		
+		# Set checkpoint immediately when arena begins
+		var checkpoint_name := ""
+		match name:
+			"Rooftop_Arena":
+				checkpoint_name = "rooftop"
+			"Parkinglot_Arena":
+				checkpoint_name = "parkinglot"
+			"Park_Arena":
+				checkpoint_name = "park"
+			"Stripmall_Arena":
+				checkpoint_name = "stripmall"
+			_:
+				checkpoint_name = name.to_lower()
+		
+		_set_checkpoint(checkpoint_name)
 
 func _on_arena_complete(name:String) -> void:
 	print("Arena complete:", name)
@@ -209,9 +227,12 @@ func clear_runtime_objects() -> void:
 	for child in runtime_objects.get_children():
 		child.queue_free()
 
-func _process(delta: float) -> void:
-	if level_time_active and not get_tree().paused:
-		GlobalPlayer.Level_Time += delta
-
-func get_level_time() -> int:
-	return int(GlobalPlayer.Level_Time)
+func _debug_teleport_to_checkpoint() -> void:
+	var players = get_tree().get_nodes_in_group("Player")
+	if players.size() == 0:
+		print("No player found to teleport!")
+		return
+	
+	var player = players[0]
+	print("Teleporting player to checkpoint:", current_checkpoint)
+	respawn_player(player)
