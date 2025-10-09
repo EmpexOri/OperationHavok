@@ -6,3 +6,8 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
+res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd
+res://Assets/Scripts/Misc/SmearCanvas.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Scenes/Options/CommandoSkillTree.tscn
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd

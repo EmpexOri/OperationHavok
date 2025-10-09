@@ -173,6 +173,7 @@ func update_skill_trees_shown():
 		WeaponTree.visible = true
 		GrenadeTree.visible = true
 		MinigunTree.visible = true
+		SMGFocus.grab_focus()
 
 
 func _on_focus_entered(button: SkillButton) -> void:
