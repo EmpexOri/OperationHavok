@@ -24,6 +24,9 @@ signal SkillTreeClosed
 @onready var FlamethrowerBox = $BoxBack/Flamethrower
 @onready var GrenadeBox = $BoxBack/Grenade
 @onready var BaseballBox = $BoxBack/BaseballGrenade
+@onready var HomerunBox = $BoxBack/HomerunGrenade
+@onready var PlasmaBox = $BoxBack/Plasmacaster
+@onready var NovaBox = $BoxBack/Novacaster
 
 @onready var LockedBox = $BoxBack/Locked
 
@@ -175,6 +178,9 @@ func _on_focus_entered(button: SkillButton) -> void:
 	FlamethrowerBox.visible = false
 	GrenadeBox.visible = false
 	BaseballBox.visible = false
+	HomerunBox.visible = false
+	PlasmaBox.visible = false
+	NovaBox.visible = false
 	LockedBox.visible = false
 	
 	if unlocked.has(button.name) or parent_skill is SkillButton and parent_skill.unlocked:
@@ -195,6 +201,12 @@ func _on_focus_entered(button: SkillButton) -> void:
 				GrenadeBox.visible = true
 			"BaseballGrenade":
 				BaseballBox.visible = true
+			"HomeRunGrenade":
+				HomerunBox.visible = true
+			"PlasmaCaster":
+				NovaBox.visible = true
+			"Novacaster":
+				PlasmaBox.visible = true
 				
 	else:
 		LockedBox.visible = true

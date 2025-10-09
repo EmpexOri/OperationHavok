@@ -485,6 +485,173 @@ theme_override_font_sizes/font_size = 17
 text = "Ay batta batta swing!"
 horizontal_alignment = 1
 
+[node name="HomerunGrenade" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = -129.0
+offset_right = 2.0
+offset_bottom = -80.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 25
+text = "Homerun
+Grenade"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/HomerunGrenade"]
+position = Vector2(78, 83)
+scale = Vector2(2, 2)
+texture = ExtResource("12_2p3y5")
+
+[node name="Desc" type="Label" parent="BoxBack/HomerunGrenade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 120.0
+offset_right = 77.0
+offset_bottom = 197.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "Blessed with Babe
+Ruth's spirit, this
+lucky baseball will
+always hit it's mark."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/HomerunGrenade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 209.0
+offset_right = 77.0
+offset_bottom = 263.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "Never let the fear of
+striking out get in
+your way!"
+horizontal_alignment = 1
+
+[node name="Plasmacaster" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = -114.0
+offset_right = 2.0
+offset_bottom = -88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Plasmacaster"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/Plasmacaster"]
+position = Vector2(78, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("11_k5h02")
+
+[node name="Desc" type="Label" parent="BoxBack/Plasmacaster"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 106.0
+offset_right = 77.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A shoulder mounted
+cannon that shoots
+balls of heated 
+plasma which explode 
+on impact."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/Plasmacaster"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 212.0
+offset_right = 77.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "You are one ugly
+mother..."
+horizontal_alignment = 1
+
+[node name="Novacaster" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = -124.0
+offset_right = 2.0
+offset_bottom = -98.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Novacaster"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/Novacaster"]
+position = Vector2(78, 65)
+scale = Vector2(2, 2)
+texture = ExtResource("10_ciio1")
+
+[node name="Desc" type="Label" parent="BoxBack/Novacaster"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 103.0
+offset_right = 77.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A shoulder mounted
+cannon that shoots
+miniature suns which
+explode on impact,
+creating flaming
+tornadoes."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/Novacaster"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 223.0
+offset_right = 77.0
+offset_bottom = 260.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "The unmatched power
+of the sun!"
+horizontal_alignment = 1
+
 [node name="Locked" type="Label" parent="BoxBack"]
 visible = false
 anchors_preset = 5
