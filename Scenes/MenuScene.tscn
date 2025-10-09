@@ -1,9 +1,9 @@
 [gd_scene load_steps=45 format=3 uid="uid://kjmdqey636rw"]
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
+[ext_resource type="VideoStream" uid="uid://813nl2q8div" path="res://Assets/Videos/AttractMode.ogv" id="2_dlm5w"]
 [ext_resource type="Texture2D" uid="uid://nqh0l50edxkt" path="res://Assets/Art/PlaceHolders/FadeoutCircle.png" id="2_dxffo"]
 [ext_resource type="Texture2D" uid="uid://dylt3gbm8jxrj" path="res://Assets/Art/PlaceHolders/titlescreenblank.png" id="2_rae6p"]
-[ext_resource type="VideoStream" uid="uid://bvj7yxkm1ixm2" path="res://Assets/Videos/AttractModeRunShort.ogv" id="3_a37g6"]
 [ext_resource type="Texture2D" uid="uid://3230cb7hloyf" path="res://Assets/Art/Menu/PlayOff.png" id="4_6sxrv"]
 [ext_resource type="Texture2D" uid="uid://bshbw2fhjg4as" path="res://Assets/Art/Menu/HavokTitle.png" id="4_mp4id"]
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="4_vg0ck"]
@@ -238,8 +238,8 @@ script = ExtResource("1_36iol")
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_right = 640.0
 offset_bottom = 361.0
-stream = ExtResource("3_a37g6")
-volume_db = -80.0
+stream = ExtResource("2_dlm5w")
+volume_db = 23.999998
 autoplay = true
 expand = true
 
