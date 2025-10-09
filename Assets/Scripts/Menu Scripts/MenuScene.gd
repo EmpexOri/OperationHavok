@@ -31,7 +31,7 @@ func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/BetaLevel.tscn")
 
 func _on_quit_button_pressed() -> void:
-	GlobalAudioController.ClickSound()
+	GlobalAudioController.ButtonBackSound()
 	var quitTimer = 0.15
 	await get_tree().create_timer(quitTimer).timeout
 	get_tree().quit()

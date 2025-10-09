@@ -156,6 +156,12 @@ func DeathSound():
 func ClickSound():
 	$SFX/ClickSound.play()
 
+func ButtonCycleSound():
+	$SFX/CycleSound.play()
+
+func ButtonBackSound():
+	$SFX/BackSound.play()
+
 # Play random Hordling death sound
 func HordlingDeath():
 	for player in DeathChannels:

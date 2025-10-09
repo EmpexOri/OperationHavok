@@ -105,7 +105,7 @@ func _on_options_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	# Play sound on button press
-	GlobalAudioController.ClickSound()
+	GlobalAudioController.ButtonBackSound()
 	
 	# Removing all objects and bringing up the pause menu 
 	OptionsScene.visible = false
@@ -121,7 +121,7 @@ func _on_back_button_pressed() -> void:
 	ResumeButton.grab_focus()
 
 func _on_menu_button_pressed() -> void:
-	GlobalAudioController.ClickSound()
+	GlobalAudioController.ButtonBackSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
 	
@@ -162,7 +162,7 @@ func _on_skill_tree_button_pressed() -> void:
 
 func _on_options_closed():
 	# Play sound on button press
-	GlobalAudioController.ClickSound()
+	GlobalAudioController.ButtonBackSound()
 	
 	# Removing all objects and bringing up the pause menu 
 	OptionsScene.visible = false
@@ -179,7 +179,7 @@ func _on_options_closed():
 
 func _on_controls_back_button_pressed() -> void:
 	# Play sound on button press
-	GlobalAudioController.ClickSound()
+	GlobalAudioController.ButtonBackSound()
 	
 	# Removing the controls menu and displaying pause menu
 	ResumeButton.visible = true
@@ -195,7 +195,7 @@ func _on_controls_back_button_pressed() -> void:
 
 func _on_skill_tree_closed():
 	# Play sound on button press
-	GlobalAudioController.ClickSound()
+	GlobalAudioController.ButtonBackSound()
 
 	SkillTree.visible = false
 	ResumeButton.visible = true

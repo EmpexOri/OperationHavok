@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct47xp74ehl30"]
+[gd_scene load_steps=6 format=3 uid="uid://ct47xp74ehl30"]
 
 [ext_resource type="Script" uid="uid://cfh31cdyrncnm" path="res://Assets/Scripts/Universal Scripts/global_audio_controller.gd" id="1_2ql4u"]
 [ext_resource type="AudioStream" uid="uid://c84jtwjrq5xno" path="res://Assets/Sound/Music/DoomWaterParking.mp3" id="2_bq4xx"]
-[ext_resource type="AudioStream" uid="uid://bjeqt08vvx4aa" path="res://Assets/Sound/SFX/ClickSound.wav" id="5_e30su"]
+[ext_resource type="AudioStream" uid="uid://cf3fmaolk6yfb" path="res://Assets/Sound/SFX/ButtonSelect.mp3" id="3_2ql4u"]
+[ext_resource type="AudioStream" uid="uid://e1f7ln2orrpq" path="res://Assets/Sound/SFX/ButtonCycle.mp3" id="4_bq4xx"]
+[ext_resource type="AudioStream" uid="uid://bd1tsb4aed4mb" path="res://Assets/Sound/SFX/ButtonBack.mp3" id="5_e30su"]
 
 [node name="GlobalAudioController" type="Node2D"]
 script = ExtResource("1_2ql4u")
@@ -28,6 +30,16 @@ bus = &"Music"
 [node name="SFX" type="CanvasLayer" parent="."]
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="SFX"]
+process_mode = 3
+stream = ExtResource("3_2ql4u")
+bus = &"SFX"
+
+[node name="CycleSound" type="AudioStreamPlayer" parent="SFX"]
+process_mode = 3
+stream = ExtResource("4_bq4xx")
+bus = &"SFX"
+
+[node name="BackSound" type="AudioStreamPlayer" parent="SFX"]
 process_mode = 3
 stream = ExtResource("5_e30su")
 bus = &"SFX"

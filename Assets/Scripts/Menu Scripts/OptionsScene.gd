@@ -21,7 +21,7 @@ func _input(event:InputEvent) -> void:
 func _on_back_button_pressed() -> void:
 	if Options == false:
 		# Go to main menu
-		GlobalAudioController.ClickSound()
+		GlobalAudioController.ButtonBackSound()
 		get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 	if Options == true:
 		# Emit signal to pause menu to close options menu
