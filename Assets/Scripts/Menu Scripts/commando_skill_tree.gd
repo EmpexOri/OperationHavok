@@ -27,6 +27,11 @@ signal SkillTreeClosed
 @onready var HomerunBox = $BoxBack/HomerunGrenade
 @onready var PlasmaBox = $BoxBack/Plasmacaster
 @onready var NovaBox = $BoxBack/Novacaster
+@onready var RocketLauncherBox = $BoxBack/RocketLauncher
+@onready var MinigunBox = $BoxBack/Minigun
+@onready var RocketMinigunBox = $BoxBack/RocketMinigun
+@onready var LightningGunBox = $BoxBack/LightningGun
+@onready var TyphoonCannonBox = $BoxBack/TyphoonCannon
 
 @onready var LockedBox = $BoxBack/Locked
 
@@ -181,6 +186,11 @@ func _on_focus_entered(button: SkillButton) -> void:
 	HomerunBox.visible = false
 	PlasmaBox.visible = false
 	NovaBox.visible = false
+	RocketLauncherBox.visible = false
+	MinigunBox.visible = false
+	RocketMinigunBox.visible = false
+	LightningGunBox.visible = false
+	TyphoonCannonBox.visible = false
 	LockedBox.visible = false
 	
 	if unlocked.has(button.name) or parent_skill is SkillButton and parent_skill.unlocked:
@@ -207,6 +217,16 @@ func _on_focus_entered(button: SkillButton) -> void:
 				NovaBox.visible = true
 			"Novacaster":
 				PlasmaBox.visible = true
+			"Minigun":
+				RocketLauncherBox.visible = true
+			"Minigun1":
+				MinigunBox.visible = true
+			"RocketMinigun":
+				RocketMinigunBox.visible = true
+			"LightningLauncher":
+				LightningGunBox.visible = true
+			"TyphoonCannon":
+				TyphoonCannonBox.visible = true
 				
 	else:
 		LockedBox.visible = true

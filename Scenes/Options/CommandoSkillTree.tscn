@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://velkc7chqrtb"]
+[gd_scene load_steps=28 format=3 uid="uid://velkc7chqrtb"]
 
 [ext_resource type="PackedScene" uid="uid://dh4kv8hmrue0o" path="res://Scenes/Options/SkillButton.tscn" id="1_cye56"]
 [ext_resource type="Script" uid="uid://dovo4j0y266qt" path="res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd" id="1_qqy41"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://br1566g7sr3av" path="res://Assets/Art/HUD/RocketMingun.png" id="13_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://gs6orj5fv1ob" path="res://Assets/Art/HUD/LightningGun.png" id="14_jp367"]
 [ext_resource type="Texture2D" uid="uid://2dpwtocu5gxt" path="res://Assets/Art/HUD/TyphoonCannon.png" id="15_scflt"]
+[ext_resource type="Texture2D" uid="uid://drhcw6hpaceow" path="res://Assets/Art/HUD/RocketLauncher.png" id="17_73p4h"]
 [ext_resource type="Texture2D" uid="uid://dgdvqv3tyewlk" path="res://Assets/Art/HUD/Minigun1.png" id="17_jp367"]
 [ext_resource type="Texture2D" uid="uid://rohtq6wv16lb" path="res://Assets/Art/HUD/MinigunWithBorder.png" id="18_wo6gr"]
 [ext_resource type="Texture2D" uid="uid://j140hxqss6ei" path="res://Assets/Art/SkillTree/BoxBack.png" id="19_k5h02"]
@@ -650,6 +651,275 @@ theme_override_fonts/font = ExtResource("5_qqek5")
 theme_override_font_sizes/font_size = 17
 text = "The unmatched power
 of the sun!"
+horizontal_alignment = 1
+
+[node name="RocketLauncher" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = -129.0
+offset_right = 2.0
+offset_bottom = -80.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 25
+text = "Rocket
+Launcher"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/RocketLauncher"]
+position = Vector2(78, 83)
+scale = Vector2(2, 2)
+texture = ExtResource("17_73p4h")
+
+[node name="Desc" type="Label" parent="BoxBack/RocketLauncher"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 120.0
+offset_right = 77.0
+offset_bottom = 197.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A rocket launcher.
+Shoots explosive
+rockets."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/RocketLauncher"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 209.0
+offset_right = 77.0
+offset_bottom = 263.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "Where did you learn
+how to do that?"
+horizontal_alignment = 1
+
+[node name="Minigun" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = -114.0
+offset_right = 1.0
+offset_bottom = -88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Minigun"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/Minigun"]
+position = Vector2(79, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("18_wo6gr")
+
+[node name="Desc" type="Label" parent="BoxBack/Minigun"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 106.0
+offset_right = 79.0
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "Replaces your rocket
+launcher with a
+powerful minigun."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/Minigun"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 212.0
+offset_right = 79.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "I ain't got time to
+bleed."
+horizontal_alignment = 1
+
+[node name="RocketMinigun" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = -114.0
+offset_right = 1.0
+offset_bottom = -88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Rocket Minigun"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/RocketMinigun"]
+position = Vector2(79, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("13_wo6gr")
+
+[node name="Desc" type="Label" parent="BoxBack/RocketMinigun"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 106.0
+offset_right = 79.0
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "Upgrades your minigun
+with parts from your
+old rocket launcher."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/RocketMinigun"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 212.0
+offset_right = 79.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "I ain't got time to
+boom."
+horizontal_alignment = 1
+
+[node name="LightningGun" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = -114.0
+offset_right = 1.0
+offset_bottom = -88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 28
+text = "Lightning Gun"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/LightningGun"]
+position = Vector2(79, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("14_jp367")
+
+[node name="Desc" type="Label" parent="BoxBack/LightningGun"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 106.0
+offset_right = 79.0
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A gun that shoots a
+concentrated beam
+of chain lightning to
+kill en masse."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/LightningGun"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 212.0
+offset_right = 79.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "Unlimited poweeerrr."
+horizontal_alignment = 1
+
+[node name="TyphoonCannon" type="Label" parent="BoxBack"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = -129.0
+offset_right = 2.0
+offset_bottom = -80.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 25
+text = "Typhoon
+Cannon"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="BoxBack/TyphoonCannon"]
+position = Vector2(78, 83)
+scale = Vector2(2, 2)
+texture = ExtResource("15_scflt")
+
+[node name="Desc" type="Label" parent="BoxBack/TyphoonCannon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 120.0
+offset_right = 81.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 18
+text = "A lightning gun modded 
+with recovered 
+Armegon technology. 
+Shoots explosive balls 
+of lightning."
+horizontal_alignment = 1
+
+[node name="Quote" type="Label" parent="BoxBack/TyphoonCannon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 228.0
+offset_right = 79.0
+offset_bottom = 282.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqek5")
+theme_override_font_sizes/font_size = 17
+text = "Big. Fulmination.
+Generator."
 horizontal_alignment = 1
 
 [node name="Locked" type="Label" parent="BoxBack"]
