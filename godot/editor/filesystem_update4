@@ -44,3 +44,4 @@ res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
 res://Assets/Scripts/Player Scripts/Weapons/Misc/TyphoonExplosion.gd
 res://Prefabs/Cutscenes/BossDeath_LevelBeta.tscn
 res://Assets/Scripts/LevelControllers/Level1/CutsceneHandler_BetaLevel.gd
+res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
