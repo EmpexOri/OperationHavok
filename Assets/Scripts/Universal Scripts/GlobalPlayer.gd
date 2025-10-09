@@ -186,6 +186,7 @@ func get_current_level_scene() -> String:
 
 func restart_level():
 	reset_player_to_defaults()  
+	reset_scores() 
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
@@ -300,3 +301,12 @@ func reset_player_to_defaults():
 	UpdateXPBar()
 	UpdatePerkPointUI()
 	UpdateAbilityList()
+
+func reset_scores():
+	HelpXP = 0
+	total_enemies_killed = 0
+	
+	# Update UI if it exists
+	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
+	if UIHandler:
+		UIHandler.UpdateScore()
