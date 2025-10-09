@@ -4,8 +4,15 @@ class_name GrenadeThrow
 signal perk_finished(index: int)
 @export var cooldown_time: float = 4.0
 var perk_index: int
+var cooldown_timer: Timer
 
 var last_direction: Vector2 = Vector2.RIGHT 
+
+func _ready():
+	cooldown_timer = Timer.new()
+	cooldown_timer.one_shot = true
+	cooldown_timer.timeout.connect(_cooldown_complete)
+	add_child(cooldown_timer)
 
 func activate(player, index = -1):
 	perk_index = index
@@ -38,14 +45,9 @@ func activate(player, index = -1):
 
 func _start_cooldown():
 	if owner and owner.has_method("start_cooldown_on_slot"):
-		owner.start_cooldown_on_slot(2, cooldown_time)  
-	
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.wait_time = cooldown_time
-	timer.timeout.connect(_cooldown_complete)
-	add_child(timer)
-	timer.start()
+		owner.start_cooldown_on_slot(2, cooldown_time)
+	cooldown_timer.wait_time = cooldown_time
+	cooldown_timer.start()
 
 func _cooldown_complete():
 	emit_signal("perk_finished", perk_index)

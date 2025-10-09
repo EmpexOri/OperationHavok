@@ -13,3 +13,5 @@ res://Scenes/Options/PauseMenu.tscn
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Scenes/BetaLevel.tscn
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
