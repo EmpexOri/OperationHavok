@@ -22,11 +22,11 @@ var level_time_active: bool = false
 var current_checkpoint : String = ""
 
 func _ready() -> void:
-	# Instantiate and add pause menu
+	# Instantiate pause menu
 	pause_menu = PAUSE_MENU_SCENE.instantiate()
 	add_child(pause_menu)
 	pause_menu.visible = false
-
+	
 	# Wait for player
 	var player: Node = null
 	while not player:
@@ -34,11 +34,11 @@ func _ready() -> void:
 		var players = get_tree().get_nodes_in_group("Player")
 		if players.size() > 0:
 			player = players[0]
-
+			
 	print("Player found:", player)
 	runtime_objects.name = "RuntimeObjects"
 	add_child(runtime_objects)
-
+	
 	# Register spawn points
 	var checkpoints := get_node_or_null("LevelManager/Checkpoints")
 	if checkpoints:
@@ -52,8 +52,10 @@ func _ready() -> void:
 			arena.reset_arena()
 			print("Arena reset:", arena.name)
 			
-	if GlobalPlayer.has_method("Restart_Level"):
-		GlobalPlayer.Restart_Level()
+	if not GlobalPlayer.HasRestartedLevel:
+		GlobalPlayer.HasRestartedLevel = true
+		if GlobalPlayer.has_method("restart_level"):
+			GlobalPlayer.restart_level()
 
 func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 	arenas[name] = { "trigger": trigger, "arena": arena }
