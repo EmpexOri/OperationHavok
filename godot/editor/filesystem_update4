@@ -1,16 +1,3 @@
-res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
-res://Assets/Scripts/Enemy/elite_enemies/Tumor.gd
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
-res://Assets/Scripts/LevelControllers/Level1/CutsceneHandler_BetaLevel.gd
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Assets/Scripts/Player Scripts/Weapons/Misc/TyphoonExplosion.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Prefabs/CodePrefabs/Misc/GroundEffect.tscn
-res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/TyphoonProjectile.tscn
-res://Prefabs/CodePrefabs/Weapons/TyphoonCannon.tscn
-res://Prefabs/Cutscenes/BossDeath_LevelBeta.tscn
-res://Scenes/Options/CommandoSkillTree.tscn
 res://Scenes/GlobalAudioController.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
@@ -19,9 +6,3 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Scenes/MenuScene.tscn
-res://Assets/Scripts/Menu Scripts/MenuScene.gd
-res://Scenes/Options/OptionsScene.tscn
-res://Assets/Scripts/Menu Scripts/OptionsScene.gd
-res://Scenes/Options/PauseMenu.tscn
-res://Assets/Scripts/Menu Scripts/PauseNode.gd

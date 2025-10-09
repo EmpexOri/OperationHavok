@@ -32,16 +32,19 @@ bus = &"Music"
 [node name="ClickSound" type="AudioStreamPlayer" parent="SFX"]
 process_mode = 3
 stream = ExtResource("3_2ql4u")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="CycleSound" type="AudioStreamPlayer" parent="SFX"]
 process_mode = 3
 stream = ExtResource("4_bq4xx")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="BackSound" type="AudioStreamPlayer" parent="SFX"]
 process_mode = 3
 stream = ExtResource("5_e30su")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="DeathChannelsSFX" type="AudioStreamPlayer" parent="SFX"]
