@@ -32,7 +32,7 @@ func _ready():
 	add_to_group("Support")
 	Target = null
 	
-	sfx_timer.wait_time = randf_range(3.0, 5.0)
+	sfx_timer.wait_time = randf_range(5.0, 8.0)
 	sfx_timer.one_shot = false
 	sfx_timer.connect("timeout", Callable(self, "_play_network_sfx"))
 	add_child(sfx_timer)

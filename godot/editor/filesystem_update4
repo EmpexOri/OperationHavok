@@ -6,4 +6,13 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Prefabs/GamePrefabs/Player/player.tscn
+res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd
+res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/SpewlingWeapon.tscn
+res://Prefabs/CodePrefabs/Weapons/Raygun.tscn
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/rocket_projectile.tscn
+res://Scenes/Beta/LevelFinished.tscn
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn
+res://Assets/Scripts/Enemy/elite_enemies/Network.gd
+res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd

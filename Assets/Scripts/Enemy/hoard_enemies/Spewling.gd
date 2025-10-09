@@ -68,11 +68,11 @@ func _physics_process(delta):
 	#clamp_position_to_screen()
 
 func fire():
-	#print("Trying to fire...")
 	var player = resolve_target()
 	if player and CurrentWeapon:
 		var dir = (player.global_position - global_position).normalized()
 		CurrentWeapon.attempt_to_fire(global_position, dir)
+		play_fire_sound()
 
 var _orbit_angle: float = 0.0
 var _orbit_angle_initialized: bool = false
@@ -181,3 +181,13 @@ func handle_minion_collision(body: Node2D):
 
 func get_flash_sprite() -> CanvasItem:
 	return sprite 
+
+func play_fire_sound():
+	var sfx_player := AudioStreamPlayer2D.new()
+	sfx_player.stream = preload("res://Assets/Sound/SFX/WeaponSFX/Enemy/Enemy_Shot.wav")
+	sfx_player.bus = "SFX"
+	sfx_player.volume_db = -2.5
+	sfx_player.pitch_scale = 1.5
+	add_child(sfx_player)
+	sfx_player.play()
+	sfx_player.connect("finished", sfx_player.queue_free)

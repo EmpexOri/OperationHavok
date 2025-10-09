@@ -41,18 +41,20 @@ func connect_skill_buttons(node):
 		connect_skill_buttons(child)
 
 func _on_skill_button_used(button: SkillButton):
-	# Tells us when a skill has been bought and what the name is and updates the label
 	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
 	var unlocked = class_data["UnlockedAbilities"]
-
-	# Prevent spending points on skills already unlocked
+	
 	if unlocked.has(button.name):
 		return
-
+		
 	print("Skill bought:", button.name)
 	update_perk_points_label()
-
+	
 	unlocked.append(button.name)
+	
+	# Increment spent perk points
+	GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerPointsSpent"] += 1
+	update_skill_trees_shown()
 
 	# Changes the ability being used
 	match button.name:
@@ -115,19 +117,19 @@ func upgrade_grenade_ability(NewAbility):
 	print("Skills updated to ", Abilities)
 
 func update_skill_trees_shown():
-	# Fetching the player current level
-	var Level = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["Level"]
+	# Fetch how many perk points the player has spent
+	var points_spent = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerPointsSpent"]
 	
-	# Displaying the respective skill tree/s
-	if Level <= 1:
+	# Display the respective skill tree/s based on points spent
+	if points_spent <= 0:
 		WeaponTree.visible = true
 		GrenadeTree.visible = false
 		MinigunTree.visible = false
-	elif Level == 2:
+	elif points_spent == 1:
 		WeaponTree.visible = false
 		GrenadeTree.visible = true
 		MinigunTree.visible = false
-	elif Level == 3:
+	elif points_spent == 2:
 		WeaponTree.visible = false
 		GrenadeTree.visible = false
 		MinigunTree.visible = true

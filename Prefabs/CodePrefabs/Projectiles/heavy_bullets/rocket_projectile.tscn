@@ -10,7 +10,7 @@
 size = Vector2(20, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xr85"]
-radius = 59.0339
+radius = 64.0
 
 [sub_resource type="Gradient" id="Gradient_533ne"]
 colors = PackedColorArray(0.72549, 0.72549, 0.72549, 0.827451, 0.47451, 0.47451, 0.47451, 0.72549)
@@ -50,9 +50,9 @@ turbulence_noise_scale = 0.74
 
 [node name="RocketProjectile" instance=ExtResource("1_8xr85")]
 script = ExtResource("2_dybd0")
-explosion_radius_size = 50.0
+explosion_radius_size = 64.0
 explosion_scene = ExtResource("3_dybd0")
-initial_speed = 50.0
+initial_speed = 500.0
 max_speed = 2000.0
 acceleration_rate = 1000.0
 base_speed = 200.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj428kc0uw5f5"]
+[gd_scene load_steps=8 format=3 uid="uid://dj428kc0uw5f5"]
 
 [ext_resource type="Script" uid="uid://me4q275l1ydv" path="res://Assets/Scripts/LevelControllers/End_Level.gd" id="1_18gom"]
 [ext_resource type="Texture2D" uid="uid://cg4in14ej6p2c" path="res://Assets/Art/HUD/Poster.png" id="1_doqmx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dotqgxlcpe4ng" path="res://Assets/Art/Menu/mainmenu.png" id="4_5wpdf"]
 [ext_resource type="AudioStream" uid="uid://xye855dwtq2m" path="res://Assets/Sound/Music/Luxopolis_Funky.mp3" id="4_a5moj"]
 [ext_resource type="Texture2D" uid="uid://bbbx3r4vuw3lr" path="res://Assets/Art/Menu/mainmenupressed.png" id="5_8jvrt"]
+[ext_resource type="Texture2D" uid="uid://bshbw2fhjg4as" path="res://Assets/Art/Menu/HavokTitle.png" id="7_8jvrt"]
 
 [node name="LevelFinished" type="Node2D"]
 
@@ -96,6 +97,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="FadeRect" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,3 +105,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_right = 788.0
+offset_bottom = 420.0
+grow_horizontal = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_8jvrt")
