@@ -27,10 +27,10 @@ func _ready() -> void:
 	add_child(pause_menu)
 	pause_menu.visible = false
 
-	# Wait until Player exists in the scene tree
+	# Wait for player
 	var player: Node = null
 	while not player:
-		await get_tree().process_frame  # wait 1 frame
+		await get_tree().process_frame
 		var players = get_tree().get_nodes_in_group("Player")
 		if players.size() > 0:
 			player = players[0]
@@ -41,13 +41,19 @@ func _ready() -> void:
 
 	# Register spawn points
 	var checkpoints := get_node_or_null("LevelManager/Checkpoints")
-	if not checkpoints:
-		push_error("Checkpoints node not found at LevelManager/Checkpoints")
-	else:
+	if checkpoints:
 		for marker in checkpoints.get_children():
 			if marker is Node2D or marker.is_in_group("RespawnMarkers") or marker.name.begins_with("Respawn_"):
 				var key = marker.name.replace("Respawn_", "").to_lower()
 				player.register_spawn(key, marker.global_position)
+				
+	for arena in checkpoint_to_arena.values():
+		if arena and arena.has_method("reset_arena"):
+			arena.reset_arena()
+			print("Arena reset:", arena.name)
+			
+	if GlobalPlayer.has_method("Restart_Level"):
+		GlobalPlayer.Restart_Level()
 
 func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 	arenas[name] = { "trigger": trigger, "arena": arena }
