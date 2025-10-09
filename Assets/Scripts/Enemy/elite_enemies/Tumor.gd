@@ -227,6 +227,14 @@ func _perform_explode():
 		
 		body.deal_damage(40, global_position)
 	
+	var explode_sfx = AudioStreamPlayer2D.new()
+	explode_sfx.stream = preload("res://Assets/Sound/SFX/DeathSFX/TumorSFX/Tumor_Explode.wav")
+	explode_sfx.bus = "SFX"
+	explode_sfx.autoplay = false
+	add_child(explode_sfx)
+	explode_sfx.play()
+	explode_sfx.finished.connect(func(): explode_sfx.queue_free())
+	
 	# Play a randomised death sound
 	GlobalAudioController.PlayGrenadeExplosion()
 	sprite.visible = false
@@ -242,6 +250,14 @@ func torpedo():
 	IsTorpedo = true
 	TorpedoVelocity = -LastHitDirection * Speed * 4
 	print("Torpedo velocity: ", TorpedoVelocity)
+	
+	var leak_sfx = AudioStreamPlayer2D.new()
+	leak_sfx.stream = preload("res://Assets/Sound/SFX/DeathSFX/TumorSFX/Tumor_Leak.wav")
+	leak_sfx.bus = "SFX"
+	leak_sfx.autoplay = false
+	add_child(leak_sfx)
+	leak_sfx.play()
+	leak_sfx.finished.connect(func(): leak_sfx.queue_free())
 
 func deal_damage(damage, from_position = null):
 	flash_white()

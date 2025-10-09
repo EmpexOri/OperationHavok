@@ -117,8 +117,8 @@ collision_use_scale = true
 [node name="TyphoonProjectile" instance=ExtResource("1_p3drv")]
 monitorable = false
 script = ExtResource("2_x2tpg")
-base_speed = 150.0
-base_damage = 30.0
+base_speed = 200.0
+base_damage = 50.0
 base_lifetime = 10.0
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -167,7 +167,7 @@ texture = ExtResource("8_yrpkl")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="7"]
 emitting = false
-amount = 64
+amount = 92
 fixed_fps = 24
 trail_lifetime = 2.55
 trail_sections = 64

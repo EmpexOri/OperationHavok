@@ -38,7 +38,7 @@ func _ready():
 	randomize()
 	fire_sfx.stream = load(FIRE_SOUND_PATH)
 	fire_sfx.bus = "SFX" 
-	fire_sfx.volume_db = -1.0
+	fire_sfx.volume_db = -10.0
 	add_child(fire_sfx)
 	
 	var firetimer = Timer.new()

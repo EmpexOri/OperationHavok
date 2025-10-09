@@ -8,19 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_w18ev"]
 script = ExtResource("4_xsllu")
-zap_interval = 0.5
 max_chains = 5
-chain_radius = 180.0
-damage_per_hit = 8.0
-target_collision_mask = 2
 lightning_arc_drawer_scene = ExtResource("4_w18ev")
-effects_to_apply = Array[ExtResource("3_qc06w")]([])
-effect_name = ""
 metadata/_custom_type_script = "uid://d2ci2tq55osqo"
 
 [node name="TyphoonCannon" type="Node2D"]
 script = ExtResource("1_fweyy")
 projectile_scene = ExtResource("2_qc06w")
 base_fire_rate = 1.0
-fire_sound_method = &"SmgFire"
+fire_sound_method = &"TyphoonFire"
 projectile_effects = Array[ExtResource("3_qc06w")]([SubResource("Resource_w18ev")])

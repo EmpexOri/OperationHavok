@@ -83,6 +83,7 @@ func _on_skill_button_used(button: SkillButton):
 	update_perk_points_label()
 	
 	unlocked.append(button.name)
+	GlobalAudioController.ClickSound()
 	
 	# Increment spent perk points
 	GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]["PerPointsSpent"] += 1

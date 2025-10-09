@@ -39,6 +39,7 @@ var Shotgun_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/TrimmedShotty2.
 var M60_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/M60Shot.wav")
 var Fission_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Fission_Shot.wav")
 var Flamethrower_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Flamethrower.wav")
+var Typhoon_fire_sfx = preload("res://Assets/Sound/SFX/WeaponSFX/Typhoon_Shot.wav")
 var XPPickupSound: AudioStream = preload("res://Assets/Sound/SFX/Blip1.wav")
 var MetalCreakSound: AudioStream = preload("res://Assets/Sound/SFX/MetalCreak.mp3")
 var GrenadeExplosionSound: AudioStream = preload("res://Assets/Sound/SFX/Explode.wav")
@@ -308,6 +309,17 @@ func ShotgunFire():
 
 	ScreenShake.shake(randf_range(2.0,3.0), 0.2)
 	
+func TyphoonFire():
+	for player in WeaponSFXChannels:
+		if not player.playing:
+			player.stream = Typhoon_fire_sfx
+			player.pitch_scale = randf_range(0.95, 1.05)
+			player.volume_db = -10.0  
+			player.play()
+			break
+
+	ScreenShake.shake(randf_range(2.0,3.0), 0.2)
+
 func PlayLightningHitSFX():
 	PlayFromWeaponSFX(lightning_sfx)
 # ----------------------------
