@@ -27,3 +27,4 @@ res://Assets/Scripts/LevelControllers/End_Level.gd
 res://Assets/Scripts/Menu Scripts/MenuScene.gd
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine_Rocket.tscn
+res://Scenes/Options/CommandoSkillTree.tscn
