@@ -228,25 +228,26 @@ func PlayMetalCreak():
 
 func PlayMainMenuMusic():
 	var player = $Music/MainMenuLoop
-	var stream: AudioStream = load("res://Assets/Sound/Music/Luxopolis.mp3")
+#	var stream: AudioStream = load("res://Assets/Sound/Music/Luxopolis.mp3")
 
-	if stream is AudioStream:
-		var stream_copy = stream.duplicate() as AudioStream
-		stream_copy.set_loop(true)
-		player.stream = stream_copy
+#	if stream is AudioStream:
+#		var stream_copy = stream.duplicate() as AudioStream
+#		stream_copy.set_loop(true)
+#		player.stream = stream_copy
 
 		# Start at silence, we can tween out :D
-		player.volume_db = -80
-		player.play()
+#		player.volume_db = -80
+#		player.play()
 
 		# Create fade-in tween
-		var tween = create_tween()
-		tween.tween_property(
-			player,
-			"volume_db",
-			-20,
-			3.0
-		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+#		var tween = create_tween()
+#		tween.tween_property(
+#			player,
+#			"volume_db",
+#			-20,
+#			3.0
+#		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	pass
 
 func StopMainMenuMusic():
 	$Music/MainMenuLoop.stop()

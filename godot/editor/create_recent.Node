@@ -1,3 +1,4 @@
+VideoStreamPlayer
 AudioStreamPlayer
 AnimatedSprite2D
 TextureRect
@@ -11,4 +12,3 @@ Control
 Panel
 CanvasLayer
 Sprite2D
-CollisionShape2D

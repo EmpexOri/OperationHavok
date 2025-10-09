@@ -1,9 +1,9 @@
 [gd_scene load_steps=45 format=3 uid="uid://kjmdqey636rw"]
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
-[ext_resource type="VideoStream" uid="uid://813nl2q8div" path="res://Assets/Videos/AttractMode.ogv" id="2_dlm5w"]
 [ext_resource type="Texture2D" uid="uid://nqh0l50edxkt" path="res://Assets/Art/PlaceHolders/FadeoutCircle.png" id="2_dxffo"]
 [ext_resource type="Texture2D" uid="uid://dylt3gbm8jxrj" path="res://Assets/Art/PlaceHolders/titlescreenblank.png" id="2_rae6p"]
+[ext_resource type="Script" uid="uid://1uhvh8oe468u" path="res://Assets/Scripts/Misc/MainMenuVideo.gd" id="3_dlm5w"]
 [ext_resource type="Texture2D" uid="uid://3230cb7hloyf" path="res://Assets/Art/Menu/PlayOff.png" id="4_6sxrv"]
 [ext_resource type="Texture2D" uid="uid://bshbw2fhjg4as" path="res://Assets/Art/Menu/HavokTitle.png" id="4_mp4id"]
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="4_vg0ck"]
@@ -238,10 +238,15 @@ script = ExtResource("1_36iol")
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_right = 640.0
 offset_bottom = 361.0
-stream = ExtResource("2_dlm5w")
-volume_db = 23.999998
+volume_db = -10.0
 autoplay = true
 expand = true
+script = ExtResource("3_dlm5w")
+
+[node name="OperationHavocTitle" type="Sprite2D" parent="VideoStreamPlayer"]
+position = Vector2(321, 132)
+scale = Vector2(0.541667, 0.4875)
+texture = ExtResource("4_mp4id")
 
 [node name="FadeoutCircle" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.1882353)
@@ -254,20 +259,15 @@ visible = false
 position = Vector2(320, 180)
 texture = ExtResource("2_rae6p")
 
-[node name="OperationHavocTitle" type="Sprite2D" parent="."]
-position = Vector2(321, 132)
-scale = Vector2(0.541667, 0.4875)
-texture = ExtResource("4_mp4id")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayButton" type="TextureButton" parent="."]
 process_mode = 3
 texture_filter = 1
 offset_left = 217.0
-offset_top = 231.0
+offset_top = 311.0
 offset_right = 428.0
-offset_bottom = 273.0
+offset_bottom = 353.0
 focus_neighbor_bottom = NodePath("../QuitButton")
 texture_normal = ExtResource("4_6sxrv")
 texture_pressed = ExtResource("5_nmi4p")
