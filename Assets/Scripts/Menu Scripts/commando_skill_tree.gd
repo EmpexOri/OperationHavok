@@ -13,6 +13,15 @@ signal SkillTreeClosed
 # Focus for controller
 @onready var SMGFocus = $WeaponSwapTitle/SMG
 
+# Abilitiy Info boxes
+@onready var WeaponSwapBox = $BoxBack/WeaponSwap
+@onready var AkimboBox = $BoxBack/Akimbo
+@onready var DragonShotgunBox = $BoxBack/DragonShotgun
+@onready var M60Box = $BoxBack/M60
+@onready var RaygunBox = $BoxBack/Raygun
+
+@onready var LockedBox = $BoxBack/Locked
+
 func _ready():
 	$BackButton.grab_focus()
 	update_perk_points_label()
@@ -36,9 +45,15 @@ func connect_skill_buttons(node):
 	# This connects the skill buttons to the skill tree
 	for child in node.get_children():
 		if child is SkillButton:
+			# Connect perk_point_used
 			if not child.is_connected("perk_point_used", Callable(self, "_on_skill_button_used")):
 				child.connect("perk_point_used", Callable(self, "_on_skill_button_used").bind(child))
+			
+			# Connect focus_entered
+			if not child.is_connected("focus_entered", Callable(self, "_on_focus_entered")):
+				child.connect("focus_entered", Callable(self, "_on_focus_entered").bind(child))
 		connect_skill_buttons(child)
+
 
 func _on_skill_button_used(button: SkillButton):
 	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
@@ -137,3 +152,32 @@ func update_skill_trees_shown():
 		WeaponTree.visible = true
 		GrenadeTree.visible = true
 		MinigunTree.visible = true
+
+
+func _on_focus_entered(button: SkillButton) -> void:
+	var class_data = GlobalPlayer.ClassData[GlobalPlayer.CurrentClass]
+	var unlocked = class_data["UnlockedAbilities"]
+	var parent_skill = button.get_parent()
+	
+	WeaponSwapBox.visible = false
+	AkimboBox.visible = false
+	DragonShotgunBox.visible = false
+	M60Box.visible = false
+	RaygunBox.visible = false
+	LockedBox.visible = false
+	
+	if unlocked.has(button.name) or parent_skill is SkillButton and parent_skill.unlocked:
+		match button.name:
+			"SMG":
+				WeaponSwapBox.visible = true
+			"Akimbo":
+				AkimboBox.visible = true
+			"DragonsBreath":
+				DragonShotgunBox.visible = true
+			"M60":
+				M60Box.visible = true
+			"Raygun":
+				RaygunBox.visible = true
+	else:
+		LockedBox.visible = true
+			
