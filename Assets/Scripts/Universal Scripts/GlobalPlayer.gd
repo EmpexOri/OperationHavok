@@ -1,5 +1,7 @@
 extends Node
 
+@onready var PauseMenuScene: PackedScene = preload("res://Scenes/Options/PauseMenu.tscn")
+
 var PlayerHP: int = 100
 var PlayerHPMax: int = 100
 var CurrentClass: String = "Commando"
@@ -148,8 +150,10 @@ func upgrade_weapon(weapon_name: String, slot: int) -> void:
 func _process(delta: float) -> void:
 	Level_Time += delta
 	
-	if Input.is_action_just_pressed("DebugInput"):
+	if Input.is_action_just_pressed("DebugInput_1"):
 		GiveDebugLevels(5)
+	if Input.is_action_just_pressed("DebugInput_2"):
+		OpenOptions()
 
 # Grants the player levels immediately (for debugging)
 func GiveDebugLevels(amount: int):
@@ -207,3 +211,27 @@ func allow_restart():
 	if current_level_scene_path != "":
 		HasRestartedLevel = false  
 		get_tree().change_scene_to_file(current_level_scene_path)
+
+func OpenOptions():
+	var world = get_tree().get_root().get_node_or_null("World")
+	if not world:
+		print("World node not found — cannot open Options Menu.")
+		return
+
+	# Try to find an existing PauseMenu in the scene tree
+	var pause_menu = world.get_node_or_null("PauseMenu")
+	
+	if pause_menu:
+		print("PauseMenu found in scene — opening Options.")
+		if pause_menu.has_method("_on_options_button_pressed"):
+			pause_menu._on_options_button_pressed()
+		else:
+			print("PauseMenu is missing the _on_options_button_pressed method.")
+	else:
+		print("PauseMenu not found — instantiating a new one.")
+		pause_menu = PauseMenuScene.instantiate()
+		pause_menu.name = "PauseMenu"
+		world.add_child(pause_menu)
+		pause_menu.show_pause_menu()
+		if pause_menu.has_method("_on_options_button_pressed"):
+			pause_menu._on_options_button_pressed()
