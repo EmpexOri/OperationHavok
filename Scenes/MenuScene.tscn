@@ -275,6 +275,7 @@ texture_hover = ExtResource("6_dxffo")
 texture_focused = ExtResource("6_dxffo")
 
 [node name="QuitButton" type="TextureButton" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 6.0
 offset_top = 312.0
