@@ -135,7 +135,8 @@ func _on_back_button_pressed() -> void:
 		GlobalAudioController.ClickSound()
 		get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 	else:
-		SkillTreeClosed.emit()
+		GlobalAudioController.ClickSound()
+		SkillTreeClosed.emit() 
 
 func upgrade_minigun_ability(NewAbility):
 	# Find the current abilities, get the minigun index and then swap in the new skill

@@ -10,7 +10,7 @@ var checkpoint_to_arena := {
 	"stripmall": $Respawn_Stripmall
 }
 
-@onready var pause_menu := PAUSE_MENU_SCENE.instantiate()
+@onready var pause_menu: PauseNode = PAUSE_MENU_SCENE.instantiate() as PauseNode
 @onready var runtime_objects: Node = Node.new() 
 
 # Stores arenas you register at runtime:  { name:String : { trigger:Area2D, arena:Node } }
@@ -38,6 +38,7 @@ func _ready() -> void:
 	print("Player found:", player)
 	runtime_objects.name = "RuntimeObjects"
 	add_child(runtime_objects)
+	pause_menu.SkillTreeClosed.connect(_on_skill_tree_closed_in_level)
 	
 	# Register spawn points
 	var checkpoints := get_node_or_null("LevelManager/Checkpoints")
@@ -56,6 +57,11 @@ func _ready() -> void:
 		GlobalPlayer.HasRestartedLevel = true
 		if GlobalPlayer.has_method("restart_level"):
 			GlobalPlayer.restart_level()
+			
+func _on_skill_tree_closed_in_level():
+	get_tree().paused = false
+	GlobalAudioController.STOPPauseMenuMusic()
+	pause_menu.visible = false  
 
 func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 	arenas[name] = { "trigger": trigger, "arena": arena }
@@ -69,9 +75,17 @@ func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("InGameOptions"):
 		GlobalAudioController.PauseMenuMusic()
-		_toggle_pause()
+		_show_perk_menu()
 	if Input.is_action_just_pressed("DebugInput_4"):
 		_debug_teleport_to_checkpoint()
+		
+func _show_perk_menu() -> void:
+	# Ensure tree is paused
+	get_tree().paused = true
+	
+	# Access the PauseMenu node (already instantiated)
+	if pause_menu.has_method("_on_skill_tree_button_pressed"):
+		pause_menu._on_skill_tree_button_pressed()
 
 func _toggle_pause() -> void:
 	if pause_menu.visible:
