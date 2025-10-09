@@ -7,6 +7,7 @@ signal end_screen_finished
 @export var auto_return_time: float = 16.0  
 
 @onready var enemies_killed_label: Label = $Panel/VBoxContainer/EnemiesKilledLabel
+@onready var level_time_label: Label = $Panel/VBoxContainer/LevelTimeLabel
 @onready var player_level_label: Label = $Panel/VBoxContainer/PlayerLevelLabel
 @onready var total_score_label: Label = $Panel/VBoxContainer/TotalScoreLabel
 @onready var return_button: TextureButton = $Panel/ReturnButton
@@ -19,6 +20,8 @@ func _ready() -> void:
 	fade_rect.color.a = 1.0  
 	fade_rect.visible = true
 	await fade_in()
+	
+	return_button.grab_focus()
 	
 	enemies_killed_label.text = ""
 	player_level_label.text = ""
@@ -37,9 +40,15 @@ func _ready() -> void:
 func start_display_stats() -> void:
 	var gp = GlobalPlayer
 	
+	var total_seconds = int(gp.Level_Time)
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	var level_time_text = "Level Time: %02d:%02d" % [minutes, seconds]
+	
 	var stats_texts = [
 		["Enemies Killed: %d" % gp.total_enemies_killed, enemies_killed_label],
 		["Player Level: %d" % gp.ClassData[gp.CurrentClass]["Level"], player_level_label],
+		[level_time_text, level_time_label],   
 		["Total Score: %d" % gp.HelpXP, total_score_label]
 	]
 	

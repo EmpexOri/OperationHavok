@@ -29,6 +29,7 @@ func _on_play_button_pressed() -> void:
 	#LoadingFinished.queue_free()
 	GlobalPlayer.set_current_level_scene("res://Scenes/BetaLevel.tscn")
 	get_tree().change_scene_to_file("res://Scenes/BetaLevel.tscn")
+	GlobalPlayer.restart_level()
 
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ClickSound()

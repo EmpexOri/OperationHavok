@@ -5,6 +5,7 @@ var PlayerHPMax: int = 100
 var CurrentClass: String = "Commando"
 var HelpXP: int = 0
 var total_enemies_killed: int = 0
+var Level_Time: float = 0.0
 
 var current_level_scene_path: String = ""
 
@@ -144,6 +145,8 @@ func upgrade_weapon(weapon_name: String, slot: int) -> void:
 	print("GlobalPlayer upgraded weapon slot ", slot, " to ", weapon_name)
 
 func _process(delta: float) -> void:
+	Level_Time += delta
+	
 	if Input.is_action_just_pressed("DebugInput"):
 		GiveDebugLevels(5)
 
@@ -167,18 +170,31 @@ func restart_level():
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.STOPPauseMenuMusic()
 	SmearCanvas.reset()
-
+	
 	PlayerHP = PlayerHPMax
-
+	
 	if get_tree().paused:
 		get_tree().paused = false
-
+		
 	# Try to clear runtime objects
-	var level_root = get_tree().get_root().get_child(0)  # usually your level scene is the first child under SceneTree root
+	var level_root = get_tree().get_root().get_child(0)
 	if level_root and level_root.has_method("clear_runtime_objects"):
 		level_root.clear_runtime_objects()
 		print("Cleared runtime objects.")
-
+		
+	Level_Time = 0.0
+	
+	# Reset checkpoint
+	var level_controller = get_tree().get_current_scene().get_node_or_null("LevelController")
+	if level_controller:
+		level_controller.current_checkpoint = ""
+		GlobalPlayer.current_respawn_position = Vector2.ZERO
+		
 	# Reload the current scene
 	if current_level_scene_path != "":
 		get_tree().change_scene_to_file(current_level_scene_path)
+
+func get_formatted_level_time() -> String:
+	var minutes = int(Level_Time) / 60
+	var seconds = int(Level_Time) % 60
+	return str(minutes) + ":" + str(seconds).pad_zeros(2)

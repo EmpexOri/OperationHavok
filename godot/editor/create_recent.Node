@@ -1,9 +1,10 @@
+AudioStreamPlayer
+AnimatedSprite2D
 TextureRect
 AudioStreamPlayer2D
 AudioListener2D
 ColorRect
 Button
-AudioStreamPlayer
 Label
 VBoxContainer
 Control
@@ -11,4 +12,3 @@ Panel
 CanvasLayer
 Sprite2D
 CollisionShape2D
-NavigationObstacle2D

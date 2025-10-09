@@ -70,6 +70,14 @@ theme_override_fonts/font = ExtResource("2_y30sl")
 theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
+[node name="LevelTimeLabel" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5969267, 0.13740674, 0.20438191, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y30sl")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
 [node name="TotalScoreLabel" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5969267, 0.13740674, 0.20438191, 1)
@@ -84,8 +92,6 @@ offset_left = 270.0
 offset_top = 312.0
 offset_right = 375.0
 offset_bottom = 342.0
-focus_neighbor_top = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("../ResumeButton")
 texture_normal = ExtResource("4_5wpdf")
 texture_pressed = ExtResource("5_8jvrt")
 texture_hover = ExtResource("5_8jvrt")

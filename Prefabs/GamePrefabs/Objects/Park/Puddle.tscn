@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://k47f70rmohfg"]
+
+[ext_resource type="Texture2D" uid="uid://dtnotdr2l8yln" path="res://Assets/Art/Objects/LevelObjects/water_puddle_small_spritesheet.png" id="1_hbvuc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6qwc"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofuvp"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn2af"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0v54"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n6js"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfo7e"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6fu8"]
+atlas = ExtResource("1_hbvuc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x7i5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6qwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofuvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn2af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0v54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n6js")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfo7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6fu8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Puddle" type="Node2D"]
+z_index = -1
+z_as_relative = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_3x7i5")
+autoplay = "default"

@@ -1,11 +1,4 @@
 extends Node
-"""
-Central hub for:
- • registering & starting arenas
- • running one-off scripted events
- • pause-menu handling
- • checkpoint management
-"""
 
 const PAUSE_MENU_SCENE := preload("res://Scenes/Options/PauseMenu.tscn")
 const BOULDER_BLOCKER_SCENE := preload("res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn")
@@ -22,6 +15,8 @@ var checkpoint_to_arena := {
 
 # Stores arenas you register at runtime:  { name:String : { trigger:Area2D, arena:Node } }
 var arenas := {}
+
+var level_time_active: bool = false
 
 # Name of last completed checkpoint
 var current_checkpoint : String = ""
@@ -205,3 +200,10 @@ func spawn_runtime_object(scene: PackedScene, position: Vector2) -> Node:
 func clear_runtime_objects() -> void:
 	for child in runtime_objects.get_children():
 		child.queue_free()
+
+func _process(delta: float) -> void:
+	if level_time_active and not get_tree().paused:
+		GlobalPlayer.Level_Time += delta
+
+func get_level_time() -> int:
+	return int(GlobalPlayer.Level_Time)

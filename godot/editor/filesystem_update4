@@ -19,3 +19,9 @@ res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
 res://Assets/Scripts/Pickups/xp_pickup.gd
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn
 res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn
+res://Prefabs/GamePrefabs/Objects/Park/Puddle.tscn
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
+res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd
+res://Assets/Scripts/LevelControllers/End_Level.gd
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
