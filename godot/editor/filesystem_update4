@@ -18,3 +18,4 @@ res://Assets/Videos/AttractMode.ogv
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Tumor.gd
 res://Scenes/BetaLevel.tscn
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn

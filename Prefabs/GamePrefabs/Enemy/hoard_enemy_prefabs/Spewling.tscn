@@ -1,49 +1,81 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3cymoelvi3cn"]
+[gd_scene load_steps=15 format=3 uid="uid://c3cymoelvi3cn"]
 
 [ext_resource type="Script" uid="uid://dqvehgfws03pn" path="res://Assets/Scripts/Enemy/hoard_enemies/Spewling.gd" id="1_tpudr"]
-[ext_resource type="Texture2D" uid="uid://bc0w8bxcxehyv" path="res://Assets/Art/Sprites/Spewling_WALK_FRONT.png" id="2_iyko2"]
 [ext_resource type="Material" uid="uid://djo7rxo7icdd5" path="res://Assets/Shaders/FlashShader.tres" id="2_sk6y7"]
+[ext_resource type="Texture2D" uid="uid://ch38eh7hrdy3q" path="res://Assets/Art/Sprites/EnemyTilesheets/Spewling_Animation.png" id="3_b583n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sk6y7"]
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_01i7u"]
-size = Vector2(18, 18)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b583n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sk6y7"]
-atlas = ExtResource("2_iyko2")
-region = Rect2(0, 0, 25, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl82x"]
+atlas = ExtResource("3_b583n")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tymg4"]
-atlas = ExtResource("2_iyko2")
-region = Rect2(25, 0, 25, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hocq5"]
+atlas = ExtResource("3_b583n")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jro5k"]
-atlas = ExtResource("2_iyko2")
-region = Rect2(50, 0, 25, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kk48"]
+atlas = ExtResource("3_b583n")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgncy"]
-atlas = ExtResource("2_iyko2")
-region = Rect2(75, 0, 25, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjpw7"]
+atlas = ExtResource("3_b583n")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b583n"]
+atlas = ExtResource("3_b583n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6y7c"]
+atlas = ExtResource("3_b583n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v07g1"]
+atlas = ExtResource("3_b583n")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx2mn"]
+atlas = ExtResource("3_b583n")
+region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ct6ui"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sk6y7")
+"texture": SubResource("AtlasTexture_fl82x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tymg4")
+"texture": SubResource("AtlasTexture_hocq5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jro5k")
+"texture": SubResource("AtlasTexture_3kk48")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jgncy")
+"texture": SubResource("AtlasTexture_vjpw7")
 }],
 "loop": true,
-"name": &"crawl",
-"speed": 4.0
+"name": &"Move_Right_Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b583n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6y7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v07g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx2mn")
+}],
+"loop": true,
+"name": &"Move_Right_Up",
+"speed": 10.0
 }]
 
 [node name="Spewling" type="CharacterBody2D"]
@@ -58,7 +90,7 @@ shape = SubResource("CircleShape2D_sk6y7")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_01i7u")
+shape = SubResource("CircleShape2D_b583n")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
@@ -68,8 +100,6 @@ debug_path_custom_color = Color(0, 0, 0.9, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_sk6y7")
 sprite_frames = SubResource("SpriteFrames_ct6ui")
-animation = &"crawl"
-frame = 3
-frame_progress = 0.803588
+animation = &"Move_Right_Up"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
