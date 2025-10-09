@@ -15,3 +15,6 @@ res://Scenes/Options/AttractMode_Overlay.tscn
 res://Assets/Scripts/Misc/MainMenuVideo.gd
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Videos/AttractMode.ogv
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn
+res://Assets/Scripts/Enemy/elite_enemies/Tumor.gd
+res://Scenes/BetaLevel.tscn

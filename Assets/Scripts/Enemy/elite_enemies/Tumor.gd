@@ -1,6 +1,6 @@
 extends Enemy
 
-@onready var sprite = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var explosion_area: Area2D = $ExplosionArea
 
 const WALL_COLLISION_MASK = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
@@ -11,12 +11,11 @@ var LastHitDirection = Vector2.ZERO
 var death_frame_counter := 0
 var has_spawned_death_effects := false
 var has_dropped_xp := false
-
 var explosion_radius = 1.0
 
 # Fuse countdown system
 var FuseStarted := false
-var FuseCounter := 3  # Number of seconds before explosion
+var FuseCounter := 3
 var FuseTickTimer := 0.0
 var PlayerInRange := false
 
@@ -25,14 +24,17 @@ const BLOOD_INTERVAL := 0.25
 
 func _ready():
 	super()
-	get_flash_sprite().material = get_flash_sprite().material.duplicate()
+	# Duplicate the material if needed
+	sprite.material = sprite.material.duplicate() if sprite.material else null
 
-	# Tumour-specific values
 	Health = 50
 	MaxHealth = Health
 	Speed = 50
-	Group = "Enemy"  # Already default, so dw
+	Group = "Enemy"
 	Target = "Player"
+
+	# Set initial animation
+	_update_animation(Vector2.RIGHT)
 
 func start():
 	# Tumour-specific startup logic if any
@@ -66,35 +68,29 @@ func _process(delta):
 				call_deferred("explode")  # Defer explode to the main thread
 
 func _physics_process(delta):
-	var player = null
+	super._physics_process(delta)
 	
+	var velocity_vector = Vector2.ZERO
+
+	if IsTorpedo:
+		velocity_vector = TorpedoVelocity
+	else:
+		var player = resolve_target()
+		if player:
+			nav.target_position = player.position
+			velocity_vector = (nav.get_next_path_position() - global_position).normalized() * Speed
+	
+	velocity = velocity_vector
+	move_and_slide()
+	
+	# Update animation based on movement
+	_update_animation(velocity)
+
+	# Blood splatter
 	_blood_timer += delta
 	if _blood_timer >= BLOOD_INTERVAL:
 		_blood_timer = 0.0
 		Global.spawn_blood_splatter(global_position)
-
-	if IsTorpedo:
-		velocity = TorpedoVelocity
-		move_and_slide()
-		return
-
-	if is_in_group("Enemy"):
-		player = resolve_target()
-	elif is_in_group("Minion") and is_instance_valid(Target):
-		player = get_parent().get_node(Target)
-	elif is_in_group("Minion"):
-		var enemies = get_tree().get_nodes_in_group("Enemy")
-		if enemies.size() > 0:
-			Target = enemies[0].get_path()
-			player = get_parent().get_node(Target)
-	else:
-		player = get_parent().get_node(get_path())
-
-	if player:
-		nav.target_position = player.position
-		var direction = (nav.get_next_path_position() - global_position).normalized()
-		velocity = direction * Speed
-		move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D):
 	if IsTorpedo and body and not body.is_in_group("Bullet"):
@@ -270,3 +266,18 @@ func deal_damage(damage, from_position = null):
 		
 func get_flash_sprite() -> CanvasItem:
 	return sprite 
+
+func _update_animation(velocity: Vector2) -> void:
+	if velocity == Vector2.ZERO:
+		sprite.stop()
+		return
+	
+	# Decide which animation to play based on Y velocity
+	if velocity.y > 0:
+		sprite.animation = "Move_Right_Down"
+	else:
+		sprite.animation = "Move_Right_Up"
+	
+	sprite.flip_h = velocity.x < 0
+	if not sprite.is_playing():
+		sprite.play()

@@ -855,7 +855,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortedObjects" instance=ExtResource("12_sd37h")]
-position = Vector2(-28, -230)
+position = Vector2(-85, 1042)
 up_direction = Vector2(0.9999998, -0.0006666659)
 
 [node name="Rain" parent="YSortedObjects/Player" instance=ExtResource("28_33vec")]

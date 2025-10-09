@@ -18,7 +18,7 @@ func _ready() -> void:
 	connect("finished", Callable(self, "_on_video_finished"))
 	
 func _play_intro() -> void:
-	stream = load(LOOP_VIDEO)
+	stream = load(INTRO_VIDEO)
 	loop = false
 	next_video_is_loop = true
 	
