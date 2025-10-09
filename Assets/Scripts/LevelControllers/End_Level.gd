@@ -14,6 +14,8 @@ signal end_screen_finished
 @onready var fade_rect: ColorRect = $FadeRect  
 @onready var music_player: AudioStreamPlayer = $MusicAudioPlayer  
 
+var typewriter_skipped: bool = false  
+
 var has_returned: bool = false 
 
 func _ready() -> void:
@@ -35,6 +37,11 @@ func _ready() -> void:
 	return_button.disabled = false
 	
 	auto_return_to_menu()
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept") and return_button.disabled:
+		skip_typewriter()
+		return_button.disabled = false
 
 # Typewriter display
 func start_display_stats() -> void:
@@ -66,8 +73,11 @@ func type_text(label: Label, text: String) -> void:
 	audio_player.stream = typing_sfx
 	audio_player.volume_db = 0 
 	add_child(audio_player)
-	
+
 	for c in text:
+		if typewriter_skipped:
+			label.text = text 
+			break
 		label.text += c
 		audio_player.play()
 		await get_tree().create_timer(typing_speed).timeout
@@ -134,3 +144,17 @@ func _return_to_menu() -> void:
 	# Load Main Menu scene
 	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+
+func skip_typewriter() -> void:
+	typewriter_skipped = true
+	var gp = GlobalPlayer
+	# Fill all stats instantly
+	enemies_killed_label.text = "Enemies Killed: %d" % gp.total_enemies_killed
+	player_level_label.text = "Player Level: %d" % gp.ClassData[gp.CurrentClass]["Level"]
+	var total_seconds = int(gp.Level_Time)
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	level_time_label.text = "Level Time: %02d:%02d" % [minutes, seconds]
+	total_score_label.text = "Total Score: %d" % gp.HelpXP
+	
+	return_button.disabled = false
