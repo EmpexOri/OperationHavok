@@ -8,7 +8,7 @@ const CULL_FADE_MULTIPLIER := 2.0
 var spawns_this_frame := 0
 const MAX_SPAWNS_PER_FRAME := 50
 
-var blood_censorship_enabled := false
+var blood_censorship_enabled := true
 var bloodcolor := '63070fd4'
 var censoredbloodcolor := '#3b0e6b'
 var nullcolor := Color("ffffffd4")
