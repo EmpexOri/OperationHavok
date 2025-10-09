@@ -9,5 +9,5 @@ func _ready() -> void:
 
 func apply_effect():
 	GlobalPlayer.AddXP(pickup_value)
-	GlobalPlayer.AddHp(randi_range(1,3))
+	GlobalPlayer.AddHp(randi_range(1,5))
 	GlobalAudioController.PlayXPPickupSound()
