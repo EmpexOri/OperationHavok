@@ -44,3 +44,4 @@ res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine_Rocket.tscn
 res://Assets/Scripts/Menu Scripts/PauseNode.gd
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineRocketLauncher.tscn
+res://Scenes/BetaLevel.tscn

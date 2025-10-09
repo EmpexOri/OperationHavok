@@ -7,6 +7,7 @@ extends Node
 @onready var DodgeBar: TextureProgressBar = $UIContainer/DodgeBar 
 @onready var ScoreLabel: Label = $UIContainer/ScoreLabel
 @onready var LevelTimeLabel: Label = $UIContainer/LevelTimeLabel  # make sure this node exists in scene
+@onready var LevelUpIndicator = $UIContainer/SelectLevelUp
 
 var flash_tween: Tween = null
 var time_update_accumulator: float = 0.0  # used to throttle timer text updates
@@ -79,6 +80,27 @@ func PlayLevelUpEffect() -> void:
 		var gold_color := Color(1.0, 0.85, 0.0, 1.0)
 		tween.tween_property(HealthBar, "self_modulate", gold_color, 0.25)
 		tween.tween_property(HealthBar, "self_modulate", original_color, 0.25).set_delay(0.75)
+	
+	# Level up indicator flash (Don't question my methods)
+	LevelUpIndicator.visible = true
+	await get_tree().create_timer(0.6).timeout
+	LevelUpIndicator.visible = false
+	await get_tree().create_timer(0.3).timeout
+	LevelUpIndicator.visible = true
+	await get_tree().create_timer(0.6).timeout
+	LevelUpIndicator.visible = false
+	await get_tree().create_timer(0.3).timeout
+	LevelUpIndicator.visible = true
+	await get_tree().create_timer(0.6).timeout
+	LevelUpIndicator.visible = false
+	await get_tree().create_timer(0.3).timeout
+	LevelUpIndicator.visible = true
+	await get_tree().create_timer(0.6).timeout
+	LevelUpIndicator.visible = false
+	await get_tree().create_timer(0.3).timeout
+	LevelUpIndicator.visible = true
+	await get_tree().create_timer(0.6).timeout
+	LevelUpIndicator.visible = false
 
 func FlashScreen(color: Color, duration: float = 0.2, times: int = 1) -> void:
 	var flash_path = "UIContainer/ScreenFlash"

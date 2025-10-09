@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://csjg3snjokm1r"]
+[gd_scene load_steps=83 format=4 uid="uid://csjg3snjokm1r"]
 
 [ext_resource type="Script" uid="uid://dhb2yfmt4awu" path="res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd" id="1_aukey"]
 [ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="3_3xqoa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cinikat670uwd" path="res://Assets/Art/HUD/PlayerHUD/CharacterPFP.png" id="3_fodhj"]
 [ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="5_7u0io"]
 [ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="8_4un8s"]
+[ext_resource type="Texture2D" uid="uid://gr0udyxs2ewu" path="res://Assets/Art/HUD/SelectLevelUp.png" id="9_mynkp"]
 [ext_resource type="Texture2D" uid="uid://dmorr0akrlxyf" path="res://Assets/Art/HUD/LB.png" id="9_t3s3n"]
 [ext_resource type="Texture2D" uid="uid://cfpq1yb142ygp" path="res://Assets/Art/HUD/RT.png" id="10_fanmj"]
 [ext_resource type="Texture2D" uid="uid://im3d8ti43f2g" path="res://Assets/Art/HUD/RB.png" id="11_v1rlk"]
@@ -70,7 +71,7 @@
 [ext_resource type="PackedScene" uid="uid://b8v1kqi7pr3a4" path="res://Prefabs/GamePrefabs/Objects/lamp_post_down.tscn" id="67_t3s3n"]
 [ext_resource type="PackedScene" uid="uid://cgemhbqin7k32" path="res://Prefabs/GamePrefabs/Objects/Lamp_Post_Up_Flicker.tscn" id="68_t3s3n"]
 [ext_resource type="Texture2D" uid="uid://cxmn50hvbmrwe" path="res://Assets/Art/Objects/LevelObjects/Carpark/Concrete_Wall_Door.png" id="69_fanmj"]
-[ext_resource type="PackedScene" uid="uid://k47f70rmohfg" path="res://Prefabs/GamePrefabs/Objects/Park/Puddle.tscn" id="70_v1rlk"]
+[ext_resource type="PackedScene" path="res://Prefabs/GamePrefabs/Objects/Park/Puddle.tscn" id="70_v1rlk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bbpmv"]
 texture = ExtResource("22_qspjj")
@@ -271,6 +272,11 @@ offset_bottom = 525.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7373294, 0.13335153, 0.22091639, 0.2)
+
+[node name="SelectLevelUp" type="Sprite2D" parent="PlayerUI/UIContainer"]
+visible = false
+position = Vector2(359, 16)
+texture = ExtResource("9_mynkp")
 
 [node name="AbilitiesUI" type="CanvasLayer" parent="PlayerUI"]
 
