@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi55acko21h43"]
 
 [ext_resource type="Script" uid="uid://bwi5iwx8cuwul" path="res://Assets/Scripts/LevelControllers/Level1/CutsceneHandler_BetaLevel.gd" id="1_rejg0"]
-[ext_resource type="Texture2D" uid="uid://das1rkagkmgj8" path="res://Assets/Art/Sprites/Minibosses/WMIdle.png" id="2_6l7nw"]
+[ext_resource type="Texture2D" uid="uid://rsqashriie35" path="res://Assets/Art/Sprites/EnemyTilesheets/Armegon_Sprite.png" id="2_rejg0"]
 
 [node name="BossDeathLevelBeta" type="Node2D"]
 z_index = 6
 script = ExtResource("1_rejg0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6l7nw")
+texture = ExtResource("2_rejg0")

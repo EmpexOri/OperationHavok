@@ -39,14 +39,25 @@ func _play_boss_death_sfx() -> void:
 	sfx_player.volume_db = 5
 	add_child(sfx_player)
 	sfx_player.play()
-	# Free after finished
+	
+	var secondary_sfx := AudioStreamPlayer.new()
+	secondary_sfx.stream = preload("res://Assets/Sound/SFX/Misc/BigDeath.wav")
+	secondary_sfx.bus = "SFX"
+	secondary_sfx.volume_db = -5
+	add_child(secondary_sfx)
+	secondary_sfx.play()
+	
 	var duration := sfx_player.stream.get_length()
-	var timer := Timer.new()
-	timer.wait_time = duration
-	timer.one_shot = true
-	timer.autostart = true
-	add_child(timer)
-	timer.timeout.connect(Callable(sfx_player, "queue_free"))
+	var cleanup_timer := Timer.new()
+	cleanup_timer.wait_time = duration
+	cleanup_timer.one_shot = true
+	cleanup_timer.autostart = true
+	add_child(cleanup_timer)
+	cleanup_timer.timeout.connect(func():
+		if sfx_player: sfx_player.queue_free()
+		if secondary_sfx: secondary_sfx.queue_free()
+		cleanup_timer.queue_free()
+	)
 
 func _play_explosions() -> void:
 	var elapsed := 0.0
