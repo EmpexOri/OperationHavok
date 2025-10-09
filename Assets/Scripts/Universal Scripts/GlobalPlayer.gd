@@ -6,6 +6,7 @@ var CurrentClass: String = "Commando"
 var HelpXP: int = 0
 var total_enemies_killed: int = 0
 var Level_Time: float = 0.0
+var HasRestartedLevel: bool = false
 
 var current_level_scene_path: String = ""
 
@@ -201,3 +202,8 @@ func get_formatted_level_time() -> String:
 	var minutes = int(Level_Time) / 60
 	var seconds = int(Level_Time) % 60
 	return str(minutes) + ":" + str(seconds).pad_zeros(2)
+
+func allow_restart():
+	if current_level_scene_path != "":
+		HasRestartedLevel = false  
+		get_tree().change_scene_to_file(current_level_scene_path)

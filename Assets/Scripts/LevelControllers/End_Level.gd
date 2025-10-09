@@ -143,6 +143,7 @@ func _return_to_menu() -> void:
 	if level_root:
 		level_root.queue_free()
 	# Load Main Menu scene
+	GlobalPlayer.allow_restart()
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 
