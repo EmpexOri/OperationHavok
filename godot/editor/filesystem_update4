@@ -6,17 +6,6 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenade.gd
-res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Assets/Scripts/Menu Scripts/global_brightness.gd
-res://Assets/Scripts/Menu Scripts/MenuScene.gd
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
-res://Assets/Scripts/Misc/MainMenuVideo.gd
-res://Assets/Scripts/Misc/RocketExplosion_Miniboss.gd
 res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenade.gd
 res://Assets/Scripts/Player Scripts/Abilities/PlasmaCaster.gd

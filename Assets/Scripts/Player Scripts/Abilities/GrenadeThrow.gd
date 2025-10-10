@@ -32,6 +32,10 @@ func activate(player, index = -1):
 			direction = player.last_fire_direction
 	else:
 		direction = (get_global_mouse_position() - player.global_position).normalized()
+		
+	# Fallback
+	if direction == Vector2.ZERO:
+		direction = Vector2.RIGHT
 			
 	grenade.start(player.global_position, direction)
 
