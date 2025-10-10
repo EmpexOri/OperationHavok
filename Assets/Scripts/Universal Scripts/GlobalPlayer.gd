@@ -159,7 +159,6 @@ func _process(delta: float) -> void:
 		OpenOptions()
 	if Input.is_action_just_pressed("DebugInput_3"):
 		_restart_game()
-		
 	if Input.is_action_just_pressed("DebugInput_5"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -167,6 +166,8 @@ func _process(delta: float) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			print("Mouse visible")
+	if Input.is_action_just_pressed("DebugInput_6"):
+		toggle_fullscreen()
 
 # Grants the player levels immediately (for debugging)
 func GiveDebugLevels(amount: int):
@@ -319,3 +320,13 @@ func reset_scores():
 	var UIHandler = get_node_or_null("/root/MainScene/PlayerUIHandler")
 	if UIHandler:
 		UIHandler.UpdateScore()
+
+func toggle_fullscreen():
+	var is_fullscreen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+	if is_fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		print("Switched to windowed mode")
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		print("Switched to fullscreen mode")
