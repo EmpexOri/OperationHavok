@@ -237,7 +237,7 @@ script = ExtResource("1_36iol")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_right = 640.0
-offset_bottom = 361.0
+offset_bottom = 360.0
 volume_db = -10.0
 autoplay = true
 expand = true
