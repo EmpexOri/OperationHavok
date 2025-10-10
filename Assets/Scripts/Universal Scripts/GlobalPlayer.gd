@@ -252,8 +252,17 @@ func OpenOptions():
 
 func _restart_game():
 	get_tree().paused = false
-	OS.execute(OS.get_executable_path(), [])
-	get_tree().quit()
+	reset_player_to_defaults()
+	reset_scores()
+	if Engine.has_singleton("GlobalAudioController"):
+		GlobalAudioController.STOPPauseMenuMusic()
+	if Engine.has_singleton("SmearCanvas"):
+		SmearCanvas.reset()
+		
+	Level_Time = 0.0
+	HasRestartedLevel = true
+	
+	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
 
 func reset_player_to_defaults():
 	# Reset core stats
