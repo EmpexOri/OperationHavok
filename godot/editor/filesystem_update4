@@ -12,3 +12,8 @@ res://Prefabs/CodePrefabs/Particles/RocketExplosion_Miniboss.tscn
 res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
 res://Assets/Scripts/Misc/RocketExplosion_Miniboss.gd
 res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn
+res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn
