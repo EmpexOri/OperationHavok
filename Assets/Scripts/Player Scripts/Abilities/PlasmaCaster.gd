@@ -20,17 +20,11 @@ func activate(player, index = -1):
 	if player.ControllerEnabled:
 		direction.x = Input.get_action_strength("fire_right") - Input.get_action_strength("fire_left")
 		direction.y = Input.get_action_strength("fire_down") - Input.get_action_strength("fire_up")
-		if direction.length() > 0.1:
-			direction = direction.normalized()
-			last_direction = direction  
-		else:
-			direction = last_direction 
+		
+		if direction.length() < 0.01:
+			direction = player.last_fire_direction
 	else:
 		direction = (get_global_mouse_position() - player.global_position).normalized()
-		if direction.length() > 0.1:
-			last_direction = direction
-		else:
-			direction = last_direction
 			
 	grenade.start(player.global_position, direction)
 
