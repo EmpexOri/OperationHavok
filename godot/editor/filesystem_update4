@@ -26,3 +26,4 @@ res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
 res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenade.gd
 res://Assets/Scripts/Player Scripts/Abilities/PlasmaCaster.gd
 res://Scenes/Beta/LevelFinished.tscn
+res://Assets/Scripts/Misc/MainMenuVideo.gd

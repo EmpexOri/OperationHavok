@@ -26,7 +26,7 @@ func _play_intro() -> void:
 	if title_sprite:
 		_fade_title(false)
 	
-	if randi() % 200 == 0:
+	if randi() % 100 == 0:
 		speed_scale = 5.0
 		var timer = Timer.new()
 		timer.one_shot = true
