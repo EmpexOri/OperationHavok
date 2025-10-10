@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://djhyvaupjqa2f"]
 
-[ext_resource type="Script" uid="uid://smpdtkrm8fe0" path="res://Assets/Scripts/Player Scripts/Abilities/HomerunGrenade.gd" id="1_gdd7j"]
+[ext_resource type="Script" uid="uid://smpdtkrm8fe0" path="res://Assets/Scripts/Player Scripts/Abilities/HomeRunGrenade.gd" id="1_gdd7j"]
 
 [node name="Minigun" type="Node2D"]
 script = ExtResource("1_gdd7j")
