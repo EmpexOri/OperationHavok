@@ -43,6 +43,10 @@ func _process(delta):
 		skip_typewriter()
 		return_button.disabled = false
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Start"):
+		_return_to_menu()
+
 # Typewriter display
 func start_display_stats() -> void:
 	var gp = GlobalPlayer

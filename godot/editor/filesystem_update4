@@ -20,3 +20,5 @@ res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Scenes/MenuScene.tscn
 res://Assets/Scripts/Misc/RocketExplosion_Miniboss.gd
+res://Assets/Scripts/LevelControllers/End_Level.gd
+res://Scenes/BetaLevel.tscn
