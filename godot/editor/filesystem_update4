@@ -8,3 +8,4 @@ res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Player Scripts/Abilities/BaseballGrenade.gd
 res://Assets/Scripts/Player Scripts/Abilities/HomeRunGrenade.gd
+res://Prefabs/CodePrefabs/Abilities/HomerunGrenade.tscn
