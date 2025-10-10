@@ -7,3 +7,8 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
+res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
+res://Prefabs/CodePrefabs/Particles/RocketExplosion_Miniboss.tscn
+res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
+res://Assets/Scripts/Misc/RocketExplosion_Miniboss.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd

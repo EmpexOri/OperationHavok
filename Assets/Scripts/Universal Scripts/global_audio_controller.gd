@@ -197,6 +197,16 @@ func PlayGrenadeExplosion():
 			return
 	print("All General SFX channels are busy!")
 	
+func PlayEnemyExplosion():
+	for player in GeneralChannels:
+		if not player.playing:
+			player.stream = GrenadeExplosionSound
+			player.volume_db = -6
+			player.play()
+			ScreenShake.shake(randf_range(2.0, 3.0), randf_range(0.1, 0.2))
+			return
+	print("All General SFX channels are busy!")
+	
 func SetLevel1Music(song_path: String, play_immediately: bool = true):
 	var stream: AudioStream = load(song_path)
 	if not stream:
