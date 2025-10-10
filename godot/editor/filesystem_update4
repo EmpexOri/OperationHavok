@@ -19,3 +19,4 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Scenes/MenuScene.tscn
+res://Assets/Scripts/Misc/RocketExplosion_Miniboss.gd

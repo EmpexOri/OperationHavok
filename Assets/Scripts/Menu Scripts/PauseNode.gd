@@ -48,7 +48,7 @@ func _ready():
 	AllowFocusSound = true
 
 func _input(event:InputEvent) -> void:
-	if Input.is_action_just_pressed("InGameOptions"):
+	if Input.is_action_just_pressed("MenuExit"):
 		_on_resume_button_pressed()
 
 func show_pause_menu() -> void:	
