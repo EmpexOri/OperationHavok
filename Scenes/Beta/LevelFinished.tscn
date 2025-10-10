@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dj428kc0uw5f5"]
 
-[ext_resource type="Script" uid="uid://me4q275l1ydv" path="res://Assets/Scripts/LevelControllers/End_Level.gd" id="1_18gom"]
+[ext_resource type="Script" path="res://Assets/Scripts/LevelControllers/End_Level.gd" id="1_18gom"]
 [ext_resource type="Texture2D" uid="uid://cg4in14ej6p2c" path="res://Assets/Art/HUD/Poster.png" id="1_doqmx"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_y30sl"]
 [ext_resource type="Texture2D" uid="uid://dotqgxlcpe4ng" path="res://Assets/Art/Menu/mainmenu.png" id="4_5wpdf"]
