@@ -1,4 +1,4 @@
-res://Scenes/MenuScene.tscn
+res://Scenes/BetaLevel.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -6,13 +6,3 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Scenes/Options/CommandoSkillTree.tscn
-res://Assets/Scripts/Menu Scripts/commando_skill_tree.gd
-res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
-res://Scenes/Options/PauseMenu.tscn
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
-res://Scenes/BetaLevel.tscn
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
-res://Assets/Scripts/Misc/MainMenuVideo.gd
