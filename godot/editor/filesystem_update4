@@ -66,3 +66,5 @@ res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Menu Scripts/global_brightness.gd
 res://Scenes/MenuScene.tscn
+res://Assets/Scripts/Misc/MainMenuVideo.gd
+res://Scenes/BetaLevel.tscn

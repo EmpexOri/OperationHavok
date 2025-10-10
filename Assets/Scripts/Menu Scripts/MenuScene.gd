@@ -2,11 +2,14 @@ extends Node2D
 
 @onready var LoadingSprite = $LoadingScreenSprite
 @onready var LoadingFinished = $LoadingFinished
+@onready var AttractModePrompt = $AttractModePrompt
 
 var SkipLoading = false
 
 func _ready():	
 	$PlayButton.grab_focus()
+	
+	_attract_mode_prompt_flash()
 	
 	if not GlobalAudioController.is_main_menu_music_playing():
 		GlobalAudioController.StopAllMusic()
@@ -29,6 +32,13 @@ func _on_play_button_pressed() -> void:
 	#LoadingFinished.queue_free()
 	GlobalPlayer.set_current_level_scene("res://Scenes/BetaLevel.tscn")
 	get_tree().change_scene_to_file("res://Scenes/BetaLevel.tscn")
+
+func _attract_mode_prompt_flash() -> void:
+	AttractModePrompt.visible = true
+	await get_tree().create_timer(1.4).timeout
+	AttractModePrompt.visible = false
+	await get_tree().create_timer(1).timeout
+	_attract_mode_prompt_flash()
 
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ButtonBackSound()
