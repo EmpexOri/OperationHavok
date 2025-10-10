@@ -15,6 +15,10 @@ func _ready():
 		GlobalAudioController.StopAllMusic()
 		GlobalAudioController.PlayMainMenuMusic()
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Start"):
+		_on_play_button_pressed()
+
 func _on_play_button_pressed() -> void:
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.StopMainMenuMusic()
