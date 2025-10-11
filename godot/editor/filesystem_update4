@@ -7,24 +7,8 @@ res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn
-res://Prefabs/CodePrefabs/Particles/RocketExplosion_Miniboss.tscn
-res://Assets/Scripts/Universal Scripts/global_audio_controller.gd
-res://Assets/Scripts/Misc/RocketExplosion_Miniboss.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn
-res://Assets/Scripts/Enemy/elite_enemies/Needling.gd
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn
-res://Assets/Scripts/LevelControllers/End_Level.gd
-res://Assets/Scripts/Menu Scripts/global_brightness.gd
-res://Assets/Scripts/Menu Scripts/MenuScene.gd
-res://Assets/Scripts/Menu Scripts/PauseNode.gd
-res://Assets/Scripts/Player Scripts/Abilities/BaseballGrenade.gd
-res://Assets/Scripts/Player Scripts/Abilities/GrenadeThrow.gd
-res://Assets/Scripts/Player Scripts/Abilities/NovacasterGrenade.gd
-res://Assets/Scripts/Player Scripts/Abilities/PlasmaCaster.gd
-res://Scenes/Beta/LevelFinished.tscn
-res://Assets/Scripts/Misc/MainMenuVideo.gd
 res://Scenes/MenuScene.tscn
+res://Assets/Scripts/Menu Scripts/MenuScene.gd
+res://Scenes/Beta/LevelFinished.tscn
+res://Assets/Scripts/LevelControllers/End_Level.gd
+res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd

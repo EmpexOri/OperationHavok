@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var LoadingSprite = $LoadingScreenSprite
 @onready var LoadingFinished = $LoadingFinished
+@onready var LeaderboardLabel: Label = $LeaderboardLabel  
 
 var SkipLoading = false
 
@@ -11,6 +12,8 @@ func _ready():
 	if not GlobalAudioController.is_main_menu_music_playing():
 		GlobalAudioController.StopAllMusic()
 		GlobalAudioController.PlayMainMenuMusic()
+		
+	show_leaderboard()
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Start"):
@@ -39,3 +42,11 @@ func _on_quit_button_pressed() -> void:
 	var quitTimer = 0.15
 	await get_tree().create_timer(quitTimer).timeout
 	get_tree().quit()
+
+func show_leaderboard():
+	if not GlobalPlayer:
+		print("GlobalPlayer not found, cannot load leaderboard.")
+		return
+		
+	var text := GlobalPlayer.get_leaderboard_text()
+	LeaderboardLabel.text = text

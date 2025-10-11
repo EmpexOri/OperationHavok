@@ -14,6 +14,9 @@ signal end_screen_finished
 @onready var fade_rect: ColorRect = $FadeRect  
 @onready var music_player: AudioStreamPlayer = $MusicAudioPlayer  
 
+@onready var name_input: LineEdit = $Panel/VBoxContainer/NameEntryContainer/NameInput
+@onready var name_container: HBoxContainer = $Panel/VBoxContainer/NameEntryContainer
+
 var typewriter_skipped: bool = false  
 
 var has_returned: bool = false 
@@ -34,6 +37,11 @@ func _ready() -> void:
 	
 	# Start the typewriter display
 	await start_display_stats()
+	
+	# Prompt for initials
+	await prompt_for_initials()
+	
+	# Once entered and saved, allow return
 	return_button.disabled = false
 	
 	auto_return_to_menu()
@@ -164,3 +172,23 @@ func skip_typewriter() -> void:
 	total_score_label.text = "Total Score: %d" % gp.HelpXP
 	
 	return_button.disabled = false
+
+func prompt_for_initials() -> void:
+	name_container.visible = true
+	name_input.text = ""
+	name_input.grab_focus()
+	
+	name_input.editable = true
+	name_input.placeholder_text = "AAA"
+	
+	var confirmed := false
+	
+	while not confirmed:
+		await get_tree().process_frame
+		if Input.is_action_just_pressed("ui_accept") and name_input.text.length() > 0:
+			var player_name = name_input.text.substr(0, 3).to_upper()
+			GlobalPlayer.add_leaderboard_entry(player_name, GlobalPlayer.HelpXP, GlobalPlayer.Level_Time)
+			GlobalAudioController.ClickSound()
+			confirmed = true
+	
+	name_container.visible = false

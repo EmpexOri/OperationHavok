@@ -12,6 +12,10 @@ var HasRestartedLevel: bool = false
 
 var current_level_scene_path: String = ""
 
+var leaderboard_file_path := "user://leaderboard.save"
+var leaderboard: Array = [] 
+var use_persistent_leaderboard := false
+
 var weapon_upgrades = {
 	1: "Smg",
 	2: "Shotgun"
@@ -330,3 +334,80 @@ func toggle_fullscreen():
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		print("Switched to fullscreen mode")
+
+func load_leaderboard():
+	if not use_persistent_leaderboard:
+		return
+	
+	if FileAccess.file_exists(leaderboard_file_path):
+		var file = FileAccess.open(leaderboard_file_path, FileAccess.READ)
+		if file:
+			var data = file.get_as_text()
+			file.close()
+			var parsed = JSON.parse_string(data)
+			if typeof(parsed) == TYPE_ARRAY:
+				leaderboard = parsed
+			else:
+				leaderboard = []
+	else:
+		leaderboard = []
+
+func save_leaderboard():
+	if not use_persistent_leaderboard:
+		return
+	
+	var file = FileAccess.open(leaderboard_file_path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(leaderboard))
+		file.close()
+
+func add_leaderboard_entry(player_name: String, score: int, time: float) -> void:
+	if use_persistent_leaderboard:
+		load_leaderboard()
+		
+	player_name = player_name.substr(0, 3).to_upper()
+	var entry: Dictionary = {"name": player_name, "score": score, "time": time}
+	leaderboard.append(entry)
+	
+	leaderboard.sort_custom(Callable(self, "_compare_leaderboard"))
+	
+	if leaderboard.size() > 10:
+		leaderboard = leaderboard.slice(0, 10)
+		
+	if use_persistent_leaderboard:
+		save_leaderboard()
+
+func _sort_leaderboard(a, b):
+	if a["score"] == b["score"]:
+		return a["time"] < b["time"]
+	return a["score"] > b["score"]
+
+func get_leaderboard_text() -> String:
+	if use_persistent_leaderboard:
+		load_leaderboard()
+		
+	var text := "=== LEADERBOARD ===\n"
+	for i in range(leaderboard.size()):
+		var e = leaderboard[i]
+		text += str(i + 1) + ". " + e["name"] + " - " + str(e["score"]) + " pts (" + get_formatted_time(e["time"]) + ")\n"
+	return text
+
+func get_formatted_time(t: float) -> String:
+	var minutes = int(t) / 60
+	var seconds = int(t) % 60
+	return str(minutes) + ":" + str(seconds).pad_zeros(2)
+	
+func _compare_leaderboard(a: Dictionary, b: Dictionary) -> int:
+	# Higher score is better (so put higher score earlier)
+	if a["score"] > b["score"]:
+		return -1
+	elif a["score"] < b["score"]:
+		return 1
+	else:
+		# If scores tie, shorter time is better (put smaller time earlier)
+		if a["time"] < b["time"]:
+			return -1
+		elif a["time"] > b["time"]:
+			return 1
+		else:
+			return 0

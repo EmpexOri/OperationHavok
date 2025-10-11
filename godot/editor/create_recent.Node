@@ -1,3 +1,6 @@
+LineEdit
+Label
+HBoxContainer
 Node2D
 AnimatedSprite2D
 VideoStreamPlayer
@@ -7,9 +10,6 @@ AudioStreamPlayer2D
 AudioListener2D
 ColorRect
 Button
-Label
 VBoxContainer
 Control
 Panel
-CanvasLayer
-Sprite2D

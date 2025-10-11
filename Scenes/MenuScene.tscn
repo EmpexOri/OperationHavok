@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://kjmdqey636rw"]
+[gd_scene load_steps=44 format=3 uid="uid://kjmdqey636rw"]
 
 [ext_resource type="Script" uid="uid://oppimbyc3te2" path="res://Assets/Scripts/Menu Scripts/MenuScene.gd" id="1_36iol"]
 [ext_resource type="Texture2D" uid="uid://nqh0l50edxkt" path="res://Assets/Art/PlaceHolders/FadeoutCircle.png" id="2_dxffo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="4_vg0ck"]
 [ext_resource type="Texture2D" uid="uid://djd0jsh4fs7dx" path="res://Assets/Art/Menu/QuitOff.png" id="10_mp4id"]
 [ext_resource type="Texture2D" uid="uid://di48a3fahouwq" path="res://Assets/Art/Menu/QuitOn.png" id="11_dxffo"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="12_mp4id"]
 [ext_resource type="Texture2D" uid="uid://y67h0lvuj5fe" path="res://Assets/Art/HUD/AttractModePrompt.png" id="13_dxffo"]
 [ext_resource type="Texture2D" uid="uid://cafkablbeyama" path="res://Assets/Art/PlaceHolders/LoadingScreenSpriteSheet.png" id="14_0fiul"]
 [ext_resource type="Texture2D" uid="uid://dtxg0tdpsqa27" path="res://Assets/Art/PlaceHolders/LoadingFinished.png" id="15_a37g6"]
@@ -305,6 +306,16 @@ texture = ExtResource("15_a37g6")
 [node name="AttractModePrompt" type="Sprite2D" parent="."]
 position = Vector2(325, 331)
 texture = ExtResource("13_dxffo")
+
+[node name="LeaderboardLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.5019608)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.59607846, 0.13725491, 0.20392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_mp4id")
+theme_override_font_sizes/font_size = 8
+text = "Leader Board"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
