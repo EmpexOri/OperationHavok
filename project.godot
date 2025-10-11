@@ -14,7 +14,7 @@ config/name="Operation: Havok"
 run/main_scene="uid://kjmdqey636rw"
 config/use_hidden_project_data_directory=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://d1w2gyi1pekme"
 
 [autoload]
 

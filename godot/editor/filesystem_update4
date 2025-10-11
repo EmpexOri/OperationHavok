@@ -6,9 +6,3 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
-res://Scenes/MenuScene.tscn
-res://Assets/Scripts/Menu Scripts/MenuScene.gd
-res://Scenes/Beta/LevelFinished.tscn
-res://Assets/Scripts/LevelControllers/End_Level.gd
-res://Assets/Scripts/LevelControllers/Level1/Stripmall_Arena.gd
