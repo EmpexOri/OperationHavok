@@ -14,6 +14,9 @@ signal end_screen_finished
 @onready var fade_rect: ColorRect = $FadeRect  
 @onready var music_player: AudioStreamPlayer = $MusicAudioPlayer  
 
+@onready var name_input: LineEdit = $Panel/VBoxContainer/NameEntryContainer/NameInput
+@onready var name_container: HBoxContainer = $Panel/VBoxContainer/NameEntryContainer
+
 var typewriter_skipped: bool = false  
 
 var has_returned: bool = false 
@@ -34,6 +37,11 @@ func _ready() -> void:
 	
 	# Start the typewriter display
 	await start_display_stats()
+	
+	# Prompt for initials
+	await prompt_for_initials()
+	
+	# Once entered and saved, allow return
 	return_button.disabled = false
 	
 	auto_return_to_menu()
@@ -42,6 +50,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") and return_button.disabled:
 		skip_typewriter()
 		return_button.disabled = false
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Start"):
+		_return_to_menu()
 
 # Typewriter display
 func start_display_stats() -> void:
@@ -118,7 +130,7 @@ func _return_to_menu() -> void:
 	if has_returned:
 		return
 	has_returned = true
-	GlobalPlayer.restart_level()
+	#GlobalPlayer.restart_level()
 	
 	# Fade out music if it exists
 	if music_player:
@@ -143,9 +155,9 @@ func _return_to_menu() -> void:
 	if level_root:
 		level_root.queue_free()
 	# Load Main Menu scene
-	GlobalPlayer.allow_restart()
 	GlobalPlayer.set_current_level_scene("res://Scenes/MenuScene.tscn")
 	get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
+	GlobalPlayer.allow_restart()
 
 func skip_typewriter() -> void:
 	typewriter_skipped = true
@@ -160,3 +172,23 @@ func skip_typewriter() -> void:
 	total_score_label.text = "Total Score: %d" % gp.HelpXP
 	
 	return_button.disabled = false
+
+func prompt_for_initials() -> void:
+	name_container.visible = true
+	name_input.text = ""
+	name_input.grab_focus()
+	
+	name_input.editable = true
+	name_input.placeholder_text = "AAA"
+	
+	var confirmed := false
+	
+	while not confirmed:
+		await get_tree().process_frame
+		if Input.is_action_just_pressed("ui_accept") and name_input.text.length() > 0:
+			var player_name = name_input.text.substr(0, 3).to_upper()
+			GlobalPlayer.add_leaderboard_entry(player_name, GlobalPlayer.HelpXP, GlobalPlayer.Level_Time)
+			GlobalAudioController.ClickSound()
+			confirmed = true
+	
+	name_container.visible = false

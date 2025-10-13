@@ -291,15 +291,30 @@ func _on_boss_died(boss: Node) -> void:
 		arena_completed()
 		
 func _cleanup_after_boss_duo() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	var original_hp := 0  # declare here so it's in scope
+
+	if player:
+		# Save current HP
+		original_hp = player.PlayerHP
+		# Give effectively infinite health
+		player.PlayerHP = 999999
+		player.PlayerHPMax = 999999
+
 	# Trigger proper death logic for all remaining enemies
 	for e in enemies:
 		if is_instance_valid(e) and e.is_inside_tree():
-			if e.has_method("on_death"):
-				e.on_death()  # Let the enemy handle its death logic
+			if e.get_script() and e.get_script().has_method("on_death"):
+				e.call("on_death")
 			else:
-				e.queue_free()  # Fallback if no death handler exists, or I cant find it
-
+				e.queue_free()
+				
 	enemies.clear()
+	
+	# Restore player's original health
+	if player:
+		player.PlayerHP = original_hp
+		player.PlayerHPMax = max(original_hp, 100)  # or whatever default max
 
 # CUTSCENE STUFF
 func _on_cutscene_start() -> void:

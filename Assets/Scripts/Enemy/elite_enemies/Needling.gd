@@ -320,11 +320,11 @@ func _update_line(hit_pos: Vector2, has_los: bool):
 	aim_line.visible = true
 	
 	if is_firing:
-		aim_line.default_color = Color(0.0, 0.8, 0.0, 0.8)
-	elif has_los:
 		aim_line.default_color = Color(0.9, 0.1, 0.0, 0.8)
+	elif has_los:
+		aim_line.default_color = Color(0.3, 0.5, 0.9, 0.8)
 	else:
-		aim_line.default_color = Color(0.5, 0.2, 0.2, 0.4)
+		aim_line.default_color = Color(0.3, 0.5, 0.9, 0.4)
 	
 func _interpolated_laser_end(player_pos: Vector2) -> Vector2:
 	return cached_hit_pos.lerp(player_pos, 0.7)

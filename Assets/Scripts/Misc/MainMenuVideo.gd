@@ -26,6 +26,19 @@ func _play_intro() -> void:
 	if title_sprite:
 		_fade_title(false)
 	
+	if randi() % 100 == 0:
+		speed_scale = 5.0
+		var timer = Timer.new()
+		timer.one_shot = true
+		timer.wait_time = 1.0
+		timer.timeout.connect(func():
+			speed_scale = 1.0
+		)
+		add_child(timer)
+		timer.start()
+	else:
+		speed_scale = 1.0
+	
 	play()
 	
 func _play_loop() -> void:

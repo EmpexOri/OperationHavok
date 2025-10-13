@@ -1,4 +1,4 @@
-res://Scenes/MenuScene.tscn
+res://Scenes/BetaLevel.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -6,4 +6,3 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Menu Scripts/MenuScene.gd

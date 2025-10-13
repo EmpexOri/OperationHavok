@@ -9,15 +9,15 @@ res://Scenes/Misc/enemy_2.tscn::ab7f37d5301d939ffffa44306981e08c::1746544112::re
 res://Scenes/Misc/enemy_3.tscn::f611642ff2cb3929c1a7fca32e8accbf::1746544112::res://godot/exported/133200997/export-2641ea07c8b59c9acb907e14fdce157e-enemy_3.scn
 res://Scenes/Misc/enemy_4.tscn::607983f4c5f5ff887bb8566fddad8890::1746544112::res://godot/exported/133200997/export-b2d9fe977b129f8f4f9aa6f06b4bdd2f-enemy_4.scn
 res://Scenes/Misc/TestSkillTree.tscn::1311094229e1fde9a916c95e2efe68c6::1755690777::res://godot/exported/133200997/export-5ce8dc265028a692ec88ea9460f63522-TestSkillTree.scn
-res://Scenes/Options/CommandoSkillTree.tscn::0ed148c6dc8f2db4a31d35fe2cff2785::1759992105::res://godot/exported/133200997/export-7ad3627efdf1bee1ed60b36e9f0f1ca3-CommandoSkillTree.scn
+res://Scenes/Options/CommandoSkillTree.tscn::0ed148c6dc8f2db4a31d35fe2cff2785::1760026227::res://godot/exported/133200997/export-7ad3627efdf1bee1ed60b36e9f0f1ca3-CommandoSkillTree.scn
 res://Scenes/Options/GlobalBrightness.tscn::feea4013be4f454e15e077c2c5444381::1754030057::res://godot/exported/133200997/export-6af7cfd5cd45ffafc190f97384099eea-GlobalBrightness.scn
 res://Scenes/Options/OptionsScene.tscn::1aff47252cd743e0bf06e409f633dbdf::1759708062::res://godot/exported/133200997/export-4df2f2e968ddf3a664c48e176447bd7a-OptionsScene.scn
-res://Scenes/Options/PauseMenu.tscn::65ab8eecb72ac1d13c80778b83341095::1759996188::res://godot/exported/133200997/export-160b170cfd0d52b71df079fc0d9f398c-PauseMenu.scn
+res://Scenes/Options/PauseMenu.tscn::65ab8eecb72ac1d13c80778b83341095::1760026592::res://godot/exported/133200997/export-160b170cfd0d52b71df079fc0d9f398c-PauseMenu.scn
 res://Scenes/Options/SkillButton.tscn::71eb0744bf56a4b9aa96fcce41a38a9b::1759708062::res://godot/exported/133200997/export-0637e98af7127dedcdaa51de7fc8657d-SkillButton.scn
 res://Scenes/AlphaLevel1.tscn::95d56add0c617765e8dccdc921cdebf0::1758944376::res://godot/exported/133200997/export-584ac8825b179d858c21bc7f315397f5-AlphaLevel1.scn
-res://Scenes/GlobalAudioController.tscn::b619a63cdf74445ba3f7812eeacd5bec::1759931785::res://godot/exported/133200997/export-e9da480b9e8d980faa90c5005ef88967-GlobalAudioController.scn
+res://Scenes/GlobalAudioController.tscn::523b20a9722949e90b7f6b62dfd6b4cc::1760010679::res://godot/exported/133200997/export-e9da480b9e8d980faa90c5005ef88967-GlobalAudioController.scn
 res://Scenes/LevelSelectScene.tscn::57d4a82ed0f8b629e2a8ae716f8bd7ce::1756975091::res://godot/exported/133200997/export-42bef879e1f73c4734ecd2d6f9327bae-LevelSelectScene.scn
-res://Scenes/MenuScene.tscn::3c07830935a8594d47ea36715577b16d::1759982114::res://godot/exported/133200997/export-716ac41b21035b24bd7267cbf66bdb61-MenuScene.scn
+res://Scenes/MenuScene.tscn::1422d71a6af05364f85c71f7441594ab::1760156186::res://godot/exported/133200997/export-716ac41b21035b24bd7267cbf66bdb61-MenuScene.scn
 res://Scenes/PlaygroundScene.tscn::5b06f175cee1d029251d43a93b356ddf::1756970472::res://godot/exported/133200997/export-7795f463a0fa607eca964d735fcf4dc4-PlaygroundScene.scn
 res://default_bus_layout.tres::d20723733411a779e1c7eee862b53dda::1745557727::res://godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
 res://Assets/Shaders/BulletShader.tres::0c0a540f21b37a31b6d7ac7c7378dc8d::1758944073::res://godot/exported/133200997/export-d0bffbb08e511ee00bd6737003962bf7-BulletShader.res
@@ -27,12 +27,12 @@ res://Prefabs/CodePrefabs/Abilities/SniperBeam.tscn::3189c402396b8eb27b111ca35ab
 res://Prefabs/CodePrefabs/Abilities/SwapWeapons.tscn::b2a3dc91c3f8fe79717982e1d68c13c8::1754644582::res://godot/exported/133200997/export-8ecc2facec65c7909e41f1a8953a8ef4-SwapWeapons.scn
 res://Prefabs/CodePrefabs/Abilities/WeaponOverCharge.tscn::57f99d0139e02d6b8561676475a97bec::1744703374::res://godot/exported/133200997/export-cd00e2ae37ade71d218bef206243e597-WeaponOverCharge.scn
 res://Prefabs/CodePrefabs/Misc/TalentIcon.tscn::0adbf800fbffd2c32649bc2b537920fa::1745985613::res://godot/exported/133200997/export-247ba5d15d2ad07ff9a49453e499833a-TalentIcon.scn
-res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres::eac16bf49031eaad71241973fc19889a::1759971839::res://godot/exported/133200997/export-3a2f1ba27dda4a6e7b514f3ee2ab593d-DeathExplosionGore.res
-res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres::398eb11cb55fd9d7e6192ce092e0a733::1759971839::res://godot/exported/133200997/export-114f6d10cc099060c4cec1791e3bc71a-TumourExplosionGore.res
+res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres::eac16bf49031eaad71241973fc19889a::1760188949::res://godot/exported/133200997/export-3a2f1ba27dda4a6e7b514f3ee2ab593d-DeathExplosionGore.res
+res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres::398eb11cb55fd9d7e6192ce092e0a733::1760188949::res://godot/exported/133200997/export-114f6d10cc099060c4cec1791e3bc71a-TumourExplosionGore.res
 res://Prefabs/CodePrefabs/Particles/BloodSmear.tscn::abd0d17858b48df80e335763c8c5ef56::1751606290::res://godot/exported/133200997/export-a97f08dd6b0e3e5d87e7430cb57f255d-BloodSmear.scn
 res://Prefabs/CodePrefabs/Particles/DeathGore.tscn::c3aa104c5e2e876f361170296dd7f992::1747635727::res://godot/exported/133200997/export-008c31dcb9e3f7b46eec8c70490dba08-DeathGore.scn
 res://Prefabs/CodePrefabs/Particles/MeatChunks.tscn::3746270f3fbb1d50c8b56e7cb3c43a86::1757398719::res://godot/exported/133200997/export-273bf899fd49548738cb71448eafcbfb-MeatChunks.scn
-res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn::e7089ad04acf0a8a7e2e51650b4f4396::1759760890::res://godot/exported/133200997/export-704609dec18b672fc1930176ab8ac134-RocketExplosion.scn
+res://Prefabs/CodePrefabs/Particles/RocketExplosion.tscn::e7089ad04acf0a8a7e2e51650b4f4396::1760078243::res://godot/exported/133200997/export-704609dec18b672fc1930176ab8ac134-RocketExplosion.scn
 res://Prefabs/CodePrefabs/Particles/TumourExplosionGore.tscn::f53ca1356626dc08cd283f4a0cf45514::1747635727::res://godot/exported/133200997/export-cb2a9fec999f8190bf925d21b0ae8c16-TumourExplosionGore.scn
 res://Prefabs/CodePrefabs/Pickups/pickup.tscn::eccca4e1500564822a16d5c6157e5aeb::1759725347::res://godot/exported/133200997/export-0656c49e8509a81b2d35f26303d462a5-pickup.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyShotgunBullet.tscn::b22a16b9b36a45ea25dcf5b2dccbc95a::1755690776::res://godot/exported/133200997/export-28e70bd5462bc416e9756ab61c40b1c8-EnemyShotgunBullet.scn
@@ -71,7 +71,7 @@ res://Prefabs/CodePrefabs/Weapons/RocketMinigun.tscn::8951cc044cd0fa662da2f10f02
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/WarmachineBullet.tscn::98a3c5c10e9f84cde230b470a0c9721f::1757914812::res://godot/exported/133200997/export-6c80a270a1822a9e04f7f28d910cc366-WarmachineBullet.scn
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/WarmachineGun.tscn::e9cbe62bb8b12cbfff837417a492be16::1759982773::res://godot/exported/133200997/export-39b5292a7804a53155605cfa24ee7e5a-WarmachineGun.scn
 res://Prefabs/GamePrefabs/Enemy/Minibosses/Warmachine.tscn::c9aab89bac48cda6654862267a359655::1759995266::res://godot/exported/133200997/export-d5e5163bbd032fa4e97f4fcee1ba65f9-Warmachine.scn
-res://Assets/Art/Effects/ExplodedAnim.tres::ffeaaadab15b9bd1353982c1626d3986::1759971841::res://godot/exported/133200997/export-6d16fa53643f5a1391c8bfdd95182371-ExplodedAnim.res
+res://Assets/Art/Effects/ExplodedAnim.tres::ffeaaadab15b9bd1353982c1626d3986::1760188949::res://godot/exported/133200997/export-6d16fa53643f5a1391c8bfdd95182371-ExplodedAnim.res
 res://Prefabs/CodePrefabs/Weapons/M60.tscn::1faa5e4a81b11e7a3d78b4f028fe648a::1759813105::res://godot/exported/133200997/export-be65a13dbd4892d47fc3ae4aa94bfb2b-M60.scn
 res://Prefabs/CodePrefabs/Projectiles/EnemyProjectiles/EnemyGrenade.tscn::17c77d059d86ad664fe8517921e1e08a::1757914812::res://godot/exported/133200997/export-6c616027cb4b1aaf58bd834b78c9f55d-EnemyGrenade.scn
 res://Assets/MenuText_Skilltree.tres::8a22978e215dbea43a41bac7e1e1b1d2::1753769117::res://godot/exported/133200997/export-415a97c571334c19e7d4a7309ac34b45-MenuText_Skilltree.res
@@ -114,12 +114,12 @@ res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn::749f02adf965
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn::44965bf264b4b04380acc03f43b0a518::1759994324::res://godot/exported/133200997/export-dc8a6b447a5795370c6499539674db21-Gatling.scn
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Goolum.tscn::949f956d2aa926203b5d1cb545c1e699::1756970289::res://godot/exported/133200997/export-8da65f726d641716901be5f5639ed41b-Goolum.scn
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/MalignantTumor.tscn::2fbb5dfc599f014cd08a15f572b406af::1756970289::res://godot/exported/133200997/export-c08d72bd0905dd9ddea26ed47235665d-MalignantTumor.scn
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn::c6807fa16a1488d46cc739c8d240c00c::1759819031::res://godot/exported/133200997/export-e3fba631d3d5cd29efa1af4474b37f14-Needling.scn
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn::c6807fa16a1488d46cc739c8d240c00c::1760078640::res://godot/exported/133200997/export-e3fba631d3d5cd29efa1af4474b37f14-Needling.scn
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Network.tscn::ab012964b80cd6080616cf102c649476::1759975499::res://godot/exported/133200997/export-bc4f2eda7a5d5d8c7f04e49b0d28e1f3-Network.scn
-res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn::3c329530913527bbfe1a2a5f518b5c98::1759994216::res://godot/exported/133200997/export-4f095cf4fd3bcca965dae695cb9edd57-Tumor.scn
+res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Tumor.tscn::27628121ffd231bb4f3034ecfe386544::1760021876::res://godot/exported/133200997/export-4f095cf4fd3bcca965dae695cb9edd57-Tumor.scn
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/FleshSpawn.tscn::822e5f6c94de1a9d8f10cff5f63b9963::1759930499::res://godot/exported/133200997/export-5decebb05b8b67e10280c0d008df9660-FleshSpawn.scn
 res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn::fe9d473a0104ccaa1ab75afc9f1f1f4d::1759919461::res://godot/exported/133200997/export-224455f554496f9098332b48eb392497-Hordling.scn
-res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn::debe995b68c63cd2c2e630b2198a9abb::1759975815::res://godot/exported/133200997/export-9abdf76177957e93982f6a9cb5b18162-Spewling.scn
+res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn::80fb2d4b08854218c5bf477c939d2060::1760022392::res://godot/exported/133200997/export-9abdf76177957e93982f6a9cb5b18162-Spewling.scn
 res://Prefabs/CodePrefabs/Abilities/RocketMinigun.tscn::038f4c86d2f8068dad11d372e42b3bb4::1757052905::res://godot/exported/133200997/export-6b483792f1ea93030b7e7a7794482425-RocketMinigun.scn
 res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_damage_up_effect.tres::dfc728940c39bc1d0ffe056fe8236f77::1757328138::res://godot/exported/133200997/export-bfb70d085db3fd1e74d8aabc58a82d3c-phys_damage_up_effect.res
 res://Assets/Scripts/Effects/Projectile Effects/Instances/phys_expode_max_bounces.tres::1b78e34b2e214da1322d3327a212e6de::1757328138::res://godot/exported/133200997/export-c542d0acaaf8c8426ab76b2c7b4c3b39-phys_expode_max_bounces.res
@@ -129,18 +129,18 @@ res://Prefabs/CodePrefabs/Particles/GooChunks.tscn::9c22c85aa797c19d5f1b673535b0
 res://Prefabs/CodePrefabs/Projectiles/misc_bullets/HomeRunProjectile.tscn::c6b9b00bc77af6c01d51f4ae10f30ec2::1759813864::res://godot/exported/133200997/export-e8b20fa3a3841464c8b63878892bfeee-HomeRunProjectile.scn
 res://Prefabs/CodePrefabs/Weapons/HomeRunLauncher.tscn::9b769e88510d9c76ecb75ab05abfa24a::1759931932::res://godot/exported/133200997/export-c039aac4dc4dc7a181b0aa782e8c2c44-HomeRunLauncher.scn
 res://Assets/Scripts/Effects/Projectile Effects/Instances/projectile_spawn_on_kill_effect.tres::632f635273640984eb2c1c1718493002::1757566982::res://godot/exported/133200997/export-8e64b1310359aa11f161b5e9a97cb345-projectile_spawn_on_kill_effect.res
-res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres::73a4d9d9bdac3e4160e57d0529487e23::1759971842::res://godot/exported/133200997/export-f97e7e05ea6d389c09d69b908fbb941d-FloorsTilesets.res
-res://Assets/Art/Tilesets/WallsTilesets.tres::ae6414200e54a6f3e1c2e99149ae52bc::1759995032::res://godot/exported/133200997/export-6edede9bbc8f4f9a5d7fd7b3ca517a74-WallsTilesets.res
-res://Scenes/BetaLevel.tscn::a7bd06aa7bc372a37569b548afef022b::1759995873::res://godot/exported/133200997/export-a5de500adee9af5e69cae3c5c83d0ce9-BetaLevel.scn
+res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres::73a4d9d9bdac3e4160e57d0529487e23::1760188949::res://godot/exported/133200997/export-f97e7e05ea6d389c09d69b908fbb941d-FloorsTilesets.res
+res://Assets/Art/Tilesets/WallsTilesets.tres::ae6414200e54a6f3e1c2e99149ae52bc::1760188949::res://godot/exported/133200997/export-6edede9bbc8f4f9a5d7fd7b3ca517a74-WallsTilesets.res
+res://Scenes/BetaLevel.tscn::814d41eefdd7dcee5f723a768851a00d::1760188949::res://godot/exported/133200997/export-a5de500adee9af5e69cae3c5c83d0ce9-BetaLevel.scn
 res://Prefabs/CodePrefabs/Particles/Rain.tscn::e63f50c2615dfaf3811ab1fb72daa668::1758166629::res://godot/exported/133200997/export-f58605441cbdbce2719ce73b93897b71-Rain.scn
 res://Prefabs/CodePrefabs/Particles/TrashcanExplode.tscn::0ed605af55a0cfb17e800bc7ece5e702::1758776483::res://godot/exported/133200997/export-20f32aca5f846f77470c681a4fa42038-TrashcanExplode.scn
 res://Prefabs/GamePrefabs/Objects/Blockers/Boulder.tscn::f85aa935f011e467f47f0cb35ef29667::1758783750::res://godot/exported/133200997/export-a8b4b1cc20eef35c783ff388a2655dc0-Boulder.scn
 res://Prefabs/GamePrefabs/Objects/Blockers/CarBlocker.tscn::3738fcd79f1a33e30b7209ee27731b8e::1758783750::res://godot/exported/133200997/export-de4f652366dc5cfbcb36138920468d13-CarBlocker.scn
 res://Prefabs/GamePrefabs/Objects/Trashcan.tscn::cb740cefb5ecbbc2cb5026bf5c75e65d::1759815362::res://godot/exported/133200997/export-2ba8b717882ea3b30565e433dedbec09-Trashcan.scn
 res://Prefabs/CodePrefabs/Weapons/HomerunExplosion.tscn::0a69729dcba7fae815d352034d5868f4::1759813683::res://godot/exported/133200997/export-ce11ed0ef990c3124c599865bac466fd-HomerunExplosion.scn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn::47c093abc7a52e21dce82fa0f3f1ef4c::1758783764::res://godot/exported/133200997/export-43f80ceb4c701f0df80988d61064da9a-Box.scn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn::79ab03520e50f447ec59d8c7bcbc4146::1758783751::res://godot/exported/133200997/export-c8abbdd00a3aa679013279c7eec2f166-Box2.scn
-res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn::186e1d6dcc70f0b5b8757a22cc1fca58::1758783751::res://godot/exported/133200997/export-f65a26377e8bab4042b6795dea57115b-Box3.scn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box.tscn::4152344cc0318971fa9ea875f2c5fb25::1760078713::res://godot/exported/133200997/export-43f80ceb4c701f0df80988d61064da9a-Box.scn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box2.tscn::c0480d4c96e0bc79368d06b7033df2e4::1760097683::res://godot/exported/133200997/export-c8abbdd00a3aa679013279c7eec2f166-Box2.scn
+res://Prefabs/GamePrefabs/Objects/Rooftop/Box3.tscn::9698f79813adcff564f6c7f071ca3d07::1760078715::res://godot/exported/133200997/export-f65a26377e8bab4042b6795dea57115b-Box3.scn
 res://Prefabs/GamePrefabs/Objects/Blockers/Boulder_Blocker.tscn::4bb2c9671575a8bd6c618fd4c2797931::1758783750::res://godot/exported/133200997/export-5a40d55f56091dc1d854b71eb39d2617-Boulder_Blocker.scn
 res://Prefabs/GamePrefabs/Objects/Park/Fence.tscn::7488fc88f78352bdaf451f3986b09428::1759975931::res://godot/exported/133200997/export-394e8867a32040f914a28ae10ef31e5f-Fence.scn
 res://Prefabs/GamePrefabs/Objects/Park/Tree.tscn::e57cb7a5aa8295a4907d6b9b1f434182::1759565879::res://godot/exported/133200997/export-0592f4db71fc5763a050ffe390e12b86-Tree.scn
@@ -174,5 +174,6 @@ res://Prefabs/GamePrefabs/Objects/Carpark_Objects/Car_Vertical_1.tscn::848dfbe75
 res://Prefabs/GamePrefabs/Objects/lamp_post_down_Flicker.tscn::1872bf492f54cbdd3ecbcc53f27ae3ab::1759727870::res://godot/exported/133200997/export-39dc2831eca4982e38f6d7c8b25b0bce-lamp_post_down_Flicker.scn
 res://Prefabs/CodePrefabs/Weapons/PlasmaExplosion.tscn::1a4332b366a8d83b8deb5f8a43673d10::1759850663::res://godot/exported/133200997/export-ee68ccb423ac3891a7698858a5131a36-PlasmaExplosion.scn
 res://Prefabs/Cutscenes/BossDeath_LevelBeta.tscn::05561d4f877966c9da34476650fc92ec::1759995279::res://godot/exported/133200997/export-c47a2eb219dddb6ff54d8e9046f9a996-BossDeath_LevelBeta.scn
-res://Scenes/Beta/LevelFinished.tscn::7589acae655042e5246cdecc914a3089::1759995482::res://godot/exported/133200997/export-f567dde1e869a342168efc7734220f15-LevelFinished.scn
+res://Scenes/Beta/LevelFinished.tscn::6f67638989a833b46d2991467b7236ad::1760155887::res://godot/exported/133200997/export-f567dde1e869a342168efc7734220f15-LevelFinished.scn
 res://Prefabs/GamePrefabs/Objects/Park/Puddle.tscn::91fe84a10943dc7c3949ad30398c1422::1759976354::res://godot/exported/133200997/export-79aed1f9674d405d8bd68965e8a6208b-Puddle.scn
+res://Prefabs/CodePrefabs/Particles/RocketExplosion_Miniboss.tscn::b33e5b63c5e533d754aa04110616a094::1760078349::res://godot/exported/133200997/export-046040a60c7ba455d30bc99a2fc447ab-RocketExplosion_Miniboss.scn
