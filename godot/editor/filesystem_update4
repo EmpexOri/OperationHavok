@@ -9,3 +9,6 @@ res://Assets/Art/Tilesets/WallsTilesets.tres
 res://Assets/Scripts/Menu Scripts/MenuScene.gd
 res://Scenes/BetaLevel.tscn
 res://Assets/Scripts/LevelControllers/Level1/BetaLevelController.gd
+res://Prefabs/GamePrefabs/Enemy/Minibosses/Jerma_Machine.tscn
+res://Assets/Scripts/Enemy/Minibosses/JermaMachine.gd
+res://Assets/Scripts/LevelControllers/Level1/Rooftop_Arena.gd

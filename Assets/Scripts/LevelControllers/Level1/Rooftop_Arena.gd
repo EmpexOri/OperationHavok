@@ -10,7 +10,8 @@ var ENEMY_SCENES := {
 	"Spewling": preload("res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Spewling.tscn"),
 	"Biomancer": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Biomancer.tscn"),
 	"Needling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Needling.tscn"),
-	"Gatling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn")
+	"Gatling": preload("res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn"),
+	"Jerma": preload("res://Prefabs/GamePrefabs/Enemy/Minibosses/Jerma_Machine.tscn"),
 }
 
 # Arena state
@@ -41,7 +42,7 @@ func _ready():
 	sub_arenas = [
 		{
 			"spawn_points": [$Spawn0, $Spawn1],
-			"wave_data": [{ "Hordling": 12, "Spewling": 2 }]
+			"wave_data": [{ "Hordling": 12, "Jerma": 1 }]
 		},
 		{
 			"spawn_points": [$Spawn2, $Spawn3],
