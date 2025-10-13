@@ -32,17 +32,15 @@ var sub_arenas: Array = []
 var current_sub_arena := 0
 
 func _ready():
-	# Auto-detect Marker2Ds if not manually assigned
 	if spawn_points.size() == 0:
 		for child in get_children():
 			if child is Marker2D:
 				spawn_points.append(child)
-
-	# Define sub-arenas (example data)
+				
 	sub_arenas = [
 		{
 			"spawn_points": [$Spawn0, $Spawn1],
-			"wave_data": [{ "Hordling": 12, "Jerma": 1 }]
+			"wave_data": [{ "Hordling": 12, "Spewling": 2 }]
 		},
 		{
 			"spawn_points": [$Spawn2, $Spawn3],
