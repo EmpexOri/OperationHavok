@@ -42,8 +42,8 @@ var AbilityListFleshthing = ["TheEmpress", "TheMoon", "TheSun", "TheStar"]
 
 var current_respawn_position: Vector2 = Vector2.ZERO
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+#func _ready():
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func XPRequiredForLevel(Level: int) -> int:
 	return 50 * pow(1.2, Level - 1)

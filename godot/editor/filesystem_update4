@@ -17,3 +17,4 @@ res://Assets/Scripts/Effects/Weapon Effects/Instances/arc_fire_effect.tres
 res://Prefabs/CodePrefabs/Weapons/EnemyWeapons/EnemyMinigun.tscn
 res://Prefabs/GamePrefabs/Enemy/elite_enemy_prefabs/Gatling.tscn
 res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
+res://Assets/Scripts/Universal Scripts/GlobalPlayer.gd
