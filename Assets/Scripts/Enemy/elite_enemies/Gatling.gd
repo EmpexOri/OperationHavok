@@ -4,6 +4,19 @@ extends Enemy  # Inherit from Enemy.gd
 @onready var fire_duration_timer = Timer.new()
 @onready var move_timeout_timer := Timer.new()
 
+@export var Arc_Sweep: float = 30.0  # Degrees
+@export var Sweep_Bullets: int = 15
+@export var Sweep_Duration: float = 1.0  # seconds for full sweep
+
+var sweep_active: bool = false
+var sweep_elapsed: float = 0.0
+var sweep_weapon: Weapon = null
+var sweep_spawn_position: Vector2 = Vector2.ZERO
+var sweep_base_direction: Vector2 = Vector2.RIGHT
+var sweep_fire_interval: float = 0.0
+var next_fire_time: float = 0.0
+var bullets_fired: int = 0
+
 var BulletSpeed = 900
 var ShotsFired = 0
 var ShotsBeforeMoving = randi_range(1, 3)
@@ -84,6 +97,40 @@ func _process(delta):
 
 func _physics_process(delta):
 	super._physics_process(delta)
+	
+	if sweep_active and sweep_weapon:
+		# Update sweep timer
+		sweep_elapsed += delta
+		
+		if bullets_fired < Sweep_Bullets and sweep_elapsed >= next_fire_time:
+			# Calculate interpolation along the arc
+			var t: float = float(bullets_fired) / float(Sweep_Bullets - 1)
+			var angle_deg: float = lerp(-Arc_Sweep, Arc_Sweep, t)
+			var fire_dir: Vector2 = sweep_base_direction.rotated(deg_to_rad(angle_deg))
+			
+			# Fire a bullet
+			sweep_weapon._spawn_projectile(sweep_spawn_position, fire_dir)
+			if sweep_weapon.fire_sound_method != "":
+				sweep_weapon._play_fire_sound()
+			
+			# Update fire_direction for animation
+			fire_direction = fire_dir
+			_update_animation()
+			
+			bullets_fired += 1
+			next_fire_time += sweep_fire_interval
+		
+		if bullets_fired >= Sweep_Bullets:
+			# Sweep complete
+			sweep_active = false
+			is_firing = false
+			sprite.stop()
+			random_move()  # Resume movement
+			
+		# Stop movement during sweep
+		velocity = Vector2.ZERO
+		sprite.modulate.a = 0.2
+	
 	if Health <= 0:
 		return
 		
@@ -100,15 +147,21 @@ func _physics_process(delta):
 		start_ramming(Player)
 		return
 		
-# --- Movement & Firing Logic ---
-	if IsMovingRandomly:
+	# --- Movement & Firing Logic ---
+	if sweep_active:
+		# Allow movement to continue if already moving randomly
+		if not IsMovingRandomly and not is_ramming:
+			velocity = Vector2.ZERO
+			sprite.modulate.a = 0.2
+			_update_animation()
+	elif IsMovingRandomly:
 		# Move toward chosen target point
 		var next_point = nav.get_next_path_position()
-
+		
 		# If no valid path, bail out to prevent walking into walls
 		if next_point == Vector2.ZERO or next_point == global_position:
 			return
-
+			
 		var Direction = (next_point - global_position)
 		if Direction.length() < 10:
 			# Arrived → stop and start firing
@@ -119,7 +172,7 @@ func _physics_process(delta):
 		sprite.modulate.a = 0.65
 		_update_animation()
 	elif is_firing:
-		# Stop completely while firing
+		# Stop completely while normal firing
 		velocity = Vector2.ZERO
 		sprite.modulate.a = 0.2
 		_update_animation()
@@ -130,8 +183,6 @@ func _physics_process(delta):
 			fire_direction = (Player.global_position - global_position).normalized()
 			sprite.flip_h = fire_direction.x < 0
 			_update_animation()
-			
-	move_and_slide()
 	
 func _update_animation():
 	if is_firing:
@@ -174,11 +225,11 @@ func fire():
 
 	if CurrentWeapon:
 		is_firing = true
-		
 		var fire_duration = randf_range(2.0, 5.0)
 		fire_duration_timer.start(fire_duration)
 		
-		_fire_burst()  # Start firing loop
+		# Instead of _fire_burst(), do an arc sweep
+		start_arc_sweep()
 		
 func _fire_burst():
 	if not is_firing or not CurrentWeapon:
@@ -314,3 +365,20 @@ func _on_move_timeout():
 	if IsMovingRandomly:
 		_cancel_random_move()
 		fire()  # try firing after giving up on moving
+
+func start_arc_sweep():
+	if not CurrentWeapon:
+		return
+	var Player = get_tree().get_nodes_in_group(Target).front()
+	if not Player:
+		return
+
+	# Initialize sweep
+	sweep_weapon = CurrentWeapon
+	sweep_spawn_position = global_position
+	sweep_base_direction = (Player.global_position - global_position).normalized()
+	sweep_fire_interval = Sweep_Duration / float(Sweep_Bullets)
+	bullets_fired = 0
+	next_fire_time = 0.0
+	sweep_elapsed = 0.0
+	sweep_active = true

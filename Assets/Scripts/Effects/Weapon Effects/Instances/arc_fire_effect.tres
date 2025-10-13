@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ArcFireEffect" load_steps=2 format=3 uid="uid://p5waysababab"]
+
+[ext_resource type="Script" uid="uid://bh06krk7sekk0" path="res://Assets/Scripts/Effects/Weapon Effects/arc_fire_effect.gd" id="1_8c0qp"]
+
+[resource]
+script = ExtResource("1_8c0qp")
+metadata/_custom_type_script = "uid://hngk5be2sgte"
