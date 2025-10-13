@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://1uhvh8oe468u" path="res://Assets/Scripts/Misc/MainMenuVideo.gd" id="3_dlm5w"]
 [ext_resource type="Texture2D" uid="uid://bshbw2fhjg4as" path="res://Assets/Art/Menu/HavokTitle.png" id="4_mp4id"]
 [ext_resource type="Texture2D" uid="uid://dib45hhu31nt" path="res://Assets/Art/PlaceHolders/ControlsBg.png" id="4_vg0ck"]
+[ext_resource type="Texture2D" uid="uid://deq6haglmulnf" path="res://Assets/Art/HUD/MainMenuHUD/AttractModePrompt.png" id="6_mp4id"]
+[ext_resource type="Texture2D" uid="uid://bfi8r8f7d08yk" path="res://Assets/Art/HUD/MainMenuHUD/AttractModePrompt_Highlighted.png" id="7_mp4id"]
 [ext_resource type="Texture2D" uid="uid://djd0jsh4fs7dx" path="res://Assets/Art/Menu/QuitOff.png" id="10_mp4id"]
 [ext_resource type="Texture2D" uid="uid://di48a3fahouwq" path="res://Assets/Art/Menu/QuitOn.png" id="11_dxffo"]
-[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="12_mp4id"]
-[ext_resource type="Texture2D" uid="uid://y67h0lvuj5fe" path="res://Assets/Art/HUD/AttractModePrompt.png" id="13_dxffo"]
 [ext_resource type="Texture2D" uid="uid://cafkablbeyama" path="res://Assets/Art/PlaceHolders/LoadingScreenSpriteSheet.png" id="14_0fiul"]
 [ext_resource type="Texture2D" uid="uid://dtxg0tdpsqa27" path="res://Assets/Art/PlaceHolders/LoadingFinished.png" id="15_a37g6"]
 
@@ -268,7 +268,8 @@ offset_top = 323.0
 offset_right = 576.0
 offset_bottom = 365.0
 focus_neighbor_bottom = NodePath("../QuitButton")
-texture_normal = ExtResource("13_dxffo")
+texture_normal = ExtResource("6_mp4id")
+texture_hover = ExtResource("7_mp4id")
 
 [node name="QuitButton" type="TextureButton" parent="."]
 visible = false
@@ -302,20 +303,6 @@ visible = false
 position = Vector2(320, 180)
 scale = Vector2(0.666667, 0.666667)
 texture = ExtResource("15_a37g6")
-
-[node name="AttractModePrompt" type="Sprite2D" parent="."]
-position = Vector2(325, 331)
-texture = ExtResource("13_dxffo")
-
-[node name="LeaderboardLabel" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0.5019608)
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.59607846, 0.13725491, 0.20392157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_mp4id")
-theme_override_font_sizes/font_size = 8
-text = "Leader Board"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

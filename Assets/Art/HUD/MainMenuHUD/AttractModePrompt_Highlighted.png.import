@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y67h0lvuj5fe"
-path="res://godot/imported/AttractModePrompt.png-7e74fccf1c9019efe7c2f662aeb2f5f8.ctex"
+uid="uid://bfi8r8f7d08yk"
+path="res://godot/imported/AttractModePrompt_Highlighted.png-d1f46f5e0dd1f58d1762c9ba46195d6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/HUD/AttractModePrompt.png"
-dest_files=["res://godot/imported/AttractModePrompt.png-7e74fccf1c9019efe7c2f662aeb2f5f8.ctex"]
+source_file="res://Assets/Art/HUD/MainMenuHUD/AttractModePrompt_Highlighted.png"
+dest_files=["res://godot/imported/AttractModePrompt_Highlighted.png-d1f46f5e0dd1f58d1762c9ba46195d6a.ctex"]
 
 [params]
 

@@ -55,8 +55,8 @@ func _ready() -> void:
 			
 	if not GlobalPlayer.HasRestartedLevel:
 		GlobalPlayer.HasRestartedLevel = true
-		if GlobalPlayer.has_method("restart_level"):
-			GlobalPlayer.restart_level()
+		#if GlobalPlayer.has_method("restart_level"):
+			#GlobalPlayer.restart_level()
 			
 func _on_skill_tree_closed_in_level():
 	get_tree().paused = false

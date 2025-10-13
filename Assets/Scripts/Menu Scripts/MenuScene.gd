@@ -44,9 +44,10 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func show_leaderboard():
-	if not GlobalPlayer:
-		print("GlobalPlayer not found, cannot load leaderboard.")
-		return
-		
-	var text := GlobalPlayer.get_leaderboard_text()
-	LeaderboardLabel.text = text
+	#if not GlobalPlayer:
+	#	print("GlobalPlayer not found, cannot load leaderboard.")
+	#	return
+	#	
+	#var text := GlobalPlayer.get_leaderboard_text()
+	#LeaderboardLabel.text = text
+	pass

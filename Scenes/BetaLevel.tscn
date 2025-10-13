@@ -71,7 +71,7 @@
 [ext_resource type="PackedScene" uid="uid://b8v1kqi7pr3a4" path="res://Prefabs/GamePrefabs/Objects/lamp_post_down.tscn" id="67_t3s3n"]
 [ext_resource type="PackedScene" uid="uid://cgemhbqin7k32" path="res://Prefabs/GamePrefabs/Objects/Lamp_Post_Up_Flicker.tscn" id="68_t3s3n"]
 [ext_resource type="Texture2D" uid="uid://cxmn50hvbmrwe" path="res://Assets/Art/Objects/LevelObjects/Carpark/Concrete_Wall_Door.png" id="69_fanmj"]
-[ext_resource type="PackedScene" path="res://Prefabs/GamePrefabs/Objects/Park/Puddle.tscn" id="70_v1rlk"]
+[ext_resource type="PackedScene" uid="uid://k47f70rmohfg" path="res://Prefabs/GamePrefabs/Objects/Park/Puddle.tscn" id="70_v1rlk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bbpmv"]
 texture = ExtResource("22_qspjj")
