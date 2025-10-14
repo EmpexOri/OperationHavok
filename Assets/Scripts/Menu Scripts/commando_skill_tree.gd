@@ -130,12 +130,10 @@ func restore_unlocked_skills(node):
 		restore_unlocked_skills(child)
 
 func _on_back_button_pressed() -> void:
-	if Options == false:
-		GlobalAudioController.ClickSound()
-		get_tree().change_scene_to_file("res://Scenes/MenuScene.tscn")
-	else:
-		GlobalAudioController.ClickSound()
-		SkillTreeClosed.emit() 
+	GlobalAudioController.ClickSound()
+	visible = false
+	if get_parent().has_method("show_pause_menu"):
+		get_parent().show_pause_menu()
 
 func upgrade_minigun_ability(NewAbility):
 	# Find the current abilities, get the minigun index and then swap in the new skill

@@ -75,7 +75,8 @@ func register_arena(name:String, trigger:Area2D, arena:Node) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("InGameOptions"):
 		GlobalAudioController.PauseMenuMusic()
-		_show_perk_menu()
+		#_show_perk_menu()
+		_toggle_pause()
 	if Input.is_action_just_pressed("DebugInput_4"):
 		_debug_teleport_to_checkpoint()
 		
