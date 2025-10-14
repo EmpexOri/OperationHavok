@@ -1,10 +1,8 @@
 extends VideoStreamPlayer
 
-# --- Video paths ---
 const INTRO_VIDEO := "res://Assets/Videos/AttractMode_fixed.ogv"
 const LOOP_VIDEO := "res://Assets/Videos/Gameplay_Highlights_80mb.ogv"
 
-# --- Variables ---
 var next_video_is_loop := false
 @onready var title_sprite: Sprite2D = get_node_or_null("OperationHavocTitle")
 
@@ -12,7 +10,6 @@ func _ready() -> void:
 	if title_sprite:
 		title_sprite.modulate.a = 1.0
 		
-	# Start with intro video
 	_play_intro()
 	
 	connect("finished", Callable(self, "_on_video_finished"))
@@ -26,7 +23,7 @@ func _play_intro() -> void:
 	if title_sprite:
 		_fade_title(false)
 	
-	if randi() % 100 == 0:
+	if randi() % 100 == 0: #Dont ask what this is other devs <3
 		speed_scale = 5.0
 		var timer = Timer.new()
 		timer.one_shot = true
