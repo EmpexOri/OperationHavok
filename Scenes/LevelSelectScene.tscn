@@ -1,5 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6pwqw7p34rmx"]
+[gd_scene load_steps=41 format=3 uid="uid://c6pwqw7p34rmx"]
 
+[ext_resource type="Texture2D" uid="uid://cy7ytelxe8xbp" path="res://Assets/Art/HUD/MainMenuHUD/HaileyBG.png" id="1_woaua"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_woaua"]
 [ext_resource type="Texture2D" uid="uid://cafkablbeyama" path="res://Assets/Art/PlaceHolders/LoadingScreenSpriteSheet.png" id="6_qq5ww"]
 [ext_resource type="Texture2D" uid="uid://dtxg0tdpsqa27" path="res://Assets/Art/PlaceHolders/LoadingFinished.png" id="7_lwi0v"]
 
@@ -7,11 +9,20 @@
 script/source = "extends Node2D
 
 func _ready():
-	$LevelSelect/Level1Button.grab_focus()
+	$LevelSelect/Control/VBoxContainer/Level1Button.grab_focus()
+	# Connect focus and hover signals
+	Level1Button.connect(\"focus_entered\", Callable(self, \"_on_level_1_focus\"))
+	Level2Button.connect(\"focus_entered\", Callable(self, \"_on_level_2_focus\"))
+	BackButton.connect(\"focus_entered\", Callable(self, \"_on_back_focus\"))
+	Level1Button.connect(\"mouse_entered\", Callable(self, \"_on_level_1_focus\"))
+	Level2Button.connect(\"mouse_entered\", Callable(self, \"_on_level_2_focus\"))
+	BackButton.connect(\"mouse_entered\", Callable(self, \"_on_back_focus\"))
 
 # Level Select screen variables
-@onready var Level1Button = $LevelSelect/Level1Button
-@onready var Level2Button = $LevelSelect/Level2Button
+@onready var Level1Button = $LevelSelect/Control/VBoxContainer/Level1Button
+@onready var Level2Button = $LevelSelect/Control/VBoxContainer/Level2Button
+@onready var LevelSelectBG = $LevelSelect/Background
+@onready var BackButton = $LevelSelect/Control/VBoxContainer/BackButton
 
 # Class Select screen variables
 @onready var CommandoButton = $ClassSelect/CommandoButton
@@ -25,6 +36,7 @@ func _ready():
 func _on_back_button_pressed() -> void:
 	# Go to menu when back button is pressed
 	GlobalAudioController.ClickSound()
+	GlobalPlayer.set_current_level_scene(\"res://Scenes/MenuScene.tscn\")
 	get_tree().change_scene_to_file(\"res://Scenes/MenuScene.tscn\")
 
 
@@ -32,8 +44,20 @@ func _on_level_1_button_pressed() -> void:
 	# Go to level one when level one button is pressed
 	GlobalAudioController.ClickSound()
 	GlobalAudioController.StopMainMenuMusic()
-	get_tree().change_scene_to_file(\"res://Scenes/AlphaLevel1.tscn\")
+	GlobalPlayer.set_current_level_scene(\"res://Scenes/BetaLevel.tscn\")
+	get_tree().change_scene_to_file(\"res://Scenes/BetaLevel.tscn\")
+	
+func _on_level_1_focus() -> void:
+	if LevelSelectBG:
+		LevelSelectBG.texture = load(\"res://Assets/Art/HUD/MainMenuHUD/HaileyBG.png\")
 
+func _on_level_2_focus() -> void:
+	if LevelSelectBG:
+		LevelSelectBG.texture = load(\"res://Prefabs/GamePrefabs/Enemy/Minibosses/British_Bloke.png\")
+
+func _on_back_focus() -> void:
+	if LevelSelectBG:
+		LevelSelectBG.texture = load(\"res://Prefabs/GamePrefabs/Enemy/Minibosses/British_Bloke.png\") 
 
 func _on_class_select_button_pressed() -> void:
 	# Remove the level select screen and display the class select screen 
@@ -325,50 +349,93 @@ animations = [{
 script = SubResource("GDScript_2jav4")
 
 [node name="LevelSelectButton" type="TextureButton" parent="."]
+visible = false
 offset_left = 19.0
 offset_top = 12.0
 offset_right = 303.0
 offset_bottom = 62.0
 focus_neighbor_right = NodePath("../ClassSelectButton")
-focus_neighbor_bottom = NodePath("../LevelSelect/Level1Button")
+focus_neighbor_bottom = NodePath("../LevelSelect/Control/VBoxContainer/Level1Button")
 texture_normal = SubResource("CompressedTexture2D_qyu6w")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ClassSelectButton" type="TextureButton" parent="."]
+visible = false
 offset_left = 336.0
 offset_top = 12.0
 offset_right = 620.0
 offset_bottom = 62.0
 focus_neighbor_left = NodePath("../LevelSelectButton")
-focus_neighbor_bottom = NodePath("../LevelSelect/Level2Button")
+focus_neighbor_bottom = NodePath("../LevelSelect/Control/VBoxContainer/Level2Button")
 texture_normal = SubResource("CompressedTexture2D_woaua")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="LevelSelect" type="CanvasLayer" parent="."]
 
-[node name="Level1Button" type="Button" parent="LevelSelect"]
-offset_left = 103.0
-offset_top = 124.0
-offset_right = 245.0
-offset_bottom = 250.0
-focus_neighbor_top = NodePath("../../LevelSelectButton")
-focus_neighbor_right = NodePath("../Level2Button")
-focus_neighbor_bottom = NodePath("../../BackButton")
-theme_override_font_sizes/font_size = 28
-text = "Level 1"
+[node name="Background" type="TextureRect" parent="LevelSelect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_woaua")
 
-[node name="Level2Button" type="Button" parent="LevelSelect"]
-offset_left = 396.0
-offset_top = 124.0
-offset_right = 538.0
-offset_bottom = 250.0
-focus_neighbor_left = NodePath("../Level1Button")
-focus_neighbor_top = NodePath("../../ClassSelectButton")
-focus_neighbor_bottom = NodePath("../../BackButton")
+[node name="Control" type="Control" parent="LevelSelect"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -50.0
+offset_right = 72.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1Button" type="Button" parent="LevelSelect/Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../Level2Button")
+theme_override_colors/font_color = Color(0.63081074, 0.09649227, 0.17460597, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9795578, 0.44388488, 0.46131408, 1)
+theme_override_fonts/font = ExtResource("2_woaua")
 theme_override_font_sizes/font_size = 28
-text = "Level 2"
+text = "Campaign"
+
+[node name="Level2Button" type="Button" parent="LevelSelect/Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Level1Button")
+focus_neighbor_bottom = NodePath("../BackButton")
+theme_override_colors/font_color = Color(0.63081074, 0.09649227, 0.17460597, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9795578, 0.44388488, 0.46131408, 1)
+theme_override_fonts/font = ExtResource("2_woaua")
+theme_override_font_sizes/font_size = 28
+text = "Endless Mode"
+
+[node name="BackButton" type="Button" parent="LevelSelect/Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Level2Button")
+focus_neighbor_bottom = NodePath("../Level1Button")
+theme_override_colors/font_color = Color(0.6313726, 0.09803922, 0.1764706, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.98039216, 0.44313726, 0.4627451, 1)
+theme_override_fonts/font = ExtResource("2_woaua")
+theme_override_font_sizes/font_size = 28
+text = "Return"
 
 [node name="ClassSelect" type="CanvasLayer" parent="."]
 
@@ -380,7 +447,7 @@ offset_right = 224.0
 offset_bottom = 290.0
 focus_neighbor_top = NodePath("../../LevelSelectButton")
 focus_neighbor_right = NodePath("../TechnomancerButton")
-focus_neighbor_bottom = NodePath("../../BackButton")
+focus_neighbor_bottom = NodePath("../../LevelSelect/Control/VBoxContainer/BackButton")
 text = "Commando"
 
 [node name="TechnomancerButton" type="Button" parent="ClassSelect"]
@@ -391,7 +458,7 @@ offset_right = 530.0
 offset_bottom = 290.0
 focus_neighbor_left = NodePath("../CommandoButton")
 focus_neighbor_top = NodePath("../../ClassSelectButton")
-focus_neighbor_bottom = NodePath("../../BackButton")
+focus_neighbor_bottom = NodePath("../../LevelSelect/Control/VBoxContainer/BackButton")
 text = "Technomancer"
 
 [node name="Commando" type="Sprite2D" parent="ClassSelect"]
@@ -430,19 +497,11 @@ position = Vector2(320, 180)
 scale = Vector2(0.666667, 0.666667)
 texture = ExtResource("7_lwi0v")
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 301.0
-offset_top = 311.0
-offset_right = 346.0
-offset_bottom = 342.0
-focus_neighbor_top = NodePath("../LevelSelect/Level1Button")
-text = "Back"
-
 [connection signal="pressed" from="LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="ClassSelectButton" to="." method="_on_class_select_button_pressed"]
-[connection signal="pressed" from="LevelSelect/Level1Button" to="." method="_on_level_1_button_pressed"]
-[connection signal="pressed" from="LevelSelect/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelSelect/Control/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="LevelSelect/Control/VBoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelSelect/Control/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ClassSelect/CommandoButton" to="." method="_on_commando_button_pressed"]
 [connection signal="pressed" from="ClassSelect/TechnomancerButton" to="." method="_on_technomancer_button_pressed"]
 [connection signal="pressed" from="ClassSelect/Loading" to="." method="_on_loading_pressed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

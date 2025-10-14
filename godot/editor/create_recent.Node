@@ -1,3 +1,8 @@
+VBoxContainer
+Control
+TextureRect
+CanvasLayer
+TextureButton
 LineEdit
 Label
 HBoxContainer
@@ -5,11 +10,6 @@ Node2D
 AnimatedSprite2D
 VideoStreamPlayer
 AudioStreamPlayer
-TextureRect
 AudioStreamPlayer2D
 AudioListener2D
 ColorRect
-Button
-VBoxContainer
-Control
-Panel
