@@ -19,3 +19,5 @@ res://Scenes/Prefig_Rooms/Room_Intersection.tscn
 res://Scenes/Prefig_Rooms/Room_Cap_North.tscn
 res://Scenes/Prefig_Rooms/Room_Cap_South.tscn
 res://Scenes/Prefig_Rooms/Room_Start.tscn
+res://Prefabs/CodePrefabs/Projectiles/heavy_bullets/rocket_projectile.tscn
+res://Assets/Scripts/Projectiles/projectile.gd

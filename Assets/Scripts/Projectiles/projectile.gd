@@ -32,7 +32,7 @@ var _space_state: PhysicsDirectSpaceState2D
 func _ready() -> void:
 	add_to_group("Bullet")
 	# Connect signals
-	visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
+	#visible_on_screen_notifier_2d.screen_exited.connect(queue_free) # Destroy when off-screen
 	body_entered.connect(_on_body_entered) # Handle collisions
 
 # This method MUST be created and called with super() in the derived class
