@@ -1,3 +1,8 @@
+Node2D
+Camera2D
+Marker2D
+NavigationRegion2D
+TileMapLayer
 VBoxContainer
 Control
 TextureRect
@@ -6,10 +11,4 @@ TextureButton
 LineEdit
 Label
 HBoxContainer
-Node2D
 AnimatedSprite2D
-VideoStreamPlayer
-AudioStreamPlayer
-AudioStreamPlayer2D
-AudioListener2D
-ColorRect

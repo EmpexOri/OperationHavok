@@ -1,0 +1,306 @@
+[gd_scene load_steps=29 format=3 uid="uid://scn7cqglqg30"]
+
+[ext_resource type="Script" uid="uid://c5rl6mcsoammn" path="res://Assets/Scripts/Misc/Generators/LevelGenerator.gd" id="1_yrli7"]
+[ext_resource type="PackedScene" uid="uid://c5wetfx6gfmsf" path="res://Scenes/Prefig_Rooms/Room_Straight.tscn" id="2_exouq"]
+[ext_resource type="PackedScene" uid="uid://c3pkmggirpj1a" path="res://Scenes/Prefig_Rooms/Room_Intersection.tscn" id="3_d48n2"]
+[ext_resource type="PackedScene" uid="uid://br8e5lw0p1u76" path="res://Scenes/Prefig_Rooms/Room_Start.tscn" id="4_ki85h"]
+[ext_resource type="PackedScene" uid="uid://bs0dt8tf8juhw" path="res://Scenes/Prefig_Rooms/Room_Cap_North.tscn" id="4_tuu7l"]
+[ext_resource type="PackedScene" uid="uid://pgay0pc4gjnv" path="res://Scenes/Prefig_Rooms/Room_Cap_South.tscn" id="5_t1a8x"]
+[ext_resource type="Script" uid="uid://db7rhu7tjug88" path="res://Assets/Scripts/Player Scripts/PlayerUIHandler.gd" id="7_a004p"]
+[ext_resource type="PackedScene" uid="uid://cjkrpn6nhhs0c" path="res://Prefabs/GamePrefabs/Player/player.tscn" id="7_ox200"]
+[ext_resource type="Texture2D" uid="uid://cinikat670uwd" path="res://Assets/Art/HUD/PlayerHUD/CharacterPFP.png" id="8_ox200"]
+[ext_resource type="Texture2D" uid="uid://o3t2gdsrqcux" path="res://Assets/Art/PlaceHolders/BarTemp.png" id="9_lgsor"]
+[ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="10_8h7fj"]
+[ext_resource type="Texture2D" uid="uid://bcrtwl6nirtdl" path="res://Assets/Art/PlaceHolders/TinyBar.png" id="11_fqt82"]
+[ext_resource type="Texture2D" uid="uid://dmyuiq7n3wok0" path="res://Assets/Art/PlaceHolders/XPCircle.png" id="12_dcwid"]
+[ext_resource type="Script" uid="uid://c1e15u5wmemfj" path="res://Assets/Scripts/Misc/FPS.gd" id="13_crs4t"]
+[ext_resource type="Texture2D" uid="uid://gr0udyxs2ewu" path="res://Assets/Art/HUD/SelectLevelUp.png" id="14_c3s7e"]
+[ext_resource type="Texture2D" uid="uid://dmorr0akrlxyf" path="res://Assets/Art/HUD/LB.png" id="15_e3e5m"]
+[ext_resource type="Script" uid="uid://6s1bqy0wr87w" path="res://Assets/Scripts/Player Scripts/AbilityIcon.gd" id="16_eq7lb"]
+[ext_resource type="Theme" uid="uid://bf4d62y4dv8rw" path="res://Assets/MenuText_Skilltree.tres" id="17_q00e1"]
+[ext_resource type="Texture2D" uid="uid://cfpq1yb142ygp" path="res://Assets/Art/HUD/RT.png" id="18_xgudh"]
+[ext_resource type="Texture2D" uid="uid://bpq786d7nt81x" path="res://Assets/Art/HUD/Plasmacaster.png" id="19_b4vr0"]
+[ext_resource type="Texture2D" uid="uid://b2h0i6lhnr1qh" path="res://Assets/Art/HUD/Novacaster.png" id="20_dhtlb"]
+[ext_resource type="Texture2D" uid="uid://c0fornnjemo8r" path="res://Assets/Art/HUD/BaseballGrenade.png" id="21_5pt4a"]
+[ext_resource type="Texture2D" uid="uid://cwcdqy5jts8as" path="res://Assets/Art/HUD/HomerunGrenade.png" id="22_2ioq7"]
+[ext_resource type="Texture2D" uid="uid://im3d8ti43f2g" path="res://Assets/Art/HUD/RB.png" id="23_6hiut"]
+[ext_resource type="Texture2D" uid="uid://bkhdk4jehuont" path="res://Assets/Art/HUD/SkillTreeMinigunIcon.png" id="24_xwne6"]
+[ext_resource type="Texture2D" uid="uid://br1566g7sr3av" path="res://Assets/Art/HUD/RocketMingun.png" id="25_igv3k"]
+[ext_resource type="Texture2D" uid="uid://gs6orj5fv1ob" path="res://Assets/Art/HUD/LightningGun.png" id="26_4a60i"]
+[ext_resource type="Texture2D" uid="uid://2dpwtocu5gxt" path="res://Assets/Art/HUD/TyphoonCannon.png" id="27_njg8u"]
+
+[node name="RandomLevel" type="Node2D"]
+
+[node name="DungeonGenerator" type="Node2D" parent="."]
+z_index = -6
+script = ExtResource("1_yrli7")
+room_scenes = Array[PackedScene]([ExtResource("2_exouq"), ExtResource("3_d48n2")])
+cap_scenes_north = Array[PackedScene]([ExtResource("4_tuu7l")])
+cap_scenes_south = Array[PackedScene]([ExtResource("5_t1a8x")])
+start_room_scene = ExtResource("4_ki85h")
+player_scene = ExtResource("7_ox200")
+room_count = 64
+max_attempts_per_room = 32
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+script = ExtResource("7_a004p")
+
+[node name="UIContainer" type="Control" parent="PlayerUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterPfp" type="Sprite2D" parent="PlayerUI/UIContainer"]
+position = Vector2(26, 38)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("8_ox200")
+
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 2.0
+offset_right = 250.0
+offset_bottom = 66.0
+grow_vertical = 2
+value = 100.0
+texture_under = ExtResource("9_lgsor")
+texture_progress = ExtResource("9_lgsor")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.7759101, 0.14974195, 0.19603047, 1)
+
+[node name="LevelLabel" type="Label" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 344.0
+offset_right = 36.0
+offset_bottom = 349.72916
+scale = Vector2(2.2, 2.2)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_8h7fj")
+theme_override_font_sizes/font_size = 5
+text = "Level: 1"
+
+[node name="ScoreLabel" type="Label" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 338.0
+offset_right = 37.0
+offset_bottom = 343.729
+scale = Vector2(2.2, 2.2)
+theme_override_fonts/font = ExtResource("10_8h7fj")
+theme_override_font_sizes/font_size = 3
+text = "Score: 0"
+
+[node name="ClassLabel" type="Label" parent="PlayerUI/UIContainer"]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 65.0
+offset_right = 173.0
+offset_bottom = 88.0
+text = "Class: Technomancer"
+
+[node name="DodgeBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 178.0
+offset_bottom = 102.0
+max_value = 1.0
+step = 0.25
+value = 1.0
+texture_under = ExtResource("11_fqt82")
+texture_progress = ExtResource("11_fqt82")
+tint_progress = Color(0.619693, 0.85371, 0.635494, 1)
+
+[node name="XpCircle" type="Sprite2D" parent="PlayerUI/UIContainer"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(26, 36)
+texture = ExtResource("12_dcwid")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI/UIContainer"]
+modulate = Color(1, 1, 1, 0.75)
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 12.0
+offset_right = 257.0
+offset_bottom = 268.0
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("12_dcwid")
+texture_progress = ExtResource("12_dcwid")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.3059584, 0.568307, 0.91368586, 1)
+
+[node name="FPSLabel" type="Label" parent="PlayerUI/UIContainer"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 559.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 27.0
+scale = Vector2(2.2, 2.2)
+theme_override_fonts/font = ExtResource("10_8h7fj")
+theme_override_font_sizes/font_size = 6
+text = "FPS:01"
+script = ExtResource("13_crs4t")
+
+[node name="LevelTimeLabel" type="Label" parent="PlayerUI/UIContainer"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 516.0
+offset_top = 4.0
+offset_right = 593.0
+offset_bottom = 27.0
+scale = Vector2(2.2, 2.2)
+theme_override_fonts/font = ExtResource("10_8h7fj")
+theme_override_font_sizes/font_size = 6
+text = "FPS:01"
+horizontal_alignment = 1
+
+[node name="ScreenFlash" type="ColorRect" parent="PlayerUI/UIContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -158.0
+offset_right = 924.0
+offset_bottom = 525.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7373294, 0.13335153, 0.22091639, 0.2)
+
+[node name="SelectLevelUp" type="Sprite2D" parent="PlayerUI/UIContainer"]
+visible = false
+position = Vector2(359, 16)
+texture = ExtResource("14_c3s7e")
+
+[node name="AbilitiesUI" type="CanvasLayer" parent="PlayerUI"]
+
+[node name="Icon1" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+position = Vector2(530, 324.5)
+texture = ExtResource("15_e3e5m")
+script = ExtResource("16_eq7lb")
+
+[node name="Label" type="Label" parent="PlayerUI/AbilitiesUI/Icon1"]
+z_index = 1
+offset_left = -20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 25.0
+theme = ExtResource("17_q00e1")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon2" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+position = Vector2(574, 324.5)
+texture = ExtResource("18_xgudh")
+script = ExtResource("16_eq7lb")
+
+[node name="Novacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("19_b4vr0")
+
+[node name="Plasmacaster" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("20_dhtlb")
+
+[node name="BaseballGrenade" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("21_5pt4a")
+
+[node name="HomerunGrenade" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon2"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("22_2ioq7")
+
+[node name="Label" type="Label" parent="PlayerUI/AbilitiesUI/Icon2"]
+z_index = 1
+offset_left = -20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 25.0
+theme = ExtResource("17_q00e1")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon3" type="Sprite2D" parent="PlayerUI/AbilitiesUI"]
+position = Vector2(618, 324.5)
+texture = ExtResource("23_6hiut")
+script = ExtResource("16_eq7lb")
+
+[node name="Minigun" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("24_xwne6")
+
+[node name="RocketMingun" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("25_igv3k")
+
+[node name="LightningGun" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("26_4a60i")
+
+[node name="TyphoonCannon" type="Sprite2D" parent="PlayerUI/AbilitiesUI/Icon3"]
+visible = false
+position = Vector2(0, 13.5)
+texture = ExtResource("27_njg8u")
+
+[node name="Label" type="Label" parent="PlayerUI/AbilitiesUI/Icon3"]
+z_index = 1
+offset_left = -20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 25.0
+theme = ExtResource("17_q00e1")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathBG" type="ColorRect" parent="PlayerUI"]
+visible = false
+offset_left = 157.0
+offset_top = 137.0
+offset_right = 490.0
+offset_bottom = 222.0
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.623529)
+
+[node name="YouDiedLabel" type="Label" parent="PlayerUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.588235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_8h7fj")
+theme_override_font_sizes/font_size = 50
+text = "You died"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=4 uid="uid://pgay0pc4gjnv"]
+
+[ext_resource type="Script" uid="uid://7ai6knwvibmg" path="res://Assets/Scripts/Misc/Generators/StraightRoom_Generator.gd" id="1_32vef"]
+[ext_resource type="PackedScene" uid="uid://cpfbnlphsagev" path="res://Prefabs/GamePrefabs/Enemy/hoard_enemy_prefabs/Hordling.tscn" id="2_eec7u"]
+[ext_resource type="TileSet" uid="uid://c2f3pqadjj0sw" path="res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres" id="3_ejdom"]
+[ext_resource type="TileSet" uid="uid://hejhpn2cg0nc" path="res://Assets/Art/Tilesets/WallsTilesets.tres" id="4_k52pt"]
+
+[node name="Room_Cap_South" type="Node2D"]
+script = ExtResource("1_32vef")
+enemy_scene = ExtResource("2_eec7u")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("3_ejdom")
+
+[node name="Walls" type="TileMapLayer" parent="Floor"]
+tile_map_data = PackedByteArray("AAAUAAAAAAADAAcAAAAPAAAAAAADAAcAAAAQAAAAAAADAAcAAAARAAAAAAADAAcAAAASAAAAAAADAAcAAAATAAAAAAADAAcAAAA=")
+tile_set = ExtResource("4_k52pt")
+
+[node name="Door_North" type="Marker2D" parent="."]
+position = Vector2(287, 16)

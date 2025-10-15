@@ -34,8 +34,8 @@ func _on_play_button_pressed() -> void:
 	#var TimeInSeconds2 = 0.8
 	#await get_tree().create_timer(TimeInSeconds2).timeout
 	#LoadingFinished.queue_free()
-	GlobalPlayer.set_current_level_scene("res://Scenes/BetaLevel.tscn")
-	get_tree().change_scene_to_file("res://Scenes/BetaLevel.tscn")
+	GlobalPlayer.set_current_level_scene("res://Scenes/LevelSelectScene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/LevelSelectScene.tscn")
 
 func _on_quit_button_pressed() -> void:
 	GlobalAudioController.ButtonBackSound()

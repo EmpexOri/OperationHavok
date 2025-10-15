@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj428kc0uw5f5"]
+[gd_scene load_steps=7 format=3 uid="uid://dj428kc0uw5f5"]
 
 [ext_resource type="Script" uid="uid://me4q275l1ydv" path="res://Assets/Scripts/LevelControllers/End_Level.gd" id="1_18gom"]
 [ext_resource type="Texture2D" uid="uid://cg4in14ej6p2c" path="res://Assets/Art/HUD/Poster.png" id="1_doqmx"]
 [ext_resource type="FontFile" uid="uid://dgt466st5c75a" path="res://Assets/Art/Fonts/Trigram-Regular.ttf" id="2_y30sl"]
-[ext_resource type="Texture2D" uid="uid://dotqgxlcpe4ng" path="res://Assets/Art/Menu/mainmenu.png" id="4_5wpdf"]
 [ext_resource type="AudioStream" uid="uid://xye855dwtq2m" path="res://Assets/Sound/Music/Luxopolis_Funky.mp3" id="4_a5moj"]
 [ext_resource type="Texture2D" uid="uid://ba6wwl7m22oeo" path="res://Assets/Art/HUD/PressAnyButton.png" id="4_ihx3b"]
-[ext_resource type="Texture2D" uid="uid://bbbx3r4vuw3lr" path="res://Assets/Art/Menu/mainmenupressed.png" id="5_8jvrt"]
 [ext_resource type="Texture2D" uid="uid://bshbw2fhjg4as" path="res://Assets/Art/Menu/HavokTitle.png" id="7_8jvrt"]
 
 [node name="LevelFinished" type="Node2D"]
@@ -87,36 +85,25 @@ theme_override_fonts/font = ExtResource("2_y30sl")
 theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
-[node name="NameEntryContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer/NameEntryContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.59607846, 0.13725491, 0.20392157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_y30sl")
-text = "ENTER YOUR INITIALS:"
-
-[node name="NameInput" type="LineEdit" parent="CanvasLayer/Control/Panel/VBoxContainer/NameEntryContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.59607846, 0.13725491, 0.20392157, 1)
-theme_override_fonts/font = ExtResource("2_y30sl")
-
 [node name="PressAnyButton" type="Sprite2D" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+visible = false
 position = Vector2(134, 147)
 texture = ExtResource("4_ihx3b")
 
 [node name="ReturnButton" type="TextureButton" parent="CanvasLayer/Control/Panel"]
-visible = false
-layout_mode = 0
-offset_left = 270.0
-offset_top = 312.0
-offset_right = 375.0
-offset_bottom = 342.0
-texture_normal = ExtResource("4_5wpdf")
-texture_pressed = ExtResource("5_8jvrt")
-texture_hover = ExtResource("5_8jvrt")
-texture_focused = ExtResource("5_8jvrt")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.5
+offset_top = 143.0
+offset_right = 222.5
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_ihx3b")
 
 [node name="MusicAudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control"]
 stream = ExtResource("4_a5moj")
