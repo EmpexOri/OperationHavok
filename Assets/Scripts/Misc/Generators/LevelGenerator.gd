@@ -6,6 +6,8 @@ extends Node2D
 @export var cap_scenes_east: Array[PackedScene]
 @export var cap_scenes_west: Array[PackedScene]
 
+@export var spacer_room_scene: PackedScene  
+
 @export var start_room_scene: PackedScene
 @export var player_scene: PackedScene
 
@@ -28,26 +30,66 @@ func generate_dungeon():
 	dungeon_root = Node2D.new()
 	add_child(dungeon_root)
 	
+	# --- Start Room ---
 	var start_room: Node2D
 	if start_room_scene:
 		start_room = start_room_scene.instantiate()
 	else:
-		push_error("No Start Room scene assigned! Using a normal room instead.")
 		start_room = _instantiate_room()
-
 	dungeon_root.add_child(start_room)
 	placed_rooms.append(start_room)
 	_register_doors(start_room)
 	
-	
+	# Spawn player
 	if player_scene:
 		var player_spawn = start_room.get_node_or_null("Player_Spawn")
 		if player_spawn:
 			var player = player_scene.instantiate()
-			dungeon_root.add_child(player)
+			var ysorted_parent = get_parent().get_node_or_null("YSortedNode")
+			if ysorted_parent:
+				ysorted_parent.add_child(player)
+			else:
+				push_warning("YSortedNode not found! Adding player to dungeon_root instead.")
+				dungeon_root.add_child(player)
 			player.global_position = player_spawn.global_position
 		else:
 			push_error("No PlayerSpawn marker found in Start Room!")
+
+	# --- Spacer Room ---
+	if spacer_room_scene:
+		var spacer_room = spacer_room_scene.instantiate()
+		var spacer_door: Marker2D = null  # Declare here
+
+		# Pick a door in start room to connect
+		var start_door: Marker2D = start_room.get_node_or_null("Door_North")
+		if not start_door:
+			push_error("Start room has no Door_North!")
+		else:
+			# Find the opposite door in the spacer room
+			var opposite_dir = _get_opposite_dir("North")
+			spacer_door = spacer_room.get_node_or_null("Door_" + opposite_dir)
+			if not spacer_door:
+				push_error("Spacer room has no Door_" + opposite_dir + "!")
+			else:
+				# Align spacer room
+				spacer_room.global_position += start_door.global_position - spacer_door.global_position
+
+				# Remove the connecting doors from available_doors so they won't be capped
+				available_doors = available_doors.filter(func(d):
+					return d["marker"] != start_door
+				)
+
+		dungeon_root.add_child(spacer_room)
+		placed_rooms.append(spacer_room)
+
+		# Register all other doors of the spacer room (except the one connecting to start)
+		for door in spacer_room.get_children():
+			if door is Marker2D and door != spacer_door and door.name.begins_with("Door_"):
+				available_doors.append({
+					"room": spacer_room,
+					"marker": door,
+					"direction": door.name.replace("Door_", "")
+				})
 
 	# --- Controlled room placement ---
 	var placed_normal_rooms := 0
@@ -98,8 +140,7 @@ func _try_place_room() -> bool:
 	# Shuffle doors to try a different order each call
 	available_doors.shuffle()
 	
-	for base_door_index in range(available_doors.size()):
-		var base_door_data = available_doors[base_door_index]
+	for base_door_data in available_doors.duplicate():
 		var base_dir = base_door_data["direction"]
 		
 		var room_attempts := 0
@@ -212,18 +253,36 @@ func _cap_remaining_doors() -> void:
 # --- Collision helpers ---
 
 func _get_room_bounds(room: Node2D) -> Rect2:
-	var visual_node = room.get_node_or_null("TileMap")
-	if not visual_node:
-		visual_node = room.get_node_or_null("Sprite2D")
-	
-	if visual_node and visual_node is TileMap:
-		var used_rect = visual_node.get_used_rect()
-		var cell_size = visual_node.tile_set.tile_size
-		var rect = Rect2(used_rect.position * cell_size, used_rect.size * cell_size)
-		return rect.translated(room.global_position)
-	elif visual_node and visual_node is Sprite2D:
-		var size = visual_node.texture.get_size()
-		var rect = Rect2(-size / 2, size)
-		return rect.translated(room.global_position)
-	else:
-		return Rect2(room.global_position - Vector2(64, 64), Vector2(128, 128))
+	var padding: float = -8.0  # Small buffer to prevent tight fits
+
+	# Try to find the Walls tilemap (child of Floor)
+	var walls_tilemap: TileMapLayer = room.get_node_or_null("Floor/Walls")
+	if walls_tilemap:
+		var used_rect: Rect2i = walls_tilemap.get_used_rect()
+		var cell_size: Vector2 = walls_tilemap.tile_set.tile_size
+		var rect_pos: Vector2 = Vector2(used_rect.position.x, used_rect.position.y) * cell_size
+		var rect_size: Vector2 = Vector2(used_rect.size.x, used_rect.size.y) * cell_size
+		var rect: Rect2 = Rect2(rect_pos, rect_size)
+		rect.position += room.global_position
+		return rect.grow(padding)
+
+	# Fallback: any TileMap in the room
+	for child in room.get_children():
+		if child is TileMap:
+			var tilemap: TileMap = child
+			var used_rect: Rect2i = tilemap.get_used_rect()
+			var cell_size: Vector2 = tilemap.tile_set.tile_size
+			var rect_pos: Vector2 = Vector2(used_rect.position.x, used_rect.position.y) * cell_size
+			var rect_size: Vector2 = Vector2(used_rect.size.x, used_rect.size.y) * cell_size
+			var rect: Rect2 = Rect2(rect_pos, rect_size)
+			rect.position += room.global_position
+			return rect.grow(padding)
+		elif child is Sprite2D:
+			var sprite: Sprite2D = child
+			var size: Vector2 = sprite.texture.get_size()
+			var rect: Rect2 = Rect2(sprite.position - size / 2, size)
+			rect.position += room.global_position
+			return rect.grow(padding)
+
+	# Safety fallback
+	return Rect2(room.global_position - Vector2(64, 64), Vector2(128, 128))

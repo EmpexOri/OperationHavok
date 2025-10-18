@@ -19,11 +19,11 @@ var smear_index: int = 0  # For circular buffer
 
 func _ready():
 	smear_texture = preload("res://Assets/Art/PlaceHolders/SmallSplatWhite.png")
-	z_index = 1
+	z_index = -1
 	# Make this render on top of world if needed
 	if self.get_parent() == null:
 		var layer = CanvasLayer.new()
-		layer.layer = 0
+		layer.layer = -1
 		layer.add_child(self)
 		get_tree().get_root().add_child(layer)
 	visible = true

@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 Node2D
 Camera2D
 Marker2D
@@ -11,4 +13,3 @@ TextureButton
 LineEdit
 Label
 HBoxContainer
-AnimatedSprite2D
