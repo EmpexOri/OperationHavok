@@ -132,6 +132,8 @@ static func _find_target_in_cone(space_state: PhysicsDirectSpaceState2D, origin:
 		var dir_to_body = (body.global_position - origin).normalized()
 		var angle_to_body = aim_dir.angle_to(dir_to_body)
 		if abs(angle_to_body) <= cone_angle_rad:
+			if _is_line_of_sight_blocked(space_state, origin, body, exclude_list): # Line of sight check
+				continue # If true, wall (or something) is in the way
 			var dist_sq = origin.distance_squared_to(body.global_position)
 			if dist_sq < min_dist_sq: min_dist_sq = dist_sq; closest_target = body
 	return closest_target
@@ -154,6 +156,23 @@ static func _find_closest_target_in_radius(space_state: PhysicsDirectSpaceState2
 	for r in results:
 		var body: Node2D = r.collider
 		if not body.has_method("deal_damage"): continue
+		if _is_line_of_sight_blocked(space_state, origin, body, exclude_list): # Line of sight check
+			continue # If true, wall (or something) is in the way
 		var dist_sq = origin.distance_squared_to(body.global_position)
 		if dist_sq < min_dist_sq: min_dist_sq = dist_sq; closest_target = body
 	return closest_target
+
+static func _is_line_of_sight_blocked(space_state: PhysicsDirectSpaceState2D, from_pos: Vector2,
+		to_body: Node2D, exclude_list: Array) -> bool:
+	
+	# Create a raycast query from the origin to the potential target
+	var query = PhysicsRayQueryParameters2D.create(from_pos, to_body.global_position)
+	query.collision_mask = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) # Mask for Layers 1, 2, 3, 4
+	query.exclude = exclude_list + [to_body] # Exclude the origin node and the target itself
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		return true # Line of sight is blocked
+	
+	return false # Line of sight is NOT blocked

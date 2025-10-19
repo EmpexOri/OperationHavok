@@ -1,4 +1,4 @@
-res://Scenes/Beta/Random_Level.tscn
+res://Prefabs/CodePrefabs/Weapons/lightning_launcher.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -6,9 +6,4 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Assets/Scripts/Misc/Generators/LevelGenerator.gd
-res://Scenes/Prefig_Rooms/Rooms/BasicRoom_1.tscn
-res://Assets/Scripts/Misc/Generators/StraightRoom_Generator.gd
-res://Assets/Scripts/Misc/SmearCanvas.gd
-res://Scenes/Prefig_Rooms/Room_Start.tscn
-res://Scenes/Prefig_Rooms/Room_Intersection.tscn
+res://Assets/Scripts/Misc/ChainLightningUtility.gd
