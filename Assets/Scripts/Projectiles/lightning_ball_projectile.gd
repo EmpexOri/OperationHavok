@@ -53,3 +53,7 @@ func _trigger_explosion() -> void:
 		explosion_ref.global_position = global_position
 		explosion_ref.velocity = Vector2.ZERO 
 		explosion_ref.explode()
+		
+
+func _on_explosion_tree_exited() -> void:
+	queue_free()
