@@ -16,34 +16,31 @@ func _ready() -> void:
 	explosion_ref.start(global_position, Vector2.ZERO)
 	explosion_ref.explosion_delay = base_lifetime - 1
 
-func _physics_process(delta: float) -> void:
-	if explosion_ref:
-		explosion_ref.global_position = global_position
-
-	if not exploded:
-		_handle_movement(delta)
-		_check_wall_collision(delta)
-
 func _handle_movement(delta: float) -> void:
-	if not exploded:
-		position += velocity * delta
+	if exploded:
+		return
+	
+	var movement_vector = velocity * delta
+	
+	var shape = collision_shape_2d.shape
+	var current_transform = global_transform
 
-func _check_wall_collision(delta: float) -> void:
-	var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
-	var from: Vector2 = global_position - velocity.normalized() * 1.0
-	var to: Vector2 = global_position + velocity * delta
-
-	var query := PhysicsRayQueryParameters2D.create(from, to)
+	var query := PhysicsShapeQueryParameters2D.new()
 	query.collision_mask = collision_mask
-
-	# Exclude enemies so the ray won't hit them
+	query.shape = shape
+	query.transform = current_transform
+	query.motion = movement_vector
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	query.exclude = enemies.map(func(e): return e.get_rid())
 
-	var result: Dictionary = space_state.intersect_ray(query)
+	var result: Array = _space_state.intersect_shape(query)
 
-	if not result.is_empty() and not exploded:
+	if result:
 		_trigger_explosion()
+	else:
+		global_position += movement_vector
+		if explosion_ref:
+			explosion_ref.global_position = self.global_position
 
 func _trigger_explosion() -> void:
 	if exploded:

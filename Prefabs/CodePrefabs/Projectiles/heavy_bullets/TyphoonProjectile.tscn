@@ -117,7 +117,7 @@ collision_use_scale = true
 [node name="TyphoonProjectile" instance=ExtResource("1_p3drv")]
 monitorable = false
 script = ExtResource("2_x2tpg")
-base_speed = 200.0
+base_speed = 300.0
 base_damage = 50.0
 base_lifetime = 10.0
 
