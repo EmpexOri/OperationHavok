@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=4 uid="uid://uq2fppikhccn"]
+
+[ext_resource type="TileSet" uid="uid://c2f3pqadjj0sw" path="res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres" id="1_pux30"]
+[ext_resource type="TileSet" uid="uid://hejhpn2cg0nc" path="res://Assets/Art/Tilesets/WallsTilesets.tres" id="2_hw6c8"]
+
+[node name="Room_Cap_North" type="Node2D"]
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_pux30")
+
+[node name="Walls" type="TileMapLayer" parent="Floor"]
+tile_map_data = PackedByteArray("AAAUABUAAAAHAAMAAAAPABUAAAAHAAMAAAAQABIAAAADAAUAAAATABIAAAADAAUAAAAUABIAAAAEAAUAAAAQABUAAAAJAAEAAAAQABYAAAAJAAIAAAAQABcAAAAJAAMAAAAQABgAAAAJAAQAAAAQABkAAAAJAAUAAAARABUAAAAKAAEAAAARABYAAAAKAAIAAAARABcAAAAKAAMAAAARABgAAAAKAAQAAAARABkAAAAKAAUAAAASABUAAAAJAAEAAAASABYAAAAJAAIAAAASABcAAAAJAAMAAAASABgAAAAJAAQAAAASABkAAAAJAAUAAAATABUAAAAKAAEAAAATABYAAAAKAAIAAAATABcAAAAKAAMAAAATABgAAAAKAAQAAAATABkAAAAKAAUAAAAPABYAAAAHAAQAAAAPABcAAAAHAAUAAAAPABgAAAAHAAYAAAAPABkAAAAHAAcAAAAUABYAAAAHAAQAAAAUABcAAAAHAAUAAAAUABgAAAAHAAYAAAAUABkAAAAHAAcAAAA=")
+tile_set = ExtResource("2_hw6c8")
+
+[node name="Door_South" type="Marker2D" parent="."]
+position = Vector2(287, 336)
