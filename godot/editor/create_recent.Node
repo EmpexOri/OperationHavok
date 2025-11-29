@@ -1,10 +1,10 @@
+Marker2D
 Node2D
+TileMapLayer
 CollisionShape2D
 Area2D
 Camera2D
-Marker2D
 NavigationRegion2D
-TileMapLayer
 VBoxContainer
 Control
 TextureRect

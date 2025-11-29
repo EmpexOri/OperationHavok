@@ -1,4 +1,4 @@
-res://Scenes/Prefig_Rooms/Rooms/BasicRoom_1.tscn
+res://Scenes/BetaLevel.tscn
 res://Prefabs/CodePrefabs/Particles/Preloaded/TumourExplosionGore.tres
 res://Prefabs/CodePrefabs/Particles/Preloaded/DeathExplosionGore.tres
 res://Assets/Shaders/BulletShader.gdshader
@@ -6,6 +6,9 @@ res://Assets/Art/Effects/ExplodedAnim.tres
 res://Assets/Shaders/FlashShader.gdshader
 res://Assets/Art/Tilesets/Tilesets_Final/FloorsTilesets.tres
 res://Assets/Art/Tilesets/WallsTilesets.tres
-res://Scenes/Beta/Random_Level.tscn
-res://Assets/Scripts/Misc/Generators/StraightRoom_Generator.gd
-res://Scenes/Prefig_Rooms/Rooms/Doors/Door_South.tscn
+res://Assets/Scripts/Player Scripts/player.gd
+res://Assets/Scripts/Enemy/elite_enemies/Gatling.gd
+res://Scenes/MegaTrials.tscn
+res://Assets/Scripts/LevelControllers/InfiniteArena.gd
+res://Assets/Scripts/Enemy/Enemy.gd
+res://Scenes/LevelSelectScene.tscn

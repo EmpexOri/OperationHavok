@@ -112,6 +112,11 @@ func _physics_process(delta):
 			sweep_weapon._spawn_projectile(sweep_spawn_position, fire_dir)
 			if sweep_weapon.fire_sound_method != "":
 				sweep_weapon._play_fire_sound()
+			else:
+				# Use the enemy’s fallback SFX
+				if fire_sfx.playing:
+					fire_sfx.stop()
+				fire_sfx.play()
 			
 			# Update fire_direction for animation
 			fire_direction = fire_dir

@@ -33,19 +33,32 @@ var CurrentWeapon: Weapon
 signal died(enemy)
 
 func _ready():
+	# Ensure the flash sprite has a unique material
+	var sprite = get_flash_sprite()
+	if sprite and sprite.material:
+		sprite.material = sprite.material.duplicate()
+
+	# Setup the flash timer
 	flash_timer = Timer.new()
 	flash_timer.wait_time = 0.15
 	flash_timer.one_shot = false
 	flash_timer.connect("timeout", Callable(self, "_on_flash_tick"))
 	add_child(flash_timer)
+
+	# Add to groups
 	add_to_group(Group)
 	add_to_group(SummonGroup)
+
+	# Setup weapon if assigned
 	setup_weapon()
 	
 	# Cache player reference
-	cached_player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() > 0 else null
-	
-	await get_tree().process_frame  # Give time for Player to exist in their pretty little eyes <3
+	var players = get_tree().get_nodes_in_group("Player")
+	cached_player = players[0] if players.size() > 0 else null
+
+	# Give a frame for other nodes to initialize
+	await get_tree().process_frame
+
 	start()
 
 func setup_weapon():

@@ -104,8 +104,8 @@ func _on_technomancer_button_pressed() -> void:
 func _on_level_2_button_pressed() -> void:
 	# Go to level one when level one button is pressed
 	GlobalAudioController.ClickSound()
-	GlobalPlayer.set_current_level_scene(\"res://Scenes/Beta/Random_Level.tscn\")
-	get_tree().change_scene_to_file(\"res://Scenes/Beta/Random_Level.tscn\")
+	GlobalPlayer.set_current_level_scene(\"res://Scenes/MegaTrials.tscn\")
+	get_tree().change_scene_to_file(\"res://Scenes/MegaTrials.tscn\")
 
 
 func _on_loading_pressed() -> void:

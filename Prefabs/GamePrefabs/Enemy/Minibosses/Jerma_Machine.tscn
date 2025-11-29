@@ -341,7 +341,6 @@ texture = ExtResource("2_ma8u5")
 texture_filter = 1
 material = ExtResource("3_jfdey")
 sprite_frames = SubResource("SpriteFrames_2bh2r")
-animation = &"move"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -349,6 +348,7 @@ animation = &"move"
 shape = SubResource("CircleShape2D_vp07h")
 
 [node name="ShieldBubble" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite" type="Sprite2D" parent="ShieldBubble"]
 modulate = Color(1, 1, 1, 0.5)

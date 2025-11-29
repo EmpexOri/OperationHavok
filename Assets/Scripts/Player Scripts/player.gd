@@ -719,16 +719,22 @@ func set_move_speed(value: float):
 func flash_white(flash_color := Color("cb002e"), times := 1, interval := 0.15):
 	if not PlayerSprite:
 		return
-
-	# Duplicate material to make it unique
+		
+	# Ensure unique Material instance for this sprite before changing shader params
+	var mat : ShaderMaterial = null
 	if PlayerSprite.material:
-		PlayerSprite.material = PlayerSprite.material.duplicate()
+		# Always duplicate to avoid modifying a shared resource
+		mat = PlayerSprite.material.duplicate() as ShaderMaterial
+		PlayerSprite.material = mat
 	else:
-		print("PlayerSprite has no material!")
-
-	var mat := PlayerSprite.material as ShaderMaterial
+		push_warning("PlayerSprite has no material, creating new ShaderMaterial")
+		mat = ShaderMaterial.new()
+		mat.shader = preload("res://Assets/Shaders/Flashshader.gdshader")
+		PlayerSprite.material = mat
+		
+	# Now it's safe to set shader parameters
 	mat.set_shader_parameter("flash_color", flash_color)
-
+	
 	var tween := create_tween()
 	for i in range(times):
 		tween.tween_property(mat, "shader_parameter/flash_strength", 0.5, interval)
